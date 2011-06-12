@@ -8,9 +8,20 @@
 
 <p>Cryptographic hash functions will take <b>any input</b> and produce a fixed-length cryptographic signature of the input. If the passwords are being hashed, there is no need for password restrictions, so we can assume any websites that impose these restrictions are storing passwords in plain text...until they prove otherwise.</p>
 
-<p>There are two sections in this list. The first contains websites and services that are imposing unreasonable restrictions and <b>may</b> be storing the passwords in plain text. The second is a list of websites that impose unreasonable restrictions but have proven to us that the passwords are being hashed properly.</p>
+<p>There are three sections in this list. The first contains websites and services that are imposing unreasonable restrictions and <b>may</b> be storing the passwords in plain text. The second is a list of websites that accept long passwords without error but only validate the first few characters. The third is a list of websites that impose unreasonable restrictions but have proven to us that the passwords are being hashed properly.</p>
 
 <h2><span style="color:red;">Unreasonable Restrictions, Possibly Plaintext</span></h2>
+<ul>
+	<li>
+		<h3>Windows Live Mail (Hotmail) &amp; Windows Live Messenger</h3>
+		<p>It looks like Microsoft still hasn't figured out how to do security. Their popular email service limits passwords to 16 characters.</p>
+		<blockquote>
+		<i>Windows Live Hotmail is one of the world’s largest e-mail providers with more than <b>355 million active accounts</b>, providing features for an efficient and clutter-free inbox whether via the Web, a mobile phone or a PC.</i> - <a href="https://www.microsoft.com/presspass/presskits/windowslive/docs/WindowsLiveHotmailFS_0910.doc">Microsoft Fact Sheet, 2010</a>
+		</blockquote>
+		<p>Those 355 MILLION passwords better not be stored in plain text!</p>
+	</li>
+</ul>
+<h2><span style="color: red;">Invisible Length Restriction, Possibly Plaintext</span></h2>
 <ul>
 	<li>Please submit!</li>
 </ul>
@@ -27,7 +38,6 @@
 	<li>An explaination of the unreasonable restrictions they are imposing</li>
 	<li>A link to a page on their website where I can verify your claims</li>
 </ul>
-<p>We will contact the service in question and give them one week to explain their behaviour. If they do not reply, are not hashing the passwords, or cannot explain the restrictions, they will be added to to the list until they clean up their act.</p>
 <h2>How do I get my company/website off the list?</h2>
 <p>To get your company or website's name off this list, you must remove the password restrictions in question or give us a good reason why you cannot remove them. You also have to clearly describe to us HOW your passwords are being stored in your database. We will work with you to verify the facts, and will remove you from the list promptly. We will not comply with takedown notices. Read <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Freedom_of_speech_in_the_United_States">this</a> and <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Section_Two_of_the_Canadian_Charter_of_Rights_and_Freedoms">this</a>.</p>
 
