@@ -63,7 +63,10 @@ $name = "";
 // http://example.com/text.htm (all other forms will get directed to this form)
 // http://example.com/index.php will be redirected to http://example.com/
 
-if($_SERVER['HTTP_HOST'] != "ossbox.com" && $_SERVER['HTTP_HOST'] != "localhost" && !strpos($_SERVER['REQUEST_URI'], "://ossbox.com/"))
+if($_SERVER['HTTP_HOST'] != "ossbox.com" && 
+	$_SERVER['HTTP_HOST'] != "localhost" && 
+	$_SERVER['HTTP_HOST'] != "192.168.1.102" && 
+	!strpos($_SERVER['REQUEST_URI'], "://ossbox.com/"))
 {
 	header("HTTP/1.1 301 Moved Permanently");
 	header("Location: http://ossbox.com" . RemoveDomain($_SERVER['REQUEST_URI']));
