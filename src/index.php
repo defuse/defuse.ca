@@ -746,7 +746,7 @@ header('Content-Type: text/html; charset=utf-8');
 <div id="undergrad"></div>
 
 <?php
-	$dnt = isset($_SERVER[HTTP_DNT]) && $_SERVER[HTTP_DNT] == "1";
+	$dnt = isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT'] == "1";
 	
 	if(!$dnt)
 	{
