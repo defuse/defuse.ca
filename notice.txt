@@ -1,0 +1,30 @@
+Dear _________________________,
+
+We have been made aware of the fact that your __________________ online service enforces a password policy that is detrimental to password security. This could be, for example, limiting password length or refusing to allow special symbols in passwords. Because of this, your service has been added to the "Password Policy Hall of SHAME" hosted by the OSSBox Security Group. You can see this page by visiting the following link.
+
+http://ossbox.com/password-policy-hall-of-shame.htm
+
+The specific restrictions we are worried about are _______________________________.
+
+When web services limit passwords in the way that you have, it gives us reason to believe that you are storing passwords in plain text. The correct way to store passwords is to use a salted cryptographic hash. If you were hashing passwords correctly, there would be no need for length or character restrictions because hash functions accept any kind of input and output a fixed-length token uniquely representing the input.
+
+For more information on password hashing, see the following link.
+
+http://crackstation.net/hashing-security.html
+
+We kindly ask that you reply to this email with the following information. From that information we will decide whether or not to remove you from the Password Policy Hall of Shame.
+
+1. Are the passwords being stored in plain text?
+2. Why are the password restrictions in place? Is there a reasonable technical limitation?
+
+If the passwords are being hashed:
+
+3. Which hash algorithm is used?
+4. Is salt used in the hashes? 
+5. How long is the salt?
+6. Is the salt unique to each password?
+
+We thank you for your time and cooperation and hope to work together to make the Internet a more secure place for everyone.
+
+OSSBox Security
+http://ossbox.com/
