@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<style type="text/css">
+* 
+{ 
+	margin: 0; 
+	padding: 0; 
+}
+
+#header 
+{
+	width:100%;
+	height:40px;
+	background-color: #92268e;
+}
+
+#logo
+{
+	margin-top: 8px;
+	margin-left: 20px;
+}
+
+#controlbar
+{
+	position:absolute;
+	right:10px;
+	top:12px;
+	color:white;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#controlbar li 
+{
+	display: inline;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-left: 1px solid #FFFFFF;
+}
+
+#controlbar li:first-child 
+{
+	border-left: none;
+}
+
+
+
+#main
+{
+	float:left;
+	width:70%;
+}
+
+#sidebar
+{
+	float:right;
+	width:30%;
+}
+
+.box
+{
+	background-color: #f2f2f2;
+	margin: 20px;
+	border: solid #cccccc 1px;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.box h2
+{
+	font-size: 15px;
+	font-weight: bold;
+	padding-bottom: 3px;
+	border-bottom: dotted 1px black;
+	margin-bottom: 8px;
+}
+
+.infotable
+{
+	width:100%;
+}
+
+.infotable td, th
+{
+	text-align:left;
+}
+
+
+.linklist
+{
+	list-style-type: none;
+}
+
+.linklist li
+{
+	font-size: 15px;
+	padding-left:30px;
+	padding-bottom:2px;
+	padding-top: 2px;
+}
+
+.linklist li:hover
+{
+	background-color:#FFFFFF;
+}
+
+
+</style>
+</head>
+<body>
+<div id="header">
+	<img id="logo" src="images/stubshare.png" alt="Stubshare" />
+	<div id="controlbar">
+		<ul>
+			<li id="leftmost">Logged in as DGFGA</li>
+			<li>Settings</li>
+			<li>Logout</li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<div id="main">
+		<div class="box">
+			<h2>Create Stubs</h2>
+			<b>Find StubShare partner sites</b><br />
+			Search the net for stubs by <b>brand</b> | file type<br />
+			Go to StubShare's online content library
+		</div>
+		<div class="box">
+			<h2>Recent Purchases</h2>
+			<table class="infotable">
+			<tr><th>Price</th><th>Title</th><th>Brand</th><th>Format</th><th>Share</th></tr>
+			<tr><td>$3.99</td><td>Simpsons s04e12</td><td>Fox</td><td>TV Ep</td><td>Share</td></tr>
+			<tr><td>$8.99</td><td>Applied Cryptography</td><td>SomeBook Press</td><td>eBook</td><td>Share</td></tr>
+			<tr><td>$0.99</td><td>Don McLean - American Pie</td><td>EMI</td><td>Music</td><td>Share</td></tr>
+			</table>
+			<br />
+			<a href="#">Full Purchase History</a>
+		</div>
+		<div class="box">
+			<h2>Shared Stubs</h2>
+			<table class="infotable">
+			<tr><th>Title</th><th>Brand</th><th>Format</th><th>Price</th><th>Your Cut</th><th>Sales</th><th>Share</th></tr>
+			<tr><td>Don McLean - American Pie</td><td>EMI</td><td>Music</td><td>$0.99</td><td>12%</td><td>20</td><td>Share</td></tr>
+			<tr><td>Rihanna - Rude Boy</td><td>EMI</td><td>Music</td><td>$0.99</td><td>12%</td><td>20</td><td>Share</td></tr>
+			<tr><td>Skrillex - Scary Monsters And Nice Sprites</td><td>EMI</td><td>Music</td><td>$0.99</td><td>12%</td><td>20</td><td>Share</td></tr>
+			</table>
+		</div>
+	</div>
+	<div id="sidebar">
+		<div class="box">
+			<table style="width: 100%;">
+			<tr><td><b>Balance:</b></td><td>$82.33</td></tr>
+			<tr><td>My shared stubs:</td><td>$15.43</td></tr>
+			<tr><td>My OLPC donation:</td><td>$58.00</td></tr>
+			</table>
+		</div>
+		<div class="box">
+			<h2>Settings</h2>
+			<ul class="linklist">
+				<li>Account &amp; Security Settings</li>
+				<li>Stub Settings</li>
+				<li>Charity Settings</li>
+			</ul>
+		</div>
+		<div class="box">
+			<h2>Manage my pages</h2>
+			<ul class="linklist">
+				<li>My Music Store</li>
+				<li>Apps</li>
+				<li>Movies</li>
+				<li>Podcasts</li>
+				<li>TV Eps</li>
+				<li>eBooks</li>
+			</ul>
+		</div>
+		<div class="box">
+			<h2>My Purchases</h2>
+			<ul class="linklist">
+				<li>Music</li>
+				<li>Apps</li>
+				<li>Movies</li>
+				<li>Podcasts</li>
+				<li>TV Eps</li>
+				<li>eBooks</li>
+				<li><b>Everything</b></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

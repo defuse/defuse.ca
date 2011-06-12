@@ -1,0 +1,106 @@
+<h1>Why are web applications so vulnerable to attack?</h1>
+<p>April 23, 2011.</p>
+
+<p>Surely, if you've been following the news recently, you've seen lots of reports about websites being hacked, and their databases being leaked. Web site breaches are clearly becoming more and more common, but why?</p>
+
+<p>It seems like web applications should be more secure than desktop apps. They are generally written in managed languages, so developers don't have to worry about low level buffer overflow style exploits. So what makes it so hard to build a secure web application?</p>
+
+<p>Web apps have their own, unique, set of exploits. The most common ones: SQL Injection and Cross Site Scripting are already very well understood, so I won't explain them. What I will explain, is why they are so hard to prevent.</p>
+
+<p>The average web application is composed of four mutually untrusting components:</p>
+<ol>
+	<li>Web Browser (user input)</li>
+	<li>External Code (libraries)</li>
+	<li>Database (and its content)</li>
+	<li>The script generating the page requested by the web browser</li>
+</ol>
+
+<p>Each of these components must accept potentially dangerous input from another, as in the following diagram:</p>
+
+<center><img src="/images/web-application-security-model.png" alt="The security model for websites. Four mutually untrusting components." title="The security model for websites. Four mutually untrusting components." /></center>
+
+<p>Each red arrow tip represents potentially dangerous input coming from one of the other components. The external code library cannot assume that everything the page generating script passes to it is properly sanitized. Likewise, the page generating script cannot assume the data being returned by the external code will be properly sanitized. Neither the external code nor the page generating script can assume that data stored in the database is already sanitized.</p>
+
+
+<p>The database and web browser are dumb, in the sense that they always do what they are told to do and cannot discern good input from bad. So any data sent to the database or web browser <u>must</u> be sanitized, or there is a potential for exploit.</p>
+
+<p>To analyze the potential for SQL injection attacks, look at the diagram. Trace all the possible paths data coming from the web browser can take to reach the database. Now we can see why web apps are so hard to secure: There are SO MANY paths dangerous data can take to reach the database. If <u>just one</u> of these paths passes the data to the database without sanitizing it, the web site is vulnerable to an SQL injection attack.</p>
+
+<p>For example, data could follow any of these paths: </p>
+<pre>
+Web Browser --> script.php --> Database
+Web Browser --> script.php --> External Code --> Database
+Web Browser --> script.php --> Database --> script.php --> Database
+Web Browser --> script.php --> Database --> External Code --> Database
+and so on....
+</pre>
+<p>In graph theory, these are actually called walks, and there are infinitely many of them.</p>
+
+<p>You might have noticed that script.php will always be the second step in the path. Wouldn't it be nice if script.php sanitized all of the web browser's inputs? It would be WONDERFUL, but it can't. Because after data has been sanitized for a specific platform, it cannot be understood by anything other than that platform. </p>
+
+<p>To demonstrate my point, let's pretend we are building a website with some database software that self-destructs if the string "21" is present anywhere in the query (by self-destruct, I mean the server actually EXPLODES). Now imagine we are constructing an address book website.</p>
+
+<p>Pretend the web browser is asking our script to add an address to the database, and sends the following information:</p>
+
+<ul>
+	<li>COUNTRY: United States of America</li>
+	<li>STATE: California</li>
+	<li>CITY: Beverly Hills</li>
+	<li>ADDRESS: 6556 31st Street</li>
+	<li>ZIP CODE: 90210</li>
+</ul>
+
+<p>You can see that there is a potential problem here. If we insert this data into the database directly, the "21" in the zip code will cause the database to explode. We don't want our database to explode, so we define our sanitization function to replace "21" with "T-W-E-N-T-Y-O-N-E". Our database software is aware of the "21" problem, so when it gets asked to store the value "T-W-E-N-T-Y-O-N-E", it is smart enough to convert it back to "21" first (without exploding).</p>
+
+<p>If script.php sanitizes the data, it will become:</p>
+
+<ul>
+	<li>COUNTRY: United States of America</li>
+	<li>STATE: California</li>
+	<li>CITY: Beverly Hills</li>
+	<li>ADDRESS: 6556 31st Street</li>
+	<li>ZIP CODE: 90T-W-E-N-T-Y-O-N-E10</li>
+</ul>
+
+<p>
+Now, script.php can safely add it to the database. But what if script.php wants to use an external code library to check if the zip code is actually a valid zip code in the state? It can't because the data is already sanitized. The external library won't have a clue what "90T-W-E-N-T-Y-O-N-E10" means. It's unfortunate, but unavoidable, that any data script.php passes to the external library must be unsanitized.
+</p>
+
+<p>
+What if the external library needs to look up the zip code in the database, or if script.php pulls a zip code from the database and re-inserts it, or if script.php obtains some information from the external library and wants to insert it into the database? In <u>all</u> of these cases, the programmers of the web application must take care to sanitize the data before it is sent to the database.
+</p>
+
+<p>
+In other words, every time data is sent to the database, it first has to be sanitized. If there are 1000 locations in the web application where data is sent to the database, then there needs to be 1000 data sanitizations. If just one is missing, an SQL injection attack is possible.
+</p>
+
+<p>The same applies to Cross Site Scripting attacks. Trace all the paths data could take from the web browser, through the website, and back to the browser.</p>
+<h2>It's not all bad news</h2>
+<p>Using our graph theory based understanding of web application security we can discover more effective ways to secure websites.</p>
+
+<center><img src="/images/web-application-security-model.png" alt="Data has two ways of getting to the database, and one way of getting to the browser." title="Data has two ways of getting to the database, and one way of getting to the browser." /></center>
+<p>
+By looking at the diagram, we see that there are really only two input paths to the database and one input path to the web browser. In most websites, the database sanitization would be done in both "External Code" and "script.php" while the HTML sanitization would be done in script.php. When done this way, each input path in the diagram represents all of the 1000s of lines of code that query the database or send data to the browser. This is a huge burden on the developers of script.php and the external library; it forces them to constantly be on the lookout for unsanitized data being sent to the database or the browser. They have to be security professionals.
+</p>
+
+<p>
+We can fix those problems by adding "fourth party" sanitization libraries, that define a "wrapper" interface to the database and web browser. It looks like this:
+</p>
+
+<center><img src="/images/web-application-security-solution.png" alt="Interface A protects the database while interface B protects the web browser." title="Interface A protects the database while interface B protects the web browser." /></center>
+
+<p>
+In this setup, interface A and B are developed by security professionals, and are designed to give client code the same (or more) functionality as if they weren't there. Developers of "External Code" and "script.php" never deal with the database or browser directly; they always go through the secure interface. Because they use the interface, they don't have to worry about classic exploits like SQL injection and Cross Site Scripting. 
+</p>
+
+<p>
+It won't prevent them from introducing a security flaw though an application-level logic error like file uploads, includes, exec(), or regular expressions. But this method is a huge improvement; interfaces A and B need only be written once, and can be re-used throughout the entire application.
+</p>
+
+<p>
+Interface A allows the database to be logically and even physically separated from all other code. It could be implemented in SOAP or XMLRPC, allowing the database to be on a physically separate server, so it remains secure even when the website server is compromised.
+</p>
+
+<p>
+This also shows that it's entirely possible to design a secure scripting language so that data execution style exploits are impossible. Even existing languages can be extended to make exploits impossible. Just disable all of the built in "dangerous" functions and replace their functionality with secure wrapper interfaces.
+</p>

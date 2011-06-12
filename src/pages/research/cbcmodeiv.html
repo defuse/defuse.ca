@@ -1,0 +1,34 @@
+<h1>Should the IV used with CBC mode encryption be kept secret?</h1>
+I've seen a lot of forum threads discussing whether or not the IV (Initialization Vector) used in the CBC (Cipher Block Chaining) mode of encryption needs to be secret. These threads usually end up with heated flame wars, some people saying IV are by definition public knowledge and are to be sent along eith the ciphertext, while others say that if the IV isn't kept secret, it provides no benefit at all.
+<br /><br />
+First, get familiar with how CBC mode works:<br />
+<img src="http://upload.wikimedia.org/wikipedia/commons/d/d3/Cbc_encryption.png" alt="CBC mode of operation encryption" />
+<img src="http://upload.wikimedia.org/wikipedia/commons/6/66/Cbc_decryption.png" alt="CBC mode of operation decryption" />
+<br /><br />
+Now, we know that if we keep the IV private, that is secure. But are there really any problems with making it public?
+<br /><br />
+There are three scenarios where an attacker could possibly abuse the IV:
+<ul>
+	<li>Knowledge of the IV before encryption</li>
+	<li>Knowledge of the IV after encryption</li>
+	<li>Ability to alter the IV if sent with the ciphertext</li>
+</ul>
+<h2>Knowledge of IV Before Encryption</h2>
+If the attacker knows the IV, and can control the data to be encrypted, he will be able to modify the bits of the plaintext to control the bits that go into the cipher. This is a problem if there are chosen plaintext attacks on the block cipher, or if the attacker can specify the next block to be encrypted. It is good practice to make sure that the attacker can NOT know the IV before the data is encrypted. The best way to do this is to just create a random IV for each encryption.
+<h2>Knowledge of IV after encryption</h2>
+If the attacker knows the IV and the ciphertext to an encrypted plaintext, the IV is still providing it's intended security benifits. The IV is XORed with the plaintext BEFORE it is encrypted. The attacker would need to know the encryption key to obtain the plaintext that is XORed with the IV. The IV still randomizes the entire chain, the attacker can't do anything about that. If the attacker knows the IV but not the key, the sytem is still secure.
+<h2>Altering the IV In Transit</h2>
+An attacker can use the IV to his advantage in the following situation:
+<ul>
+	<li>The IV is sent with the ciphertext</li>
+	<li>The attacker can modify the IV (or any ciphertext block) in transit</li>
+	<li>The attacker knows the plaintext of the first (or any) block</li>
+</ul>
+<br />
+With those abilities, the attacker can control what the ciphertext decrypts to, for the block of plaintext he knows. The attack is simple. For example he knows the first block is 0xFFFFFF.... and the IV is 0xAAAAAAA.... If he wanted the first block to be 0x000000.... he can compute the value of the data coming right out of the cipher (before the XOR) by XORing the known plaintext and the IV. Using this value, he can create a new IV, so that when it gets XORed with that data, the first block of plaintext will be what he wants. In our example, he does 0xFFFF... XOR 0xAAAAA.... and gets 0x555555.... To make the first block of plaintext decrypt to 0x0000000 he computes the "new" IV by doing 0x0000000.... XOR 0x555555.... to get 0x55555.... He replaces the IV with 0x555555... and when the client decrypts the message, the first block will be 0x00000... instead of it's original value of 0xFFFFFFF.... Doing this will not cause any other corruption of the plaintext.
+<br /><br />
+This attack can be <b>practical</b> depending on the application, and can be applied to any block for which the plaintext is known, by changing the previous block's ciphertext. This is a fundamental problem with CBC mode, it is a problem <b>even when the IV is kept secret</b>. This attack also applies to other encryption modes like CTR. The only way to get around this is to <b>always verify the authenticity of the ciphertext</b> using a keyed HMAC.
+<h2>Conclusion</h2>
+Those are the threats. Now that you understand them, you should be able to conclude that the IV is allowed to be public, and sent with the ciphertext. But no matter if the IV is private or public, you should always authenticate the ciphertext. <b>Symmetric encryption provides confidentiality, not authentication or data integrety.</b>
+
+

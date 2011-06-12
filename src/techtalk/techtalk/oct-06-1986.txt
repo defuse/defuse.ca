@@ -1,0 +1,29 @@
+Behind the Screens
+By Steve Gibson
+InfoWorld Oct 6, 1986
+
+When the Computer Can't Keep Up with You, Personal Productivity Suffers
+
+What's on everyone's mind these days? If you reply "personal computer performance," you're not alone. With such enthusiasm for faster clock rates, turbo cards, disk cache buffers, 80386's, etc., it's clear that personal computer users have become preoccupied with the speed of their machines.
+
+This week we look at the ergonomic (human factors) aspects of this issue, discovering what effects system speed has. In future columns, we'll examine the wide array of software techniques and hardware technologies developed in an effort to satisfy our endless hunger for more computing power.
+
+The justification for a personal computer's existence ultimately boils down to a phrase that is now daily jargon: personal productivity. In this context, personal productivity refers to the useful work product generated through use of a personal computer system. While many factors affect this resultant productivity, studies have shown that the response time of the system is the single most important factor in the long run.
+
+Certainly, the software's appearance, interface design, command structure, and applicability to the task are important too, but no matter how weird and foreign a program's opreation might be, it can eventually be learned (witness the success of Wordstar). And users are notoriously clever at working around inherent functional limitations. However, a slow program is always a slow program and only seems slower with time. No amount of user adaptation can change that. So just what do we mean by slow response? How fast is enough?
+
+Ergonomics is the new science that studies the way humans interact with selected aspects of their environment, frequently centering on man's interaction with machines. These "human factors" studies have shown that a computer user's attention actually wanders after even a few tenths of a second of system response delay. This has devastating effects on overall work product since it typically takes many additional tenths of a second to perceive that the computer has finally responded, followed by a few seconds to get our minds back on track.
+
+If you think about that for a second, it becomes reasonable. When you begin a spreadsheet recalc, start a jump to the end of a long document, begin to sort a database, or do just about anything that involves disk input/output, your attention instantly wanders. Suddenly, the computer is not so fast anymore - at least not as fast as you.
+
+So you look at the Post-It notes covering your wall or clinging to the sides of your CRT display. You begin listening to a mid-senence conversation from the office next door, or you glance at your watch, realize you're hungry already, and begin planning lunch.
+
+What happened here? The computer lost its grip on your attention by trying to hold you back for even a few tenths of a second, resulting in your loss of the complex mindset that most computer use requires. When you finally turn back to the task at hand, wondering whether the computer is finally ready to continue, seconds will have been lost before you resume work. So much for maximizing personal productivity.
+
+What's even worse is that when we start anticipating the less-than-instantanious response times of these systems and end up actually planning to divert our attention the moment one of those commands is issued. The sad and simple truth is that any perceptible delay in system response results in significant productivity loss and user frustration. 
+
+Then there's the dreaded productivity waster, the "Key Repeat Overshoot," the most awful side effect of noninstantaneous systems. It's happened to the best of us. We want to scroll up, or across, or flip down several pages, so we press the proper direction key and off we go. Finally we get where we want to be, quickly removing our finger from the movement direction key - only to have the computer (which fell behind and so saved up many excess repeated key-strokes) continue scrolling merrily along as we watch the information we wanted disappearing into oblivion.
+
+Key Repeat Overshoot is caused by our system's inability to keep up with our need for speed. The result is a productivity disaster.
+
+Finally, have you noticed that the newer software is actually even slower than our old standbys? It would sure be nice if it was faster, but it's not. Just ask any user of Microsoft Windows if that isn't true (after you wake him up), or try moving around a Lotus' 1-2-3 Release 2 spreadsheet, compared to Verson 1A. Or compare any of the (slow) word processors on the Macintosh to any of the instantaneous ones written ages ago for the Apple II! The valid rebuttal to this is that the newer software is doing so much more for us - which is quite true - but it's very clear (from the lackluster of sales of Windows) that system response time is simply too high a price to pay.

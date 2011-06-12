@@ -1,0 +1,216 @@
+@font-face {
+  font-family: ChunkFive;
+  src: url('fonts/ChunkFive.eot');
+  src: local('ChunkFive'),  url('fonts/ChunkFive.woff') format('woff'),  url('fonts/ChunkFive.otf') format('opentype'),  url('fonts/ChunkFive.svg#ChunkFive') format('svg');
+}
+
+.colorlink
+{
+	color: #009999;
+}
+
+#everything {
+	/*margin-left: 15%;
+	margin-right: 15%;*/
+}
+
+* 
+{ 
+	margin: 0; 
+	padding: 0; 
+}
+
+body
+{
+	font-family: 'Ubuntu', serif;
+}
+
+a img
+{
+	border:none;
+}
+
+.fblink
+{
+	margin-left: 5px;
+}
+
+.storetable
+{
+	width: 100%;
+	/*background-color: #cfd9ed;*/
+}
+
+.storetable td
+{
+	margin: 50px;
+	/*background-color: #cfd9ed;*/
+}
+
+td
+{
+	/*background-color: #cfd9ed !important*/;
+}
+
+#search
+{
+	width:75%;
+	margin-left: 5px;
+}
+
+#searchbutton
+{
+	width:15%;
+}
+
+#header 
+{
+	/*width:100%;*/
+	width:1201px;
+	height:60px;
+	background-color: #1141a3;
+	/*border-bottom: #821684 solid 1px;*/
+	padding-right: 10px;
+	margin: 0 auto;
+}
+
+#logo
+{
+	margin-top: 15px;
+	margin-left: 20px;
+	float: left;
+	border: none;
+}
+
+#controlbar
+{
+	/*position:absolute;
+	right:10px;
+	top:12px;*/
+	float:right;
+	margin-top: 24px;
+	padding: 0;
+	color:white;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#controlbar a
+{
+	text-decoration: none;
+	color:white;
+}
+
+#controlbar a:visited
+{
+	text-decoration: none;
+	color:white;
+}
+
+#controlbar a:hover
+{
+	text-decoration: underline;
+	color:white;
+}
+
+#controlbar li 
+{
+	display: inline;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-left: 1px solid #FFFFFF;
+}
+
+#controlbar li:first-child 
+{
+	border-left: none;
+}
+
+#content
+{
+	width:1200px;
+	margin: 0 auto;
+}
+
+#main
+{
+	float:left;
+	/*width:75%;*/
+	width:900px;
+}
+
+#sidebar
+{
+	float:right;
+	width:260px;
+	/*width:25%;*/
+}
+
+.box
+{
+	background-color: #cfd9ed;
+	margin: 20px;
+	/*border: solid #93278f 1px;*/
+	padding: 10px;
+	font-size: 12px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.box h2
+{
+	font-size: 16px;
+	/*font-weight: bold;*/
+	padding-bottom: 3px;
+	/*border-bottom: dotted 1px black;*/
+	margin-bottom: 8px;
+	/*font-family: 'ChunkFive', serif;*/
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.infotable
+{
+	width:100%;
+}
+
+.infotable td, th
+{
+	text-align:left;
+}
+
+
+
+.infotable td
+{
+	padding: 5px;
+}
+
+.linklist
+{
+	list-style-type: none;
+}
+
+
+.linklist li
+{
+	font-size: 15px;
+	padding-left:30px;
+	padding-bottom:2px;
+	padding-top: 2px;
+	width:80%;
+}
+
+.linklist a
+{
+	color:black;
+	text-decoration:none;
+}
+
+
+
+.linklist a:hover
+{
+	color:#93278f;
+}
+
+

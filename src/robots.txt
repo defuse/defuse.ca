@@ -1,0 +1,6 @@
+User-agent: * 
+Disallow: /bin/
+Disallow: /fytons.html
+Disallow: /bitcannon.htm
+Disallow: /bitcannon-cryptography.htm
+Disallow: /r&d/

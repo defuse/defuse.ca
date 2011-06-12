@@ -1,0 +1,174 @@
+<h1>Encrypting One Time Passwords [EOTP]</h1>
+<p>
+With Facebook now supporting one time passwords, the world is finally catching on the the concept of single use passwords. The idea is simple, use a different password every time you login. Once you login with a "one time" password, it can't be used again. This is useful when you want to log in to a public computer that may have spyware installed on it. When you login, any spyware on that machine will only record your single use password, which, since it has been used, can't be used to login again.
+</p>
+
+<p>
+Current one time password schemes are a very good way to authenticate users. The combination of a normal password and a one time password makes that authentication even stronger. But some services want to store encrypted data on the user's behalf. To create an encryption key for this data, the server needs to get a static token each time the user logs in. From this static token, a hash algorithm can be applied to create an encryption key. In most implementations, the encryption key is created from the normal password only, or is stored in plain text on the server.
+</p>
+
+<p>
+Unfortunately, in current one time password systems like <a href="http://www.faqs.org/rfcs/rfc1760.html">S/KEY</a> and <a href="https://www.grc.com/ppp.htm">Perfect Paper Passwords</a>, there is no way for the server to obtain a token that is static across login sessions, so these systems can't be used to create encryption keys. If the server is storing encrypted data on the user's behalf, and the user's normal password has been logged by spyware on a public machine, their data will be decryptable without requiring their next one time password. Right now, one time passwords can only stop attackers from being able to access the ciphertext remotely, in the event of server compromise, OTP systems provide no protection of the data. They can't provide any provable security in the form of encryption.
+</p>
+
+<p>
+It would be nice for the stronger authentication that one time passwords provide to extend to encryption as well. If such a system existed, the key used to encrypt the user's data would be created from both the one time password and the normal password. This would arguably increase the security of the encrypted data considerably. For this reason, we have created the Encrypting One Time Password (EOTP) system, who's goal is to provide the server with strong authentication as well as a static token that can be used to create the same encryption key every session.
+</p>
+
+<h2>Goals</h2>
+<ul>
+	<li>Must be at least as secure as normal passwords.</li>
+	<li>Must provide strong authentication to the client.</li>
+	<li>Client and server must only have to communicate securely once to setup the system.</li>
+	<li>Must provide proof that a password has not been used before.</li>
+	<li>Must allow an attacker to collect and analyze old passwords and still be secure.</li>
+	<li>Must provide the server with an encryption key that is the same across sessions.</li>
+	<li>Must not be vulnerable to a DoS scenario created by an attacker trying to guess passwords.</li>
+	<li>Must allow the attacker to gain physical access to the server at any time and not be able to re-create the encryption key without the client's next one time password.</li>
+	<li>Passwords may be computed in advance and printed or computed as needed with a mobile device.</li>
+</ul>
+<h2>EOTP Description</h2>
+<h3>Functions</h3>
+<ul>
+	<li>H(data) - Secure hash function such as SHA256</li>
+	<li>E(key, data) - A block cipher, encrypts 'data' with the key, 'key'. Such as (AES, Serpent, Twofish, etc..).</li>
+	<li>D(key, data) - The reverse operation of E. Decryption.</li>
+</ul>
+
+
+<h3>People</h3>
+<ul>
+	<li>Bob - The server</li>
+	<li>Alice - The client</li>
+</ul>
+<h3>Initial Key Setup</h3>
+<p>Alice and Bob need to have a secure connection at least once to setup EOTP.</p>
+
+<ol>
+	<li>Using random data from both Alice and Bob, they generate a random key, '<span style="color:blue;">key</span>'.</li>
+	<li>Using random data from both Alice and Bob, they generate a random initialization vector and each save a copy, '<span style="color:blue;">IVa</span>' and '<span style="color:blue;">IVb</span>'.</li>
+	<li>Bob saves H(<span style="color:blue;">key</span>) and <span style="color:blue;">IVb</span>.</li>
+	<li>Alice saves <span style="color:blue;">key</span> and <span style="color:blue;">IVa</span>.</li>
+	<li>Alice sets a counter (<span style="color:blue;">CTRa</span>) to 0</li>
+	<li>Bob sets a counter (<span style="color:blue;">CTRb</span>) to 0</li>
+</ol>
+<p>Both <span style="color:blue;">key</span> and the IVs (<span style="color:blue;">IVa</span>, <span style="color:blue;">IVb</span>) have to be kept a secret. '<span style="color:blue;">key</span>' is the static key Bob will receive from Alice every session. It gets used for authentication and derivation of the application's encryption key. The IVs are going to used as a second key to encrypt '<span style="color:blue;">key</span>' as it is sent from Alice to Bob. These IVs are going to change every time Alice and Bob authenticate, which is how the same key will be sent from Alice to Bob, but will appear different (in transit) each time.</p>
+<h3>Authenticating a Session</h3>
+<p>Once EOTP has been setup, Alice can now authenticate to Bob.</p>
+<p>The key setup is simple. Alice ends up with the key and an IV. Bob ends up with a hash of the key and the same IV. Now, both Alice and Bob share a common secret, the IV.</p>
+
+<p>The goal of the authentication steps are to:</p>
+<ul>
+	<li>Pass the key that only Alice has, to Bob. This is done by encrypting the key with the IV. The result of this encryption is the one time password.</li>
+	<li>Change (increment) both Alice's and Bob's IV to create a different shared secret. That way, the next time they authenticate, the result of the encryption in the above point (the one time password) is different the next time they authenticate.</li>
+</ul>
+
+<p>Alice is sending the same key to Bob every time, the uniqueness of the password comes from encrypting it with a different key every time it is sent.</p>
+
+<p>Cryptographically, this is how it's done:</p>
+<img src="images/eotpgraphic.gif" alt="EOTP Description" />
+
+<p>Implementation:</p>
+<ol>
+	<li>Alice computes <span style="color:blue;">P</span> = E(<span style="color:blue;">IVa</span>,<span style="color:blue;">key</span>) [encrypts <span style="color:blue;">key</span> with <span style="color:blue;">IVa</span>].</li>
+	<li>Alice saves <span style="color:blue;">IVa</span> = H(<span style="color:blue;">IVa</span>), replacing her old <span style="color:blue;">IVa</span>.</li>
+	<li>Alice increments <span style="color:blue;">CTRa</span></li>
+	<li>Alice sends <span style="color:blue;">P</span> and <span style="color:blue;">CTRa</span> to Bob. <span style="color:blue;">P</span> is the One time password.</li>
+	<li>Bob checks <span style="color:blue;">CTRa</span> against his own counter, <span style="color:blue;">CTRb</span>. Bob creates a temporary <span style="color:blue;">CTRb</span> and <span style="color:blue;">IVb</span> and repeates steps 9 and 10 until <span style="color:blue;">CTRa</span> = <span style="color:blue;">CTRb</span>. He should NOT yet replace the old <span style="color:blue;">IVb</span> and <span style="color:blue;">CTRb</span> with the new values.</li>
+	<li>Bob computes <span style="color:blue;">key</span> = D(<span style="color:blue;">IVb</span>,<span style="color:blue;">P</span>) [decrypts <span style="color:blue;">P</span> with <span style="color:blue;">IVb</span>]</li>
+	<li>Bob validates that H(<span style="color:blue;">key</span>) is equal to the hash he saved in the initial key setup. If they are not equal, Alice is an imposter. He must then STOP what he is doing and reject the attempt. If the hash is valid, Bob can now replace his <span style="color:blue;">CTRb</span> and <span style="color:blue;">IVb</span> with the new values (from step 5).</li>
+	<li>Bob destroys all traces of <span style="color:blue;">IVb</span> from non-volatile memory, so the only copy is in RAM.</li>
+	<li>Bob saves <span style="color:blue;">IVb</span> = H(<span style="color:blue;">IVb</span>)</li>
+	<li>Bob increments <span style="color:blue;">CTRb</span></li>
+	<li>Bob creates an encryption key for applications to use: H(<span style="color:blue;">key</span>+<span style="color:blue;">salt</span>) where <span style="color:blue;">salt</span> is some random data that is unique to Alice.</li>
+	<li>Bob removes all traces of <span style="color:blue;">key</span> from memory</li>
+</ol>
+<p>Note: This requires that both Bob and Alice are synchronized in the number of times their IV has been incremented. In the case of a power outage, error, etc.. they may become out of sync. To solve this, they each have a counter. If they become out of sync, Alice sends repeates step 2 and 3 until her counter is ahead of Bob's. Bob will then follow step 5 to finish the syncronization. If the passwords were computed in advance, this would be as easy as skipping to the next password in the sequence.</p>
+
+<h2>Analysis</h2>
+<p>To verify the security of EOTP, we will check if our goals have be satisfied. If all of our goals can be satisifed, we can be sure that EOTP is at least as secure as normal passwords and other OTP systems. We can also be sure that EOTP is infact useful to protect the user's data in the case of the server being compromised.</p>
+<ul>
+<li>
+	<h3>Man In The Middle Attacks</h3>
+	<p>
+	Like normal passwords and other OTP systems, EOTP is vulnerable to MITM attacks. If the connection between Alice and Bob is not secure, the attacker could automate a MITM attack that would let him impersonate Alice for the duration of the session. This is also possible if the malware on the system is smart enough to do this attack. EOTP, and OTP systems are designed to defend against passive attacks. These are things like network sniffing and keylogging. The only way to defend against an active MITM attack is to trust the computer you are using and connect with a secure connection. In the case of MITM, EOTP has an advantage over regular passwords by not allowing the MITM to discover the encryption key being used to encrypt the user's data.
+	</p>
+</li>
+<li>
+	<h3>As Secure as Normal Passwords</h3>
+	<p>
+	This system builds on top of the concept of "normal passswords". The only difference is that this "password" is encrypted differently each time Alice wants to log in. So even if the encryption keys (the IV) are compromised, the security of EOTP is provably at least as secure as normal passwords.
+	</p>
+</li>
+<li>
+	<h3>Strong Authentication</h3>
+	<p>
+	Using EOTP, Bob can be very sure that Alice is not an imposter. He can verify that the key alice has sent him using EOTP is correct by verifying the hash that was created during the key setup.
+	</p>
+</li>
+<li>
+	<h3>Secure Connection Required Only Once</h3>
+	<p>
+	The key setup only has to happen once for EOTP to work for a long time, assuming the keys and passwords are at least 128 or 256 bits.
+	</p>
+</li>
+<li>
+	<h3>Password Replay Prevention</h3>
+	<p>
+	An attacker can not replay an old password because when bob tries to derrive the key, he will attempt to decrypt it with his IV. His IV has already been incremented since the replayed password has been used. When he tries to decrypt it, it won't decrypt into the right key. When Bob hashes it, the hash will not match the hash Bob has saved to verify Alice's identity.
+	</p>
+</li>
+<li>
+	<h3>Attacker Can Analyze Old Passwords</h3>
+	<p>
+	With EOTP, the password the attacker sees is the key encrypted with the IV. Alice and Bob are the only ones who know the current IV. It is a shared secret that changes for every login, so the attacker will never be able to decrypt the one time password into the key. To decrypt a password, the attacker needs the matching IV that it was encrypted with.
+	</p>
+
+	<p>
+	However, if the old IVs are not disposed of properly, the attacker can decrypt old passwords. This makes step 6 (Bob destroys old IV) VERY important. If Bob doesn't destroy his old IV, the attacker can compromise Bob and use the old IV to decrypt an old password. This can be protected against by having Bob never let the IV touch non-volatile memory. He can keep his IV in RAM, but if the power goes out, Alice and Bob will have to redo the initial key setup. If they have to do that, Alice can prove her identity one last time by directly sending the key, which Bob can check with his hash. It's probably not a good idea to have Alice send her key to Bob (she could be being tricked). If there is a chance of Bob losing his IV, they should create a seperate shared key and use that to re-authenticate each other in the event of Bob losing his IV.
+	</p>
+	<p>
+	The key is used to increment the IVs. So if the 'I' function is weak or easily reversible (e.g. XOR), he may be able to figure out the next IV. These possibilities are eliminated when the 'I' function is secure.
+	</p>
+</li>
+<li>
+	<h3>The Key Provided to Bob Remains Constant</h3>
+	<p>
+	The key Bob gets is the same every time, the only difference is that it is encrypted with a different key every time.
+	</p>
+</li>
+<li>
+	<h3>No DoS Attacks</h3>
+	<p>
+	If the attacker tries to guess the next one time password, no DoS situation is created. Bob never increments his IV unless Alice gives him the correct key to begin with. So an attacker can't force Alice to redo the initial key setup.
+	</p>
+</li>
+<li>
+	<h3>Server Compromise</h3>
+	<p>
+	In the case of Bob being compromised, the attacker finds two things: The hash of the encryption key, and Bob's current IV. He cannot obtain the encryption key from the hash, if the hash algorithm is strong. The IV is the decryption key for the next one time password. The current IV is useless to the attacker unless he has the next one time password. He has the key to a ciphertext that doesn't exist yet. As long as Alice doesn't authenticate to Bob while Bob is under the control of an attacker, Alice's key will not be exposed.
+	</p>
+</li>
+<li>
+	<h3>Passwords Computed In Advance or As Needed</h3>
+	<p>
+	After the key setup has been completed, Alice can pre-generate as many one time passwords as she wants. She can also generate them one at a time. All she has to do is repeat steps 1 and 2 and saves the result instead of sending it to Bob.
+	</p>
+</li>
+</ul>
+<h2>Conclusion</h2>
+<p>
+There are many ways EOTP can be used. It can be used in combination with a regular password, to provide multifactor authentication. It can also be used to send the user's normal password to the server if the user only rarely uses untrusted computers. This is much more secure, in my oppinion, than having a text message sent to you with a temporary password. 
+</p>
+<p>
+Also, EOTP could be implemented in a way where a user has one password for every service, and when they want to login, they use an app on their smart phone to strengthen (hash) then encrypt their password with EOTP before they ever type it in. This would solve the problem of users choosing weak passwords. No matter how bad their password is, the attacker wouldn't be able to log in without knowing the secret stored in the user's device. If the server database was ever leaked, they couldn't even brute force the user's password with the IV because all they have is an encryption key to a ciphertext that hasn't been created yet.
+</p>
+<p>
+Encrypting One Time Passwords (EOTP) is at least as secure as regular passwords and other one time password systems. It provides the additional benifit of providing a static key to the server, with no drawbacks. It is also very easy to implement. A OTP system that provides encryption and authentication is more secure than a OTP system that only provides authentication. Therefore, I suggest that the community reviews EOTP to verify it's security, and that EOTP becomes a standard one time password system.
+</p>
+<p>
+The Encrypting One Time Passwords (EOTP) system is not and never will be patented, copyrighted, or protected in any way. It is, and always will be free for anyone to use for whatever purpose.
+</p>
+<p>
+If you would like to submit a peer review paper, please <a href="contact.htm">contact me</a>.
+</p>

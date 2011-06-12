@@ -1,0 +1,52 @@
+<h1>Textractor</h1>
+<p>This is a command line C# .NET tool for extracting words from large files. It works on windows with the .NET framework and on Linux with Mono.</p>
+
+<h2>Usage</h2>
+<p style="font-family: monospace;" >
+Usage: textracter [options] [filename]<br /><br />
+
+STDIN will be used if no filename is specified.<br />
+If no options are specified, only alphanumeric strings longer than 3 characters and shorter than 64 characters are printed.<br /><br />
+
+Options:<br />
+--minlen           Minimum word length.<br />
+--maxlen           Maximum word length.<br />
+--tolower          Make all words lowercase.<br />
+--toupper          Make all words UPPERcase.<br />
+--keeporiginal     Print original case also when --tolower or --toupper is used.<br />
+--includeset &lt;o&gt;   Specify a character set to include in output. <br />
+                     Options are: alpha, alphalow, alphahigh, space, numeric, <br />
+                     symbols, alphanumeric, ascii, unicode. <br />
+                     Can be used multiple times.<br />
+--excludeset &lt;o&gt;  Specify a character set to exclude from output.<br />
+                     See --includeset for options.<br />
+--includechars &lt;o&gt; Includes the following characters in output.<br />
+--excludechars &lt;o&gt; Excludes the following characters from output.<br />
+-v                 Show # of lines processed every million lines on stderr.<br />
+-o &lt;file&gt;          Output file. This is MUCH faster than piping to file.<br /><br /><br />
+
+
+Examples:<br /><br />
+
+Get all alphanumeric strings:<br />
+        textracter file.dat > wordlist.lst<br /><br />
+
+Get all alpha and symbol strings:<br />
+        textracter --includeset alpha --includeset symbols file.dat > words.lst<br /><br />
+
+Make all words lowercase:<br />
+        textracter --tolower file.dat > wordlist.lst<br /><br />
+
+Make all words lowercase and keep original case (output both):<br />
+        textracter --tolower --keeporiginal file.dat > wordlist.lst<br /><br />
+
+Print all characters except for symbols:<br />
+        textracter --includeset unicode --excludeset symbols file.dat > wrds.lst<br /><br />
+
+Print only words made up of 'a', 'b' and 'c':<br />
+        textracter --includechars abc file.dat > wordlist.lst
+</p>
+
+<h2>Download</h2>
+<p><a href="downloads/textracter.exe">.NET EXE (Windows or Linux with Mono)</a><br />
+<a href="source/textracter.zip">C# Source Code (VS2008)</a></p>

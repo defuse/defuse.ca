@@ -1,0 +1,78 @@
+<h1>The PUP Confusion Technique</h1>
+<p>Feb 25, 2011</p>
+
+<p>I would like to demonstrate for you an antivirus detection evasion technique. I'll be using McAfee to demo this, but the problem exists in ALL personal antivirus software. Before we get going, I'd like you to meet two of my friends...</p>
+
+<h3>Cain</h3>
+<p>Cain is a pretty cool guy. Any Windows penetration tester has probably heard of him. He's really good at WEP cracking, password cracking, and network sniffing. A really cool tool for us hackers, but probably not something a sysadmin would want to find on one of their workstations. This kind of program is classified by antivirus programs as a Potentially Unwanted Program (or PUP for short).
+</p>
+
+<p>Here's what McAfee has to say about him:</p>
+<center><img src="images/cainnormal.jpg" alt="McAfee Cain Detection" title="McAfee Cain Detection" /></center>
+<h3>Bifrost</h3>
+<p>Bifrost was designed to be dangerous. His main purpose is to be a full featured, remote access backdoor to any Windows system. He's got so many dangerous features that you really should be scared of him. You definitely don't want this guy running on your PC. Bifrost is very well known, so antivirus software shouldn't have a problem detecting him.
+</p>
+
+<p>Here's what McAfee has to say about him:</p>
+<center><img src="images/bifrostnormal.jpg" alt="McAfee Bifrost Detection" title="McAfee Bifrost Detection" /></center>
+<h2>The Problem</h2>
+<p>Antivirus programs use signature databases and heuristic algorithms to determine if a file is a virus or not. This means they have to scan a file, and if this file matches any of their MANY virus definitions, it will be reported to the user as a variant of that virus.</p>
+
+<p>
+We can use that to our advantage. All personal antivirus programs as of today only assign one "detection" to a file. It would violate our common sense if our antivirus program started telling us a single .exe is is two viruses at the same time, so they simply don't. It's one detection to a file and that's it.
+</p>
+
+<p>
+Cain, being classified as a PUP, may not be detected by some antivirus software with default settings. Simply because antivirus companies want to avoid complaints about false positives. For this example I'm using McAfee, which detects PUPs by default, so I'll have to modify my attack scenario a little bit just to prove my point. Say you want a copy of Cain, but their website was down. You ask a friend that you don't really trust for a copy, and you scan the .exe he sends you just to make sure it's not backdoored.
+</p>
+
+<p>
+This problem, what I call the "PUP Confusion Technique", lets your "friend" make you run a backdoor program on your computer even if it is well known and easily detected by any AV software. The attack is simple. Append Cain to the Bifrost executable, and change the icon to look like Cain. When you append data to a .exe file it gets completely ignored by the operating system when it gets executed. Bifrost will still run like normal. The cool thing is: Even though executing the file runs Bifrost, Mcafee only detects the combination of Bifrost and Cain as "PWCrack-Cain." So, you, expecting to get a copy of Cain, won't suspect a thing when your AV is telling you the file is exactly what you think it is.
+</p>
+
+<h4>McAfee detects Bifrost as Cain:</h4>
+<center><img src="images/combined_bifrostfirst.jpg" alt="McAfee Detects Bifrost as Cain" title="McAfee Detects Bifrost as Cain" /></center>
+<p>
+To see how many AVs fall for this trick, I uploaded Bifrost with 10 copies of Cain appended, to VirusTotal. Most detect it as Bifrost, but a few (Nod32, eSafe and McAfee) detect it as a Cain. Prevx, Panda, nProtect, and Avity don't detect anything at all, even though they detect "normal" Bifrost. With a little more work, it's probably possible to fool even more of them.
+</p>
+<h4>VirusTotal scan results:</h4>
+<center>
+	<img src="images/scanresult.jpg" alt="VirusTotal scan of Bifrost and 10 Cains" title="VirusTotal scan of Bifrost and 10 Cains" />
+
+	<br />
+	<a href="http://www.virustotal.com/file-scan/report.html?id=9621dc5eb10080f97ad8fb8d27391ac3d30b06ea5d01d80d35e2b79b8123bbdf-1298755389" rel="nofollow">VirusTotal Page</a>&nbsp;&nbsp;&nbsp;
+	<a href="http://www.virustotal.com/file-scan/report.html?id=26ef00de683604fb6dcd2da5a40da53442d2374fe8c0926241f2cc16b78f4c26-1298497794" rel="nofollow">Control Test - Cain</a>&nbsp;&nbsp;&nbsp;
+
+	<a href="http://www.virustotal.com/file-scan/report.html?id=c4322aa673886e53526258f10c725543c5a42ac89345a8ad0611f64675ead6ff-1298229574" rel="nofollow" >Control Test - Bifrost</a>
+
+</center>
+<p>
+This attack can be improved too. Like I said, many AV software's default configuration is to ignore PUPs. If you append a bunch of PUP programs to the end of a real virus, it's very likely that the AV will detect the PUP first, and not even report it to the user. This is a very practical attack, and I would argue it's even more effective than hex editing or "crypting" undetection techniques.
+</p>
+<p>
+You can imagine that once a file like this starts infecting lots of computers, AV software will automatically catch on. But once malware gets in, it could stop itself from being detected by disabling the AV software, or by making it's files larger than the "don't scan files larger than" setting in the AV. 
+</p>
+<p>
+This could also be used to sabotage legitimate software. If you appended a legitamete piece of software (or portions of it) to the end of a real virus, and distributed it throughout a botnet, AV software might catch on and start falsely reporting the legit software as a virus. I wouldn't be suprised of an evil software company did that to ruin their competition.
+</p>
+<h2>Test Files</h2>
+<p>
+You can use these files to test your antivirus software. This zip file contains Cain, Bifrost, Cain with Bifrost appended, and Bifrost with Cain appended.
+</p>
+
+<p><b><span style="color:red;">WARNING: </span>THE ZIP FILE CONTAINS VERY DANGEROUS PROGRAMS. DO NOT RUN THESE PROGRAMS, ONLY SCAN THEM.<br /> I AM NOT RESPONSIBLE FOR WHAT HAPPENS TO YOUR COMPUTER IF YOU RUN THEM!</b></p>
+<p>
+Copy and paste this URL into your browser and replace hxxp with http to download the file:<br />
+hxxp://ossbox.com/downloads/pupevasion.zip <br />
+<b>Note:</b> You will have to turn off your AV software to download and extract the file.
+</p>
+
+<p>Note: Yes, I know I'm using the Bifrost builder and not an actual Bifrost server. It's just a demo, and the builder contains the server anyway.</p>
+
+<h2>The Solution</h2>
+<p>This is a fundamental problem with AV software. They only make one detection per file. The only way I can see this being fixed is if AV software starts reporting multiple detections per file, and that's a big change. Virus databases and multi-engine scanning services rely on the one detection per file model. However, I strongly urge all antivirus companies to take this technique seriously, and improve your products accordingly.</p>
+
+<p>In the meantime, users of antivirus software can protect themselves by making sure PUP detection is turned ON and only obtaining software from the developer's website. Remember that antivirus software can't protect you from everything. Your best defense is being smart and only downloading what you trust and need.</p>
+
+
+

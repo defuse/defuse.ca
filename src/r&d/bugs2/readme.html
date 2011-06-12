@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>SMF 1.1 Installation Guide</title>
+		<style type="text/css">
+			body
+			{
+				background-color: #E5E5E8;
+				margin: 0px;
+				padding: 0px;
+			}
+			body, td
+			{
+				color: #000000;
+				font-size: small;
+				font-family: verdana, sans-serif;
+			}
+			div#header
+			{
+				background-image: url(Themes/default/images/catbg.jpg);
+				background-repeat: repeat-x;
+				background-color: #88A6C0;
+				padding: 22px 4% 12px 4%;
+				color: white;
+				font-family: Georgia, serif;
+				font-size: xx-large;
+				border-bottom: 1px solid black;
+				height: 40px;
+			}
+			div#content
+			{
+				padding: 20px 30px;
+			}
+
+			div.panel
+			{
+				border: 1px solid gray;
+				background-color: #F6F6F6;
+				margin: 1ex 0 3ex 0;
+				padding: 1.2ex;
+			}
+			div.panel h2
+			{
+				margin: 0;
+				margin-bottom: 2ex;
+				padding-bottom: 3px;
+				border-bottom: 1px dashed black;
+				font-size: 14pt;
+				font-weight: normal;
+			}
+
+			dl
+			{
+				margin-left: 3ex;
+			}
+			dt
+			{
+				font-style: italic;
+			}
+			dd
+			{
+				margin-bottom: 1ex;
+			}
+
+			div.code
+			{
+				margin: 1ex 3ex 2ex 3ex;
+				padding: 3px;
+				background-color: #FAFAFA;
+				font-family: monospace;
+				overflow: auto;
+			}
+			div.code span.comment
+			{
+				font-style: italic;
+				color: #000066;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<div title="Shinra">SMF 1.1 Installation Guide</div>
+		</div>
+		<div id="content">
+			<div class="panel">
+				<h2 id="contents">Installing your forum</h2>
+
+				Thank you for deciding to use, or at least try, <a href="http://www.simplemachines.org/smf/">SMF</a>.  Before you get started, please remember that there is <a href="http://www.simplemachines.org/community/index.php">a place for help at www.simplemachines.org</a> if you run into any problems at all.<br />
+				<br />
+				If you are looking to upgrade an installation of SMF, or convert from YaBB SE, you may have downloaded the wrong package.  Please check <a href="http://www.simplemachines.org/download.php">the downloads page</a> for more information.<br />
+				<br />
+				You can find the following information in this file:<br />
+
+				<ul type="none" style="list-style-type: none;">
+					<li>&raquo; <a href="#requirements">Minimum installation requirements.</a></li>
+					<li>&raquo; <a href="#uploading">Uploading SMF onto your webserver.</a></li>
+					<li>&raquo; <a href="#finishing">Finishing the installation and cleaning up.</a></li>
+				</ul>
+			</div>
+
+			<div class="panel">
+				<h2 id="requirements">What's required to install SMF?</h2>
+
+				Your server must meet a few requirements to be able to run SMF.  If you unsure as to whether your webserver meets these, please try the installer - it should detect any problems.<br />
+
+				<ul>
+					<li>Any webserver that properly supports PHP, such as <a href="http://httpd.apache.org/" target="_blank">Apache</a> or <a href="http://www.microsoft.com/iis" target="_blank">Internet Information Services (IIS)</a>.</li>
+					<li>
+						<a href="http://www.php.net" target="_blank">PHP</a> 4.1.0 or higher.  The following directives are required to be set correctly in php.ini:
+						<ul>
+							<li>the engine directive must be On.</li>
+							<li>the <a href="http://www.php.net/sybase#ini.magic-quotes-sybase" target="_blank">magic_quotes_sybase</a> directive must be set to Off.</li>
+							<li>the <a href="http://www.php.net/session#ini.session.save-path" target="_blank">session.save_path</a> directive must be set to a valid directory.</li>
+							<li>the <a href="http://www.php.net/manual/en/ini.core.php#ini.file-uploads" target="_blank">file_uploads</a> directive must be On.</li>
+							<li>the <a href="http://www.php.net/manual/en/ini.core.php#ini.upload-tmp-dir" target="_blank">upload_tmp_dir</a> must be set to a valid directory.</li>
+						</ul>
+					</li>
+					<li><a href="http://www.mysql.com/" target="_blank">MySQL</a> 3.23.28 or higher.</li>
+					<li>at least 512 kilobytes of storage space in the database, although more is highly recommended.</li>
+					<li>about two and a half megabytes of storage space on the web server, although more is recommended.</li>
+				</ul>
+
+				Recommendations for best performance:<br />
+
+				<ul>
+					<li><a href="http://www.linux.org/" target="_blank">Linux</a> or another Unix based operating system.</li>
+					<li>the <a href="http://aspell.sf.net/" target="_blank">GNU Aspell</a> and <a href="http://ftp.gnu.org/gnu/aspell/dict/" target="_blank">its dictionaries</a> for spell checking support.</li>
+					<li><a href="http://httpd.apache.org/" target="_blank">Apache</a> with <a href="http://httpd.apache.org/docs-2.0/mod/core.html#acceptpathinfo" target="_blank">AcceptPathInfo</a> set to On (Apache 2 and later only) for queryless URL support.</li>
+					<li>
+						<a href="http://www.php.net" target="_blank">PHP</a> 4.3.0 or higher, with the following set in php.ini:
+						<ul>
+							<li>the <a href="http://www.php.net/manual/en/info.configuration.php#ini.max-input-time" target="_blank">max_input_time</a> directive is set to a value of at least 30.</li>
+							<li>the <a href="http://www.php.net/manual/en/ini.core.php#ini.post-max-size" target="_blank">post_max_size</a> and <a href="http://www.php.net/configuration.directives#ini.upload-max-filesize" target="_blank">upload_max_filesize</a> directives are set to the size of the largest attachments you wish to be able to upload.</li>
+							<li>the <a href="http://www.php.net/session#ini.session.use-trans-sid" target="_blank">session.use_trans_sid</a> directive set to Off.</li>
+							<li>the <a href="http://www.php.net/manual/en/ini.core.php#ini.memory-limit" target="_blank">memory_limit</a> directive is set to at least 8M.</li>
+							<li>the <a href="http://www.php.net/manual/en/info.configuration.php#ini.max-execution-time" target="_blank">max_execution_time</a> directive is set to at least 15.</li>
+							<li>the <a href="http://www.php.net/manual/en/ini.core.php#ini.register-globals" target="_blank">register_globals</a> directive is set to Off.</li>
+						</ul>
+					</li>
+					<li><a href="http://www.mysql.com/" target="_blank">MySQL</a> 4.0.15 or higher with query caching enabled.</li>
+					<li><a href="http://www.boutell.com/gd/" target="_blank">GD Graphics Library</a> 2.0 or higher.</li>
+				</ul>
+
+				If your server does not meet these requirements, SMF may not work properly.
+			</div>
+
+			<div class="panel">
+				<h2 id="uploading">Uploading the files</h2>
+
+				The first thing you need to do is upload all of the files in this package, excluding this file itself, to your server.  You can upload it to any directory accessible by URL, but if you're not sure where to put it, a directory named &quot;forum&quot; is a good choice.  You may wish to make sure that all of the folders were uploaded, such as <tt>Themes/default/languages</tt>, because some FTP clients have been known to drop files.<br />
+				<br />
+				If you want or need to install any languages other than English, download the corresponding versions from the download page, and upload them to the same directory you uploaded SMF to.  This should put additional files in <tt>Themes/default/languages</tt> and, in most cases, <tt>Themes/default/images</tt>.
+				<br />
+				After you have finished uploading the files, point your browser to http://www.yourdomain.tld/forum/install.php - where www.yourdomain.tld/forum is the URL to where you uploaded it.  You should then see an installer interface.<br />
+				<br />
+				The first page you see may request your FTP information.  If you see this screen, it is because the installer found some files or folders with inadequate permissions for SMF to run properly.  If you enter your FTP information here, the installer can automatically fix these permissions for you.  Please note that the path should be the same path you see in your FTP client.  For example, it might be &quot;public_html/forum&quot;.  And remember, the installer will not save your FTP password anywhere.
+			</div>
+
+			<div class="panel">
+				<h2 id="finishing">Finishing everything up</h2>
+
+				From this point, the installer should walk you through all the information you need to enter.  There isn't much more, so don't worry.<br />
+				<br />
+				Please remember to delete the installer after finishing the installation.  If you do not delete it, it is possible that someone could compromise the security of your forum.<br />
+				<br />
+				Good luck!<br />
+				Simple Machines
+			</div>
+		</div>
+	</body>
+</html>

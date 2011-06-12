@@ -1,0 +1,184 @@
+* { padding: 0; margin: 0; }
+body {
+	font-family:"Arial", Helvetica, sans-serif;
+	min-width: 1000px;
+	font-size: 14px;
+}
+#header {
+	height: 76px;
+	background-image: url('images/headerbg.png');
+	background-repeat: repeat-x;
+	background-color: black;
+	color:white;
+}
+
+#logo {
+	/*margin-top:20px;*/
+	margin-left:30px;
+	float:left;
+}
+
+#rightheader {
+	float:right;
+	margin-right:30px;
+	text-align:right;
+}
+
+#rightnav {
+	height:40px;
+	margin-top: 10px;
+}
+
+#header img {
+	border: none;
+}
+
+#rightstats {
+	padding-right:30px;
+}
+#undergrad {
+	width:100%;
+	height:10px;
+	background-image: url('images/undergrad.png');
+	background-color:white;
+}
+#wrapper {
+	width:1000px;
+	margin: 0 auto;
+	margin-top:10px;
+}
+
+#leftcontent a:visited {
+	color:blue;
+}
+
+#leftcontent {
+	width: 768px; /* must account for margin, border, padding so total #wrapper width */
+	margin-right: 10px;
+	
+	float: left;
+}
+
+.box {
+	border: solid black 1px;
+	background-image: url('images/mainboxbg.png');
+	background-color: #d9ecff;
+	background-repeat:repeat-x;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+#rightcontent {
+	width: 178px;
+	/*background-image: url('images/mainboxbg.png');
+	background-repeat:repeat-x;
+	background-color: #d9ecff;
+	border: solid black 1px;
+	padding: 10px;*/
+	float: right;
+}
+
+#wrapper h1 {
+	font-weight: normal;
+	border-bottom: solid black 1px;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+.whitebox {
+	width 100%;
+	background-color:white;
+	border: solid 1px black;
+	margin-top: 5px;
+}
+
+
+/*  added    */
+
+
+.linklist
+{
+	list-style-type: none;
+	margin-top: 10px;
+	padding-top: 0;
+}
+
+
+.linklist li
+{
+	font-size: 15px;
+	padding-left:30px;
+	padding-bottom:2px;
+	padding-top: 2px;
+	width:80%;
+}
+
+.linklist a
+{
+	color:black;
+	text-decoration:none;
+}
+
+
+
+.linklist a:hover
+{
+	color:blue;
+}
+
+.scrollwrapper {
+	overflow:scroll;
+	white-space:nowrap;
+	overflow-y: hidden;
+	-ms-overflow-y: hidden;
+}
+
+.scrollwrapper tr {
+	width: auto;
+}
+.scrolltable td {
+	white-space: normal;
+	padding: 20px;
+	border: solid 1px black;
+	width: 300px;
+	text-align:center;
+}
+
+.scrollwrapper h2 {
+	font-size: 14px;
+}
+
+.scrolldesc {
+	text-align:left;
+	width:200px;		/* sets the width for whole thing as well */
+	margin-top: 10px;
+}
+
+.scrollshare {
+	vertical-align:middle;
+}
+
+.sharetable {
+	width: 200px;		/* sets the width for whole thing as well */
+}
+
+.sharetable td {
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
+.infotable
+{
+	width:100%;
+}
+
+.infotable td, th
+{
+	text-align:left;
+	padding: 5px;
+}
+
+
+

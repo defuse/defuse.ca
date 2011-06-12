@@ -1,0 +1,126 @@
+<h1>The Fundamental Flaw in the Software Security Model</h1>
+<p>June 14, 2010.</p>
+<p>
+All personal security software suffers from a fundamental problem. That is, malware installed on a system has the ability to circumvent most security products, whether it is an antivirus, personal firewall, keylogging prevention software, or a combination of all three. Security cannot come from a single solution, but from user behavior. 
+</p>
+
+<p>
+This article describes an attack on KeyScrambler and Antivir. I would like to stress that this article does not intend to say that there is anything wrong with the products that are mentioned, but with <i>all</i> security software. Both products do their best to protect their users from unknown threats, but as the title suggests, this is a fundamental problem that can be used to exploit any form of personal security software.
+</p>
+
+<h2>Test Case - KeyScrambler</h2>
+<a href="http://www.qfxsoftware.com/" rel="nofollow">KeyScrambler's Homepage</a><br /><br />
+<p>
+To demonstrate my view on all software security products, I will demonstrate how to subvert KeyScrambler. KeyScrambler is a windows application that encrypts your keystrokes so key loggers can't see them. It uses a device driver to insert itself into the kernel (the most powerful code in the operating system) and intercept your keystrokes at the earliest possible point, encrypt them, then decrypt them before they are sent to the application. 
+</p>
+
+<h2>Test System</h2>
+<ul>
+<li>Dell Dimension 9200</li>
+<li>Windows 7 64 bit, UAC Disabled</li>
+<li>Running KeyScrambler Premium v2.6.0</li>
+<li>AV: Microsoft Security Essentials</li>
+</ul>
+<br />
+<h2>Video</h2>
+<iframe title="YouTube video player" class="youtube-player" width="480" height="390" src="http://www.youtube.com/embed/zdengulwX8Q" frameborder="0" ></iframe>
+<br /><br />
+<h2>How it works</h2>
+<p>The first step in the attack is enticing the user to download a Trojan horse. The Trojan poses as an application installer, which when executed appears to be installing software, but really disables KeyScrambler. It also gets the user to reboot their computer, which is necessary to fully disable KeyScrambler.
+</p>
+<h3>How KeyScrambler is disabled</h3>
+<p>
+When the Trojan horse is run, the first thing it does is mark the KeyScrambler.exe file in the "Program Files" folder for deletion on reboot. This file controls the loading and unloading of KeyScrambler, and provides the tray icon that shows KeyScrambler's status. Windows will delete KeyScrambler.exe when the system is restarted, and KeyScrambler is disabled.
+</p>
+<p>
+Now that KeyScrambler is gone, we have to make sure the user doesn't notice. The second thing the Trojan horse does is drop a "dummy" version of KeyScrambler onto the hard drive. It then adds the registry entries that are required to run the fake KeyScrambler at startup. The fake KeyScrambler is a simple C# application; it's just a system tray icon that looks exactly like the real KeyScrambler. It allows the user to enable and disable it, and it will show "encrypted" keystrokes when the user types. The user has no way of knowing that it's fake, other than using a keylogger test such as the popular AKLT (Anti-Keylogger Tester).
+</p>
+<p>
+The fake KeyScrambler will continue to run at startup, and the real KeyScrambler will remain disabled. All forms of malware now have access to the user's unencrypted keystrokes.
+</p>
+<h2>Test Case #2 - Avira Antivir</h2>
+<p>
+A problem exists in all antivirus software; they can't detect new forms of malware. The Trojan horse used in the KeyScrambler attack is not detected by any of the leading antivirus products, and even old malware can be crypted to create a fully undetected piece. That being the biggest flaw antivirus software, it's not the only problem. The fundamental flaw in the software security model applies even to professional antivirus software. To demonstrate, I will explain how Avira's Antivir (the free home edition) can be disabled while the user still believes that their files are being scanned.
+</p>
+
+<p>All it takes is a quick edit of the config file, which on Windows XP can be found at:
+<br />
+C:\Documents and Settings\All Users\Application Data\Avira\AntiVir Desktop\CONFIG\AVWIN<br /><br />
+In the default config, scanning all files is enabled:
+</p>
+<pre>
+ScanAllFiles=1
+</pre>
+<a href="http://pastebin.com/BRgPBu0D">Full Default Config</a>
+<p>
+However, the config file is just sitting there unprotected, so we can modify our Trojan horse to disable antivir. The changes to the file are simple:
+</p>
+<pre>
+ScanAllFiles=0
+ScanDiffExtension=-,-?HT*,-386,-ACM,-ADE,-ADP,-ANI,-APP,-ASD,-ASF,-ASP,-ASX,-AWX,....
+</pre>
+
+<a href="http://pastebin.com/WHHrXAu2">Full Disabled Config</a>
+<p>
+The 'ScanDiffExtension' line contains a list of file extensions to exclude from scanning. Excluding all file extensions in the default file extension list then restarting antivir effectively stops antivir from scanning anything. Even when the user manually scans a file, Antivir will look like it has scanned the file and tell the user that it hasn't found any malware. For the user to realize that Antivir is disabled, they would have to open the user interface, go into the settings, and notice that 'Use file extension list' option was checked, instead of the 'All files' option.
+</p>
+<p>Avira contacted me with the following information:<br /><br />
+
+<i>It seems to be, that you have try your Tests with Avira AntiVir in Version 9.<br /><br />
+
+In this Version was no Configuration File Protection on x64 System included.<br /><br />
+
+So please, do your test again, because in Avira AntiVir Version 10 is the Configuration File are protected and no other Process can be write or modified this File.</i>
+<br /><br />
+It turns out that I actually am using version 10:<br />
+<img src="images/avira.png" alt="Avira version 10"/>
+<br /><br />
+They also said:<br /><br />
+<i>
+Notice:<br />
+If you disable the self protection then is the protection off and you can edit the Configuration File.<br />
+
+The self protection for "Protect processes from unwanted termination" and "Protect files and registry entries from manipulation" is per Default active.<br /><br />
+
+You find this Setting here:<br /><br />
+
+* Open AntiVir<br />
+* Click in Configuration<br />
+* Activate the Expert Mode<br />
+* NAvigate to Standard configuration --> General --> Security<br />
+</i><br />
+I also double checked the configuration as recommended by them and couldn't even find the feature. I later realized that it is because I hadn't installed the self protection option. Either way, the problem still exists. Even if they protected the file, all it would take is a program to load a rootkit to do the job.</p>
+
+<img src="images/avsettings.png" alt="Avira settings"/>
+<br /><br />
+<a href="http://pastebin.com/taTEK8GW">Full Email</a>
+
+<h2>Conclusion</h2>
+<p>
+Combining these two test cases shows how even though the user was trying to protect himself with security software, his security was still compromised by a simple social engineering attack. It would be easy for the developers of KeyScrambler and Antivir to remediate these specific attacks. However, this attack represents a fundamental problem with security software. The problem is not KeyScrambler or Antivir, but with ALL software based security products. If malware exists on a system, it can do anything it wants. As Steve Gibson of GRC.com has said many times, a system can no longer be trusted after it has been infected by malware. 
+</p>
+<p>
+As software developers create new ways of protecting the users, hackers will find new ways to get around the protections, and so begins the same cat and mouse game that antivirus software vendors play with malware developers. The fact is that protecting the user from online danger cannot be accomplished through software, although it can help, the only true way to protect yourself is to develop an attitude about security. Antivirus companies need to stop advertising their products as a first line of defense, and teach their users that there is that there is no one click solution to security. It is a process, and it will require some degree of work to become secure. Security software will only give the user a false sense of security, which will make them likley to download potential malware in the first place.
+</p>
+<p>To provide a strong defense against malware, you should:</p>
+<ul>
+<li>Never download anything unless you trust the source, especially not programs.</li>
+<li>Never click links from strangers.</li>
+<li>Never accept files from strangers.</li>
+<li>Disable scripting in your browser. For example, use the NoScript add-on for Firefox.</li>
+<li>Make sure no vulnerable services are running on your computer. Close or stealth all 65535 ports.</li>
+</ul>
+<p>Only <i>after</i> you are doing that, you can bring in software as a second line of defense:</p>
+
+<ul>
+<li>Install a personal firewall that monitors application activity.</li>
+<li>Install antivirus software.</li>
+<li>Use a product like KeyScrambler</li>
+</ul>
+
+<h2>Note on KeyScrambler</h2>
+<p>In the writing of this article, KeyScrambler was used as a test case to describe the fundamental problem with security software. Even though it can be circumvented, I believe KeyScrambler is actually taking a step in the right direction. Giving us the option of having a second layer of security is a good thing. I would like to say that the developers of KeyScrambler are responsible, and have acknowledged this problem. When I contacted them about the problem, I received a well thought out and knowledgeable reply. They obviously take great pride in their software and care about their user's security over all - something I would like to see more of from the big antivirus companies.
+</p>
+
+<p>Source code and binary for these attacks will NOT be released.</p>
+

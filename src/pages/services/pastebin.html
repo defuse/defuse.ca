@@ -1,0 +1,86 @@
+<center><img style="margin-bottom: 20px;" src="/images/secure_pastebin.png" alt="Secure, Encrypted, Anonymous Pastebin." /></center>
+
+<div style="width:400px; margin: 0 auto; font-size: 16pt">
+<div style="text-align:left;">Need to <u>securely</u> send some text? </div>
+<div style="text-align:right;">Just paste it into the box below!</div>
+</div>
+
+<p>Pastebin websites are very useful for sending large amounts of text but the most popular ones aren't at all secure. By default, all posts on "pastebin.com" are published to the internet. Anyone can see and search for your data (<a href="https://encrypted.google.com/search?q=%22BEGIN%2bRSA%2bPRIVATE%2bKEY%22%2b%2bsite%3Apastebin.com" rel="nofollow">example</a>).</p>
+
+<p>I wanted a pastebin that keeps my data safe, so I made one. The text you paste here will be sent over a secure (HTTPS) connection and stored in encrypted form so that it <b>will never be seen by anyone</b> unless they have the correct URL and password. Even if someone gains full access to the OSSBox server, they won't be able to decrypt the data.
+</p>
+
+<p><a href="#security"><b>Security and Encryption Information</b></a></p>
+
+
+<b>All posts are deleted automatically after 10 days.</b>
+<br /><br />
+
+<!--Client-side encryption options-->
+<div id="encinfo" style="margin-bottom:10px;">
+	Client-Side Password: 
+	<noscript>
+		<b>Needs JavaScript!!!</b>
+	</noscript>
+	<input type="password" id="pass1" value="" /> &nbsp;
+	Verify: <input type="password" id="pass2" value="" /> 
+	<input type="button" value="Encrypt &amp; Post" onClick="encrypt()" /> 
+</div> <!-- /enc -->
+<!--end of client-side encryption options-->
+
+<form id="pasteform" name="pasteform" action="https://bin.ossbox.com/add.php" method="post">
+	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
+	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Client-Side Encryption" />
+	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL
+	<br />
+	<textarea id="paste" style="color:black; background-color:white; border:dashed 1px black; width:100%;" rows="60" cols="40" name="paste" spellcheck="false"></textarea>
+	<br />
+	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Client-Side Encryption" />
+	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL <br /> 
+	<b>Your post will be deleted automatically in 10 days.</b><br />
+</form>
+
+<!-- Scripts for client-side encryption -->
+<script type="text/javascript" src="/js/cryptoHelpers.js" ></script>
+<script type="text/javascript" src="/js/jsHash.js" ></script>
+<script type="text/javascript" src="/js/aes.js" ></script>
+<script type="text/javascript" src="/js/firexware.js" ></script>
+
+<script type="text/javascript">
+<!--
+function encrypt()
+{
+	var pass1 = document.getElementById("pass1").value;
+	var pass2 = document.getElementById("pass2").value;
+	if(pass1 == pass2 && pass1 != "")
+	{
+		var iv = "<?php echo hash("sha256", mcrypt_create_iv(512, MCRYPT_DEV_URANDOM)) ?>";
+		var salt = "<?php echo hash("sha256", mcrypt_create_iv(512, MCRYPT_DEV_URANDOM)) ?>";
+		var plain = document.getElementById("paste").value;
+		var ct = fxw.encrypt(pass1, salt, iv, plain);
+		document.getElementById("paste").value = ct;
+		document.getElementById("jscrypt").value = "yes";
+		document.pasteform.submit();
+	}
+	else if(pass1 != pass2)
+	{
+		alert("Your passwords do not match! Please try again.");
+	}
+	else if(pass1 == "")
+	{
+		alert("Encrypting with no password is pointless!");
+	}
+}
+-->
+</script>
+<!-- End of scripts for client-side encryption -->
+<a name="security"></a>
+<h2>Security &amp; Encryption Details</h2>
+
+<p>This pastebin encrypts your post with a ~128 bit password which is included in the paste URL. The password is hashed using SHA256 into a key for AES-256 in CBC (Cipher Block Chaining) mode. </p><p>The only way anyone will see your paste is if they have the URL. So only share the paste URL with people you trust, and your data will be 100% private. If we get a court order to decrypt a post, we will not be able to comply.</p>
+
+<p>You also have the option of encrypting your text with client-side encryption. This is much more secure because the encryption and decryption happens right in your browser using JavaScript. OSSBox never even gets the chance to see the unencrypted data or the password used to encrypt it. When you use client-side encryption, your password gets hashed with SHA256 into a 256 bit key for the AES block cipher, which is used to encrypt the text in CBC mode. A random 256 bit salt and a random initialization vector are provided by our server's CSPRNG (Cryptographically Secure Pseudorandom Number Generator).</p>
+
+<p>The data is always sent to OSSBox through a secure, AES-256 encrypted, SSL/TLS connection.</p>
+
+<p><a href="/source/cryptbin.zip">Download the PHP Source Code</a></p>

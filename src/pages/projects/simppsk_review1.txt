@@ -1,0 +1,75 @@
+The following text is a reply by Mark Cross to my request for peer review in the 
+grc.com newsgroups.I agree with all of his comments, and the "version code" he 
+mentions has been added to v0.4.
+
+--------------------------------------------------------------------------------
+FireXware wrote:
+
+> > But here is the description of the "protocol":
+> > 
+> > (assuming both clients share a secret "password")
+> > 1. Client generates 256 random bits, and sends it to the server
+> > 2. Server generates random 256 bits, and sends it back to the client
+Ok, no problem.
+
+> > 3. Client concatenates the two 256 bit parts together to a 512 bit string.
+> > 4. Client computes sessionKey = H(password . random512Bits).
+If there are more than one client, all will share the same password?
+How does the server correctly identify a client if all know the secret?
+
+Is H negotiated? What if some type of hash loose validity (broken crypto).
+
+> > 5. Server does that same computation, obtains the same session key.
+Ok.
+ 
+> > Once they both have the session key, they can authenticate by:
+Once a secure session key has been established, the rest IS secure.
+ 
+> > 6. Client generates 256 random bits, sends them to the server.
+> > 7. Server computes H(randomBits . sessionKey) and sends back to the client
+> > 8. Client computes H(randomBits . sessionKey) and verfies
+> > 9. repeat the process to authenticate the client to the server
+ 
+> > Security Arguments:
+> > - Each party gets to choose their own random numbers, they never have to
+> > trust any unencrypted data sent over the wire.
+IIF they pre-share a secret "password". Old chicken-egg problem. Should you 
+use asymmetric Public key certs to start the communication, signed by an 
+installed "root authority". Could a DNS with DNSSEC signed crypto blurb work 
+to the same end?
+
+> > - If an attacker modifies any bit of the random number exchanges, the
+> > sessions keys will end up being different.
+Yes, AFAIK.
+
+> > - Client and Server's random numbers are concatenated, NOT XOR'd, so an
+> > attacker can't make them the same so they XOR to 000000..
+Correct.
+
+> > - An attacker can't MITM the protocol because he does not know the
+> > pre-shared key. He would not be able to give a valid response to the
+> > challenges.
+Yes, a third party won't know the password. What of a "bad client" (of 
+several) trying to impersonate a different client?
+
+> > - Session key is created with random data from both parties, so it is
+> > different every time, and one party doesn't have to trust the other's
+> > CSPRNG.
+Well, you are accepting the other party 256 random bits as correct, you are 
+implicitly trusting his CSPRNG. Not that it matters much in this case, as 
+you are concatenating your own string and making a hash of it, masking any 
+imperfection out with the process. Just commenting.
+
+
+> > Thanks!
+In short, for one client - one server it looks quite correct. For a MCMS 
+(multiple clients - multiple servers) more work is needed.
+
+A version of the code should be included in the negotiation at the beginning 
+to manage old clients that use broken hashes, and after some time rule them 
+out completely.
+
+YW.
+
+-- Mark Cross @ 01/03/2011 10:04 p.m. If Linux doesn't have the solution, 
+you have the wrong problem. 

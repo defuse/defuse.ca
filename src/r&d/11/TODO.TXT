@@ -1,0 +1,151 @@
+
+
+
+
+############################ OLD ##############################################
+
+todo:
+"you are already logged in to stubsare, click to go to your account homepage etc on index.php"
+rounded blue bar
+######brand --> source
+price on left
+
+#########squeeze in the right side
+tabbed table
+
+1. ITUNES-ish layout
+3. charity amount tracking
+
+3. use GET code as the label but post *only the relevant coded URL*
+
+
+3.6 IE8 doesn't support rounded borders
+4. facebook font
+
+
+
+
+NOTE: release a no-border and yes-border version
+ STILL IMPORTANT:
+
+1. fix search button
+1. use own twitter iframes, twitter js code is too damn slow
+
+1. payment history BY MONTh, only show last 10 in recent purchases
+2. sharable javascript code???
+3.5 https://developers.facebook.com/docs/reference/plugins/like/ use Open Graph tags to customize the image, title, etc.
+
+
+
+minor details:
+- better "you cannot afford this item" info BEFORE purchacse + option to add money to account
+ - account settings for auto-share on purchase
+ - "buy and share", "buy" and "just share" buttons on purchase page
+ - search
+ - add padding margins to the layout
+ - make a seller-only account with no homepage
+ - round currency to proper precision
+- proper sanitizing inputs on add product, user, etc.
+- wishlist suggest: wishlist + ability to give products as gifts
+
+----
+1. add images to products
+1.5 add layout to all pages
+2. finish global stub store
+	-add content discovery to the homepage
+3. finish per-user stub store
+
+
+
+<!-- OLD OLD OLD -->
+<html>
+<head>
+	<title>StubShare User Account Page</title>
+</head>
+<body>
+<a href="userhome.php">Account Home</a> | <a href="products.php">Sell with StubShare</a> | <a href="stubstore.php">Stub Store/Archive</a> 
+<h1>Your StubShare Account</h1>
+Balance: <?php echo $balance; ?><br />
+Donations to charity from your purchases: <br />
+Donations to charity from your shared stubs:<br />
+Profit you've made from sharing stubs: <br />
+<h2>Add Credit</h2>
+<form action="userhome.php" method="post">
+<input type="text" name="amt" value="10.00" /><input type="submit" name="addcredit" />
+</form>
+<h2>Your Purchases</h2>
+<table border=1 >
+<tr>
+	<th>Product</th>
+	<th>Owner</th>
+	<th>Dispute</th>
+	<th>Share</th>
+</tr>
+<?php
+$q = mysql_query("SELECT * FROM purchases WHERE user='$userid'");
+while($ary = mysql_fetch_array($q))
+{
+	$productInfo = StubShare::GetProductInfo($ary['product']);
+
+	$productName = htmlspecialchars($productInfo['name'], ENT_QUOTES);
+	$productID = (int)$productInfo['id'];	
+	$ownerID = $productInfo['owner'];
+
+	$ownerInfo = StubShare::GetUserInfo(StubShare::GetUsernameFromID($ownerID));
+	$ownerName = htmlspecialchars($ownerInfo['username'], ENT_QUOTES);
+
+	$shareLink = WEBROOT . "share.php?id=$productID";
+
+	$linkbefore = "";
+	$linkafter = "";
+	if($url = StubShare::UserOwns($userid, $productID))
+	{
+		$linkbefore = "<a href=\"$url\">";
+		$linkafter = "</a>";
+	}
+	echo "<tr><td>$linkbefore$productName$linkafter</td><td>$ownerName</td><td>[dispute link]</td><td><a href=\"$shareLink\">Share</a></td></tr>";
+}
+?>
+</table>
+
+One column of this table will be a button that will add the prodcut to their "Shared Stubs" (see below)
+
+<h2>Your Stubs</h2>
+<table border=1 >
+<tr>
+	<th>Product</th>
+	<th>Owner</th>
+	<th>Get Share Codes</th>
+</tr>
+<?php
+$q = mysql_query("SELECT * FROM stubs WHERE owner='$userid'");
+while($ary = mysql_fetch_array($q))
+{
+	$stubID = (int)$ary['id'];
+	$productID = (int)$ary['product'];		
+	$productInfo = StubShare::GetProductInfo($productID);
+	
+	$ownerInfo = StubShare::GetUserInfo(StubShare::GetUsernameFromID($productInfo['owner']));
+	
+	$product = htmlspecialchars($productInfo['name'], ENT_QUOTES);
+	$owner = htmlspecialchars($ownerInfo['username'], ENT_QUOTES); 
+
+	$linkbefore = "";
+	$linkafter = "";
+	if($url = StubShare::UserOwns($userid, $productID))
+	{
+		$linkbefore = "<a href=\"$url\">";
+		$linkafter = "</a>";
+	}
+	else
+	{
+		$linkbefore = "<a href=\"". WEBROOT . "stubshare/stub.php?id=$stubID\">";
+		$linkafter = "</a>";
+	}
+	echo "<tr><td>$linkbefore$product$linkafter</td><td>$owner</td><td><a href=\"" . WEBROOT . "stubcode.php?id=$stubID\">Get Codes</a></tr>";
+}
+
+?>
+</table>
+</body>
+</html>

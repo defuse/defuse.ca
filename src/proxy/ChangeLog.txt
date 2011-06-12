@@ -1,0 +1,55 @@
+* Release 0.4 September 7th, 2005
+_____________________________________________________________________
+
+- Support for GET forms. Things like Google work now.
+- Complete overhaul of the URL modifying function. Now supports 
+  nearly all HTML tags
+- Support for CSS proxifying
+- New browsing options
+- New layout
+- Other fixes
+
+
+* Release 0.3 July 22nd, 2004
+_____________________________________________________________________
+
+- Script can now only work for PHP 4.2.0 and newer.
+- Support for HTTP file uploads.
+- Support for Basic HTTP authorization. Only one relam per domain is
+  currently supported.
+- $this->url_segments['prefix'] should be have been 
+  $this->url_segments['base'] in the follow_location method.
+- err_no and err_msg variables are now passed by value in fsockopen 
+  like they should've been.
+- mailto: links are now not proxified.
+- New helper method: stripslashes()
+- All files except HTML are now passed immediately to the user without
+  first being stored in the script.
+- Fixed problem with opening files if the path contained spaces.
+- Fixed cookies being passed with the response headers in addition to
+  the PHProxy cookies
+- Fixed problem if the URL started with a question mark.
+- New configurable variable: banned_hosts
+- A dot at the beginning of domain names in banned_hosts and
+  allowed_hosts matches all subdomains.
+
+
+* Release 0.2 June 22nd, 2004:
+_____________________________________________________________________
+
+- Fixed bug in set_post_body: $name should have been $parent_key
+- New logic for index.php
+- Updated some HTML and CSS
+- Changed xml to xhtml in public method: return_response() when checking 
+  if we should update the HTML
+- Added 7 gTLDs (.aero, .biz, .coop, .info, .museum, .name, .pro) for the regexp when
+  validating a cookie against a domain
+- Updated index.php, url_form.inc to be compatible with short_open_tag = Off
+- Anchors now work
+- Made the mini URL-form more user friendly
+
+
+* Release 0.1-alpha June 16th, 2004:
+_____________________________________________________________________
+
+Initial release.

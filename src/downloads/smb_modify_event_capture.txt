@@ -1,0 +1,222 @@
+No.     Time        Source                Destination           Protocol Info
+   7605 117.492777  192.168.1.126         192.168.1.127         SMB      NT Trans Response, FID: 0x400d, NT NOTIFY
+
+Frame 7605: 286 bytes on wire (2288 bits), 286 bytes captured (2288 bits)
+    Arrival Time: Mar  9, 2011 13:30:00.182098000 Mountain Standard Time
+    Epoch Time: 1299702600.182098000 seconds
+    [Time delta from previous captured frame: 0.000297000 seconds]
+    [Time delta from previous displayed frame: 0.000297000 seconds]
+    [Time since reference or first frame: 117.492777000 seconds]
+    Frame Number: 7605
+    Frame Length: 286 bytes (2288 bits)
+    Capture Length: 286 bytes (2288 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:tcp:nbss:smb]
+    [Coloring Rule Name: SMB]
+    [Coloring Rule String: smb || nbss || nbns || nbipx || ipxsap || netbios]
+Ethernet II, Src: CadmusCo_25:2e:7e (08:00:27:25:2e:7e), Dst: CadmusCo_27:3c:3c (08:00:27:27:3c:3c)
+    Destination: CadmusCo_27:3c:3c (08:00:27:27:3c:3c)
+        Address: CadmusCo_27:3c:3c (08:00:27:27:3c:3c)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+    Source: CadmusCo_25:2e:7e (08:00:27:25:2e:7e)
+        Address: CadmusCo_25:2e:7e (08:00:27:25:2e:7e)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+    Type: IP (0x0800)
+Internet Protocol, Src: 192.168.1.126 (192.168.1.126), Dst: 192.168.1.127 (192.168.1.127)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00)
+        0000 00.. = Differentiated Services Codepoint: Default (0x00)
+        .... ..0. = ECN-Capable Transport (ECT): 0
+        .... ...0 = ECN-CE: 0
+    Total Length: 272
+    Identification: 0x0629 (1577)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x6f71 [correct]
+        [Good: True]
+        [Bad: False]
+    Source: 192.168.1.126 (192.168.1.126)
+    Destination: 192.168.1.127 (192.168.1.127)
+Transmission Control Protocol, Src Port: microsoft-ds (445), Dst Port: kpop (1109), Seq: 19747, Ack: 8890, Len: 232
+    Source port: microsoft-ds (445)
+    Destination port: kpop (1109)
+    [Stream index: 74]
+    Sequence number: 19747    (relative sequence number)
+    [Next sequence number: 19979    (relative sequence number)]
+    Acknowledgement number: 8890    (relative ack number)
+    Header length: 20 bytes
+    Flags: 0x18 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgement: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+    Window size: 63243
+    Checksum: 0x3288 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 7603]
+        [The RTT to ACK the segment was: 0.000815000 seconds]
+        [Number of bytes in flight: 232]
+NetBIOS Session Service
+    Message Type: Session message
+    Length: 228
+SMB (Server Message Block Protocol)
+    SMB Header
+        Server Component: SMB
+        [Response to: 7603]
+        [Time from request: 0.000815000 seconds]
+        SMB Command: NT Trans (0xa0)
+        NT Status: STATUS_SUCCESS (0x00000000)
+        Flags: 0x98
+            1... .... = Request/Response: Message is a response to the client/redirector
+            .0.. .... = Notify: Notify client only on open
+            ..0. .... = Oplocks: OpLock not requested/granted
+            ...1 .... = Canonicalized Pathnames: Pathnames are canonicalized
+            .... 1... = Case Sensitivity: Path names are caseless
+            .... ..0. = Receive Buffer Posted: Receive buffer has not been posted
+            .... ...0 = Lock and Read: Lock&Read, Write&Unlock are not supported
+        Flags2: 0xc807
+            1... .... .... .... = Unicode Strings: Strings are Unicode
+            .1.. .... .... .... = Error Code Type: Error codes are NT error codes
+            ..0. .... .... .... = Execute-only Reads: Don't permit reads if execute-only
+            ...0 .... .... .... = Dfs: Don't resolve pathnames with Dfs
+            .... 1... .... .... = Extended Security Negotiation: Extended security negotiation is supported
+            .... .... .0.. .... = Long Names Used: Path names in request are not long file names
+            .... .... .... .1.. = Security Signatures: Security signatures are supported
+            .... .... .... ..1. = Extended Attributes: Extended attributes are supported
+            .... .... .... ...1 = Long Names Allowed: Long file names are allowed in the response
+        Process ID High: 0
+        Signature: 0000000000000000
+        Reserved: 0000
+        Tree ID: 2049
+        Process ID: 3620
+        User ID: 2049
+        Multiplex ID: 34240
+    NT Trans Response (0xa0)
+        [FID: 0x400d (\)]
+            [Opened in: 1528]
+            [Closed in: 11868]
+            [File Name: \]
+            Create Flags: 0x00000016
+                .... .... .... .... .... .... ...1 .... = Extended Response: Extended responses required
+                .... .... .... .... .... .... .... 0... = Create Directory: Target of open can be a file
+                .... .... .... .... .... .... .... .1.. = Batch Oplock: Requesting BATCH OPLOCK
+                .... .... .... .... .... .... .... ..1. = Exclusive Oplock: Requesting OPLOCK
+            Access Mask: 0x00000081
+                0... .... .... .... .... .... .... .... = Generic Read: Generic read is NOT set
+                .0.. .... .... .... .... .... .... .... = Generic Write: Generic write is NOT set
+                ..0. .... .... .... .... .... .... .... = Generic Execute: Generic execute is NOT set
+                ...0 .... .... .... .... .... .... .... = Generic All: Generic all is NOT set
+                .... ..0. .... .... .... .... .... .... = Maximum Allowed: Maximum allowed is NOT set
+                .... ...0 .... .... .... .... .... .... = System Security: System security is NOT set
+                .... .... ...0 .... .... .... .... .... = Synchronize: Can NOT wait on handle to synchronize on completion of I/O
+                .... .... .... 0... .... .... .... .... = Write Owner: Can NOT write owner (take ownership)
+                .... .... .... .0.. .... .... .... .... = Write DAC: Owner may NOT write to the DAC
+                .... .... .... ..0. .... .... .... .... = Read Control: Read access is NOT granted to owner, group and ACL of the SID
+                .... .... .... ...0 .... .... .... .... = Delete: NO delete access
+                .... .... .... .... .... ...0 .... .... = Write Attributes: NO write attributes access
+                .... .... .... .... .... .... 1... .... = Read Attributes: READ ATTRIBUTES access
+                .... .... .... .... .... .... .0.. .... = Delete Child: NO delete child access
+                .... .... .... .... .... .... ..0. .... = Execute: NO execute access
+                .... .... .... .... .... .... ...0 .... = Write EA: NO write extended attributes access
+                .... .... .... .... .... .... .... 0... = Read EA: NO read extended attributes access
+                .... .... .... .... .... .... .... .0.. = Append: NO append access
+                .... .... .... .... .... .... .... ..0. = Write: NO write access
+                .... .... .... .... .... .... .... ...1 = Read: READ access
+            File Attributes: 0x00000000
+                .... .... .... .... .0.. .... .... .... = Encrypted: This is NOT an encrypted file
+                .... .... .... .... ..0. .... .... .... = Content Indexed: This file MAY be indexed by the content indexing service
+                .... .... .... .... ...0 .... .... .... = Offline: This file is NOT offline
+                .... .... .... .... .... 0... .... .... = Compressed: This is NOT a compressed file
+                .... .... .... .... .... .0.. .... .... = Reparse Point: This file does NOT have an associated reparse point
+                .... .... .... .... .... ..0. .... .... = Sparse: This is NOT a sparse file
+                .... .... .... .... .... ...0 .... .... = Temporary: This is NOT a temporary file
+                .... .... .... .... .... .... 0... .... = Normal: This file has some attribute set
+                .... .... .... .... .... .... .0.. .... = Device: This is NOT a device
+                .... .... .... .... .... .... ..0. .... = Archive: This file has NOT been modified since last archive
+                .... .... .... .... .... .... ...0 .... = Directory: This is NOT a directory
+                .... .... .... .... .... .... .... 0... = Volume ID: This is NOT a volume ID
+                .... .... .... .... .... .... .... .0.. = System: This is NOT a system file
+                .... .... .... .... .... .... .... ..0. = Hidden: This is NOT a hidden file
+                .... .... .... .... .... .... .... ...0 = Read Only: This file is NOT read only
+            Share Access: 0x00000007 SHARE_DELETE SHARE_WRITE SHARE_READ
+                .... .... .... .... .... .... .... .1.. = Delete: Object can be shared for DELETE
+                .... .... .... .... .... .... .... ..1. = Write: Object can be shared for WRITE
+                .... .... .... .... .... .... .... ...1 = Read: Object can be shared for READ
+            Create Options: 0x00000000
+                .... .... .... .... .... .... .... ...0 = Directory: File being created/opened must not be a directory
+                .... .... .... .... .... .... .... ..0. = Write Through: Writes need not flush buffered data before completing
+                .... .... .... .... .... .... .... .0.. = Sequential Only: The file might not only be accessed sequentially
+                .... .... .... .... .... .... .... 0... = Intermediate Buffering: Intermediate buffering is allowed
+                .... .... .... .... .... .... ...0 .... = Sync I/O Alert: Operations NOT necessarily synchronous
+                .... .... .... .... .... .... ..0. .... = Sync I/O Nonalert: Operations NOT necessarily synchronous
+                .... .... .... .... .... .... .0.. .... = Non-Directory: File being created/opened must be a directory
+                .... .... .... .... .... .... 0... .... = Create Tree Connection: Create Tree Connections is NOT set
+                .... .... .... .... .... ...0 .... .... = Complete If Oplocked: Complete if oplocked is NOT set
+                .... .... .... .... .... ..0. .... .... = No EA Knowledge: The client understands extended attributes
+                .... .... .... .... .... .0.. .... .... = 8.3 Only: The client understands long file names
+                .... .... .... .... .... 0... .... .... = Random Access: The file will not be accessed randomly
+                .... .... .... .... ...0 .... .... .... = Delete On Close: The file should not be deleted when it is closed
+                .... .... .... .... ..0. .... .... .... = Open By FileID: OpenByFileID is NOT set
+                .... .... .... .... .0.. .... .... .... = Backup Intent: This is a normal create
+                .... .... .... .... 0... .... .... .... = No Compression: Compression is allowed for Open/Create
+                .... .... ...0 .... .... .... .... .... = Reserve Opfilter: Reserve Opfilter is NOT set
+                .... .... ..0. .... .... .... .... .... = Open Reparse Point: Normal open
+                .... .... .0.. .... .... .... .... .... = Open No Recall: Open no recall is NOT set
+                .... .... 0... .... .... .... .... .... = Open For Free Space query: This is NOT an open for free space query
+            [Disposition: Open (if file exists open it, else fail) (1)]
+        Function: NT NOTIFY (4)
+        Word Count (WCT): 18
+        Reserved: 000000
+        Total Parameter Count: 154
+        Total Data Count: 0
+        Parameter Count: 154
+        Parameter Offset: 72
+        Parameter Displacement: 0
+        Data Count: 0
+        Data Offset: 228
+        Data Displacement: 0
+        Setup Count: 0
+        Byte Count (BCC): 157
+        Padding: 00
+        NT NOTIFY Parameters
+            Next Entry Offset: 0
+            Action: MODIFIED (object was modified) (3)
+            File Name Len: 142
+            File Name: foobar\RRRRRRRRRRRRRRAAAAAAAAAAAAAAAAWWWWWWWWWWWWWWWWWWRRRRRRRRRRRR.txt
+        Padding: 0000
+
+0000  08 00 27 27 3c 3c 08 00 27 25 2e 7e 08 00 45 00   ..''<<..'%.~..E.
+0010  01 10 06 29 40 00 80 06 6f 71 c0 a8 01 7e c0 a8   ...)@...oq...~..
+0020  01 7f 01 bd 04 55 0f f8 e6 cf 8e 6d b0 85 50 18   .....U.....m..P.
+0030  f7 0b 32 88 00 00 00 00 00 e4 ff 53 4d 42 a0 00   ..2........SMB..
+0040  00 00 00 98 07 c8 00 00 00 00 00 00 00 00 00 00   ................
+0050  00 00 01 08 24 0e 01 08 c0 85 12 00 00 00 9a 00   ....$...........
+0060  00 00 00 00 00 00 9a 00 00 00 48 00 00 00 00 00   ..........H.....
+0070  00 00 00 00 00 00 e4 00 00 00 00 00 00 00 00 9d   ................
+0080  00 00 00 00 00 00 03 00 00 00 8e 00 00 00 66 00   ..............f.
+0090  6f 00 6f 00 62 00 61 00 72 00 5c 00 52 00 52 00   o.o.b.a.r.\.R.R.
+00a0  52 00 52 00 52 00 52 00 52 00 52 00 52 00 52 00   R.R.R.R.R.R.R.R.
+00b0  52 00 52 00 52 00 52 00 41 00 41 00 41 00 41 00   R.R.R.R.A.A.A.A.
+00c0  41 00 41 00 41 00 41 00 41 00 41 00 41 00 41 00   A.A.A.A.A.A.A.A.
+00d0  41 00 41 00 41 00 41 00 57 00 57 00 57 00 57 00   A.A.A.A.W.W.W.W.
+00e0  57 00 57 00 57 00 57 00 57 00 57 00 57 00 57 00   W.W.W.W.W.W.W.W.
+00f0  57 00 57 00 57 00 57 00 57 00 57 00 52 00 52 00   W.W.W.W.W.W.R.R.
+0100  52 00 52 00 52 00 52 00 52 00 52 00 52 00 52 00   R.R.R.R.R.R.R.R.
+0110  52 00 52 00 2e 00 74 00 78 00 74 00 00 00         R.R...t.x.t...

@@ -1,0 +1,68 @@
+<center><img src="images/bitcannon2.png" alt="BitCannon - The fast, encrypted, secure internet file transfer program for Windows, Macintosh, and Linux" /></center>
+<center><strong>Secure, Fast, and Reliable: Internet File Transfer At Its Best.</strong></center>
+<br /><br />
+<div style="float:right; width:300px; border-left: solid black 1px; border-bottom: solid black 1px; padding-left: 20px; padding-bottom: 10px; margin-left: 10px;">
+<h2>Download v0.1</h2>
+<span style="color:red;"><b>This is an EXPERIMENTAL release of BitCannon; don't expect it to work.</b></span>
+<a href="/downloads/expr.zip">Download</a>
+<!--<h3>Windows</h3>
+<ul>
+	<li><a href="#">Windows Installer (1MB)</a></li>
+	<li><a href="#">Single EXE (1MB)</a></li>
+	<li><a href="#">Windows Installation Instructions</a></li>
+</ul>
+<h3>Macintosh</h3>
+<ul>
+	<li><a href="#">Macintosh Installation Instructions</a></li>
+	<li><a href="#">Mono Executable File</a></li>
+</ul>
+<h3>Linux</h3>
+<ul>
+	<li><a href="#">Linux Installation Instructions</a></li>
+	<li><a href="#">Mono Executable File</a></li>
+</ul>-->
+</div>
+<h1>Experimental Release</h1>
+<h2>What is BitCannon?</h2>
+BitCannon is an easy to use secure file transfer program. It lets you send and receive files over the internet through a direct and <s>encrypted</s> connection. By using BitCannon, you'll be able to send files to your friends as fast as your internet connection will allow. All of your data is <s>securely encrypted and authenticated</s>, so you'll <s>never</s> have to worry about anyone else being able to see the files you send!
+<h3>Features</h3>
+<ul>
+	<li>Transfer any kind of file, of any size, REALLY fast!</li>
+	<li>MUCH faster than IM (Instant Messaging) programs!</li>
+	<li>No need to setup a complicated FTP servers, just a simple port forward.</li>
+	<li><s>Strong encryption keeps your files 100% secure. (AES-256, RSA-4096, HMAC-SHA256)</s> (not fully implemented)</li>
+	<li><s>Automatic on-the-fly GZIP compression.</s> (later)</li>
+</ul>
+<img src="/images/maingui.jpg" /><br />
+<img src="/images/gotfile.jpg" /><br />
+<img src="/images/sendfile.jpg" /><br />
+<br /><br />
+Getting started with BitCannon is easy. All you have to do is download BitCannon and open TCP Port 59939 to your computer. Don't worry! It's not as hard as it sounds. This page, and the installation guides, will guide you through every step of the very simple installation process.
+<br /><br />
+<h2>How BitCannon Works</h2>
+Coming Soon! half finished crypto page <a href="/bitcannon-cryptography.htm">here</a>
+<!--<center><img src="images/bitcannonscreenshot.jpg" alt="Screenshot of BitCannon Secure Encrypted File Transfer" /></center>-->
+<h2>How To Install BitCannon</h2>
+Make sure you have .NET framework 3.5 (or Mono on Linux/Mac), download the EXE, and forward port 59939 to your PC. <br />
+The first time you run it, it will take a few minutes to generate the public key pair.<br />
+<br />-- more user friendlyness coming soon
+<h2>Known Issues</h2>
+<ul>
+	<li>Needs address book</li>
+	<li>Needs more user-friendly IDs</li>
+	<li>OpenFileDialog Locks up the entire PC in mono</li>
+	<li>Need to handle config file errors</li>
+	<li>Need better "Status" texts</li>
+	<li>Needs tray icon</li>
+	<li>Needs a secure connection to server</li>
+	<li>Server needs SQL database</li>
+	<li>Needs to support LAN connections</li>
+	<li>Needs more efficient file transfer</li>
+	<li>UPNP?</lI>
+</ul>
+Got another one? <a href="/contact.htm">email me please</a>
+<h2>Security &amp; Encryption</h2>
+<b>THE CRYPTO IS NOT FULLY FINISHED YET SO DON'T ASSUME TRANSFERS ARE SECURE (YET)</b>
+<s>Encryption is the key feature of BitCannon, so designed BitCannon with an extremely secure PKI system that allows BitCannon clients to transfer files between each other in a way that is fully encrypted and authenticated.
+<br /><br />
+Each BitCannon client generates a 4096 bit RSA key pair the first time it starts. The central BitCannon server acts as a Certificate Authority (CA). BitCannon clients get the CA to sign their ID with their public key, so they can proove who they are to other BitCannon clients. When you transfer files with BitCannon, a secret key is exchanged between the sender and receiver using their RSA key pairs. Each client verifies the authenticity of the other's public key using the signatures provided by the CA. Once a secret key has been established, all data will be encrypted with AES-256 and authenticated with HMAC-SHA256. If you want a VERY detailed explanation of how the crypto works, see the BitCannon Cryptography page (coming soon).</s>

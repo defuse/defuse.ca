@@ -1,0 +1,262 @@
+<h1>"Privacy Aware" Unique Hit Counter for PHP</h1>
+<p>This PHP Class provides a hit counter that is able to track unique hits without recording the visitor's IP address in the database. It does so by recording the hash of the IP address and page name.</p>
+
+<p>By hashing the IP address with page name as salt, you prevent yourself from being able to track a user as they navigate your site. You also prevent yourself from being able to recover anyone's IP address without brute forcing the 2^32 possible IP addresses. In the case of IPv6, it becomes 2^128.</p>
+
+<p>It is designed to be secure against SQL injection attacks. It is VERY easy to use; documentation is in the source file. It is licensed under the GNU GPL v3 so you cannot use this code in proprietary software.</p>
+<a href="/source/phpcount.php.txt">Download PHP Hit Counter Source Code</a>
+
+<div style="font-family:monospace;"><ol><li><div class="div0">&nbsp;&lt;?php
+</div></li><li><div class="div1">&nbsp;/*
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;phpcount.php&nbsp;Ver.1.0-&nbsp;Provides&nbsp;a&nbsp;MySQL-based&nbsp;&quot;Anonymous&quot;&nbsp;hit&nbsp;counter.
+
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;Copyright&nbsp;(C)&nbsp;2011&nbsp;&nbsp;FireXware&nbsp;(firexware@gmail.com)
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;This&nbsp;program&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify
+
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or
+
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;(at&nbsp;your&nbsp;option)&nbsp;any&nbsp;later&nbsp;version.
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;This&nbsp;program&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,
+
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the
+
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License
+
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;along&nbsp;with&nbsp;this&nbsp;program.&nbsp;&nbsp;If&nbsp;not,&nbsp;see&nbsp;&lt;http://www.gnu.org/licenses/&gt;.
+</div></li><li><div class="div1">&nbsp;*/
+</div></li><li><div class="div0">&nbsp;//==============================================================================
+</div></li><li><div class="div1">&nbsp;/*
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;This&nbsp;PHP&nbsp;Class&nbsp;provides&nbsp;a&nbsp;hit&nbsp;counter&nbsp;that&nbsp;is&nbsp;able&nbsp;to&nbsp;track&nbsp;unique&nbsp;hits
+
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;without&nbsp;recording&nbsp;the&nbsp;visitor&#039;s&nbsp;IP&nbsp;address&nbsp;in&nbsp;the&nbsp;database.&nbsp;It&nbsp;does&nbsp;so&nbsp;by&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;recording&nbsp;the&nbsp;hash&nbsp;of&nbsp;the&nbsp;IP&nbsp;address&nbsp;and&nbsp;page&nbsp;name.
+
+</div></li><li><div class="div1">&nbsp;&nbsp;*
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;By&nbsp;hashing&nbsp;the&nbsp;IP&nbsp;address&nbsp;with&nbsp;page&nbsp;name&nbsp;as&nbsp;salt,&nbsp;you&nbsp;prevent&nbsp;yourself&nbsp;from
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;being&nbsp;able&nbsp;to&nbsp;track&nbsp;a&nbsp;user&nbsp;as&nbsp;they&nbsp;navigate&nbsp;your&nbsp;site.&nbsp;You&nbsp;also&nbsp;prevent&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;yourself&nbsp;from&nbsp;being&nbsp;able&nbsp;to&nbsp;recover&nbsp;anyone&#039;s&nbsp;IP&nbsp;address&nbsp;without&nbsp;brute&nbsp;forcing
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;the&nbsp;2^32&nbsp;possible&nbsp;IP&nbsp;addresses.&nbsp;In&nbsp;the&nbsp;case&nbsp;of&nbsp;IPv6,&nbsp;it&nbsp;becomes&nbsp;2^128.
+
+</div></li><li><div class="div0">&nbsp;&nbsp;*
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;Contact:&nbsp;firexware@gmail.com
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;WWW:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://ossbox.com/
+</div></li><li><div class="div1">&nbsp;&nbsp;*
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;USAGE:
+</div></li><li><div class="div1">&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;your&nbsp;script,&nbsp;use&nbsp;reqire_once()&nbsp;to&nbsp;import&nbsp;this&nbsp;script,&nbsp;then&nbsp;call&nbsp;the
+
+</div></li><li><div class="div0">&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;functions&nbsp;like&nbsp;PHPCount::AddHit(...);&nbsp;See&nbsp;each&nbsp;function&nbsp;for&nbsp;help.
+</div></li><li><div class="div1">&nbsp;&nbsp;*/
+</div></li><li><div class="div0">&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;//This&nbsp;defines&nbsp;how&nbsp;many&nbsp;seconds&nbsp;a&nbsp;hit&nbsp;should&nbsp;be&nbsp;rememberd&nbsp;for.&nbsp;This&nbsp;prevents&nbsp;the
+
+</div></li><li><div class="div0">&nbsp;//database&nbsp;from&nbsp;perpetually&nbsp;increasing&nbsp;in&nbsp;size.&nbsp;One&nbsp;month&nbsp;(the&nbsp;default)&nbsp;should&nbsp;
+</div></li><li><div class="div1">&nbsp;//be&nbsp;adequate.&nbsp;If&nbsp;someone&nbsp;visits&nbsp;a&nbsp;page&nbsp;and&nbsp;comes&nbsp;back&nbsp;in&nbsp;a&nbsp;month,&nbsp;I&nbsp;think&nbsp;that
+
+</div></li><li><div class="div0">&nbsp;//should&nbsp;count&nbsp;as&nbsp;another&nbsp;unique&nbsp;hit.
+</div></li><li><div class="div1">&nbsp;define(&quot;HIT_OLD_AFTER_SECONDS&quot;,&nbsp;4&nbsp;*&nbsp;7&nbsp;*&nbsp;24&nbsp;*&nbsp;3600);
+</div></li><li><div class="div0">&nbsp;
+
+</div></li><li><div class="div1">&nbsp;//&nbsp;MySQL&nbsp;Login&nbsp;and&nbsp;Database&nbsp;Information
+</div></li><li><div class="div0">&nbsp;$dbserver&nbsp;=&nbsp;&quot;localhost&quot;;
+</div></li><li><div class="div1">&nbsp;$username&nbsp;=&nbsp;&quot;phpcount&quot;;
+</div></li><li><div class="div0">&nbsp;$password&nbsp;=&nbsp;&quot;YRgPlRJgTY9C&quot;;
+
+</div></li><li><div class="div1">&nbsp;$database&nbsp;=&nbsp;&quot;phpcount&quot;;
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;$phpcount_con&nbsp;=&nbsp;mysql_connect($dbserver,&nbsp;$username,&nbsp;$password);
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;if(!$phpcount_con)
+</div></li><li><div class="div0">&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(&quot;Count&nbsp;not&nbsp;connect&nbsp;to&nbsp;PHPCount&nbsp;MySQL&nbsp;server!&quot;);
+
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;mysql_select_db($database,&nbsp;$phpcount_con)&nbsp;or&nbsp;die(&quot;Count&nbsp;not&nbsp;select&nbsp;PHPCount&nbsp;database.&quot;);
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;class&nbsp;PHPCount
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;AddHit(&lt;page&nbsp;identifier&gt;,&nbsp;&lt;visitor&nbsp;identifier&gt;)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Adds&nbsp;a&nbsp;hit.&nbsp;Takes&nbsp;care&nbsp;of&nbsp;checking&nbsp;uniqueness.
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;$pageID&nbsp;-&nbsp;A&nbsp;unique&nbsp;string&nbsp;that&nbsp;identifies&nbsp;the&nbsp;page
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;$visitorID&nbsp;-&nbsp;A&nbsp;unique&nbsp;string&nbsp;that&nbsp;represents&nbsp;the&nbsp;visitor&nbsp;(IP&nbsp;address)
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;For&nbsp;example,&nbsp;on&nbsp;a&nbsp;page&nbsp;called&nbsp;coolstuff.php...
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHPCount::(&quot;coolstuff&quot;,&nbsp;$_SERVER[&#039;REMOTE_ADDR&#039;]);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;AddHit($pageID,&nbsp;$visitorID)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self::Cleanup();
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self::CreateCountsIfNotPresent($pageID);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(self::UniqueHit($pageID,&nbsp;$visitorID))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self::CountHit($pageID,&nbsp;true);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self::LogHit($pageID,&nbsp;$visitorID);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self::CountHit($pageID,&nbsp;false);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;(int)&nbsp;the&nbsp;amount&nbsp;of&nbsp;hits&nbsp;a&nbsp;page&nbsp;has
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;$pageID&nbsp;-&nbsp;the&nbsp;page&nbsp;identifier
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;$unique&nbsp;-&nbsp;true&nbsp;if&nbsp;you&nbsp;want&nbsp;unique&nbsp;hit&nbsp;count
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;GetHits($pageID,&nbsp;$unique&nbsp;=&nbsp;false)
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;$phpcount_con;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self::CreateCountsIfNotPresent($pageID);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pageID&nbsp;=&nbsp;mysql_real_escape_string($pageID);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$unique&nbsp;=&nbsp;$unique&nbsp;?&nbsp;&#039;1&#039;&nbsp;:&nbsp;&#039;0&#039;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;hitcount&nbsp;FROM&nbsp;hits&nbsp;WHERE&nbsp;pageid=&#039;$pageID&#039;&nbsp;AND&nbsp;isunique=&#039;$unique&#039;&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(mysql_num_rows($q)&nbsp;&gt;=&nbsp;1)
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$hitInfo&nbsp;=&nbsp;mysql_fetch_array($q);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(int)$hitInfo[&#039;hitcount&#039;];
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(&quot;Fatal:&nbsp;Missing&nbsp;hit&nbsp;count&nbsp;from&nbsp;database!&quot;);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;total&nbsp;amount&nbsp;of&nbsp;hits&nbsp;to&nbsp;the&nbsp;entire&nbsp;website
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;When&nbsp;$unique&nbsp;is&nbsp;FALSE,&nbsp;it&nbsp;returns&nbsp;the&nbsp;sum&nbsp;of&nbsp;all&nbsp;non-unique&nbsp;hit&nbsp;counts
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;for&nbsp;every&nbsp;page.&nbsp;When&nbsp;$unique&nbsp;is&nbsp;TRUE,&nbsp;it&nbsp;returns&nbsp;the&nbsp;sum&nbsp;of&nbsp;all&nbsp;unique
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;hit&nbsp;counts&nbsp;for&nbsp;every&nbsp;page,&nbsp;so&nbsp;the&nbsp;value&nbsp;that&#039;s&nbsp;returned&nbsp;IS&nbsp;NOT&nbsp;the&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;amount&nbsp;of&nbsp;site-wide&nbsp;unique&nbsp;hits,&nbsp;it&nbsp;is&nbsp;the&nbsp;sum&nbsp;of&nbsp;each&nbsp;page&#039;s&nbsp;unique
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;hit&nbsp;count.
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;GetTotalHits($unique&nbsp;=&nbsp;false)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;$phpcount_con;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$total&nbsp;=&nbsp;0;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$unique&nbsp;=&nbsp;$unique&nbsp;?&nbsp;&#039;1&#039;&nbsp;:&nbsp;&#039;0&#039;;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;hitcount&nbsp;FROM&nbsp;hits&nbsp;WHERE&nbsp;isunique=&#039;$unique&#039;&quot;,&nbsp;$phpcount_con);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while($q&nbsp;&amp;&amp;&nbsp;$info&nbsp;=&nbsp;mysql_fetch_array($q))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$total&nbsp;+=&nbsp;(int)$info[&#039;hitcount&#039;];
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$total;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*======================&nbsp;PRIVATE&nbsp;METHODS&nbsp;=============================*/
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;function&nbsp;UniqueHit($pageID,&nbsp;$visitorID)
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;$phpcount_con;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ids_hash&nbsp;=&nbsp;self::IDHash($pageID,&nbsp;$visitorID);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;time&nbsp;FROM&nbsp;nodupes&nbsp;WHERE&nbsp;ids_hash=&#039;$ids_hash&#039;&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(mysql_num_rows($q)&nbsp;&gt;&nbsp;0)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$hitInfo&nbsp;=&nbsp;mysql_fetch_array($q);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($hitInfo[&#039;time&#039;]&nbsp;&gt;&nbsp;time()&nbsp;-&nbsp;HIT_OLD_AFTER_SECONDS)&nbsp;//TODO:&nbsp;constant-ize
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;function&nbsp;LogHit($pageID,&nbsp;$visitorID)
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;$phpcount_con;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ids_hash&nbsp;=&nbsp;self::IDHash($pageID,&nbsp;$visitorID);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;time&nbsp;FROM&nbsp;nodupes&nbsp;WHERE&nbsp;ids_hash=&#039;$ids_hash&#039;&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$curTime&nbsp;=&nbsp;time();
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(mysql_num_rows($q)&nbsp;&gt;&nbsp;0)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;UPDATE&nbsp;nodupes&nbsp;SET&nbsp;time=&#039;$curTime&#039;&nbsp;WHERE&nbsp;ids_hash=&#039;$ids_hash&#039;&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;INSERT&nbsp;INTO&nbsp;nodupes&nbsp;(ids_hash,&nbsp;time)&nbsp;VALUES(&#039;$ids_hash&#039;,&nbsp;&#039;$curTime&#039;)&quot;,&nbsp;$phpcount_con);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;function&nbsp;CountHit($pageID,&nbsp;$unique)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;$phpcount_con;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$unique&nbsp;=&nbsp;$unique&nbsp;?&nbsp;&#039;1&#039;&nbsp;:&nbsp;&#039;0&#039;;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$safeID&nbsp;=&nbsp;mysql_real_escape_string($pageID);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;UPDATE&nbsp;hits&nbsp;SET&nbsp;hitcount&nbsp;=&nbsp;hitcount&nbsp;+&nbsp;1&nbsp;WHERE&nbsp;pageid=&#039;$safeID&#039;&nbsp;AND&nbsp;isunique=&#039;$unique&#039;&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;function&nbsp;IDHash($pageID,&nbsp;$visitorID)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ids_hash&nbsp;=&nbsp;mysql_real_escape_string(hash(&quot;SHA256&quot;,&nbsp;$pageID&nbsp;.&nbsp;$visitorID));
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$ids_hash;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;function&nbsp;CreateCountsIfNotPresent($pageID)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;$phpcount_con;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pageID&nbsp;=&nbsp;mysql_real_escape_string($pageID);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//check&nbsp;non-unique&nbsp;row
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;pageid&nbsp;FROM&nbsp;hits&nbsp;WHERE&nbsp;pageid=&#039;$pageID&#039;&nbsp;AND&nbsp;isunique=&#039;0&#039;&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($q&nbsp;===&nbsp;false&nbsp;||&nbsp;mysql_num_rows($q)&nbsp;&lt;&nbsp;1)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;INSERT&nbsp;INTO&nbsp;hits&nbsp;(pageid,&nbsp;isunique,&nbsp;hitcount)&nbsp;VALUES&nbsp;(&#039;$pageID&#039;,&nbsp;&#039;0&#039;,&nbsp;&#039;0&#039;)&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//check&nbsp;unique&nbsp;row
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;pageid&nbsp;FROM&nbsp;hits&nbsp;WHERE&nbsp;pageid=&#039;$pageID&#039;&nbsp;AND&nbsp;isunique=&#039;1&#039;&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($q&nbsp;===&nbsp;false&nbsp;||&nbsp;mysql_num_rows($q)&nbsp;&lt;&nbsp;1)
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;INSERT&nbsp;INTO&nbsp;hits&nbsp;(pageid,&nbsp;isunique,&nbsp;hitcount)&nbsp;VALUES(&#039;$pageID&#039;,&nbsp;&#039;1&#039;,&nbsp;&#039;0&#039;)&quot;,&nbsp;$phpcount_con);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;mysql_error();
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;function&nbsp;Cleanup()
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;$phpcount_con;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$last_interval&nbsp;=&nbsp;time()&nbsp;-&nbsp;HIT_OLD_AFTER_SECONDS;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;DELETE&nbsp;FROM&nbsp;nodupes&nbsp;WHERE&nbsp;time&nbsp;&lt;&nbsp;&#039;$last_interval&#039;&quot;,&nbsp;$phpcount_con);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;mysql_error();
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;}</div></li></ol></div>

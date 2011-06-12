@@ -1,0 +1,18 @@
+Q: Whenever I try to access your scipt it opens up with Internet Explorer/Dreamweaver/Notepad/etc.
+   What the hell is going on?
+A: You need to upload the script with the rest of the files to a PHP-enabled webserver. The script
+   cannot be run locally simply by clicking on the files themselves. Read the Installation part of the README.txt.
+
+Q: Can this script run on a free web host (i.e. lycos.co.uk, host.sk, etc.)?
+A: Highly unlikely. Since safe_mode is turned On for nearly all free web hosts. And having it Off
+   is essential for this script to function.
+
+Q: File uploads won't work??!?!11
+A: Make sure that file_uploads is turned On in your server's php.ini file.
+
+Q: I have another problem with the script that isn't covered here.
+A: 1. Make sure you have the latest version of the script properly installed.
+   2. Read the README.txt
+   3. Read this FAQ again.
+   If all of the above fails to solve your problem, send me an email or post a question at the forums.
+

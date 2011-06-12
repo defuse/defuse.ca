@@ -1,0 +1,761 @@
+<div style="font-family:monospace;"><ol><li><div class="div0">&nbsp;&lt;?php
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;/*
+</div></li><li><div class="div1">&nbsp;Copyright&nbsp;2011&nbsp;OSSBox.com
+</div></li><li><div class="div0">&nbsp;This&nbsp;source&nbsp;code&nbsp;is&nbsp;provided&nbsp;only&nbsp;for&nbsp;public&nbsp;review.&nbsp;You&nbsp;MAY&nbsp;NOT&nbsp;modify&nbsp;it.&nbsp;You&nbsp;
+
+</div></li><li><div class="div1">&nbsp;MAY&nbsp;NOT&nbsp;redistribute&nbsp;it.&nbsp;You&nbsp;may&nbsp;use&nbsp;it&nbsp;for&nbsp;PERSONAL&nbsp;PROJECTS&nbsp;IF&nbsp;AND&nbsp;ONLY&nbsp;IF&nbsp;you
+</div></li><li><div class="div0">&nbsp;remove&nbsp;ALL&nbsp;markings&nbsp;related&nbsp;to&nbsp;&#039;TRENT&#039;&nbsp;and&nbsp;&#039;OSSBox&#039;.
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;I&nbsp;place&nbsp;these&nbsp;restrictions&nbsp;on&nbsp;this&nbsp;source&nbsp;code&nbsp;because&nbsp;I&nbsp;don&#039;t&nbsp;want&nbsp;immitation&nbsp;
+</div></li><li><div class="div1">&nbsp;&#039;TRENT&#039;&nbsp;services&nbsp;to&nbsp;pop&nbsp;up,&nbsp;not&nbsp;because&nbsp;I&nbsp;want&nbsp;to&nbsp;be&nbsp;the&nbsp;only&nbsp;one,&nbsp;but&nbsp;because&nbsp;I
+
+</div></li><li><div class="div0">&nbsp;don&#039;t&nbsp;want&nbsp;*insecure*&nbsp;TRENT&nbsp;immitations&nbsp;to&nbsp;be&nbsp;made,&nbsp;which&nbsp;would&nbsp;ruin&nbsp;the&nbsp;real&nbsp;
+</div></li><li><div class="div1">&nbsp;TRENT&#039;s&nbsp;reputation&nbsp;and&nbsp;trustworthiness.&nbsp;This&nbsp;is&nbsp;very&nbsp;similar&nbsp;to&nbsp;the&nbsp;TrueCrypt
+
+</div></li><li><div class="div0">&nbsp;license.
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;*/
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;date_default_timezone_set(&quot;UTC&quot;);&nbsp;
+</div></li><li><div class="div1">&nbsp;$dbhost&nbsp;=&nbsp;&#039;localhost&#039;;
+</div></li><li><div class="div0">&nbsp;$dbuser&nbsp;=&nbsp;&#039;&#039;;
+</div></li><li><div class="div1">&nbsp;$dbpass&nbsp;=&nbsp;&#039;&#039;;
+
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;$conn&nbsp;=&nbsp;mysql_connect($dbhost,&nbsp;$dbuser,&nbsp;$dbpass)&nbsp;or&nbsp;die&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&#039;Error&nbsp;connecting&nbsp;to&nbsp;mysql&#039;);
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;$dbname&nbsp;=&nbsp;&#039;&#039;;
+
+</div></li><li><div class="div0">&nbsp;mysql_select_db($dbname);
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;?&gt;
+</div></li><li><div class="div1">&nbsp;&lt;?php
+</div></li><li><div class="div0">&nbsp;echo&nbsp;&quot;&lt;div&nbsp;style=\&quot;float:right;\&quot;&gt;CURRENT&nbsp;UTC&nbsp;DATE:&nbsp;&quot;&nbsp;.&nbsp;date(&quot;D&nbsp;M&nbsp;j&nbsp;G:i:s&nbsp;T&nbsp;Y&quot;)&nbsp;.&nbsp;&quot;&lt;/div&gt;&quot;;
+
+</div></li><li><div class="div1">&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&lt;h1&gt;TRENT&nbsp;(&lt;u&gt;T&lt;/u&gt;rusted&nbsp;&lt;u&gt;R&lt;/u&gt;andom&nbsp;&lt;u&gt;Ent&lt;/u&gt;ropy&nbsp;Generator)&lt;/h1&gt;
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&lt;b&gt;TRENT&nbsp;is&nbsp;a&nbsp;random&nbsp;number&nbsp;generator&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;do&nbsp;contest&nbsp;drawings&nbsp;with&nbsp;results&nbsp;that&nbsp;everyone&nbsp;can&nbsp;&lt;u&gt;trust&lt;/u&gt;.&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&lt;h2&gt;How&nbsp;does&nbsp;TRENT&nbsp;work?&lt;/h2&gt;
+</div></li><li><div class="div0">&nbsp;The&nbsp;hard&nbsp;part&nbsp;of&nbsp;doing&nbsp;an&nbsp;online&nbsp;contest&nbsp;drawing&nbsp;is&nbsp;getting&nbsp;the&nbsp;contestants&nbsp;to&nbsp;trust&nbsp;you.&nbsp;You&nbsp;can&nbsp;use&nbsp;the&nbsp;highest&nbsp;quality&nbsp;random&nbsp;numbers&nbsp;that&nbsp;were&nbsp;created&nbsp;by&nbsp;monitoring&nbsp;atmospheric&nbsp;noise,&nbsp;but&nbsp;the&nbsp;contestants&nbsp;might&nbsp;wonder&nbsp;if&nbsp;you&#039;re&nbsp;really&nbsp;doing&nbsp;that,&nbsp;or&nbsp;just&nbsp;saying&nbsp;that&nbsp;you&nbsp;are.&nbsp;They&nbsp;might&nbsp;think&nbsp;that&nbsp;you&#039;re&nbsp;selecting&nbsp;the&nbsp;winner&nbsp;yourself,&nbsp;always&nbsp;giving&nbsp;the&nbsp;prize&nbsp;to&nbsp;a&nbsp;freind&nbsp;or&nbsp;keeping&nbsp;it&nbsp;for&nbsp;yourself.
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;In&nbsp;order&nbsp;for&nbsp;the&nbsp;contestants&nbsp;to&nbsp;trust&nbsp;the&nbsp;contest&nbsp;organizer&nbsp;and&nbsp;the&nbsp;results&nbsp;of&nbsp;a&nbsp;drawing,&nbsp;the&nbsp;selection&nbsp;of&nbsp;the&nbsp;winner&nbsp;has&nbsp;to&nbsp;be&nbsp;done&nbsp;by&nbsp;a&nbsp;third&nbsp;party.&nbsp;This&nbsp;third&nbsp;party&nbsp;should&nbsp;have&nbsp;no&nbsp;ties&nbsp;to&nbsp;the&nbsp;contest&nbsp;organizer&nbsp;or&nbsp;any&nbsp;of&nbsp;the&nbsp;contestants.&nbsp;That&nbsp;way&nbsp;the&nbsp;third&nbsp;party&nbsp;has&nbsp;no&nbsp;reason&nbsp;to&nbsp;bias&nbsp;the&nbsp;results.&nbsp;TRENT&nbsp;is&nbsp;this&nbsp;third&nbsp;party.
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;Using&nbsp;TRENT,&nbsp;contest&nbsp;organizers&nbsp;will&nbsp;reserve&nbsp;a&nbsp;drawing&nbsp;number&nbsp;at&nbsp;least&nbsp;a&nbsp;day&nbsp;before&nbsp;the&nbsp;drawing&nbsp;takes&nbsp;place.&nbsp;The&nbsp;organizer&nbsp;will&nbsp;then&nbsp;send&nbsp;each&nbsp;contestant&nbsp;the&nbsp;drawing&nbsp;number.&nbsp;Before&nbsp;the&nbsp;drawing&nbsp;occurs,&nbsp;the&nbsp;contestants&nbsp;can&nbsp;visit&nbsp;the&nbsp;TRENT&nbsp;webpage&nbsp;to&nbsp;verify&nbsp;that&nbsp;the&nbsp;drawing&nbsp;number&nbsp;has&nbsp;been&nbsp;reserved.&nbsp;By&nbsp;doing&nbsp;so,&nbsp;they&nbsp;are&nbsp;guaranteeing&nbsp;that&nbsp;the&nbsp;organizer&nbsp;isn&#039;t&nbsp;reusing&nbsp;someone&nbsp;else&#039;s&nbsp;random&nbsp;numbers.
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;Whenever&nbsp;the&nbsp;organizer&nbsp;wants&nbsp;to&nbsp;do&nbsp;the&nbsp;drawing,&nbsp;he&nbsp;simply&nbsp;has&nbsp;to&nbsp;fill&nbsp;out&nbsp;the&nbsp;form&nbsp;below.&nbsp;TRENT&nbsp;will&nbsp;generate&nbsp;the&nbsp;random&nbsp;numbers&nbsp;that&nbsp;are&nbsp;required&nbsp;to&nbsp;select&nbsp;a&nbsp;winner,&nbsp;and&nbsp;contestants&nbsp;will&nbsp;be&nbsp;able&nbsp;to&nbsp;access&nbsp;the&nbsp;results&nbsp;by&nbsp;visiting&nbsp;the&nbsp;TRENT&nbsp;web&nbsp;page.
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;By&nbsp;seeing&nbsp;the&nbsp;results&nbsp;on&nbsp;the&nbsp;TRENT&nbsp;web&nbsp;page,&nbsp;the&nbsp;contestants&nbsp;will&nbsp;be&nbsp;able&nbsp;to&nbsp;truly&nbsp;trust&nbsp;the&nbsp;results&nbsp;of&nbsp;the&nbsp;contest.&nbsp;They&nbsp;will&nbsp;know&nbsp;for&nbsp;sure&nbsp;that&nbsp;the&nbsp;random&nbsp;numbers&nbsp;used&nbsp;are&nbsp;cryptographically&nbsp;secure,&nbsp;because&nbsp;TRENT&nbsp;uses&nbsp;the&nbsp;&quot;/dev/urandom&quot;&nbsp;CSPRNG&nbsp;built&nbsp;into&nbsp;Linux.&nbsp;They&nbsp;will&nbsp;also&nbsp;know&nbsp;for&nbsp;sure&nbsp;that&nbsp;the&nbsp;contest&nbsp;organizer&nbsp;had&nbsp;no&nbsp;control&nbsp;over&nbsp;who&nbsp;was&nbsp;selected&nbsp;as&nbsp;the&nbsp;winner.&nbsp;By&nbsp;remembering&nbsp;the&nbsp;drawing&nbsp;number,&nbsp;the&nbsp;contestants&nbsp;will&nbsp;also&nbsp;know&nbsp;know&nbsp;for&nbsp;sure&nbsp;that&nbsp;the&nbsp;contest&nbsp;organizer&nbsp;didn&#039;t&nbsp;re-do&nbsp;the&nbsp;drawing&nbsp;over&nbsp;and&nbsp;over&nbsp;until&nbsp;the&nbsp;&quot;right&quot;&nbsp;winner&nbsp;was&nbsp;selected.
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;To&nbsp;make&nbsp;things&nbsp;even&nbsp;better,&nbsp;TRENT&nbsp;will&nbsp;always&nbsp;be&nbsp;completely&nbsp;&lt;b&gt;&lt;u&gt;FREE&lt;/u&gt;&lt;/b&gt;.
+
+</div></li><li><div class="div1">&nbsp;&lt;?php
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;if(isset($_GET[&#039;drawingnum&#039;]))
+</div></li><li><div class="div0">&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$num&nbsp;=&nbsp;(int)$_GET[&#039;drawingnum&#039;];
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;*&nbsp;FROM&nbsp;drawings&nbsp;WHERE&nbsp;drawingnum=&#039;$num&#039;&quot;);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(mysql_num_rows($q))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ary&nbsp;=&nbsp;mysql_fetch_array($q);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$complete&nbsp;=&nbsp;($ary[&#039;complete&#039;]&nbsp;==&nbsp;&#039;1&#039;);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$starttime&nbsp;=&nbsp;(int)$ary[&#039;starttime&#039;];
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$reviewtime&nbsp;=&nbsp;(int)$ary[&#039;reviewtime&#039;];
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$safeprintout&nbsp;=&nbsp;htmlentities($ary[&#039;printout&#039;]);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$drawingtime&nbsp;=&nbsp;$reviewtime&nbsp;+&nbsp;$starttime;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$drawdate&nbsp;=&nbsp;date(&quot;D&nbsp;M&nbsp;j&nbsp;G:i:s&nbsp;T&nbsp;Y&quot;,&nbsp;$drawingtime);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!$complete)
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#66FF99;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Info&nbsp;for&nbsp;drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$num&nbsp;?&gt;&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;random&nbsp;numbers&nbsp;for&nbsp;this&nbsp;drawing&nbsp;have&nbsp;not&nbsp;yet&nbsp;been&nbsp;chosen.&nbsp;The&nbsp;creator&nbsp;of&nbsp;this&nbsp;drawing&nbsp;will&nbsp;be&nbsp;able&nbsp;to&nbsp;do&nbsp;the&nbsp;drawing&nbsp;after&nbsp;&lt;b&gt;&lt;?php&nbsp;echo&nbsp;$drawdate;&nbsp;?&gt;&lt;/b&gt;.&nbsp;This&nbsp;period&nbsp;is&nbsp;enforced&nbsp;to&nbsp;allow&nbsp;users&nbsp;of&nbsp;the&nbsp;random&nbsp;numbers&nbsp;to&nbsp;verify&nbsp;that&nbsp;the&nbsp;person&nbsp;doing&nbsp;the&nbsp;drawing&nbsp;isn&#039;t&nbsp;repeating&nbsp;the&nbsp;drawing&nbsp;until&nbsp;they&nbsp;get&nbsp;the&nbsp;numbers&nbsp;they&nbsp;want.&nbsp;The&nbsp;fact&nbsp;that&nbsp;you&nbsp;are&nbsp;seeing&nbsp;this&nbsp;message&nbsp;means&nbsp;that&nbsp;you&nbsp;can&nbsp;be&nbsp;absolutely&nbsp;sure&nbsp;that&nbsp;the&nbsp;person&nbsp;doing&nbsp;the&nbsp;drawing&nbsp;cannot&nbsp;bias&nbsp;the&nbsp;results&nbsp;at&nbsp;all.
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#66FF99;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Results&nbsp;for&nbsp;drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$num;&nbsp;?&gt;:&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea&nbsp;rows=20&nbsp;style=&quot;width:98%;&quot;&nbsp;&gt;&lt;?php&nbsp;echo&nbsp;$safeprintout;&nbsp;?&gt;&lt;/textarea&gt;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;How&nbsp;do&nbsp;I&nbsp;know&nbsp;the&nbsp;drawing&nbsp;is&nbsp;legit?&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Verify&nbsp;that&nbsp;the&nbsp;following&nbsp;are&nbsp;true:&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;You&nbsp;verified&nbsp;that&nbsp;the&nbsp;drawing&nbsp;number&nbsp;was&nbsp;reserved&nbsp;before&nbsp;the&nbsp;drawing&nbsp;took&nbsp;place.&lt;/li&gt;
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;The&nbsp;drawing&nbsp;organizer&#039;s&nbsp;description&nbsp;of&nbsp;how&nbsp;to&nbsp;use&nbsp;the&nbsp;random&nbsp;numbers&nbsp;to&nbsp;select&nbsp;the&nbsp;results&nbsp;of&nbsp;the&nbsp;drawing&nbsp;is&nbsp;straight&nbsp;forward&nbsp;and&nbsp;doesn&#039;t&nbsp;bias&nbsp;the&nbsp;results.&nbsp;If&nbsp;the&nbsp;process&nbsp;is&nbsp;extremely&nbsp;complicated&nbsp;or&nbsp;you&nbsp;don&#039;t&nbsp;understand&nbsp;the&nbsp;steps,&nbsp;this&nbsp;is&nbsp;cause&nbsp;for&nbsp;concern.&lt;/li&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Follow&nbsp;the&nbsp;process&nbsp;of&nbsp;determining&nbsp;the&nbsp;results&nbsp;(e.g.&nbsp;the&nbsp;lottery&nbsp;winner)&nbsp;yourself&nbsp;to&nbsp;determine&nbsp;if&nbsp;the&nbsp;results&nbsp;claimed&nbsp;by&nbsp;the&nbsp;drawing&nbsp;organizer&nbsp;are&nbsp;valid.&nbsp;The&nbsp;drawing&nbsp;organizer&nbsp;should&nbsp;have&nbsp;provided&nbsp;all&nbsp;the&nbsp;steps&nbsp;you&nbsp;need&nbsp;to&nbsp;follow&nbsp;to&nbsp;determine&nbsp;the&nbsp;&quot;winner&quot;&nbsp;in&nbsp;the&nbsp;&quot;DESCRIPTION&quot;&nbsp;section&nbsp;of&nbsp;the&nbsp;above&nbsp;information.&lt;/li&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;The&nbsp;range&nbsp;of&nbsp;random&nbsp;numbers&nbsp;makes&nbsp;sense&nbsp;for&nbsp;what&nbsp;they&nbsp;are&nbsp;being&nbsp;used&nbsp;for&nbsp;(e.g.&nbsp;they&nbsp;include&nbsp;everyone,&nbsp;in&nbsp;a&nbsp;lottery&nbsp;scenario).&lt;/li&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Check&nbsp;that&nbsp;the&nbsp;timestamp&nbsp;looks&nbsp;to&nbsp;be&nbsp;on&nbsp;or&nbsp;near&nbsp;the&nbsp;date&nbsp;the&nbsp;drawing&nbsp;was&nbsp;done.&lt;/li&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Obtain&nbsp;any&nbsp;related&nbsp;files&nbsp;from&nbsp;the&nbsp;organizer&nbsp;and&nbsp;verify&nbsp;that&nbsp;the&nbsp;SHA256&nbsp;checksum&nbsp;is&nbsp;&lt;b&gt;exactly&nbsp;identical&lt;/b&gt;&nbsp;using&nbsp;the&nbsp;&lt;a&nbsp;href=&quot;checksums.htm&quot;&nbsp;/&gt;checksum&nbsp;calculator&lt;/a&gt;.&lt;/li&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;all&nbsp;of&nbsp;those&nbsp;conditions&nbsp;are&nbsp;true,&nbsp;then&nbsp;there&nbsp;is&nbsp;no&nbsp;way&nbsp;the&nbsp;drawing&nbsp;organizer&nbsp;could&nbsp;have&nbsp;biased&nbsp;these&nbsp;numbers,&nbsp;and&nbsp;you&nbsp;can&nbsp;trust&nbsp;the&nbsp;results.&nbsp;If&nbsp;you&nbsp;are&nbsp;in&nbsp;doubt,&nbsp;&lt;a&nbsp;href=&quot;contact.htm&quot;&gt;contact&nbsp;me&lt;/a&gt;.&nbsp;Send&nbsp;me&nbsp;the&nbsp;drawing&nbsp;number&nbsp;and&nbsp;I&nbsp;will&nbsp;look&nbsp;at&nbsp;it&nbsp;personally.
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$num&nbsp;?&gt;&nbsp;does&nbsp;not&nbsp;exist.&lt;/b&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;}
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&lt;h2&gt;Validate&nbsp;Random&nbsp;Numbers&lt;/h2&gt;
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&lt;form&nbsp;action=&quot;trustedthirdparty.htm&quot;&nbsp;method=&quot;get&quot;&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;table&gt;
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;Drawing&nbsp;Number:&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;drawingnum&quot;&nbsp;value=&quot;&quot;&nbsp;/&gt;&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;submit&quot;&nbsp;value=&quot;Check&quot;&nbsp;/&gt;&lt;/td&gt;&lt;tr&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;/table&gt;
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&lt;/form&gt;
+</div></li><li><div class="div1">&nbsp;&lt;h2&gt;Create&nbsp;Random&nbsp;Numbers&lt;/h2&gt;
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&lt;a&nbsp;name=&quot;dnum&quot;&gt;&lt;h3&gt;Step&nbsp;1:&nbsp;Reserve&nbsp;a&nbsp;Drawing&nbsp;Number&lt;/h3&gt;&lt;/a&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;?php
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;if(isset($_POST[&#039;makedrawingnumber&#039;]))
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$reviewtime&nbsp;=&nbsp;(int)$_POST[&#039;prereview&#039;];
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($reviewtime&nbsp;&lt;&nbsp;3600&nbsp;*&nbsp;24)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(&quot;Don&#039;t&nbsp;hax...&quot;);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$starttime&nbsp;=&nbsp;time();
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$drawingdate&nbsp;=&nbsp;date(&quot;D&nbsp;M&nbsp;j&nbsp;G:i:s&nbsp;T&nbsp;Y&quot;,&nbsp;$reviewtime&nbsp;+&nbsp;$starttime);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$password&nbsp;=&nbsp;bin2hex(mcrypt_create_iv(16,&nbsp;MCRYPT_DEV_URANDOM));
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$passwordhash&nbsp;=&nbsp;hash(&quot;SHA256&quot;,&nbsp;$password);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;INSERT&nbsp;INTO&nbsp;drawings&nbsp;(complete,&nbsp;passwordhash,&nbsp;starttime,&nbsp;reviewtime)&nbsp;VALUES&nbsp;(0,&nbsp;&#039;$passwordhash&#039;,&nbsp;&#039;$starttime&#039;,&nbsp;&#039;$reviewtime&#039;)&quot;);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$drawingnum&nbsp;=&nbsp;mysql_insert_id();
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$url&nbsp;=&nbsp;&quot;http://ossbox.com/trustedthirdparty.htm?drawingnum=&quot;&nbsp;.&nbsp;$drawingnum;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#66FF99;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Your&nbsp;Drawing&nbsp;Number&nbsp;Has&nbsp;Been&nbsp;Reserved...&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your&nbsp;drawing&nbsp;number&nbsp;is:&nbsp;&lt;b&gt;&lt;?&nbsp;echo&nbsp;$drawingnum;&nbsp;?&gt;&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your&nbsp;passcode&nbsp;is:&nbsp;&lt;b&gt;&lt;?&nbsp;echo&nbsp;$password;&nbsp;?&gt;&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You&nbsp;will&nbsp;be&nbsp;able&nbsp;to&nbsp;do&nbsp;the&nbsp;drawing&nbsp;after&nbsp;&lt;b&gt;&lt;?php&nbsp;echo&nbsp;$drawingdate;&nbsp;?&gt;&lt;/b&gt;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please&nbsp;remember&nbsp;this&nbsp;information.&nbsp;Keep&nbsp;your&nbsp;password&nbsp;safe.&nbsp;You&nbsp;will&nbsp;need&nbsp;the&nbsp;drawing&nbsp;number&nbsp;and&nbsp;password&nbsp;to&nbsp;complete&nbsp;the&nbsp;actual&nbsp;drawing.&nbsp;Publish&nbsp;the&nbsp;drawing&nbsp;number&nbsp;BEFORE&nbsp;you&nbsp;do&nbsp;the&nbsp;drawing.
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Give&nbsp;your&nbsp;clients&nbsp;the&nbsp;following&nbsp;URL:&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;&lt;?php&nbsp;echo&nbsp;$url;&nbsp;?&gt;&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;allows&nbsp;them&nbsp;to&nbsp;see&nbsp;that&nbsp;the&nbsp;drawing&nbsp;number&nbsp;has&nbsp;been&nbsp;reserved&nbsp;BEFORE&nbsp;the&nbsp;drawing&nbsp;took&nbsp;place,&nbsp;which&nbsp;prooves&nbsp;to&nbsp;them&nbsp;that&nbsp;you&nbsp;didn&#039;t&nbsp;redo&nbsp;the&nbsp;drawing&nbsp;over&nbsp;and&nbsp;over&nbsp;until&nbsp;TRENT&nbsp;picked&nbsp;the&nbsp;&quot;right&nbsp;numbers&quot;.&nbsp;Your&nbsp;clients&nbsp;can&nbsp;get&nbsp;to&nbsp;the&nbsp;same&nbsp;page&nbsp;by&nbsp;entering&nbsp;the&nbsp;drawing&nbsp;number&nbsp;in&nbsp;the&nbsp;&quot;Validate&nbsp;Random&nbsp;Numbers&quot;&nbsp;section&nbsp;above.
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;?&gt;
+</div></li><li><div class="div1">&nbsp;&lt;form&nbsp;action=&quot;trustedthirdparty.htm#dnum&quot;&nbsp;method=&quot;post&quot;&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;Review&nbsp;time:
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;name=&quot;prereview&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;86400&quot;&nbsp;selected=&quot;true&quot;&nbsp;&gt;24&nbsp;hours&lt;/option&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;345600&quot;&gt;4&nbsp;days&lt;/option&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;518400&quot;&gt;6&nbsp;days&lt;/option&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;1123200&quot;&gt;13&nbsp;days&lt;/option&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;2592000&quot;&gt;30&nbsp;days&lt;/option&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;makedrawingnumber&quot;&nbsp;value=&quot;Reserve&nbsp;a&nbsp;Drawing&nbsp;Number&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&lt;/form&gt;
+</div></li><li><div class="div0">&nbsp;&lt;a&nbsp;name=&quot;create&quot;&gt;&lt;h3&gt;Step&nbsp;2:&nbsp;Create&nbsp;Random&nbsp;Numbers&lt;/h3&gt;&lt;/a&gt;
+
+</div></li><li><div class="div1">&nbsp;&lt;?php
+</div></li><li><div class="div0">&nbsp;if(isset($_POST[&#039;create&#039;]))
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$drawingnum&nbsp;=&nbsp;(int)$_POST[&#039;drawingnumber&#039;];
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$passcode&nbsp;=&nbsp;$_POST[&#039;passcode&#039;];
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name&nbsp;=&nbsp;$_POST[&#039;name&#039;];
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$description&nbsp;=&nbsp;$_POST[&#039;description&#039;];
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$q&nbsp;=&nbsp;mysql_query(&quot;SELECT&nbsp;*&nbsp;FROM&nbsp;drawings&nbsp;WHERE&nbsp;drawingnum=&#039;$drawingnum&#039;&quot;);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(mysql_num_rows($q)&nbsp;&gt;&nbsp;0)
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$info&nbsp;=&nbsp;mysql_fetch_array($q);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$passwordHash&nbsp;=&nbsp;$info[&#039;passwordhash&#039;];
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$drawingtime&nbsp;=&nbsp;$info[&#039;starttime&#039;]&nbsp;+&nbsp;$info[&#039;reviewtime&#039;];
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$randlines1&nbsp;=&nbsp;(int)$_POST[&#039;randlines1&#039;];
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$randlines2&nbsp;=&nbsp;(int)$_POST[&#039;randlines2&#039;];
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$randlines3&nbsp;=&nbsp;(int)$_POST[&#039;randlines3&#039;];
+</div></li><li><div class="div1">&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$noLineRepeat&nbsp;=&nbsp;!($_POST[&#039;chosentwice&#039;]&nbsp;==&nbsp;&#039;true&#039;);
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$rangelow&nbsp;=&nbsp;(int)$_POST[&#039;lowval&#039;];
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$rangehigh&nbsp;=&nbsp;(int)$_POST[&#039;highval&#039;];
+
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$numnums&nbsp;=&nbsp;(int)$_POST[&#039;numgen&#039;];
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file1hash&nbsp;=&nbsp;$_POST[&#039;file1hash&#039;];
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file2hash&nbsp;=&nbsp;$_POST[&#039;file2hash&#039;];
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file3hash&nbsp;=&nbsp;$_POST[&#039;file3hash&#039;];
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file1path&nbsp;=&nbsp;&quot;&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file2path&nbsp;=&nbsp;&quot;&quot;;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file3path&nbsp;=&nbsp;&quot;&quot;;
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ctype_xdigit($file1hash))
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file1path&nbsp;=&nbsp;&quot;/tmp/$file1hash&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file1path&nbsp;=&nbsp;$_FILES[&quot;file1&quot;][&quot;tmp_name&quot;];
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ctype_xdigit($file2hash))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file2path&nbsp;=&nbsp;&quot;/tmp/$file2hash&quot;;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file2path&nbsp;=&nbsp;$_FILES[&quot;file2&quot;][&quot;tmp_name&quot;];
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ctype_xdigit($file3hash))
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file3path&nbsp;=&nbsp;&quot;/tmp/$file3hash&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file3path&nbsp;=&nbsp;$_FILES[&quot;file3&quot;][&quot;tmp_name&quot;];
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($thispasshash&nbsp;=&nbsp;hash(&quot;SHA256&quot;,&nbsp;$passcode)&nbsp;!=&nbsp;$passwordHash)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Incorrect&nbsp;password&nbsp;for&nbsp;drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$drawingnum&nbsp;?&gt;.&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif($info[&#039;complete&#039;]&nbsp;!=&nbsp;&#039;0&#039;)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;The&nbsp;random&nbsp;numbers&nbsp;for&nbsp;drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$drawingnum&nbsp;?&gt;&nbsp;have&nbsp;already&nbsp;been&nbsp;chosen.&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif(time()&nbsp;&lt;&nbsp;$drawingtime)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;The&nbsp;review&nbsp;period&nbsp;for&nbsp;drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$drawingnum&nbsp;?&gt;&nbsp;is&nbsp;not&nbsp;complete.&nbsp;You&nbsp;will&nbsp;be&nbsp;able&nbsp;to&nbsp;do&nbsp;the&nbsp;drawing&nbsp;after&nbsp;&lt;?php&nbsp;echo&nbsp;date(&quot;D&nbsp;M&nbsp;j&nbsp;G:i:s&nbsp;T&nbsp;Y&quot;,&nbsp;(int)$info[&#039;starttime&#039;]&nbsp;+&nbsp;(int)$info[&#039;reviewtime&#039;]);&nbsp;?&gt;&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif&nbsp;($rangelow&nbsp;&gt;=&nbsp;$rangehigh&nbsp;&amp;&amp;&nbsp;$numnums&nbsp;!=&nbsp;0)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;The&nbsp;number&nbsp;range&nbsp;is&nbsp;invalid.&lt;/b&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif&nbsp;($numnums&nbsp;&lt;&nbsp;0&nbsp;||&nbsp;$randlines1&nbsp;&lt;&nbsp;0&nbsp;||&nbsp;$randlines2&nbsp;&lt;&nbsp;0&nbsp;||&nbsp;$randlines3&nbsp;&lt;&nbsp;0)
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;We&nbsp;couldn&#039;t&nbsp;possibly&nbsp;generate&nbsp;a&nbsp;NEGATIVE&nbsp;amount&nbsp;of&nbsp;random&nbsp;numbers...&lt;/b&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif&nbsp;($numnums&nbsp;&gt;&nbsp;1000&nbsp;||&nbsp;$randlines1&nbsp;&gt;&nbsp;1000&nbsp;||&nbsp;$randlines2&nbsp;&gt;&nbsp;1000&nbsp;||&nbsp;$randlines3&nbsp;&gt;&nbsp;1000)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Sorry,&nbsp;we&nbsp;can&nbsp;only&nbsp;generate&nbsp;1000&nbsp;random&nbsp;numbers&nbsp;at&nbsp;a&nbsp;time.&lt;/b&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif(!AllFilesUnder50())
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Sorry,&nbsp;maximum&nbsp;file&nbsp;size&nbsp;is&nbsp;50MB.&lt;/b&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif($noLineRepeat&nbsp;&amp;&amp;&nbsp;(!EnoughLines($file1path,&nbsp;$randlines1)&nbsp;||&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!EnoughLines($file2path,&nbsp;$randlines2)&nbsp;||&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!EnoughLines($file3path,&nbsp;$randlines3)))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;One&nbsp;of&nbsp;the&nbsp;files&nbsp;doesn&#039;t&nbsp;have&nbsp;enough&nbsp;lines&nbsp;to&nbsp;be&nbsp;able&nbsp;to&nbsp;choose&nbsp;the&nbsp;correct&nbsp;number&nbsp;of&nbsp;lines.&lt;/b&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($_POST[&#039;confirmed&#039;]&nbsp;==&nbsp;&quot;true&quot;)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;=&nbsp;&quot;DRAWING&nbsp;NUMBER:&nbsp;$drawingnum\n&quot;;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;DRAWING&nbsp;DATE:&nbsp;&quot;&nbsp;.&nbsp;date(&quot;D&nbsp;M&nbsp;j&nbsp;G:i:s&nbsp;T&nbsp;Y&quot;)&nbsp;.&nbsp;&quot;\n&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;AMOUNT&nbsp;OF&nbsp;NUMBERS:&nbsp;$numnums\n&quot;;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;RANGE:&nbsp;$rangelow&nbsp;TO&nbsp;$rangehigh\n&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;NAME:&nbsp;$name\n&quot;;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;DESCRIPTION:\n$description\n\n&quot;;
+</div></li><li><div class="div1">&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ctype_xdigit($file1hash)&nbsp;&amp;&amp;&nbsp;file_exists(&quot;/tmp/$file1hash&quot;))
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;FILE1&nbsp;SHA256:&nbsp;$file1hash\n\n&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;GetRandomLinesOutput(&quot;/tmp/$file1hash&quot;,&nbsp;$randlines1,&nbsp;$noLineRepeat);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ctype_xdigit($file1hash)&nbsp;&amp;&amp;&nbsp;file_exists(&quot;/tmp/$file1hash&quot;))
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;FILE1&nbsp;SHA256:&nbsp;$file1hash\n\n&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;GetRandomLinesOutput(&quot;/tmp/$file1hash&quot;,&nbsp;$randlines1,&nbsp;$noLineRepeat);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ctype_xdigit($file1hash)&nbsp;&amp;&amp;&nbsp;file_exists(&quot;/tmp/$file1hash&quot;))
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;FILE1&nbsp;SHA256:&nbsp;$file1hash\n\n&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;GetRandomLinesOutput(&quot;/tmp/$file1hash&quot;,&nbsp;$randlines1,&nbsp;$noLineRepeat);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for($i&nbsp;=&nbsp;1;&nbsp;$i&nbsp;&lt;=&nbsp;$numnums;&nbsp;$i++)
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$randsrc&nbsp;=&nbsp;mcrypt_create_iv(32,&nbsp;MCRYPT_DEV_URANDOM);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$randnum&nbsp;=&nbsp;SelectRandomNumber($randsrc,&nbsp;$rangelow,&nbsp;$rangehigh);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$srchex&nbsp;=&nbsp;bin2hex($randsrc);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;RANDOM&nbsp;NUMBER&nbsp;NUMBER&nbsp;$i\nSOURCE&nbsp;DATA:&nbsp;$srchex\nCHOSEN&nbsp;NUMBER:&nbsp;$randnum\n\n&quot;;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$msafeprintout&nbsp;=&nbsp;mysql_real_escape_string($printout);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysql_query(&quot;UPDATE&nbsp;drawings&nbsp;SET&nbsp;complete=&#039;1&#039;,&nbsp;printout=&#039;$msafeprintout&#039;&nbsp;WHERE&nbsp;drawingnum=&#039;$drawingnum&#039;&quot;);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$url&nbsp;=&nbsp;&quot;http://ossbox.com/trustedthirdparty.htm?drawingnum=$drawingnum&quot;;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#66FF99;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Drawing&nbsp;Complete!&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follow&nbsp;this&nbsp;URL&nbsp;to&nbsp;see&nbsp;the&nbsp;results:&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&lt;?php&nbsp;echo&nbsp;$url;&nbsp;?&gt;&quot;&gt;&lt;?php&nbsp;echo&nbsp;$url;&nbsp;?&gt;&lt;/a&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#66FF99;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Please&nbsp;Confirm&nbsp;Information&nbsp;for&nbsp;Drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$drawingnum;&nbsp;?&gt;...&lt;/b&gt;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Name:&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php&nbsp;echo&nbsp;htmlentities($name,&nbsp;ENT_QUOTES);&nbsp;?&gt;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Description:&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php&nbsp;echo&nbsp;htmlentities($description,&nbsp;ENT_QUOTES);&nbsp;?&gt;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;File1:&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php&nbsp;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;GetFileFileInfoHTML(&quot;file1&quot;);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&quot;&lt;br&nbsp;/&gt;Random&nbsp;Lines:&nbsp;$randlines1&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;File2:&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;GetFileFileInfoHTML(&quot;file2&quot;);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&quot;&lt;br&nbsp;/&gt;Random&nbsp;Lines:&nbsp;$randlines2&quot;;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;File3:&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;GetFileFileInfoHTML(&quot;file3&quot;);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&quot;&lt;br&nbsp;/&gt;Random&nbsp;Lines:&nbsp;$randlines3&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Number&nbsp;Range:&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php&nbsp;echo&nbsp;&quot;$rangelow&nbsp;to&nbsp;$rangehigh&quot;;&nbsp;?&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Amount&nbsp;of&nbsp;Numbers:&lt;/b&gt;&lt;br&nbsp;/&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php&nbsp;echo&nbsp;$numnums;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form&nbsp;action=&quot;trustedthirdparty.htm&quot;&nbsp;method=&quot;post&quot;&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;These&nbsp;settings&nbsp;can&nbsp;NOT&nbsp;be&nbsp;changed&nbsp;once&nbsp;the&nbsp;drawing&nbsp;has&nbsp;been&nbsp;completed.&lt;/b&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;create&quot;&nbsp;value=&quot;These&nbsp;values&nbsp;are&nbsp;correct,&nbsp;draw&nbsp;my&nbsp;random&nbsp;numbers!&quot;&nbsp;/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;cancel&quot;&nbsp;value=&quot;Cancel&quot;&nbsp;/&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file1hash&nbsp;=&nbsp;&quot;&quot;;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file2hash&nbsp;=&nbsp;&quot;&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file3hash&nbsp;=&nbsp;&quot;&quot;;
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//move&nbsp;files&nbsp;to&nbsp;/tmp/sha256
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset($_FILES[&quot;file1&quot;][&quot;tmp_name&quot;])&nbsp;&amp;&amp;&nbsp;file_exists($_FILES[&quot;file1&quot;][&quot;tmp_name&quot;]))
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file1hash&nbsp;=&nbsp;hash(&quot;SHA256&quot;,&nbsp;$_FILES[&quot;file1&quot;][&quot;tmp_name&quot;]);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rename($_FILES[&quot;file1&quot;][&quot;tmp_name&quot;],&nbsp;&quot;/tmp/$file1hash&quot;);&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset($_FILES[&quot;file2&quot;][&quot;tmp_name&quot;])&nbsp;&amp;&amp;&nbsp;file_exists($_FILES[&quot;file2&quot;][&quot;tmp_name&quot;]))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file2hash&nbsp;=&nbsp;hash(&quot;SHA256&quot;,&nbsp;$_FILES[&quot;file2&quot;][&quot;tmp_name&quot;]);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rename($_FILES[&quot;file2&quot;][&quot;tmp_name&quot;],&nbsp;&quot;/tmp/$file2hash&quot;);&nbsp;&nbsp;&nbsp;&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset($_FILES[&quot;file3&quot;][&quot;tmp_name&quot;])&nbsp;&amp;&amp;&nbsp;file_exists($_FILES[&quot;file3&quot;][&quot;tmp_name&quot;]))
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$file3hash&nbsp;=&nbsp;hash(&quot;SHA256&quot;,&nbsp;$_FILES[&quot;file3&quot;][&quot;tmp_name&quot;]);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rename($_FILES[&quot;file3&quot;][&quot;tmp_name&quot;],&nbsp;&quot;/tmp/$file3hash&quot;);&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;confirmed&quot;&nbsp;value=&quot;true&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;drawingnumber&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($drawingnum);&nbsp;?&gt;&quot;&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;passcode&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($passcode);&nbsp;?&gt;&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;name&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($name);&nbsp;?&gt;&quot;&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;description&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($description);&nbsp;?&gt;&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;file1hash&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($file1hash);&nbsp;?&gt;&quot;&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;file2hash&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($file2hash);&nbsp;?&gt;&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;file3hash&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($file3hash);&nbsp;?&gt;&quot;&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;randlines1&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($randlines1);&nbsp;?&gt;&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;randlines2&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($randlines2);&nbsp;?&gt;&quot;&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;randlines3&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($randlines3);&nbsp;?&gt;&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;chosentwice&quot;&nbsp;value=&quot;&lt;?php&nbsp;if(!$noLineRepeat)&nbsp;echo&nbsp;&quot;true&quot;;&nbsp;?&gt;&quot;&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;lowval&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($rangelow);&nbsp;?&gt;&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;highval&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($rangehigh);&nbsp;?&gt;&quot;&nbsp;/&gt;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;numgen&quot;&nbsp;value=&quot;&lt;?php&nbsp;echo&nbsp;htmlentities($numnums);&nbsp;?&gt;&quot;&nbsp;/&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;background-color:&nbsp;#FF0033;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;black;&nbsp;margin:20px;&nbsp;padding:10px;&quot;&gt;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Drawing&nbsp;#&lt;?php&nbsp;echo&nbsp;$drawingnum&nbsp;?&gt;&nbsp;does&nbsp;not&nbsp;exist.&lt;/b&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;}
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;GetFileChecksum($postname)
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset($_FILES[$postname][&quot;tmp_name&quot;])&nbsp;&amp;&amp;&nbsp;file_exists($_FILES[$postname][&quot;tmp_name&quot;]))
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;hash_file(&quot;SHA256&quot;,&nbsp;$_FILES[$postname][&quot;tmp_name&quot;]);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;NO&nbsp;FILE&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;GetFileSizeHR($postname)
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset($_FILES[$postname][&quot;tmp_name&quot;])&nbsp;&amp;&amp;&nbsp;file_exists($_FILES[$postname][&quot;tmp_name&quot;]))
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;format_bytes(filesize($_FILES[$postname][&quot;tmp_name&quot;]));
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;NO&nbsp;FILE&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;format_bytes($size)&nbsp;{
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$units&nbsp;=&nbsp;array(&#039;&nbsp;B&#039;,&nbsp;&#039;&nbsp;KB&#039;,&nbsp;&#039;&nbsp;MB&#039;,&nbsp;&#039;&nbsp;GB&#039;,&nbsp;&#039;&nbsp;TB&#039;);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;($i&nbsp;=&nbsp;0;&nbsp;$size&nbsp;&gt;=&nbsp;1024&nbsp;&amp;&amp;&nbsp;$i&nbsp;&lt;&nbsp;4;&nbsp;$i++)&nbsp;$size&nbsp;/=&nbsp;1024;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;round($size,&nbsp;2).$units[$i];
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;GetFileName($postname)
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset($_FILES[$postname][&quot;name&quot;])&nbsp;&amp;&amp;&nbsp;file_exists($_FILES[$postname][&quot;tmp_name&quot;]))
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$_FILES[$postname][&quot;name&quot;];
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;NO&nbsp;FILE&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;GetFileFileInfoHTML($postname)
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$filename&nbsp;=&nbsp;htmlentities(GetFileName($postname),&nbsp;ENT_QUOTES);
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$filesize&nbsp;=&nbsp;htmlentities(GetFileSizeHR($postname),&nbsp;ENT_QUOTES);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$filesha256&nbsp;=&nbsp;htmlentities(GetFileChecksum($postname),&nbsp;ENT_QUOTES);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&quot;Name:&nbsp;$filename&nbsp;&lt;br&nbsp;/&gt;Size:&nbsp;$filesize&nbsp;&lt;br&nbsp;/&gt;SHA256:&nbsp;$filesha256&quot;;
+
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;AllFilesUnder50()
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//true&nbsp;when&nbsp;the&nbsp;file&nbsp;doesn&#039;t&nbsp;exist&nbsp;or&nbsp;the&nbsp;filesize&nbsp;is&nbsp;under&nbsp;50mb
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;!file_exists($_FILES[&quot;file1&quot;][&quot;tmp_name&quot;])&nbsp;||&nbsp;filesize($_FILES[&quot;file1&quot;][&quot;tmp_name&quot;])&nbsp;&lt;&nbsp;1024&nbsp;*&nbsp;1024&nbsp;*&nbsp;50&nbsp;&amp;&amp;&nbsp;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!file_exists($_FILES[&quot;file2&quot;][&quot;tmp_name&quot;])&nbsp;||&nbsp;filesize($_FILES[&quot;file2&quot;][&quot;tmp_name&quot;])&nbsp;&lt;&nbsp;1024&nbsp;*&nbsp;1024&nbsp;*&nbsp;50&nbsp;&amp;&amp;&nbsp;
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!file_exists($_FILES[&quot;file3&quot;][&quot;tmp_name&quot;])&nbsp;||&nbsp;filesize($_FILES[&quot;file3&quot;][&quot;tmp_name&quot;])&nbsp;&lt;&nbsp;1024&nbsp;*&nbsp;1024&nbsp;*&nbsp;50;
+</div></li><li><div class="div0">&nbsp;}
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;//convert&nbsp;the&nbsp;32&nbsp;random&nbsp;bytes&nbsp;to&nbsp;a&nbsp;number&nbsp;by&nbsp;computing&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;huge&nbsp;number&nbsp;(32&nbsp;bytes,&nbsp;base&nbsp;256)&nbsp;mod&nbsp;the&nbsp;size&nbsp;range
+
+</div></li><li><div class="div1">&nbsp;function&nbsp;SelectRandomNumber($randombinary,&nbsp;$low,&nbsp;$high)
+</div></li><li><div class="div0">&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$mod&nbsp;=&nbsp;abs($high&nbsp;-&nbsp;$low);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$number&nbsp;=&nbsp;0;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for($i&nbsp;=&nbsp;0;&nbsp;$i&nbsp;&lt;&nbsp;32;&nbsp;$i++)
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$number&nbsp;=&nbsp;($number&nbsp;+&nbsp;&nbsp;ord($randombinary[$i])&nbsp;*&nbsp;powmod(256,&nbsp;$i,&nbsp;$mod))&nbsp;%&nbsp;$mod;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$number&nbsp;=&nbsp;mt_rand()&nbsp;%&nbsp;$mod;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$low&nbsp;+&nbsp;$number;
+</div></li><li><div class="div1">&nbsp;}
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;function&nbsp;powmod($base,&nbsp;$exp,&nbsp;$mod)
+</div></li><li><div class="div0">&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$res&nbsp;=&nbsp;1;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for($i&nbsp;=&nbsp;0;&nbsp;$i&nbsp;&lt;&nbsp;$exp;&nbsp;$i++)
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$res&nbsp;=&nbsp;($res&nbsp;*&nbsp;$base)&nbsp;%&nbsp;$mod;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$res;
+</div></li><li><div class="div1">&nbsp;}
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;function&nbsp;GetRandomFileLine($filepath,&nbsp;$exclude)
+</div></li><li><div class="div0">&nbsp;{
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$linecount&nbsp;=&nbsp;CountFileLines($filepath);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$randsrc&nbsp;=&nbsp;mcrypt_create_iv(32,&nbsp;MCRYPT_DEV_URANDOM);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$srchex&nbsp;=&nbsp;bin2hex($randsrc);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$randline&nbsp;=&nbsp;SelectRandomNumber($randsrc,&nbsp;0,&nbsp;$linecount&nbsp;-&nbsp;1);
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(in_array($randline,&nbsp;$exclude))&nbsp;//recursivly&nbsp;keep&nbsp;selecting&nbsp;random&nbsp;lines&nbsp;until&nbsp;we&nbsp;get&nbsp;one&nbsp;that&nbsp;hasn&#039;t&nbsp;been&nbsp;chosen&nbsp;yet
+
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;GetRandomFileLine($filepath,&nbsp;$exclude);
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$linetext&nbsp;=&nbsp;GetLineText($filepath,&nbsp;$randline);
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array($randline,&nbsp;$srchex,&nbsp;$linetext);
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;GetLineText($filepath,&nbsp;$lineidx)
+
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$fh&nbsp;=&nbsp;fopen($filepath,&nbsp;&#039;r&#039;);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$i&nbsp;=&nbsp;0;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(!feof($fh))
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$line&nbsp;=&nbsp;fgets($fh,&nbsp;1000);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($i&nbsp;==&nbsp;$lineidx)
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$line;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$i++;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose($fh);
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$i;
+</div></li><li><div class="div1">&nbsp;}
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;function&nbsp;CountFileLines($filepath)
+</div></li><li><div class="div0">&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(is_dir($filepath))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$fh&nbsp;=&nbsp;fopen($filepath,&nbsp;&#039;r&#039;);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$i&nbsp;=&nbsp;0;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(!feof($fh))
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fgets($fh);&nbsp;//advance&nbsp;to&nbsp;the&nbsp;next&nbsp;line
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$i++;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose($fh);
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$i;
+</div></li><li><div class="div0">&nbsp;}
+
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;function&nbsp;EnoughLines($path,&nbsp;$num)
+</div></li><li><div class="div1">&nbsp;{
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;!file_exists($path)&nbsp;||&nbsp;$num&nbsp;==&nbsp;0&nbsp;||&nbsp;&nbsp;CountFileLines($path)&nbsp;&gt;&nbsp;$num;
+</div></li><li><div class="div1">&nbsp;}
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;function&nbsp;GetRandomLinesOutput($path,&nbsp;$numlines,&nbsp;$noLineRepeat)
+
+</div></li><li><div class="div0">&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$exclude&nbsp;=&nbsp;array();
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;=&nbsp;&quot;&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for($i&nbsp;=&nbsp;1;&nbsp;$i&nbsp;&lt;=&nbsp;$numlines;&nbsp;$i++)
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list($randnum,&nbsp;$sourcehex,&nbsp;$linepreview)&nbsp;=&nbsp;GetRandomFileLine($path,&nbsp;$exclude);
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if($noLineRepeat)
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$exclude[]&nbsp;=&nbsp;$randnum;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;FILE1&nbsp;RANDOM&nbsp;LINE&nbsp;$i:\n&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;SOURCE&nbsp;DATA:&nbsp;$sourcehex\n&quot;;
+
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;RANDOM&nbsp;LINE&nbsp;NUMBER&nbsp;(FILE1):&nbsp;$randnum\n&quot;;
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$printout&nbsp;.=&nbsp;&quot;LINE&nbsp;PREVIEW:&nbsp;$linepreview\n\n&quot;;
+</div></li><li><div class="div0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</div></li><li><div class="div1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$printout;
+
+</div></li><li><div class="div0">&nbsp;}
+</div></li><li><div class="div1">&nbsp;
+</div></li><li><div class="div0">&nbsp;?&gt;
+</div></li><li><div class="div1">&nbsp;&lt;form&nbsp;action=&quot;trustedthirdparty.htm#create&quot;&nbsp;method=&quot;post&quot;&nbsp;enctype=&quot;multipart/form-data&quot;&gt;
+</div></li><li><div class="div0">&nbsp;&lt;table&gt;
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;Drawing&nbsp;Number:&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;drawingnumber&quot;&nbsp;/&gt;&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;tr&gt;&lt;td&gt;Passcode:&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;passcode&quot;&nbsp;/&gt;&lt;/td&gt;&lt;/tr&gt;
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Drawing&nbsp;Info&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;tr&gt;&lt;td&gt;Name:&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;name&quot;&nbsp;/&gt;&lt;/td&gt;&lt;/tr&gt;
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;Description:&lt;/td&gt;&lt;td&gt;&lt;textarea&nbsp;cols=&quot;50&quot;&nbsp;rows=&quot;10&quot;&nbsp;name=&quot;description&quot;&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;tr&gt;&lt;td&gt;File&nbsp;1&nbsp;(50MB&nbsp;Max):&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;file&quot;&nbsp;name=&quot;file1&quot;&nbsp;/&gt;&nbsp;Choose&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;size=&quot;2&quot;&nbsp;name=&quot;randlines1&quot;&nbsp;value=&quot;&quot;&nbsp;/&gt;&nbsp;random&nbsp;line(s)*&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;File&nbsp;2&nbsp;(50MB&nbsp;Max):&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;file&quot;&nbsp;name=&quot;file2&quot;&nbsp;/&gt;&nbsp;Choose&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;size=&quot;2&quot;&nbsp;name=&quot;randlines2&quot;&nbsp;value=&quot;&quot;&nbsp;/&gt;&nbsp;random&nbsp;line(s)*&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;tr&gt;&lt;td&gt;File&nbsp;3&nbsp;(50MB&nbsp;Max):&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;file&quot;&nbsp;name=&quot;file3&quot;&nbsp;/&gt;&nbsp;Choose&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;size=&quot;2&quot;&nbsp;name=&quot;randlines3&quot;&nbsp;value=&quot;&quot;&nbsp;/&gt;&nbsp;random&nbsp;line(s)*&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;chosentwice&quot;&nbsp;value=&quot;true&quot;&nbsp;/&gt;&nbsp;Allow&nbsp;lines&nbsp;to&nbsp;be&nbsp;chosen&nbsp;twice&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Random&nbsp;Numbers&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;Number&nbsp;Range:&lt;/td&gt;&lt;td&gt;From&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;size=&quot;9&quot;&nbsp;name=&quot;lowval&quot;&nbsp;/&gt;&nbsp;to&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;size=&quot;9&quot;&nbsp;name=&quot;highval&quot;&nbsp;/&gt;&nbsp;(inclusive,&nbsp;Range:&nbsp;-1000000000&nbsp;to&nbsp;+1000000000)&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div0">&nbsp;&lt;tr&gt;&lt;td&gt;Amount&nbsp;of&nbsp;Numbers:&lt;/td&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;numgen&quot;&nbsp;size=&quot;9&quot;&nbsp;/&gt;&nbsp;(Max:&nbsp;1000)&lt;/td&gt;&lt;/tr&gt;
+
+</div></li><li><div class="div1">&nbsp;&lt;tr&gt;&lt;td&gt;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;create&quot;&nbsp;value=&quot;Draw&nbsp;Random&nbsp;Number&quot;&nbsp;/&gt;&lt;/td&gt;&lt;/tr&gt;
+</div></li><li><div class="div0">&nbsp;&lt;/table&gt;
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;*&nbsp;for&nbsp;random&nbsp;lines&nbsp;to&nbsp;be&nbsp;chosen,&nbsp;the&nbsp;file&nbsp;must&nbsp;be&nbsp;in&nbsp;plaintext&nbsp;format&nbsp;(ASCII&nbsp;text&nbsp;only&nbsp;file).&nbsp;Maximum&nbsp;line&nbsp;length&nbsp;is&nbsp;1000&nbsp;characters.
+
+</div></li><li><div class="div1">&nbsp;&lt;/form&gt;
+</div></li><li><div class="div0">&nbsp;
+</div></li><li><div class="div1">&nbsp;&lt;h3&gt;Instructions&nbsp;to&nbsp;Contest&nbsp;Organizers&lt;/h3&gt;
+</div></li><li><div class="div0">&nbsp;First,&nbsp;you&nbsp;will&nbsp;have&nbsp;to&nbsp;reserve&nbsp;a&nbsp;drawing&nbsp;number&nbsp;at&nbsp;least&nbsp;24&nbsp;hours&nbsp;before&nbsp;you&nbsp;want&nbsp;to&nbsp;do&nbsp;the&nbsp;drawing.&nbsp;This&nbsp;lets&nbsp;your&nbsp;clients&nbsp;ensure&nbsp;that&nbsp;you&nbsp;didn&#039;t&nbsp;just&nbsp;repeat&nbsp;the&nbsp;drawing&nbsp;until&nbsp;you&nbsp;got&nbsp;the&nbsp;results&nbsp;that&nbsp;you&nbsp;wanted.&nbsp;You&nbsp;must&nbsp;publish&nbsp;the&nbsp;drawing&nbsp;number&nbsp;and&nbsp;instruct&nbsp;your&nbsp;clients&nbsp;to&nbsp;write&nbsp;down&nbsp;the&nbsp;number&nbsp;BEFORE&nbsp;the&nbsp;drawing&nbsp;takes&nbsp;place.&nbsp;When&nbsp;you&nbsp;create&nbsp;a&nbsp;drawing&nbsp;number,&nbsp;you&nbsp;will&nbsp;be&nbsp;given&nbsp;a&nbsp;passcode&nbsp;to&nbsp;prevent&nbsp;someone&nbsp;else&nbsp;from&nbsp;being&nbsp;able&nbsp;to&nbsp;steal&nbsp;your&nbsp;drawing&nbsp;number.&nbsp;Write&nbsp;this&nbsp;passcode&nbsp;down&nbsp;and&nbsp;keep&nbsp;it&nbsp;locked&nbsp;away&nbsp;until&nbsp;you&nbsp;are&nbsp;ready&nbsp;to&nbsp;do&nbsp;the&nbsp;drawing.
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;At&nbsp;least&nbsp;24&nbsp;hours&nbsp;after&nbsp;you&nbsp;have&nbsp;reserved&nbsp;your&nbsp;drawing&nbsp;number,&nbsp;you&nbsp;will&nbsp;be&nbsp;able&nbsp;to&nbsp;do&nbsp;the&nbsp;actual&nbsp;drawing.&nbsp;You&nbsp;will&nbsp;fill&nbsp;out&nbsp;the&nbsp;&quot;Step&nbsp;2&quot;&nbsp;form&nbsp;to&nbsp;complete&nbsp;the&nbsp;drawing.&nbsp;
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;The&nbsp;form&nbsp;requires&nbsp;that&nbsp;you&nbsp;enter&nbsp;a&nbsp;description.&nbsp;The&nbsp;description&nbsp;should&nbsp;describe&nbsp;&lt;b&gt;as&nbsp;clearly&nbsp;as&nbsp;possible&lt;/b&gt;&nbsp;how&nbsp;you&nbsp;will&nbsp;use&nbsp;the&nbsp;random&nbsp;numbers&nbsp;to&nbsp;select&nbsp;a&nbsp;winner.&nbsp;These&nbsp;steps&nbsp;should&nbsp;be&nbsp;easily&nbsp;reproducible.&nbsp;For&nbsp;example&nbsp;&quot;The&nbsp;random&nbsp;number&nbsp;will&nbsp;be&nbsp;the&nbsp;user-id&nbsp;of&nbsp;the&nbsp;winner&quot;&nbsp;or&nbsp;&quot;The&nbsp;first&nbsp;randomly&nbsp;selected&nbsp;line&nbsp;in&nbsp;file&nbsp;1&nbsp;will&nbsp;be&nbsp;the&nbsp;winner&#039;s&nbsp;username,&nbsp;the&nbsp;second&nbsp;random&nbsp;line&nbsp;will&nbsp;choose&nbsp;the&nbsp;runner&nbsp;up.&quot;&nbsp;Whatever&nbsp;process&nbsp;you&nbsp;use&nbsp;to&nbsp;decide&nbsp;the&nbsp;winner,&nbsp;it&nbsp;should&nbsp;not&nbsp;have&nbsp;any&nbsp;biases,&nbsp;and&nbsp;your&nbsp;clients&nbsp;should&nbsp;be&nbsp;able&nbsp;to&nbsp;easily&nbsp;reproduce&nbsp;the&nbsp;selection&nbsp;based&nbsp;on&nbsp;the&nbsp;random&nbsp;number(s).&nbsp;&lt;b&gt;The&nbsp;more&nbsp;complicated&nbsp;you&nbsp;make&nbsp;the&nbsp;process,&nbsp;the&nbsp;less&nbsp;your&nbsp;clients&nbsp;will&nbsp;trust&nbsp;the&nbsp;results.&lt;/b&gt;
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;The&nbsp;form&nbsp;allows&nbsp;you&nbsp;to&nbsp;submit&nbsp;up&nbsp;to&nbsp;3&nbsp;files.&nbsp;Only&nbsp;the&nbsp;&lt;a&nbsp;href=&quot;https://secure.wikimedia.org/wikipedia/simple/wiki/Cryptographic_hash_function&quot;&gt;SHA256&lt;/a&gt;&nbsp;checksum&nbsp;of&nbsp;these&nbsp;files&nbsp;will&nbsp;be&nbsp;saved&nbsp;in&nbsp;TRENT.&nbsp;You&nbsp;will&nbsp;have&nbsp;to&nbsp;distribute&nbsp;these&nbsp;files&nbsp;yourself,&nbsp;but&nbsp;your&nbsp;clients&nbsp;can&nbsp;verify&nbsp;that&nbsp;you&nbsp;havn&#039;t&nbsp;changed&nbsp;them&nbsp;by&nbsp;checking&nbsp;the&nbsp;&lt;a&nbsp;href=&quot;https://secure.wikimedia.org/wikipedia/simple/wiki/Cryptographic_hash_function&quot;&gt;SHA256&lt;/a&gt;&nbsp;hash.&nbsp;Make&nbsp;sure&nbsp;you&nbsp;respect&nbsp;your&nbsp;client&#039;s&nbsp;privacy.&nbsp;Don&#039;t&nbsp;publish&nbsp;everyone&#039;s&nbsp;email&nbsp;address.&nbsp;Instead,&nbsp;use&nbsp;their&nbsp;usernames&nbsp;for&nbsp;some&nbsp;popular&nbsp;web&nbsp;service&nbsp;(e.g.&nbsp;youtube&nbsp;or&nbsp;twitter).
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;After&nbsp;you&nbsp;do&nbsp;the&nbsp;drawing,&nbsp;you&nbsp;will&nbsp;be&nbsp;able&nbsp;to&nbsp;send&nbsp;your&nbsp;clients&nbsp;to&nbsp;the&nbsp;drawing&nbsp;page&nbsp;so&nbsp;they&nbsp;can&nbsp;follow&nbsp;your&nbsp;instructions&nbsp;in&nbsp;the&nbsp;description&nbsp;to&nbsp;verify&nbsp;the&nbsp;results&nbsp;you&nbsp;claim.
+
+</div></li><li><div class="div1">&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;
+</div></li><li><div class="div0">&nbsp;If&nbsp;you&nbsp;have&nbsp;any&nbsp;questions&nbsp;about&nbsp;how&nbsp;this&nbsp;works&nbsp;or&nbsp;if&nbsp;you&nbsp;need&nbsp;help,&nbsp;please&nbsp;&lt;a&nbsp;href=&quot;contact.htm&quot;&gt;contact&nbsp;me&lt;/a&gt;.&nbsp;I&#039;ll&nbsp;be&nbsp;glad&nbsp;to&nbsp;help.</div></li></ol></div>

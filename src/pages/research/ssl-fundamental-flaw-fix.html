@@ -1,0 +1,38 @@
+<h1>Improving the SSL PKI</h1>
+We now realize that the Public Key Infrastructure (PKI) used by the industry standard for secure connections over the internet, SSL, is inherently insecure. In any sort of Certificate Authority based PKI, you either have to trust and give ultimate power to ONE organization, or trust MANY organizations and give the same ultimate power to <em>all</em> of them. Both are equally insecure, and there is no "in between". It's clear that we need to redesign the system so that:
+<ol>
+	<li>We only trust a minimal amount of organizations.</li>
+	<li>The organizations we trust don't have ultimate power.</li>
+</ol>
+<h2>A Shift in Thinking</h2>
+Instead of debating who we should trust, let's think about who we <em>already</em> trust. 
+<br /><br />
+Everyone who uses a web browser already trusts their <b>browser's manufacturer</b>. If you use Firefox, you trust Mozilla. If you use Internet Explorer, you trust Microsoft. If you use Chrome, you trust Google. Why? Because you're running <b>their code</b> in your computer. If they wanted to, they could insert a backdoor into their software to monitor all of your web traffic, subverting SSL. Whether we like it or not, we have to trust our browser's manufacturer not to do that sort of thing.
+<br /><br />
+Since we trust our browser manufacturer, there is no need to trust thousands of certificate authorities. We can create a much more secure PKI scheme for SSL based on the trust we already have for our web browser's manufacturer, and a network similar to a Web of Trust.
+
+<h3>Combining the Certificate Authority with the Web of Trust</h3>
+My idea is to combine our existing CA based PKI with a web of trust. Ideally, I would like our browser vendors to become the only CA we trust. Realistically, that's impossible because there is too much profit to be made in selling certificates, and companies like Microsoft, Mozilla, and Google are not security companies, so they may be incapable of properly running a CA. For the sake of simplicity, I'll assume all of our browsers trust a single CA.
+
+<h4>Security Factor #1: Traditional Certificate Authority</h4>
+The traditional CA PKI isn't completely useless. It still gives us moderate degree of security. We just need to add a second security factor to make up for it's problems.
+<h4>Security Factor #2: Peer-to-Peer "WOT"</h4>
+On top of the CA system, we need to have a P2P network PKI that provides <b>redundant security</b>. This P2P network is similar to a WOT, but has some major differences. The network's goal isn't to provide authentication to peers within the network, but to cooperate to obtain strong authentication of servers outside the network.
+<br /><br />
+Everyone with a web browser will be a member of this network. Since this network will span the entire internet, we'll have to rely on the idea that attackers can't be everywhere at once. The idea is weak compared to strong cryptography, since it's certainly possible for a powerful government to be everywhere at once, but the sheer size of the P2P network will give us security.
+
+If we agree that an attacker can never be everywhere at once, we will agree that most non-encrypted communications will not be victims of man in the middle attacks.
+-getting the network started
+<br /><br />
+-using the network to authenticate sites
+<br /><br />
+<center><b>A Localized MITM Attack Prevented</b><br /><br />
+<img src="/images/newpki.png" alt="Additional SSL PKI - Peer to Peer PKI" title="Alternate SSL PKI - Peer to Peer PKI"/></center>
+
+<h4>Thinking Realistically</h4>
+- browser companies aren't security companies, so we should stick with CA
+- too much money in Cert selling
+
+-combine browser-is-ca with WOT
+-what about MTIM attacks close to the www server (can effect all visotors)
+-REDUNDANT SECURITY
