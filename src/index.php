@@ -387,8 +387,8 @@ switch($name)
 	case "password-policy-hall-of-shame":
 		$path = "research/hallofshame.html";
 		$TITLE = "Password Policy Hall of SHAME - OSSBox";
-		$META_DESCRIPTION = "List of websites and services that impose a maximum password length";
-		$META_KEYWORDS = "hall of shame, password hall of shame, maximum password length, restriction, insecure";
+		$META_DESCRIPTION = "List of websites and services that impose password restrictions and may be storing passwords in plaintext.";
+		$META_KEYWORDS = "hall of shame, password hall of shame, plaintext, password restrictions, maximum password length, restriction, insecure";
 		break;
 	case "gpucrack":
 		$path = "projects/gpucrack.html";
