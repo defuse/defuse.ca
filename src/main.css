@@ -125,6 +125,14 @@ text-decoration:underline;
 .div1
 {
 	background-color: #F0F0F0   ;
+	word-wrap: break-word;
+	min-width:750px;
+}
+
+.div0
+{
+	word-wrap: break-word;
+	min-width: 750px;
 }
 
 #footer {
