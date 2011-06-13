@@ -21,16 +21,19 @@
 	
 	<textarea name="data" rows="30" cols="40" style="width:100%;" >
 <?php
-$data = $_POST['data'];
-$data = htmlspecialchars(htmlspecialchars($_POST['data'], ENT_QUOTES), ENT_QUOTES); 
-if($_POST['br'] == "yes")
+if(isset($_POST['data']))
 {
-	$data = str_replace("\r\n", "\n", $data);
-	$data = str_replace("\r", "\n", $data);
-	$data = str_replace("\n", "<br />\n", $data);
+	$data = $_POST['data'];
+	$data = htmlspecialchars(htmlspecialchars($_POST['data'], ENT_QUOTES), ENT_QUOTES); 
+	if($_POST['br'] == "yes")
+	{
+		$data = str_replace("\r\n", "\n", $data);
+		$data = str_replace("\r", "\n", $data);
+		$data = str_replace("\n", "<br />\n", $data);
+	}
+	$data = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $data);
+	echo $data;
 }
-$data = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $data);
-echo $data;
 ?></textarea><br />
 	<input type="submit" name="sanitize" value="HTML-Sanitize Text" /><input type="checkbox" name="br" value="yes" checked="checked" />Replace newlines with &lt;br /&gt;
 </form>
