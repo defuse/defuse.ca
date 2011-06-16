@@ -28,6 +28,7 @@
 
 <center><strong><p><a href="http://www.grc.com/menu2/invitro.htm">http://www.grc.com/menu2/invitro.htm</a></p></strong></center>
 <a name="feedback">
+<h2>Feedback</h2>
 <?php
 if(isset($_POST['submit']))
 {
@@ -38,11 +39,10 @@ if(isset($_POST['submit']))
     $headers .= "Reply-To: $email\n";
     mail("firexware@ossbox.com", "OSSBOX.COM FEEDBACK", $message, $headers);
     ?>
-        <div style="background-color:#96ff96; padding:10px;">You feedback has been received, thank you VERY much.</div>
+        <div style="background-color:#96ff96; padding:10px; border: solid black 1px;">You feedback has been received, thank you VERY much.</div>
     <?
 }
 ?>
-<h2>Feedback</h2>
 <p>I always appreciate feedback, whether it's good or bad. You can send me feedback by submitting the following form.</p>
 <form action="/about.htm#feedback" method="POST">
 <table>
