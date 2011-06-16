@@ -27,3 +27,25 @@
 <p>The script free menu was created and released into the public domain by Steve Gibson. It supports nearly every browser, which is not an easy thing to accomplish. Just look at the code and you'll see how many hacks were necessary to make it work properly. You can find it by clicking the link below...</p>
 
 <center><strong><p><a href="http://www.grc.com/menu2/invitro.htm">http://www.grc.com/menu2/invitro.htm</a></p></strong></center>
+<a name="feedback">
+<?php
+if(isset($_POST['submit']))
+{
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['messagebody'];
+    $headers = "From: $name <$email>\n";
+    $headers .= "Reply-To: $email\n";
+    mail("firexware@ossbox.com", "OSSBOX.COM FEEDBACK", $message, $headers);
+}
+?>
+<h2>Feedback</h2>
+<p>I always appreciate feedback, whether it's good or bad. You can send me feedback by submitting the following form.</p>
+<form action="/about.htm#feedback" method="POST">
+<table>
+<tr><td><b>Your Name:</b></td><td><input type="text" name="name" maxlength="50" /> (optional)</td></tr>
+<tr><td><b>Your Email:</b></td><td><input type="text" name="email" maxlength="100" /> (optional, unless you want me to reply)</td></tr>
+<tr><td><b>Your Message:</b></td><td><textarea name="messagebody" rows="15" cols="80"></textarea></td></tr>
+<tr><td></td><td><input type="submit" name="submit" value="Submit Feedback" /></td><td>
+</table>
+</form>
