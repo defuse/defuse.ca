@@ -75,7 +75,6 @@ int main(int argc, char** argv)
  * n - the size of the square.
  * position - The current cell number.
  * Recursive depth: n^2
- * Complexity: O(n^4)
  */
 int makeLatin(int** square, int n, int position)
 {
