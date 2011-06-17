@@ -1,0 +1,195 @@
+<html>
+<head>
+	<title>Random Latin Squares in JS</title>
+<style type="text/css">
+
+#controls {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#latinsquare {
+	text-align:center;
+}
+
+#supersquare {
+	background-color: black;
+	color:black;
+	font-weight: bold;
+	margin: 0 auto;
+}
+
+#supersquare td {
+	padding: 10px;
+	border: solid white 1px;
+	text-align:center;
+}
+</style>
+</head>
+<body>
+
+<div id="controls">
+	Size: <input type="text" id="size" value="13" />
+	<input type="button" name="click" value="Generate" onclick="generate()"/>
+</div>
+
+<div id="latinsquare"></div>
+
+<script language="JavaScript">
+var ls;
+var startTime;
+function generate()
+{
+	var size = parseInt(document.getElementById("size").value);
+	if(size < 1)
+	{
+		alert('Integers greater than zero only please.');
+	}
+	startTime = new Date().getTime();
+	var latin = getRandomLatinSquare(size);
+	var timeTaken = new Date().getTime() - startTime;
+	document.getElementById("latinsquare").innerHTML = formatLatinSquare(latin);
+	document.getElementById("latinsquare").innerHTML += "<p>Completed in " + (timeTaken/1000) + "s</p>";
+}
+
+function getRandomLatinSquare(n)
+{
+	ls = new Array(n);
+	for(var i = 0; i < n; i++)
+	{
+		ls[i] = new Array(n);
+	}
+
+	for(var i = 0; i < n; i++)
+	{
+		for(var j = 0; j < n; j++)
+		{
+			ls[i][j] = Math.floor(Math.random() * n);
+		}
+	}
+	makeLatin(n, 0);
+	return ls;
+}
+
+function makeLatin(n, position)
+{
+	if(position == n * n)
+		return true;
+		
+	var row = Math.floor(position / n);
+	var col = position % n;
+
+	var oldValue = ls[row][col];
+	for(var c = 0; c < n; c++)
+	{
+		var dupeFound = false;
+		for(var i = 0; i < col && !dupeFound; i++)
+		{
+			if(ls[row][col] == ls[row][i])
+			{
+				dupeFound = true;
+			}
+		}
+
+		for(var i = 0; i < row && !dupeFound; i++)
+		{
+			if(ls[row][col] == ls[i][col])
+			{
+				dupeFound = true;
+			}
+		}
+
+		if(!dupeFound)
+		{
+			if(makeLatin(n, position+1))
+			{
+				return true;
+			}
+		}
+
+		ls[row][col] = (ls[row][col] + 1) % n;
+	}
+
+	ls[row][col] = oldValue;
+	return false;
+}
+
+function formatLatinSquare(square)
+{
+	var n = square.length;
+	var huestep = 1 / n;
+	
+	var strcat = [];
+	strcat.push("<table id=\"supersquare\">");
+	for(var i = 0; i < square.length; i++)
+	{
+		strcat.push("<tr>");
+		for(var j = 0; j < square[i].length; j++)
+		{
+			var hue = huestep * square[i][j];
+			var rgb = hsv2rgb(hue, 1, 1);
+			strcat.push("<td style=\"background-color: rgb(" + rgb['red'] + ", " + rgb['green'] + ", " + rgb['blue'] + ");\">");
+			strcat.push(square[i][j]);
+			strcat.push("</td>");
+		}
+		strcat.push("</tr>");
+	}
+	strcat.push("</table>");
+	return strcat.join('');
+}
+
+//Taken from: http://jsres.blogspot.com/2008/01/convert-hsv-to-rgb-equivalent.html
+function hsv2rgb(h,s,v) {
+// Adapted from http://www.easyrgb.com/math.html
+// hsv values = 0 - 1, rgb values = 0 - 255
+var r, g, b;
+var RGB = new Array();
+if(s==0){
+  RGB['red']=RGB['green']=RGB['blue']=Math.round(v*255);
+}else{
+  // h must be < 1
+  var var_h = h * 6;
+  if (var_h==6) var_h = 0;
+  //Or ... var_i = floor( var_h )
+  var var_i = Math.floor( var_h );
+  var var_1 = v*(1-s);
+  var var_2 = v*(1-s*(var_h-var_i));
+  var var_3 = v*(1-s*(1-(var_h-var_i)));
+  if(var_i==0){ 
+    var_r = v; 
+    var_g = var_3; 
+    var_b = var_1;
+  }else if(var_i==1){ 
+    var_r = var_2;
+    var_g = v;
+    var_b = var_1;
+  }else if(var_i==2){
+    var_r = var_1;
+    var_g = v;
+    var_b = var_3
+  }else if(var_i==3){
+    var_r = var_1;
+    var_g = var_2;
+    var_b = v;
+  }else if (var_i==4){
+    var_r = var_3;
+    var_g = var_1;
+    var_b = v;
+  }else{ 
+    var_r = v;
+    var_g = var_1;
+    var_b = var_2
+  }
+  //rgb results = 0 ÷ 255  
+  RGB['red']=Math.round(var_r * 255);
+  RGB['green']=Math.round(var_g * 255);
+  RGB['blue']=Math.round(var_b * 255);
+  }
+return RGB;  
+};
+
+</script>
+
+</body>
+</html>
