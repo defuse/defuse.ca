@@ -143,7 +143,7 @@ int makeLatin(int** square, int n, int position)
      * CLAIM: This will always produce a valid Latin Square
      * Proof: The algorithm will only move on to the next cell if the current cell is valid based on the previous cells.
      * So: The algorithm will reach level i + 1 only if all cells up to and including i are valid.
-     * So: When i reaches n^2, all cells up to and including n are in a valid Latin Square state.
+     * So: When i reaches n^2, all cells up to and including n^2-1 (the last cell) are in a valid Latin Square state.
      *
      * This algorithm will halt only when:
      * 1. An LS is found, or
