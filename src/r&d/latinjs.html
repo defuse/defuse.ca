@@ -35,22 +35,30 @@
 </div>
 
 <div id="latinsquare"></div>
+<div id="stacktrace"></div>
 
 <script language="JavaScript">
 var ls;
 var startTime;
+var stackhistory;
 function generate()
 {
 	var size = parseInt(document.getElementById("size").value);
 	if(size < 1)
 	{
 		alert('Integers greater than zero only please.');
+		return;
 	}
 	startTime = new Date().getTime();
+	stackhistory = [];
 	var latin = getRandomLatinSquare(size);
 	var timeTaken = new Date().getTime() - startTime;
 	document.getElementById("latinsquare").innerHTML = formatLatinSquare(latin);
-	document.getElementById("latinsquare").innerHTML += "<p>Completed in " + (timeTaken/1000) + "s</p>";
+	document.getElementById("latinsquare").innerHTML += "<center>Completed in " + (timeTaken/1000) + "s</center>";
+	document.getElementById("stacktrace").innerHTML = formatHistory(stackhistory, size);
+	stackhistory = null;
+	ls = null;
+	starttime = null;
 }
 
 function getRandomLatinSquare(n)
@@ -60,7 +68,7 @@ function getRandomLatinSquare(n)
 	{
 		ls[i] = new Array(n);
 	}
-
+	
 	for(var i = 0; i < n; i++)
 	{
 		for(var j = 0; j < n; j++)
@@ -74,6 +82,8 @@ function getRandomLatinSquare(n)
 
 function makeLatin(n, position)
 {
+	stackhistory.push(position);
+
 	if(position == n * n)
 		return true;
 		
@@ -106,6 +116,7 @@ function makeLatin(n, position)
 			{
 				return true;
 			}
+			stackhistory.push(position);
 		}
 
 		ls[row][col] = (ls[row][col] + 1) % n;
@@ -137,6 +148,30 @@ function formatLatinSquare(square)
 	}
 	strcat.push("</table>");
 	return strcat.join('');
+}
+
+function formatHistory(stackhistory, n)
+{
+	var hist = [];
+	hist.push("<div style=\"background-color:white;\">");
+	var histstep = 600 / (n * n + 1);
+	var histHeight = 300 / (n * n); //Doesn't work fully in IE, it won't do 1px high divs.
+	var histHueStep = 0.3 / (n * n); // from red to green
+	var depthChanges = stackhistory.length;
+	while(stackhistory.length >= 1)
+	{
+		var depth = stackhistory.shift();
+		var width = (depth+1) * histstep;
+		var hue = depth * histHueStep;
+		var rgb = hsv2rgb(hue, 1, 0.8);
+		hist.push("<div style=\"width: " +
+			Math.ceil(width) + "px; height: "+
+			Math.ceil(histHeight) +"px; background-color: rgb(" + 
+			rgb['red'] + ", " + rgb['green'] + ", " + rgb['blue'] + ");\">&nbsp;</div>");
+	}
+	hist.push("</div>");
+	hist.push("<p>Total: " + depthChanges + "</p>");
+	return hist.join('');
 }
 
 //Taken from: http://jsres.blogspot.com/2008/01/convert-hsv-to-rgb-equivalent.html
