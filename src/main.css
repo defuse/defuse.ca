@@ -79,6 +79,7 @@ table { margin:0; padding:0; text-align:left; font-size:10pt; }
 .majorlink{
 	color:white;
 	text-decoration: none;
+	font-size: 16px;
 }
 
 a:hover{

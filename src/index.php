@@ -604,13 +604,6 @@ header('Content-Type: text/html; charset=utf-8');
 	<a href="/"><img id="mastheadlogo" src="/images/ossbox_security.png"  alt="OSSBox Security" title="OSSBox Security Homepage" /></a>
 	<![endif]-->
 
-	<div style="position:absolute; left:460px; top:17px; color: #FFFFFF;">
-	<a class="majorlink" href="/pastebin.htm"><b>Pastebin</b></a>
-	&nbsp;&bull;&nbsp;
-	<a class="majorlink" href="/pdfcleaner.htm"><b>PDFCleaner</b></a>
-	&nbsp;&bull;&nbsp;
-	<a class="majorlink" href="http://crackstation.net/"><b>Hash Cracker</b></a>
-	</div>
 	
 </div>
 
