@@ -96,6 +96,10 @@ function makeLatin(n, position)
 	var oldValue = ls[row][col];
 
 	var randomOrder = getRandomOrder(n);
+
+	//TODO: It would probably be faster to get rid of the ones we KNOW 
+	// can't be LS here, since it would get rid of the need to check in the loop
+
 	for(var c = 0; c < n; c++)
 	{
 		ls[row][col] = randomOrder[c];
