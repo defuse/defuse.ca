@@ -638,7 +638,7 @@ header('Content-Type: text/html; charset=utf-8');
 			<li><a href="#"><span class="drop"><span>Utilities</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
 					<li><a href="/checksums.htm">&nbsp;Checksum Calculator</a></li>
-					<li><a href="/html-sanitize.htm">&nbsp;HTML Sanitizer</a></li>i
+					<li><a href="/html-sanitize.htm">&nbsp;HTML Sanitizer</a></li>
 				</ul>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 			</li>
