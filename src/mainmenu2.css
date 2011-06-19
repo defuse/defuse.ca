@@ -184,6 +184,7 @@ padding-right:15px;
 	width:13.5em;
 	color:black;                        /* this sets the unselected-text color */
 	background:black;         /* this sets our menu's effective "border" color */
+	border: solid #404040 1px;
 }
 
 .menu ul li:hover ul.leftbutton,
