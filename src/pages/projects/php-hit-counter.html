@@ -1,7 +1,7 @@
 <h1>"Privacy Aware" Unique Hit Counter for PHP</h1>
 <p>This PHP Class provides a hit counter that is able to track unique hits without recording the visitor's IP address in the database. It does so by recording the hash of the IP address and page name.</p>
 
-<p>By hashing the IP address with page name as salt, you prevent yourself from being able to track a user as they navigate your site. You also prevent yourself from being able to recover anyone's IP address without brute forcing the 2^32 possible IP addresses. In the case of IPv6, it becomes 2^128.</p>
+<p>By hashing the IP address with page name as salt, you prevent yourself from being able to track a user as they navigate your site. You also prevent yourself from being able to recover anyone's IP address without brute forcing the 2<sup>32</sup> possible IP addresses. In the case of IPv6, it becomes 2<sup>128</sup>.</p>
 
 <p>It is designed to be secure against SQL injection attacks. It is VERY easy to use; documentation is in the source file. It is licensed under the GNU GPL v3 so you cannot use this code in proprietary software.</p>
 <p><a href="/source/phpcount.php.txt">Download PHP Hit Counter Source Code</a></p>

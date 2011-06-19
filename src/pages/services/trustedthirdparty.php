@@ -30,7 +30,7 @@ mysql_select_db($dbname);
 <br />
 The FREE Third Party Drawing and RNG Service.
 </div>
-<div style="float:right;">
+<div style="text-align:right;">
 <?php
 echo "<p>UTC TIME: " . date("D M j G:i:s T Y") . "</p>";
 ?>
