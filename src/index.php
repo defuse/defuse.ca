@@ -604,11 +604,6 @@ header('Content-Type: text/html; charset=utf-8');
 	<a href="/"><img id="mastheadlogo" src="/images/ossbox_security.png"  alt="OSSBox Security" title="OSSBox Security Homepage" /></a>
 	<![endif]-->
 
-	<div style="position: absolute; top: 5px; right:5px; text-align:center;">
-	<a href="http://blog.ossbox.com/2011/06/mtgox-hacked.html" style="color:white; text-decoration: none;"><img src="/images/alert.gif" /><br />
-	Mt.Gox HACKED!</a>
-	</div>
-
 	
 </div>
 
