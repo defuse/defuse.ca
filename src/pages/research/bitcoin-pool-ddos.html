@@ -1,56 +1,58 @@
-<h1>Mining Pools Make BitCoin Vulnerable to DDoS Attacks</h1>
-<p>May 19, 2011</p>
-<p>BitCoin is getting more and more popular, so it's getting a lot harder for BitCoin miners to make money on their own. Their motivation to make profit gives them incentive to join a pool. This is a cause for concern because, as I will explain, it makes the BitCoin network more vulnerable to classical Distributed Denial of Service (DDoS) and other attacks.</p>
-
-<div style="background-color:#b8d0ff; padding:10px; border: solid black 1px;">
-If you haven't heard of BitCoin or BitCoin pools....
-<ul>
-	<li><a href="http://bitcoin.org/" >BitCoin Project Website</a></li>
-	<li><a href="http://media.grc.com/sn/sn-287.mp3">SecurityNow! Netcast - How BitCoin Works</a> (highly recommended!!!)</li>
-	<li><a href="https://secure.wikimedia.org/wikipedia/en/wiki/Bitcoin">BitCoin on Wikipedia</a></li>
-</ul>
-</div>
-
-<p>Suprisingly, about 75% of the BitCoin network's computing power comes from pools. The following pie chart that shows the hashrate distribution of the BitCoin network.</p>
+<h1>Centralization is Killing BitCoin</h1>
+<p>June 21, 2011</p>
+<p>
+BitCoin is a well-designed decentralized crypto-currency. As far as cryptographers know, BitCoin is absolutely secure and very robust as long as a single party cannot gain control of the majority of the network. We are now seeing an unintentional trend towards the centralization of BitCoin. Monopoly BitCoin services are beginning to emerge, and as BitCoin becomes more popular and more valuable, they are starting to be attacked. These attacks are now becoming a major concern for the health of the BitCoin currency and the security of BitCoin users.
+</p>
+<center>
+<img src="/images/bitcoin-monopoly.gif" alt="BitCoin Centralization" title="BitCoin Monopoly" />
+</center>
+<p>
+I first noticed the centralization trend when I saw that almost 50% of the entire network's computing power was concentrated in one mining pool - DeepBit. This kind of centralization directly contradicts one of BitCoin's core goals - to be decentralized. It's no surprise though, since implementing a centralized service is much easier than designing an entire peer to peer network just to provide the same functionality. Peer to peer is still relatively new technology. We haven't yet established a rock solid framework that makes P2P applications easy to develop. We opt to quickly develop a centralized service rather than spend months planning and implementing the P2P equivalent.
+</p>
 
 <center>
-<img src="/images/bitcoin-chart.png" alt="BitCoin Hashrate Distribution Pie Chart" title="BitCoin Hashrate Distribution" /><br />
+<img src="/images/bitcoin-chart.png" alt="BitCoin Computing Power Distribution" title="BitCoin Computing Power Distribution" /><br />
+BitCoin computing power distribution before the DeepBit attacks.<br />
 source: <a href="http://bitcoinwatch.com/">http://bitcoinwatch.com/</a>
 </center>
 
-<p>Deepbit, slush, and btcmine are the most powerful pools, togeather they make up more than two-thirds of the network's total hashing power. As powerful as these networks are, their operation is dependent upon only a handful of servers staying online. To join a pool, you configure your BitCoin mining client to connect to the pool's control server. That server tells your client what to do. If it goes down, your BitCoin client will sit there doing nothing, unable to donate its processing power to the network.</p>
 
-<p>Deepbit, the largest pool, has one main control server and a few "hot spare" backup servers. A DDoS attack from a large botnet would be sufficient to keep all of them offline for hours. If that happened, all of the miners using Deepbit would be disconnected. Almost half of the entire network's computing power would disappear instantly.</p>
+<p>
+The simplicity of building centralized services comes at a cost. I pointed out to the BitCoin community that if DeepBit was ever shut down, either by malicious attack or accidentally, all of it's users would be effectively disconnected from the BitCoin network. Their machines would remain idle, trying to reconnect to DeepBit until it came back online. During that time, DeepBit's 50% share of the network's computing power would be gone. The network's strength, as a whole, would be reduced by half.
+</p>
 
-<p>It's a problem because bad guys can make money by doing this. If they took down the top 5 pools, 75% of the network would disappear. After 2016 blocks, the remaining network would re-evaluate how fast the brute force challenges were being solved. It would notice the network as a whole is a lot less powerful, and would lower the difficulty of the challenges. In effect, everyone who was still on the network would start making money a lot faster.</p>
+<center>
+<img src="/images/bitcoin-ddos.png" alt="BitCoin DeepBit DDoS" title="BitCoin Deepbit DDos Attack" /><br />
+BitCoin computing power distribution during the DeepBit attacks.
+</center>
 
-<p>A dedicated attacker could use hacked webservers to bring down the pools and a large botnet to DoS the BitCoin users on a cable modems and dial-up connections. If they could keep everyone offline for 2016 blocks, they'd be making a LOT of money.</p>
 
-<h2>Is it really feasible?</h2>
-<p>Yes and No. It's definitely possible for an attacker to bring down the pools, but it would be a challenge to take it down long enough for the nodes on the network to adjust the challenge difficulty level. According to bitcoinwatch.com, 7.33 blocks are solved per hour on average (at the time of writing). It would take 275 hours (11 days) for 2016 blocks to be solved. So an attacker would have to keep the majority of the network offline for two weeks to make any kind of profit. It would actually take even longer considering the attacker would have to have enough computing power to solve the <em>rest</em> of the 2016 blocks himself. Not impossible, but very unlikely.</p>
+<p>
+Sure enough, DeepBit was hit with a Distributed Denial of Service (DDoS) attack. The service went offline for a few days, and during that time, as expected, much of the BitCoin network's computing power went missing. This should have been a wake up call to the BitCoin community that the ease of centralization is not worth the risk to the network. Centralization gives BitCoin a single point of failure, making it much less robust than it is intended to be.
+</p>
 
-<h2>Other Problems Caused by Pools</h2>
+<p>DDoS attacks aren't the only way centralized mining pools can hurt BitCoin. If one party obtains over 50% of the network's computing power (like DeepBit did), they can:</p>
 
-<p>Pools make the BitCoin network less reliable. They concentrate the majority of the network's resources into a single point of failure. A natural disaster could destroy the datacenter containing one of the pool's control servers, which would eliminate much of the networks' hashrate. Most users don't setup their miners to automatically start solo mining when the pool goes down, so the hashrate would be gone until that pool was back up.</p>
-
-<p>Consider what would happen if someone hacked a pool's servers. They'd be able to steal all the BitCoins that are waiting to be transfered to the pool users, or silently siphon off small amounts of BitCoin from the reserve.</p>
-
-<p>Pools are far too powerful. If Deepbit (or any pool) obtains more than 50% of the network's hashing power, the person in control of the pool will be able to:</p>
 <ul>
-	<li>Reverse transactions that he sends while he's in control</li>
-	<li>Prevent some or all transactions from gaining any confirmations</li>
-	<li>Prevent some or all other generators from getting any generations</li>
+	<li>Reverse transactions the party sent while in control.</li>
+	<li>Prevent all or some transactions from gaining confirmations.</li>
+	<li>Prevent some or all other generators from getting any generations.</li>
 </ul>
-<p><a href="https://en.bitcoin.it/wiki/Weaknesses#Attacker_has_a_lot_of_computing_power">source</a></p>
-<h2>Prevention</h2>
-<p>While these kinds of problems aren't an immediate risk, they are something to be aware of. Pools really do decrease the health and reliability of the network. BitCoin users can help by monitoring the hashrate distribution and switching to other pools when they notice one becoming a monopoly like Deepbit is now. </p>
+<p>(<a href="https://en.bitcoin.it/wiki/Weaknesses#Attacker_has_a_lot_of_computing_power">source</a>)</p>
+<p>
+The community's reactions to the attacks were mostly nonconstructive. They suggested switching to other pools while DeepBit was down, ignoring the inherent threat of centralization. I suggested that a distributed pool should be created, possibly integrated into the BitCoin client software. That idea didn't take off though, probably because it's just too hard to build peer to peer systems.
+</p>
 
-<p>Pool admins can help by planning for a DDoS attack and preparing servers all around the world. Also make sure your pool's web interface and API aren't vulnerable to exploits like SQL injection, cross site scripting, etc. I am willing to <a href="/peerreview.htm">review your pool's source code</a> for free.</p>
+<p>
+Centralization does not only impact the reliability of the BitCoin network, it degrades the security of BitCoin users. Mt. Gox, arguably a monopoly BitCoin to U.S. Dollar exchange website, recently had its database compromised. The hash of every Mt. Gox user's password was released onto the Internet. Thankfully, Mt. Gox was hashing passwords properly, with salt, so users who used a strong password are completely safe. Nevertheless, it's a good example of how centralization can harm BitCoin - it put a huge dent in it's reputation as a secure and reliable currency. The Mt. Gox downtime put a stop to most of the BTC to/from USD trades. If the exchange service was decentralized, or even if there were more than just a handful of them, Mt. Gox users could have switched to one of the others and trading would have continued as usual during the attack.
+</p>
 
-<p>The ultimate solution would be to have a distributed P2P pool service. Maybe that's something that should be added to the "official" BitCoin client. Users want to join pools; why not let them do it in a way that doesn't impact the health and reliability of the network?</p>
+<p>
+BitCoin is money. Malicious hackers want money. Online BitCoin services will continue to be hacked. The BitCoin community must prepare for this by reducing the amount of centralization so when one service gets hacked, it doesn't impact the entire network. Malicious hackers will be more likely to go after a single monopoly service than many small distributed services. Ideally, everything should be peer to peer style decentralized just like BitCoin is, but before that can happen, we need to make it easier to develop P2P applications.
+</p>
 
-<div style="background-color:#ff9999; padding:10px; border: solid black 1px;">
-<b>UPDATE: The Pools are Being Attacked...</b><br /><br />
-Throughout the last two week of May 2011, DDoS attacks have been bringing down some of the largest BitCoin pools. There is  <a href="http://forum.bitcoin.org/index.php?topic=10410.0">discussion in the bitcoin forums</a>, but it looks like the threat <a href="http://forum.bitcoin.org/index.php?topic=9057.0">isn't a problem for the BitCoin community</a>. As expected, when deepbit went down, it's entire hashing power instantly disappeared from the network....<br /><br />
-<center><img src="/images/bitcoin-ddos.png" alt="BitCoin Deebit DDoS" title="BitCoin Deepbit DDos Attack" style="background-color:white; border: solid black 1px;"/></center>
-</div>
+<p>
+If you're a BitCoin user, the best thing you can do is to monitor the popularity of the services you use and switch away when they get too popular. Centralization hurts BitCoin.
+</p>
+
+
