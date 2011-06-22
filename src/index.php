@@ -256,9 +256,9 @@ switch($name)
 		break;
 	case "bitcoin-pool-ddos":
 		$path = "research/bitcoin-pool-ddos.html";
-		$TITLE = "Mining Pools Make BitCoin Vulnerable - OSSBox";
-		$META_DESCRIPTION = "The majority of the BitCoin network's processing power is dependant upon only a few servers.";
-		$META_KEYWORDS = "bitcoin, ddos, denial of service, pool, mining";
+		$TITLE = "BitCoin Centralization - DDoS Attacks on Pools & Mt. Gox Hacked - OSSBox";
+		$META_DESCRIPTION = "Centralization is harmful to the BitCoin network and community.";
+		$META_KEYWORDS = "bitcoin, ddos, denial of service, pool, mining, mtgox, centralization, hacked";
 		break;
 	case "ssl-fundamental-flaw-fix":
 		$path = "research/ssl-fundamental-flaw-fix.html";
@@ -683,7 +683,7 @@ header('Content-Type: text/html; charset=utf-8');
 			<li><a href="#"><span class="drop"><span>Security</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
 					<li><a href="/password-policy-hall-of-shame.htm">&nbsp;Password Policy HoS</a></li>
-					<li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Pool DDoS</a></li>
+					<li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
 					<li><a href="/web-application-security.htm">&nbsp;Website Security</a></li>		
 					<li><a href="/filesystem-events-ntfs-permissions.htm">&nbsp;File-System Events</a></li>
 					<li><a href="/onedetection.htm">&nbsp;PUP Confusion</a></li>
