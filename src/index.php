@@ -786,17 +786,22 @@ header('Content-Type: text/html; charset=utf-8');
 
 </div>
 <div id="footer">
-Copyright &copy; 2011 OSSBOX.COM. <br />
 <?php
-	$unique =  PHPCount::GetHits($fullpath, true);
-	$hits = PHPCount::GetHits($fullpath);
-	$total = PHPCount::GetTotalHits();
-	$totalu = PHPCount::GetTotalHits(true);
-	
-	echo "Page Hits: $hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique Page Hits: $unique<br />";
-	if($dnt)
+	if($name != "home")
 	{
-		echo "<span style=\"color:#00FF00;\">You have the DNT header enabled.</span>";
+		?>
+			Copyright &copy; 2011 OSSBOX.COM. <br />
+		<?
+		$unique =  PHPCount::GetHits($fullpath, true);
+		$hits = PHPCount::GetHits($fullpath);
+		$total = PHPCount::GetTotalHits();
+		$totalu = PHPCount::GetTotalHits(true);
+	
+		echo "Page Hits: $hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique Page Hits: $unique<br />";
+		if($dnt)
+		{
+			echo "<span style=\"color:#00FF00;\">You have the DNT header enabled.</span>";
+		}
 	}
 ?>
 </div>

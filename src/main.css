@@ -30,6 +30,31 @@ body{
 
 table { margin:0; padding:0; text-align:left; font-size:10pt; }
 
+#homediv {
+	text-align: center; 
+	color: white;
+}
+
+#homediv h2 {
+	margin-top: 30px;
+}
+
+#homediv li {
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.homelink {
+	color: white;
+	text-decoration: none;
+}
+
+.homeul {
+	text-align: left;
+	width: 420px;
+	margin: 0 auto;
+}
+
 #content{
 	min-height:100%;
 	text-align: justify;
