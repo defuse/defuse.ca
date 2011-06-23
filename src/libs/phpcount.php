@@ -44,7 +44,7 @@ define("HIT_OLD_AFTER_SECONDS", 4 * 7 * 24 * 3600);
 // MySQL Login and Database Information
 $dbserver = "localhost";
 $username = "phpcount";
-$password = "";
+$password = "YRgPlRJgTY9C";
 $database = "phpcount";
 
 $phpcount_con = mysql_connect($dbserver, $username, $password);
@@ -127,10 +127,10 @@ class PHPCount
 	/*
 	 * Returns the amount of hits $pageID got since $interval seconds ago.
 	 */
-	public statuc function GetUniqueHitsLast($pageID, $interval)
+	public static function GetUniqueHitsLast($pageID, $interval)
 	{
 		$interval = (int)$interval;
-		return GetUniqueHitsSince($pageID, time() - $interval);
+		return self::GetUniqueHitsSince($pageID, time() - $interval);
 	}
 	
 	/*
