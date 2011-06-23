@@ -2,8 +2,8 @@
 I've seen a lot of forum threads discussing whether or not the IV (Initialization Vector) used in the CBC (Cipher Block Chaining) mode of encryption needs to be secret. These threads usually end up with heated flame wars, some people saying IV are by definition public knowledge and are to be sent along eith the ciphertext, while others say that if the IV isn't kept secret, it provides no benefit at all.
 <br /><br />
 First, get familiar with how CBC mode works:<br />
-<img src="http://upload.wikimedia.org/wikipedia/commons/d/d3/Cbc_encryption.png" alt="CBC mode of operation encryption" />
-<img src="http://upload.wikimedia.org/wikipedia/commons/6/66/Cbc_decryption.png" alt="CBC mode of operation decryption" />
+<img src="/images/cbc_encryption.png" alt="CBC mode of operation encryption" />
+<img src="/images/cbc_decryption.png" alt="CBC mode of operation decryption" />
 <br /><br />
 Now, we know that if we keep the IV private, that is secure. But are there really any problems with making it public?
 <br /><br />
