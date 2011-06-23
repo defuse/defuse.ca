@@ -44,7 +44,7 @@ define("HIT_OLD_AFTER_SECONDS", 4 * 7 * 24 * 3600);
 // MySQL Login and Database Information
 $dbserver = "localhost";
 $username = "phpcount";
-$password = "YRgPlRJgTY9C";
+$password = "";
 $database = "phpcount";
 
 $phpcount_con = mysql_connect($dbserver, $username, $password);
@@ -101,36 +101,6 @@ class PHPCount
 		{
 			die("Fatal: Missing hit count from database!");
 		}
-	}
-	
-	/*
-	 * Returns the amount of hits $pageID got since Unix time $time.
-	 */
-	public static function GetUniqueHitsSince($pageID, $time)
-	{
-		global $phpcount_con;
-		self::CreateCountsIfNotPresent($pageID);
-
-		$pageID = mysql_real_escape_string($pageID);
-		$time = mysql_real_escape_string($time);
-		$q = mysql_query("SELECT time FROM nodupes WHERE time > '$time'");
-		if($q && mysql_num_rows($q) > 0)
-		{
-			return mysql_num_rows($q);
-		}
-		else
-		{
-			return 0;
-		}
-	}
-
-	/*
-	 * Returns the amount of hits $pageID got since $interval seconds ago.
-	 */
-	public static function GetUniqueHitsLast($pageID, $interval)
-	{
-		$interval = (int)$interval;
-		return self::GetUniqueHitsSince($pageID, time() - $interval);
 	}
 	
 	/*

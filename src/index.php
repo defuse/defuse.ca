@@ -794,11 +794,10 @@ header('Content-Type: text/html; charset=utf-8');
 		$last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
 		$unique =  PHPCount::GetHits($fullpath, true);
 		$hits = PHPCount::GetHits($fullpath);
-		$todayu = PHPCount::GetUniqueHitsLast($fullpath, 24 * 60 * 60); // Hits in last 24hrs
 		$total = PHPCount::GetTotalHits();
 		$totalu = PHPCount::GetTotalHits(true);
 
-		echo "Page Hits: $hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique Hits: $unique &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Today: $todayu<br />";
+		echo "Page Hits: $hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique Hits: $unique<br />";
 		echo "Last Change: $last_modified<br />";
 		if($dnt)
 		{
