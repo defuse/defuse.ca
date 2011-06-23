@@ -165,10 +165,14 @@ text-decoration:underline;
 	color: white;
 	margin: 0 auto;
 	text-align:center;
-	margin-top: 20px;
-	margin-bottom: 20px;
 	padding: 5px;
 	background-color:black;
 	border: solid white 1px;
 	width: 400px;	
+}
+
+#footwrap /*For IE bottom of the page padding*/
+{
+	padding-top: 20px;
+	padding-bottom: 20px;
 }

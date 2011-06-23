@@ -789,7 +789,7 @@ header('Content-Type: text/html; charset=utf-8');
 	if($name != "home")
 	{
 		?>
-			<div id="footer">
+		<div id="footwrap">	<div id="footer">
 		<?
 		$last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
 		$unique =  PHPCount::GetHits($fullpath, true);
@@ -806,7 +806,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 		?>
 			<span style="color:#bbbbbb;">Copyright &copy; 2011 OSSBOX.COM.</span>
-			</div>
+			</div></div>
 		<?
 	}
 ?>
