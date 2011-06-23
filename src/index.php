@@ -785,25 +785,30 @@ header('Content-Type: text/html; charset=utf-8');
 ?>
 
 </div>
-<div id="footer">
 <?php
 	if($name != "home")
 	{
 		?>
-			Copyright &copy; 2011 OSSBOX.COM. <br />
+			<div id="footer">
 		<?
+		$last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
 		$unique =  PHPCount::GetHits($fullpath, true);
 		$hits = PHPCount::GetHits($fullpath);
 		$total = PHPCount::GetTotalHits();
 		$totalu = PHPCount::GetTotalHits(true);
 	
-		echo "Page Hits: $hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique Page Hits: $unique<br />";
+		echo "Page Hits: $hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique Hits: $unique<br />";
+		echo "Last Change: $last_modified<br />";
 		if($dnt)
 		{
-			echo "<span style=\"color:#00FF00;\">You have the DNT header enabled.</span>";
+			echo "<span style=\"color:#00FF00;\">You have the DNT header enabled.</span><br />";
 		}
+
+		?>
+			<span style="color:#bbbbbb;">Copyright &copy; 2011 OSSBOX.COM.</span>
+			</div>
+		<?
 	}
 ?>
-</div>
 </body>
 </html>

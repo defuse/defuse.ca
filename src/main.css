@@ -163,10 +163,12 @@ text-decoration:underline;
 
 #footer {
 	color: white;
-	width: 100%;
-	/*margin: 0 auto;*/
+	margin: 0 auto;
 	text-align:center;
-	padding-top: 20px;
-	padding-bottom:20px;
-	
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 5px;
+	background-color:black;
+	border: solid white 1px;
+	width: 400px;	
 }
