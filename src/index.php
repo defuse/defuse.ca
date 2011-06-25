@@ -623,7 +623,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-	<li class="headerlink" ><a href="/services.htm">Services&nbsp;<span class="darr">&#9662;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+	<li class="headerlink" ><a href="#">Services&nbsp;<span class="darr">&#9662;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul>
 			<!--<li><a href="/softwaredevelopment.htm">&nbsp;Software Development</a></li>-->
 			<!--<li><a href="/webdevelopment">&nbsp;Web Development</a></li>-->
