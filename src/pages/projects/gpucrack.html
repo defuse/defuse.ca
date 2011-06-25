@@ -1,4 +1,4 @@
-<h1>Salted MD5 Cracking with CUDA (NVIDIA Graphics Cards)</h1>
+<h1>Salted MD5 Cracking with CUDA/NVIDIA GPUs</h1>
 <p>This is the only open source code that I know of that can brute force an MD5 hash with salt. It allows you to specify left salt and right salt. In the example below, I crack the hash of "http://ossbox.com" using "http://" as the left salt and ".com" as the right salt. You will need the Nvidia CUDA SDK (nvcc) to compile this code. You must also have an Nvidia 8800GT or higher to run the code. If the code doesn't run on your graphics card, try changing the THREADS_PER_BLOCK and BLOCKS constants to lower values.</p>
 
 <p><a href="source/gpu_salted_brute_example.tar.gz"><b>Download the Source Code</b></a></p>
