@@ -1,36 +1,86 @@
-<h1>Peer Review &amp; Security Testing</h1>
+<h1>Peer Review &amp; Security Consulting</h1>
+<p>Security review is a critical part of the software development process. Malicious hackers are attacking anything and everything these days. Insecure software leaves it's users vulnerable to these attacks. Software insecurity can come from something as small as forgetting to sanitize user input, to implementing a completely insecure crypto-system. These insecurities <b>will</b> be exploited. There is no way to prevent them altogether, the best you can do is to be proactive about security - have your product, idea, or protocol reviewed, and have your development team trained to combat security flaws. </p>
 
-<p>Security is hard. The only way to obtain a higher level of security is through peer review. When many people study a solution to a problem, they can be more sure that it is the <i>correct</i> solution. Nobody can catch all of the mistakes themselves, sometimes you need a third party to look at your ideas. That is what I intend to do. I will review your software, cryptographic protocol, or ideas for security weaknesses.</p>
+<p>Backed with my extensive knowledge of security and applied cryptography, I offer inexpensive security consulting. I'll review your product and provide extensive reports on the security status of the product. If I find it to be secure, you'll get to put "Approved Secure by OSSBox" graphics on your web site to increase your users' faith in your product.</p>
+
+
+<p>Too often in the software industry, security gets overlooked in favor of functionality and cost cutting. Getting your product reviewed shows that you <b>truly care</b> about your users' security. I charge as little as possible for this service because I just want to help make secure software, and I believe that software developers should be rewarded for going the extra mile to make their products secure.</p>
 
 <center>
-<span style="font-size:20px; color:#500000;">If user trust is important to your product's success, this is for you.</span>
+<span style="font-size:20px; color:#920000;">If you really care about your users' security, this is for you.</span>
 </center>
-
 
 <h2>What You Get</h2>
 <ul>
 	<li>Thorough security analysis of your software, protocol, or idea.</li>
-	<li>Report including a summary of attack vectors and mitigations of these threats.</li>
+	<li>Report including a summary of attack vectors and how the threats have been mitigated.</li>
 	<li>Web page on ossbox.com describing the security features of your product along side our in-depth analysis.</li>
-	<li>OSSBox Seal of Approval if we find your software to be secure.</li>
-	<li>Greater level of user trust because a third party is putting their name behind your software.</li>
+	<li>Custom OSSBox Seal of Approval if we find your software to be secure.</li>
+	<li>Greater level of user trust because a third party is putting their name and reputation behind your product.</li>
 	<li>If found to be insecure, you will get tips on how to improve your software or idea.</li>
     <li>Optionally, I will work with you throughout the development process to ensure security standards are being met.</li>
 </ul>
-<h2>Cost</h2>
+<br /><br />
+<center>
+<img style="margin-bottom: 10px;" src="/images/cube-secure.png" alt="Security Approval" /><br />
+<img src="/images/approvedsecure.png" alt="OSSBox Approved Secure" />
+<img src="/images/small-black-logo.png" alt="OSSBox Security Review" />
+</center>
+<h2>How much does it cost?</h2>
 <ul>
-	<li>FREE for open source and free (as in freedom) software. (When time permits)</li>
-	<li>$20 per hour for closed source or patented technology. An average review takes about 2 to 5 hours.</li>
+	<li>FREE for Free/Open Source software.</li>
+	<li>$20 per hour for closed source or patented technology. An average review takes about 3 to 5 hours.</li>
 	<li>Free if you are not satisfied.</li>
+	<li>I accept payments through PayPal, credit card, and BitCoin.</li>
 </ul>
 <br />
-<h2>Graphics</h2>
-<p>Custom graphics will be created to fit in with your website layout. Here are some samples.</p>
-<center>
-<img src="/images/approvedsecure.png" alt="OSSBox Approved Secure" />
-<img src="/images/securityapproved.png" alt="Peer Review by OSSBox" />
-<img src="/images/small-black-logo.png" alt="OSSBox Security Review" /><br />
-<img src="/images/biglogo_reviewd_by.png" alt="Cryptographic Peer Review" />
-</center>
-<p>This is NOT malicious hacking for hire. Security is a process; it is impossible for any one person to find all the security problems in a system. Therefore, I cannot possibly guarantee I will find them ALL problems, but I do try my best, and it's free if you're not satisfied.</p>
-<p>Please contact me if you are interested. You can find my contact information on the <a href="contact.htm">contact information page</a>.</p>
+
+<a name="contact"></a>
+<h2>Get in Touch</h2>
+<?php
+	if(isset($_POST['submit']))
+	{
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$service = $_POST['service'];
+		$msg = $_POST['additional'];
+		if(empty($email))
+		{
+			?>
+				<div style="background-color: #ff9393; border: solid black 1px; padding: 10px; text-align: center;">Please provide an email address so I can get back to you.</div>
+			<?
+		}
+		else
+		{
+			$headers = "From: $name <$email>\n";
+    		$headers .= "Reply-To: $email\n";
+			$messagebody = "SERVICE: $service\n\n" . $msg;
+			mail("firexware@ossbox.com", "Security Consulting Inquiry", $messagebody, $headers);
+			?>
+				<div style="background-color: #66FF99; border: solid black 1px; padding: 10px; text-align: center;"><b>Thanks!</b> I have received your message. I will get back to you as soon as possible.</div>
+			<?
+		}
+	}
+?>
+<p>You can contact me by email or through the form below. You can find my email address on the <a href="/contact.htm">contact information page</a>. <br /> I'll get back to you in no more than two business days.</p>
+<div style="width: 600px; margin: 0 auto;">
+<form action="/peerreview.htm#contact" method="post">
+	<table>
+		<tr>
+			<td><b>Name:</b></td>
+			<td><input type="text" name="name" value="" /></td>
+		</tr>
+		<tr>
+			<td><b>Email:</b></td>
+			<td><input type="text" name="email" value="" /></td>
+		</tr>
+		<tr>
+			<td><b>Service:</b></td>
+			<td><input type="radio" name="service" value="general" checked="checked">General Consulting &nbsp; <input type="radio" name="service" value="review">Security Review</td>
+		</tr>
+	</table>
+	<br /><b>Additional Information:</b><br />
+	<textarea name="additional" rows="20" style="width:100%;"><? if(isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES); ?></textarea><br />
+	<input type="submit" name="submit" value="Send" style="width: 100%;"/>
+</form>
+</div>
