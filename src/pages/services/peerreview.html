@@ -81,11 +81,11 @@
 		</tr>
 		<tr>
 			<td><b>Service:</b></td>
-			<td><input type="radio" name="service" value="general" checked="checked" >General Consulting &nbsp; <input type="radio" name="service" value="review" >Security Review</td>
+			<td><input type="radio" name="service" value="general" checked="checked" />General Consulting &nbsp; <input type="radio" name="service" value="review" />Security Review</td>
 		</tr>
 	</table>
 	<br /><b>Additional Information:</b><br />
-	<textarea name="additional" rows="20" style="width:100%;"><? if(isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES); ?></textarea><br />
+	<textarea name="additional" rows="20" cols="80" style="width:100%;"><? if(isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES); ?></textarea><br />
 	<input type="submit" name="submit" value="Send" style="width: 100%;"/>
 </form>
 </div>
