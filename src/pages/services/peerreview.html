@@ -23,7 +23,6 @@
 <br /><br />
 <center>
 <img style="margin-bottom: 10px;" src="/images/cube-secure.png" alt="Security Approval" /><br />
-<img src="/images/approvedsecure.png" alt="OSSBox Approved Secure" />
 <img src="/images/small-black-logo.png" alt="OSSBox Security Review" />
 </center>
 <h2>How much does it cost?</h2>
@@ -38,6 +37,9 @@
 <a name="contact"></a>
 <h2>Get in Touch</h2>
 <?php
+	$msg = "";
+	$name = "";
+	$email = "";
 	if(isset($_POST['submit']))
 	{
 		$name = $_POST['name'];
@@ -59,6 +61,9 @@
 			?>
 				<div style="background-color: #66FF99; border: solid black 1px; padding: 10px; text-align: center;"><b>Thanks!</b> I have received your message. I will get back to you as soon as possible.</div>
 			<?
+			$msg = "";
+			$name = "";
+			$email = "";
 		}
 	}
 ?>
@@ -68,15 +73,15 @@
 	<table>
 		<tr>
 			<td><b>Name:</b></td>
-			<td><input type="text" name="name" value="" /></td>
+			<td><input type="text" name="name" value="<?php echo htmlspecialchars($name, ENT_QUOTES);?>" /></td>
 		</tr>
 		<tr>
 			<td><b>Email:</b></td>
-			<td><input type="text" name="email" value="" /></td>
+			<td><input type="text" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES);?>" /></td>
 		</tr>
 		<tr>
 			<td><b>Service:</b></td>
-			<td><input type="radio" name="service" value="general" checked="checked">General Consulting &nbsp; <input type="radio" name="service" value="review">Security Review</td>
+			<td><input type="radio" name="service" value="general" checked="checked" >General Consulting &nbsp; <input type="radio" name="service" value="review" >Security Review</td>
 		</tr>
 	</table>
 	<br /><b>Additional Information:</b><br />
