@@ -58,7 +58,8 @@ table { margin:0; padding:0; text-align:left; font-size:10pt; }
 #content {
 	min-height:100%;
 	text-align: justify;
-	margin: 0 auto; width: 80%;
+	margin: 0 auto; 
+	width: 80%; /* If it ain't broke, don't fix it! */
 	max-width: 1000px; 
 	min-width: 800px;
 	margin-top:20px;
@@ -175,6 +176,12 @@ text-decoration:underline;
 {
 	padding-top: 20px;
 	padding-bottom: 20px;
+
+	/* -- same parameters as #content -- */
+	width: 80%;
+	max-width: 1000px; 
+	min-width: 800px;
+	margin: 0 auto;
 }
 
 .codeskillbox
