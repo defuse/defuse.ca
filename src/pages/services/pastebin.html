@@ -79,7 +79,7 @@ function encrypt()
 
 <p>This pastebin encrypts your post with a ~128 bit password which is included in the paste URL. The password is hashed using SHA256 into a key for AES-256 in CBC (Cipher Block Chaining) mode. </p><p>The only way anyone will see your paste is if they have the URL. So only share the paste URL with people you trust, and your data will be 100% private. If we get a court order to decrypt a post, we will not be able to comply.</p>
 
-<p>You also have the option of encrypting your text with client-side encryption. This is much more secure because the encryption and decryption happens right in your browser using JavaScript. OSSBox never even gets the chance to see the unencrypted data or the password used to encrypt it. When you use client-side encryption, your password gets hashed with SHA256 into a 256 bit key for the AES block cipher, which is used to encrypt the text in CBC mode. A random 256 bit salt and a random initialization vector are provided by our server's CSPRNG (Cryptographically Secure Pseudorandom Number Generator).</p>
+<p>You also have the option of encrypting your text with client-side encryption. This is much more secure because the encryption and decryption happens right in your browser using JavaScript. OSSBox never gets the chance to see the unencrypted data nor the password used to encrypt it. When you use client-side encryption, your password gets hashed with SHA256 into a 256 bit key for the AES block cipher, which is used to encrypt the text in CBC mode. A random 256 bit salt and a random initialization vector are provided by our server's CSPRNG (Cryptographically Secure Pseudorandom Number Generator).</p>
 
 <p>The data is always sent to OSSBox through a secure, AES-256 encrypted, SSL/TLS connection.</p>
 
