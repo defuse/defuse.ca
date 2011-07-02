@@ -385,7 +385,7 @@ switch($name)
 		$META_KEYWORDS = "cbc mode, encryption, initialization vector, iv, secret, secure";
 		break;
 	case "password-policy-hall-of-shame":
-		$path = "research/hallofshame.html";
+		$path = "research/hallofshame.php";
 		$TITLE = "Password Policy Hall of SHAME - OSSBox";
 		$META_DESCRIPTION = "List of websites and services that impose password restrictions and may be storing passwords in plaintext.";
 		$META_KEYWORDS = "hall of shame, password hall of shame, plaintext, password restrictions, maximum password length, restriction, insecure";

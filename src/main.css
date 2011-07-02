@@ -205,3 +205,11 @@ text-decoration:underline;
 	font-size: 20px;
 	border-bottom: solid black 1px;
 }
+
+.hosfielddesc {
+	font-weight: bold;
+	padding-right: 20px;
+}
+
+.hosval {
+}
