@@ -586,8 +586,6 @@ header('Content-Type: text/html; charset=utf-8');
 <!-- This menuing system was made by Steve Gibson at GRC.COM 
 			see more at http://www.grc.com/menudemo.htm -->
 
-<!-- ########################## GRC Masthead Menu ########################## -->
-
 <div class="menuminwidth0"><div class="menuminwidth1"><div class="menuminwidth2">
 <div id="masthead">
 
@@ -744,7 +742,8 @@ header('Content-Type: text/html; charset=utf-8');
 </div> <!-- close "menu" div -->
 <hr style="display:none" />
 </div></div></div> <!-- close the "minwidth" wrappers -->
-<!-- ###################### END OF GRC MASTHEAD MENU  ###################### -->
+<!-- End of menu -->
+
 <div id="undergrad"></div>
 
 <?php
