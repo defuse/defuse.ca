@@ -78,7 +78,10 @@ function GroupDigits($num)
 <div style="text-align: center; font-size: 30px;">83% of the top 100 websites limit password length.</div>
 <p>Of the top 100 websites as rated by Alexa, 59 allow users to create accounts that are unique to that site (e.g. ebay.com and ebay.de are counted as one). Of those 59 websites, 49 (83%) impose an upper bound on password length. 14 (24%) restrict passwords to alpha-numeric passwords only. It has been confirmed that at least two of the 59 sites store passwords in plain text.</p>
 <p><strong><a href="/downloads/top100_rawdata.zip">Download the raw data</a></strong></p>
-<center><img src="/images/passlengtht100.png" style="margin: 10px;" alt="Password Length Limit Alexa Top 100 Pie Chart"/></center>
+<center>
+<img src="/images/passlengtht100.png" style="margin: 10px;" alt="Password Length Limit Alexa Top 100 Pie Chart"/>
+<img src="/images/passchart100.png" style="margin: 10px;" alt="Password Character Restrictions Alexa Top 100 Pie Chart" />
+</center>
 <!--<center>
 <b>Upper Bound Frequency</b>
 <table border="1">
@@ -103,7 +106,6 @@ function GroupDigits($num)
 <tr><td>8</td><td>1</td></tr>
 </table>
 </center>-->
-<center><img src="/images/passchart100.png" style="margin: 10px;" alt="Password Character Restrictions Alexa Top 100 Pie Chart" /></center>
 
 <h2>100-Site Random Sample</h2>
 <p>Of a random 100-site sample of the Alexa top 1,000,000 list, 19 support accounts. Of those 19:</p>
