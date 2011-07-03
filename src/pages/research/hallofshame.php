@@ -74,8 +74,38 @@ function GroupDigits($num)
 
 <p>Cryptographic hash functions will take <b>any input</b> and produce a fixed-length cryptographic signature of the input. If the passwords are being hashed, there is no need for password restrictions, so we can assume any websites that impose these restrictions are storing passwords in plain text...until they prove otherwise.</p>
 
-<h2>Statistics</h2>
-<h3>100-Site Random Sample</h3>
+<h2>Top 100 Websites</h2>
+<div style="text-align: center; font-size: 30px;">83% of the top 100 websites limit password length.</div>
+<p>Of the top 100 websites as rated by Alexa, 59 allow users to create accounts that are unique to that site (e.g. ebay.com and ebay.de are counted as one). Of those 59 websites, 49 (83%) impose an upper bound on password length. 14 (24%) restrict passwords to alpha-numeric passwords only. It has been confirmed that at least two of the 59 sites store passwords in plain text.</p>
+<p><strong><a href="/downloads/top100_rawdata.zip">Download the raw data</a></strong></p>
+<center><img src="/images/passlengtht100.png" style="margin: 10px;" alt="Password Length Limit Alexa Top 100 Pie Chart"/></center>
+<!--<center>
+<b>Upper Bound Frequency</b>
+<table border="1">
+<tr><th>Max. Password Length</th><th>Count</th></tr>
+<tr><td>No Limit</td><td>10
+<tr><td>250</td><td>1</td></tr>
+<tr><td>128</td><td>1</td></tr>
+<tr><td>100</td><td>3</td></tr>
+<tr><td>64</td><td>1</td></tr>
+<tr><td>50</td><td>1</td></tr>
+<tr><td>40</td><td>3</td></tr>
+<tr><td>32</td><td>2</td></tr>
+<tr><td>31</td><td>1</td></tr>
+<tr><td>25</td><td>2</td></tr>
+<tr><td>24</td><td>1</td></tr>
+<tr><td>20</td><td>11</td></tr>
+<tr><td>16</td><td>11</td></tr>
+<tr><td>15</td><td>2</td></tr>
+<tr><td>14</td><td>2</td></tr>
+<tr><td>12</td><td>4</td></tr>
+<tr><td>10</td><td>2</td></tr>
+<tr><td>8</td><td>1</td></tr>
+</table>
+</center>-->
+<center><img src="/images/passchart100.png" style="margin: 10px;" alt="Password Character Restrictions Alexa Top 100 Pie Chart" /></center>
+
+<h2>100-Site Random Sample</h2>
 <p>Of a random 100-site sample of the Alexa top 1,000,000 list, 19 support accounts. Of those 19:</p>
 <ul>
 	<li>1 sends the current password in clear text via email when password recovery is used.</li>
@@ -86,7 +116,7 @@ function GroupDigits($num)
 	<li>1 has a maximum password length of exactly 10.</li>
 </ul>
 <p>Raw data will be made available shortly.</p>
-<h3>Top 50</h3>
+<!--<h3>Top 50</h3>
 <p>Of the top 50 sites as rated by Alexa, 48 support accounts. Of those 48, there are 30 that use unique login back ends. Of those 30:</p>
 <ul>
 	<li>24 restrict password length.</li>
@@ -98,7 +128,7 @@ function GroupDigits($num)
 </ul>
 <p>Google, Amazon, and LinkedIn all have maximum password lengths greater than or equal to 100. Limits greater than 100 seem (to me) to be more of a "sanity check" than an actual database field size limit. It makes sense, because they probably don't want users logging in with 10 kilobyte passwords.</p>
 <p>Interestingly, nearly every Chinese website has the exact same password size restrictions - 6 to 16 characters. Could this be a sign of government password escrow?</p>
-<p>Raw data will be made available shortly.</p>
+<p>Raw data will be made available shortly.</p>-->
 <h3>Social Networking Websites</h3>
 <p>Statistics for <a href="https://secure.wikimedia.org/wikipedia/en/wiki/List_of_social_networking_websites">Wikipedia's list of social networking websites</a> are coming soon.</p>
 <h3>Maximum Length Histogram</h3>
