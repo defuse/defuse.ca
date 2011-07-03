@@ -78,7 +78,7 @@ function GroupDigits($num)
 83% of the top 59 account-based websites limit password length. <br />
 24% don't allow passwords to contain symbols.
 </div>
-<p>Of the top 100 websites as rated by Alexa, 59 allow users to create accounts that are unique to that site (e.g. ebay.com and ebay.de are counted as one). Of those 59 websites, 49 (83%) impose an upper bound on password length. 14 (24%) restrict passwords to alpha-numeric passwords only. It has been confirmed that at least two of the 59 sites store passwords in plain text.</p>
+<p>Of the top 100 websites as rated by Alexa, 59 allow users to create accounts that are unique to that site (e.g. ebay.com and ebay.de are counted as one). Of those 59 websites, 49 (83%) impose an upper bound on password length. Over 50% limit passwords to 20 characters or less. 14 (24%) restrict passwords to alpha-numeric characters only. It has been confirmed that at least two of the 59 sites store passwords in plain text.</p>
 <p><strong><a href="/downloads/top100_rawdata.zip">Download the raw data</a></strong></p>
 <center>
 <img src="/images/passlengtht100.png" style="margin-right: 10px;" alt="Password Length Limit Alexa Top 100 Pie Chart"/>
@@ -135,7 +135,7 @@ function GroupDigits($num)
 <p>Raw data will be made available shortly.</p>-->
 <h3>Social Networking Websites</h3>
 <p>Statistics for <a href="https://secure.wikimedia.org/wikipedia/en/wiki/List_of_social_networking_websites">Wikipedia's list of social networking websites</a> are coming soon.</p>
-<h3>Maximum Length Histogram</h3>
+<!--<h3>Maximum Length Histogram</h3>
 <p>The following histogram shows how many websites in our database restrict passwords to a given length.</p>
 <?php
 	$q = mysql_query("SELECT max FROM hos ORDER BY max");
@@ -160,7 +160,7 @@ function GroupDigits($num)
 	}
 	$barwidth = 30 + $total * 10;
 	echo "<div style=\"height:20px; padding-left: 3px; background-color: black; color: white; width:${barwidth}px\">$current</div>";	
-?>
+?>-->
 <h2><span style="color:red;">Confirmed Plaintext</span></h2>
 <ul>
 <?php
