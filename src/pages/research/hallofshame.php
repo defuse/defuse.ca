@@ -175,7 +175,7 @@ function GroupDigits($num)
 <h2><span style="color:red;">Unreasonable Restrictions: Probably Plaintext</span></h2>
 <ul class="hosul">
 <?php
-	$q = mysql_query("SELECT * FROM hos ORDER BY alexarank ASC");
+	$q = mysql_query("SELECT * FROM hos WHERE noshow='0' ORDER BY alexarank ASC");
 	while($q && $site = mysql_fetch_array($q))
 	{
 		PrintSite($site['name'], $site['desc'], $site['alexarank'], $site['domain'], $site['min'], $site['max'], $site['charset'], $site['usercount']);
