@@ -164,7 +164,7 @@ function GroupDigits($num)
 	$q = mysql_query("SELECT * FROM plaintext ORDER BY alexarank ASC");
 	while($q && $site = mysql_fetch_array($q))
 	{
-		PrintSite($site['name'], $site['desc'], $site['alexarank'], $site['domain'], 0, 0, "skip", $site['usercount']);
+		PrintSite($site['name'], $site['desc'], $site['alexarank'], $site['domain'], $site['min'], $site['max'], $site['charset'], $site['usercount']);
 	}
 ?>
 </ul>
