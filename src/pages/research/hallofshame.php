@@ -74,9 +74,12 @@ function GroupDigits($num)
 
 <p>Cryptographic hash functions will take <b>any input</b> and produce a fixed-length cryptographic signature of the input. If the passwords are being hashed, there is no need for password restrictions, so we can assume any websites that impose these restrictions are storing passwords in plain text...until they prove otherwise.</p>
 
-<div style="text-align: center; font-size: 23px;">
-83% of the top 59 account-based websites limit password length. <br />
-24% don't allow passwords to contain symbols.
+<div style="text-align: center; font-size: 23px; background-color: #FFCCCC; padding: 10px; border: solid #FF8888 3px;">
+<div style="margin-bottom: 10px;"><b>Of the top 59 account-based websites...</b></div>
+<ul>
+<li>Over 50% limit passwords to 20 characters or less.</li>
+<li>24% don't allow passwords to contain symbols.</li>
+</ul>
 </div>
 <p>Of the top 100 websites as rated by Alexa, 59 allow users to create accounts that are unique to that site (e.g. ebay.com and ebay.de are counted as one). Of those 59 websites, 49 (83%) impose an upper bound on password length. Over 50% limit passwords to 20 characters or less. 14 (24%) restrict passwords to alpha-numeric characters only. It has been confirmed that at least two of the 59 sites store passwords in plain text.</p>
 <p><strong><a href="/downloads/top100_rawdata.zip">Download the raw data</a></strong></p>
