@@ -601,7 +601,7 @@ header('Content-Type: text/html; charset=utf-8');
 	<!--<![endif]-->
 	
 	<!--[If lte IE 6]>
-	<a href="/"><strong>OSSBOX SECURITY</strong></a>
+	<a href="/"><img id="mastheadlogo" src="/images/ossbox_security.png"  alt="OSSBox Security" title="OSSBox Security Homepage" style="border: solid black 3px;"/></a>
 	<![endif]-->
 
 	<!--[If gt IE 6]>
@@ -750,7 +750,13 @@ header('Content-Type: text/html; charset=utf-8');
 </div></div></div> <!-- close the "minwidth" wrappers -->
 <!-- End of menu -->
 
+<!--[if !IE]>-->
 <div id="undergrad"></div>
+<!--<![endif]-->
+
+<!--[If gt IE 6]>
+<div id="undergrad"></div>
+<![endif]-->
 
 <?php
 	$dnt = isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT'] == "1";
