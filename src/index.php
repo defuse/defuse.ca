@@ -24,7 +24,7 @@ if($_SERVER["HTTPS"] != "on") {
 require_once('libs/phpcount.php');
 
 //Strengthen the server's CSPRNG
-$entropy = implode($_SERVER) . implode($_GET) . implode($_POST) . implode($_COOKIE) . implode($_ENV) . microtime() . mt_rand() . mt_rand();
+$entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implode($_POST) . implode($_COOKIE) . implode($_ENV) . microtime() . mt_rand() . mt_rand();
 file_put_contents("/dev/random", $entropy);
 
 //Connect to MySQL
@@ -658,7 +658,6 @@ header('Content-Type: text/html; charset=utf-8');
 			<li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
 			<li><a href="/textractor.htm">&nbsp;Textractor</a></li>
 			<li><a href="/passgen.htm">&nbsp;Password Generator</a></li>
-			<li><a href="/dotnetbenchmark.htm">&nbsp;.NET Benchmark</a></li>
 		</ul>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 	</li>
