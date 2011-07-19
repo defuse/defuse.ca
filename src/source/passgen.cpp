@@ -92,7 +92,7 @@ bool getRandom(unsigned char* buffer, unsigned int bufferlength)
   CryptGenRandom(hCryptCtx, bufferlength, buffer);
   CryptReleaseContext(hCryptCtx, 0);
 #else
-  FILE* random = fopen("/dev/random", "r");
+  FILE* random = fopen("/dev/random", "rb");
   if(random == NULL)
     return false;
   unsigned int read = fread(buffer, sizeof(unsigned char), bufferlength, random);
