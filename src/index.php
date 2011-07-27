@@ -451,6 +451,11 @@ switch($name)
 		$TITLE = "Building a Distributed Supercomputer with Flash - OSSBox";
 		$META_DESCRIPTION = "Easy, super-scalable supercomputing.";
 		break;
+	case "stopspying":
+		$path = "research/stopspying.php";
+		$TITLE = "Stop Spying! Bills C-50, C-51, C-52. Warrantless Wiretaps in Canada.";
+		$META_DESCRIPTION = "canada, warrant-less wiretap, isp, c51, c52, c50, spying, law, bill, internet privacy";
+		break;
 	case "filesystem-events-ntfs-permissions":
 		$path = "research/filesystemevents.html";
 		$TITLE = "File System Events Disclose NTFS Protected Folder Contents - OSSBox";
