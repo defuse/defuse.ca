@@ -79,7 +79,6 @@ function encrypt()
 <!-- End of scripts for client-side decryption -->
 
 <b>Encrypted, Secure Pastebin by <a href="https://ossbox.com/pastebin.htm">OSSBox</a></b>. See <a href="#copypaste">below</a> to copy the text and make a new post.<br /><br />
-
 <?php
 
 require_once('info.php');
@@ -116,7 +115,7 @@ if(mysql_num_rows($query) > 0)
 		foreach($split as $line)
 		{
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
-			$line = str_replace(" ", "&nbsp;", $line);
+			$line = str_replace("  ", "&nbsp;&nbsp;", $line);
 			echo '<li><div class="div' . $i . '">&nbsp;' . $line . '</div></li>';
 			$i = ($i + 1) % 2;
 		}

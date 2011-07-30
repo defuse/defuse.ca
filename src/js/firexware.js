@@ -54,27 +54,22 @@ fxw.allhtmlsani = function(text)
 {
 	var sani = [];
 	var i = 0;
-	text = text.replace("\r\n", "\n");
-	text = text.replace("\r", "\n");
 	for(i = 0; i < text.length; i++)
 	{
 		var curChar = text.charCodeAt(i);
-		if(curChar == 9) //TAB
-		{
-			sani.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-		}
-		else if(curChar == 32)
-		{
-			sani.push("&nbsp;");
-		}
-		else if(curChar == 10)
-		{
-			sani.push("<br />");
-		}
-		else
+		//Sanitize curChar if it isn't a CR, LF, TAB, or SPACE
+		if(curChar != 10 && curChar != 13 && curChar != 9 && curChar != 32)
 		{
 			sani.push("&#" + curChar + ";"); 
 		}
 	}
-	return sani.join('');
+	text = sani.join('');
+
+	//Now deal with spaces, tabs, and newlines
+	text = text.replace("\r\n", "\n");
+	text = text.replace("\r", "\n");
+	text = text.replace("\n", "<br />");
+	text = text.replace("  ", "&nbsp;&nbsp;");
+	text = text.replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+	return text;
 }
