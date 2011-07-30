@@ -19,7 +19,7 @@ $dbhost = 'localhost';
 $dbuser = 'ossbox';
 $dbpass = 'Nw552SfbbZp';
 
-$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die                      ('Error connecting to mysql');
+$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die ('Error connecting to mysql');
 
 $dbname = 'cracky_trent';
 mysql_select_db($dbname);
@@ -121,7 +121,7 @@ if(isset($_POST['makedrawingnumber']))
 	$passwordhash = hash("SHA256", $password);
 	mysql_query("INSERT INTO drawings (complete, passwordhash, starttime, reviewtime) VALUES (0, '$passwordhash', '$starttime', '$reviewtime')");
 	$drawingnum = mysql_insert_id();
-	$url = "http://ossbox.com/trustedthirdparty.htm?drawingnum=" . $drawingnum;
+	$url = "https://ossbox.com/trustedthirdparty.htm?drawingnum=" . $drawingnum;
 	?>
 		<div style="background-color: #66FF99; border: solid 2px black; margin:20px; padding:10px;">
 		<b>Your Drawing Number Has Been Reserved...</b><br />
@@ -319,7 +319,7 @@ if(isset($_POST['create']))
 
 				$msafeprintout = mysql_real_escape_string($printout);
 				mysql_query("UPDATE drawings SET complete='1', printout='$msafeprintout' WHERE drawingnum='$drawingnum'");
-				$url = "http://ossbox.com/trustedthirdparty.htm?drawingnum=$drawingnum";
+				$url = "https://ossbox.com/trustedthirdparty.htm?drawingnum=$drawingnum";
 				?>
 				<div style="background-color: #66FF99; border: solid 2px black; margin:20px; padding:10px;">
 				<b>Drawing Complete!</b><br />
