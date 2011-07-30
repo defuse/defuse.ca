@@ -62,14 +62,18 @@ fxw.allhtmlsani = function(text)
 		{
 			sani.push("&#" + curChar + ";"); 
 		}
+		else
+		{
+			sani.push(String.fromCharCode(curChar));
+		}
 	}
 	text = sani.join('');
 
 	//Now deal with spaces, tabs, and newlines
 	text = text.replace("\r\n", "\n");
 	text = text.replace("\r", "\n");
-	text = text.replace("\n", "<br />");
 	text = text.replace("  ", "&nbsp;&nbsp;");
 	text = text.replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+	text = text.replace("\n", "<br />");
 	return text;
 }
