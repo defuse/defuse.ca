@@ -620,7 +620,7 @@ header('Content-Type: text/html; charset=utf-8');
 <div class="menu">
 
 <ul>
-	<li class="headerlink" ><a href="/">Home&nbsp;<span class="darr">&#9662;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+	<li class="headerlink" ><a href="/">Home&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul class="leftbutton">
 			<li><a href="/about.htm">&nbsp;About OSSBox</a></li>
 			<li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
@@ -633,7 +633,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-	<li class="headerlink" ><a href="/peerreview.htm">Services&nbsp;<span class="darr">&#9662;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+	<li class="headerlink" ><a href="/peerreview.htm">Services&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul>
 			<!--<li><a href="/softwaredevelopment.htm">&nbsp;Software Development</a></li>-->
 			<!--<li><a href="/webdevelopment">&nbsp;Web Development</a></li>-->
@@ -659,7 +659,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-	<li class="headerlink" ><a href="/projects.htm">Software&nbsp;<span class="darr">&#9662;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+	<li class="headerlink" ><a href="/projects.htm">Software&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul>
 			<li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
 			<li><a href="/passgen.htm">&nbsp;Password Generator</a></li>
@@ -670,7 +670,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-	<li class="headerlink" ><a href="/projects.htm">Projects &amp; Code&nbsp;<span class="darr">&#9662;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+	<li class="headerlink" ><a href="/projects.htm">Projects &amp; Code&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul>
 			<li><a href="/php-hit-counter.htm">&nbsp;PHP Hit Counter</a></li>
 			<li><a href="/csharpthreadlibrary.htm">&nbsp;PolyThread</a></li>
@@ -687,7 +687,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-	<li class="headerlink" ><a href="/projects.htm">Research&nbsp;<span class="darr">&#9662;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+	<li class="headerlink" ><a href="/projects.htm">Research&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul>
 			<li><a href="#"><span class="drop"><span>Security</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
@@ -730,8 +730,7 @@ header('Content-Type: text/html; charset=utf-8');
 			</li>
 			<li><a href="#"><span class="drop"><span>Future</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
-					<li><a href="#">&nbsp;What's in Your RAM?</a></li>
-					<li><a href="#">&nbsp;IE Vuln.</a></li>
+					<li><a href="#">&nbsp;IE Image Privacy Vuln.</a></li>
 					<li><a href="#">&nbsp;Crypter Detector</a></li>
 					<li><a href="#">&nbsp;Crypto for Web Developers</a></li>
 					<li><a href="/tics.htm">&nbsp;TICS</a></li>
