@@ -56,7 +56,7 @@ if(isset($_GET['drawingnum']))
 		?>
 			<div style="background-color: #66FF99; border: solid 2px black; margin:20px; padding:10px;">
 			<b>Info for drawing #<?php echo $num ?></b><br />
-			The random numbers for this drawing have not yet been chosen. The creator of this drawing will be able to do the drawing after <b><?php echo $drawdate; ?></b>. This period is enforced to allow users of the random numbers to verify that the person doing the drawing isn't repeating the drawing until they get the numbers they want. The fact that you are seeing this message means that you can be absolutely sure that the person doing the drawing cannot bias the results at all.
+			<p>The random numbers for this drawing have not yet been chosen. The creator of this drawing will be able to do the drawing after <b><?php echo $drawdate; ?></b>. This period is enforced to allow users of the random numbers to verify that the person doing the drawing isn't repeating the drawing until they get the numbers they want. The fact that you are seeing this message means that you can be absolutely sure that the person doing the drawing cannot bias the results at all.</p>
 			</div>
 		<?
 		}
@@ -77,8 +77,7 @@ if(isset($_GET['drawingnum']))
 				<li>Check that the timestamp looks to be on or near the date the drawing was done.</li>
 				<li>Obtain any related files from the organizer and verify that the SHA256 checksum is <b>exactly identical</b> using the <a href="checksums.htm" />checksum calculator</a>.</li>
 			</ul>
-			<br />
-			If all of those conditions are true, then there is no way the drawing organizer could have biased these numbers, and you can trust the results. If you are in doubt, <a href="contact.htm">contact me</a>. Send me the drawing number and I will look at it personally.
+			<p>If all of those conditions are true, then there is no way the drawing organizer could have biased these numbers, and you can trust the results. If you are in doubt, <a href="contact.htm">contact me</a>. Send me the drawing number and I will look at it personally.</p>
 			</div>
 		<?
 		}
@@ -113,7 +112,7 @@ if(isset($_POST['makedrawingnumber']))
 {
 	$reviewtime = (int)$_POST['prereview'];
 	if($reviewtime < 3600 * 24)
-		die("Don't hax...");
+		die("Nope...");
 	
 	$starttime = time();
 	$drawingdate = date("D M j G:i:s T Y", $reviewtime + $starttime);
@@ -123,16 +122,15 @@ if(isset($_POST['makedrawingnumber']))
 	$drawingnum = mysql_insert_id();
 	$url = "https://ossbox.com/trustedthirdparty.htm?drawingnum=" . $drawingnum;
 	?>
-		<div style="background-color: #66FF99; border: solid 2px black; margin:20px; padding:10px;">
-		<b>Your Drawing Number Has Been Reserved...</b><br />
+		<div style="background-color: #66FF99; border: solid 2px black; margin:20px; padding-left:10px; padding-right: 10px;">
+		<p><b>Your Drawing Number Has Been Reserved...</b><br />
 		Your drawing number is: <b><? echo $drawingnum; ?></b><br />
 		Your passcode is: <b><? echo $password; ?></b><br />
-		You will be able to do the drawing after <b><?php echo $drawingdate; ?></b><br /><br />
-		Please remember this information. Keep your password safe. You will need the drawing number and password to complete the actual drawing. Publish the drawing number BEFORE you do the drawing.
-		<br /><br />
-		Give your clients the following URL:<br />
-		<b><?php echo $url; ?></b><br />
-		This allows them to see that the drawing number has been reserved BEFORE the drawing took place, which prooves to them that you didn't redo the drawing over and over until TRENT picked the "right numbers". Your clients can get to the same page by entering the drawing number in the "Validate Random Numbers" section above.
+		You will be able to do the drawing after <b><?php echo $drawingdate; ?></b></p>
+		<p><b>Please remember this information</b>. Keep your password safe. You will need the drawing number and password to complete the actual drawing.</p>
+		<p>Give your clients the following URL:<br />
+		<b><a href="<?php echo $url; ?>"><?php echo $url; ?></a></b></p>
+		<p>This allows them to see that the drawing number has been reserved BEFORE the drawing took place, which prooves to them that you didn't redo the drawing over and over until TRENT picked the "right numbers". Your clients can also get to that page by entering the drawing number in the "Validate Random Numbers" section above.</p>
 		</div>
 	<?
 }

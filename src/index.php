@@ -15,7 +15,6 @@
 	
 ==============================================================================*/
 
-date_default_timezone_set("Canada/Mountain");
 
 if($_SERVER["HTTPS"] != "on") {
    header("HTTP/1.1 301 Moved Permanently");
@@ -808,6 +807,7 @@ header('Content-Type: text/html; charset=utf-8');
 		?>
 		<div id="footwrap">	<div id="footer">
 		<?
+		date_default_timezone_set("Canada/Mountain");
 		$last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
 		$unique =  PHPCount::GetHits($fullpath, true);
 		$hits = PHPCount::GetHits($fullpath);
