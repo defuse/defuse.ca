@@ -39,7 +39,7 @@ header("Expires: Mon, 01 Jan 1990 00:00:00 GMT");
 	/* every second row of text is shaded */
 	.div1
 	{
-		background-color: #F0F0F0;
+		background-color: #f4f4f4;
 	}
 </style>
 </head>

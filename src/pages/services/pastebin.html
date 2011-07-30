@@ -2,32 +2,24 @@
 
 <div style="text-align:center; font-size: 30px;"><b><u>P</u></b>re-<b><u>I</u></b>nternet <b><u>E</u></b>ncryption for Text</div>
 
-<p><a href="#security"><b>Security and Encryption Information</b></a></p>
+<form id="pasteform" name="pasteform" action="/bin/add.php" method="post">
+	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
+	<br />
+	<textarea id="paste" style="color:black; background-color:white; border:dashed 1px black; width:100%;" rows="30" cols="40" name="paste" spellcheck="false"></textarea>
+	<br />
+	<p><b>All posts are automatically deleted after 10 days.</b></p>
+	<input style="width:300px;" type="submit" name="submitpaste" value="Post WITHOUT Client-Side Encryption" /> 	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL
+</form>
 
-
-<b>All posts are deleted automatically after 10 days.</b>
-<br /><br />
 
 <!--Client-side encryption options-->
-<div id="encinfo" style="margin-bottom:10px;">
+<div id="encinfo" style="margin-top: 10px;">
 	Client-Side Password: 
 	<input type="password" id="pass1" value="" /> &nbsp;
 	Verify: <input type="password" id="pass2" value="" /> 
 	<input type="button" value="Encrypt &amp; Post" onClick="encrypt()" /> <noscript><b>(JavaScript Required)</b></noscript>
 </div> <!-- /enc -->
 <!--end of client-side encryption options-->
-
-<form id="pasteform" name="pasteform" action="/bin/add.php" method="post">
-	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
-	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Client-Side Encryption" />
-	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL
-	<br />
-	<textarea id="paste" style="color:black; background-color:white; border:dashed 1px black; width:100%;" rows="60" cols="40" name="paste" spellcheck="false"></textarea>
-	<br />
-	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Client-Side Encryption" />
-	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL <br /> 
-	<b>Your post will be deleted automatically in 10 days.</b><br />
-</form>
 
 <!-- Scripts for client-side encryption -->
 <script type="text/javascript" src="/js/cryptoHelpers.js" ></script>
@@ -78,5 +70,3 @@ function encrypt()
 
 <p>The data is always sent to OSSBox through a secure, AES-256 encrypted, SSL/TLS connection.</p>
 
-
-<p><a href="/source/cryptbin.zip">Download the PHP Source Code</a></p>

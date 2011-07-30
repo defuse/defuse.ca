@@ -142,11 +142,12 @@ text-decoration:underline;
 }
 
 .div1 {
-	background-color: #F0F0F0   ;
-
+	background-color: #F4F4F4 ;
+	word-wrap: break-word;
 }
 
 .div0 {
+	word-wrap: break-word;
 }
 
 #footer {
