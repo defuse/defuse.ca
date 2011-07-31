@@ -735,13 +735,10 @@ header('Content-Type: text/html; charset=utf-8');
 			<li><a href="#"><span class="drop"><span>Future</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
 					<li><a href="#">&nbsp;IE Image Privacy Vuln.</a></li>
-					<li><a href="#">&nbsp;Crypter Detector</a></li>
 					<li><a href="#">&nbsp;Crypto for Web Developers</a></li>
 					<li><a href="/tics.htm">&nbsp;TICS</a></li>
-					<li><a href="#">&nbsp;Web Browser UI Redesign</a></li>
-					<li><a href="/flashsupercomputer.htm">&nbsp;Flash Supercomputer</a></li>
-					<li><a href="#">&nbsp;Cortical Cryptanalysis</a></li>
 					<li><a href="/internetdangers.htm">&nbsp;Internet Security Basics</a></li>
+					<li><a href="#">&nbsp;Cortical Cryptanalysis</a></li>
 				</ul>
 
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
