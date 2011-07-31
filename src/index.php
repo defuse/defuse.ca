@@ -28,24 +28,6 @@ require_once('libs/phpcount.php');
 $entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implode($_POST) . implode($_COOKIE) . implode($_ENV) . microtime() . mt_rand() . mt_rand();
 file_put_contents("/dev/random", $entropy);
 
-//Connect to MySQL
-//TODO: change this information.
-//$username="ossbox";
-//$password="Nw552SfbbZp";
-//$database="cracky_ids";
-//mysql_connect("localhost",$username,$password);
-//@mysql_select_db($database) or die( "Unable to select database");
-//if(md5($_SERVER['REMOTE_ADDR']) != "a99e050496bd36a9327ab92dbcaac4f7")
-//{
-//	mysql_query("UPDATE hits SET hitcount=(hitcount + 1)");
-
-//	/*$ip = sqlsani($_SERVER['REMOTE_ADDR']);
-//	$url = sqlsani($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-//	$time = time();
-//	$agent = sqlsani($_SERVER['HTTP_USER_AGENT']);
-//	mysql_query("INSERT INTO ids (time, url, ip, agent) VALUES('$time', '$url', '$ip', '$agent')");*/
-//}
-
 //Default title of the page (shown on the top of the window and on top of tabs)
 $TITLE = "OSSBox Security - Software Development &amp; Security Reviews";
 
