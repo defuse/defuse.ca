@@ -723,15 +723,6 @@ header('Content-Type: text/html; charset=utf-8');
 			</li>
 			
 			<li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>
-			<li><a href="#"><span class="drop"><span>Old</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
-				<ul>
-					
-					<li><a href="/cryptographyunderattack.htm">&nbsp;Cryptography Under Attack</a></li>
-					<li><a href="/passwordinsecurity.htm">&nbsp;Are Passwords Insecure?</a></li>
-				</ul>
-
-				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-			</li>
 			<li><a href="#"><span class="drop"><span>Future</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
 					<li><a href="#">&nbsp;IE Image Privacy Vuln.</a></li>

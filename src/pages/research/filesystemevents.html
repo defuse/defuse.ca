@@ -1,5 +1,4 @@
 <h1>File System Events Leak Folder Contents</h1>
-<p>March 25th, 2011.</p>
 
 <p>Using the .NET framework's FileSystemWatcher class, it's possible to monitor a folder and it's sub-folders for file creations, modifications, and deletions. The Windows API fails to take NTFS permissions into account when raising these events. By logging these events, it is possible to obtain a partial list of files inside a private folder. This also extends to folders shared over the network.
 </p>
@@ -86,5 +85,3 @@ I have made available the source code and compiled binary for the utility I crea
 At first glance, this attack doesn't appear to be a very big security problem because the attacker only gets filenames, not their contents. I argue that it <b>is</b> a problem, because many admins are TRUSTING and RELYING on NTFS permissions to keep the names of their files secret. This attack leads to serious privacy problems in multi-user and shared-workstation setups. It's also very likely that clever hackers could use other attacks along with this one to aid them in breaking into a Windows system or network.
 </p>
 
-<h2>Comments &amp; Questions</h2>
-<p>If you have any questions, comments, or want me to test a special case for you, please find my email address on the contact page. Any comments will be greatly appreciated, especially if something I said was wrong :)</p>

@@ -1,5 +1,4 @@
 <h1>Data Flow in Web Applications</h1>
-<p>April 23, 2011.</p>
 
 <p>Surely, if you've been following the news recently, you've seen lots of reports about websites being hacked, and their databases being leaked. Web site breaches are clearly becoming more and more common, but why?</p>
 
@@ -28,10 +27,10 @@
 
 <p>For example, data could follow any of these paths: </p>
 <pre>
-Web Browser --> script.php --> Database
-Web Browser --> script.php --> External Code --> Database
-Web Browser --> script.php --> Database --> script.php --> Database
-Web Browser --> script.php --> Database --> External Code --> Database
+Web Browser --&gt; script.php --&gt; Database
+Web Browser --&gt; script.php --&gt; External Code --&gt; Database
+Web Browser --&gt; script.php --&gt; Database --&gt; script.php --&gt; Database
+Web Browser --&gt; script.php --&gt; Database --&gt; External Code --&gt; Database
 and so on....
 </pre>
 <p>In graph theory, these are actually called walks, and there are infinitely many of them.</p>
