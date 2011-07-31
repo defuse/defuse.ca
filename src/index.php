@@ -645,9 +645,8 @@ header('Content-Type: text/html; charset=utf-8');
 
 			
 			<li style="border-top:solid 1px white;"><a href="/pastebin.htm">&nbsp;Encrypted Pastebin</a></li>
-			<li><a href="/pdfcleaner.htm">&nbsp;PDFCleaner</a></li>
 			<li><a href="/trustedthirdparty.htm">&nbsp;TRENT - Trusted RNG</a></li>
-			<li><a href="http://crackstation.net/" style="color:#cc0000;">&nbsp;CrackStation</a></li>
+			<li><a href="/pdfcleaner.htm">&nbsp;PDFCleaner</a></li>
 
 			<li><a href="#"><span class="drop"><span>Utilities</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
@@ -656,6 +655,7 @@ header('Content-Type: text/html; charset=utf-8');
 				</ul>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 			</li>
+			<li><a href="http://crackstation.net/" style="color:#cc0000;">&nbsp;CrackStation.net</a></li>
 
 		</ul>
 	<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -665,8 +665,8 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
 	<li class="headerlink" ><a href="/projects.htm">Software&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul>
-			<li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
 			<li><a href="/passgen.htm">&nbsp;Password Generator</a></li>
+			<li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
 			<li><a href="/textractor.htm">&nbsp;Textractor</a></li>
 		</ul>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -676,11 +676,11 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
 	<li class="headerlink" ><a href="/projects.htm">Projects &amp; Code&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul>
+			<li><a href="/gpucrack.htm">&nbsp;GPU MD5+Salt Cracker</a></li>
 			<li><a href="/php-hit-counter.htm">&nbsp;PHP Hit Counter</a></li>
 			<li><a href="/csharpthreadlibrary.htm">&nbsp;PolyThread</a></li>
-			<li><a href="/simppsk.htm">&nbsp;SimpPSK</a></li>
 			<li><a href="/passwordbolt.htm">&nbsp;Password Bolt [BETA]</a></li>
-			<li><a href="/gpucrack.htm">&nbsp;GPU MD5+Salt Cracker</a></li>
+			<li><a href="/simppsk.htm">&nbsp;SimpPSK</a></li>
 			<li><a href="/blowfish.htm">&nbsp;Blowfish C#/C++</a></li>
 			<!--<li><a href="/blowfish.htm">&nbsp;BLOWFISH C# &amp; C++</a></li>-->
 			
