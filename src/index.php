@@ -228,6 +228,10 @@ switch($name)
 		$META_KEYWORDS = "security, peer review, testing, software security";
 		break;
 	case "trent":
+		header("HTTP/1.1 301 Moved Permanently");
+		header("Location: /trustedthirdparty.htm");
+		die();
+		break;
 	case "trustedthirdparty":
 		$path = "services/trustedthirdparty.php";
 		$TITLE = "TRENT - FREE Third party Drawing Service - OSSBox";
