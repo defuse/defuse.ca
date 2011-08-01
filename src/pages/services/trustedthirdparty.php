@@ -577,7 +577,6 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 		if($noLineRepeat)
 			$exclude[] = $randnum;
 		$printout .= "FILE1 RANDOM LINE $i:\n";
-		$printout .= "SOURCE DATA: $sourcehex\n";
 		$printout .= "RANDOM LINE NUMBER (FILE1): $randnum\n";
 		$printout .= "LINE PREVIEW: $linepreview\n\n";
 	}
