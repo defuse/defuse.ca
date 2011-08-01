@@ -83,10 +83,10 @@ if(isset($_GET['drawingnum']))
 		<div style="background-color: #C9FFD1; border: solid 2px black; margin:20px; padding:10px;">
 
 			<h3 class="nopaddingatall">Description of drawing #<?php echo $num; ?>:</h3>
-			<textarea rows=10 style="width:98%; background-color: white; color:black;" readonly="readonly" ><?php echo $safeuserprintout; ?></textarea><br /><br />
+			<textarea rows="10" cols="80" style="width:98%; background-color: white; color:black;" readonly="readonly" ><?php echo $safeuserprintout; ?></textarea><br /><br />
 
 			<h3 class="nopaddingatall">Results for drawing #<?php echo $num; ?>:</h3>
-			<textarea rows=20 style="width:98%; background-color: white; color:black;" readonly="readonly" ><?php echo $safeprintout; ?></textarea><br /><br />
+			<textarea rows="20" cols="80" style="width:98%; background-color: white; color:black;" readonly="readonly" ><?php echo $safeprintout; ?></textarea><br /><br />
 
 			<h3 class="nopaddingatall">How do I tell if the drawing was fair?</h3>
 			<p>Verify the following points:</p>
@@ -96,7 +96,7 @@ if(isset($_GET['drawingnum']))
 				<li>The drawing organizer's description of how to use the random numbers to select the results of the drawing is straight forward and doesn't bias the results. If the process is extremely complicated or you don't understand the steps, this is cause for concern.</li>
 				<li>Follow the process of determining the results (e.g. the lottery winner) yourself to determine if the results claimed by the drawing organizer are valid. The drawing organizer should have provided all the steps you need to follow to determine the winner in the "DESCRIPTION" section of the drawing information.</li>
 				<li>The range of random numbers makes sense for what they are being used for (e.g. they include everyone, in a lottery scenario).</li>
-				<li>Obtain any related files from the organizer and verify that the <b>SHA256</b> checksum is <b>exactly identical</b> using the <a href="checksums.htm" />checksum calculator</a>.</li>
+				<li>Obtain any related files from the organizer and verify that the <b>SHA256</b> checksum is <b>exactly identical</b> using the <a href="checksums.htm">checksum calculator</a>.</li>
 				<li>Make sure the random data is in the <strong>second</strong> text area with the title &quot;<?php echo "Results for drawing #$num"; ?>&quot;. The drawing organizer has full control over the text in the first text box.</li> 
 			</ul>
 			<p>Once you have verified each point, you can be sure that the drawing organizer was not able to influence the random numbers in any way, and you can trust the results. If you are in doubt, feel free to <a href="contact.htm">contact OSSBox</a>, we'll be glad to help.</p>
