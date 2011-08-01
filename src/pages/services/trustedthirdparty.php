@@ -6,9 +6,9 @@ This source code is provided only for public review. You MAY NOT modify it. You
 MAY NOT redistribute it. You may use it for PERSONAL PROJECTS IF AND ONLY IF you
 remove ALL markings related to 'TRENT' and 'OSSBox'.
 
-I place these restrictions on this source code because I don't want immitation 
+I place these restrictions on this source code because I don't want imitation 
 'TRENT' services to pop up, not because I want to be the only one, but because I
-don't want *insecure* TRENT immitations to be made, which would ruin the real 
+don't want *insecure* TRENT imitations to be made, which would ruin the real 
 TRENT's reputation and trustworthiness. This is very similar to the TrueCrypt
 license.
 
@@ -607,9 +607,9 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 
 <h2>What is TRENT?</h2>
 
-<p>TRENT is a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Backronym">backronym</a> for &quot;<u>T</u>rusted <u>R</u>andom <u>Ent</u>ropy.&quot; The name TRENT <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Alice_and_bob">comes from cryptography</a>, where he is normally used to represent a mutually trusted third party. That's exactly what OSSBox's TRENT service is: a third party random number generator for drawings, contests, and lottories. TRENT allows both the drawing organizer and contestants to be sure that the winner was selected randomly, and that the random numbers were not biased in any way.</p>
+<p>TRENT is a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Backronym">backronym</a> for &quot;<u>T</u>rusted <u>R</u>andom <u>Ent</u>ropy.&quot; The name TRENT <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Alice_and_bob">comes from cryptography</a>, where he is normally used to represent a mutually trusted third party. That's exactly what OSSBox's TRENT service is: a third party random number generator for drawings, contests, and lotteries. TRENT allows both the drawing organizer and contestants to be sure that the winner was selected randomly, and that the random numbers were not biased in any way.</p>
 
-<p>To understand how TRENT works, we must understand the problem that TRENT solves. Suppose a person named Chuck runs a website and wants to host a drawing between the users of his website. The lucky winner of the drawing will get a prize of $100. Chuck could pick a random user himself, he could even use <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Radioactive_decay">radioactive decay</a> as a source of randomness to ensure the drawing is absolutely fair. That would be great, but Chuck has no way of proving to his users that he actually did that instead of picking a friend (or even himself) and saying it was a random choice.</p>
+<p>To understand how TRENT works, we must understand the problem that TRENT solves. Suppose a person named Chuck runs a website and wants to host a drawing between the users of his website. The lucky winner of the drawing will get a prize of $100. Chuck could pick a random user himself; he could even use <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Radioactive_decay">radioactive decay</a> as a source of randomness to ensure the drawing is absolutely fair. That would be great, but Chuck has no way of proving to his users that he actually did that instead of picking a friend (or even himself) and saying it was a random choice.</p>
 
 <p>Chuck must be able to generate a random number and prove the following points to his users:</p>
 
@@ -630,7 +630,7 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 </ul>
 
 <h3>How to Use TRENT for Your Drawings</h3>
-<p>To use TRENT for your drawings, lottories, and contests, all you have to do is follow a few simple steps:</p>
+<p>To use TRENT for your drawings, lotteries, and contests, all you have to do is follow a few simple steps:</p>
 
 <ol>
 	<li>Reserve a drawing number.</li>
@@ -643,7 +643,7 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 
 <ul>
 	<li>In the description field, provide an easy method to determine the winner from the random numbers.</li>
-	<li>If the outcome of the drawing depends on some extra data, such as a user list, save it as a plaintext (.txt) file and give it to TRENT. Even if you don't want to pick a random line in the file. Giving the extra data to TRENT allows your clients to verify that the data hasn't been altered <em>after</em> the drawing has taken place.</li>
+	<li>If the outcome of the drawing depends on some extra data, such as a user list, save it as a plaintext (.txt) file and give it to TRENT. Even if you don't want to pick a random line in the file, giving the extra data to TRENT allows your clients to verify that the data hasn't been altered <em>after</em> the drawing has taken place.</li>
 </ul>
 
 <p>That's all you have to do! TRENT will take care of explaining to your clients how to make sure the drawing was fair. Feel free to run a few practice drawings to get a feel for how TRENT works.</p>
