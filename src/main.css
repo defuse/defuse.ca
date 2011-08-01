@@ -199,3 +199,8 @@ text-decoration:underline;
 
 .hosval {
 }
+
+.nopaddingatall {
+	padding: 0;
+	margin: 0;
+}
