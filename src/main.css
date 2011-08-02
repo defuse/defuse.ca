@@ -141,6 +141,7 @@ padding-right:5px;
 text-decoration:underline;
 }
 
+/* These DO NOT affect the PASTEBIN page! */
 .div1 {
 	background-color: #F4F4F4 ;
 	word-wrap: break-word;

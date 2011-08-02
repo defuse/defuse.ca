@@ -29,7 +29,7 @@ header("Expires: Mon, 01 Jan 1990 00:00:00 GMT");
 
 	textarea
 	{
-	    	width:100%;
+	    width:100%;
 		height: 200px;
 		background-color: white;
 		color:black;
@@ -40,6 +40,7 @@ header("Expires: Mon, 01 Jan 1990 00:00:00 GMT");
 	.div1
 	{
 		background-color: #f4f4f4;
+        font-family: monospace;
 	}
 </style>
 </head>
@@ -116,7 +117,7 @@ if(mysql_num_rows($query) > 0)
 		{
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
 			$line = str_replace("  ", "&nbsp;&nbsp;", $line);
-			echo '<li><div class="div' . $i . '">&nbsp;' . $line . '</div></li>';
+			echo '<li><div class="div' . $i . '">' . $line . '</div></li>';
 			$i = ($i + 1) % 2;
 		}
 		echo '</ol></div>';
