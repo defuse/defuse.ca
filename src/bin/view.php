@@ -117,7 +117,7 @@ if(mysql_num_rows($query) > 0)
 		{
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
 			$line = str_replace("  ", "&nbsp;&nbsp;", $line);
-			echo '<li><div class="div' . $i . '">' . $line . '</div></li>';
+			echo '<li><div class="div' . $i . '">&nbsp;' . $line . '</div></li>';
 			$i = ($i + 1) % 2;
 		}
 		echo '</ol></div>';
