@@ -34,8 +34,13 @@ header("Expires: Mon, 01 Jan 1990 00:00:00 GMT");
 		background-color: white;
 		color:black;
 		border:solid black 1px;
+        font-family: monospace;
 	}
 
+    .div1
+    {
+        font-family: monospace;
+    }
 	/* every second row of text is shaded */
 	.div1
 	{
