@@ -140,9 +140,9 @@ if(mysql_num_rows($query) > 0)
 	}
 	?>
 	<form name="pasteform" id="pasteform" action="https://bin.ossbox.com/add.php" method="post">
-	<a name="copypaste"><h2>Copy &amp; Make New Post</h2></a>
+	<a name="copypaste"></a><h2>Copy &amp; Make New Post</h2>
 
-	<textarea id="paste" name="paste" spellcheck="false"><?
+	<textarea id="paste" name="paste" spellcheck="false" rows="30" cols="80"><?
 		if($query['jscrypt'] == "0")
 			echo $data;
 	?></textarea>
@@ -159,7 +159,7 @@ if(mysql_num_rows($query) > 0)
 		</noscript>
 		<input type="password" id="pass1" value="" /> &nbsp;
 		Verify: <input type="password" id="pass2" value="" /> 
-		<input type="button" value="Encrypt &amp; Post" onClick="encrypt()" /> 
+		<input type="button" value="Encrypt &amp; Post" onclick="encrypt()" /> 
 	</div>
 	<?
 }
