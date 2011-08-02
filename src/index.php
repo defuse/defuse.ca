@@ -29,7 +29,7 @@ $entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implod
 file_put_contents("/dev/random", $entropy);
 
 //Default title of the page (shown on the top of the window and on top of tabs)
-$TITLE = "OSSBox Security - Software Development &amp; Security Reviews";
+$TITLE = "OSSBox Security - Cyber-Security Research and Development";
 
 //Default meta info (for search engines)
 $META_DESCRIPTION = "OSSBox Security - Home to the PDF Exploit remover and Encrypted Anonymous Private Pastebin!";
