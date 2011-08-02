@@ -8,9 +8,11 @@ if(isset($_POST['paste']) && !empty($_POST['paste']))
 {
 	//get the text
 	$data = smartslashes($_POST['paste']);
+    $data = replace($data, "\r", "\n");
+    $data = replace($data, "\n\n", "\n"); // Handles CRLF and Chrome's stupid LFLF
 
 	//create the "password" 22 characters if 'long' or only 8 if short
-	$contents = hash("SHA512", microtime() . mcrypt_create_iv(512, MCRYPT_DEV_URANDOM) . microtime(), true);
+	$contents = hash("SHA512", mcrypt_create_iv(512, MCRYPT_DEV_URANDOM), true);
 	$alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	$password = format($alphanum,$contents);
 	$password_length = 22;
