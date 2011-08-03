@@ -619,7 +619,7 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 <ul>
 	<li>TRENT uses <a href="https://secure.wikimedia.org/wikipedia/en/wiki//dev/urandom">/dev/urandom</a>, the ultra-secure cryptographic random number generator built into Linux.</li>
 	<li>TRENT does not allow Chuck to bias the numbers in any way.</li>
-	<li>TRENT enforces at least a 24-hour period between when a drawing number is reserved and the actual drawing takes place. This allows Chuck to publish the drawing number ahead of time to prove he isn't repeating the drawing until he gets the results he wants.</li>
+	<li>TRENT enforces at least a 24-hour period between when a drawing number is reserved and when the actual drawing takes place. This allows Chuck to publish the drawing number ahead of time to prove he isn't repeating the drawing until he gets the results he wants.</li>
 	<li>TRENT accepts up to 3 texts files which can be used by Chuck to prove that the user list wasn't altered after the random numbers were selected. TRENT saves the SHA256 checksum of the file, so the <a href="/checksums.htm">checksum calculator</a> can be used to ensure the file Chuck provides to his users is the same as the one Chuck provided to TRENT.</li>
 </ul>
 
@@ -646,4 +646,4 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 
 <p>TRENT's source code is available for peer review. Please note that the code is provided for peer review purposes only. Do not copy it, distribute it, or alter it in any way. I really would like to make TRENT open source but I can't because I know that if I did, backdoored versions of TRENT would be created. If you would like to use TRENT's code for a specific purpose, <a href="/contact.htm">ask me</a>, and I'll probably let you. Thanks for understanding.</p>
 
-<p><a href="/source/trent.txt"><strong>Download TRENT's Source Code</strong></a></p>
+<p><a href="/source/trent.html"><strong>Download TRENT's Source Code</strong></a></p>

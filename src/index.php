@@ -3,9 +3,6 @@
 
 		OSSBOX's Secure & Lightweight CMS in PHP for Linux.
 
-	This code is hereby placed into the public domain by its author 
-	FireXware. It may be freely used for any purpose whatsoever.
-
                       PUBLIC DOMAIN CONTRIBUTION NOTICE							 
    This work has been explicitly placed into the Public Domain for the
 	benefit of anyone who may find it useful for any purpose whatsoever.
