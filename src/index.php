@@ -681,11 +681,9 @@ header('Content-Type: text/html; charset=utf-8');
 			<li><a href="#"><span class="drop"><span>Security</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
 					<li><a href="/password-policy-hall-of-shame.htm">&nbsp;Password Policy HoS</a></li>
-					<li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
 					<li><a href="/web-application-security.htm">&nbsp;Website Security</a></li>		
 					<li><a href="/filesystem-events-ntfs-permissions.htm">&nbsp;File-System Events</a></li>
 					<li><a href="/onedetection.htm">&nbsp;PUP Confusion</a></li>
-					<li><a href="/softwaresecurity.htm">&nbsp;Software Security</a></li>
 				</ul>
 
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -700,7 +698,6 @@ header('Content-Type: text/html; charset=utf-8');
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 			</li>
 			
-			<li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>
 			<li><a href="#"><span class="drop"><span>Future</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
 					<li><a href="#">&nbsp;IE Image Privacy Vuln.</a></li>
@@ -713,6 +710,18 @@ header('Content-Type: text/html; charset=utf-8');
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 			</li>
 			
+		</ul>
+		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+	</li>
+</ul>
+
+<ul>
+	<li class="headerlink" ><a href="/projects.htm">Miscellaneous<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+		<ul>
+			<!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
+			<li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>
+	        <li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
+		    <li><a href="/softwaresecurity.htm">&nbsp;Software Security</a></li>
 		</ul>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 	</li>
