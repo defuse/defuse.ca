@@ -49,6 +49,12 @@ header('Content-Type: text/html; charset=utf-8');
 		background-color: #f4f4f4;
         font-family: monospace;
 	}
+
+    #timeleft
+    {
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
 </style>
 </head>
 <body>
@@ -110,6 +116,14 @@ if(mysql_num_rows($query) > 0)
 {
 	//decrypt the post
 	$query = mysql_fetch_array($query);
+
+    $timeleft = ($query['time'] + 10 * 3600 * 24) - time();
+    $days = (int)($timeleft / (3600 * 24));
+    $hours = (int)($timeleft / (3600)) % 24;
+    $minutes = (int)($timeleft / 60) % 60;
+    echo "<div id=\"timeleft\">This post will be deleted in <u>$days days, $hours hours, and $minutes minutes</u>.</div>";
+
+
 	$data = $query['data'];
 	$data = SafeDecode($query['data']);
 	$data = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $data, MCRYPT_MODE_CBC, md5($key));

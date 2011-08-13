@@ -368,6 +368,12 @@ switch($name)
 		$META_DESCRIPTION = "Should the initialization vector used for CBC mode be kept secret?";
 		$META_KEYWORDS = "cbc mode, encryption, initialization vector, iv, secret, secure";
 		break;
+    case "passwordrestrictions":
+        $path = "research/passwordrestrictions.html";
+        $TITLE = "INSANE Password Restrictions";
+        $META_DESCRIPTION = "Why websites that enforce maximum password length and character set may not be safe to use";
+        $META_KEYWORDS = "password restrictions, hashing, plaintext passwords, maximum length, special symbols";
+        break;
 	case "password-policy-statistics":
 		$path = "research/password-policy-statistics.php";
 		$TITLE = "Password Policy Statistics - OSSBox";
