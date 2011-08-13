@@ -690,13 +690,6 @@ header('Content-Type: text/html; charset=utf-8');
 
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 			</li>
-			<!--put internet dangers HERE-->	
-			<!--<li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Pool DDoS</a></li>
-			<li><a href="/web-application-security.htm">&nbsp;Website Security</a></li>		
-			<li><a href="/filesystem-events-ntfs-permissions.htm">&nbsp;File-System Events</a></li>
-			<li><a href="/onedetection.htm">&nbsp;PUP Confusion</a></li>
-			<li><a href="/softwaresecurity.htm">&nbsp;Software Security</a></li>
-			<li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>-->
 			<li><a href="#"><span class="drop"><span>Crypto</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 				<ul>
 					<li><a href="/eotp.htm">&nbsp;EOTP</a></li>
