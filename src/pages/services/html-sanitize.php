@@ -25,7 +25,7 @@ if(isset($_POST['data']))
 {
 	$data = $_POST['data'];
 	$data = htmlspecialchars(htmlspecialchars($_POST['data'], ENT_QUOTES), ENT_QUOTES); 
-	if($_POST['br'] == "yes")
+	if(isset($_POST['br']) && $_POST['br'] == "yes")
 	{
 		$data = str_replace("\r\n", "\n", $data);
 		$data = str_replace("\r", "\n", $data);

@@ -4,7 +4,7 @@
 	if(isset($_POST['data']))
 	{
 		$data = $_POST['data'];
-		if($_POST['normalize'] == "yes")
+		if(isset($_POST['normalize']) && $_POST['normalize'] == "yes")
 		{
 			$data = str_replace("\r", "", $data);
 			$data = str_replace("\n", "", $data);
