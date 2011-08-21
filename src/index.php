@@ -44,6 +44,8 @@ if(($newURL = NeedRedirect($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST'])) !== 
 }
 
 $name = RemoveDomain($_SERVER['REQUEST_URI']);
+$dothtm = strpos($name, ".htm");
+$name = substr($name,0, $dothtm);
 
 function NeedRedirect($requestURI, $httpHost)
 {
