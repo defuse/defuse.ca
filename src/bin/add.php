@@ -40,7 +40,7 @@ if(isset($_POST['paste']) && !empty($_POST['paste']))
 	mysql_query("INSERT INTO pastes (token, data, time, jscrypt) VALUES('$id', '$crypted', '$time', '$jsCrypted')");
 
 	//redirect user to the view page
-	header("Location: https://bin.ossbox.com/$password");
+	header("Location: https://bin.defuse.ca/$password");
 }
 else
 {
