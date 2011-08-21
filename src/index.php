@@ -43,6 +43,8 @@ if(($newURL = NeedRedirect($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST'])) !== 
     die();
 }
 
+$name = RemoveDomain($_SERVER['REQUEST_URI']);
+
 function NeedRedirect($requestURI, $httpHost)
 {
     $noDomain = RemoveDomain($requestURI);
