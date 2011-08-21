@@ -59,7 +59,7 @@ function NeedRedirect($requestURI, $httpHost)
         $needRedirect = true;
     }
 
-    if($httpHost != "defuse.ca" && $httpHost != "localhost" && $httpHost != "192.168.1.102" && !empty($httpHost))
+    if($httpHost != "defuse.ca" && $httpHost != "localhost" && $httpHost != "192.168.1.102")
     {
         $needRedirect = true;
     }
