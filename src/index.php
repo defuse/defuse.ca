@@ -61,7 +61,8 @@ function NeedRedirect($requestURI, $httpHost)
 
     if($httpHost != "defuse.ca" && $httpHost != "localhost" && $httpHost != "192.168.1.102")
     {
-        $needRedirect = true;
+        if(substr($httpHost, 0, 1) != "/")
+            $needRedirect = true;
     }
 
     if(isset($_GET['page']))
