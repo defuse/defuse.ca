@@ -61,13 +61,13 @@ function encrypt()
 
 <p>Pastebin websites are very useful for sending large amounts of text, but the most popular ones aren't at all secure. By default, all posts on "pastebin.com" are published to the Internet. Anyone can see and search for your private data (<a href="https://encrypted.google.com/search?q=%22BEGIN%2bRSA%2bPRIVATE%2bKEY%22%2b%2bsite%3Apastebin.com" rel="nofollow">example</a>).</p>
 
-<p>I wanted a pastebin that keeps my data safe, so I made one. The text you paste here will be sent over a secure (HTTPS) connection and stored in encrypted form so that it <b>will never be seen by anyone</b> unless they have the correct URL and password. Even if someone gains full access to the OSSBox server, they won't be able to decrypt the data.
+<p>I wanted a pastebin that keeps my data safe, so I made one. The text you paste here will be sent over a secure (HTTPS) connection and stored in encrypted form so that it <b>will never be seen by anyone</b> unless they have the correct URL and password. Even if someone gains full access to our web server, they won't be able to decrypt the data.
 </p>
 
 <center><b><u>PIE BIN Encryption Process:</u></b><br /><br /><img src="/images/pastebin-diagram.png" alt="Secure Pastebin Data Flow Diagram" title="Secure Pastebin Crypto" /></center>
 <p>This pastebin encrypts your post with a 128 bit equivalent random code which is included in the paste URL. The password is hashed using SHA256 into a key for AES-256 in CBC (Cipher Block Chaining) mode. The only way anyone will see your paste is if they have the URL. So only share the paste URL with people you trust, and your data will be 100% private. If we get a court order to decrypt a post, we will not be able to comply.</p>
 
-<p>You also have the option of encrypting your text with client-side encryption. This is much more secure because the encryption and decryption happen right in your browser using JavaScript. OSSBox never gets the chance to see the unencrypted data nor the password used to encrypt it. When you use client-side encryption, your password gets hashed with SHA256 into a 256 bit key for the AES block cipher, which is used to encrypt the text in CBC mode. A random 256 bit salt and a random initialization vector are provided by our server's CSPRNG (Cryptographically Secure Pseudorandom Number Generator).</p>
+<p>You also have the option of encrypting your text with client-side encryption. This is much more secure because the encryption and decryption happen right in your browser using JavaScript. That way, we never get the chance to see the unencrypted data nor the password used to encrypt it. When you use client-side encryption, your password gets hashed with SHA256 into a 256 bit key for the AES block cipher, which is used to encrypt the text in CBC mode. A random 256 bit salt and a random initialization vector are provided by our server's CSPRNG (Cryptographically Secure Pseudorandom Number Generator).</p>
 
-<p>The data is always sent to OSSBox through a secure, AES-256 encrypted, SSL/TLS connection.</p>
+<p>The data is always sent to Defuse Cyber-Security through a secure, AES-256 encrypted, SSL/TLS connection.</p>
 

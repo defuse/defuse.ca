@@ -1,6 +1,6 @@
 /*
  * 			FireXware's JavaScript library
- * 			       http://ossbox.com/
+ * 			       https://defuse.ca/
  *
  *                      PUBLIC DOMAIN CONTRIBUTION NOTICE							 
  * 	This work has been explicitly placed into the Public Domain for the

@@ -1,7 +1,7 @@
 <?php
 /*==============================================================================
 
-		OSSBOX's Secure & Lightweight CMS in PHP for Linux.
+		Defuse Cyber-Security's Secure & Lightweight CMS in PHP for Linux.
 
                       PUBLIC DOMAIN CONTRIBUTION NOTICE							 
    This work has been explicitly placed into the Public Domain for the

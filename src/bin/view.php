@@ -2,7 +2,7 @@
 /* 	
 	Encrypted Pastebin by FireXware 
 
-	WWW: http://www.ossbox.com/
+	WWW: https://defuse.ca/
 	Contact: firexware@gmail.com
 */
 
