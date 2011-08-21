@@ -599,7 +599,7 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
 	<li class="headerlink" ><a href="/">Home&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 		<ul class="leftbutton">
-			<li><a href="/about.htm">&nbsp;About OSSBox</a></li>
+			<li><a href="/about.htm">&nbsp;About Defuse</a></li>
 			<li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
 			<li><a href="/projects.htm">&nbsp;Project List</a></li>
 			<li><a href="http://blog.ossbox.com" >&nbsp;Blog</a></li>
