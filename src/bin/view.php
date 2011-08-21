@@ -59,10 +59,10 @@ header('Content-Type: text/html; charset=utf-8');
 </head>
 <body>
 <!-- Scripts required for client-side decryption -->
-<script type="text/javascript" src="https://ossbox.com/js/cryptoHelpers.js" ></script>
-<script type="text/javascript" src="https://ossbox.com/js/jsHash.js" ></script>
-<script type="text/javascript" src="https://ossbox.com/js/aes.js" ></script>
-<script type="text/javascript" src="https://ossbox.com/js/firexware.js" ></script>
+<script type="text/javascript" src="https://defuse.ca/js/cryptoHelpers.js" ></script>
+<script type="text/javascript" src="https://defuse.ca/js/jsHash.js" ></script>
+<script type="text/javascript" src="https://defuse.ca/js/aes.js" ></script>
+<script type="text/javascript" src="https://defuse.ca/js/firexware.js" ></script>
 <script type="text/javascript">
 <!--
 function encrypt()
@@ -92,7 +92,7 @@ function encrypt()
 </script>
 <!-- End of scripts for client-side decryption -->
 
-<b>Encrypted, Secure Pastebin by <a href="https://ossbox.com/pastebin.htm">OSSBox</a></b>. See <a href="#copypaste">below</a> to copy the text and make a new post.<br /><br />
+<b>Encrypted, Secure Pastebin by <a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a></b>. See <a href="#copypaste">below</a> to copy the text and make a new post.<br /><br />
 <?php
 
 require_once('info.php');
@@ -153,7 +153,7 @@ if(mysql_num_rows($query) > 0)
 		PrintDecryptor(str_replace("\0","", $data));
 	}
 	?>
-	<form name="pasteform" id="pasteform" action="https://bin.ossbox.com/add.php" method="post">
+	<form name="pasteform" id="pasteform" action="https://bin.defuse.ca/add.php" method="post">
 	<a name="copypaste"></a><h2>Copy &amp; Make New Post</h2>
 
 	<textarea id="paste" name="paste" spellcheck="false" rows="30" cols="80"><?
