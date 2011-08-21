@@ -26,11 +26,11 @@ $entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implod
 file_put_contents("/dev/random", $entropy);
 
 //Default title of the page (shown on the top of the window and on top of tabs)
-$TITLE = "OSSBox Security - Cyber-Security Research and Development";
+$TITLE = "Defuse - Cyber-Security Research and Development";
 
 //Default meta info (for search engines)
-$META_DESCRIPTION = "OSSBox Security - Home to the PDF Exploit remover and Encrypted Anonymous Private Pastebin!";
-$META_KEYWORDS = "ossbox, security, encryption, privacy, programming, code, research";
+$META_DESCRIPTION = "Defuse Cyber-Security. Home of the PIE Bin, TRENT, and more...";
+$META_KEYWORDS = "defuse, ossbox, security, encryption, privacy, programming, code, research";
 
 
 //name variable will contain the name of the page
@@ -128,24 +128,24 @@ switch($name)
 		break;
 	case "about":
 		$path = "about.html";
-		$META_DESCRIPTION = "About OSSBox.";
+		$META_DESCRIPTION = "About Defuse Cyber-Security.";
 		break;
 	case "donated":
 		$path = "donated.html";
 		break;
 	case "resume":
 		$path = "resume.html";
-		$TITLE = "My Resume - OSSBox";
+		$TITLE = "My Resume - Defuse Cyber-Security";
 		$META_DESCRIPTION = "OSSBox Resume";
 		break;
 	case "blowfish":
 		$path = "projects/blowfish.html";
-		$TITLE = "Blowfish C# and C++ Source code - OSSBox";
+		$TITLE = "Blowfish C# and C++ Source code - Defuse Cyber-Security";
 		$META_DESCRIPTION = "C# and C++ implementation of the BLOWFISH block cipher.";
 		break;
 	case "wordlists":
 		$path = "projects/wordlists.html";
-		$TITLE = "Password Cracking Wordlists - OSSBox";
+		$TITLE = "Password Cracking Wordlists - Defuse Cyber-Security";
 		$META_DESCRIPTION = "The best password cracking wordlists and dictionaries on the internet.";
 		$META_KEYWORDS = "password cracking, word list, wordlist, dictionary, md5, hash cracking";
 		break;
@@ -156,43 +156,43 @@ switch($name)
 		break;
 	case "php-hit-counter":
 		$path = "projects/php-hit-counter.html";
-		$TITLE = "PHP &amp; MySQL Unique Hit Count Tracker - OSSBox";
+		$TITLE = "PHP &amp; MySQL Unique Hit Count Tracker - Defuse Cyber-Security";
 		$META_DESCRIPTION = "An unique hit counter for PHP. Tracks unique hits without storing the IP address.";
 		$META_KEYWORDS = "hit counter, php, secure, private, anonymous, unique hits, track";
 		break;
 	case "helloworld-cms":
 		$path = "software/helloworld-cms.html";
-		$TITLE = "Secure and Light PHP CMS - OSSBox";
+		$TITLE = "Secure and Light PHP CMS - Defuse Cyber-Security";
 		$META_DESCRIPTION = "A lightweight open source PHP CMS designed for security";
 		$META_KEYWORDS = "secure, light, php, template, backend, cms";
 		break;
 	case "passwordbolt":
 		$path = "software/passwordbolt.html";
-		$TITLE = "Password Bolt Password Manager - OSSBox";
+		$TITLE = "Password Bolt Password Manager - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Password Bolt, an extremely web based secure password manager.";
 		$META_KEYWORDS = "passwordbolt, password, password manager, online password manager, web password manager, open source";
 		break;
 	case "bitcannon":
 		$path = "software/bitcannon.html";
-		$TITLE = "BitCannon - The cross-platform, fast, secure, encrypted internet file transfer program for Windows, Macintosh, and Linux - OSSBox";
+		$TITLE = "BitCannon - The cross-platform, fast, secure, encrypted internet file transfer program for Windows, Macintosh, and Linux - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Easily and quickly transfer large files over a direct encrypted connection.";
 		$META_KEYWORDS = "encrypted file transfer, fast file transfer, secure file transfer, windows, mac, linux";
 		break;
 	case "bitcannon-cryptography":
 		$path = "software/bitcannoncrypto.html";
-		$TITLE = "BitCannon - Cryptographic Protocol Description - OSSBox";
+		$TITLE = "BitCannon - Cryptographic Protocol Description - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Detailed description of the encryption technology behind the BitCannon file transfer program.";
 		$META_KEYWORDS = "secure, encryption, cryptography, file transfer";
 		break;
 	case "softwaredevelopment":
 		$path = "services/softwaredevelopment.html";
-		$TITLE = "Custom Software Development - OSSBox";
+		$TITLE = "Custom Software Development - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Custom secure software development to suit your needs.";
 		$META_KEYWORDS = "software development, custom software, programming, security";
 		break;
 	case "webdevelopment":
 		$path = "services/webdevelopment.html";
-		$TITLE = "Custom Web Design and Development - OSSBox";
+		$TITLE = "Custom Web Design and Development - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Custom web software development.";
 		break;
 	case "services":
@@ -202,7 +202,7 @@ switch($name)
 		break;
 	case "peerreview":
 		$path = "services/peerreview.html";
-		$TITLE = "Peer Review and Security Testing Service - OSSBox";
+		$TITLE = "Peer Review and Security Testing Service - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Free peer review and security testing service.";
 		$META_KEYWORDS = "security, peer review, testing, software security";
 		break;
@@ -213,13 +213,13 @@ switch($name)
 		break;
 	case "trustedthirdparty":
 		$path = "services/trustedthirdparty.php";
-		$TITLE = "TRENT - FREE Third party Drawing Service - OSSBox";
+		$TITLE = "TRENT - FREE Third party Drawing Service - Defuse Cyber-Security";
 		$META_DESCRIPTION = "TRENT, the trusted random number generator for contests and drawings.";
 		$META_KEYWORDS = "contest drawing, third party, trusted, lottory, trent, random number generator";
 		break;
 	case "trentsource":
 		$path = "services/trentsource.html";
-		$TITLE = "TRENT Peer Review Source Code - OSSBox";
+		$TITLE = "TRENT Peer Review Source Code - Defuse Cyber-Security";
 		$META_DESCRIPTION = "The complete source code for OSSBox's TRENT service. Made available for peer review.";
 		$META_KEYWORDS = "contest drawing, third party, trusted, lottory, trent, random number generator";
 		break;
@@ -230,39 +230,39 @@ switch($name)
 		break;
 	case "theoretical-attack-on-bitcoin":
 		$path = "research/theoretical-attack-on-bitcoin.html";
-		$TITLE = "Economic DDoS - A Theoretical Attack on Bitcoin - OSSBox";
+		$TITLE = "Economic DDoS - A Theoretical Attack on Bitcoin - Defuse Cyber-Security";
 		$META_DESCRIPTION = "State-sponsored attacks could secretly destroy the bitcoin economy.";
 		break;
 	case "choosing-good-passwords-longer-is-better":
 		$path = "research/choosing-good-passwords-longer-is-better.html";
-		$TITLE = "How to Pick a Good Password - Longer is Better - OSSBox";
+		$TITLE = "How to Pick a Good Password - Longer is Better - Defuse Cyber-Security";
 		$META_DESCRIPTION = "The length of passwords is far more important than their character set or randomness.";
 		break;
 	case "bitcoin-pool-ddos":
 		$path = "research/bitcoin-pool-ddos.html";
-		$TITLE = "BitCoin Centralization - DDoS Attacks on Pools & Mt. Gox Hacked - OSSBox";
+		$TITLE = "BitCoin Centralization - DDoS Attacks on Pools & Mt. Gox Hacked - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Centralization is harmful to the BitCoin network and community.";
 		$META_KEYWORDS = "bitcoin, ddos, denial of service, pool, mining, mtgox, centralization, hacked";
 		break;
 	case "ssl-fundamental-flaw-fix":
 		$path = "research/ssl-fundamental-flaw-fix.html";
-		$TITLE = "Fixing the Flaw in the SSL Certificate Authority Architecture - OSSBox";
+		$TITLE = "Fixing the Flaw in the SSL Certificate Authority Architecture - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Dangers of the Internet, an explanation of the dangers you face online.";
 		break;
 	case "internetdangers":
 		$path = "research/internetdangers.html";
-		$TITLE = "Dangers of the Internet - OSSBox";
+		$TITLE = "Dangers of the Internet - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Dangers of the Internet, an explanation of the dangers you face online.";
 		break;
 	case "softwaresecurity":
 		$path = "research/softwaresecurity.html";
-		$TITLE = "Software Security - Bypassing KeyScrambler and Avira - OSSBox";
+		$TITLE = "Software Security - Bypassing KeyScrambler and Avira - Defuse Cyber-Security";
 		$META_DESCRIPTION = "The fundamental flaw in the software security model. Bypassing KeyScrambler and Avira";
 		$META_KEYWORDS = "software security, antivirus, keyscrambler, antivir";
 		break;
 	case "web-application-security":
 		$path = "research/web-application-security.html";
-		$TITLE = "Web Application Security - OSSBox";
+		$TITLE = "Web Application Security - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Why are websites so insecure? What design patterns will help solve these problems?";
 		$META_KEYWORDS = "web application security, cross site scripting, sql injection, remote code execution, php, asp, scripting";
 		break;
@@ -273,25 +273,25 @@ switch($name)
 		break;
 	case "cryptographyunderattack":
 		$path = "research/cryptographyunderattack.html";
-		$TITLE = "Cryptography Under Attack - OSSBox";
+		$TITLE = "Cryptography Under Attack - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Cryptography under attack essay.";
 		break;
 	case "passwordinsecurity":
 		$path = "research/passwordinsecurity.html";
-		$TITLE = "Are Passwords Secure? - OSSBox";
+		$TITLE = "Are Passwords Secure? - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Finding out if passwords are right way to be authenticating users.";
 		break;
 	case "keyboarddefect":
 	case "asuskeyboarddefect":
 		$path = "research/asuskeyboarddefect.html";
-		$TITLE = "ASUS G50 G51 Keyboard Problem: Backspace, P, and 1 keys don't work. - OSSBox";
+		$TITLE = "ASUS G50 G51 Keyboard Problem: Backspace, P, and 1 keys don't work. - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Solution to the keyboard problem for the ASUS G50, G51, and G51VX series laptops.";
 		$META_KEYWORDS = "asus keyboard, g series, g51, g50, g51vx, backspace, p, q, keys, broken";
 		$commentid = $CID_ASUSKB;
 		break;
 	case "passgen":
 		$path = "software/passgen.html";
-		$TITLE = "Secure Windows &amp; Linux Password Generator - OSSBox";
+		$TITLE = "Secure Windows &amp; Linux Password Generator - Defuse Cyber-Security";
 		$META_DESCRIPTION = "A secure random password generator for Windows,  Linux and Macintosh. Generates ASCII and HEX.";
 		$META_KEYWORDS = "password generator, secure, encryption, windows, linux, macintosh";
 		break;
@@ -302,24 +302,24 @@ switch($name)
 		break;
 	case "winrrng":
 		$path = "software/winrrng.html";
-		$TITLE = "Real Random Number Generator for Windows - OSSBox";
+		$TITLE = "Real Random Number Generator for Windows - Defuse Cyber-Security";
 		$META_DESCRIPTION = "A real random number generator for Windows";
 		break;
 	case "textractor":
 		$path = "software/textractor.html";
-		$TITLE = "Textractor - A tool for extracting words from large binary files - OSSBox";
+		$TITLE = "Textractor - A tool for extracting words from large binary files - Defuse Cyber-Security";
 		$META_DESCRIPTION = "A Windows and Linux tool for extracting words or sequences of alphabetical characters from large binary files";
 		$META_KEYWORDS = "extract, words, wordlist creator, extract words";
 		break;
 	case "dotnetbenchmark":
 		$path = "software/dotnetbenchmark.html";
-		$TITLE = "Benchmark Tool for the .NET Framework - OSSBox";
+		$TITLE = "Benchmark Tool for the .NET Framework - Defuse Cyber-Security";
 		$META_DESCRIPTION = "A benchmark tool for the .NET Framework";
 		$META_KEYWORDS = "dot net framework, benchmark";
 		break;
 	case "eotp":
 		$path = "research/eotp.html";
-		$TITLE = "Encrypting One Time Passwords System - OSSBox";
+		$TITLE = "Encrypting One Time Passwords System - Defuse Cyber-Security";
 		$META_DESCRIPTION = "A One Time Password protocol that can be used with encryption.";
 		$META_KEYWORDS = "encrypting one time passwords, static key, one time password";
 		break;
@@ -364,7 +364,7 @@ switch($name)
 		break;
 	case "cbcmodeiv":
 		$path = "research/cbcmodeiv.html";
-		$TITLE = "Should CBC Mode Initialization Vector Be Secret - OSSBox";
+		$TITLE = "Should CBC Mode Initialization Vector Be Secret - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Should the initialization vector used for CBC mode be kept secret?";
 		$META_KEYWORDS = "cbc mode, encryption, initialization vector, iv, secret, secure";
 		break;
@@ -376,69 +376,69 @@ switch($name)
         break;
 	case "password-policy-statistics":
 		$path = "research/password-policy-statistics.php";
-		$TITLE = "Password Policy Statistics - OSSBox";
+		$TITLE = "Password Policy Statistics - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Password length and character restriction statistics. Top 100 sites.";
 		$META_KEYWORDS = "password, statistics, restrictions, maximum length, symbols, plain text, hashing, salt";
 		break;
 	case "password-policy-hall-of-shame":
 		$path = "research/hallofshame.php";
-		$TITLE = "Password Policy Hall of SHAME - OSSBox";
+		$TITLE = "Password Policy Hall of SHAME - Defuse Cyber-Security";
 		$META_DESCRIPTION = "List of websites and services that impose password restrictions and may be storing passwords in plaintext.";
 		$META_KEYWORDS = "hall of shame, password hall of shame, plaintext, password restrictions, maximum password length, restriction, insecure";
 		break;
 	case "gpucrack":
 		$path = "projects/gpucrack.html";
-		$TITLE = "CUDA Salted MD5 GPU Cracker Source Code - OSSBox";
+		$TITLE = "CUDA Salted MD5 GPU Cracker Source Code - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Source code for a salted MD5 hash cracker using nvidia graphics cards (CUDA).";
 		$META_KEYWORDS = "salted md5, hash cracking, gpu, graphics cards, nvidia, cuda";
 		break;
 	case "waterfall":
 		$path = "projects/waterfall.html";
-		$TITLE = "Waterfall Password Cracking Algorithm - OSSBox";
+		$TITLE = "Waterfall Password Cracking Algorithm - Defuse Cyber-Security";
 		$META_DESCRIPTION = "The Waterfall password cracking algorithm with implementation and source code.";
 		$META_KEYWORDS = "password cracking, memorable passwords, keyspace reduction, fast dictionary attack";
 		break;
 	case "csharpthreadlibrary":
 		$path = "projects/csharpthreadlibrary.html";
-		$TITLE = "PolyThread - C# Thread Library - OSSBox";
+		$TITLE = "PolyThread - C# Thread Library - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Source code for a job-based multi-threading library for the .NET framework. Written in C#.";
 		$META_KEYWORDS = "multi-threading, threads, c#, library, job based, parallel";
 		break;
 	case "simppsk":
 		$path = "projects/simppsk.html";
-		$TITLE = "SimpPSK - A simple pre-shared key authentication and session key exchange implementation - OSSBox";
+		$TITLE = "SimpPSK - A simple pre-shared key authentication and session key exchange implementation - Defuse Cyber-Security";
 		$META_KEYWORDS = "pre-shared key, key exchange, library, c++, c plus plus";
 		break;
 	case "checksums":
 		$path = "services/checksums.php";
-		$TITLE = "Online Text and File Hash Calculator - MD5, SHA1, SHA256, SHA512, WHIRLPOOL Hash Calculator - OSSBox";
+		$TITLE = "Online Text and File Hash Calculator - MD5, SHA1, SHA256, SHA512, WHIRLPOOL Hash Calculator - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Online Hash Tool. Calculate hash of file or text. MD5, SHA1, SHA256, SHA512 and more...";
 		$META_KEYWORDS = "file hasher, online, hash, md5, sha256, sha1, text hash, checksum";
 		break;
 	case "html-sanitize":
 		$path = "services/html-sanitize.php";
-		$TITLE = "Online HTML Sanitizer Tool - htmlspecialchars - OSSBox";
+		$TITLE = "Online HTML Sanitizer Tool - htmlspecialchars - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Convert text containing special characters into proper HTML.";
 		$META_KEYWORDS = "html sanitizer, htmlspecialchars, htmlencode";
 		break;
 	case "pdfcleaner":
 		$path = "services/pdfcleaner.php";
-		$TITLE = "PDF Exploit Sanitizer and Cleaner - Remove exploits from PDF files - OSSBox";
+		$TITLE = "PDF Exploit Sanitizer and Cleaner - Remove exploits from PDF files - Defuse Cyber-Security";
 		$META_DESCRIPTION = "PDF Exploit Remover. Remove ANY exploit from a PDF files. Even unknown exploits.";
 		$META_KEYWORDS = "pdf exploit, exploit remover, unknown exploit, sanitizer";
 		break;
 	case "tics":
 		$path = "research/tics.html";
-		$TITLE = "TICS - Time Intensive Computer Solvable CAPTCHA Alternative - OSSBox";
+		$TITLE = "TICS - Time Intensive Computer Solvable CAPTCHA Alternative - Defuse Cyber-Security";
 		break;
 	case "browserui":
 		$path = "research/browserui.html";
-		$TITLE = "Redesigning the Web Browser GUI - OSSBox";
+		$TITLE = "Redesigning the Web Browser GUI - Defuse Cyber-Security";
 		$META_DESCRIPTION = "The web browser needs a redesign..";
 		break;
 	case "flashsupercomputer":
 		$path = "research/flashsupercomputer.html";
-		$TITLE = "Building a Distributed Supercomputer with Flash - OSSBox";
+		$TITLE = "Building a Distributed Supercomputer with Flash - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Easy, super-scalable supercomputing.";
 		break;
 	case "stopspying":
@@ -448,18 +448,18 @@ switch($name)
 		break;
 	case "filesystem-events-ntfs-permissions":
 		$path = "research/filesystemevents.html";
-		$TITLE = "File System Events Disclose NTFS Protected Folder Contents - OSSBox";
+		$TITLE = "File System Events Disclose NTFS Protected Folder Contents - Defuse Cyber-Security";
 		$META_DESCRIPTION = "Obtain list of files in folder protected with NTFS permissions via filesystem events";
 		break;
 	case "pastebin":
 		$path = "services/pastebin.html";
-		$TITLE = "Encrypted Pastebin - Keep your data private and secure! - OSSBox";
+		$TITLE = "Encrypted Pastebin - Keep your data private and secure! - Defuse Cyber-Security";
 		$META_DESCRIPTION = "An Encrypted, Anonymous, Secure, and PRIVATE Pastebin. Send large amounts of text to your friends without it being leaked onto the internet!";
 		$META_KEYWORDS = "private pastebin, encrypted pastebin, secure pastebin, anonymous pastebin, privacy";
 		break;
 	case "onedetection":
 		$path = "research/onedetection.html";
-		$TITLE = "The PUP Confusion Antivirus Detection Evasion Technique - OSSBox";
+		$TITLE = "The PUP Confusion Antivirus Detection Evasion Technique - Defuse Cyber-Security";
 		$META_DESCRIPTION = "The PUP Confusion Antivirus Detection Evasion Technique. Multiple detections per file.";
 		$META_KEYWORDS = "antivirus, single detection, only one detection, can't detect more than one, multiple virus, two viruses in one file";
 		break;
@@ -468,7 +468,7 @@ switch($name)
 		header("Location: http://crackstation.net/hashing-security.html");
 		die();
 		/*$path = "research/salted-password-hashing-doing-it-properly.html";
-		$TITLE = "Secure Password Hashing - How to do it Properly - OSSBox";
+		$TITLE = "Secure Password Hashing - How to do it Properly - Defuse Cyber-Security";
 		$META_DESCRIPTION = "How to hash hasswords with salt properly. For use in secure web based loging systems.";
 		$META_KEYWORDS = "password hashing, storing passwords, how to hash, salt, web development, md5, sha1, sha256, crypto, cryptography, php, mysql, database";*/
 		break;
@@ -775,7 +775,7 @@ header('Content-Type: text/html; charset=utf-8');
 		}
 
 		?>
-			<span style="color:#bbbbbb;">Copyright &copy; 2011 OSSBOX.COM.</span>
+			<span style="color:#bbbbbb;">Copyright &copy; 2011 DEFUSE.CA.</span>
 			</div></div>
 		<?
 	}
