@@ -36,6 +36,7 @@ $name = "";
 // http://example.com/text.htm (all other forms will get directed to this form)
 // http://example.com/index.php will be redirected to http://example.com/
 
+// Make sure the URL is valid i.e. right domain name, HTTPS on, etc.
 if(($newURL = NeedRedirect($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST'])) !== false)
 {
 	header("HTTP/1.1 301 Moved Permanently");
@@ -43,39 +44,44 @@ if(($newURL = NeedRedirect($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST'])) !== 
     die();
 }
 
+// Find the page name from the URL
 $name = RemoveDomain($_SERVER['REQUEST_URI']);
 $dothtm = strpos($name, ".htm");
 $name = substr($name,0, $dothtm);
 
 function NeedRedirect($requestURI, $httpHost)
 {
-    $noDomain = RemoveDomain($requestURI);
+    $needRedirect = false;
+    $name = RemoveDomain($requestURI);
 
     if($_SERVER["HTTPS"] != "on")
     {
-        $name = $noDomain;
+        $needRedirect = true;
     }
 
     if($httpHost != "defuse.ca" && $httpHost != "localhost" && $httpHost != "192.168.1.102")
     {
-        $name = $noDomain;
+        $needRedirect = true;
     }
 
     if(isset($_GET['page']))
     {
         $name = $_GET['page'] . ".htm";
+        $needRedirect = true;
     }
 
     if($noDomain == "/index.php")
     {
         $name = "";
+        $needRedirect = true;
     }
     elseif(!empty($name) && strpos($name, ".htm") !== strlen($name) - 4)
     {
         $name = $name . ".htm";
+        $needRedirect = true;
     }
 
-    if(isset($name))
+    if($needRedirect)
     {
         return "https://defuse.ca/$name";
     }
