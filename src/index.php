@@ -70,7 +70,7 @@ function NeedRedirect($requestURI, $httpHost)
         $needRedirect = true;
     }
 
-    if($name == "/index.php")
+    if($name == "index.php")
     {
         $name = "";
         $needRedirect = true;
