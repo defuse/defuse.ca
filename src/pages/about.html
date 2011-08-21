@@ -21,11 +21,12 @@
 <h3>The Hit Counter</h3>
 <p>In order to count unique hits, I must be able to tell if an IP address has visited a page in the past. I do not store the IP address directly, I hash them along with the name of the page (like salt). Since the IPs are hashed using the page name as salt, I can tell if an IP has visited a specific page in the past but I cannot enumerate the IP addresses that have visited a page or correlate hits from the same IP across different pages. To do so, I would have to crack the IP hashes, which would involve creating a 4 Billion entry look-up table for each page on this site. The look-up tables would take up more than 2 Terabytes of hard drive space and would take over a month to create. Obviously, I'm not going to be doing that anytime soon. :) </p>
 
-<p>If you don't want even a hash of your IP to be stored, you can enable the <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Do_not_track_header"><b>DNT: 1</b></a> (Do Not Track) header in your browser. If my server sees <nobr><b>DNT: 1</b></b> in the headers your browser sends, nothing will be recorded and the hit counters will not be incremented.</p>
+<p>If you don't want even a hash of your IP to be stored, you can enable the <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Do_not_track_header"><b>DNT: 1</b></a> (Do Not Track) header in your browser. If my server sees <nobr><b>DNT: 1</b></b></nobr> in the headers your browser sends, nothing will be recorded and the hit counters will not be incremented.</p>
 
 <p>You can get the source code for the hit counter here: <a href="/php-hit-counter.htm">"Privacy Aware" Unique Hit Counter for PHP</a>.</p>
 
 <h2>Like the Script-Free Menu?</h2>
+
 <p>The JavaScript-free drop-down menu that you see near the top of every page on this website was created and released into the public domain by <a href="http://grc.com/">Steve Gibson</a>. If you run a website, I highly recommend checking it out since it works very well with nearly every browser, and most security conscious users browse the web with JavaScript disabled.</p>
 
 <center><strong><a href="http://www.grc.com/menu2/invitro.htm">Click Here to get Steve Gibson's script-free CSS menu</a></strong></center>

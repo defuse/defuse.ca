@@ -23,7 +23,7 @@ mysql_select_db($dbname);
 ?>
 
 <!-- Begin TRENT Header -->
-<div style="font-size: 8pt; text-align:center; border-bottom: solid #003366 5px; padding-bottom: 5px;">
+<div style="font-size: 8pt; text-align:center; border-bottom: solid #330000 5px; padding-bottom: 5px;">
 <img src="/images/trusted_third_party.png" alt="TRENT - Trusted Random Entropy Generator" title="TRENT - Trusted Third Party" />
 <br />
 <strong>The FREE Third Party Random Number Generator</strong>

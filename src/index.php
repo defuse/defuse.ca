@@ -590,19 +590,7 @@ header('Content-Type: text/html; charset=utf-8');
 <div class="menuminwidth0"><div class="menuminwidth1"><div class="menuminwidth2">
 <div id="masthead">
 
-	<!--[if !IE]>-->
-	<!--<a href="/"><img id="mastheadlogo" src="/images/ossbox-header2.png"  alt="OSSBox Security" title="OSSBox Security Homepage" /></a>-->
-	<a href="/"><img id="mastheadlogo" src="/images/ossbox_security.png"  alt="OSSBox Security" title="OSSBox Security Homepage" /></a>
-	<!--<![endif]-->
-	
-	<!--[If lte IE 6]>
-	<a href="/"><img id="mastheadlogo" src="/images/ossbox_security.png"  alt="OSSBox Security" title="OSSBox Security Homepage" style="border: solid black 3px;"/></a>
-	<![endif]-->
-
-	<!--[If gt IE 6]>
-	<a href="/"><img id="mastheadlogo" src="/images/ossbox_security.png"  alt="OSSBox Security" title="OSSBox Security Homepage" /></a>
-	<![endif]-->
-
+    <div style="font-size:30px;"><img src="/images/1by1.gif" alt="Defuse Cyber-Security Research and Development" /></div>
 	
 </div>
 
