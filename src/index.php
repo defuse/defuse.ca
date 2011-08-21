@@ -136,7 +136,7 @@ switch($name)
 	case "resume":
 		$path = "resume.html";
 		$TITLE = "My Resume - Defuse Cyber-Security";
-		$META_DESCRIPTION = "OSSBox Resume";
+		$META_DESCRIPTION = "Defuse Cyber-Security Resume";
 		break;
 	case "blowfish":
 		$path = "projects/blowfish.html";
@@ -151,8 +151,8 @@ switch($name)
 		break;
 	case "projects":
 		$path = "projects/projects.html";
-		$TITLE = "OSSBox Projects";
-		$META_DESCRIPTION = "All of OSSBox's past, current, and future projects.";
+		$TITLE = "Defuse Cyber-Security's Projects";
+		$META_DESCRIPTION = "All of Defuse Cyber-Security's past, current, and future projects.";
 		break;
 	case "php-hit-counter":
 		$path = "projects/php-hit-counter.html";
@@ -197,8 +197,8 @@ switch($name)
 		break;
 	case "services":
 		$path = "services/services.html";
-		$TITLE = "OSSBox Services";
-		$META_DESCRIPTION = "OSSBox Services.";
+		$TITLE = "Defuse Cyber-Security's Services";
+		$META_DESCRIPTION = "Defuse Cyber-Security's Services.";
 		break;
 	case "peerreview":
 		$path = "services/peerreview.html";
@@ -217,16 +217,10 @@ switch($name)
 		$META_DESCRIPTION = "TRENT, the trusted random number generator for contests and drawings.";
 		$META_KEYWORDS = "contest drawing, third party, trusted, lottory, trent, random number generator";
 		break;
-	case "trentsource":
-		$path = "services/trentsource.html";
-		$TITLE = "TRENT Peer Review Source Code - Defuse Cyber-Security";
-		$META_DESCRIPTION = "The complete source code for OSSBox's TRENT service. Made available for peer review.";
-		$META_KEYWORDS = "contest drawing, third party, trusted, lottory, trent, random number generator";
-		break;
 	case "contact":
 		$path = "contact.html";
-		$TITLE = "OSSBox Contact Information";
-		$META_DESCRIPTION = "OSSBox contact informaion.";
+		$TITLE = "Defuse Cyber-Security's Contact Information";
+		$META_DESCRIPTION = "Defuse Cyber-Security's contact informaion.";
 		break;
 	case "theoretical-attack-on-bitcoin":
 		$path = "research/theoretical-attack-on-bitcoin.html";
@@ -268,8 +262,8 @@ switch($name)
 		break;
 	case "research":
 		$path = "research/research.html";
-		$TITLE = "OSSBox Research";
-		$META_DESCRIPTION = "Research projects by OSSBox";
+		$TITLE = "Defuse Cyber-Security's Research";
+		$META_DESCRIPTION = "Research projects by Defuse Cyber-Security";
 		break;
 	case "cryptographyunderattack":
 		$path = "research/cryptographyunderattack.html";
@@ -297,8 +291,8 @@ switch($name)
 		break;
 	case "software":
 		$path = "software/software.html";
-		$TITLE = "OSSBox Software";
-		$META_DESCRIPTION = "Software created by OSSBox";
+		$TITLE = "Defuse Cyber-Security's Software";
+		$META_DESCRIPTION = "Software created by Defuse Cyber-Security";
 		break;
 	case "winrrng":
 		$path = "software/winrrng.html";
