@@ -58,7 +58,7 @@ if(isset($_GET['page']))
 {
 	$name = $_GET['page'];
 	header("HTTP/1.1 301 Moved Permanently");
-	header("Location: /$name.htm");
+	header("Location: https://defuse.ca/$name.htm");
 	die();
 }
 elseif (RemoveDomain($_SERVER['REQUEST_URI']) != "/index.php")
@@ -71,7 +71,7 @@ elseif (RemoveDomain($_SERVER['REQUEST_URI']) != "/index.php")
 	if($name != "" && strpos($name, ".htm") === false)
 	{
 		header("HTTP/1.1 301 Moved Permanently");
-		header("Location: /$name.htm");
+		header("Location: https://defuse.ca/$name.htm");
 		die();
 	}
 	$name = str_replace(".htm", "", $name);
