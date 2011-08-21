@@ -54,7 +54,7 @@ function NeedRedirect($requestURI, $httpHost)
     $needRedirect = false;
     $name = RemoveDomain($requestURI);
 
-    if(!empty($_SERVER["HTTPS"]))
+    if(empty($_SERVER["HTTPS"]))
     {
         $needRedirect = true;
     }
