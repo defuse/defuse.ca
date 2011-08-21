@@ -38,7 +38,6 @@ $name = "";
 
 if(($newURL = NeedRedirect($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST'])) !== false)
 {
-    die("HERE $newURL");
 	header("HTTP/1.1 301 Moved Permanently");
     header("Location: $newURL");
     die();
@@ -55,7 +54,6 @@ function NeedRedirect($requestURI, $httpHost)
 
     if($httpHost != "defuse.ca" && $httpHost != "localhost" && $httpHost != "192.168.1.102")
     {
-        echo "here.";
         $name = $noDomain;
     }
 
