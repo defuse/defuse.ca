@@ -141,7 +141,7 @@ if(isset($_POST['makedrawingnumber']))
 	$passwordhash = hash("SHA256", $password);
 	mysql_query("INSERT INTO drawings (complete, passwordhash, starttime, reviewtime) VALUES (0, '$passwordhash', '$starttime', '$reviewtime')");
 	$drawingnum = mysql_insert_id();
-	$url = "https://ossbox.com/trustedthirdparty.htm?drawingnum=" . $drawingnum;
+	$url = "https://defuse.ca/trustedthirdparty.htm?drawingnum=" . $drawingnum;
 	?>
 		<div style="background-color: #C9FFD1; border: solid 2px black; margin:20px; padding-left:10px; padding-right: 10px;">
 		<p><b>Your Drawing Number Has Been Reserved...</b><br />
@@ -341,7 +341,7 @@ if(isset($_POST['create']))
 				$msafeuserprintout = mysql_real_escape_string($userprintout);
 				mysql_query("UPDATE drawings SET complete='1', printout='$msafeprintout', userprintout='$msafeuserprintout' WHERE drawingnum='$drawingnum'");
 
-				$url = "https://ossbox.com/trustedthirdparty.htm?drawingnum=$drawingnum";
+				$url = "https://defuse.ca/trustedthirdparty.htm?drawingnum=$drawingnum";
 				?>
 				<div style="background-color: #C9FFD1; border: solid 2px black; margin:20px; padding:10px;">
 				<b>Drawing Complete!</b><br />
