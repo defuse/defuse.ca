@@ -12,13 +12,6 @@
 	
 ==============================================================================*/
 
-
-if($_SERVER["HTTPS"] != "on") {
-   header("HTTP/1.1 301 Moved Permanently");
-   header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
-   exit();
-}
-
 require_once('libs/phpcount.php');
 
 //Strengthen the server's CSPRNG
@@ -49,9 +42,17 @@ if($_SERVER['HTTP_HOST'] != "defuse.ca" &&
 	!strpos($_SERVER['REQUEST_URI'], "://defuse.ca/"))
 {
 	header("HTTP/1.1 301 Moved Permanently");
-	header("Location: http://defuse.ca" . RemoveDomain($_SERVER['REQUEST_URI']));
+	header("Location: https://defuse.ca" . RemoveDomain($_SERVER['REQUEST_URI']));
 	die();
 }
+
+
+if($_SERVER["HTTPS"] != "on") {
+   header("HTTP/1.1 301 Moved Permanently");
+   header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
+   exit();
+}
+
 
 //grab the name of the page the user wants from a URL variable
 if(isset($_GET['page']))
