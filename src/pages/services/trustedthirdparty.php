@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is Copyright (C) 2011 OSSBox.com
+ * This file is Copyright (C) 2011 Defuse.ca
  * This code is provided for peer review purposes only.
  * It may not be distributed, copied, or altered in any way.
  *
@@ -93,7 +93,7 @@ if(isset($_GET['drawingnum']))
 				<li>Obtain any related files from the organizer and verify that the <b>SHA256</b> checksum is <b>exactly identical</b> using the <a href="checksums.htm">checksum calculator</a>.</li>
 				<li>Make sure the random data is in the <strong>second</strong> text area with the title &quot;<?php echo "Results for drawing #$num"; ?>&quot;. The drawing organizer has full control over the text in the first text box.</li> 
 			</ul>
-			<p>Once you have verified each point, you can be sure that the drawing organizer was not able to influence the random numbers in any way, and you can trust the results. If you are in doubt, feel free to <a href="contact.htm">contact OSSBox</a>, we'll be glad to help.</p>
+			<p>Once you have verified each point, you can be sure that the drawing organizer was not able to influence the random numbers in any way, and you can trust the results. If you are in doubt, feel free to <a href="contact.htm">contact Defuse Cyber-Security</a>, we'll be glad to help.</p>
 		</div>
 		<?
 		}
@@ -601,7 +601,7 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 
 <h2>What is TRENT?</h2>
 
-<p>TRENT is a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Backronym">backronym</a> for &quot;<u>T</u>rusted <u>R</u>andom <u>Ent</u>ropy.&quot; The name TRENT <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Alice_and_bob">comes from cryptography</a>, where he is normally used to represent a mutually trusted third party. That's exactly what OSSBox's TRENT service is: a third party random number generator for drawings, contests, and lotteries. TRENT allows both the drawing organizer and contestants to be sure that the winner was selected randomly, and that the random numbers were not biased in any way.</p>
+<p>TRENT is a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Backronym">backronym</a> for &quot;<u>T</u>rusted <u>R</u>andom <u>Ent</u>ropy.&quot; The name TRENT <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Alice_and_bob">comes from cryptography</a>, where he is normally used to represent a mutually trusted third party. That's exactly what our TRENT service is: a third party random number generator for drawings, contests, and lotteries. TRENT allows both the drawing organizer and contestants to be sure that the winner was selected randomly, and that the random numbers were not biased in any way.</p>
 
 <p>To understand how TRENT works, we must understand the problem that TRENT solves. Suppose a person named Chuck runs a website and wants to host a drawing between the users of his website. The lucky winner of the drawing will get a prize of $100. Chuck could pick a random user himself; he could even use <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Radioactive_decay">radioactive decay</a> as a source of randomness to ensure the drawing is absolutely fair. That would be great, but Chuck has no way of proving to his users that he actually did that instead of picking a friend (or even himself) and saying it was a random choice.</p>
 
@@ -647,3 +647,5 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 <p>TRENT's source code is available for peer review. Please note that the code is provided for peer review purposes only. Do not copy it, distribute it, or alter it in any way. I really would like to make TRENT open source but I can't because I know that if I did, backdoored versions of TRENT would be created. If you would like to use TRENT's code for a specific purpose, <a href="/contact.htm">ask me</a>, and I'll probably let you. Thanks for understanding.</p>
 
 <p><a href="/source/trent.html"><strong>Download TRENT's Source Code</strong></a></p>
+
+
