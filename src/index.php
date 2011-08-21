@@ -36,61 +36,66 @@ $name = "";
 // http://example.com/text.htm (all other forms will get directed to this form)
 // http://example.com/index.php will be redirected to http://example.com/
 
-if($_SERVER['HTTP_HOST'] != "defuse.ca" && 
-	$_SERVER['HTTP_HOST'] != "localhost" && 
-	$_SERVER['HTTP_HOST'] != "192.168.1.102" && 
-	!strpos($_SERVER['REQUEST_URI'], "://defuse.ca/"))
+if(($newURL = NeedRedirect($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST'])) !== false)
 {
+    die("HERE $newURL");
 	header("HTTP/1.1 301 Moved Permanently");
-	header("Location: https://defuse.ca" . RemoveDomain($_SERVER['REQUEST_URI']));
-	die();
+    header("Location: $newURL");
+    die();
 }
 
-
-if($_SERVER["HTTPS"] != "on") {
-   header("HTTP/1.1 301 Moved Permanently");
-   header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
-   exit();
-}
-
-
-//grab the name of the page the user wants from a URL variable
-if(isset($_GET['page']))
+function NeedRedirect($requestURI, $httpHost)
 {
-	$name = $_GET['page'];
-	header("HTTP/1.1 301 Moved Permanently");
-	header("Location: https://defuse.ca/$name.htm");
-	die();
-}
-elseif (RemoveDomain($_SERVER['REQUEST_URI']) != "/index.php")
-{
-	$name = substr(RemoveDomain($_SERVER['REQUEST_URI']), 1);
-	if(strpos($name, "?") !== false)
-	{
-		$name = substr($name, 0, strpos($name, "?"));
-	}
-	if($name != "" && strpos($name, ".htm") === false)
-	{
-		header("HTTP/1.1 301 Moved Permanently");
-		header("Location: https://defuse.ca/$name.htm");
-		die();
-	}
-	$name = str_replace(".htm", "", $name);
-}
-elseif(RemoveDomain($_SERVER['REQUEST_URI']) == "/index.php")
-{
-	header("HTTP/1.1 301 Moved Permanently");
-	header("Location: /");
-	die();
+    $noDomain = RemoveDomain($requestURI);
+
+    if($_SERVER["HTTPS"] != "on")
+    {
+        $name = $noDomain;
+    }
+
+    if($httpHost != "defuse.ca" && $httpHost != "localhost" && $httpHost != "192.168.1.102")
+    {
+        echo "here.";
+        $name = $noDomain;
+    }
+
+    if(isset($_GET['page']))
+    {
+        $name = $_GET['page'] . ".htm";
+    }
+
+    if($noDomain == "/index.php")
+    {
+        $name = "";
+    }
+    elseif(!empty($name) && strpos($name, ".htm") !== strlen($name) - 4)
+    {
+        $name = $name . ".htm";
+    }
+
+    if(isset($name))
+    {
+        return "https://defuse.ca/$name";
+    }
+    else
+    {
+        return false;
+    }
 }
 
 function RemoveDomain($url)
 {
-	if($colon = strpos($url, "://"))
+    //Get rid of the domain name junk, if present.
+	if(($colon = strpos($url, "://")) !== false)
 	{
 		$thirdSlash = strpos($url, "/", $colon + 3);
 		$url = substr($url, $thirdSlash);
 	}
+    //Now get rid of the first slash, e.g. /index.php to index.php
+    if(strpos($url, "/") === 0)
+    {
+        $url = substr($url, 1);
+    }
 	return $url;
 }
 
