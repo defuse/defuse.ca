@@ -570,7 +570,7 @@ header('Content-Type: text/html; charset=utf-8');
 <title><?php echo $TITLE; ?></title>
 <meta name="description" content="<?php echo $META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo $META_KEYWORDS; ?>" />
-<meta name="google-site-verification" content="b6rfOTW9eLm4PyU1LMdom1rUg1LUl-Df448sKjUEn74" />
+<meta name="google-site-verification" content="LjgndE9fyTkxbPz8aMFyJQFSS3cQiXIrYchE_b2VXlg" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" media="all" type="text/css" href="/mainmenu2.css" />
 <link rel="stylesheet" media="all" type="text/css" href="/main.css" />
