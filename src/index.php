@@ -610,7 +610,7 @@ header('Content-Type: text/html; charset=utf-8');
 			<li><a href="/about.htm">&nbsp;About Defuse</a></li>
 			<li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
 			<li><a href="/projects.htm">&nbsp;Project List</a></li>
-			<li><a href="http://blog.ossbox.com" >&nbsp;Blog</a></li>
+			<li><a href="http://blog.defuse.ca" >&nbsp;Blog</a></li>
 			<li><a href="/contact.htm">&nbsp;Contact</a></li>
 		</ul>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
