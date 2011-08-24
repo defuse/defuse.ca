@@ -113,7 +113,6 @@ if(isset($_POST['submit']))
         }
         elseif(is_blank($res))
         {
-            echo "AAAA$res BBB";
             echo "Sorry, what you entered wasn't recognized as a valid mathematical expression.";
         }
         else
