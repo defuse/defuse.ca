@@ -1,5 +1,6 @@
 <?php
     set_time_limit(20);
+
     $eqn = "";
     if(isset($_POST['eqn']))
         $eqn = $_POST['eqn'];
