@@ -429,6 +429,12 @@ switch($name)
 		$META_DESCRIPTION = "Convert text containing special characters into proper HTML.";
 		$META_KEYWORDS = "html sanitizer, htmlspecialchars, htmlencode";
 		break;
+	case "big-number-calculator":
+		$path = "services/big-number-calculator.php";
+		$TITLE = "Online Big Number Calculator";
+		$META_DESCRIPTION = "Calculate enormous mathematical equations from within your browser.";
+		$META_KEYWORDS = "big number calculator, online calculator, bigint, galactic calculator";
+		break;
 	case "pdfcleaner":
 		$path = "services/pdfcleaner.php";
 		$TITLE = "PDF Exploit Sanitizer and Cleaner - Remove exploits from PDF files - Defuse Cyber-Security";
