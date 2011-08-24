@@ -70,7 +70,6 @@ if(isset($_POST['submit']))
     $eqn = str_replace("shl", "<<", $eqn);
     $eqn = str_replace("shr", ">>", $eqn);
     
-
     if(containsUnsafeChars($eqn))
     {
         echo "Sorry, what you entered wasn't recognized as a valid mathematical expression.";
@@ -95,7 +94,7 @@ if(isset($_POST['submit']))
 
         $res = trim($res);
 
-        if(!$tooLong && !empty($res) && strpos($res, "warning") === false && strpos($res, "error") === false && strpos($res, "Infinity") === false)
+        if(!$tooLong && !is_blank($res) && strpos($res, "warning") === false && strpos($res, "error") === false && strpos($res, "Infinity") === false)
         {
             if($res == "true" || $res == "false")
             {
@@ -111,8 +110,9 @@ if(isset($_POST['submit']))
         {
             echo "Sorry, it's taking too long to calculate that number.";
         }
-        elseif(empty($res))
+        elseif(is_blank($res))
         {
+            echo "AAAA$res BBB";
             echo "Sorry, what you entered wasn't recognized as a valid mathematical expression.";
         }
         else
@@ -124,7 +124,10 @@ if(isset($_POST['submit']))
 </div>
 <?
 }
-
+function is_blank($val)
+{
+    return empty($val) && !is_numeric($val);
+}
 function isDigitOnly($text)
 {
     for($i = 0; $i < strlen($text); $i++)
