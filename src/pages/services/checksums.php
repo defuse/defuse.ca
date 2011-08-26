@@ -39,7 +39,12 @@
 <?php
 if(isset($data))
 {
-    echo "<a name=\"checksums\"></a><h2>Checkums</h2>";
+    $filename = "";
+    if(isset($_FILES['filetohash']['name']))
+    {
+        $filename = "(" . htmlentities($_FILES['filetohash']['name'], ENT_QUOTES) . ")";
+    }
+    echo "<a name=\"checksums\"></a><h2>Checkums $filename</h2>";
     $hashes = hash_algos();
     echo "<table border=\"0\" cellpadding=\"10\" style=\"font-family:monospace;\" >";
     foreach($hashes as $hashtype)
