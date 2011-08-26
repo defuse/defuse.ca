@@ -37,7 +37,7 @@ if(isset($data))
 {
 	echo "<a name=\"checksums\"></a><h2>Checkums</h2>";
 	$hashes = hash_algos();
-	echo "<table border=\"0\" cellpadding=\"10\" >";
+	echo "<table border=\"0\" cellpadding=\"10\" style=\"font-family:monospace;\" >";
 	foreach($hashes as $hashtype)
 	{
 		$hash = hash($hashtype, $data);
