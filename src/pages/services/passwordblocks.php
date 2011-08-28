@@ -1,5 +1,10 @@
 
 <script language="javascript">
+var RNG_BYTES = 1024;
+var rngState = [];
+for(var i = 0; i < RNG_BYTES; i++)
+    rngState[i] = 0;
+var rngOffset = 0;
 
 var allBlocks = [];
 var previewBlock = null;
@@ -164,6 +169,37 @@ function deleteSelected()
         selectedIndex = null;
     }
     updateBlockView();
+}
+
+function rndseed(e)
+{
+    if(window.event)
+        e = window.event;
+    var x = e.clientX;
+    var y = e.clientY;
+    var time = (new Date()).getTime();
+    addNumberToRngState(x);
+    addNumberToRngState(y);
+    addNumberToRngState(time);
+}
+
+function addNumberToRngState(n)
+{
+    //JavaScript stores integers as 53 bits.
+    for(var i = 0; i < 7; i++)
+    {
+        rngState[rngOffset] = (rngState[rngOffset] + (n >> i * 8)) % 256;
+        rngOffset++;
+        if(rngOffset >= RNG_BYTES)
+        {
+            rngMix();
+        }
+    }
+}
+
+function rngMix()
+{
+    rngOffset = 0; //FIXME
 }
 
 </script>
