@@ -1,10 +1,9 @@
+<!-- Load the stanford javascript cryto library -->
+<script language="javascript" src="/js/sjcl.js"></script>
+<script language="javascript" src="/js/csprng.js"></script>
 
 <script language="javascript">
-var RNG_BYTES = 1024;
-var rngState = [];
-for(var i = 0; i < RNG_BYTES; i++)
-    rngState[i] = 0;
-var rngOffset = 0;
+
 
 var allBlocks = [];
 var previewBlock = null;
@@ -153,7 +152,7 @@ function shuffle()
 {
     for(var i = allBlocks.length - 1; i >= 1; i--)
     {
-        var j = Math.floor(Math.random() * (i+1)); //FIXME: Use crypto randomness
+        var j = CSPRNG.secureRandom(0, i);
         tmp = allBlocks[i];
         allBlocks[i] = allBlocks[j];
         allBlocks[j] = tmp;
@@ -175,31 +174,11 @@ function rndseed(e)
 {
     if(window.event)
         e = window.event;
-    var x = e.clientX;
-    var y = e.clientY;
-    var time = (new Date()).getTime();
-    addNumberToRngState(x);
-    addNumberToRngState(y);
-    addNumberToRngState(time);
-}
-
-function addNumberToRngState(n)
-{
-    //JavaScript stores integers as 53 bits.
-    for(var i = 0; i < 7; i++)
-    {
-        rngState[rngOffset] = (rngState[rngOffset] + (n >> i * 8)) % 256;
-        rngOffset++;
-        if(rngOffset >= RNG_BYTES)
-        {
-            rngMix();
-        }
-    }
-}
-
-function rngMix()
-{
-    rngOffset = 0; //FIXME
+    if(typeof(e.clientX) != "undefined")
+        CSPRNG.addEntropy(e.clientX);
+    if(typeof(e.clientY) != "undefined")
+        CSPRNG.addEntropy(e.clientY);
+    CSPRNG.addEntropy((new Date()).getTime());
 }
 
 </script>
