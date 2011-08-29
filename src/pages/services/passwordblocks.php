@@ -1,9 +1,8 @@
 <!-- Load the stanford javascript cryto library -->
 <script language="javascript" src="/js/sjcl.js"></script>
-<script language="javascript" src="/js/csprng.js"></script>
+<script language="javascript" src="/js/csprng-extensions.js"></script>
 
 <script language="javascript">
-
 
 var allBlocks = [];
 var previewBlock = null;
@@ -152,7 +151,7 @@ function shuffle()
 {
     for(var i = allBlocks.length - 1; i >= 1; i--)
     {
-        var j = CSPRNG.secureRandom(0, i);
+        var j = secureRandom(0, i);
         tmp = allBlocks[i];
         allBlocks[i] = allBlocks[j];
         allBlocks[j] = tmp;
@@ -170,29 +169,27 @@ function deleteSelected()
     updateBlockView();
 }
 
-function rndseed(e)
-{
-    if(window.event)
-        e = window.event;
-    if(typeof(e.clientX) != "undefined")
-        CSPRNG.addEntropy(e.clientX);
-    if(typeof(e.clientY) != "undefined")
-        CSPRNG.addEntropy(e.clientY);
-    CSPRNG.addEntropy((new Date()).getTime());
-}
 
 </script>
 
 <h1>Password Building Blocks</h1>
 
 <noscript>
-<h1>TODO: No JS Message!</h1>
+<div style="background-color: #ffcfcf; border: solid #700000 5px; margin: 20px; padding:10px;">
+<center><span style="font-size:20px;">Please enable JavaScript!</span></center>
+<p>
+    To use this password generator, you will need to enable JavaScript in your web browser. I understand that most security concious users, like myself, browse with JavaScript disabled, but the Password Building Blocks page really <em>does</em> need JavaScript to function.
+</p>
+</div>
 </noscript>
 
-<div id="passwordblocks">
+<p style="text-align:center;"><span style="font-size: 20px;">Sit down, relax, take a deep breath... now let's make a password!</span></p>
+
+<p>You're only minutes away from having an extremely secure but highly memorable password. Just follow <strong>3 easy steps...</strong></p>
+
+<h2>Step 1: Create Building Blocks</h2>
 <div id="blockfactory" class="blocksection">
-<h2>Password Block Factory</h2>
-<center><strong>Random | Custom | Padding</strong></center>
+<center><strong>Random | Custom | Padding | Word</strong></center>
     <div id="randomfactory" class="typefactory">
         <table cellspacing="10">
         <tr>
@@ -225,9 +222,8 @@ function rndseed(e)
             <input type="button" value="Add \/" onclick="addPreviewBlockToPassword();"/>
     </div>
 </div>
-
+<h2>Step 2: Arrange Building Blocks</h2>
 <div id="blocksorter" class="blocksection">
-<h2>Password Block Sorter</h2>
 <div id="blockview">
 <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> 
 </div>
@@ -239,18 +235,24 @@ function rndseed(e)
 </div>
 
 <input style="float: right;" type="button" value="Delete Block" onclick="deleteSelected();" />
+<input style="float: right;" type="button" value="Clear All" />
 <input type="button" value="Practice" />
 
 </div>
 
+<h2>Step 3: Practice Your Password</h2>
 <div id="passwordpractice" class="blocksection">
-<h2>Practice Your Password</h2>
+<p style="text-align: center;">Please arrange your building blocks into a password and send them to the practice arena.</p>
 </div>
 
-<div id="passwordsecurity" class="blocksection">
-<h2>Password Security Status</h2>
-</div>
-
-</div>
+<h2>How Does it Work?</h2>
 
 <p>Make a note that this teaches people that passwords can be memorized in MUSCLE memory, they don't actually have to recall the password.</p>
+
+show password security in arrange building blocks
+
+<pre>
+ - do BLIND practice: black out the password everywhere on the screen
+ - give them a paragraph of text to read to see if they'll forget their password
+ - remember random LEET for words
+</pre>

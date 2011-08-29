@@ -215,7 +215,7 @@ text-decoration:underline;
 
 /* ========== PASSWORD BLOCKS ========= */
 
-#passwordblocks h2 {
+.blocksection h2 {
     border-bottom: solid black 1px;
     padding: 0;
     margin: 0;
@@ -228,6 +228,7 @@ text-decoration:underline;
     margin: 0 auto;
     border: solid black 3px;
     margin-bottom: 20px;
+    padding: 20px;
 }
 #blockfactory {
 
@@ -239,7 +240,6 @@ text-decoration:underline;
 }
 
 #passwordpractice {
-    display: none;
 }
 
 #passwordsecurity {
