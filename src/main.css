@@ -228,7 +228,7 @@ text-decoration:underline;
     margin: 0 auto;
     border: solid black 3px;
     margin-bottom: 20px;
-    padding: 20px;
+    background-color: #FFFFFF;
 }
 #blockfactory {
 
@@ -268,6 +268,8 @@ text-decoration:underline;
     padding: 10px;
     border-top: solid black 1px;
     border-bottom: solid black 1px;
+    display: none;
+    background-color: #DDDDDD;
 }
 
 #customfactory {
@@ -287,4 +289,23 @@ text-decoration:underline;
 
 #blockview {
     text-align: center;
+}
+
+.ftlink {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.ftlink:hover {
+    color: #0000CC;
+}
+
+#ftheader {
+    text-align: center; 
+    font-weight: bold;
 }

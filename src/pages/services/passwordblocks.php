@@ -4,6 +4,9 @@
 
 <script language="javascript">
 
+// Entropy provided by web server RNG
+sjcl.random.addEntropy("<?php echo bin2hex(mcrypt_create_iv(1024, MCRYPT_DEV_URANDOM));?>", 0);
+
 var allBlocks = [];
 var previewBlock = null;
 var blockCount = 0;
@@ -102,8 +105,36 @@ function setPreviewBlock(theBlock)
 
 function generateRandomBlock()
 {
-    var newBlock = new PasswordBlock("azssss" + Math.floor(Math.random() * 20), 30);
-    setPreviewBlock(newBlock);
+    var charSet = "";
+    if(document.getElementById("lowletters").checked)
+        charSet += "abcdefghijklmnopqrstuvwxyz";
+    if(document.getElementById("upletters").checked)
+        charSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if(document.getElementById("numbers").checked)
+        charSet += "0123456789";
+    if(document.getElementById("symbols").checked)
+        charSet += "~`!@#$%^&*()_+-={}[]|\\:;\"'<,>.?/";
+    //FIXME: Ensure that CharSet (not just customchars) are all unique chars
+    charSet += document.getElementById("customchars").value;
+    if(charSet === "")
+    {
+        alert('Please select one or more character types!');
+    }
+    else
+    {
+        length = parseInt(document.getElementById("randblocklength").value);
+        if(!isNaN(length) && length > 0 && length <= 100)
+        {
+            block = secureRandomString(length, charSet);
+            entropy = length * Math.log(charSet.length) / Math.log(2);
+            newBlock = new PasswordBlock(block, entropy); //FIXME
+            setPreviewBlock(newBlock);
+        }
+        else
+        {
+            alert('Please provide a valid block length between 1 and 100.');
+        }
+    }
 }
 
 function removeAllChildNodes(obj)
@@ -169,6 +200,43 @@ function deleteSelected()
     updateBlockView();
 }
 
+// ================ FACTORY LINKS ================
+
+function showFactory(id)
+{
+    document.getElementById("randomfactory").style.display = "none";
+    document.getElementById("wordfactory").style.display = "none";
+    document.getElementById("paddingfactory").style.display = "none";
+    document.getElementById("customfactory").style.display = "none";
+
+    document.getElementById("randomfactorylink").style.backgroundColor = "#FFFFFF";
+    document.getElementById("wordfactorylink").style.backgroundColor = "#FFFFFF";
+    document.getElementById("paddingfactorylink").style.backgroundColor = "#FFFFFF";
+    document.getElementById("customfactorylink").style.backgroundColor = "#FFFFFF";
+    
+    document.getElementById(id).style.display = "block";
+    document.getElementById(id + "link").style.backgroundColor = "#CCCCCC";
+}
+
+function randomFactory()
+{
+    showFactory("randomfactory");
+}
+
+function wordFactory()
+{
+    showFactory("wordfactory");
+}
+
+function paddingFactory()
+{
+    showFactory("paddingfactory");
+}
+
+function customFactory()
+{
+    showFactory("customfactory");
+}
 
 </script>
 
@@ -183,39 +251,54 @@ function deleteSelected()
 </div>
 </noscript>
 
-<p style="text-align:center;"><span style="font-size: 20px;">Sit down, relax, take a deep breath... now let's make a password!</span></p>
+<p style="text-align:center;"><span style="font-size: 20px;">Sit down, relax, take a deep breath... It's time to make a password!</span></p>
 
 <p>You're only minutes away from having an extremely secure but highly memorable password. Just follow <strong>3 easy steps...</strong></p>
 
 <h2>Step 1: Create Building Blocks</h2>
 <div id="blockfactory" class="blocksection">
-<center><strong>Random | Custom | Padding | Word</strong></center>
-    <div id="randomfactory" class="typefactory">
+    <div id="ftheader">
+        <span class="ftlink" id="randomfactorylink" style="background-color: #CCCCCC;" onclick="randomFactory();">Random</span>
+        <span class="ftlink" id="wordfactorylink" onclick="wordFactory();">Word</span>
+        <span class="ftlink" id="paddingfactorylink" onclick="paddingFactory();">Padding</span>
+        <span class="ftlink" id="customfactorylink" onclick="customFactory();">Custom</span>
+    </div>
+    <div id="randomfactory" class="typefactory" style="display:block;">
         <table cellspacing="10">
         <tr>
             <td><strong>Include:</strong></td>
             <td>
-                    <input type="checkbox" name="lowletters" checked="checked"> Lowercase letters&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="upletters" checked="checked"> Uppercase letters&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="numbers" checked="checked"> Numbers&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="symbols" checked="checked"> Symbols&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="lowletters" checked="checked"><label for="lowletters">Lowercase letters</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="upletters" checked="checked"><label for="upletters">Uppercase letters</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="numbers" checked="checked"><label for="numbers">Numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="symbols" checked="checked"><label for="symbols">Symbols</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Custom Characters:</strong></td>
+            <td>
+                <input type="text" id="customchars" size="20" />
             </td>
         </tr>
         <tr>
             <td><strong>Length:</strong></td>
             <td>
-                <input type="text" size="3" value="5" />
+                <input type="text"id="randblocklength" size="3" value="5" />
             </td>
         </tr>
         </table>
         <center><input type="button" value="Generate Block" style="width: 300px;" onclick="generateRandomBlock();" /></center>
     </div>
-    <div id="customfactory" class="typefactory">
-
+    <div id="wordfactory" class="typefactory">
+   WERD
     </div>
     <div id="paddingfactory" class="typefactory">
-
+    padding
     </div>
+    <div id="customfactory" class="typefactory">
+    custom
+    </div>
+
 
     <div id="blockpreview">
             <div id="previewBlock"></div><br />
@@ -225,7 +308,7 @@ function deleteSelected()
 <h2>Step 2: Arrange Building Blocks</h2>
 <div id="blocksorter" class="blocksection">
 <div id="blockview">
-<span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> <span class="unselectedBlock">azssss0.49697726322815294</span> 
+    <p>Please create password building blocks!</p>
 </div>
 
 <div style="text-align: center; padding: 20px;">

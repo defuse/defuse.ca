@@ -13,6 +13,10 @@ catch(err)
 //TODO: Add times.
 //TODO: browser-specific secure randoms.
 
+for(var i = 0; i < 100; i++)
+{
+    sjcl.random.addEntropy(Math.random() * 4294967296, 0);
+}
 
 secureRandom = function(min, max)
 {
@@ -35,4 +39,15 @@ secureRandom = function(min, max)
     }
 
     return min + remainder;
+}
+
+
+secureRandomString = function(length, acceptedChars)
+{
+    var s = Array();
+    for(var i = 0; i < length; i++)
+    {
+        s.push(acceptedChars.substr(secureRandom(0, acceptedChars.length - 1), 1));
+    }
+    return s.join('');
 }

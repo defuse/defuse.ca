@@ -123,8 +123,6 @@ $commentid = 0;
 
 $CID_ASUSKB = 1;
 
-$ENABLE_RNG = false;
-
 //this is our firewall, we use a switch to turn the name of a page into the path where the .html content is located
 //this protects us against RFI and LFI
 switch($name)
@@ -478,7 +476,6 @@ switch($name)
         $TITLE = "Password Building Blocks - The HUMAN Password Generator";
         $META_DESCRIPTION = "Design your own highly memorable high security password.";
         $META_KEYWORDS = "password generator, easy to remember password, secure password, password building blocks, human password";
-        $ENABLE_RNG = true;
         break;
     case "onedetection":
         $path = "research/onedetection.html";
@@ -605,7 +602,7 @@ header('Content-Type: text/html; charset=utf-8');
 <link rel="stylesheet" media="all" type="text/css" href="/main.css" />
 
 </head>
-<body <?php if( $name == "home" ) echo 'style="background:black;" '; ?> <?php if($ENABLE_RNG) echo ' onmousemove="rndseed(event)" onkeydown="rndseed(event)" onkeyup="rndseed(event)" '; ?>>
+<body <?php if( $name == "home" ) echo 'style="background:black;" '; ?> >
 
 <!-- This menuing system was made by Steve Gibson at GRC.COM 
             see more at http://www.grc.com/menudemo.htm -->
