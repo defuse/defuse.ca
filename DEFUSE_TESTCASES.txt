@@ -1,0 +1,27 @@
+===== ALL OF THESE SHOULD GO TO THE SAME PAGE, NO SSL WARNINGS ===
+
+http://ossbox.com/index.php?page=scratch
+http://ossbox.com/scratch
+http://ossbox.com/scratch.htm
+http://defuse.ca/scratch.htm
+https://defuse.ca/index.php?page=scratch
+https://defuse.ca/scratch.htm
+https://defuse.ca/scratch
+http://www.ossbox.com/index.php?page=scratch
+http://www.ossbox.com/scratch
+http://www.ossbox.com/scratch.htm
+http://www.defuse.ca/scratch.htm
+
+http://ossbox.com/index.php
+https://defuse.ca/index.php
+http://defuse.ca/index.php
+
+
+===== THESE SHOULD GO TO https://defuse.ca/pastebin.htm ========
+http://ossbox.com/bin
+http://bin.ossbox.com
+https://bin.defuse.ca/
+https://defuse.ca/bin
+
+==== THIS SHOULD GIVE AN SSL ERROR, THEN CLICKING PAST IT SHOULD TAKE YOU TO SCRATCH PAGE ===
+https://ossbox.com/scratch.htm
