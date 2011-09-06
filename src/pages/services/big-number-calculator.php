@@ -77,9 +77,10 @@ if(isset($_POST['submit']))
     }
     else
     {
-        $max_time = 10;
+        $ulimit_max_time = 10;
+        $max_time = 8;
         $res = "";
-        $ruby = popen("ulimit -t $max_time; ruby -e \"x = ($eqn); puts x if x.is_a?(Float); puts x.to_s($base) if x.is_a?(Fixnum) or x.is_a?(Bignum)\"", "r");
+        $ruby = popen("ulimit -t $ulimit_max_time; ruby -e \"x = ($eqn); puts x if x.is_a?(Float); puts x.to_s($base) if x.is_a?(Fixnum) or x.is_a?(Bignum)\"", "r");
         stream_set_blocking($ruby, 0);
 
         $tooLong = false;
@@ -170,6 +171,8 @@ function breakLines($text, $lineLength)
 
 function containsUnsafeChars($eqn)
 {
+    if(strpos($eqn, "..") !== false)
+        return true;
     $whitelist = "1234567890()*^|&%/+-<>. x";
     for($i = 0; $i < strlen($eqn); $i++)
     {
