@@ -111,7 +111,7 @@ function addPreviewBlockToPassword()
 
 function setPreviewBlock(theBlock)
 {
-    block = document.getElementById("previewBlock");
+    var block = document.getElementById("previewBlock");
     removeAllChildNodes(block);
     if(theBlock == null)
     {
@@ -121,7 +121,7 @@ function setPreviewBlock(theBlock)
     else
     {
         previewBlock = theBlock;
-        disp = theBlock.getStarredElement();
+        var disp = theBlock.getStarredElement();
         document.getElementById("previewBlock").appendChild(disp);
         document.getElementById("blockpreview").style.display = "block";
     }
@@ -148,9 +148,9 @@ function generateRandomBlock()
         var length = parseInt(document.getElementById("randblocklength").value);
         if(!isNaN(length) && length > 0 && length <= 64)
         {
-            block = secureRandomString(length, charSet);
-            entropy = length * Math.log(charSet.length) / Math.log(2);
-            newBlock = new PasswordBlock(block, entropy); 
+            var block = secureRandomString(length, charSet);
+            var entropy = length * Math.log(charSet.length) / Math.log(2);
+            var newBlock = new PasswordBlock(block, entropy); 
             setPreviewBlock(newBlock);
         }
         else
@@ -272,9 +272,9 @@ function hexcustom()
 
 function generateWordBlock()
 {
-    idx = secureRandom(0, ENG_WORDLIST.length);
-    block = ENG_WORDLIST[idx];
-    entropy = Math.log(ENG_WORDLIST.length) / Math.log(2);
-    newBlock = new PasswordBlock(block, entropy); 
+    var idx = secureRandom(0, ENG_WORDLIST.length);
+    var block = ENG_WORDLIST[idx];
+    var entropy = Math.log(ENG_WORDLIST.length) / Math.log(2);
+    var newBlock = new PasswordBlock(block, entropy); 
     setPreviewBlock(newBlock);
 }

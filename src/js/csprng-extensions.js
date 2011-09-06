@@ -19,7 +19,7 @@ for(var i = 0; i < 100; i++)
     sjcl.random.addEntropy(Math.random() * 4294967296, 0);
 }
 
-secureRandom = function(min, max)
+var secureRandom = function(min, max)
 {
     if(min > max)
     {
@@ -27,7 +27,7 @@ secureRandom = function(min, max)
         return null;
     }
 
-    randomness = sjcl.random.randomWords(16, 0);
+    var randomness = sjcl.random.randomWords(16, 0);
 
     // Compute (the random words as a base-65536 number) mod (max-min+1)
     var diff = max - min;
@@ -43,7 +43,7 @@ secureRandom = function(min, max)
 }
 
 
-secureRandomString = function(length, acceptedChars)
+var secureRandomString = function(length, acceptedChars)
 {
     var uniqChars = uniq(acceptedChars);
     var s = Array();
