@@ -1,4 +1,4 @@
-<!-- FIXME: DOESN'T WORK IN IE -->
+<!-- TODO: Randomize the defaults (or most secure=default) so attacks can't be optimized to the default configuration --> 
 
 <!-- Seed the RNG with random data from defuse.ca -->
 <script type="text/javascript" language="javascript">
@@ -7,6 +7,7 @@
 
 <!-- Load the stanford javascript cryto library, and our extensions to it. -->
 <script type="text/javascript" language="javascript" src="/js/sjcl.js"></script>
+<script type="text/javascript" language="javascript" src="/js/leet.js"></script>
 <script type="text/javascript" language="javascript" src="/js/csprng-extensions.js"></script>
 
 <!-- Load the password blocks functionality script -->
@@ -29,7 +30,7 @@
 <h2>Step 1: Create Building Blocks</h2>
 
 <div style="background-color: #cee3ff; border: solid #00439d 1px; padding: 5px; margin: 10px; width: 700px; margin: 0 auto; text-align: center;">
-<strong>TIP:</strong> Move your mouse around the page to add <u>extra</u> randomness to the random number generator.
+<strong>TIP:</strong> Move your mouse around the page to add extra randomness to the random number generator.
 </div>
 
 <br />
@@ -103,6 +104,10 @@
     </div>
 </div>
 <h2>Step 2: Arrange Building Blocks</h2>
+<div style="background-color: #cee3ff; border: solid #00439d 1px; padding: 5px; margin: 10px; width: 700px; margin: 0 auto; text-align: center;">
+<strong>TIP:</strong> Get 5 stars for an ultra-secure password.
+</div>
+<br />
 <div id="blocksorter" class="blocksection">
 <div id="blockview">
     <p>Please create password building blocks!</p>
@@ -125,7 +130,7 @@
     <p style="text-align: center;">Please arrange your building blocks into a password and send them to the practice arena.</p>
 </div>
 
-<h2>How Does it Work?</h2>
+<h2>Technical Details</h2>
 
 <p>Make a note that this teaches people that passwords can be memorized in MUSCLE memory, they don't actually have to recall the password.</p>
 

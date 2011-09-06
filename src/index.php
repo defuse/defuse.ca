@@ -174,6 +174,12 @@ switch($name)
         $META_DESCRIPTION = "An unique hit counter for PHP. Tracks unique hits without storing the IP address.";
         $META_KEYWORDS = "hit counter, php, secure, private, anonymous, unique hits, track";
         break;
+    case "php-pbkdf2":
+        $path = "projects/php-pbkdf2.php";
+        $TITLE = "PBKDF2 Password Hashing for PHP";
+        $META_DESCRIPTION = "Standards compliant PBKDF2 implementation for PHP.";
+        $META_KEYWORDS = "pbkdf2 for php, key derivation, password hashing";
+        break;
     case "helloworld-cms":
         $path = "software/helloworld-cms.html";
         $TITLE = "Secure and Light PHP CMS - Defuse Cyber-Security";
@@ -675,6 +681,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/csharpthreadlibrary.htm">&nbsp;PolyThread</a></li>
             <li><a href="/passwordbolt.htm">&nbsp;Password Bolt [BETA]</a></li>
             <li><a href="/simppsk.htm">&nbsp;SimpPSK</a></li>
+            <li><a href="/php-pbkdf2.htm">&nbsp;PBKDF2 For PHP</a></li>
             <li><a href="/blowfish.htm">&nbsp;Blowfish C#/C++</a></li>
             <!--<li><a href="/blowfish.htm">&nbsp;BLOWFISH C# &amp; C++</a></li>-->
             

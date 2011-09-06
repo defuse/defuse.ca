@@ -79,3 +79,18 @@ function arrayContains(array, search)
     }
     return false;
 }
+
+function makeWordLeet(word)
+{
+    letters = word.split("");
+    for(var i = 0; i < letters.length; i++)
+    {
+        if(secureRandom(0,1) == 1)
+        {
+            leetOptions = LEET_TABLE[letters[i]];
+            if(leetOptions.length >= 1)
+                letters[i] = leetOptions[secureRandom(0, leetOptions.length - 1)];
+        }
+    }
+    return letters.join('');
+}

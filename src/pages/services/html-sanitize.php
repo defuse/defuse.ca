@@ -25,13 +25,14 @@ if(isset($_POST['data']))
 {
 	$data = $_POST['data'];
 	$data = htmlspecialchars(htmlspecialchars($_POST['data'], ENT_QUOTES), ENT_QUOTES); 
+    $data = str_replace(" ", htmlspecialchars("&nbsp;"), $data);
 	if(isset($_POST['br']) && $_POST['br'] == "yes")
 	{
 		$data = str_replace("\r\n", "\n", $data);
 		$data = str_replace("\r", "\n", $data);
 		$data = str_replace("\n", "<br />\n", $data);
 	}
-	$data = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $data);
+	$data = str_replace("\t", htmlspecialchars("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"), $data);
 	echo $data;
 }
 ?></textarea><br />

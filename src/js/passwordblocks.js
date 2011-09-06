@@ -1,8 +1,6 @@
 "use strict";
 //TODO: -- JS RNG: show 200 randomly colored circles and make them click them
 
-// Entropy provided by web server RNG
-
 var allBlocks = [];
 var previewBlock = null;
 var blockCount = 0;
@@ -52,13 +50,23 @@ function PasswordBlock(text, entropy)
         var elem = this.getElement(addEvent);
         bottomRowCell.appendChild(elem);
     
-        var stars = this.entropy / 16;
+        var numEightBits = Math.round(this.entropy / 8);
+        var stars = Math.floor(numEightBits / 2);
+
         for(var i = 0; i < stars; i++)
         {
             var starImg = document.createElement('img');
             starImg.src = "/images/passwordblocks/star.gif";
             topRowCell.appendChild(starImg);
         }
+
+        if(numEightBits % 2 == 1)
+        {
+            var halfStarImg = document.createElement('img');
+            halfStarImg.src = "/images/passwordblocks/halfstar.gif";
+            topRowCell.appendChild(halfStarImg);
+        }
+
         return table;
     }
 
@@ -146,6 +154,7 @@ function generateRandomBlock()
     else
     {
         var length = parseInt(document.getElementById("randblocklength").value);
+        charSet = uniq(charSet);
         if(!isNaN(length) && length > 0 && length <= 64)
         {
             var block = secureRandomString(length, charSet);
@@ -273,8 +282,16 @@ function hexcustom()
 function generateWordBlock()
 {
     var idx = secureRandom(0, ENG_WORDLIST.length);
-    var block = ENG_WORDLIST[idx];
+    var word = ENG_WORDLIST[idx];
+    if(document.getElementById("langreverse").checked)
+    {
+        word = word.split('').reverse().join('');
+    }
+    if(document.getElementById("langleet").checked)
+    {
+        word = makeWordLeet(word);
+    }
     var entropy = Math.log(ENG_WORDLIST.length) / Math.log(2);
-    var newBlock = new PasswordBlock(block, entropy); 
+    var newBlock = new PasswordBlock(word, entropy); 
     setPreviewBlock(newBlock);
 }
