@@ -1,8 +1,0 @@
-
-AuthUserFile /var/www/proxy/.htpasswd
-AuthGroupFile /dev/null
-AuthName EnterPassword
-AuthType Basic
-require user firexware
-
-
