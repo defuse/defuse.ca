@@ -1,244 +1,17 @@
-<!-- Load the stanford javascript cryto library -->
-<script language="javascript" src="/js/sjcl.js"></script>
-<script language="javascript" src="/js/csprng-extensions.js"></script>
+<!-- FIXME: DOESN'T WORK IN IE -->
 
-<script language="javascript">
-
-// Entropy provided by web server RNG
-sjcl.random.addEntropy("<?php echo bin2hex(mcrypt_create_iv(1024, MCRYPT_DEV_URANDOM));?>", 0);
-
-var allBlocks = [];
-var previewBlock = null;
-var blockCount = 0;
-var selectedIndex = null;
-
-function PasswordBlock(text, entropy)
-{
-    this.text = text;
-    this.entropy = entropy;
-    this.selected = false;
-    this.blockID = blockCount++;
-
-    this.getElement = function(addEvent)
-    {
-        var div1 = document.createElement('span');
-        var text = document.createTextNode(this.text);
-        div1.id = "block" + this.blockID;
-        if(addEvent)
-            div1.onclick = function() { blockClicked(this); };
-        if(this.selected)
-        {
-            div1.className = 'selectedBlock';
-        }
-        else
-        {
-            div1.className = 'unselectedBlock';
-        }
-        div1.appendChild(text);
-        return div1;
-    }
-
-    this.copy = function()
-    {
-        var newBlock = new PasswordBlock(this.text, this.entropy)
-        newBlock.selected = this.selected;
-        return newBlock;
-    }
-}
-
-function blockClicked(sender)
-{
-    for(var i = 0; i < allBlocks.length; i++)
-    {
-        var block = allBlocks[i];
-        if("block" + block.blockID == sender.id)
-        {
-            block.selected = true;
-            selectedIndex = i;
-        }
-        else
-        {
-            block.selected = false;
-        }
-    }
-    updateBlockView();
-}
-
-function updateBlockView()
-{
-    blockView = document.getElementById("blockview");
-    while(blockView.firstChild)
-        blockView.removeChild(blockView.firstChild);
-    for(var i = 0; i < allBlocks.length; i++)
-    {
-        toShow = allBlocks[i];
-        blockView.appendChild(toShow.getElement(true));
-
-        // Space to allow word-wrapping
-        blockView.appendChild(document.createTextNode(" "));
-    }
-}
-
-function addPreviewBlockToPassword()
-{
-    allBlocks.push(previewBlock.copy());
-    updateBlockView();
-}
-
-function setPreviewBlock(theBlock)
-{
-    block = document.getElementById("previewBlock");
-    removeAllChildNodes(block);
-    if(theBlock == null)
-    {
-        previewBlock = null;
-        document.getElementById("blockpreview").style.display = "none";
-    }
-    else
-    {
-        previewBlock = theBlock;
-        disp = theBlock.getElement();
-        document.getElementById("previewBlock").appendChild(disp);
-        document.getElementById("blockpreview").style.display = "block";
-    }
-}
-
-function generateRandomBlock()
-{
-    var charSet = "";
-    if(document.getElementById("lowletters").checked)
-        charSet += "abcdefghijklmnopqrstuvwxyz";
-    if(document.getElementById("upletters").checked)
-        charSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if(document.getElementById("numbers").checked)
-        charSet += "0123456789";
-    if(document.getElementById("symbols").checked)
-        charSet += "~`!@#$%^&*()_+-={}[]|\\:;\"'<,>.?/";
-    //FIXME: Ensure that CharSet (not just customchars) are all unique chars
-    charSet += document.getElementById("customchars").value;
-    if(charSet === "")
-    {
-        alert('Please select one or more character types!');
-    }
-    else
-    {
-        length = parseInt(document.getElementById("randblocklength").value);
-        if(!isNaN(length) && length > 0 && length <= 100)
-        {
-            block = secureRandomString(length, charSet);
-            entropy = length * Math.log(charSet.length) / Math.log(2);
-            newBlock = new PasswordBlock(block, entropy); //FIXME
-            setPreviewBlock(newBlock);
-        }
-        else
-        {
-            alert('Please provide a valid block length between 1 and 100.');
-        }
-    }
-}
-
-function removeAllChildNodes(obj)
-{
-    if(obj.hasChildNodes())
-    {
-        while(obj.childNodes.length > 0)
-        {
-            obj.removeChild(obj.firstChild);
-        }
-    }
-}
-
-function shiftLeft()
-{
-    if(selectedIndex != null)
-    {
-        if(selectedIndex > 0)
-        {
-            var tmp = allBlocks[selectedIndex - 1];
-            allBlocks[selectedIndex - 1] = allBlocks[selectedIndex];
-            allBlocks[selectedIndex] = tmp;
-            selectedIndex--;
-        }
-    }
-    updateBlockView();
-}
-
-function shiftRight()
-{
-    if(selectedIndex != null)
-    {
-        if(selectedIndex < allBlocks.length - 1)
-        {
-            var tmp = allBlocks[selectedIndex + 1];
-            allBlocks[selectedIndex + 1] = allBlocks[selectedIndex];
-            allBlocks[selectedIndex] = tmp;
-            selectedIndex++;
-        }
-    }
-    updateBlockView();
-}
-
-function shuffle()
-{
-    for(var i = allBlocks.length - 1; i >= 1; i--)
-    {
-        var j = secureRandom(0, i);
-        tmp = allBlocks[i];
-        allBlocks[i] = allBlocks[j];
-        allBlocks[j] = tmp;
-    }
-    updateBlockView();
-}
-
-function deleteSelected()
-{
-    if(selectedIndex != null)
-    {
-        allBlocks.splice(selectedIndex, 1);
-        selectedIndex = null;
-    }
-    updateBlockView();
-}
-
-// ================ FACTORY LINKS ================
-
-function showFactory(id)
-{
-    document.getElementById("randomfactory").style.display = "none";
-    document.getElementById("wordfactory").style.display = "none";
-    document.getElementById("paddingfactory").style.display = "none";
-    document.getElementById("customfactory").style.display = "none";
-
-    document.getElementById("randomfactorylink").style.backgroundColor = "#FFFFFF";
-    document.getElementById("wordfactorylink").style.backgroundColor = "#FFFFFF";
-    document.getElementById("paddingfactorylink").style.backgroundColor = "#FFFFFF";
-    document.getElementById("customfactorylink").style.backgroundColor = "#FFFFFF";
-    
-    document.getElementById(id).style.display = "block";
-    document.getElementById(id + "link").style.backgroundColor = "#CCCCCC";
-}
-
-function randomFactory()
-{
-    showFactory("randomfactory");
-}
-
-function wordFactory()
-{
-    showFactory("wordfactory");
-}
-
-function paddingFactory()
-{
-    showFactory("paddingfactory");
-}
-
-function customFactory()
-{
-    showFactory("customfactory");
-}
-
+<!-- Seed the RNG with random data from defuse.ca -->
+<script type="text/javascript" language="javascript">
+    sjcl.random.addEntropy("<?php echo bin2hex(mcrypt_create_iv(64, MCRYPT_DEV_URANDOM));?>", 0);
 </script>
+
+<!-- Load the stanford javascript cryto library, and our extensions to it. -->
+<script type="text/javascript" language="javascript" src="/js/sjcl.js"></script>
+<script type="text/javascript" language="javascript" src="/js/csprng-extensions.js"></script>
+
+<!-- Load the password blocks functionality script -->
+<script type="text/javascript" language="javascript" src="/js/wordlist.js"></script>
+<script type="text/javascript" language="javascript" src="/js/passwordblocks.js"></script>
 
 <h1>Password Building Blocks</h1>
 
@@ -246,16 +19,21 @@ function customFactory()
 <div style="background-color: #ffcfcf; border: solid #700000 5px; margin: 20px; padding:10px;">
 <center><span style="font-size:20px;">Please enable JavaScript!</span></center>
 <p>
-    To use this password generator, you will need to enable JavaScript in your web browser. I understand that most security concious users, like myself, browse with JavaScript disabled, but the Password Building Blocks page really <em>does</em> need JavaScript to function.
+    To use this password generator, you will need to enable JavaScript in your web browser. I understand that most security concious users, like myself, browse with JavaScript disabled, but the Password Building Blocks page really <em>does</em> need JavaScript to work.
 </p>
 </div>
 </noscript>
 
 <p style="text-align:center;"><span style="font-size: 20px;">Sit down, relax, take a deep breath... It's time to make a password!</span></p>
 
-<p>You're only minutes away from having an extremely secure but highly memorable password. Just follow <strong>3 easy steps...</strong></p>
-
 <h2>Step 1: Create Building Blocks</h2>
+
+<div style="background-color: #cee3ff; border: solid #00439d 1px; padding: 5px; margin: 10px; width: 700px; margin: 0 auto; text-align: center;">
+<strong>TIP:</strong> Move your mouse around the page to add <u>extra</u> randomness to the random number generator.
+</div>
+
+<br />
+
 <div id="blockfactory" class="blocksection">
     <div id="ftheader">
         <span class="ftlink" id="randomfactorylink" style="background-color: #CCCCCC;" onclick="randomFactory();">Random</span>
@@ -277,7 +55,7 @@ function customFactory()
         <tr>
             <td><strong>Custom Characters:</strong></td>
             <td>
-                <input type="text" id="customchars" size="20" />
+                <input type="text" id="customchars" size="20" /> <span class="fakelink" onclick="hexcustom();">Hex</span>
             </td>
         </tr>
         <tr>
@@ -290,7 +68,26 @@ function customFactory()
         <center><input type="button" value="Generate Block" style="width: 300px;" onclick="generateRandomBlock();" /></center>
     </div>
     <div id="wordfactory" class="typefactory">
-   WERD
+        <table cellspacing="10">
+            <tr>
+                <td><strong>Language:</strong></td>
+                <td>
+                        <input type="checkbox" id="langenglish" checked="checked"><label for="langenglish">English</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="langfrench" ><label for="langfrench">French</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="langspanish" ><label for="langspanish">Spanish</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="langlatin" ><label for="langlatin">Latin</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Extras:</strong></td>
+                <td>
+                    <input type="checkbox" id="langcase" checked="checked"><label for="langcase">Random Case</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="langleet" checked="checked"><label for="langleet">L33T</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="langreverse" ><label for="langreverse">Reverse</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+        <center><input type="button" value="Generate Block" style="width: 300px;" onclick="generateWordBlock();" /></center>
     </div>
     <div id="paddingfactory" class="typefactory">
     padding
@@ -325,7 +122,7 @@ function customFactory()
 
 <h2>Step 3: Practice Your Password</h2>
 <div id="passwordpractice" class="blocksection">
-<p style="text-align: center;">Please arrange your building blocks into a password and send them to the practice arena.</p>
+    <p style="text-align: center;">Please arrange your building blocks into a password and send them to the practice arena.</p>
 </div>
 
 <h2>How Does it Work?</h2>

@@ -1,4 +1,5 @@
 // Extends the Stanford JavaScript Crypto Library's CSPRNG.
+"use strict";
 
 try
 {
@@ -44,10 +45,37 @@ secureRandom = function(min, max)
 
 secureRandomString = function(length, acceptedChars)
 {
+    var uniqChars = uniq(acceptedChars);
     var s = Array();
     for(var i = 0; i < length; i++)
     {
-        s.push(acceptedChars.substr(secureRandom(0, acceptedChars.length - 1), 1));
+        s.push(uniqChars.substr(secureRandom(0, uniqChars.length - 1), 1));
     }
     return s.join('');
+}
+
+function uniq(s)
+{
+    var unique = Array();
+    for(var i = 0; i < s.length; i++)
+    {
+        var ch = s.substr(i, 1);
+        if(!arrayContains(unique, ch))
+        {
+            unique.push(ch);
+        }
+    }
+    return unique.join('');
+}
+
+function arrayContains(array, search)
+{
+    for(var i = 0; i < array.length; i++)
+    {
+        if(array[i] === search)
+        {
+            return true;
+        }
+    }
+    return false;
 }
