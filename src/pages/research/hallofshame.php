@@ -4,51 +4,77 @@ $pass = "3cjBPCoqKu34G";
 $database = "pphos";
 $conn = mysql_connect("localhost", $user, $pass) or die('Sorry! Problem connecting to the database...');
 mysql_select_db($database, $conn) or die ('Sorry! Problem connecting to the database...');
+
+$alt = 0;
 function PrintSite($name, $desc, $alexa, $domain, $min, $max, $charset, $usercount)
 	{
+        global $alt;
+        $alt = ($alt + 1) % 2;
+        $altclass = "";
+        if($alt == 1)
+            $altclass = "alt";
+        echo "<tr class=\"pphostr $altclass\">";
 		$name = mysql_real_escape_string($name);
-		echo "<li class=\"hosli\"><h3>$name</h3>";
-		if(!empty($desc))
-		{
-			$desc = htmlspecialchars($desc, ENT_QUOTES);
-			echo "<p class=\"hosdesc\">$desc</p>";
-		}
-		echo "<table>";
+		$domain = htmlspecialchars($domain, ENT_QUOTES);
+        echo "<td class=\"hosval\">$name</td>";
+		$desc = htmlspecialchars($desc, ENT_QUOTES);
+        if(empty($desc))
+            $desc = "&nbsp;";
+		echo "<td class=\"hosval\">$desc</td>";
 		if($alexa != 0)
 		{
 			$alexa = GroupDigits($alexa);
-			echo "<tr><td class=\"hosfielddesc\">Alexa Rank:</td><td class=\"hosval\">$alexa</td></tr>";
+			echo "<td class=\"hosval\">$alexa</td>";
 		}
-		if(!empty($domain))
-		{
-			$domain = htmlspecialchars($domain, ENT_QUOTES);
-			echo "<tr><td class=\"hosfielddesc\">Domain Name:</td><td class=\"hosval\">$domain</td></tr>";
-		}
+        else
+        {
+            echo "<td class=\"hosval\">&nbsp;</td>";
+        }
 		if($min != 0)
 		{
 			$min = (int)$min;
-			echo "<tr><td class=\"hosfielddesc\">Minimum Password Length:</td><td class=\"hosval\">$min</td></tr>";
+			echo "<td class=\"hosval\">$min</td>";
 		}
+        else
+        {
+            echo "<td class=\"hosval\">&nbsp;</td>";
+        }
+
 		if($max != 0)
 		{
 			$max = (int)$max;
-			echo "<tr><td class=\"hosfielddesc\">Maximum Password Length:</td><td class=\"hosval\">$max</td></tr>";
+			echo "<td class=\"hosval\">$max</td>";
 		}
+        else
+        {
+            echo "<td class=\"hosval\">&nbsp;</td>";
+        }
+
 		if(empty($charset))
 		{
 			$charset = "None.";
 		}
+
 		if($charset != "skip")
 		{
 			$charset = htmlspecialchars($charset, ENT_QUOTES);
-			echo "<tr><td class=\"hosfielddesc\">Character Restrictions:</td><td class=\"hosval\">$charset</td></tr>";
+			echo "<td class=\"hosval\">$charset</td>";
 		}
+        else
+        {
+            echo "<td class=\"hosval\">&nbsp;</td>";
+        }
+
 		if($usercount != 0)
 		{
 			$usercount = GroupDigits($usercount);
-			echo "<tr><td class=\"hosfielddesc\">Estimate Number of Users:</td><td class=\"hosval\">$usercount</td></tr>";
+			echo "<td class=\"hosval\">$usercount</td>";
 		}
-		echo "</table></li>";
+        else
+        {
+            echo "<td class=\"hosval\">&nbsp;</td>";
+        }
+        echo "</tr>";
 	}
 function GroupDigits($num)
 	{
@@ -70,7 +96,7 @@ function GroupDigits($num)
 <br />
 <span style="font-size: 20px;">It's time to make online services clean up their act!</span>
 </div>
-<p>This is a user-submitted list of websites and services that enforce a password policy that is detrimental to password security. This includes password policies that exclude special characters or enforce a maximum length. As explained <a href="/passwordrestrictions.htm">here</a>, These unreasonable password policies are signs that the passwords are being stored in <b>plain text</b>, not <a href="http://crackstation.net/hashing-security.html">hashed with salt</a>.</p>
+<p>This is a user-submitted list of websites and services that enforce a password policy that is detrimental to password security. This includes password policies that exclude special characters or enforce a maximum length. As explained on the <a href="/passwordrestrictions.htm">password restrictions</a> page, these unreasonable password policies are signs that the passwords are being stored in <b>plain text</b>, not <a href="http://crackstation.net/hashing-security.html">hashed with salt</a>.</p>
 
 <p>Cryptographic hash functions will take <b>any input</b> and produce a fixed-length cryptographic signature of the input. If the passwords are being hashed, there is no need for password restrictions, so we can assume any websites that impose these restrictions are storing passwords in plain text...until they prove otherwise.</p>
 
@@ -93,56 +119,17 @@ function GroupDigits($num)
 <h2>100-Site Random Sample</h2>
 <p>Of a random 100-site sample of the Alexa top 1,000,000 list, 19 support accounts. Of those 19:</p>
 <ul>
-	<li>1 sends the current password in clear text via email when password recovery is used.</li>
-	<li>2 do not accept passwords with symbols.</li>
-	<li>11 have a maximum password length of less than or equal to 20.</li>
-	<li>3 have a maximum password length of less than or equal to 16.</li>
-	<li>1 has a maximum password length of exactly 10.</li>
+	<li>1 (5%) sends the current password in clear text via email when password recovery is used.</li>
+	<li>2 (10%) do not accept passwords with symbols.</li>
+	<li>11 (58%) have a maximum password length of less than or equal to 20.</li>
+	<li>3 (16%) have a maximum password length of less than or equal to 16.</li>
+	<li>1 (5%) has a maximum password length of exactly 10.</li>
 </ul>
 <p>Keep in mind that this is not a <em>true</em> random sample, since the selection was made from the top 1,000,000 sites.</p>
-<!--<h3>Top 50</h3>
-<p>Of the top 50 sites as rated by Alexa, 48 support accounts. Of those 48, there are 30 that use unique login back ends. Of those 30:</p>
-<ul>
-	<li>24 restrict password length.</li>
-	<li>1 does not accept passwords with symbols.</li>
-	<li>18 have maximum password lengths less than or equal to 40.</li>
-	<li>14 have maximum password lengths less than or equal to 20.</li>
-	<li>10 have maximum password lengths of exactly 16.</li>
-	<li>The smallest maximum password length is 14.</li>
-</ul>
-<p>Google, Amazon, and LinkedIn all have maximum password lengths greater than or equal to 100. Limits greater than 100 seem (to me) to be more of a "sanity check" than an actual database field size limit. It makes sense, because they probably don't want users logging in with 10 kilobyte passwords.</p>
-<p>Interestingly, nearly every Chinese website has the exact same password size restrictions - 6 to 16 characters. Could this be a sign of government password escrow?</p>
-<p>Raw data will be made available shortly.</p>-->
-<!--<h3>Social Networking Websites</h3>
-<p>Statistics for <a href="https://secure.wikimedia.org/wikipedia/en/wiki/List_of_social_networking_websites">Wikipedia's list of social networking websites</a> are coming soon.</p>-->
-<!--<h3>Maximum Length Histogram</h3>
-<p>The following histogram shows how many websites in our database restrict passwords to a given length.</p>
-<?php
-	$q = mysql_query("SELECT max FROM hos ORDER BY max");
-	$current = -1;
-	$total = 0;
-	while($q && $site = mysql_fetch_array($q))
-	{
-		$sitemax = (int)$site['max'];
-		if($sitemax == 0)
-			continue;
-		if($sitemax != $current)
-		{
-			if($total > 0)
-			{
-				$barwidth = 30 + $total * 10;
-				echo "<div style=\"height:20px; padding-left: 3px; background-color: black; color: white; width:${barwidth}px\">$current</div>";
-			}
-			$current = $sitemax;
-			$total = 0;
-		}
-		$total++;
-	}
-	$barwidth = 30 + $total * 10;
-	echo "<div style=\"height:20px; padding-left: 3px; background-color: black; color: white; width:${barwidth}px\">$current</div>";	
-?>-->
+
 <h2><span style="color:red;">Confirmed Plaintext</span></h2>
-<ul>
+<table class="pphostbl" cellspacing="0">
+<tr class="pphostr"><th>Name</th><th>Info</th><th>Alexa Rank</th><th>Minimum Length</th><th>Maximum Length</th><th>Characters Restrictions</th><th>Users</th></tr>
 <?php
 	$q = mysql_query("SELECT * FROM plaintext ORDER BY alexarank ASC");
 	while($q && $site = mysql_fetch_array($q))
@@ -150,10 +137,11 @@ function GroupDigits($num)
 		PrintSite($site['name'], $site['desc'], $site['alexarank'], $site['domain'], $site['min'], $site['max'], $site['charset'], $site['usercount']);
 	}
 ?>
-</ul>
+</table>
 
 <h2><span style="color:red;">Unreasonable Restrictions: Probably Plaintext</span></h2>
-<ul class="hosul">
+<table class="pphostbl" cellspacing="0">
+<tr class="pphostr"><th>Name</th><th>Info</th><th>Alexa Rank</th><th>Minimum Length</th><th>Maximum Length</th><th>Characters Restrictions</th><th>Users</th></tr>
 <?php
 	$q = mysql_query("SELECT * FROM hos WHERE noshow='0' ORDER BY alexarank ASC");
 	while($q && $site = mysql_fetch_array($q))
@@ -161,7 +149,7 @@ function GroupDigits($num)
 		PrintSite($site['name'], $site['desc'], $site['alexarank'], $site['domain'], $site['min'], $site['max'], $site['charset'], $site['usercount']);
 	}
 ?>
-</ul>
+</table>
 
 <h2>How to Help</h2>
 <p>If you use one of these services, please write to them. Ask them to remove the password restrictions and ensure that they are hashing the passwords properly. Encouraging your friends to do the same, and sharing this page will help too. These are big companies; they won't change anything unless we work together to apply pressure.</p>
@@ -170,15 +158,13 @@ function GroupDigits($num)
 <p>Please send me: </p>
 
 <ul>
-	<li>The name of the company, service, or website</li>
-	<li>An explanation of the unreasonable restrictions they are imposing</li>
-	<li>A link to a page on their website where I can verify the password policy</li>
+	<li>The name of the company, service, or website.</li>
+	<li>An explanation of the unreasonable restrictions they are imposing.</li>
+	<li>A link to a page on their website where I can verify the password policy.</li>
 </ul>
 
-<p>All submissions are GREATLY appreciated, THANKS!!!!</p>
-
 <h2>How do I get my company/website off the list?</h2>
-<p>To get your company or website's name off this list, you must remove the password restrictions in question or give us a good reason why you cannot remove them. You also have to clearly describe to us HOW your passwords are being stored in your database. We will work with you to verify the facts, and will remove you from the list promptly. We will not comply with any kind of take-down order. Read <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Freedom_of_speech_in_the_United_States">this</a> and <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Section_Two_of_the_Canadian_Charter_of_Rights_and_Freedoms">this</a>.</p>
+<p>To get your company or website's name off this list, you must remove the password restrictions in question or give us a good reason why you cannot remove them. You also have to clearly describe to us HOW your passwords are being stored in your database. We will work with you to verify the facts, and will remove you from the list promptly if you are in fact hashing your users' passwords. We will not comply with any kind of take-down order without first consulting a lawyer. Read <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Freedom_of_speech_in_the_United_States">this</a> and <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Section_Two_of_the_Canadian_Charter_of_Rights_and_Freedoms">this</a>.</p>
 
 <?php
 function PrintTable($name, $alexa, $min, $max, $restrictions, $domain, $users)

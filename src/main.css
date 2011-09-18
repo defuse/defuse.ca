@@ -199,18 +199,33 @@ text-decoration:underline;
 	border-bottom: solid black 1px;
 }
 
-.hosfielddesc {
-	font-weight: bold;
-	padding-right: 20px;
-}
+/* ============ PPHOS ================= */
 
 .hosval {
+    border: solid 1px gray;
 }
 
 .nopaddingatall {
 	padding: 0;
 	margin: 0;
 }
+
+.pphostbl {
+    width: 100%;
+    border-collapse:collapse;
+}
+
+.pphostbl th {
+    padding: 5px;
+    background-color: black;
+    color:white;
+    border: solid 1px gray;
+}
+
+.alt {
+    background-color: #e5e5e5;
+}
+
 
 /* ========== PASSWORD BLOCKS ========= */
 
