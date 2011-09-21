@@ -163,12 +163,13 @@ function GroupDigits($num)
 	<li>A link to a page on their website where I can verify the password policy.</li>
 </ul>
 
-<h2>How do I get my company/website off the list?</h2>
-<p>To get your company or website's name off this list, you must remove the password restrictions in question or give us a good reason why you cannot remove them. You also have to clearly describe to us HOW your passwords are being stored in your database. We will work with you to verify the facts, and will remove you from the list promptly if you are in fact hashing your users' passwords. We will not comply with any kind of take-down order without first consulting a lawyer. Read <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Freedom_of_speech_in_the_United_States">this</a> and <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Section_Two_of_the_Canadian_Charter_of_Rights_and_Freedoms">this</a>.</p>
-
 <h2>What's next?</h2>
 
 <p>Over the next few months, I'll be soliciting feedback from the organizations listed in the password policy hall of shame to get a better idea why these restrictions are in place. Once I have that information, I'll start an online campaign to promote the use of <a href="http://crackstation.net/hashing-security.html">proper password hashing</a>.</p>
+
+<h2>How do I get my company/website off the list?</h2>
+<p>To get your company or website's name off this list, you must remove the password restrictions in question or give us a good reason why you cannot remove them. You also have to clearly describe to us HOW your passwords are being stored in your database. We will work with you to verify the facts, and will remove you from the list promptly if you are in fact hashing your users' passwords. We will not comply with any kind of take-down order without first consulting a lawyer. Read <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Freedom_of_speech_in_the_United_States">this</a> and <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Section_Two_of_the_Canadian_Charter_of_Rights_and_Freedoms">this</a>.</p>
+
 
 <?php
 function PrintTable($name, $alexa, $min, $max, $restrictions, $domain, $users)
