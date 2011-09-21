@@ -53,6 +53,7 @@ function NeedRedirect($requestURI, $httpHost)
 {
     $needRedirect = false;
     $name = RemoveDomain($requestURI);
+    $name = RemoveArgs($name);
 
     if(empty($_SERVER["HTTPS"]))
     {
@@ -105,6 +106,17 @@ function RemoveDomain($url)
         $url = substr($url, 1);
     }
     return $url;
+}
+
+function RemoveArgs($url)
+{
+    $argStart = strpos($url, "?");
+    if($argStart !== false)
+    {
+        return substr($url, 0, $argStart);
+    }
+    else
+        return $url;
 }
 
 //folder where the pages are kept (relative to this script)
