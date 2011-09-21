@@ -1,5 +1,8 @@
 ===== ALL OF THESE SHOULD GO TO THE SAME PAGE, NO SSL WARNINGS ===
-
+**** 
+IMPORTANt: 
+https://defuse.ca/trustedthirdparty.htm?drawingnum=23&submit=Check
+***
 http://ossbox.com/index.php?page=scratch
 http://ossbox.com/scratch
 http://ossbox.com/scratch.htm
