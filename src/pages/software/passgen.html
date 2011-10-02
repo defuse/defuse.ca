@@ -5,6 +5,23 @@
 <p>This version runs on Windows XP, Windows Vista, Windows 7, Windows 2000, and Windows Server 2003+.</p>
 <p><strong><a href="/downloads/WinPassGen.exe">Windows Program (.exe)</a> - 92KB.</strong></p>
 <p><strong><a href="/source/WinPassGen.zip">C++ Source Code (GNU GPL 2)</a> - 68KB.</strong></p>
+<div style="border: solid black 2px; background-color: #ffc3c3; padding: 10px; margin: 10px;">
+<strong>AntiVirus False Positives</strong>
+<p>The Windows executable is detected as a virus by the heuristics engines in the following antivirus programs:</p>
+<ul>
+    <li>AhnLab-V3</li>
+    <li>AntiVir</li>
+    <li>Avast</li>
+    <li>BitDefender</li>
+    <li>F-Secure</li>
+    <li>GData</li>
+    <li>VIPRE</li>
+</ul>
+<p>See scan results <a href="http://www.virustotal.com/file-scan/report.html?id=b8c5a42d3237bd9e3a9ce2e5afd8f6526ac92c1e114a332ef8034cdb935ce935-1317582782">here</a>. These detections are caused by part of the open source (benign) SHA256 code used to mix the entropy pool. I've verified that the SHA256 code <b>is</b> secure. Malware writers using the open source code is probably the reason for the false positives. In any case, you may compile the source code and compare it with the .exe to check for yourself that the file is safe. I will replace the detected SHA256 code with another implementation as soon as possible.
+</p>
+
+<p>For those interested: Lines 112 through 175 of of sha256.c are the source of the problem.</p>
+</div>
 <center>
 	<img src="/images/winpassgen.gif" alt="Windows High-Security Random Password Generator" title="The Windows GUI Version of the password generator" />
 </center>
