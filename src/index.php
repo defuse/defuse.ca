@@ -266,7 +266,7 @@ switch($name)
         break;
     case "bitcoin-pool-ddos":
         $path = "research/bitcoin-pool-ddos.html";
-        $TITLE = "BitCoin Centralization - DDoS Attacks on Pools & Mt. Gox Hacked - Defuse Cyber-Security";
+        $TITLE = "BitCoin Centralization - DDoS Attacks on Pools &amp; Mt. Gox Hacked - Defuse Cyber-Security";
         $META_DESCRIPTION = "Centralization is harmful to the BitCoin network and community.";
         $META_KEYWORDS = "bitcoin, ddos, denial of service, pool, mining, mtgox, centralization, hacked";
         break;
