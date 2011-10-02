@@ -713,6 +713,8 @@ header('Content-Type: text/html; charset=utf-8');
                     <li><a href="/web-application-security.htm">&nbsp;Website Security</a></li>        
                     <li><a href="/filesystem-events-ntfs-permissions.htm">&nbsp;File-System Events</a></li>
                     <li><a href="/onedetection.htm">&nbsp;PUP Confusion</a></li>
+                    <li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
+                    <li><a href="/softwaresecurity.htm">&nbsp;Software Security</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -736,8 +738,6 @@ header('Content-Type: text/html; charset=utf-8');
         <ul>
             <!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
             <li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>
-            <li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
-            <li><a href="/softwaresecurity.htm">&nbsp;Software Security</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
