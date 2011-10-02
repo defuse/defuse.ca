@@ -44,6 +44,11 @@ if(($newURL = NeedRedirect($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST'])) !== 
     die();
 }
 
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTP_HOST'] != "localhost" && $_SERVER['HTTP_HOST'] != "192.168.1.102")
+{
+    header('Strict-Transport-Security: max-age=604800'); /* 7 days */
+}
+
 // Find the page name from the URL
 $name = RemoveDomain($_SERVER['REQUEST_URI']);
 $dothtm = strpos($name, ".htm");
