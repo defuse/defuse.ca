@@ -14,7 +14,7 @@ function PrintSite($name, $desc, $alexa, $domain, $min, $max, $charset, $usercou
         if($alt == 1)
             $altclass = "alt";
         echo "<tr class=\"pphostr $altclass\">";
-		$name = mysql_real_escape_string($name);
+		$name = htmlspecialchars($name, ENT_QUOTES);
 		$domain = htmlspecialchars($domain, ENT_QUOTES);
         echo "<td class=\"hosval\">$name</td>";
 		$desc = htmlspecialchars($desc, ENT_QUOTES);
