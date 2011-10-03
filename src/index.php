@@ -635,7 +635,7 @@ header('Content-Type: text/html; charset=utf-8');
 
     <div style="font-size:30px;"><img src="/images/1by1.gif" alt="Defuse Cyber-Security Research and Development" /></div>
     <div style="position: absolute; top: 0px; right: 0px;">
-        <a href="http://openmedia.ca/myMP"><img src="/images/stop-online-spying.png" alt="Help the Stop Online Spying (Canada) Campaign" title="Help the Stop Online (Canada) Spying Campaign" /></a>
+        <a href="http://openmedia.ca/myMP"><img src="/images/stop-online-spying.png" alt="Help the Stop Online Spying Campaign (Canada)" title="Help the Stop Online Spying  Campaign (Canada)" /></a>
     </div>
 </div>
 
