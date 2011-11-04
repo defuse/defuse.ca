@@ -1,6 +1,6 @@
-<h1>How to Force a HTML/CSS Background Color for Printing</h1>
+<h1>How to Force HTML/CSS Background Color for Printing</h1>
 
-<p>Web browsers, by default, remove background colors when printing. Unfortunately, this can't be overridden using HTML/CSS/JavaScript. The user has to change a setting in the browser to print background colors. However, it is possible to fake the background color using an image, if you really need the background color to print by default.</p>
+<p>Web browsers, by default, remove background colors when printing. Unfortunately, this can't be overridden using HTML, CSS, or JavaScript. The user has to change a setting in the browser to print background colors. However, it is possible to fake the background color using an image, if you really need the background color to print by default.</p>
 
 <p>The trick is to create a single pixel image of the desired color and expand it to fill the element, then put the element's content inside a DIV, and put that DIV on top of the image using absolute positioning. It works surprisingly well in most browsers. See the following examples; use your browser's "Print Preview" option to see the difference.</p>
 
