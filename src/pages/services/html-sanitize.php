@@ -1,4 +1,4 @@
-<h1>Online HTML Sanitize Tool (htmlspecialchars)</h1>
+<h1>Online HTML Sanitize Tool (htmlspecialchars, htmlentities)</h1>
 <p>This tool will take your text and convert all the special characters to their proper HTML codes, so you can paste text with special characters or HTML code onto your website.</p>
 
 <?php
