@@ -26,7 +26,8 @@ if(isset($_POST['data']))
 	$data = $_POST['data'];
 	$data = htmlspecialchars(htmlspecialchars($_POST['data'], ENT_QUOTES), ENT_QUOTES); 
     // Replace two spaces with &nbsp; and a space, so there will be two spaces and it will word-wrap
-    $data = str_replace("  ", htmlspecialchars("&nbsp; "), $data);
+    // Space must come before the &nbsp; so it works with an odd number of spaces in a row
+    $data = str_replace("  ", htmlspecialchars(" &nbsp;"), $data);
 	if(isset($_POST['br']) && $_POST['br'] == "yes")
 	{
 		$data = str_replace("\r\n", "\n", $data);
