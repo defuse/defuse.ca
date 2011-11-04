@@ -424,6 +424,12 @@ switch($name)
         $META_DESCRIPTION = "Source code for a salted MD5 hash cracker using nvidia graphics cards (CUDA).";
         $META_KEYWORDS = "salted md5, hash cracking, gpu, graphics cards, nvidia, cuda";
         break;
+    case "force-print-background":
+        $path = "projects/force-print-background.php";
+        $TITLE = "HTML/CSS Force Printing of Background Color - Defuse Cyber-Security";
+        $META_DESCRIPTION = "HTML/CSS Hack to get browsers to print background colors.";
+        $META_KEYWORDS = "print background color, html, css, force print background color, print stylesheet";
+        break;
     case "waterfall":
         $path = "projects/waterfall.html";
         $TITLE = "Waterfall Password Cracking Algorithm - Defuse Cyber-Security";
@@ -637,6 +643,11 @@ header('Content-Type: text/html; charset=utf-8');
     <div style="font-size:30px;"><img src="/images/1by1.gif" alt="Defuse Cyber-Security Research and Development" /></div>
     <div style="position: absolute; top: 0px; right: 0px;">
         <a href="http://openmedia.ca/myMP"><img src="/images/stop-online-spying.png" alt="Help the Stop Online Spying Campaign (Canada)" title="Help the Stop Online Spying  Campaign (Canada)" /></a>
+        
+    </div>
+    <div style="text-align:center; position: absolute; top: 10px; right: 130px;">
+        <a href="https://www.eff.org/pages/blue-ribbon-campaign">
+            <img src="https://www.eff.org/sites/default/files/br.gif" alt="Join the Blue Ribbon Online Free Speech Campaign" />
     </div>
 </div>
 
