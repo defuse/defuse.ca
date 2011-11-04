@@ -1,6 +1,12 @@
 <h1>Encrypting One Time Passwords [EOTP]</h1>
 <center><strong>EOTP is a cryptographic One Time Password (OTP) protocol designed to provide a static encryption key across login sessions.</strong></center>
 
+<center><p style="color: red; font-size: 16px; background-color: black; padding: 10px;"><strong>NOTE:</strong> This page is a work in progress.
+<br />
+I'm still working out the exact implementation detailes and the protocol as described on this page <strong>may not be secure at all</strong>.
+<br />
+<strong>DO NOT implement it... yet.</strong></p></center>
+
 <h2>What's wrong with other OTP systems like <a href="https://www.ietf.org/rfc/rfc2289.txt">S/KEY</a>, <a href="https://www.grc.com/ppp.htm">PPP</a>, and OTP-over-SMS?</h2>
 
 <p>Nothing is <em>wrong</em> with other OTP systems like <a href="https://www.ietf.org/rfc/rfc2289.txt">S/KEY</a>, <a href="https://www.grc.com/ppp.htm">Pefect Paper Passwords</a>,  OTP-over-SMS, and hardware OTP devices like the <a href="https://yubico.com/">Yubikey</a>. They are all much more secure than using a password alone, however, I believe they lack an important and useful feature:</p>
