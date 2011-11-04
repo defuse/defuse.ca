@@ -1,4 +1,209 @@
 <h1>Encrypting One Time Passwords [EOTP]</h1>
+<center><strong>EOTP is a cryptographic One Time Password (OTP) protocol designed to provide a static encryption key across login sessions.</strong></center>
+
+<h2>What's wrong with other OTP systems like <a href="https://www.ietf.org/rfc/rfc2289.txt">S/KEY</a>, <a href="https://www.grc.com/ppp.htm">PPP</a>, and OTP-over-SMS?</h2>
+
+<p>Nothing is <em>wrong</em> with other OTP systems like <a href="https://www.ietf.org/rfc/rfc2289.txt">S/KEY</a>, <a href="https://www.grc.com/ppp.htm">Pefect Paper Passwords</a>,  OTP-over-SMS, and hardware OTP devices like the <a href="https://yubico.com/">Yubikey</a>. They are all much more secure than using a password alone, however, I believe they lack an important and useful feature:</p>
+
+<center><strong>Conventional OTP schemes do not provide a static secret key that can be used for data encryption.</strong></center>
+
+<p>Conventional OTP schemes can be used as a second factor of authentication, but they can't be used to encrypt data. When a user authenticates themselves to a server, the server receives a simple "authentication success" or "authentication failure" response from the OTP system. If the server needs to encrypt data on the user's behalf, it must fall back to generating an encryption key from the user's static password. So if the server gets hacked, a user's data is as secure as their password. The attacker is able to completely bypass the OTP authentication requirement and can run brute force and dictionary attacks on the user's password.</p>
+
+<p>EOTP changes the model. When EOTP is implemented, user data is encrypted with the combination of the user's password <strong>and a static key</strong> provided by EOTP.</p>
+
+<h3>Requirements for EOTP</h3>
+
+<p>As is necessary with any cryptographic protocol, security requirements must be explicit and understood prior to discussing the protocol itself. The following lists desirable properties of EOTP. EOTP must...</p>
+
+<ul>
+    <li>Strongly authenticate the client.</li>
+    <li>Be at least as secure as classic password authentication.</li>
+    <li>Be immune to passive man in the middle attacks.</li>
+    <li>Not be vulnerable to any sort of OTP-replay attack.</li>
+    <li>Provide an encryption key to the server that is static across sessions.</li>
+    <li>Be secure even when an attacker has collected a large amount of OTPs.</li>
+    <li>Work indefinitely after a single setup process through a secure channel.</li>
+    <li>Not be vulnerable to a DoS scenario created by an attacker trying to guess OTPs.</li>
+    <li>Be as secure as the combination of the password and OTP. So if the password has a security factor 2<sup>n</sup> and OTP key has a security factor 2<sup>m</sup> then the static key's security factor will be 2<sup>n+m</sup>.</li>
+</ul>
+
+<h2>How does EOTP work?</h2>
+
+<h3>Hash Functions &amp; Notation</h3>
+
+<p>EOTP makes heavy use of <a href="https://secure.wikimedia.org/wikipedia/en/wiki/HMAC">HMAC (Hash Based Message Authentication Code)</a>. Put simply, an HMAC is a <strong>keyed</strong> <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Cryptographic_hash">hash function</a>. EOTP can be implemented using an HMAC constructed from any cryptographic hash function, but <strong>HMAC-SHA512</strong> is recommended.</p>
+
+<p>In the protocol description below, you will see the following notation:</p>
+
+<ul>
+    <li>H(X) - Hash X.</li>
+    <li>HMAC(X, K) - HMAC X with key K.</li>
+    <li>A || B - Concatenate A and B.</li>
+    <li>E(K, X) - Encrypt plaintext X with key K.</li>
+    <li>D(K, Y) - Decrypt ciphertext Y with key K.</li>
+</ul>
+
+<h3>The Setup Exchange</h3>
+
+<p>The following one-time setup procedure must be done through a secure channel. This can be something as simple as a user, Alice, using a trusted computer to communicate with a web server named Bob over a TLS connection.</p>
+
+<ol>
+    <li>Alice authenticates herself to Bob using the existing password-based authentication.</li>
+    <li>Alice uses a TRNG to generate three random numbers R<sub>a</sub>, R<sub>b</sub>, R<sub>x</sub> and sends them to Bob.</li>
+    <li>Bob uses a TRNG to generate three random numbers R<sub>c</sub>, R<sub>d</sub>, R<sub>y</sub> and sends them to Alice.</li>
+    <li>Bob and Alice both compute (and save) sequence key K<sub>s</sub> = H(R<sub>a</sub> || R<sub>c</sub>). Where H is a cryptographic hash function and || denotes concatenation.</li>
+    <li>Bob and Alice both compute static key K<sub>t</sub> = H(R<sub>b</sub> || R<sub>d</sub>).</li>
+    <li>Bob and Alice both compute (and save) salt S = H(R<sub>x</sub> || R<sub>y</sub>).</li>
+    <li>Bob uses a true random number generator to generate a master key K<sub>m</sub>.</li>
+    <li>Bob encrypts K<sub>m</sub> with key HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;) and saves the ciphertext C<sub>m</sub>. Bob destroys K<sub>m</sub>.</li>
+    <li>Bob saves token T = HMAC(K<sub>t</sub> || S, &lt;Alice's Password&gt; || S) and destroys K<sub>t</sub>.</li>
+    <li>Bob destroys all information relating to Alice's password, even hashes and ciphertexts (other than the result of the previous step).
+    <li>Bob and Alice save 128-bit counters initialized to 0. Let I<sub>a</sub> and I<sub>b</sub> denote Alice's and Bob's counter respectively.</li>
+</ol>
+
+<p>Visually,</p>
+
+<table style="width: 400px; ">
+    <tr><th>Alice</th><th>Bob</th></tr>
+    <tr>
+        <td style="vertical-align: top;">
+            Generate R<sub>a</sub>, R<sub>b</sub>, R<sub>x--&gt;<br />
+            &lt;Alice's Password&gt; --&gt;<br />
+            K<sub>s</sub> = H(R<sub>a</sub> || R<sub>c</sub>)<br />
+            K<sub>t</sub> = H(R<sub>b</sub> || R<sub>d</sub>)<br />
+            S = H(R<sub>x</sub> || R<sub>y</sub>)<br />
+            I<sub>a</sub> = 0
+        </td>
+        <td style="vertical-align: top;">
+            &lt;--Generate R<sub>c</sub>, R<sub>d</sub>, R<sub>y<br />
+            K<sub>s</sub> = H(R<sub>a</sub> || R<sub>c</sub>)<br />
+            K<sub>t</sub> = H(R<sub>b</sub> || R<sub>d</sub>)<br />
+            S = H(R<sub>x</sub> || R<sub>y</sub>)<br />
+            Generate K<sub>m</sub><br />
+            C<sub>m</sub> = E(HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;), K<sub>m</sub>)<br />
+            T = HMAC(K<sub>t</sub> || S, &lt;Alice's Password&gt; || S)<br />
+            Destroy K<sub>t</sub><br />
+            I<sub>b</sub> = 0
+        </td>
+    </tr>
+</table>
+
+<p>At this point, Bob and Alice share a secret "sequence" key K<sub>s</sub> and salt S. They both have 128-bit counters set to 0. Alice has the "static" key K<sub>t</sub>. Bob has C<sub>m</sub> which is the "master" key K<sub>m</sub> encrypted with K<sub>t</sub>, but does not have K<sub>t</sub>. Bob also has T, the HMAC of Alice's password and K<sub>t</sub>.</p>
+
+<p>Alice's random numbers R<sub>a</sub>, R<sub>b</sub>, and R<sub>x</sub> may be omitted if she is unable to generate random numbers (e.g. if she is a website user).</p>
+
+<h3>The Authentication Procedure</h3>
+
+<p>Alice would like to authenticate herself to Bob over an insecure channel that is vulnerable to passive sniffing attacks (e.g. using a computer with a keylogger installed).</p>
+
+<ol>
+    <li>Alice identifies herself to Bob.</li>
+    <li>Bob responds with the current value of his 128-bit counter.</li>
+    <li>Alice repeatedly computes K<sub>s</sub> = HMAC(K<sub>s</sub>, I<sub>a</sub> || S) and increments I<sub>a</sub> until I<sub>a</sub> == I<sub>b</sub>.</li>
+    <li>Alice computes OTP = K<sub>s</sub> XOR K<sub>t</sub> and sends her password and OTP to Bob.</li>
+    <li>Bob obtains K<sub>t</sub> = OTP XOR K<sub>s</sub>.</li>
+    <li>Bob computes T' = HMAC(K<sub>t</sub> || S, &lt;Alice's Password&gt; || S).</li>
+    <li>Bob compares T' and T. If they are identical, Alice is authenticated, if not, Bob stops here.</li>
+    <li>Bob computes K<sub>m</sub> by decrypting C<sub>m</sub> with key HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;).</li>
+    <li>Bob saves K<sub>s</sub> = HMAC(K<sub>s</sub>, I<sub>b</sub> || S) and increments I<sub>b</sub>.</li>
+    <li>Bob <strong>destroys</strong> of K<sub>t</sub> and the previous K<sub>s</sub>.</li>
+    <li>Bob uses K<sub>m</sub> to encrypt and decrypt Alice's data and destroys it when finished.</li>
+</ol>
+
+<p>Visually,</p>
+
+<table style="width: 540px; ">
+    <tr><th>Alice</th><th>Bob</th></tr>
+    <tr>
+        <td style="vertical-align: top;">
+        "Hi, I'm Alice" --&gt;<br />
+        &lt;Alice's Password&gt; --&gt;<br /><br />
+        Until I<sub>a</sub> == I<sub>b</sub>:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;K<sub>s</sub> = HMAC(K<sub>s</sub>, I<sub>a</sub> || S)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;I<sub>a</sub> = I<sub>a</sub> + 1<br />
+        OTP = K<sub>s</sub> XOR K<sub>t</sub>--&gt;<br />
+        </td>
+        <td style="vertical-align: top;">
+        <br />
+        &lt;--I<sub>b</sub><br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        K<sub>t</sub> = OTP XOR K<sub>s</sub><br />
+        T' = HMAC(K<sub>t</sub> || S, &lt;Alice's Password&gt; || S)<br />
+        Auth fail if T != T'<br />
+        K<sub>m</sub> = D(HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;), C<sub>m</sub>) Destroy K<sub>t</sub><br />
+        K<sub>s</sub> = HMAC(K<sub>s</sub>, I<sub>b</sub> || S) Destroy previous K<sub>s</sub><br />
+        I<sub>b</sub> = I<sub>b</sub> + 1<br />
+        </td>
+    </tr>
+</table>
+
+<p>At this point, Alice has Authenticated herself to Bob and Bob has a key K<sub>m</sub> which can be used to encrypt Alice's data.</p>
+
+<h2>How secure is EOTP?</h2>
+<h3>Decrypting Alice's Data</h3>
+
+<p>If Bob is compromised, the attacker will obtain:</p>
+
+<ul>
+    <li>C<sub>m</sub></li>
+    <li>The current K<sub>s</sub> - HMAC(K<sub>s</sub>, I<sub>b</sub> || S) of the <strong>previous</strong> K<sub>s</sub></li>
+    <li>S</li>
+    <li>I<sub>b</sub></li>
+    <li>T</li>
+</ul>
+
+<p>It is also likely that the attacker will have the latest OTP that Alice sent.</p>
+
+<p>Alice's data is encrypted with K<sub>m</sub>. The attacker has C<sub>m</sub>, which is K<sub>m</sub> encrypted with HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;). Suppose, for the sake of argument, that the attacker knew Alice's password. Now, to obtain the key to decrypt C<sub>m</sub>, the attacker must obtain K<sub>t</sub> = OTP XOR K<sub>s</sub>, the <strong>previous</strong> K<sub>s</sub>. Bob has destroyed the previous K<sub>s</sub>, but his current K<sub>s</sub> is a function of the old K<sub>s</sub>: HMAC(K<sub>s</sub>, I<sub>b</sub> - 1 || S). To obtain K<sub>t</sub> from OTP, the attacker must reverse the HMAC to obtain the previous K<sub>s</sub>. Assuming a strong HMAC function, it is not computationally feasible.</p>
+
+<p>The attacker has T = HMAC(K<sub>t</sub> || S, &lt;Alice's Password&gt; || S). This is not helpful since, assuming a strong HMAC function and nonempty S, it is impossible to deduce HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;).</p>
+
+<p>The only other way to decrypt C<sub>m</sub> is to guess the value of HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;). Assuming a strong HMAC function, doing so requires 2<sup>n+m</sup> operations, assuming it would take 2<sup>n</sup> operations to guess Alice's password and 2<sup>m</sup> operations to guess K<sub>t</sub>.</p>
+
+<h3>Collecting OTPs</h3>
+
+<p>Following the protocol, the OTP is K<sub>t</sub> XOR K<sub>s</sub>. K<sub>s</sub> really represents a pseudorandom stream of bits:</p>
+
+<center>K<sub>s</sub> = HMAC(<strong>previous</strong> K<sub>s</sub> , I<sub>b</sub> || S)</center>
+
+<p>Assuming this process represents a cryptographically strong stream cipher, the value K<sub>s</sub> will not repeat for a <strong>very</strong> long time, so even an attacker who is able to obtain many OTPs would not be able to obtain K<sub>t</sub>. The size of K<sub>s</sub> is critical to security here. For that reason, K<sub>s</sub> should be at least 512 bits wide.</p>
+
+<h3>Impersonating Alice</h3>
+
+
+
+<h3>Destroying Data</h3>
+
+
+<h3>EOTP vs. Keyloggers and Man-In-The-Middle</h3>
+ - general security arguments here
+<h3>EOTP vs. Server Compromise</h3>
+
+<h3>EOTP vs. Passwords</h3>
+
+<p>EOTP is intended to be used alongside password authentication.</p>
+
+
+<h3>EOTP vs. Other OTP Schemes</h3>
+- Passwords Computed In Advance or As Needed
+
+
+<h2>Portable C Implementation</h2>
+
+<p>This is the 
+
+<h2>PHP Implementation</h2>
+
+<h2>Ruby Implementation</h2>
+
+
+
+<h2>Old</h2>
+
 <p>
 With Facebook now supporting one time passwords, the world is finally catching on the the concept of single use passwords. The idea is simple, use a different password every time you login. Once you login with a "one time" password, it can't be used again. This is useful when you want to log in to a public computer that may have spyware installed on it. When you login, any spyware on that machine will only record your single use password, which, since it has been used, can't be used to login again.
 </p>

@@ -25,6 +25,7 @@ $TITLE = "Defuse - Cyber-Security Research and Development";
 $META_DESCRIPTION = "Defuse Cyber-Security. Home of the PIE Bin, TRENT, and more...";
 $META_KEYWORDS = "defuse, ossbox, security, encryption, privacy, programming, code, research";
 
+header('X-Frame-Options: SAMEORIGIN'); // Prevent pages from being displayed in iframes. Not supported by all browsers.
 
 //name variable will contain the name of the page
 $name = "";
