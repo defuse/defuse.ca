@@ -79,7 +79,7 @@ table {
 
 	padding-top:5px;
 
-    overflow: auto;
+    /*overflow: auto;*/
     padding-bottom: 140px; /* total #footer height + desired padding */
 
 }
