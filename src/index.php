@@ -632,7 +632,7 @@ header('Content-Type: text/html; charset=utf-8');
 <link rel="stylesheet" media="all" type="text/css" href="/main.css" />
 
 </head>
-<body <?php if( $name == "home" ) echo 'style="background:black;" '; ?> >
+<body <?php if( $name == "home" ) echo 'style="background:white;" '; ?> >
 
 <!-- This menuing system was made by Steve Gibson at GRC.COM 
             see more at http://www.grc.com/menudemo.htm -->

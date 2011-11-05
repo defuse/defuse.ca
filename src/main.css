@@ -72,6 +72,10 @@ table {
 	margin-top:20px;
 }
 
+#contenthome li {
+    margin-bottom: 5px;
+}
+
 
 #content h1 {
 	width:100%;
