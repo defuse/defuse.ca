@@ -9,8 +9,6 @@ body {
 	color:black;
 	font-size:10pt;
 	font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
-/*	background-color: black;
-	background-image: url('/images/bg.png');*/
     background-color: white;
 }
 
@@ -75,14 +73,10 @@ table {
 	max-width: 1000px; 
 	min-width: 800px;
 	margin-top:5px;
-	/*background-color:white;*/
 	background-color:white;
-/*	border: solid black 8px;*/
-	/*padding: 10px;*/
 	padding-left: 30px;
 	padding-right:30px;
 
-/*	padding-bottom:15px; */
 	padding-top:5px;
 
     overflow: auto;
