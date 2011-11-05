@@ -336,3 +336,7 @@ text-decoration:underline;
     text-decoration: underline;
     color: blue;
 }
+
+textarea {
+    resize: none;
+}
