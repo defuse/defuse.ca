@@ -12,6 +12,23 @@ body {
     background-color: white;
 }
 
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}
+
+html {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+}
+
 /* global overrides */
 body, img, button, iframe, ul, li, hr  { 
 	margin:0; padding:0; border:0; 
@@ -50,7 +67,6 @@ table {
 }
 
 #content {
-	min-height:100%;
 	text-align: left;
 	margin: 0 auto; 
 	width: 80%; /* If it ain't broke, don't fix it! */
@@ -64,8 +80,11 @@ table {
 	padding-left: 30px;
 	padding-right:30px;
 
-	padding-bottom:15px;
+/*	padding-bottom:15px; */
 	padding-top:5px;
+
+    overflow: auto;
+    padding-bottom: 100px; /* total #footer height + desired padding */
 
 }
 
@@ -163,14 +182,19 @@ text-decoration:underline;
 }
 
 #footer {
+
     width: 100%;
     background-color: black;
     border-top: solid #202020 1px;
-    margin: 0;
     padding-top: 5px;
     padding-bottom: 10px;
     color: white;
     text-align: center;
+
+    position: relative;
+    margin-top: -81px; /* vertical padding + height + border */
+    height: 65px;
+    clear: both;
 }
 
 /*For IE bottom of the page padding*/

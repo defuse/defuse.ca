@@ -630,9 +630,14 @@ header('Content-Type: text/html; charset=utf-8');
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" media="all" type="text/css" href="/mainmenu2.css" />
 <link rel="stylesheet" media="all" type="text/css" href="/main.css" />
-
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
 </head>
 <body <?php if( $name == "home" ) echo 'style="background:white;" '; ?> >
+<div id="wrap">
 
 <!-- This menuing system was made by Steve Gibson at GRC.COM 
             see more at http://www.grc.com/menudemo.htm -->
@@ -815,11 +820,12 @@ header('Content-Type: text/html; charset=utf-8');
 ?>
 
 </div>
+</div> <!-- Wrap -->
 <?php
     if($name != "home")
     {
         ?>
-        <div id="footwrap">    <div id="footer">
+        <div id="footer">
         <?
         date_default_timezone_set("Canada/Mountain");
         $last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
@@ -837,7 +843,7 @@ header('Content-Type: text/html; charset=utf-8');
 
         ?>
             <center>Copyright &copy; 2011 DEFUSE.CA.</center>
-            </div></div>
+            </div>
         <?
     }
 ?>
