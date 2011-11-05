@@ -859,8 +859,6 @@ header('Content-Type: text/html; charset=utf-8');
             $hits = PHPCount::GetHits($fullpath);
             $total = PHPCount::GetTotalHits();
             $totalu = PHPCount::GetTotalHits(true);
-
-
         ?>
         <table>
             <tr>
@@ -877,26 +875,7 @@ header('Content-Type: text/html; charset=utf-8');
             </tr>
         </table>
 
-
-
- <!--       <?
-        date_default_timezone_set("Canada/Mountain");
-        $last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
-        $unique =  PHPCount::GetHits($fullpath, true);
-        $hits = PHPCount::GetHits($fullpath);
-        $total = PHPCount::GetTotalHits();
-        $totalu = PHPCount::GetTotalHits(true);
-
-        echo "Page Hits: $hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique Hits: $unique<br />";
-        echo "Last Change: $last_modified<br />";
-        if($dnt)
-        {
-            echo "<span style=\"color:#00ff00;\">You have the DNT header enabled.</span><br />";
-        }
-
-        ?>
-            <center>Copyright &copy; 2011 DEFUSE.CA.</center>-->
-            </div>
+        </div> <!-- end footer -->
         <?
     }
 ?>
