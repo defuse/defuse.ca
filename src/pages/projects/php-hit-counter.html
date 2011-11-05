@@ -2,5 +2,8 @@
 <p>This PHP library provides a hit counter that is able to count unique hits without directly recording each visitor's IP address. It does so by recording only a cryptographic hash of the IP address and page name. By hashing the IP address with page name as salt, you prevent yourself from being able to track a user as they navigate your site. You also prevent yourself from being able to recover anyone's IP address without brute forcing the 2<sup>32</sup> possible IPv4 addresses, or 2<sup>128</sup> addresses in the case of IPv6.</p>
 
 <p>It is VERY easy to use, all you need is PHP and a single MySQL database. All the documentation you will need is in the source code file which is licensed under the GNU GPL v3. The code has been well designed and tested to be <strong>completely free of SQL injection vulnerabilities</strong>.</p>
-<p><a href="/source/phpcount.php.txt">Download PHP Hit Counter Source Code</a></p>
+<p>
+    <a href="/source/phpcount.php.txt">Download PHP Hit Counter Source Code</a> <br />
+    <a href="/source/phpcount.sql">Download PHP Hit Counter Database Structure</a>
+</p>
 
