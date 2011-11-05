@@ -826,7 +826,60 @@ header('Content-Type: text/html; charset=utf-8');
     {
         ?>
         <div id="footer">
+
+        <div style="float: right;">
+        <table>
+            <tr>
+                <th>Your IP:</th>
+                <td><?php echo htmlentities($_SERVER['REMOTE_ADDR'], ENT_QUOTES); ?></th>
+            </tr>
+            <tr>
+                <th>DNT Header:&nbsp;&nbsp;&nbsp;</th>
+                <?php
+                    if($dnt)
+                    {
+                        echo "<td><span style=\"color: #004700\">Enabled</span></th>";
+                    }
+                    else
+                    {
+                        echo "<td>Disabled</th>";
+                    }
+                ?>
+            </tr>
+        </table>
+        </div>
+
+        <a href="/about.htm">Defuse Cyber-Security</a> is a Canadian computer security research and development organization.
+
+        <br />
         <?
+            date_default_timezone_set("Canada/Mountain");
+            $last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
+            $unique =  PHPCount::GetHits($fullpath, true);
+            $hits = PHPCount::GetHits($fullpath);
+            $total = PHPCount::GetTotalHits();
+            $totalu = PHPCount::GetTotalHits(true);
+
+
+        ?>
+        <table>
+            <tr>
+                <th>Last Modified: &nbsp;&nbsp;</th>
+                <td><?php echo $last_modified;?></td>
+            </tr>
+            <tr>
+                <th>Page Hits:</th>
+                <td><?php echo $hits; ?></td>
+            </tr>
+            <tr>
+                <th>Unique Hits:</th>
+                <td><?php echo $unique; ?></td>
+            </tr>
+        </table>
+
+
+
+ <!--       <?
         date_default_timezone_set("Canada/Mountain");
         $last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
         $unique =  PHPCount::GetHits($fullpath, true);
@@ -842,7 +895,7 @@ header('Content-Type: text/html; charset=utf-8');
         }
 
         ?>
-            <center>Copyright &copy; 2011 DEFUSE.CA.</center>
+            <center>Copyright &copy; 2011 DEFUSE.CA.</center>-->
             </div>
         <?
     }
