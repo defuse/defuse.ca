@@ -163,12 +163,12 @@ text-decoration:underline;
 }
 
 #footer {
-	color: gray;
+	color: black;
 	margin: 0 auto;
 	text-align:center;
 	padding: 5px;
 	background-color:white;
-	border: solid silver 1px;
+	border: solid black 1px;
 	width: 400px;	
 }
 

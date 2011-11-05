@@ -836,7 +836,7 @@ header('Content-Type: text/html; charset=utf-8');
         }
 
         ?>
-            <span style="color:gray;">Copyright &copy; 2011 DEFUSE.CA.</span>
+            <span style="color:black;">Copyright &copy; 2011 DEFUSE.CA.</span>
             </div></div>
         <?
     }
