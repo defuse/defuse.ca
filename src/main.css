@@ -163,25 +163,18 @@ text-decoration:underline;
 }
 
 #footer {
-	color: black;
-	margin: 0 auto;
-	text-align:center;
-	padding: 5px;
-	background-color:white;
-	border: solid black 1px;
-	width: 400px;	
+    width: 100%;
+    background-color: black;
+    border-top: solid #202020 1px;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: white;
+    text-align: center;
 }
 
 /*For IE bottom of the page padding*/
 #footwrap {
-	padding-top: 20px;
-	padding-bottom: 20px;
-
-	/* -- same parameters as #content -- */
-	width: 80%;
-	max-width: 1000px; 
-	min-width: 800px;
-	margin: 0 auto;
 }
 
 .codeskillbox {
