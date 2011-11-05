@@ -8,207 +8,175 @@
 
 <url>
   <loc>https://defuse.ca/</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/about.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/resume.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/projects.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/contact.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/peerreview.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/pastebin.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/trustedthirdparty.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/pdfcleaner.htm</loc>
-  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://defuse.ca/big-number-calculator.htm</loc>
 </url>
 <url>
   <loc>https://defuse.ca/checksums.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/html-sanitize.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/passgen.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/helloworld-cms.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/textractor.htm</loc>
-  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://defuse.ca/force-print-background.htm</loc>
 </url>
 <url>
   <loc>https://defuse.ca/gpucrack.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/php-hit-counter.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/csharpthreadlibrary.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/passwordbolt.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/simppsk.htm</loc>
-  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://defuse.ca/php-pbkdf2.htm</loc>
 </url>
 <url>
   <loc>https://defuse.ca/blowfish.htm</loc>
-  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://defuse.ca/passwordrestrictions.htm</loc>
 </url>
 <url>
   <loc>https://defuse.ca/password-policy-hall-of-shame.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/web-application-security.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/filesystem-events-ntfs-permissions.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/onedetection.htm</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://defuse.ca/eotp.htm</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://defuse.ca/cbcmodeiv.htm</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://defuse.ca/asuskeyboarddefect.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/bitcoin-pool-ddos.htm</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/softwaresecurity.htm</loc>
-  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://defuse.ca/eotp.htm</loc>
+</url>
+<url>
+  <loc>https://defuse.ca/cbcmodeiv.htm</loc>
+</url>
+<url>
+  <loc>https://defuse.ca/asuskeyboarddefect.htm</loc>
 </url>
 <url>
   <loc>https://defuse.ca/source/trent.html</loc>
-  <lastmod>2011-08-03T01:31:54+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-08-21T21:01:14+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/source/phpcount.php.txt</loc>
-  <lastmod>2011-06-18T22:09:03+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-18T21:09:03+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pages/projects/simppsk_review1.txt</loc>
-  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://defuse.ca/downloads/smb_modify_event_capture.txt</loc>
-  <lastmod>2011-06-12T06:45:15+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:15+00:00</lastmod>
+</url>
+<url>
+  <loc>https://defuse.ca/trustedthirdparty.htm?drawingnum=</loc>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/index.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/deletepw.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/create.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/rng.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/login.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/notepad.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/addpw.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/logout.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/viewpw.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/changeacct.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/changepw.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/deleteacct.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 <url>
   <loc>https://defuse.ca/pwbolt/docs/sfunc.html</loc>
-  <lastmod>2011-06-12T06:45:17+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2011-06-12T05:45:17+00:00</lastmod>
 </url>
 </urlset>
