@@ -832,7 +832,7 @@ header('Content-Type: text/html; charset=utf-8');
         echo "Last Change: $last_modified<br />";
         if($dnt)
         {
-            echo "<span style=\"color:#00FF00;\">You have the DNT header enabled.</span><br />";
+            echo "<span style=\"color:#005009;\">You have the DNT header enabled.</span><br />";
         }
 
         ?>
