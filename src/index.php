@@ -888,7 +888,7 @@ header('Content-Type: text/html; charset=utf-8');
         <a href="/about.htm">Privacy Policy</a> | 
         <a href="/pastebin.htm">Secure Pastebin</a> | 
         <a href="/passgen.htm">Password Generator</a> |
-        <a href="http://crackstation.net/">CrackStation</a> 
+        <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a> 
         </div> <!-- end footer -->
         </div> <!-- footerwrapper -->
         <?
