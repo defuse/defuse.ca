@@ -19,7 +19,7 @@ $entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implod
 file_put_contents("/dev/random", $entropy);
 
 //Default title of the page (shown on the top of the window and on top of tabs)
-$TITLE = "Defuse - Cyber-Security Research and Development";
+$TITLE = "Defuse Cyber-Security Research and Development";
 
 //Default meta info (for search engines)
 $META_DESCRIPTION = "Defuse Cyber-Security. Home of the PIE Bin, TRENT, and more...";
@@ -880,8 +880,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <td><?php echo $unique; ?></td>
             </tr>
         </table>
-
-        <a href="/about.htm">Privacy Policy</a> | 
+        Copyright &copy; 2011 <a href="/about.htm">Defuse Cyber Security</a> | 
         <a href="/pastebin.htm">Secure Pastebin</a> | 
         <a href="/passgen.htm">Password Generator</a> |
         <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a> 
