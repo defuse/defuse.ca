@@ -3,6 +3,12 @@
 
 /* CSS Sticky footer from: http://www.cssstickyfooter.com/using-sticky-footer-code.html */
 
+/* TAGS {{{1 */
+
+html {
+    height: 100%;
+}
+
 body {
 	width:100%; 
 	height:100%;
@@ -12,7 +18,7 @@ body {
     background-color: white;
 }
 
-/*Opera Fix*/
+/*Opera Fix (css sticky footer) */
 body:before {
 	content:"";
 	height:100%;
@@ -21,15 +27,6 @@ body:before {
 	margin-top:-32767px;/
 }
 
-html {
-    height: 100%;
-}
-
-#wrap {
-    min-height: 100%;
-}
-
-/* global overrides */
 body, img, button, iframe, ul, li, hr  { 
 	margin:0; padding:0; border:0; 
 }
@@ -39,6 +36,15 @@ table {
 	padding:0;
 	text-align:left;
 	font-size:10pt; 
+}
+
+textarea {
+    resize: none;
+}
+
+/* GLOBAL (All Pages) Styles {{{1 */
+#wrap {
+    min-height: 100%
 }
 
 #homediv {
@@ -69,7 +75,7 @@ table {
 #content {
 	text-align: left;
 	margin: 0 auto; 
-	width: 80%; /* If it ain't broke, don't fix it! */
+	width: 80%; 
 	max-width: 1000px; 
 	min-width: 800px;
 	margin-top:5px;
@@ -129,6 +135,7 @@ table {
 a:hover {
 	color:#FF0000;
 }
+
 #undergrad {
 	background-image: url('/images/undergrad.png');
 	height: 10px;
@@ -149,22 +156,23 @@ a:hover {
 }
 
 ul {
-padding-left:40px;
+    padding-left:40px;
 }
 
 .linkblock {
-margin: 0 auto;
-background:#ddffff;
-border: solid #66ccdd 2px;
+    margin: 0 auto;
+    background:#ddffff;
+    border: solid #66ccdd 2px;
 }
 
 .linkblockheader {
-margin-top:20px;
-text-align:center;
+    margin-top:20px;
+    text-align:center;
 }
+
 .linkblock td {
-padding-right:5px;
-text-decoration:underline;
+    padding-right:5px;
+    text-decoration:underline;
 }
 
 /* These DO NOT affect the PASTEBIN page! */
@@ -217,10 +225,6 @@ text-decoration:underline;
     color: red;
 }
 
-/*For IE bottom of the page padding*/
-#footwrap {
-}
-
 .codeskillbox {
 	background-color: white;
 	color: black;
@@ -241,6 +245,7 @@ text-decoration:underline;
 	border-bottom: solid black 1px;
 }
 
+/* PPHOS {{{1 */
 /* ============ PPHOS ================= */
 
 .hosval {
@@ -269,6 +274,7 @@ text-decoration:underline;
 }
 
 
+/* PASSWORD BLOCKS {{{1 */
 /* ========== PASSWORD BLOCKS ========= */
 
 .blocksection h2 {
@@ -286,16 +292,17 @@ text-decoration:underline;
     margin-bottom: 20px;
     background-color: #FFFFFF;
 }
+
 #blockfactory {
 
 }
 
 #blocksorter {
 
-
 }
 
 #passwordpractice {
+
 }
 
 #passwordsecurity {
@@ -375,6 +382,3 @@ text-decoration:underline;
     color: blue;
 }
 
-textarea {
-    resize: none;
-}
