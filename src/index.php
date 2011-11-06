@@ -825,6 +825,8 @@ header('Content-Type: text/html; charset=utf-8');
     if($name != "home")
     {
         ?>
+        <div id="footerwrapper">
+        <div id="footerborder"></div>
         <div id="footer">
 
         <div style="float: right;">
@@ -877,6 +879,7 @@ header('Content-Type: text/html; charset=utf-8');
         <a href="/passgen.htm">Password Generator</a> |
         <a href="http://crackstation.net/">CrackStation</a> 
         </div> <!-- end footer -->
+        </div> <!-- footerwrapper -->
         <?
     }
 ?>

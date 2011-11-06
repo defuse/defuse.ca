@@ -177,20 +177,36 @@ text-decoration:underline;
 	word-wrap: break-word;
 }
 
-#footer {
+#footerborder {
+    background-image: url('images/undergrad-inverted.png');
+    height: 10px;
+}
 
-    background-color: silver;
-    border-top: solid #202020 1px;
+#footerwrapper {
+    position: relative;
+    margin-top: -105px; /* #footer total height (padding too) + 10px footerborder */
+    clear: both;
+    width: 100%;
+}
+
+#footer {
+    background-color: black;
+    /*border-top: solid #202020 1px;*/
     padding-top: 5px;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    color: black;
-
-    position: relative;
-    margin-top: -96px; /* vertical padding + height + border */
+    margin: 0;
+    color: white;
     height: 80px;
-    clear: both;
+}
+
+#footer a {
+    color: #CCCCCC;
+}
+
+#footer a:hover {
+    color: red;
 }
 
 /*For IE bottom of the page padding*/
