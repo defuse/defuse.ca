@@ -849,9 +849,6 @@ header('Content-Type: text/html; charset=utf-8');
         </table>
         </div>
 
-        <a href="/about.htm">Defuse Cyber-Security</a> is a Canadian computer security research and development organization.
-
-        <br />
         <?
             date_default_timezone_set("Canada/Mountain");
             $last_modified = htmlspecialchars(date("F j, Y, g:ia",filemtime($fullpath)), ENT_QUOTES);
@@ -875,6 +872,10 @@ header('Content-Type: text/html; charset=utf-8');
             </tr>
         </table>
 
+        <a href="/about.htm">Privacy Policy</a> | 
+        <a href="/pastebin.htm">Secure Pastebin</a> | 
+        <a href="/passgen.htm">Password Generator</a> |
+        <a href="http://crackstation.net/">CrackStation</a> 
         </div> <!-- end footer -->
         <?
     }
