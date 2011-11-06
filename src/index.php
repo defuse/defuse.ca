@@ -649,6 +649,7 @@ header('Content-Type: text/html; charset=utf-8');
     <div style="text-align:center; position: absolute; top: 10px; right: 0px;">
         <a href="https://www.eff.org/pages/blue-ribbon-campaign">
             <img src="https://www.eff.org/sites/default/files/br.gif" alt="Join the Blue Ribbon Online Free Speech Campaign" />
+        </a>
     </div>
 </div>
 
