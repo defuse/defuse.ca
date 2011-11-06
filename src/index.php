@@ -699,7 +699,6 @@ header('Content-Type: text/html; charset=utf-8');
         <ul>
             <li><a href="/passgen.htm">&nbsp;Password Generator</a></li>
             <li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
-            <li><a href="/textractor.htm">&nbsp;Textractor</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
