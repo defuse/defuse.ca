@@ -17,7 +17,7 @@ Postscript is a file format can do everything that PDF can do, so in most cases,
 <h2>Proof of Concept Demonstration</h2>
 <p>Watch as I open a PDF file that contains an exploit for an old version of Foxit reader. The malicious PDF file causes Foxit to crash, but after the PDF has gone through PDFCleaner, the exploit is no longer attached to the file and Foxit will open it without crashing. The specific exploit I used is available in the metasploit framework. It is called "windows/fileformat/foxit_title_bof" and is described as "Foxit PDF Reader v4.1.1 Title Stack Buffer Overflow".</p>
 <center>
-<iframe title="PDFCleaner Proof of Concept YouTube Video" class="youtube-player" width="480" height="390" src="http://www.youtube.com/embed/FJufDCDYRB8" frameborder="0" ></iframe>
+<iframe title="PDFCleaner Proof of Concept YouTube Video" class="youtube-player" width="480" height="390" src="https://www.youtube.com/embed/FJufDCDYRB8" frameborder="0" ></iframe>
 </center>
 <h2>Is My Data Safe?</h2>
 <p>Yes. Every file you upload is sent through an encrypted SSL/TLS connection and is deleted as soon as the exploit removal process is complete.</p>
