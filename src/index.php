@@ -833,18 +833,29 @@ header('Content-Type: text/html; charset=utf-8');
         <table>
             <tr>
                 <th>Your IP:</th>
-                <td><?php echo htmlentities($_SERVER['REMOTE_ADDR'], ENT_QUOTES); ?></th>
+                <td>
+                <?php
+                    if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+                    {
+                        echo htmlentities($_SERVER['HTTP_X_FORWARDED_FOR'], ENT_QUOTES); 
+                    }
+                    else
+                    {
+                        echo htmlentities($_SERVER['REMOTE_ADDR'], ENT_QUOTES); 
+                    }
+                ?>
+                </td>
             </tr>
             <tr>
                 <th>DNT Header:&nbsp;&nbsp;&nbsp;</th>
                 <?php
                     if($dnt)
                     {
-                        echo "<td><span style=\"color: #00FF00\">Enabled</span></th>";
+                        echo "<td><span style=\"color: #00FF00\">Enabled</span></td>";
                     }
                     else
                     {
-                        echo "<td>Disabled</th>";
+                        echo "<td>Disabled</td>";
                     }
                 ?>
             </tr>
