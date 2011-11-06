@@ -189,6 +189,14 @@ text-decoration:underline;
     width: 100%;
 }
 
+/* Hide the footer while printing */
+@media print {
+    #footerwrapper {
+        display:none;
+    }
+}
+
+
 #footer {
     background-color: black;
     /*border-top: solid #202020 1px;*/
