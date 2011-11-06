@@ -840,7 +840,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <?php
                     if($dnt)
                     {
-                        echo "<td><span style=\"color: #004700\">Enabled</span></th>";
+                        echo "<td><span style=\"color: #00FF00\">Enabled</span></th>";
                     }
                     else
                     {
