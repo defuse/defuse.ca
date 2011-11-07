@@ -39,7 +39,7 @@ header('Content-Type: text/html; charset=utf-8');
         font-family: monospace;
 	}
 
-    .div1
+    .div0
     {
         font-family: monospace;
         background-color: #e0e0e0;
