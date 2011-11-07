@@ -42,11 +42,12 @@ header('Content-Type: text/html; charset=utf-8');
     .div1
     {
         font-family: monospace;
+        background-color: #e0e0e0;
     }
 	/* every second row of text is shaded */
 	.div1
 	{
-		background-color: #BEBEBE;
+		background-color: #FFFFFF;
         font-family: monospace;
 	}
 
