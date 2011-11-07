@@ -134,7 +134,7 @@ if(mysql_num_rows($query) > 0)
 		$data = xsssani(str_replace("\0","", $data));
 		$split = explode("\n", $data);
 		$i = 0;
-		echo '<div style="font-family:monospace; background-color: #e0e0e0;"><ol>';
+		echo '<div style="font-family:monospace; background-color: #e0e0e0; border: solid black 1px;"><ol>';
 		foreach($split as $line)
 		{
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
