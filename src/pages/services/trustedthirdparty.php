@@ -501,7 +501,7 @@ function AllFilesUnder50()
 
 function SelectRandomNumber($randombinary, $low, $high)
 {
-	$divisor = abs($high - $low);
+	$divisor = abs($high - $low + 1);
 	$remainder = 0;
 	for($i = 0; $i < 32; $i++)
 	{
