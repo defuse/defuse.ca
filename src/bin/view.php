@@ -94,7 +94,10 @@ function encrypt()
 </script>
 <!-- End of scripts for client-side decryption -->
 
-<b>Encrypted, Secure Pastebin by <a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a></b>. See <a href="#copypaste">below</a> to copy the text and make a new post.<br /><br />
+<b>Secure Encrypted Pastebin by <a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a></b>.
+<br />
+See <a href="#copypaste">below</a> to copy the text and make a new post.<br /><br />
+
 <?php
 
 require_once('info.php');
