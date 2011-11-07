@@ -132,8 +132,6 @@ if(isset($_GET['drawingnum']))
 if(isset($_POST['makedrawingnumber']))
 {
 	$reviewtime = (int)$_POST['prereview'];
-	if($reviewtime < 3600 * 24)
-		die("Nope...");
 	
 	$starttime = time();
 	$drawingdate = date("D M j G:i:s T Y", $reviewtime + $starttime);
@@ -161,6 +159,8 @@ if(isset($_POST['makedrawingnumber']))
 	
 Review time:
 				<select name="prereview">
+					<option value="0" selected="selected" >Instant</option>
+					<option value="21600" selected="selected" >6 Hours</option>
 					<option value="86400" selected="selected" >24 hours</option>
 					<option value="345600">4 days</option>
 					<option value="518400">6 days</option>
