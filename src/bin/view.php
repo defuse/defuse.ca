@@ -46,7 +46,7 @@ header('Content-Type: text/html; charset=utf-8');
 	/* every second row of text is shaded */
 	.div1
 	{
-		background-color: #f4f4f4;
+		background-color: #BEBEBE;
         font-family: monospace;
 	}
 
