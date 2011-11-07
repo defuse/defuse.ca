@@ -676,7 +676,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/peerreview.htm">&nbsp;Peer Review &amp; Testing</a></li>
 
             
-            <li style="border-top:solid 1px white;"><a href="/pastebin.htm">&nbsp;Encrypted Pastebin</a></li>
+            <li><a href="/pastebin.htm">&nbsp;Encrypted Pastebin</a></li>
             <li><a href="/trustedthirdparty.htm">&nbsp;TRENT - Trusted RNG</a></li>
             <li><a href="/pdfcleaner.htm">&nbsp;PDFCleaner</a></li>
 
