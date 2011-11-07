@@ -37,6 +37,7 @@ header('Content-Type: text/html; charset=utf-8');
 		color:black;
 		border:solid black 1px;
         font-family: monospace;
+        resize: none;
 	}
 
     .div0
