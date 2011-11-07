@@ -45,7 +45,7 @@ textarea {
 
 /* GLOBAL (All Pages) Styles {{{1 */
 #wrap {
-    min-height: 100%
+    min-height: 100%;
     width: 100%;
     min-width: 100%; /* Required for IE9 */
 }
