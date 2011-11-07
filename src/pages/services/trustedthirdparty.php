@@ -644,8 +644,8 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 
 <h2>Source Code</h2>
 
-<p>TRENT's source code is available for peer review. Please note that the code is provided for peer review purposes only. Do not copy it, distribute it, or alter it in any way. I really would like to make TRENT open source but I can't because I know that if I did, backdoored versions of TRENT would be created. If you would like to use TRENT's code for a specific purpose, <a href="/contact.htm">ask me</a>, and I'll probably let you. Thanks for understanding.</p>
+<p>TRENT's source code is available for peer review. Please note that the code is provided for peer review purposes only. Please do not copy it, distribute it, or alter it in any way. I really would like to make TRENT Free Software but I can't because I know that if I did, backdoored/insecure versions of TRENT would be created. But if you would like to use TRENT's code for a specific purpose, <a href="/contact.htm">ask me</a>, and I'll probably let you. Thanks for understanding.</p>
 
-<p><a href="/source/trent.html"><strong>Download TRENT's Source Code</strong></a></p>
+<p><a href="/source/trent.html"><strong>See TRENT's Source Code</strong></a></p>
 
 
