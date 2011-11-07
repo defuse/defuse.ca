@@ -134,7 +134,7 @@ if(mysql_num_rows($query) > 0)
 		$data = xsssani(str_replace("\0","", $data));
 		$split = explode("\n", $data);
 		$i = 0;
-		echo '<div style="font-family:monospace;"><ol>';
+		echo '<div style="font-family:monospace; background-color: #e0e0e0;"><ol>';
 		foreach($split as $line)
 		{
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
@@ -148,7 +148,7 @@ if(mysql_num_rows($query) > 0)
 	{
 		PrintPasswordPrompt(); //shows box asking for password
 		//give space for the JS to print the text
-		echo '<div id="tofill" style="font-family:monospace;"></div>';
+		echo '<div id="tofill" style="font-family:monospace; background-color: #e0e0e0;"></div>';
 
 		//output the JS decryption function, with the encrypted data embedded
 		PrintDecryptor(str_replace("\0","", $data));
