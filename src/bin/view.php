@@ -148,7 +148,7 @@ if(mysql_num_rows($query) > 0)
 	{
 		PrintPasswordPrompt(); //shows box asking for password
 		//give space for the JS to print the text
-		echo '<div id="tofill" style="font-family:monospace; background-color: #e7e7e7; border: solid black 1px;"></div>';
+		echo '<div id="tofill" style="font-family:monospace; background-color: #e7e7e7; border: solid black 1px; display: none;"></div>';
 
 		//output the JS decryption function, with the encrypted data embedded
 		PrintDecryptor(str_replace("\0","", $data));
@@ -223,6 +223,7 @@ function decrypt(){
 		fancyLines.push("</ol>");
 
 		var fill = document.getElementById("tofill");
+        fill.style.display = "block";
 		fill.innerHTML = fancyLines.join('');
 	}
 	else
