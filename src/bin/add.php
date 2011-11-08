@@ -4,7 +4,7 @@ require_once('info.php');
 $tendaysago = time() - (3600 * 24) * 10;
 mysql_query("DELETE FROM pastes WHERE time <= $tendaysago");
 
-if(isset($_POST['paste']) && !empty($_POST['paste']))
+if(isset($_POST['paste']))
 {
 	//get the text
 	$data = smartslashes($_POST['paste']);
