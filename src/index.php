@@ -624,7 +624,6 @@ header('Content-Type: text/html; charset=utf-8');
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
 <title><?php echo $TITLE; ?></title>
-<script type="text/javascript" src="http://americancensorship.org/js"></script>
 <meta name="description" content="<?php echo $META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo $META_KEYWORDS; ?>" />
 <meta name="google-site-verification" content="LjgndE9fyTkxbPz8aMFyJQFSS3cQiXIrYchE_b2VXlg" />
