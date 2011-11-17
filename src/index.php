@@ -644,12 +644,6 @@ header('Content-Type: text/html; charset=utf-8');
 
 <div class="menuminwidth0"><div class="menuminwidth1"><div class="menuminwidth2">
 <div id="masthead">
-    
-    <a href="http://eff.org/" style="color: white;">
-        <span style="height: 60px; background-color: black; color: white; font-size: 30px; position: relative; top: 40px; left: 30px; padding: 5px; padding-right: 300px;">
-            STOP CENSORSHIP.
-        </span>
-    </a>
     <div style="font-size:30px;"><img src="/images/1by1.gif" alt="Defuse Cyber-Security Research and Development" /></div>
     <div style="text-align:center; position: absolute; top: 10px; right: 0px;">
         <a href="https://www.eff.org/pages/blue-ribbon-campaign">
