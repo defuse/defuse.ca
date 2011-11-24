@@ -1,6 +1,33 @@
 <h1>High-Security Offline Password Generator</h1>
 <p>Online password generators like <a href="http://grc.com/passwords.htm">GRC's Perfect Passwords</a> can be very useful, but by using them you are trusting them not to remember your password and share it with third parties. I invite you to download one of my FREE and open source <b>OFFLINE</b> password generators so <b>YOUR PC</b> can create strong passwords with the click of a button. The Windows GUI version combines data from the Cryptographically Secure Random Number Generator (CSPRNG) built into Windows with random mouse movements to produce extremely secure passwords that are completely unique to you. The Linux version creates passwords from TRULY RANDOM noise obtained from <a href="https://secure.wikimedia.org/wikipedia/en/wiki//dev/random">/dev/random</a>.</p>
 
+<div style="border: solid black 1px; margin: 0 auto; width: 700px; padding: 5px;">
+<center><strong>Just want a password?</strong></center>
+<?php
+    $key = mcrypt_create_iv(128, MCRYPT_DEV_URANDOM);
+    $ascii = formatPrint($key);
+    $key = mcrypt_create_iv(32, MCRYPT_DEV_URANDOM);
+    $hex = strtoupper(bin2hex($key));
+    $key = mcrypt_create_iv(128, MCRYPT_DEV_URANDOM);
+    $alpha = formatAlphaNumerical($key);
+?>
+    
+    <table style="margin: 0 auto; font-family: monospace;" cellspacing="5px">
+        <tr>
+            <td><strong>ASCII:</strong></td>
+            <td><?php echo htmlspecialchars($ascii, ENT_QUOTES); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Alpha-numeric:</strong></td>
+            <td><?php echo htmlspecialchars($alpha, ENT_QUOTES); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Hex:</strong></td>
+            <td><?php echo htmlspecialchars($hex, ENT_QUOTES); ?></td>
+        </tr>
+    </table>
+</div>
+
 <h2>Windows Password Generator</h2>
 <p>This version runs on Windows XP, Windows Vista, Windows 7, Windows 2000, and Windows Server 2003+.</p>
 <center>
@@ -33,3 +60,41 @@
 </ol>
 <h3>How to Install on Windows</h3>
 <p>The easiest way to install the command line password generator on Windows is to <a href="/downloads/passgen.exe">download the executable (.exe) file</a> and copy it into your <span style="white-space: nowrap;"><kbd>C:\Windows\System32\</kbd></span> directory. After doing so, you will be able to run the password generator by typing "passgen" in the Windows command line. To open the command line, <span style="white-space: nowrap;"><kbd>Press Start &gt; Run &gt; Type "cmd.exe" and hit ENTER</kbd></span>. If the Run option isn't present in your start menu, you can open it by holding down the Windows key and pressing R.</p>
+
+<?php
+
+function formatPrint($key)
+{
+	$printable = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+	return format($printable, $key);
+}
+
+function formatAlphaNumerical($key)
+{
+	$alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	return format($alphanum, $key);
+}
+
+
+function format($charset, $random)
+{
+    $mods = "";
+    for($i = 0; $i < 64; $i++)
+    {
+        $remainder = 0;
+        $total = 0;
+        $quotient = "";
+        $divisor = strlen($charset);
+        for($j = 0; $j < strlen($random); $j++)
+        {
+            $total = ($remainder * 256 + ord(substr($random, $j, 1)));
+            $quotient .= chr($total / $divisor);
+            $remainder = $total % $divisor;	
+        }
+        $random = $quotient;
+        $mods .= substr($charset, $remainder, 1);
+    }
+    return $mods;
+}
+
+?>

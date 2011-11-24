@@ -162,6 +162,12 @@ switch($name)
         $path = "about.html";
         $META_DESCRIPTION = "About Defuse Cyber-Security.";
         break;
+    case "honestyware":
+        $path = "honestyware.php";
+        $TITLE = "HonestyWare - The right way to sell software.";
+        $META_KEYWORDS = "honestyware, free software, trust user";
+        $META_DESCRIPTION = "HonestyWare is a revolutionary way to sell software that embraces piracy.";
+        break;
     case "donated":
         $path = "donated.html";
         break;
