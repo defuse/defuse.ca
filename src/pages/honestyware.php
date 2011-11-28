@@ -14,4 +14,8 @@
     <li>FIXUser must be able to pay any amount for the software, but author can reccomend ammounts</li>
 </ol>
 
+<h2>Why is Honestyware Better?</h2>
+
+- a significant amount of sales are lost when people see that software costs X dollars, some would only be able to pay X - 20, in the standard model, all of those people are lost sales, in honestyware model you still make money. there is no losss because making digital copies is free
+
 http://ftp.gameaholic.com/pub/games/action/quake3/models/hk-001.txt
