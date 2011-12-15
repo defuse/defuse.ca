@@ -164,9 +164,9 @@ switch($name)
         break;
     case "honestyware":
         $path = "honestyware.php";
-        $TITLE = "HonestyWare - The right way to sell software.";
+        $TITLE = "Honestyware&trade; - The right way to sell software.";
         $META_KEYWORDS = "honestyware, free software, trust user";
-        $META_DESCRIPTION = "HonestyWare is a revolutionary way to sell software that embraces piracy.";
+        $META_DESCRIPTION = "Honestyware is a revolutionary way to sell software that embraces piracy.";
         break;
     case "donated":
         $path = "donated.html";
@@ -233,6 +233,12 @@ switch($name)
         $TITLE = "Custom Software Development - Defuse Cyber-Security";
         $META_DESCRIPTION = "Custom secure software development to suit your needs.";
         $META_KEYWORDS = "software development, custom software, programming, security";
+        break;
+    case "web-server-scan":
+        $path = "services/scan.php";
+        $TITLE = "Web Server Security Scan - Defuse Cyber-Security";
+        $META_DESCRIPTION = "Test your web server for common configuration problems such as open relay, zone transfer, and much more.";
+        $META_KEYWORDS = "security scan, web server scan, zone transfer test, open relay test";
         break;
     case "webdevelopment":
         $path = "services/webdevelopment.html";
@@ -664,6 +670,7 @@ header('Content-Type: text/html; charset=utf-8');
     <li class="headerlink" ><a href="/">Home&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul class="leftbutton">
             <li><a href="/about.htm">&nbsp;About Defuse</a></li>
+            <li><a href="/honestyware.htm">&nbsp;Honestyware</a></li>
             <li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
             <li><a href="/projects.htm">&nbsp;Project List</a></li>
             <li><a href="http://blog.defuse.ca" >&nbsp;Blog</a></li>
