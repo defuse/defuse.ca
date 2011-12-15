@@ -1,5 +1,9 @@
 <h1>Honestyware&trade;</h1>
 
+<center>
+    <img src="/images/honestyware.png" alt="&quot;You MUST buy this software&quot; is replaced by &quot;You CAN buy this software.&quot;" />
+</center>
+
 <h2>Honestyware in a Nutshell</h2>
 
 <p>Honestyware is a philosophy for selling software (and other digital content) that lets the consumer decide whether the software is worth paying for, and how much the software is worth. It is based on the assumption&mdash;and my strong belief&mdash;that <strong>people will pay for things that are worth paying for</strong>.</p>
