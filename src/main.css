@@ -248,6 +248,19 @@ ul {
 	border-bottom: solid black 1px;
 }
 
+.honestywarebox {
+    background-color: #aadaff;
+    border: solid black 1px;
+    padding: 10px;
+}
+
+.honestywarebox h2 {
+    text-align: center;
+    border-style: none !important;
+    padding: 0;
+    margin: 0;
+}
+
 /* PPHOS {{{1 */
 /* ============ PPHOS ================= */
 
