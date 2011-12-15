@@ -168,6 +168,12 @@ switch($name)
         $META_KEYWORDS = "honestyware, free software, trust user";
         $META_DESCRIPTION = "Honestyware is a revolutionary way to sell software that embraces piracy.";
         break;
+    case "purchase":
+        $path = "purchase.php";
+        $TITLE = "Purchase Confirmation";
+        $META_KEYWORDS = "purchase complete";
+        $META_DESCRIPTION = "The page you see when you buy something from Defuse.";
+        break;
     case "donated":
         $path = "donated.html";
         break;
