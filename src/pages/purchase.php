@@ -10,5 +10,8 @@
             <p>If you haven't downloaded a copy of the software yet, you can get it <a href="/passgen.htm">here</a>. If you want to learn more about our honestyware initiative, you can find information <a href="/honestyware.htm"> here</a>.</p>
         <?
         break;
+        case "phphitcounter":
+
+        break;
     }
 ?>
