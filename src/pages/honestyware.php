@@ -37,7 +37,7 @@
 
 </ul>
 
-<h2>Why is Honestyware Better for the User?</h2>
+<h2>Is Honestyware Better for the User?</h2>
 
 <p>"Better" is a broad term, but here are a few arguments why honestyware is better for the user:</p>
 
