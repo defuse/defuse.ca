@@ -283,6 +283,11 @@ switch($name)
         $TITLE = "Economic DDoS - A Theoretical Attack on Bitcoin - Defuse Cyber-Security";
         $META_DESCRIPTION = "State-sponsored attacks could secretly destroy the bitcoin economy.";
         break;
+    case "race-conditions-in-web-applications":
+        $path = "research/race-conditions-in-web-applications.php";
+        $TITLE = "Practical Race Condition (TOCTTOU) Vulnerabilities in Web Applications - Defuse Cyber-Security";
+        $META_DESCRIPTION = "Query-level race conditions can lead to serious but hard to find vulnerabilities in web applications.";
+        break;
     case "choosing-good-passwords-longer-is-better":
         $path = "research/choosing-good-passwords-longer-is-better.html";
         $TITLE = "How to Pick a Good Password - Longer is Better - Defuse Cyber-Security";
