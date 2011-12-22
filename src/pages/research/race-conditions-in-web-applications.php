@@ -150,7 +150,7 @@ time_nanosleep($seconds, $nanoseconds);<br />
 </table>
 </center>
 
-<p><strong>Don't use this method</strong>. Unless you use a CSPRNG to generate the random delay time, an attacker can probably extract the weak PRNG's state, compute the future delay times, and delay his own queries so the withdraw function executes at the same time. The attacker can also increase the number of simultaneous queries to improve the chances of the withdraws occurring simultaneously. The long delay will annoy users, too.</p>
+<p><strong>Don't use this method</strong>. Unless you use a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/CSPRNG">CSPRNG</a> to generate the random delay time, an attacker can probably extract the weak PRNG's state, compute the future delay times, and delay his own queries so the withdraw function executes at the same time. The attacker can also increase the number of simultaneous queries to improve the chances of the withdraws occurring simultaneously. The long delay will annoy users, too.</p>
 
 <h3>System V Semaphore</h3>
 
