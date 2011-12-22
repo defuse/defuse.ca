@@ -215,6 +215,7 @@ function withdraw($amount)<br />
 
 <h2>Useful Links</h2>
 <ul>
+<li><a href="http://security.dsi.unimi.it/~roberto/pubs/dimva08-web.pdf">&quot;On Race Condition Vulnerabilities in Web Applications&quot; - A 2008 paper on nearly the same subject.</a></li>
 <li><a href="http://stackoverflow.com/questions/2921469/php-mutual-exclusion-mutex">Stack Overflow - PHP Mutual Exclusion</a></li>
 <li><a href="/downloads/poc.zip">The proof of concept code used in this article</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Time-of-check-to-time-of-use">Wikipedia - Time Of Check To Time Of Use (TOCTTOU)</a></li>
