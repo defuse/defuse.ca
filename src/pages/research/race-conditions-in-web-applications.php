@@ -92,7 +92,7 @@ $ grep &quot;You have withdrawn: 10&quot; test2 &nbsp;| wc -l<br />
 128<br />
 </div>
 
-<p>These tests were done using the VPS that hosts this website (Debian 6, running Apache 2.2.16) to host the withdraw script and my Debian 6 PC at home to run the Python script. I've also confirmed that the attack works just as well when the withdraw script is hosted on the same PC that executes the Python script. It works when they're separated by a 100mbps Ethernet LAN too. You can download all of the proof of concept files <a href="/downloads/poc.zip">here</a>.</p>
+<p>These tests were done using the VPS that hosts this website (Debian 6, running Apache 2.2.16) to host the withdraw script and my Debian 6 PC at home to run the Python script. I've also confirmed that the attack works just as well when the withdraw script is hosted on the same PC that executes the Python script. It works when they're separated by a 100mbps Ethernet LAN, too. You can download all of the proof of concept files <a href="/downloads/poc.zip">here</a>.</p>
 
 <h3>What's going on here?</h3>
 
@@ -104,10 +104,118 @@ $ grep &quot;You have withdrawn: 10&quot; test2 &nbsp;| wc -l<br />
 
 <p>After the two requests are processed, the balance should be $9980, but since the second request is processed while the first is still being processed, we end up with a balance of $9990. Both withdraws work (imagine that the echo statement was replaced by code to increment another account's balance), so $20 is withdrawn but only $10 is deducted from the balance.</p>
 
-<h2>Solution</h2>
+<h2>Solutions</h2>
+
+<h3>Random Delay</h3>
+
+<p>Adding a random delay to the withdraw script reduces the effectiveness of the attack, but doesn't prevent it. The following code can be used to add a random delay of up to 10 seconds before processing the withdraw:</p>
+
+
+<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+$seconds = rand(1, 10);<br />
+$nanoseconds = rand(100, 1000000000);<br />
+time_nanosleep($seconds, $nanoseconds);<br />
+</div>
+
+<p>This makes the attack harder, but not impossible:</p>
+
+<center>
+<p><strong>Table 2. Results with random delay.</strong></p>
+<table border="1" cellpadding="5">
+<tr>
+    <th>Trial #</th>
+    <th>Balance After Python Script Execution</th>
+    <th>Profit (actual - expected)</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>8730</td>
+    <td>+10</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>8720</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>8720</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>8730</td>
+    <td>+10</td>
+</tr>
+</table>
+</center>
+
+<p><strong>Don't use this method</strong>. Unless you use a CSPRNG to generate the random delay time, an attacker can probably extract the weak PRNG's state, compute the future delay times, and delay his own queries so the withdraw function executes at the same time. The attacker can also increase the number of simultaneous queries to improve the chances of the withdraws occurring simultaneously. The long delay will annoy users, too.</p>
+
+<h3>System V Semaphore</h3>
+
+<p>If PHP is compiled with <tt>--enable-sysvsem</tt> then it will have System V-like semaphore abilities. We can make the withdraw function secure using the <a href="http://ca2.php.net/manual/en/function.sem-get.php">sem_get</a>, <a href="http://ca2.php.net/manual/en/function.sem-acquire.php">sem_acquire</a>, and <a href="http://ca2.php.net/manual/en/function.sem-release.php">sem_release</a> functions:</p>
+
+<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+function withdraw($amount)<br />
+{<br />
+ &nbsp; $sem = sem_get(1234, 1);<br />
+ &nbsp; if (sem_acquire($sem))<br />
+ &nbsp; {<br />
+ &nbsp; &nbsp; &nbsp; $balance = getBalance();<br />
+ &nbsp; &nbsp; &nbsp; if($amount &lt;= $balance)<br />
+ &nbsp; &nbsp; &nbsp; {<br />
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $balance = $balance - $amount;<br />
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; echo &quot;You have withdrawn: $amount &lt;br /&gt;&quot;;<br />
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setBalance($balance);<br />
+ &nbsp; &nbsp; &nbsp; }<br />
+ &nbsp; &nbsp; &nbsp; else<br />
+ &nbsp; &nbsp; &nbsp; {<br />
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; echo &quot;Insufficient funds.&quot;;<br />
+ &nbsp; &nbsp; &nbsp; }<br />
+ &nbsp; &nbsp; &nbsp; &nbsp;sem_release($sem);<br />
+ &nbsp; &nbsp;}<br />
+}<br />
+</div>
+
+<p>In the call to sem_get, "1234" is the semaphore key (identifier) and "1" is the maximum number of threads/processes that can "acquire" the semaphore at once. If a thread has acquired semaphore 1234 but hasn't yet released it, and another thread calls sem_acquire on the same semaphore, the call will block until the first thread releases it. This prevents the race condition attack.</p> 
+
+<p>You'll probably not want to use '1234' as the semaphore key. It would be better to, for example, use the ID of the user whose balance is being modified. Also, keep in mind that the semaphore functions are not universally supported. </p>
+
+<center>
+<p><strong>Table 3. Results with System V semaphore.</strong></p>
+<table border="1" cellpadding="5">
+<tr>
+    <th>Trial #</th>
+    <th>Balance After Python Script Execution</th>
+    <th>Profit (actual - expected)</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>8720</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>8720</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>8720</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>8720</td>
+    <td>0</td>
+</tr>
+</table>
+</center>
 
 <h2>Useful Links</h2>
 <ul>
+<li><a href="http://stackoverflow.com/questions/2921469/php-mutual-exclusion-mutex">Stack Overflow - PHP Mutual Exclusion</a></li>
 <li><a href="/downloads/poc.zip">The proof of concept code used in this article</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Time-of-check-to-time-of-use">Wikipedia - Time Of Check To Time Of Use (TOCTTOU)</a></li>
 <li><a href="https://secure.wikimedia.org/wikipedia/en/wiki/Computer_multitasking">Wikipedia - Computer Multitasking</a></li>
