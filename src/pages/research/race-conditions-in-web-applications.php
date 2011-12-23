@@ -192,6 +192,8 @@ if ( !function_exists(&#039;sem_get&#039;) ) {<br />
 ?&gt;
 </div>
 
+<p>I've combined the System V semaphore functions and the file lock method into a single cross-platform Mutex class that you can download <a href="/source/mutex.php.txt">here</a>.</p>
+
 <center>
 <p><strong>Table 3. Results with System V semaphore.</strong></p>
 <table border="1" cellpadding="5">
