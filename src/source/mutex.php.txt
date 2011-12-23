@@ -46,7 +46,8 @@ class Mutex
     private $locked;
 
     /*
-     * $key - The mutex identifier
+     * $key - The mutex identifier.
+     * $key can be anything that reliably casts to a string.
      */
     function __construct($key)
     {
