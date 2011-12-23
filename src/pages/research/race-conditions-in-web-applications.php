@@ -225,6 +225,10 @@ if ( !function_exists(&#039;sem_get&#039;) ) {<br />
 </table>
 </center>
 
+<h3>Multiple Servers</h3>
+
+<p>If queries are being processed by more than one server, the System V semaphore method won't prevent the attack. Different semaphores will exist on each server so they won't help if an attacker floods each server with queries. To implement a multi-server mutex you'll need to give each server a common file system and use the file lock method, or use the locking mechanism provided by your database software.</p>
+
 <h2>Useful Links</h2>
 <ul>
 <li><a href="http://security.dsi.unimi.it/~roberto/pubs/dimva08-web.pdf">&quot;On Race Condition Vulnerabilities in Web Applications&quot; - A 2008 paper on nearly the same subject.</a></li>
