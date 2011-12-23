@@ -180,7 +180,17 @@ function withdraw($amount)<br />
 
 <p>In the call to sem_get, "1234" is the semaphore key (identifier) and "1" is the maximum number of threads/processes that can "acquire" the semaphore at once. If a thread has acquired semaphore 1234 but hasn't yet released it, and another thread calls sem_acquire on the same semaphore, the call will block until the first thread releases it. This prevents the race condition attack.</p> 
 
-<p>You'll probably not want to use '1234' as the semaphore key. It would be better to, for example, use the ID of the user whose balance is being modified. Also, keep in mind that the semaphore functions are not universally supported. </p>
+<p>You'll probably not want to use '1234' as the semaphore key. It would be better to, for example, use the ID of the user whose balance is being modified. Also, keep in mind that the semaphore functions are not universally supported. The following code can be used to emulate the semaphore functions on systems that do not support them (<a href="http://www.php.net/manual/en/ref.sem.php#105047">source</a>): </p>
+
+<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+&lt;?php<br />
+if ( !function_exists(&#039;sem_get&#039;) ) {<br />
+ &nbsp; &nbsp;function sem_get($key) { return fopen(__FILE__.&#039;.sem.&#039;.$key, &#039;w+&#039;); }<br />
+ &nbsp; &nbsp;function sem_acquire($sem_id) { return flock($sem_id, LOCK_EX); }<br />
+ &nbsp; &nbsp;function sem_release($sem_id) { return flock($sem_id, LOCK_UN); }<br />
+}<br />
+?&gt;
+</div>
 
 <center>
 <p><strong>Table 3. Results with System V semaphore.</strong></p>
