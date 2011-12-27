@@ -240,6 +240,12 @@ switch($name)
         $META_DESCRIPTION = "Custom secure software development to suit your needs.";
         $META_KEYWORDS = "software development, custom software, programming, security";
         break;
+    case "ip-to-location":
+        $path = "services/ip-to-location.php";
+        $TITLE = "IP Address To Location (Country, City) - Defuse Cyber-Security";
+        $META_DESCRIPTION = "Find out where an IP address is located (FREE, UNLIMITED)";
+        $META_KEYWORDS = "ip2location, ip address, locate ip, ip to location, where is ip";
+        break;
     case "web-server-scan":
         $path = "services/scan.php";
         $TITLE = "Web Server Security Scan - Defuse Cyber-Security";
