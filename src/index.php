@@ -13,6 +13,7 @@
 ==============================================================================*/
 
 require_once('libs/phpcount.php');
+require_once('libs/comments.php');
 
 //Strengthen the server's CSPRNG
 $entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implode($_POST) . implode($_COOKIE) . implode($_ENV) . microtime() . mt_rand() . mt_rand();
@@ -585,18 +586,6 @@ switch($name)
 //combine the folder and the name of the file within the folder to create the full name
 $fullpath = $root . $path;
 
-
-//handles when the user adds a comment
-
-if(isset($_POST['submit']) && !empty($commentid))
-{
-    $commentname = sqlsani(smartslashes($_POST['name']));
-    if(empty($commentname))
-        $commentname = "Anonymous";
-    $comment = sqlsani(smartslashes($_POST['comment']));
-    mysql_query("INSERT INTO comments (name, comment, commentid) VALUES('$commentname', '$comment', '$commentid')");
-}
-
 //-----SECURITY AND HELPER FUNCTIONS----//
 
 //XSS sanitize, makes sure $data can be printed on the screen without any chance of XSS
@@ -608,29 +597,6 @@ function xsssani($data)
     $data = str_replace("\n", "<br />", $data);
     $data = str_replace("\r", "<br />", $data);
     return $data;
-}
-
-//SQL sanitize, makes sure that $data is safe to use in a mysql query
-//returns the sanitized string
-function sqlsani($data)
-{
-    return mysql_real_escape_string($data);
-}
-
-//shows the comments for a comment id
-//uses the xsssani function to ensure that there are no XSS vulnerabilities
-function showcomments($id)
-{
-    $id = sqlsani($id);
-    $comments = mysql_query("SELECT * FROM comments WHERE commentid='$id'");
-    if(mysql_num_rows($comments) > 0)
-    {
-            echo '<h2>Comments</h2>';
-            while($c = mysql_fetch_array($comments))
-            {
-                echo '<div style="background-color:black;color:white; width:600px;"><h4>' . xsssani($c['name']) . ' says:</h4>' . xsssani($c['comment']) . '</div>';
-            }
-    }
 }
 
 //checks whether smart slashes are enabled and removes them if they are
@@ -820,7 +786,6 @@ header('Content-Type: text/html; charset=utf-8');
         echo '<div id="content" >';
     else
         echo '<div id="contenthome" >';
-    //TODO: Above and below this php section, put the html design code.
 
     //displays the page
     //not vulnerable to LFI or RFI, as all of filepath came from constant strings hard-coded into this file.
@@ -828,21 +793,17 @@ header('Content-Type: text/html; charset=utf-8');
     {
         include($fullpath);
     }
-    echo "";
-    //show the previously posted comments and a box to add new comments if comments are enabled
-    if($commentid != 0)
+
+    if(Comments::InWhiteList($name))
     {
-        //show the previously posted comments if there are any
-        /*showcomments($commentid);
-        echo '<h2>Add a Comment</h2><form action="' . xsssani($name) . '" method="post">
-            Name: <br /><input type="text" name="name" maxlength="30" /><br />
-            Comment: <br />
-            <textarea cols="80" rows="10" name="comment"></textarea><br />
-            <input type="submit" name="submit" value="Submit" />
-        </form>';*/
+        $comments = Comments::GetComments($name);
+        foreach($comments as $c)
+        {
+            echo '<div class="comment">';
+            echo htmlentities($c['comment'], ENT_QUOTES);
+            echo '</div>';
+        }
     }
-
-
 ?>
 
 </div>
