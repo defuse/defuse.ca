@@ -13,7 +13,6 @@
 ==============================================================================*/
 
 require_once('libs/phpcount.php');
-require_once('libs/comments.php');
 
 //Strengthen the server's CSPRNG
 $entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implode($_POST) . implode($_COOKIE) . implode($_ENV) . microtime() . mt_rand() . mt_rand();
@@ -794,16 +793,6 @@ header('Content-Type: text/html; charset=utf-8');
         include($fullpath);
     }
 
-    if(Comments::InWhiteList($name))
-    {
-        $comments = Comments::GetComments($name);
-        foreach($comments as $c)
-        {
-            echo '<div class="comment">';
-            echo htmlentities($c['comment'], ENT_QUOTES);
-            echo '</div>';
-        }
-    }
 ?>
 
 </div>

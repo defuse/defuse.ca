@@ -237,3 +237,4 @@ if ( !function_exists(&#039;sem_get&#039;) ) {<br />
 <li><a href="https://en.wikipedia.org/wiki/Time-of-check-to-time-of-use">Wikipedia - Time Of Check To Time Of Use (TOCTTOU)</a></li>
 <li><a href="https://secure.wikimedia.org/wikipedia/en/wiki/Computer_multitasking">Wikipedia - Computer Multitasking</a></li>
 <li><a href="https://www.owasp.org/index.php/Testing_for_Race_Conditions_%28OWASP-AT-010%29">https://www.owasp.org/index.php/Testing_for_Race_Conditions_%28OWASP-AT-010%29</a></li>
+</ul>
