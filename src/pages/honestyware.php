@@ -58,6 +58,3 @@ http://ftp.gameaholic.com/pub/games/action/quake3/models/hk-001.txt
 
 <h2>List of Honestyware</h2>
 <p><a href="/contact.htm">Contact me</a> to get your software added to the list!</p>
-<ul>
-    <li><a href="/passgen.htm">Defuse Cyber-Security's Password Generator</a></li>
-</ul>
