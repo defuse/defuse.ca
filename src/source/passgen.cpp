@@ -92,7 +92,7 @@ bool getPassword(char *set, unsigned char setLength, char *password, unsigned in
 {
     unsigned int bufLen = passwordLength; 
     int bufIdx = 0;
-    unsigned char rndBuf[bufLen]; 
+    unsigned char *rndBuf = (unsigned char*)malloc(bufLen);
 
     unsigned char bitMask = getMinimalBitMask(setLength - 1);
 
@@ -121,6 +121,7 @@ bool getPassword(char *set, unsigned char setLength, char *password, unsigned in
         }
     }
     memset(rndBuf, 0xFF, bufLen);
+    free(rndBuf);
     return true;
 }
 
