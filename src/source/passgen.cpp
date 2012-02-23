@@ -1,5 +1,6 @@
 /* Command Line Password Generator for Windows and UNIX-like systems.
  * Copyright (C) 2011  FireXware <firexware@gmail.com>
+ * https://defuse.ca/ 
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -10,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
+ 
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -29,52 +30,7 @@
 #include <wincrypt.h>
 #endif
 
-#define RANDOM_BYTES 80
 #define PASSWORD_LENGTH 64
-
-/*
- * Divides the string of bytes 'number' by 'divisor'
- * 'quotient' is set to the result of the division with the digits reversed (for simplicity).
- * Returns the remainder.
- * Both number and quotient can point to the same array.
- */
-unsigned char divide(unsigned char number[RANDOM_BYTES], unsigned char quotient[RANDOM_BYTES], unsigned char divisor)
-{
-  // Work on a copy of number so changing quotient doesn't change the number if
-  // they both point to the same array.
-  unsigned char tmp[RANDOM_BYTES];
-  memcpy(tmp, number, RANDOM_BYTES);
-
-  unsigned char remainder = 0;
-  unsigned int total = 0;
-  for(int i = 0; i < RANDOM_BYTES; i++)
-  {
-    total = (remainder * 256 + tmp[i]);
-    quotient[RANDOM_BYTES - i - 1] = total / divisor;
-    remainder = total % divisor;
-  }
-
-  // Free secret data from memory
-  memset(tmp, 0, RANDOM_BYTES);
-  return remainder;
-}
-
-/*
- * Formats the string of random bytes 'randomBytes' into a password.
- * set - A list of characters that can be in the password.
- * setlength - the number of elements in set.
- * result - gets filled with the password.
- * Always creates a password of length PASSWORD_LENGTH.
- */
-void formatBytes(unsigned char randomBytes[RANDOM_BYTES], 
-                  char* set, unsigned char setlength,
-                  unsigned char result[PASSWORD_LENGTH])
-{
-  for(int i = 0; i < PASSWORD_LENGTH; i++)
-  {
-    result[i] = set[divide(randomBytes, randomBytes, setlength)];
-  }
-}
 
 /*
  * Fills 'buffer' with cryptographically secure random bytes.
@@ -83,90 +39,143 @@ void formatBytes(unsigned char randomBytes[RANDOM_BYTES],
  */
 bool getRandom(unsigned char* buffer, unsigned int bufferlength)
 {
-  puts("Reading random data...");
 #ifdef _WIN32
-  HCRYPTPROV hCryptCtx = NULL;
-  CryptAcquireContext(&hCryptCtx, NULL, MS_DEF_PROV, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT);
-  if(hCryptCtx == NULL)
-    return false;
-  CryptGenRandom(hCryptCtx, bufferlength, buffer);
-  CryptReleaseContext(hCryptCtx, 0);
+    HCRYPTPROV hCryptCtx = NULL;
+    CryptAcquireContext(&hCryptCtx, NULL, MS_DEF_PROV, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT);
+    if(hCryptCtx == NULL)
+        return false;
+    CryptGenRandom(hCryptCtx, bufferlength, buffer);
+    CryptReleaseContext(hCryptCtx, 0);
 #else
-  FILE* random = fopen("/dev/random", "rb");
-  if(random == NULL)
-    return false;
-  unsigned int read = fread(buffer, sizeof(unsigned char), bufferlength, random);
-  if(read != bufferlength)
-    return false;
-  fclose(random);
+    FILE* random = fopen("/dev/random", "rb");
+    if(random == NULL)
+        return false;
+    unsigned int read = fread(buffer, sizeof(unsigned char), bufferlength, random);
+    if(read != bufferlength)
+        return false;
+    fclose(random);
 #endif
-  return true;
+    return true;
 }
 
 void showHelp()
 {
-  puts("Usage: passgen <type>");
-  puts("Where <type> is one of:");
-  puts("--hex 256 bit hex string");
-  puts("--ascii 64 character ascii printable string");
-  puts("--alpha 64 character alpha-numeric string");
-  puts("--help show this page");
+    puts("Usage: passgen <type>");
+    puts("Where <type> is one of:");
+    puts("--hex 256 bit hex string");
+    puts("--ascii 64 character ascii printable string");
+    puts("--alpha 64 character alpha-numeric string");
+    puts("--help show this page");
+}
+
+inline unsigned char getMinimalBitMask(unsigned char toRepresent)
+{
+    if(toRepresent <= 0x01)
+        return 0x01;
+    else if(toRepresent <= 0x03)
+        return 0x03;
+    else if(toRepresent <= 0x07)
+        return 0x07;
+    else if(toRepresent <= 0x0F)
+        return 0x0F;
+    else if(toRepresent <= 0x1F)
+        return 0x1F;
+    else if(toRepresent <= 0x3F)
+        return 0x3F;
+    else if(toRepresent <= 0x7F)
+        return 0x7F;
+    else
+        return 0xFF;
+}
+
+bool getPassword(char *set, unsigned char setLength, char *password, unsigned int passwordLength)
+{
+    unsigned int bufLen = passwordLength; 
+    int bufIdx = 0;
+    unsigned char rndBuf[bufLen]; 
+
+    unsigned char bitMask = getMinimalBitMask(setLength - 1);
+
+    if(!getRandom(rndBuf, bufLen))
+        return false;
+
+    int i = 0;
+    while(i < passwordLength)
+    {
+        // Read more random bytes if necessary.
+        if(bufIdx >= bufLen)
+        {
+            if(!getRandom(rndBuf, bufLen))
+                return false;
+            bufIdx = 0;
+        }
+
+        unsigned char c = rndBuf[bufIdx++];
+        c = c & bitMask;
+
+        // Discard the random byte if it isn't in range.
+        if(c < setLength)
+        {
+            password[i] = set[c];
+            i++;
+        }
+    }
+    memset(rndBuf, 0xFF, bufLen);
+    return true;
 }
 
 int main(int argc, char* argv[])
 {
-  if(argc != 2)
-  {
-    showHelp();
-    return 1;
-  }
-
-  char set[100]; 
-  int setlength = 0;
-  if(strncmp(argv[1],"--help", 6) == 0)
-  {
-    showHelp();
-    return 0;
-  }
-  else if(strncmp(argv[1], "--ascii",5) == 0)
-  {
-    strcpy(set, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-    setlength = 94;
-  }
-  else if(strncmp(argv[1], "--hex", 3) == 0)
-  {
-    strcpy(set, "ABCDEF0123456789");
-    setlength = 16;
-  }
-  else if(strncmp(argv[1], "--alpha", 5) == 0)
-  {
-    strcpy(set, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
-    setlength = 62;
-  }
-  else
-  {
-    showHelp();
-    return 1;
-  }
-
-  unsigned char rand[RANDOM_BYTES];
-  if(getRandom(rand, RANDOM_BYTES))
-  {
-    unsigned char result[PASSWORD_LENGTH];
-    formatBytes(rand, set, setlength, result);
-    for(int i = 0; i < PASSWORD_LENGTH; i++)
+    if(argc != 2)
     {
-      printf("%c", result[i]);
+        showHelp();
+        return 1;
     }
-    printf("\n");
+
+    char set[255]; 
+    unsigned char setlength = 0;
+    if(strncmp(argv[1],"--help", 6) == 0)
+    {
+        showHelp();
+        return 0;
+    }
+    else if(strncmp(argv[1], "--ascii",5) == 0)
+    {
+        strcpy(set, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+        setlength = 94;
+    }
+    else if(strncmp(argv[1], "--hex", 3) == 0)
+    {
+        strcpy(set, "ABCDEF0123456789");
+        setlength = 16;
+    }
+    else if(strncmp(argv[1], "--alpha", 5) == 0)
+    {
+        strcpy(set, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
+        setlength = 62;
+    }
+    else
+    {
+        showHelp();
+        return 1;
+    }
+
+    char result[PASSWORD_LENGTH];
+    puts("Getting random data...");
+    if(getPassword(set, setlength, result, PASSWORD_LENGTH))
+    {
+        for(int i = 0; i < PASSWORD_LENGTH; i++)
+        {
+            printf("%c", result[i]);
+        }
+        printf("\n");
+    }
+    else
+    {
+        fprintf(stderr, "Error getting random data.\n");
+        return 2;
+    }
     memset(result, 0, PASSWORD_LENGTH);
-  }
-  else
-  {
-    puts("Error reading from /dev/random.");
-    return 2;
-  }
-  memset(rand, 0, RANDOM_BYTES);
-  return 0;
+    return 0;
 }
 
