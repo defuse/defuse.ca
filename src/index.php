@@ -289,6 +289,11 @@ switch($name)
         $TITLE = "Economic DDoS - A Theoretical Attack on Bitcoin - Defuse Cyber-Security";
         $META_DESCRIPTION = "State-sponsored attacks could secretly destroy the bitcoin economy.";
         break;
+    case "blockwise-factoring":
+        $path = "research/blockwise-factoring.php";
+        $TITLE = "Blockwise Factoring - An efficient and simple method for factoring small integers. ";
+        $META_DESCRIPTION = "Blockwise Factoring is a method for factoring the product of two primes that uses only addition, subtraction, and comparison.";
+        break;
     case "race-conditions-in-web-applications":
         $path = "research/race-conditions-in-web-applications.php";
         $TITLE = "Practical Race Condition (TOCTTOU) Vulnerabilities in Web Applications - Defuse Cyber-Security";
