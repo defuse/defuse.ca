@@ -210,6 +210,12 @@ switch($name)
         $META_DESCRIPTION = "Standards compliant PBKDF2 implementation for PHP.";
         $META_KEYWORDS = "pbkdf2 for php, key derivation, password hashing";
         break;
+    case "generating-random-passwords":
+        $path = "projects/generating-random-passwords.php";
+        $TITLE = "Generating Unbiased Random Passwords in PHP";
+        $META_DESCRIPTION = "Code for generating random passwords in PHP.";
+        $META_KEYWORDS = "generating passwords with php, generating passwords, passwords, random passwords";
+        break;
     case "helloworld-cms":
         $path = "software/helloworld-cms.html";
         $TITLE = "Secure and Light PHP CMS - Defuse Cyber-Security";
@@ -707,6 +713,7 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/projects.htm">Projects &amp; Code&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
+            <li><a href="/generating-random-passwords.htm">&nbsp;PHP Random Passwords</a></li>
             <li><a href="/force-print-background.htm">&nbsp;Force Print BG Color</a></li>
             <li><a href="/gpucrack.htm">&nbsp;GPU MD5+Salt Cracker</a></li>
             <li><a href="/php-hit-counter.htm">&nbsp;PHP Hit Counter</a></li>
