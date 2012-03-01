@@ -7,7 +7,7 @@ Your IP:
 ?>
 </div>
 
-<iframe src="http://defuse.ca/ip-insecure.php"></iframe>
+<iframe width="100%" src="http://defuse.ca/ip-insecure.php"></iframe>
 
 <p>
 
