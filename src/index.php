@@ -240,6 +240,12 @@ switch($name)
         $META_DESCRIPTION = "Detailed description of the encryption technology behind the BitCannon file transfer program.";
         $META_KEYWORDS = "secure, encryption, cryptography, file transfer";
         break;
+    case "ip":
+        $path = "services/ip.php";
+        $TITLE = "Your IP Address";
+        $META_DESCRIPTION = "Your IP Address!";
+        $META_KEYWORDS = "online IP address, what is my ip, ip address, ssl ip address";
+        break;
     case "softwaredevelopment":
         $path = "services/softwaredevelopment.html";
         $TITLE = "Custom Software Development - Defuse Cyber-Security";
