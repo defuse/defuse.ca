@@ -1,10 +1,14 @@
 <h1>Generating Random Passwords in PHP</h1>
 <p>
-    Generating unbiased random passwords is a surprisingly non-trivial problem. Most naive implementations, such as taking the remainder of a random integer, lead to  biases and patterns in the passwords. These biases and patterns make them significantly easier to crack. The only known way to make an unbiased random selection from a set of N elements, using random binary data, is to repeatedly generate a random number between 0 and 2<sup>k</sup> - 1, where 2<sup>k</sup> is the smallest power of two greater than N, until the random number is between 0 and N - 1 so it can be used to select an element from the set. 
+    Generating unbiased random passwords is a surprisingly non-trivial problem. Most naive implementations, such as taking the remainder of a random integer, lead to  biases and patterns in the passwords. These biases and patterns make them significantly easier to crack. 
+    
+</p>
+<p>
+The only known way to make an unbiased random selection from a set of N elements, using random binary data, is to repeatedly generate a random number between 0 and 2<sup>k</sup> - 1, where 2<sup>k</sup> is the smallest power of two greater than N, until the random number is between 0 and N - 1 so it can be used to select an element from the set. 
 </p>
 
 <p>
-    Since password generators are becoming increasingly more common in web applications, and must absolutely must be done right, I wrote the following PHP class to generate random passwords using the method mentioned above. The code is explicitly placed into the public domain, so you may use it for any purpose. If you are looking for a C/C++ implementation, you can find it in the source code to my <a href="/passgen.htm">password generator</a>.
+    Since password generators are becoming increasingly more common in web applications, and absolutely must must be done right, I wrote the following PHP class to generate random passwords using the method mentioned above on random data provided by <a href="http://php.net/mcrypt_create_iv">mcrypt_create_iv</a>. The code is explicitly placed into the public domain, so you may use it for any purpose. If you are looking for a C/C++ implementation, you can find it in the source code to my <a href="/passgen.htm">password generator</a>.
 </p>
 
 <h2>Example Usage:</h2>
