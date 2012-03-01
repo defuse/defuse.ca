@@ -37,10 +37,10 @@ abbababbabbaabaaaaabbabbbbababaabbabbaaabbabababbaaabbaaababbbbb
 <div class="code" style="font-size: 8pt;">
 &lt;?php<br />
 /*<br />
- * Unbiased random password generator.<br />
- * This code is placed into the public domain by Defuse Cyber-Security.<br />
- * WWW: https://defuse.ca/<br />
- */<br />
+&nbsp;* Unbiased random password generator.<br />
+&nbsp;* This code is placed into the public domain by Defuse Cyber-Security.<br />
+&nbsp;* WWW: https://defuse.ca/<br />
+&nbsp;*/<br />
 class PasswordGenerator<br />
 {<br />
  &nbsp; &nbsp;public static function getASCIIPassword($length)<br />
