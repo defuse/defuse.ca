@@ -37,10 +37,10 @@ abbababbabbaabaaaaabbabbbbababaabbabbaaabbabababbaaabbaaababbbbb
 <div class="code" style="font-size: 8pt;">
 &lt;?php<br />
 /*<br />
-&nbsp;* Unbiased random password generator.<br />
-&nbsp;* This code is placed into the public domain by Defuse Cyber-Security.<br />
-&nbsp;* WWW: https://defuse.ca/<br />
-&nbsp;*/<br />
+ * Unbiased random password generator.<br />
+ * This code is placed into the public domain by Defuse Cyber-Security.<br />
+ * WWW: https://defuse.ca/<br />
+ */<br />
 class PasswordGenerator<br />
 {<br />
  &nbsp; &nbsp;public static function getASCIIPassword($length)<br />
@@ -73,10 +73,10 @@ class PasswordGenerator<br />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return false;<br />
 <br />
  &nbsp; &nbsp; &nbsp; &nbsp;$charSetLen = count($characterSet);<br />
- &nbsp; &nbsp; &nbsp; &nbsp;if($charSetLen &lt;= 0)<br />
+ &nbsp; &nbsp; &nbsp; &nbsp;if($charSetLen == 0)<br />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return false;<br />
 <br />
- &nbsp; &nbsp; &nbsp; &nbsp;$random = self::getRandomInts($charSetLen * 2);<br />
+ &nbsp; &nbsp; &nbsp; &nbsp;$random = self::getRandomInts($length * 2);<br />
  &nbsp; &nbsp; &nbsp; &nbsp;$mask = self::getMinimalBitMask($charSetLen - 1); <br />
 <br />
  &nbsp; &nbsp; &nbsp; &nbsp;$password = array();<br />
@@ -94,7 +94,7 @@ class PasswordGenerator<br />
  &nbsp; &nbsp; &nbsp; &nbsp;{<br />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if($randIdx &gt;= count($random))<br />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{<br />
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$random = self::getRandomInts($charSetLen);<br />
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$random = self::getRandomInts(2*($length - count($password)));<br />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$randIdx = 0;<br />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}<br />
 <br />
@@ -144,5 +144,6 @@ class PasswordGenerator<br />
  &nbsp; &nbsp; &nbsp; &nbsp;return $ints;<br />
  &nbsp; &nbsp;}<br />
 }<br />
-?&gt;
+?&gt;<br />
+
 </div>
