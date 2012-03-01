@@ -261,6 +261,14 @@ ul {
     margin: 0;
 }
 
+.code {
+    font-family: monospace;
+    background-color: #CDCDCD;
+    background-image: url('/images/grid.gif');
+    border: solid black 1px;
+    color: black;
+    padding:10px;
+}
 /* PPHOS {{{1 */
 /* ============ PPHOS ================= */
 

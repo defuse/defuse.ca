@@ -1,12 +1,36 @@
 <h1>Generating Random Passwords in PHP</h1>
 <p>
-    Generating unbiased random passwords is a surprisingly non-trivial problem. Most naive implementations, such as taking the remainder of a random integer, lead to (sometimes extreme) biases in the passwords. The only known way to make an unbiased random selection from a finite set S, using random binary data, is to generate log(|S|) + 1 (logarithm base 2) random bits repeatedly until its value is between 0 and |S|-1, then using it to select an element of the set. For further discussion, see Cryptography Engineering section 9.7.
+    Generating unbiased random passwords is a surprisingly non-trivial problem. Most naive implementations, such as taking the remainder of a random integer, lead to  biases and patterns in the passwords. These biases and patterns make them significantly easier to crack. The only known way to make an unbiased random selection from a set of N elements, using random binary data, is to repeatedly generate a random number between 0 and 2<sup>k</sup> - 1, where 2<sup>k</sup> is the smallest power of two greater than N, until the random number is between 0 and N - 1 so it can be used to select an element from the set. 
 </p>
+
 <p>
-    Since generating random passwords is something very common and absolutely must be done right, I wrote the following code to generate random passwords using the method mentioned above. The code is explicitly placed into the public domain, so you may use it for any purpose.
+    Since password generators are becoming increasingly more common in web applications, and must absolutely must be done right, I wrote the following PHP class to generate random passwords using the method mentioned above. The code is explicitly placed into the public domain, so you may use it for any purpose. If you are looking for a C/C++ implementation, you can find it in the source code to my <a href="/passgen.htm">password generator</a>.
 </p>
-<center><a href="/source/PasswordGenerator.php.txt"><img src="/images/download.png" style="margin-bottom: 10px;" alt="Download Source Code" /></a></center>
-<div style="font-family: monospace; background-color: #bcfffe; border: solid black 1px; color: black; padding:10px;">
+
+<h2>Example Usage:</h2>
+
+<div class="code">
+require_once(&#039;PasswordGenerator.php&#039;);<br />
+$ascii = PasswordGenerator::getASCIIPassword(64);<br />
+$hex = PasswordGenerator::getHexPassword(64);<br />
+$alpha = PasswordGenerator::getAlphaNumericPassword(64);<br />
+$custom = PasswordGenerator::getCustomPassword(array(&#039;a&#039;, &#039;b&#039;), 64);<br />
+echo $ascii, &quot;\n&quot;, $hex, &quot;\n&quot;, $alpha, &quot;\n&quot;, $custom, &quot;\n&quot;;<br />
+
+</div>
+
+<h3>Output</h3>
+
+<div class="code">
+kbH&#039;q\rO`F!trPC=E1v)~D7&lt;g@`Ise0QkSlI93Ne/2/IIKgiIKZWnLrh^_oo^&amp;b)<br />
+6D574CFF661E146C530729F8D44B545BC3192D1439B4113132B2FC221AFF56A7<br />
+ic4vQ2OXMsOzCmsMnhEHFRc6rp2oDBUDq9KZJnFXsHbKO8xh5Kcpp9T4ZHFPcVg7<br />
+abbababbabbaabaaaaabbabbbbababaabbabbaaabbabababbaaabbaaababbbbb
+</div>
+
+<h2>PHP Source (<a href="/source/PasswordGenerator.php.txt">download</a>):</h2>
+
+<div class="code" style="font-size: 8pt;">
 &lt;?php<br />
 /*<br />
 &nbsp;* Unbiased random password generator.<br />
