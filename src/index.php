@@ -299,6 +299,12 @@ switch($name)
         $META_DESCRIPTION = "TRENT, the trusted random number generator for contests and drawings.";
         $META_KEYWORDS = "contest drawing, third party, trusted, lottory, trent, random number generator";
         break;
+    case "trent-source":
+        $path = "services/trent-source.php";
+        $TITLE = "TRENT Source Code - Defuse Cyber-Security";
+        $META_DESCRIPTION = "TRENT, the trusted random number generator for contests and drawings.";
+        $META_KEYWORDS = "contest drawing, third party, trusted, lottory, trent, random number generator";
+        break;
     case "contact":
         $path = "contact.html";
         $TITLE = "Defuse Cyber-Security's Contact Information";
