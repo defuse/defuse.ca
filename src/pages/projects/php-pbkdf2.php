@@ -1,6 +1,6 @@
 <h1>PBKDF2 For PHP</h1>
 <p>PBKDF2 (Password Based Key Derivation Function) for PHP. The following code is public domain, feel free to use it for any purpose. The code complies with test vectors at <a href="https://www.ietf.org/rfc/rfc6070.txt">https://www.ietf.org/rfc/rfc6070.txt</a>.</p>
-<div style="font-family: monospace; background-color: #bcfffe; border: solid black 1px; color: black; padding:10px;">
+<div class="code" >
 &nbsp;&nbsp;&nbsp;&nbsp;/*<br />
 &nbsp;&nbsp;&nbsp;&nbsp; * PBKDF2 key derivation function as defined by RSA&#039;s PKCS #5: https://www.ietf.org/rfc/rfc2898.txt<br />
 &nbsp;&nbsp;&nbsp;&nbsp; * $algorithm - The hash algorithm to use. Recommended: SHA256<br />
