@@ -82,6 +82,11 @@ function NeedRedirect($requestURI, $httpHost)
         $name = "";
         $needRedirect = true;
     }
+    elseif($name == "passwords" || $name == "password" || $name == "pass")
+    {
+        $name = "passgen"; 
+        $needRedirect = true;
+    }
     elseif(!empty($name) && strpos($name, ".htm") !== strlen($name) - 4)
     {
         $name = $name . ".htm";
