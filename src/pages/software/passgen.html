@@ -7,6 +7,11 @@
     $ascii = PasswordGenerator::getASCIIPassword(64);
     $hex = PasswordGenerator::getHexPassword(64);
     $alpha = PasswordGenerator::getAlphaNumericPassword(64);
+    $list = file('libs/wordlist.txt', FILE_SKIP_EMPTY_LINES );
+    $words = PasswordGenerator::getCustomPassword($list, 5);
+    // hacK: loading the file into an array preserves the newlines
+    // so we take advantage of that to put a space between the words.
+    $words = str_replace("\n", " ", $words);
 ?>
     
     <table style="margin: 0 auto; font-family: monospace;" cellspacing="5px">
@@ -21,6 +26,10 @@
         <tr>
             <td><strong>Hex:</strong></td>
             <td><?php echo htmlspecialchars($hex, ENT_QUOTES); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Words:</strong></td>
+            <td><?php echo htmlspecialchars($words, ENT_QUOTES); ?></td>
         </tr>
     </table>
     <p style="text-align: center; padding: 0; margin: 0;"><i><a href="/passgen.htm">Refresh</a> the page to <a href="/generating-random-passwords.htm">generate</a> a new set.</i></p>
