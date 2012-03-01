@@ -401,45 +401,45 @@ switch($name)
         $META_DESCRIPTION = "A One Time Password protocol that can be used with encryption.";
         $META_KEYWORDS = "encrypting one time passwords, static key, one time password";
         break;
-    case "meetbadguys":
-        $path = "research/doi/meetbadguys.html";
-        $TITLE = "Dangers of the Internet - Meet the Bad Guys";
-        break;
-    case "spam":
-        $path = "research/doi/spam.html";
-        $TITLE = "Dangers of the Internet - Scams and Phishing";
-        $META_DESCRIPTION = "An explanation of spam, phishing, and social engineering attacks.";
-        break;
-    case "passwordsecurity":
-        $path = "research/doi/passwordsecurity.html";
-        $TITLE = "Dangers of the Internet - Password Security";
-        $META_DESCRIPTION = "An explanation of why its important to use strong and different passwords for each website you use.";
-        break;
-    case "malware":
-        $path = "research/doi/malware.html";
-        $TITLE = "Dangers of the Internet - Viruses, Worms, and Exploits - Rooting Your Box";
-        $META_DESCRIPTION = "An explanation of what viruses, worms, and exploits are.";
-        break;
-    case "privacy":
-        $path = "research/doi/privacy.html";
-        $TITLE = "Dangers of the Internet - Privacy and Tracking";
-        $META_DESCRIPTION = "A guide to protecting your privacy on the internet.";
-        break;
-    case "networks":
-        $path = "research/doi/networks.html";
-        $TITLE = "Dangers of the Internet - Wireless Network Security";
-        $META_DESCRIPTION = "How to be safe when using open wifi, and how to secure your wireless network at home.";
-        break;
-    case "todo":
-        $path = "research/doi/todo.html";
-        $TITLE = "Dangers of the Internet - Security Checklist";
-        $META_DESCRIPTION = "A brief guide to keeping yourself safe on the internet.";
-        break;
-    case "securitytest":
-        $path = "research/doi/securitytest.html";
-        $TITLE = "Dangers of the Internet - Security Knowledge Test";
-        $META_DESCRIPTION = "Security Knowledge Test";
-        break;
+//    case "meetbadguys":
+//        $path = "research/doi/meetbadguys.html";
+//        $TITLE = "Dangers of the Internet - Meet the Bad Guys";
+//        break;
+//    case "spam":
+//        $path = "research/doi/spam.html";
+//        $TITLE = "Dangers of the Internet - Scams and Phishing";
+//        $META_DESCRIPTION = "An explanation of spam, phishing, and social engineering attacks.";
+//        break;
+//    case "passwordsecurity":
+//        $path = "research/doi/passwordsecurity.html";
+//        $TITLE = "Dangers of the Internet - Password Security";
+//        $META_DESCRIPTION = "An explanation of why its important to use strong and different passwords for each website you use.";
+//        break;
+//    case "malware":
+//        $path = "research/doi/malware.html";
+//        $TITLE = "Dangers of the Internet - Viruses, Worms, and Exploits - Rooting Your Box";
+//        $META_DESCRIPTION = "An explanation of what viruses, worms, and exploits are.";
+//        break;
+//    case "privacy":
+//        $path = "research/doi/privacy.html";
+//        $TITLE = "Dangers of the Internet - Privacy and Tracking";
+//        $META_DESCRIPTION = "A guide to protecting your privacy on the internet.";
+//        break;
+//    case "networks":
+//        $path = "research/doi/networks.html";
+//        $TITLE = "Dangers of the Internet - Wireless Network Security";
+//        $META_DESCRIPTION = "How to be safe when using open wifi, and how to secure your wireless network at home.";
+//        break;
+//    case "todo":
+//        $path = "research/doi/todo.html";
+//        $TITLE = "Dangers of the Internet - Security Checklist";
+//        $META_DESCRIPTION = "A brief guide to keeping yourself safe on the internet.";
+//        break;
+//    case "securitytest":
+//        $path = "research/doi/securitytest.html";
+//        $TITLE = "Dangers of the Internet - Security Knowledge Test";
+//        $META_DESCRIPTION = "Security Knowledge Test";
+//        break;
     case "cbcmodeiv":
         $path = "research/cbcmodeiv.html";
         $TITLE = "Should CBC Mode Initialization Vector Be Secret - Defuse Cyber-Security";
