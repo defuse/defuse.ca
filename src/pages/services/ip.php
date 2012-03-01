@@ -1,7 +1,7 @@
 <h1>Your IP Address</h1>
 
 <div style="font-size: 30pt; text-align: center;">
-Your IP:
+HTTPS IP:
 <?php
     echo htmlentities($_SERVER['REMOTE_ADDR'], ENT_QUOTES);
 ?>
