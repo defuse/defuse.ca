@@ -35,6 +35,8 @@ if(isset($_POST['data']))
 		$data = str_replace("\n", "<br />\n", $data);
 	}
 	$data = str_replace("\t", htmlspecialchars("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"), $data);
+    // If the line begins with a space, it has to be &nbsp; or it is ignored.
+    $data = preg_replace("/^\s/m", htmlspecialchars("&nbsp;"), $data);
 	echo $data;
 }
 ?></textarea><br />
