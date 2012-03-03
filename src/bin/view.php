@@ -21,43 +21,79 @@ header('Content-Type: text/html; charset=utf-8');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-<title>Encrypted Pastebin</title>
-<style type="text/css">
-	body
-	{
-		background-color: white; 
-		color:black;
-	}
-
-	textarea
-	{
-	    width:100%;
-		height: 200px;
-		background-color: white;
-		color:black;
-		border:solid black 1px;
+    <title>Defuse Cyber-Security's Encrypted Pastebin</title>
+    <style type="text/css">
+    body {
+        background-color: #e7e7e7; 
+        color:black;
+        padding: 0;
+        margin: 0;
+        font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
+        font-size: 10pt;
+    }
+    
+    .codebox {
+        font-family:monospace; 
+        background-color: #e7e7e7; 
+        /*border: solid black 1px;*/
+    }
+    
+    textarea {
+        width:100%;
+        height: 200px;
+        background-color: white;
+        color:black;
+        border:solid black 1px;
         font-family: monospace;
         resize: none;
-	}
-
-    .div0
-    {
+    }
+    
+    .div0 {
         font-family: monospace;
         background-color: #e7e7e7;
     }
-	/* every second row of text is shaded */
-	.div1
-	{
-		background-color: #FFFFFF;
+    /* every second row of text is shaded */
+    .div1 {
+        background-color: #FFFFFF;
         font-family: monospace;
-	}
-
-    #timeleft
-    {
+    }
+    
+    #timeleft {
         font-weight: bold;
         padding-bottom: 10px;
     }
-</style>
+    
+    #header {
+        margin: 0;
+        padding: 10px;
+        font-size: 20pt;
+    }
+    
+    #header a {
+        color: black;
+        text-decoration: none;
+    }
+    
+    #header a:visited {
+        color: black;
+    }
+    
+    #header a:hover {
+        text-decoration: underline;
+    }
+    
+    #timeleft {
+        padding: 10px;
+    }
+    
+    #pasteform {
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 15pt;
+    }
+    </style>
 </head>
 <body>
 <!-- Scripts required for client-side decryption -->
@@ -94,9 +130,7 @@ function encrypt()
 </script>
 <!-- End of scripts for client-side decryption -->
 
-<b>Secure Encrypted Pastebin by <a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a></b>.
-<br />
-See <a href="#copypaste">below</a> to copy the text and make a new post.<br /><br />
+<h1 id="header"><a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a>'s Encrypted Pastebin</h1>
 
 <?php
 
@@ -138,7 +172,7 @@ if(mysql_num_rows($query) > 0)
 		$data = xsssani(str_replace("\0","", $data));
 		$split = explode("\n", $data);
 		$i = 0;
-		echo '<div style="font-family:monospace; background-color: #e7e7e7; border: solid black 1px;"><ol>';
+		echo '<div class="codebox"><ol>';
 		foreach($split as $line)
 		{
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
@@ -152,7 +186,7 @@ if(mysql_num_rows($query) > 0)
 	{
 		PrintPasswordPrompt(); //shows box asking for password
 		//give space for the JS to print the text
-		echo '<div id="tofill" style="font-family:monospace; background-color: #e7e7e7; border: solid black 1px; display: none;"></div>';
+		echo '<div id="tofill" class="codebox"></div>';
 
 		//output the JS decryption function, with the encrypted data embedded
 		PrintDecryptor(str_replace("\0","", $data));
