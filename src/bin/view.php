@@ -97,7 +97,7 @@ header('Content-Type: text/html; charset=utf-8');
         padding-left: 10px;
     }
 
-    .passwordprompt {
+    #passwordprompt {
         padding-left: 10px;
     }
     
