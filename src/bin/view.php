@@ -36,7 +36,7 @@ header('Content-Type: text/html; charset=utf-8');
         font-family:monospace; 
         background-color: #e7e7e7; 
         /*border: solid black 1px;*/
-        margin-right: 10px;
+        padding-right: 10px;
     }
     
     textarea {
@@ -196,6 +196,7 @@ if(mysql_num_rows($query) > 0)
 		//output the JS decryption function, with the encrypted data embedded
 		PrintDecryptor(str_replace("\0","", $data));
 	}
+
 	?>
 	<form name="pasteform" id="pasteform" action="https://bin.defuse.ca/add.php" method="post">
 
