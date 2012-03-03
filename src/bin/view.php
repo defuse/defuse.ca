@@ -89,7 +89,8 @@ header('Content-Type: text/html; charset=utf-8');
     }
     
     #pasteform {
-        padding: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     #encinfo {
@@ -212,7 +213,7 @@ if(mysql_num_rows($query) > 0)
     </form>
 
 	<div id="encinfo">
-		Client-side Password: 
+		Password: 
 		<input type="password" id="pass1" value="" /> &nbsp;
 		Verify: <input type="password" id="pass2" value="" /> 
 		<input type="button" value="Encrypt &amp; Post" onclick="encrypt()" /> 
