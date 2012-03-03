@@ -88,7 +88,7 @@ header('Content-Type: text/html; charset=utf-8');
     }
     
     #pasteform {
-        padding-left: 10px;
+        padding: 10px;
     }
 
     #encinfo {
