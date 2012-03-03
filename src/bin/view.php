@@ -99,6 +99,8 @@ header('Content-Type: text/html; charset=utf-8');
 
     #passwordprompt {
         padding-left: 10px;
+        font-weight: bold;
+        margin-bottom: 10px;
     }
     
     h2 {
