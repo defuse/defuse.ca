@@ -36,6 +36,7 @@ header('Content-Type: text/html; charset=utf-8');
         font-family:monospace; 
         background-color: #e7e7e7; 
         /*border: solid black 1px;*/
+        margin-right: 10px;
     }
     
     textarea {
@@ -87,11 +88,11 @@ header('Content-Type: text/html; charset=utf-8');
     }
     
     #pasteform {
-        padding: 10px;
+        padding-left: 10px;
     }
 
     #encinfo {
-        padding: 10px;
+        padding-left: 10px;
     }
     
     h2 {
