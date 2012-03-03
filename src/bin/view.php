@@ -89,6 +89,10 @@ header('Content-Type: text/html; charset=utf-8');
     #pasteform {
         padding: 10px;
     }
+
+    #encinfo {
+        padding: 10px;
+    }
     
     h2 {
         font-size: 15pt;
@@ -193,7 +197,6 @@ if(mysql_num_rows($query) > 0)
 	}
 	?>
 	<form name="pasteform" id="pasteform" action="https://bin.defuse.ca/add.php" method="post">
-	<a name="copypaste"></a><h2>Copy &amp; Make New Post</h2>
 
 	<textarea id="paste" name="paste" spellcheck="false" rows="30" cols="80"><?
 		if($query['jscrypt'] == "0")
