@@ -36,7 +36,6 @@ header('Content-Type: text/html; charset=utf-8');
         font-family:monospace; 
         background-color: #e7e7e7; 
         /*border: solid black 1px;*/
-        padding-right: 10px;
     }
     
     textarea {
@@ -52,11 +51,13 @@ header('Content-Type: text/html; charset=utf-8');
     .div0 {
         font-family: monospace;
         background-color: #e7e7e7;
+        margin-right: 10px;
     }
     /* every second row of text is shaded */
     .div1 {
         background-color: #FFFFFF;
         font-family: monospace;
+        margin-right: 10px;
     }
     
     #timeleft {
