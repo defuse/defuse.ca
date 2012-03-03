@@ -207,17 +207,16 @@ if(mysql_num_rows($query) > 0)
 	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
 	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Client-Side Encryption" />
 	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL
-	<br />
     </form>
 
 	<div id="encinfo">
-		Client-Side Password: 
-		<noscript>
-			<b>Needs JavaScript!!!</b>
-		</noscript>
+		Client-side Password: 
 		<input type="password" id="pass1" value="" /> &nbsp;
 		Verify: <input type="password" id="pass2" value="" /> 
 		<input type="button" value="Encrypt &amp; Post" onclick="encrypt()" /> 
+		<noscript>
+			<b>[ Please Enable JavaScript ]</b>
+		</noscript>
 	</div>
 	<?
 }
