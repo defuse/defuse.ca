@@ -95,6 +95,7 @@ header('Content-Type: text/html; charset=utf-8');
 
     #encinfo {
         padding-left: 10px;
+        padding-top: 5px;
     }
 
     #passwordprompt {
