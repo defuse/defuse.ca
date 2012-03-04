@@ -149,7 +149,7 @@ function encrypt()
 </script>
 <!-- End of scripts for client-side decryption -->
 
-<h1 id="header"><a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a>'s Encrypted Pastebin</h1>
+<h1 id="header"><a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a>'s Secure Pastebin</h1>
 
 <?php
 
