@@ -87,6 +87,7 @@ header('Content-Type: text/html; charset=utf-8');
     
     #timeleft {
         padding: 10px;
+        float: right;
     }
     
     #pasteform {
@@ -175,7 +176,7 @@ if(mysql_num_rows($query) > 0)
     $days = (int)($timeleft / (3600 * 24));
     $hours = (int)($timeleft / (3600)) % 24;
     $minutes = (int)($timeleft / 60) % 60;
-    echo "<div id=\"timeleft\">This post will be deleted in <u>$days days, $hours hours, and $minutes minutes</u>.</div>";
+    echo "<div id=\"timeleft\">This post will be deleted in $days days, $hours hours, and $minutes minutes.</div>";
 
 
 	$data = $query['data'];
