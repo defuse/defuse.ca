@@ -223,7 +223,7 @@ if(mysql_num_rows($query) > 0)
 
 	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
 	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Client-Side Encryption" />
-	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL
+	<input type="checkbox" name="shorturl" value="yes" /> Short URL
     </form>
 
 	<div id="encinfo">
