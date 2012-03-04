@@ -228,8 +228,8 @@ if(mysql_num_rows($query) > 0)
 
 	<div id="encinfo">
 		Password: 
-		<input type="password" id="pass1" value="" /> &nbsp;
-		Verify: <input type="password" id="pass2" value="" /> 
+		<input type="password" id="pass1" value="" size="8" /> &nbsp;
+		Verify: <input type="password" id="pass2" value="" size="8" /> 
 		<input type="button" value="Encrypt &amp; Post" onclick="encrypt()" /> 
 		<noscript>
 			<b>[ Please Enable JavaScript ]</b>
