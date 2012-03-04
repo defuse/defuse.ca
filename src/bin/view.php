@@ -114,6 +114,11 @@ header('Content-Type: text/html; charset=utf-8');
     h2 {
         font-size: 15pt;
     }
+
+    #sorry {
+        clear: both;
+        font-weight: bold;
+    }
     </style>
 </head>
 <body>
@@ -239,7 +244,7 @@ if(mysql_num_rows($query) > 0)
 }
 else //numrows = 0, invalid or deleted paste
 {
-	echo "Sorry, the paste you were looking for could not be found.";
+	echo "<div id=\"sorry\">Sorry, the paste you were looking for could not be found.</div>";
 }
 
 //delete all posts older than 10 days
