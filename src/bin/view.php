@@ -117,7 +117,7 @@ header('Content-Type: text/html; charset=utf-8');
 
     #sorry {
         clear: both;
-        font-weight: bold;
+        text-align: center;
     }
     </style>
 </head>
