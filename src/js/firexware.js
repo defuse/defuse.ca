@@ -70,10 +70,10 @@ fxw.allhtmlsani = function(text)
 	text = sani.join('');
 
 	//Now deal with spaces, tabs, and newlines
-	text = text.replace("/\r\n/g", "\n");
-	text = text.replace("/\r/g", "\n");
-	text = text.replace("/\t/g", "&nbsp;&nbsp;&nbsp;&nbsp;");
-	text = text.replace("/\\s\\s/g", "&nbsp;&nbsp;");
-	text = text.replace("/\n/g", "<br />");
+	text = text.replace(/\r\n/g, "\n");
+	text = text.replace(/\r/g, "\n");
+	text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+	text = text.replace(/\\s\\s/g, "&nbsp;&nbsp;");
+	text = text.replace(/\n/g, "<br />");
 	return text;
 }
