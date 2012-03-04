@@ -36,6 +36,7 @@ header('Content-Type: text/html; charset=utf-8');
         font-family:monospace; 
         background-color: #e7e7e7; 
         /*border: solid black 1px;*/
+        padding-right: 10px;
     }
     
     textarea {
