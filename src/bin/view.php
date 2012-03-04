@@ -70,6 +70,7 @@ header('Content-Type: text/html; charset=utf-8');
         margin: 0;
         padding: 10px;
         font-size: 15pt;
+        float: left;
     }
     
     #header a {
