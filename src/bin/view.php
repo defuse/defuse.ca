@@ -87,7 +87,8 @@ header('Content-Type: text/html; charset=utf-8');
     
     #timeleft {
         padding: 10px;
-        float: right;
+        text-align: right;
+        color: #404040;
     }
     
     #pasteform {
