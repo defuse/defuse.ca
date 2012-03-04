@@ -108,6 +108,7 @@ header('Content-Type: text/html; charset=utf-8');
         padding-left: 10px;
         font-weight: bold;
         margin-bottom: 10px;
+        clear: both;
     }
     
     h2 {
