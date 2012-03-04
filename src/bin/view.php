@@ -250,7 +250,13 @@ mysql_query("DELETE FROM pastes WHERE time <= $tendaysago");
 function PrintPasswordPrompt()
 {
 ?>
-	<div id="passwordprompt"><b>Enter Password:</b> <input type="password" id="password" name="password" value="" /><input type="button" name="decrypt" value="Decrypt" onClick="decrypt();" /></div>
+	<div id="passwordprompt">
+        <b>Enter Password:</b> 
+        <input type="password" id="password" name="password" value="" /><input type="button" name="decrypt" value="Decrypt" onClick="decrypt();" />
+        <noscript>
+			<b>[ Please Enable JavaScript ]</b>
+        </noscript>
+    </div>
 <?
 }
 
