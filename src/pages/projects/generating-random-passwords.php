@@ -46,7 +46,7 @@ echo $password, &quot;\n&quot;;<br />
 
 <h2>Doing it Right</h2>
 <p>
-The only known way to make an unbiased random selection from a set of N elements, using random binary data, is to repeatedly generate a random number between 0 and 2<sup>k</sup> - 1, where 2<sup>k</sup> is the smallest power of two greater than N, until the random number is between 0 and N - 1 so it can be used to select an element from the set (numbers that aren't in that range are discarded). It may seem wasteful or inefficient to throw away some of the random numbers, but good CSPRNGs are  fast, and only about half of the random numbers will be thrown away on average [CryptoEng].
+The only known way to make an unbiased random selection from a set of N elements, using random binary data, is to repeatedly generate a random number between 0 and 2<sup>k</sup> - 1, where 2<sup>k</sup> is the smallest power of two greater than N, until the random number is between 0 and N - 1 so it can be used to select an element from the set (numbers that aren't in that range are discarded). It may seem wasteful or inefficient to throw away some of the random numbers, but good CSPRNGs are  fast, and only about half of the random numbers will be thrown away on average [1].
 </p>
 
 <p>The following PHP code uses the method mentioned above to generate random ASCII, alpha-numeric, and HEX passwords. It can also generate passwords from a custom character set. The code is explicitly placed into the public domain, so feel free to use it for any purpose whatsoever.</p>
