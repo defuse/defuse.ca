@@ -1,6 +1,6 @@
 <h1>Generating Random Passwords in PHP</h1>
 <p>
-    Generating unbiased random passwords is a surprisingly non-trivial problem. Most naive solutions, such as taking the remainder of a random integer or shuffling a string, lead to biases in the passwords. These biases and patterns make the passwords significantly easier to crack. We start by discussing a few common, but incorrect, ways of generating passwords, then provide a secure password generator class for PHP.
+    Generating unbiased random passwords is a surprisingly non-trivial problem. Most naive solutions, such as taking the remainder of a random integer or shuffling a string, lead to biases in the passwords. These biases make the passwords significantly easier to crack. We start by discussing a few common, but incorrect, ways of generating passwords, then provide a secure password generator class for PHP.
     
 </p>
 
