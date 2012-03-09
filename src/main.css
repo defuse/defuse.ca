@@ -270,6 +270,10 @@ ul {
     padding:10px;
     font-size: 8pt;
 }
+
+.badcode {
+    background-image: url('/images/grid-red.gif') !important;
+}
 /* PPHOS {{{1 */
 /* ============ PPHOS ================= */
 
