@@ -192,6 +192,6 @@ class PasswordGenerator<br />
 
 <h2>References</h2>
 
-<ul>
-    <li><b>[CryptoEng]</b> -   Tadayoshi Kohno, Niels Ferguson, and Bruce Schneier. "9.7 Choosing Random Elements." Cryptography Engineering: Design Principles and Practical Applications. Indianapolis, IN: Wiley Pub., 2010. Print.</li>
-</ul>
+<ol>
+    <li> Tadayoshi Kohno, Niels Ferguson, and Bruce Schneier. "9.7 Choosing Random Elements." Cryptography Engineering: Design Principles and Practical Applications. Indianapolis, IN: Wiley Pub., 2010. Print.</li>
+</ol>
