@@ -895,7 +895,8 @@ header('Content-Type: text/html; charset=utf-8');
         Copyright &copy; 2011 <a href="/about.htm">Defuse Cyber Security</a> | 
         <a href="/pastebin.htm">Secure Pastebin</a> | 
         <a href="/passgen.htm">Password Generator</a> |
-        <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a> 
+        <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a> |
+        <a href="http://l3vel-69.net/" rel="external">&raquo; l3vel-69 newsgroups</a> 
         </div> <!-- end footer -->
         </div> <!-- footerwrapper -->
         <?
