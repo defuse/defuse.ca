@@ -190,6 +190,11 @@ switch($name)
         $TITLE = "My Resume - Defuse Cyber-Security";
         $META_DESCRIPTION = "Defuse Cyber-Security Resume";
         break;
+    case "vimrc":
+        $path = "vimrc.php";
+        $TITLE = "My .vimrc - Defuse Cyber-Security";
+        $META_DESCRIPTION = "Vim configuration file";
+        break;
     case "blowfish":
         $path = "projects/blowfish.html";
         $TITLE = "Blowfish C# and C++ Source code - Defuse Cyber-Security";
