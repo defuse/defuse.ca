@@ -227,7 +227,7 @@ if(mysql_num_rows($query) > 0)
 	?></textarea>
 
 	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
-	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Encrypting" />
+	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Password Encryption" />
 	<input type="checkbox" name="shorturl" value="yes" /> Short URL
     </form>
 
