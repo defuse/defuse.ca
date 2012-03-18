@@ -19,7 +19,7 @@ Left salt: a8f0h2 <br />
 Right salt: 8hf27 <br />
 <br />
 Current Line: 1000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Password: IndigoIndigo &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />
-Current Line: 2000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Password: 5reinforce &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rate: 239 k/s<br />
+Current Line: 2000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Password: 5reinforce &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rate: 239 k/s<br /><br />
 PASSWORD FOUND: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zygomaticing (0x5a79676f6d61746963696e67)<br />
 HASH:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2c5419e6db59f283bcbb501c722e73c6<br />
 HASH TYPE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;md5<br />
@@ -192,7 +192,7 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br />
 &nbsp;&nbsp; &nbsp;function outputSuccess($password, $hash_str, $hash_type, $left_salt, $right_salt)<br />
 &nbsp;&nbsp; &nbsp;{<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;PASSWORD FOUND: \t$password (0x&quot;, bin2hex($password), &quot;)\n&quot;;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;\nPASSWORD FOUND: \t$password (0x&quot;, bin2hex($password), &quot;)\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;HASH:\t\t\t$hash_str\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;HASH TYPE:\t\t$hash_type\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;if(!empty($left_salt))<br />
