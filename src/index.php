@@ -200,6 +200,11 @@ switch($name)
         $TITLE = "Blowfish C# and C++ Source code - Defuse Cyber-Security";
         $META_DESCRIPTION = "C# and C++ implementation of the BLOWFISH block cipher.";
         break;
+    case "php-hash-cracker":
+        $path = "projects/php-hash-cracker.php";
+        $TITLE = "Salted Hash Cracking PHP Script - Defuse Cyber-Security";
+        $META_DESCRIPTION = "Dictionary hash cracking implemented in a PHP script.";
+        break;
     case "wordlists":
         $path = "projects/wordlists.html";
         $TITLE = "Password Cracking Wordlists - Defuse Cyber-Security";
@@ -746,6 +751,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/force-print-background.htm">&nbsp;Force Print BG Color</a></li>
             <!--<li><a href="/csharpthreadlibrary.htm">&nbsp;PolyThread</a></li>-->
             <li><a href="/passwordbolt.htm">&nbsp;Password Bolt [BETA]</a></li>
+            <li><a href="/php-hit-counter.htm">&nbsp;PHP Hash Cracker</a></li>
             <li><a href="/gpucrack.htm">&nbsp;GPU MD5+Salt Cracker</a></li>
             <!--<li><a href="/simppsk.htm">&nbsp;SimpPSK</a></li>-->
             <!--<li><a href="/blowfish.htm">&nbsp;Blowfish C#/C++</a></li>-->
