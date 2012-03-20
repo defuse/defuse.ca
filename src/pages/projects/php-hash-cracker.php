@@ -1,8 +1,29 @@
 <h1>Salted Hash Cracking PHP Script</h1>
 
 <p>
-The following is a PHP script for running dictionary attacks against both salted and unsalted password hashes. It is capable of cracking every hash function supported by PHP's <a href="http://php.net/hash">hash</a> function, as well as LM, NTLM, MySQL 4.1, and crypt hashes. It also supports crashed session recovery.
+The following is a PHP script for running dictionary attacks against both salted and unsalted password hashes. It is capable of attacking every hash function supported by PHP's <a href="http://php.net/hash">hash</a> function, as well as LM, NTLM, MySQL 4.1, and crypt hashes. It also supports crashed session recovery.
 </p>
+
+<h2>Command-Line Options</h3>
+
+<div class="code">
+PHP Hash Cracker v1.1: https://defuse.ca/php-hash-cracker.htm<br />
+Usage: php crack.php &lt;arguments&gt;<br />
+Arguments:<br />
+&nbsp;&nbsp; &nbsp;-w &lt;wordlist&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Wordlist or &quot;stdin&quot; for standard input.<br />
+&nbsp;&nbsp; &nbsp;-s &lt;start line number &nbsp; &nbsp;Skip lines of the wordlist.<br />
+&nbsp;&nbsp; &nbsp;-o &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Save session/results to file.<br />
+&nbsp;&nbsp; &nbsp;-f &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Recover crashed session.<br />
+&nbsp;&nbsp; &nbsp;-c &lt;hash&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The hash to crack.<br />
+&nbsp;&nbsp; &nbsp;-t &lt;hash type&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The type of hash.<br />
+&nbsp;&nbsp; &nbsp;-l &lt;left salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Salt prepended to the password.<br />
+&nbsp;&nbsp; &nbsp;-r &lt;right salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Salt appended to the password.<br />
+&nbsp;&nbsp; &nbsp;-h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Print help message.<br />
+** All other arguments are ignored when using -f **<br />
+
+</div>
+
+
 
 <h2>Sample Output</h2>
 <div class="code">
