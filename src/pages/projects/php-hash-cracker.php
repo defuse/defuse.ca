@@ -1,7 +1,7 @@
 <h1>Salted Hash Cracking PHP Script</h1>
 
 <p>
-The following is a PHP script for running dictionary attacks against both salted and unsalted password hashes. It is capable of attacking every hash function supported by PHP's <a href="http://php.net/hash">hash</a> function, as well as LM, NTLM, MySQL 4.1, and crypt hashes. It also supports crashed session recovery.
+The following is a PHP script for running dictionary attacks against both salted and unsalted password hashes. It is capable of attacking every hash function supported by PHP's <a href="http://php.net/hash">hash</a> function, as well as md5(md5), LM, NTLM, MySQL 4.1, and crypt hashes. It also supports crashed session recovery.
 </p>
 
 <h2>Command-Line Options</h3>
@@ -10,17 +10,17 @@ The following is a PHP script for running dictionary attacks against both salted
 PHP Hash Cracker v1.1: https://defuse.ca/php-hash-cracker.htm<br />
 Usage: php crack.php &lt;arguments&gt;<br />
 Arguments:<br />
-&nbsp;&nbsp; &nbsp;-w &lt;wordlist&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Wordlist or &quot;stdin&quot; for standard input.<br />
-&nbsp;&nbsp; &nbsp;-s &lt;start line number &nbsp; &nbsp;Skip lines of the wordlist.<br />
-&nbsp;&nbsp; &nbsp;-o &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Save session/results to file.<br />
-&nbsp;&nbsp; &nbsp;-f &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Recover crashed session.<br />
-&nbsp;&nbsp; &nbsp;-c &lt;hash&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The hash to crack.<br />
-&nbsp;&nbsp; &nbsp;-t &lt;hash type&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The type of hash.<br />
-&nbsp;&nbsp; &nbsp;-l &lt;left salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Salt prepended to the password.<br />
-&nbsp;&nbsp; &nbsp;-r &lt;right salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Salt appended to the password.<br />
-&nbsp;&nbsp; &nbsp;-h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Print help message.<br />
-** All other arguments are ignored when using -f **<br />
-
+&nbsp;&nbsp; &nbsp;-w &lt;wordlist&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Wordlist or &quot;stdin&quot; for standard input.<br />
+&nbsp;&nbsp; &nbsp;-s &lt;start line number&gt; &nbsp;Skip lines of the wordlist.<br />
+&nbsp;&nbsp; &nbsp;-o &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp;Save session/results to file.<br />
+&nbsp;&nbsp; &nbsp;-f &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp;Recover crashed session.<br />
+&nbsp;&nbsp; &nbsp;-c &lt;hash&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The hash to crack.<br />
+&nbsp;&nbsp; &nbsp;-t &lt;hash type&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The type of hash.<br />
+&nbsp;&nbsp; &nbsp;-l &lt;left salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Salt prepended to the password.<br />
+&nbsp;&nbsp; &nbsp;-r &lt;right salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; Salt appended to the password.<br />
+&nbsp;&nbsp; &nbsp;-d &lt;s&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Hash &lt;s&gt; with all supported hash types.<br />
+&nbsp;&nbsp; &nbsp;-h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Print help message.<br />
+** All other arguments are ignored when using -f or -d **<br />
 </div>
 
 
@@ -56,16 +56,17 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;* PHP Hash Cracker v1.1: https://defuse.ca/php-hash-cracker.htm<br />
 &nbsp;* Usage: php crack.php &lt;arguments&gt;<br />
 &nbsp;* Arguments:<br />
-&nbsp;* &nbsp; &nbsp; -w &lt;wordlist&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Wordlist or &quot;stdin&quot; for standard input.<br />
-&nbsp;* &nbsp; &nbsp; -s &lt;start line number &nbsp; &nbsp;Skip lines of the wordlist.<br />
-&nbsp;* &nbsp; &nbsp; -o &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Save session/results to file.<br />
-&nbsp;* &nbsp; &nbsp; -f &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Recover crashed session.<br />
-&nbsp;* &nbsp; &nbsp; -c &lt;hash&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The hash to crack.<br />
-&nbsp;* &nbsp; &nbsp; -t &lt;hash type&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The type of hash.<br />
-&nbsp;* &nbsp; &nbsp; -l &lt;left salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Salt prepended to the password.<br />
-&nbsp;* &nbsp; &nbsp; -r &lt;right salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Salt appended to the password.<br />
-&nbsp;* &nbsp; &nbsp; -h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Print help message.<br />
-&nbsp;* ** All other arguments are ignored when using -f **<br />
+&nbsp;* &nbsp; &nbsp; -w &lt;wordlist&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Wordlist or &quot;stdin&quot; for standard input.<br />
+&nbsp;* &nbsp; &nbsp; -s &lt;start line number&gt; &nbsp;Skip lines of the wordlist.<br />
+&nbsp;* &nbsp; &nbsp; -o &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp;Save session/results to file.<br />
+&nbsp;* &nbsp; &nbsp; -f &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp;Recover crashed session.<br />
+&nbsp;* &nbsp; &nbsp; -c &lt;hash&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The hash to crack.<br />
+&nbsp;* &nbsp; &nbsp; -t &lt;hash type&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The type of hash.<br />
+&nbsp;* &nbsp; &nbsp; -l &lt;left salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Salt prepended to the password.<br />
+&nbsp;* &nbsp; &nbsp; -r &lt;right salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; Salt appended to the password.<br />
+&nbsp;* &nbsp; &nbsp; -d &lt;s&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Hash &lt;s&gt; with all supported hash types.<br />
+&nbsp;* &nbsp; &nbsp; -h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Print help message.<br />
+&nbsp;* ** All other arguments are ignored when using -f or -d **<br />
 &nbsp;*/<br />
 &nbsp;&nbsp; &nbsp;// ========================= CONSTANTS ================================<br />
 &nbsp;&nbsp; &nbsp;define(&quot;DEFUSE_URL&quot;, &quot;https://defuse.ca/php-hash-cracker.htm&quot;);<br />
@@ -79,7 +80,7 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br />
 &nbsp;&nbsp; &nbsp;// ========================= ENTRY POINT ===============================<br />
 <br />
-&nbsp;&nbsp; &nbsp;$opts = getopt(&quot;w:s:c:t:l:r:f:o:h::&quot;);<br />
+&nbsp;&nbsp; &nbsp;$opts = getopt(&quot;d:w:s:c:t:l:r:f:o:h::&quot;);<br />
 &nbsp;&nbsp; &nbsp;$args = parseOptions($opts);<br />
 <br />
 &nbsp;&nbsp; &nbsp;checkHashFormat($args[&#039;hash_str&#039;], $args[&#039;hash_type&#039;]);<br />
@@ -206,6 +207,27 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;{<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return false;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;}<br />
+&nbsp;&nbsp; &nbsp;}<br />
+<br />
+&nbsp;&nbsp; &nbsp;function printAllHashesOf($string)<br />
+&nbsp;&nbsp; &nbsp;{<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;printHash(&quot;NTLM&quot;, computeHash(&quot;ntlm&quot;, $string, &quot;&quot;));<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;printHash(&quot;LM&quot;, computeHash(&quot;lm&quot;, $string, &quot;&quot;));<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;printHash(&quot;MySQL 4.1&quot;, computeHash(&quot;mysql41&quot;, $string, &quot;&quot;));<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$hashes = hash_algos();<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;foreach($hashes as $hashType)<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;{<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printHash($hashType, computeHash($hashType, $string, &quot;&quot;));<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;}<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;printHash(&quot;md5(md5)&quot;, computeHash(&quot;md5md5&quot;, $string, &quot;&quot;));<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;die;<br />
+&nbsp;&nbsp; &nbsp;}<br />
+<br />
+&nbsp;&nbsp; &nbsp;function printHash($type, $value)<br />
+&nbsp;&nbsp; &nbsp;{<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$type .= &quot;:&quot;;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$type .= str_repeat(&quot; &quot;, 20 - strlen($type));<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo $type . $value . &quot;\n&quot;;<br />
 &nbsp;&nbsp; &nbsp;}<br />
 <br />
 &nbsp;&nbsp; &nbsp;// ===================== STATUS OUTPUT FUNCTIONS ========================<br />
@@ -336,11 +358,12 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-t &lt;hash type&gt;\t\t\tThe type of hash.\n&quot; .<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-l &lt;left salt&gt;\t\t\tSalt prepended to the password.\n&quot; .<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-r &lt;right salt&gt;\t\t\tSalt appended to the password.\n&quot; .<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-d &lt;s&gt;\t\t\t\tHash &lt;s&gt; with all supported hash types.\n&quot; .<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\t\tPrint help message.\n&quot;;<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;** All other arguments are ignored when using -f **\n&quot;;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;** All other arguments are ignored when using -f or -d **\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;\nSupported Hash Types:\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$hashes = hash_algos();<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;\tcrypt lm ntlm mysql41&quot;;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;\tcrypt lm ntlm mysql41 md5md5&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$i = 0;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;foreach($hashes as $hashtype)<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;{<br />
@@ -370,6 +393,9 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if(isset($opts[&#039;h&#039;]))<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printUsage();<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if(isset($opts[&#039;d&#039;]))<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printAllHashesOf($opts[&#039;d&#039;]);<br />
 <br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if(isset($opts[&#039;w&#039;]))<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$args[&#039;wordlist&#039;] = ($opts[&#039;w&#039;] == &quot;stdin&quot;) ? <br />
@@ -485,7 +511,7 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$p1 = LMhash_DESencrypt(substr($string, 0, 7));<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$p2 = LMhash_DESencrypt(substr($string, 7, 7));<br />
 &nbsp;&nbsp; &nbsp;<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;return $p1.$p2;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;return bin2hex($p1.$p2);<br />
 &nbsp;&nbsp; &nbsp;}<br />
 &nbsp;&nbsp; &nbsp;<br />
 &nbsp;&nbsp; &nbsp;function LMhash_DESencrypt($string)<br />
