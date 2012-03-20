@@ -30,6 +30,12 @@ $META_KEYWORDS = "defuse, ossbox, security, encryption, privacy, programming, co
 
 header('X-Frame-Options: SAMEORIGIN'); // Prevent pages from being displayed in iframes. Not supported by all browsers.
 
+// Enforce SSL connection for supporting browsers.
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
+{
+    header('Strict-Transport-Security: max-age=604800');
+}
+
 //name variable will contain the name of the page
 $name = "";
 

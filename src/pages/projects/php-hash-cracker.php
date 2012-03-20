@@ -7,7 +7,7 @@ The following is a PHP script for running dictionary attacks against both salted
 <h2>Sample Output</h2>
 <div class="code">
 $ php crack.php -w small.lst -c 2c5419e6db59f283bcbb501c722e73c6 -t md5 -l a8f0h2 -r 8hf27<br />
-Defuse Cyber-Security&#039;s Hash Cracking Script - v1.0<br />
+Defuse Cyber-Security&#039;s Hash Cracking Script - v1.1<br />
 Homepage: https://defuse.ca/php-hash-cracker.htm<br />
 <br />
 Begin execution: March 17, 2012, 8:31 pm <br />
@@ -32,24 +32,23 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <div class="code">
 &lt;?php<br />
 /*<br />
-&nbsp;* PHP Hash Cracker v1.0: https://defuse.ca/php-hash-cracker.htm<br />
+&nbsp;* PHP Hash Cracker v1.1: https://defuse.ca/php-hash-cracker.htm<br />
 &nbsp;* Usage: php crack.php &lt;arguments&gt;<br />
 &nbsp;* Arguments:<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-w &lt;wordlist&gt;<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-s &lt;start line number&gt;<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-o &lt;output file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save session/results to file.<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-f &lt;output file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recover crashed session.<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-c &lt;hash&gt;<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-t &lt;hash type&gt;<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-l &lt;left salt&gt;<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-r &lt;right salt&gt;<br />
-&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Print help message.<br />
+&nbsp;* &nbsp; &nbsp; -w &lt;wordlist&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Wordlist or &quot;stdin&quot; for standard input.<br />
+&nbsp;* &nbsp; &nbsp; -s &lt;start line number &nbsp; &nbsp;Skip lines of the wordlist.<br />
+&nbsp;* &nbsp; &nbsp; -o &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Save session/results to file.<br />
+&nbsp;* &nbsp; &nbsp; -f &lt;output file&gt; &nbsp; &nbsp; &nbsp; &nbsp; Recover crashed session.<br />
+&nbsp;* &nbsp; &nbsp; -c &lt;hash&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The hash to crack.<br />
+&nbsp;* &nbsp; &nbsp; -t &lt;hash type&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The type of hash.<br />
+&nbsp;* &nbsp; &nbsp; -l &lt;left salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Salt prepended to the password.<br />
+&nbsp;* &nbsp; &nbsp; -r &lt;right salt&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Salt appended to the password.<br />
+&nbsp;* &nbsp; &nbsp; -h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Print help message.<br />
 &nbsp;* ** All other arguments are ignored when using -f **<br />
 &nbsp;*/<br />
-<br />
 &nbsp;&nbsp; &nbsp;// ========================= CONSTANTS ================================<br />
 &nbsp;&nbsp; &nbsp;define(&quot;DEFUSE_URL&quot;, &quot;https://defuse.ca/php-hash-cracker.htm&quot;);<br />
-&nbsp;&nbsp; &nbsp;define(&quot;VERSION&quot;, &quot;v1.0&quot;);<br />
+&nbsp;&nbsp; &nbsp;define(&quot;VERSION&quot;, &quot;v1.1&quot;);<br />
 <br />
 &nbsp;&nbsp; &nbsp;// Print a status update every OUTPUT_RATE lines.<br />
 &nbsp;&nbsp; &nbsp;define(&quot;OUTPUT_RATE&quot;, 1000000);<br />
@@ -59,7 +58,7 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br />
 &nbsp;&nbsp; &nbsp;// ========================= ENTRY POINT ===============================<br />
 <br />
-&nbsp;&nbsp; &nbsp;$opts = getopt(&quot;s:w:c:t:l:r:f:o:h::&quot;);<br />
+&nbsp;&nbsp; &nbsp;$opts = getopt(&quot;w:s:c:t:l:r:f:o:h::&quot;);<br />
 &nbsp;&nbsp; &nbsp;$args = parseOptions($opts);<br />
 <br />
 &nbsp;&nbsp; &nbsp;checkHashFormat($args[&#039;hash_str&#039;], $args[&#039;hash_type&#039;]);<br />
@@ -308,14 +307,14 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;** $msg ** \n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;Usage: php crack.php &lt;arguments&gt;\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;Arguments:\n&quot; .<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-w &lt;wordlist&gt;\n&quot; .<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-s &lt;start line number&gt;\n&quot; .<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-w &lt;wordlist&gt;\t\t\tWordlist or \&quot;stdin\&quot; for standard input.\n&quot; .<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-s &lt;start line number&gt;\t\tSkip lines of the wordlist.\n&quot; .<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-o &lt;output file&gt;\t\tSave session/results to file.\n&quot; .<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-f &lt;output file&gt;\t\tRecover crashed session.\n&quot; . <br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-c &lt;hash&gt;\n&quot; .<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-t &lt;hash type&gt;\n&quot; .<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-l &lt;left salt&gt;\n&quot; .<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-r &lt;right salt&gt;\n&quot; .<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-c &lt;hash&gt;\t\t\tThe hash to crack.\n&quot; .<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-t &lt;hash type&gt;\t\t\tThe type of hash.\n&quot; .<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-l &lt;left salt&gt;\t\t\tSalt prepended to the password.\n&quot; .<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-r &lt;right salt&gt;\t\t\tSalt appended to the password.\n&quot; .<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;\t-h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\t\tPrint help message.\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;** All other arguments are ignored when using -f **\n&quot;;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;\nSupported Hash Types:\n&quot;;<br />
@@ -352,7 +351,8 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printUsage();<br />
 <br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if(isset($opts[&#039;w&#039;]))<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$args[&#039;wordlist&#039;] = realpath($opts[&#039;w&#039;]);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$args[&#039;wordlist&#039;] = ($opts[&#039;w&#039;] == &quot;stdin&quot;) ? <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;php://stdin&quot; : realpath($opts[&#039;w&#039;]);<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;else<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printUsage(&quot;Please specify a wordlist.&quot;);<br />
 <br />
