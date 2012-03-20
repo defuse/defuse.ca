@@ -49,6 +49,13 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 </div>
 
 <h2>Code</h2>
+<center>
+    <p>
+    <a href="/source/crack.php">
+    <strong>Click here to download the script.</strong>
+    </a>
+    </p>
+</center>
 
 <div class="code">
 &lt;?php<br />
