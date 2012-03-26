@@ -1,5 +1,7 @@
 <h1>Online HTML Sanitize Tool (htmlspecialchars, htmlentities)</h1>
-<p>This tool will take your text and convert all the special characters to their proper HTML codes, so you can paste text with special characters or HTML code onto your website.</p>
+<p>This tool will take your text and convert all the special characters to their proper HTML codes, so you can paste text with special characters or HTML code onto your website.
+   It has been carefully designed so that the HTML produced by this tool looks and <em>behaves</em> exactly like the original text does in a text editor.
+</p>
 
 <?php
     if(isset($_POST['sanitize']))
@@ -19,7 +21,7 @@
 
 <form action="html-sanitize.htm" method="post">
     
-    <textarea name="data" rows="30" cols="40" style="width:100%; margin-bottom: 10px;" >
+    <textarea name="data" rows="15" cols="40" style="width:100%; margin-bottom: 10px;" >
 <?php
 if(isset($_POST['data']))
 {
