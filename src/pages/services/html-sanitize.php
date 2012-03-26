@@ -1,4 +1,4 @@
-<h1>Online HTML Sanitize Tool (htmlspecialchars, htmlentities)</h1>
+<h1>Online HTML Escape Tool (htmlspecialchars, htmlentities)</h1>
 <p>This tool will take your text and convert all the special characters to their proper HTML codes, so you can paste text with special characters or HTML code onto your website.
    It has been carefully designed so that the HTML produced by this tool looks and <em>behaves</em> exactly like the original text does in a text editor.
 </p>
@@ -7,7 +7,7 @@
     if(isset($_POST['sanitize']))
     {
     ?>
-        <p><strong>Your text has been sanitized!</strong></p>
+        <p><strong>Your text has been escaped!</strong></p>
     <?
     }
     else
@@ -40,7 +40,7 @@ if(isset($_POST['data']))
     }
 }
 ?></textarea><br />
-    <input type="submit" name="sanitize" value="HTML-Sanitize Text" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" name="sanitize" value="HTML-Escape Text" /> &nbsp;&nbsp;&nbsp;&nbsp;
     Tab width: <input type="text" name="tw" value="8" size="2" /> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type="checkbox" name="br" value="yes" checked="checked" />Replace line endings with &lt;br /&gt;
 </form>
