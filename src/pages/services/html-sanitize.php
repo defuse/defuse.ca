@@ -1,3 +1,6 @@
+<?php
+    require_once('libs/HtmlEscape.php');
+?>
 <h1>Online HTML Escape Tool (htmlspecialchars, htmlentities)</h1>
 <p>This tool will take your text and convert all the special characters to their proper HTML codes, so you can paste text with special characters or HTML code onto your website.
    It has been carefully designed so that the HTML produced by this tool looks and <em>behaves</em> exactly like the original text does in a text editor.
@@ -25,7 +28,6 @@
 <?php
 if(isset($_POST['data']))
 {
-    require_once('libs/HtmlEscape.php');
 
     $tabWidth = (int)$_POST['tw'];
     if($tabWidth >= 1)
