@@ -19,15 +19,27 @@
 
 <form action="html-sanitize.htm" method="post">
     
-    <textarea name="data" rows="30" cols="40" style="width:100%;" >
+    <textarea name="data" rows="30" cols="40" style="width:100%; margin-bottom: 10px;" >
 <?php
 if(isset($_POST['data']))
 {
     require_once('libs/HtmlEscape.php');
-    $esc = HtmlEscape::escapeText($_POST['data'], isset($_POST['br']) && $_POST['br'] == "yes", 8);
-    echo htmlspecialchars($esc, ENT_QUOTES);
+
+    $tabWidth = (int)$_POST['tw'];
+    if($tabWidth >= 1)
+    {
+        $esc = HtmlEscape::escapeText($_POST['data'], 
+                isset($_POST['br']) && $_POST['br'] == "yes", $tabWidth);
+        echo htmlspecialchars($esc, ENT_QUOTES);
+    }
+    else
+    {
+        echo "Invalid tab width.";
+    }
 }
 ?></textarea><br />
-    <input type="submit" name="sanitize" value="HTML-Sanitize Text" /><input type="checkbox" name="br" value="yes" checked="checked" />Replace newlines with &lt;br /&gt;
+    <input type="submit" name="sanitize" value="HTML-Sanitize Text" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    Tab width: <input type="text" name="tw" value="8" size="2" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="br" value="yes" checked="checked" />Replace line endings with &lt;br /&gt;
 </form>
 
