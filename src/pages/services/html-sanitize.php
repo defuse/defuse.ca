@@ -7,7 +7,7 @@
     if(isset($_POST['sanitize']))
     {
     ?>
-        <p><span style="background-color: #AAFFAA; width:400px; padding:5px; border: solid black 1px;">Your Text Has Been Sanitized!</span></p>
+        <p><strong>Your text has been sanitized!</strong></p>
     <?
     }
     else
