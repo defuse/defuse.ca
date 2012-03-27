@@ -47,7 +47,7 @@ textarea {
 #wrap {
     min-height: 100%;
     width: 100%;
-    min-width: 100%; /* Required for IE9 */
+    min-width: 900px; /* Must be big enough to fit content and it's p+m */
 }
 
 #homediv {
@@ -198,6 +198,7 @@ ul {
     margin-top: -105px; /* #footer total height (padding too) + 10px footerborder */
     clear: both;
     width: 100%;
+    min-width: 900px;
 }
 
 /* Hide the footer while printing */
