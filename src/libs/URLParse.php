@@ -308,45 +308,6 @@ class URLParse
                     P_METD => "A One Time Password protocol that can be used with encryption.",
                     P_METK => "encrypting one time passwords, static key, one time password",
                     ),
-            "meetbadguys" => array(
-                    P_FILE => "research/doi/meetbadguys.html",
-                    P_TITL => "Dangers of the Internet - Meet the Bad Guys",
-                    ),
-            "spam" => array(
-                    P_FILE => "research/doi/spam.html",
-                    P_TITL => "Dangers of the Internet - Scams and Phishing",
-                    P_METD => "An explanation of spam, phishing, and social engineering attacks.",
-                    ),
-            "passwordsecurity" => array(
-                    P_FILE => "research/doi/passwordsecurity.html",
-                    P_TITL => "Dangers of the Internet - Password Security",
-                    P_METD => "An explanation of why its important to use strong and different passwords for each website you use.",
-                    ),
-            "malware" => array(
-                    P_FILE => "research/doi/malware.html",
-                    P_TITL => "Dangers of the Internet - Viruses, Worms, and Exploits - Rooting Your Box",
-                    P_METD => "An explanation of what viruses, worms, and exploits are.",
-                    ),
-            "privacy" => array(
-                    P_FILE => "research/doi/privacy.html",
-                    P_TITL => "Dangers of the Internet - Privacy and Tracking",
-                    P_METD => "A guide to protecting your privacy on the internet.",
-                    ),
-            "networks" => array(
-                    P_FILE => "research/doi/networks.html",
-                    P_TITL => "Dangers of the Internet - Wireless Network Security",
-                    P_METD => "How to be safe when using open wifi, and how to secure your wireless network at home.",
-                    ),
-            "todo" => array(
-                    P_FILE => "research/doi/todo.html",
-                    P_TITL => "Dangers of the Internet - Security Checklist",
-                    P_METD => "A brief guide to keeping yourself safe on the internet.",
-                    ),
-            "securitytest" => array(
-                    P_FILE => "research/doi/securitytest.html",
-                    P_TITL => "Dangers of the Internet - Security Knowledge Test",
-                    P_METD => "Security Knowledge Test",
-                    ),
             "cbcmodeiv" => array(
                     P_FILE => "research/cbcmodeiv.html",
                     P_TITL => "Should CBC Mode Initialization Vector Be Secret - Defuse Cyber-Security",
@@ -465,12 +426,6 @@ class URLParse
                     P_TITL => "The PUP Confusion Antivirus Detection Evasion Technique - Defuse Cyber-Security",
                     P_METD => "The PUP Confusion Antivirus Detection Evasion Technique. Multiple detections per file.",
                     P_METK => "antivirus, single detection, only one detection, can't detect more than one, multiple virus, two viruses in one file",
-                    ),
-            "salted-password-hashing-doing-it-properly" => array(
-                    P_FILE => "research/salted-password-hashing-doing-it-properly.html",
-                    P_TITL => "Secure Password Hashing - How to do it Properly - Defuse Cyber-Security",
-                    P_METD => "How to hash hasswords with salt properly. For use in secure web based loging systems.",
-                    P_METK => "password hashing, storing passwords, how to hash, salt, web development, md5, sha1, sha256, crypto, cryptography, php, mysql, database",
                     ),
             "scratch" => array(
                     P_FILE => "scratch.html",
