@@ -45,7 +45,7 @@ if(isset($_POST['p']) && md5("fh8f8hf" . $_POST['p']) == "7da89b20da373c455a31fc
 else
 {
 ?>
-    <form action="/stats.htm" method="post">
+    <form action="/statzzz.htm" method="post">
         <input type="password" name="p" value="">
         <input type="submit" name="" value="Go" />
     </form>
