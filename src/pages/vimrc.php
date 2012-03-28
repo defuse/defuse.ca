@@ -2,6 +2,7 @@
 
 <p>
     This page is updated with the .vimrc on my PC at home every midnight.
+    The file can be downloaded without formatting <a href="/source/vimrc">here</a>.
     The color scheme I use is
     <a href="https://vimcolorschemetest.googlecode.com/svn/colors/dw_cyan.vim">dw_cyan</a>.
 </p>
