@@ -213,17 +213,19 @@ header('Content-Type: text/html; charset=utf-8');
 <?php
     $dnt = isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT'] == "1";
 
-    if(!$dnt)
-    {
-        PHPCount::AddHit($name, $_SERVER['REMOTE_ADDR']);
-    }
-    
     if($name != "")
         echo '<div id="content" >';
     else
         echo '<div id="contenthome" >';
 
     $included = URLParse::IncludePageContents();
+
+    //TODO: sometime change this to use the name instead of the path.
+    if(!$dnt)
+    {
+        PHPCount::AddHit($included, $_SERVER['REMOTE_ADDR']);
+    }
+    
 ?>
 
 </div>
