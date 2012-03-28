@@ -24,6 +24,13 @@ file_put_contents("/dev/random", $entropy);
 
 $name = URLParse::ProcessURL();
 
+if($name == "passgen")
+{
+    header('Expires: Mon, 01 Jan 1990 00:00:00 GMT');
+    header('Cache-Control: no-cache');
+    header('Pragma: no-cache');
+}
+
 // HSTS header (force HTTPS)
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' &&
     $_SERVER['HTTP_HOST'] != "localhost" && 
