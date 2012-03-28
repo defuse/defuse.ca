@@ -8,7 +8,7 @@ if(isset($_POST['p']) && md5("fh8f8hf" . $_POST['p']) == "7da89b20da373c455a31fc
     <h2>uptime</h2>
     <div class="code">
     <pre>
-    <?php
+<?php
         passthru("uptime");
     ?>
     </pre>
@@ -17,7 +17,7 @@ if(isset($_POST['p']) && md5("fh8f8hf" . $_POST['p']) == "7da89b20da373c455a31fc
     <h2>ifconfig</h2>
     <div class="code">
     <pre>
-    <?php
+<?php
         passthru("ifconfig");
     ?>
     </pre>
@@ -26,7 +26,7 @@ if(isset($_POST['p']) && md5("fh8f8hf" . $_POST['p']) == "7da89b20da373c455a31fc
     <h2>who</h2>
     <div class="code">
     <pre>
-    <?php
+<?php
         passthru("who");
     ?>
     </pre>
@@ -35,7 +35,7 @@ if(isset($_POST['p']) && md5("fh8f8hf" . $_POST['p']) == "7da89b20da373c455a31fc
     <h2>netstat</h2>
     <div class="code">
     <pre>
-    <?php
+<?php
         passthru("netstat -tn");
     ?>
     </pre>
