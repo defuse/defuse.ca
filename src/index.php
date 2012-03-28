@@ -276,8 +276,8 @@ header('Content-Type: text/html; charset=utf-8');
                                     date("F j, Y, g:ia e", filemtime($included)),
                                     ENT_QUOTES
                                     );
-            $unique =  PHPCount::GetHits($name, true);
-            $hits = PHPCount::GetHits($name);
+            $unique =  PHPCount::GetHits($included, true);
+            $hits = PHPCount::GetHits($included);
             $total = PHPCount::GetTotalHits();
             $totalu = PHPCount::GetTotalHits(true);
         ?>
