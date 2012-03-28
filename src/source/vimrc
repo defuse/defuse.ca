@@ -1,0 +1,304 @@
+set nocompatible
+
+    " set the 'cpoptions' to its Vim default
+    if 1	" only do this when compiled with expression evaluation
+      let s:save_cpo = &cpoptions
+    endif
+    set cpo&vim
+
+    " backspace and cursor keys wrap to previous/next line
+    set backspace=indent,eol,start whichwrap+=<,>,[,]
+
+    " backspace in Visual mode deletes selection
+    vnoremap <BS> d
+
+    " Alt-Space is System menu
+    if has("gui")
+      noremap <M-Space> :simalt ~<CR>
+      inoremap <M-Space> <C-O>:simalt ~<CR>
+      cnoremap <M-Space> <C-C>:simalt ~<CR>
+    endif
+
+    " restore 'cpoptions'
+    set cpo&
+    if 1
+      let &cpoptions = s:save_cpo
+      unlet s:save_cpo
+    endif
+
+" ============= FUNCTIONALITY =============
+
+    set foldmethod=marker
+    set tabstop=4
+    set shiftwidth=4
+    set autoindent
+    set expandtab 
+    set smartindent
+    set spell
+    set backspace=2
+    set history=100
+    set wildmenu
+    set incsearch
+    set hidden
+
+    " Double slash -> Case insensitive search
+    map // /\c
+    map ?? ?\c
+
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+
+    " tab navigation like firefox
+    nmap <C-S-tab> :tabprevious<CR>
+    nmap <C-tab> :tabnext<CR>
+    map <C-S-tab> :tabprevious<CR>
+    map <C-tab> :tabnext<CR>
+    imap <C-S-tab> <Esc>:tabprevious<CR>i
+    imap <C-tab> <Esc>:tabnext<CR>i
+    "nmap <C-t> :tabnew<CR>
+    "imap <C-t> <Esc>:tabnew<CR>
+
+    "Ctrl+N New
+    "nmap <C-n> :tabnew<CR>
+    "imap <C-n> <Esc>:tabnew<CR>
+
+    " TAB on select indents:
+    "FIXME: Doesn't always let you press tab twice
+    smap <Tab> <Esc>:'<,'> > <CR>
+    vmap <Tab> <Esc>:'<,'> > <CR>
+
+    "omnicomplete
+    autocmd FileType python set omnifunc=pythoncomplete#Complete
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+    autocmd FileType c set omnifunc=ccomplete#Complete
+    autocmd FileType ruby set omnifunc=rubycomplete#Complete
+
+    "Other file dependant stuff
+    " Use tabs for makefile and python
+    autocmd FileType python set noexpandtab
+    autocmd FileType make set noexpandtab
+
+    if has("unix")
+        helptags ~/.vim/doc
+    endif
+
+    if has("unix")
+        " php documentation
+        " Make sure pman is installed:
+        " # apt-get install php-pear
+        " # pear install doc.php.net/pman
+        autocmd FileType php command -nargs=1 Doc silent !xterm -e pman <args>
+        autocmd FileType ruby command -nargs=1 Doc silent !xterm -e ri <args>
+        command -nargs=1 Man silent !xterm -e man <args>
+    endif
+
+    " HEX EDITING
+    "Source: http://vim.wikia.com/wiki/Improved_hex_editing
+    command -bar Hex call ToggleHex()
+    " helper function to toggle hex mode
+    function ToggleHex()
+      " hex mode should be considered a read-only operation
+      " save values for modified and read-only for restoration later,
+      " and clear the read-only flag for now
+      let l:modified=&mod
+      let l:oldreadonly=&readonly
+      let &readonly=0
+      let l:oldmodifiable=&modifiable
+      let &modifiable=1
+      if !exists("b:editHex") || !b:editHex
+        " save old options
+        let b:oldft=&ft
+        let b:oldbin=&bin
+        " set new options
+        setlocal binary " make sure it overrides any textwidth, etc.
+        let &ft="xxd"
+        " set status
+        let b:editHex=1
+        " switch to hex editor
+        %!xxd
+      else
+        " restore old options
+        let &ft=b:oldft
+        if !b:oldbin
+          setlocal nobinary
+        endif
+        " set status
+        let b:editHex=0
+        " return to normal editing
+        %!xxd -r
+      endif
+      " restore values for modified and read only state
+      let &mod=l:modified
+      let &readonly=l:oldreadonly
+      let &modifiable=l:oldmodifiable
+    endfunction
+
+    " So right click spelling error works.
+    " FIXME: Only seems to work in windows
+    nnoremap <RightMouse> <LeftMouse><RightMouse> 
+
+    set formatoptions+=l
+    set lbr
+
+
+    " TODO: :enew, save, save as
+    " Ctrl+N => enew
+    " Ctrl+S => Save TODO: Make ctrl+s do same thing as file save
+    " Ctrl+Shift+S => Save as?
+
+    " TODO: buffer management (bnext, bprev, new buffer, close buffer, etc)
+
+    " TODO: build with make (look at :make)
+    " TODO: run?
+    " TODO: get errors from gcc/php and have next/prev err feature
+
+    set ttyfast
+
+" ================ VISUAL =================
+
+    colorscheme dw_cyan 
+    syntax on
+
+    if has("gui_running")
+        set lines=32 columns=120
+    endif
+
+    set shellslash
+    set novb
+
+    " Fix GNOME Mouse Hide Bug
+    set nomousehide
+
+    set mouse=nicr
+    set guioptions-=T
+    set guioptions-=m
+    set nu
+
+    "if has("7.3") "FIXME: Enable this automatically for 7.3+
+        set cc=80
+        hi ColorColumn ctermbg=Gray ctermfg=Black guibg=#404040
+        command Skinny set cc=73
+        command Wide set cc=80
+    "endif
+
+    if has("unix")
+        set guifont=Monospace\ 10
+    else
+        set guifont=Lucida_Console:h10:cANSI
+    endif
+
+    highlight Cursor guifg=white guibg=Gray
+    highlight iCursor guifg=Gray guibg=white
+
+    set laststatus=2 
+    set statusline=%n:\ %F\ [%{&ff}]%y%m%h%w%r\ %=[0x%B\|%b]\ \ \ [%c][%l/%L]\ (%p%%)
+    hi StatusLine cterm=NONE ctermbg=darkgray ctermfg=gray guibg=#202020 guifg=white
+
+
+    set cursorline
+    hi CursorLine cterm=NONE ctermbg=darkgray guibg=#101520
+    hi CursorColumn cterm=NONE ctermbg=darkgray guibg=#101520
+
+    " $ for change command instead of deleting word then insert
+    set cpoptions+=$
+    "set virtualedit=all
+
+    " Highlight search terms
+    set hlsearch 
+
+    " Skip the splash screen
+    set shortmess+=I
+
+"     " Smooth Scroll
+"     "
+"     " Remamps 
+"     "  <C-U>
+"     "  <C-D>
+"     "  <C-F>
+"     "  <C-B>
+"     "
+"     " to allow smooth scrolling of the window. I find that quick changes of
+"     " context don't allow my eyes to follow the action properly.
+"     "
+"     " The global variable g:scroll_factor changes the scroll speed.
+"     "
+"     "
+"     " Written by Brad Phelan 2006
+"     " http://xtargets.com
+"     let g:scroll_factor = 5000
+"     function! SmoothScroll(dir, windiv, factor)
+"        let wh=winheight(0)
+"        let i=0
+"        while i < wh / a:windiv
+"           let t1=reltime()
+"           let i = i + 1
+"           if a:dir=="d"
+"              normal j
+"           else
+"              normal k
+"           end
+"           redraw
+"           while 1
+"              let t2=reltime(t1,reltime())
+"              if t2[1] > g:scroll_factor * a:factor
+"                 break
+"              endif
+"           endwhile
+"        endwhile
+"     endfunction
+"     map <C-D> :call SmoothScroll("d",2, 2)<CR>
+"     map <C-U> :call SmoothScroll("u",2, 2)<CR>
+"     map <C-F> :call SmoothScroll("d",1, 1)<CR>
+"     map <C-B> :call SmoothScroll("u",1, 1)<CR>
+
+    " This script provides a function to activate a vim buffer by passing it the
+    " position in the buffers list and maps it to <M-number> to easily switch
+    " between open buffers.
+    "
+    " This is best used togheter with the buftabs plugin:
+    "   http://www.vim.org/scripts/script.php?script_id=1664
+
+    function! BufPos_ActivateBuffer(num)
+        let l:count = 1
+        for i in range(1, bufnr("$"))
+            if buflisted(i) && getbufvar(i, "&modifiable") 
+                if l:count == a:num
+                    exe "buffer " . i
+                    return 
+                endif
+                let l:count = l:count + 1
+            endif
+        endfor
+        echo "No buffer!"
+    endfunction
+
+    function! BufPos_Initialize()
+        for i in range(1, 9) 
+            exe "map <M-" . i . "> :call BufPos_ActivateBuffer(" . i . ")<CR>"
+        endfor
+        exe "map <M-0> :call BufPos_ActivateBuffer(10)<CR>"
+    endfunction
+
+    autocmd VimEnter * call BufPos_Initialize()
+
+    " Don't update the display while executing macros
+    set lazyredraw
+
+    " When the page starts to scroll, keep the cursor 8 lines from the top and 8
+    " lines from the bottom
+    set scrolloff=4
+    
+    "TODO: some option to easily enable/disable forced wrapping
+    "TODO: macro for re-loading .vimrc
+    "TODO: make a :help ascii to get an ascii table
+    "TODO: tagging
+    "TODO: HTML/CSS help doc?
+    "       - common &quot; things
+    "FIXME: ruby comments get bpushed to the left
+    "TODO: autosave
+
+    "TODO: PHP syntax checking (make), and jump to first error
+    set spell
