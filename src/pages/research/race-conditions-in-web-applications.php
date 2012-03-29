@@ -16,7 +16,7 @@
 
 <p>Consider the following PHP code for withdrawing money or credits from some kind of online account. Suppose getBalance() and setBalance() are functions that load/store an account balance from a MySQL database.</p>
 
-<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+<div class="code">
 function withdraw($amount)<br />
 {<br />
  &nbsp; &nbsp;$balance = getBalance();<br />
@@ -39,7 +39,7 @@ function withdraw($amount)<br />
 
 <p>To demonstrate the attack, I implemented the withdraw function using a 1-entry MySQL table to hold the balance, and setup a PHP script that accepts a URL of the form <tt>poc.php?wd=10</tt> to withdraw the value specified in the URL (in this case, 10). I then wrote a python script to make 128 simultaneous requests to the URL:</p>
 
-<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+<div class="code">
 import os<br />
 os.fork() #2<br />
 os.fork() #4<br />
@@ -87,7 +87,7 @@ print os.popen(&#039;php -r &#039; + \<br />
 
 <p>As you can see, if this were an actual online financial service (e.g. Paypal), I'd be able to make hundreds of dollars in only a few seconds. Just to be thorough, I can verify that $1280 was actually withdrawn by looking at the output of the Python script:</p>
 
-<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+<div class="code">
 $ grep &quot;You have withdrawn: 10&quot; test2 &nbsp;| wc -l<br />
 128<br />
 </div>
@@ -110,8 +110,7 @@ $ grep &quot;You have withdrawn: 10&quot; test2 &nbsp;| wc -l<br />
 
 <p>Adding a random delay to the withdraw script reduces the effectiveness of the attack, but doesn't prevent it. The following code can be used to add a random delay of up to 10 seconds before processing the withdraw:</p>
 
-
-<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+<div class="code">
 $seconds = rand(1, 10);<br />
 $nanoseconds = rand(100, 1000000000);<br />
 time_nanosleep($seconds, $nanoseconds);<br />
@@ -156,7 +155,7 @@ time_nanosleep($seconds, $nanoseconds);<br />
 
 <p>If PHP is compiled with <tt>--enable-sysvsem</tt> then it will have System V-like semaphore abilities. We can make the withdraw function secure using the <a href="http://ca2.php.net/manual/en/function.sem-get.php">sem_get</a>, <a href="http://ca2.php.net/manual/en/function.sem-acquire.php">sem_acquire</a>, and <a href="http://ca2.php.net/manual/en/function.sem-release.php">sem_release</a> functions:</p>
 
-<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+<div class="code">
 function withdraw($amount)<br />
 {<br />
  &nbsp; $sem = sem_get(1234, 1);<br />
@@ -182,7 +181,7 @@ function withdraw($amount)<br />
 
 <p>You'll probably not want to use '1234' as the semaphore key. It would be better to, for example, use the ID of the user whose balance is being modified. Also, keep in mind that the semaphore functions are not universally supported. The following code can be used to emulate the semaphore functions on systems that do not support them (<a href="http://www.php.net/manual/en/ref.sem.php#105047">source</a>): </p>
 
-<div style="font-family: monospace; background-color: #e8e8e8; border: solid black 1px; padding: 10px;">
+<div class="code">
 &lt;?php<br />
 if ( !function_exists(&#039;sem_get&#039;) ) {<br />
  &nbsp; &nbsp;function sem_get($key) { return fopen(__FILE__.&#039;.sem.&#039;.$key, &#039;w+&#039;); }<br />
