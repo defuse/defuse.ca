@@ -282,7 +282,7 @@ class URLParse
                     ),
             "bitcoin-pool-ddos" => array(
                     P_FILE => "research/bitcoin-pool-ddos.html",
-                    P_TITL => "BitCoin Centralization - DDoS Attacks on Pools &amp; Mt. Gox Hacked - Defuse Cyber-Security",
+                    P_TITL => "BitCoin Centralization - DDoS Attacks on Pools & Mt. Gox Hacked - Defuse Cyber-Security",
                     P_METD => "Centralization is harmful to the BitCoin network and community.",
                     P_METK => "bitcoin, ddos, denial of service, pool, mining, mtgox, centralization, hacked",
                     ),
@@ -343,7 +343,7 @@ class URLParse
                     ),
             "passgen" => array(
                     P_FILE => "software/passgen.html",
-                    P_TITL => "Secure Windows &amp; Linux Password Generator - Defuse Cyber-Security",
+                    P_TITL => "Secure Windows & Linux Password Generator - Defuse Cyber-Security",
                     P_METD => "A secure random password generator for Windows,  Linux and Macintosh. Generates ASCII and HEX.",
                     P_METK => "password generator, secure, encryption, windows, linux, macintosh",
                     ),
