@@ -1,7 +1,68 @@
 <?php
-//TODO:  should there be a "dynamic" per-page setting so it is only include() if true? otw read?
-//TODO: serialize cacheing? benchmark it.
-//TODO: a way for subdomain to re-use this code? ($dirmod)
+/*==============================================================================
+
+        Defuse Cyber-Security's Secure & Lightweight CMS in PHP for Linux.
+
+                      PUBLIC DOMAIN CONTRIBUTION NOTICE                             
+   This work has been explicitly placed into the Public Domain for the
+    benefit of anyone who may find it useful for any purpose whatsoever.
+    
+==============================================================================*/
+
+/*
+ * The purpose of this class is to process the current request URL to 
+ * determine which page is to be displayed to the user, or to which URL
+ * the user should be redirected. Once the user has been redirected to
+ * the correct URL, and the desired page is determined, the page contents
+ * can be loaded from a file into a dynamically generated web page.
+ *
+ * The URL parsing is split into four processes:
+ * 1. First, the hostname (domain name) the request was made to is verified 
+ *    against a list of "accepted hosts." If the hostname doesn't match any of
+ *    these accepted hosts, the user is redirected to the same URL on the
+ *    "master host." The accepted hosts and master host variables can be set
+ *     by modifying the $ACCEPTED_HOSTS and $MASTER_HOST variables respectively.
+ * 2. Second, an HTTPS connection is enforced if $FORCE_HTTPS is set to true.
+ *    If $FORCE_HTTPS === true and the current connection is not secure, the
+ *    user is redirected to a secure (https) URL.
+ * 3. The desired page is determined from the URL (see below). If this page
+ *    is really an alias for another page, the user is redirected to the proper
+ *    page.
+ * 4. If the user did not request the page using the cannonical filename,
+ *    they are redirected to the cannonical URL for the page (see below).
+ *
+ * How the desired page is determined from the URL:
+ *
+ * Every page has a name, and there are two valid URLs for each page name.
+ * For a page named "foobar", the following are valid URLs for the page:
+ *      1. http://example.com/foobar
+ *      2. http://example.com/foobar.htm
+ * (2) is the cannonical URL for the page. So if the user were to type (1) into
+ * their browser, they would be redirected to (2). The URL without the .htm
+ * extension is recognized as a convienience so the URL can be spoken without
+ * explicitly pronouncing the "dot h-t-m."
+ *
+ * Names can also contain forward slashes, allowing virtual directories to be
+ * created. For example, the page name "foo/bar" is valid, with the following
+ * URLs:
+ *      1. http://example.com/foo/bar
+ *      2. http://example.com/foo/bar.htm
+ * With (2) being the cannonical form.
+ * There is a special case of these names where no ".htm" extension is allowed.
+ * For example, the name "" (meaning the homepage) is accessible though:
+ *          http://example.com/
+ * but NOT through:
+ *          http://example.com/.htm
+ * The same applies to names ending in "/", e.g. "foo/" is accessible through:
+ *          http://example.com/foo/
+ * but NOT through:
+ *          http://example.com/foo/.htm
+ * Note that a page named "foo/" and "foo" can exist simultaneously, but since
+ * it is common to ommit the trailing "/" when typing the URL, this practice
+ * is strongly discouraged. If the name "foo/" exists and the user omits the 
+ * trailing "/", they will be redirected to the "foo/" URL. But if "foo/" and
+ * "foo" both exist, they will be redirected to "foo.htm".
+ */
 
 // Keys used for definining page data arrays
 define('P_FILE', 0); // File content (suffix to $ROOT_FOLDER)
@@ -477,7 +538,7 @@ class URLParse
         {
             $page_array = self::$PAGE_INFO[$page_info_key];
             self::checkRedirectRequest($page_array);
-            self::ensureHTMExtension($page_array);
+            self::ensureHTMOrSlashExtension($page_array, $page_info_key);
             self::$to_show = $page_array;
             return $page_info_key;
         }
@@ -561,7 +622,7 @@ class URLParse
             else
                 $protocl = "http://";
 
-            // TODO: Anticipate the need for .htm extension here
+            // TODO: Anticipate the need for .htm and "/" extension here
 
             // Redirect to the master host
             self::permRedirect($protocol . self::$MASTER_HOST . "/" . 
@@ -588,11 +649,13 @@ class URLParse
     private static function getPageArrayKey()
     {
         $page_name = strtolower(self::getUrlFile());
+        $htm_removed = false;
 
         // Remove the .htm extension if present
         if(strpos($page_name, ".htm") === strlen($page_name) - 4)
         {
             $page_name = substr($page_name, 0, strlen($page_name) - 4);
+            $htm_removed = true;
 
             // If the page name ends in a "/", it is not valid, e.g:
             // http://example.com/.htm
@@ -605,6 +668,10 @@ class URLParse
         if(array_key_exists($page_name, self::$PAGE_INFO))
         {
             return $page_name;
+        }
+        elseif(array_key_exists($page_name . "/", self::$PAGE_INFO) && !$htm_removed)
+        {
+            return $page_name . "/";
         }
         else
         {
@@ -632,15 +699,26 @@ class URLParse
         }
     }
 
-    // Ensures that the current URL ends in .htm, and redirects if not.
-    // Urls ending in / are not redirected.
+    // Ensures that the current URL ends in .htm, if it is the URL of a normal
+    // page, or ends in "/" if it is the URL of a virtual directory root.
     // http://example.com/?bar => http://example.com/?bar
     // http://example.com/foo/bar?baz => http://example.com/foo/bar.htm?baz
-    private static function ensureHTMExtension($page_array)
+    // http://example.com/hello => http://example.com/hello/ (if $proper_name is "hello/")
+    private static function ensureHTMOrSlashExtension($page_array, $proper_name)
     {
         $file = self::getUrlFile();
-        if(!empty($file) && $file[strlen($file) - 1] != "/"  // Not a directory..
-            && strpos($file, ".htm") != strlen($file) - 4) // and doesn't end in .htm
+
+        // If the page is a directory (other than the root)...
+        if(!empty($proper_name) && $proper_name[strlen($proper_name) - 1] == "/") 
+        {
+            if($file[strlen($file) - 1] != "/") // ... make sure it ends in "/"
+            {
+                // Redirect to the / version, preserving the parameters
+                self::permRedirect(self::getUrlFront() . $file . "/" . self::getUrlParams()); 
+            }
+        }
+        // Otherwise, if it's a normal page name, it should end in .htm
+        elseif(!empty($file) && strpos($file, ".htm") != strlen($file) - 4)
         {
             // Redirect to the .htm version, preserving the parameters
             self::permRedirect(self::getUrlFront() . $file . ".htm" . self::getUrlParams()); 
