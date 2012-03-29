@@ -104,7 +104,7 @@ class URLParse
                 ),
             "honestyware" => array(
                 P_FILE => "honestyware.php",
-                P_TITL => "Honestyware&trade; - The right way to sell software.",
+                P_TITL => "Honestyware - The right way to sell software.",
                 P_METK => "honestyware, free software, trust user",
                 P_METD => "Honestyware is a revolutionary way to sell software that embraces piracy."
                 ),
