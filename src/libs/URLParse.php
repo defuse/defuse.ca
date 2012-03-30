@@ -102,6 +102,11 @@ class URLParse
                 P_FILE => "about.html",
                 P_METD => "About Defuse Cyber-Security."
                 ),
+            "library" => array(
+                P_FILE => "library.php",
+                P_METD => "The books I have read and am reading.",
+                P_METK => "library, book collection, book review, security books",
+                ),
             "honestyware" => array(
                 P_FILE => "honestyware.php",
                 P_TITL => "Honestyware - The right way to sell software.",
