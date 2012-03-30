@@ -625,7 +625,7 @@ class URLParse
             if(self::$FORCE_HTTPS || (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off'))
                 $protocol = "https://";
             else
-                $protocl = "http://";
+                $protocol = "http://";
 
             // TODO: Anticipate the need for .htm and "/" extension here
 
