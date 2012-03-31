@@ -74,7 +74,7 @@ define('P_RDIR', 4); // Redirect URL (has precidence)
 class URLParse
 {
     private static $ROOT_FOLDER = "pages/";
-    private static $MASTER_HOST = "example.com";
+    private static $MASTER_HOST = "helloworld.defuse.ca";
     private static $ACCEPTED_HOSTS = array(
                                             "localhost",
                                             "helloworld.localhost",
