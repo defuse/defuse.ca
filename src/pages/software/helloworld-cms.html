@@ -1,21 +1,181 @@
 <h1>HelloWorld! - A Light &amp; Secure &quot;CMS&quot; for PHP</h1>
-<div style="border: dashed 1px black; padding: 10px;">
 
-<center><b>UPDATE:</b></center>
-I have just finished writing a much faster and more robust URL parser, which I will be adding to
-the HelloWorld! CMS shortly. Stay tuned for updates!
+<p>This is the &quot;CMS&quot; we use to give each page on this website the same header and navbar. &quot;CMS&quot; is in quotes because it technically isn't a Content Management System, it's just an easy and secure way to use the same HTML/CSS layout on many pages without having to duplicate the layout code for every page. It's not at all as feature rich as a true CMS like WordPress or Drupal, but it's certainly more secure.
+</p>
+
+<p>HelloWorld! does not include a WYSIWYG editor, so to create and edit pages, you will need to know a bit of HTML (and maybe some CSS). If you are unfamiliar with HTML, it is very easy to learn. A web search for &quot;HTML Tutorial&quot; should turn up some good results.</p>
+
+<p>I have seen too many websites vulnerable to <a href="https://en.wikipedia.org/wiki/Remote_file_inclusion">Remote File Inclusion</a> exploits because they attempted to make something like HelloWorld! without thinking about security. HelloWorld! was designed with security as the top priority, and has been put into the public domain to help solve this problem.
+</p>
+
+<h3>Features</h3>
+<ul>
+	<li>Makes it easy to create multiple pages with the same layout/theme.</li>
+    <li>Each page can be given a different title, META description, and META keywords tags.</li>
+    <li>Optionally redirect all insecure connections to secure (HTTPS) ones.</li>
+	<li>Doesn't require database software.</li>
+	<li>Thoroughly audited for security vulnerabilities.</li>
+	<li>Free (public domain).</li>
+    <li><a href="http://helloworld.defuse.ca/">Try it out</a>.</li>
+</ul>
+<h3>Download</h3>
+<p><strong><a href="/source/helloworld-2.0.zip">Download HelloWorld! v2.0 (8KB)</a></strong></p>
+
+<h2>License</h2>
+
+TODO
+
+<h2>Using HelloWorld!</h2>
+
+<h3>System Requirements</h3>
+<ul>
+    <li>Apache web server with mod_php5 and <i>.htaccess</i> files enabled.</li>
+    <li>PHP 5.</li>
+</ul>
+
+<h3>Limitations</h3>
+
+<p>The current version of HelloWorld! must exist in the root directory of the website. For example, it is <em>not</em> possible to put HelloWorld! in a sub-folder such as <i>http://www.example.com/some/folder/</i>. HelloWorld! can, however, be put in a subdomain, e.g. <i>http://something.example.com/</i>.
+The ability to run from a sub-folder will be added in a future version. 
+</p>
+
+<h3>Setup</h3>
+
+<ol>
+    <li><strong>Upload</strong>: 
+        Download HelloWorld! using the link above, extract the archive, and upload it to the root directory of your domain. 
+        Make sure you upload all three <i>.htaccess</i> files (<i>/.htaccess</i>, <i>/pages/.htaccess</i>, <i>/libs/.htaccess</i>). 
+        The leading period means &quot;hidden file&quot; in unix-like operating systems, so they are easy to miss.
+    </li>
+    <li><strong>Test</strong>:
+        Visit your domain to make sure HelloWorld! is working properly.
+        You should see something like <a href="http://helloworld.defuse.ca/">this</a>.
+        Click the navbar links to make sure everything works.
+    </li>
+    <li><strong>Change $MASTER_HOST and $ACCEPTED_HOSTS</strong>: 
+        These variables are located in <i>libs/URLParse.php</i>. $MASTER_HOST specifies the domain name of your website. If a request is made to HelloWorld! but with a URL containing a different hostname, the user will be redirected to the same URL, but with $MASTER_DOMAIN as the hostname. $ACCEPTED_DOMAINS is an array of hostnames that should not be redirected to $MASTER_HOST (useful if you have a development server that is accessed using a different hostname).
+    </li>
+    <li><strong>Change default title and META tags</strong>:
+        In <i>libs/URLParse.php</i>, find $DEFAULT_TITLE, $DEFAULT_META_DESC, and $DEFAULT_META_KEYWORDS, and change them to something suitable to your website.
+    </li>
+    <li><strong>Change $FORCE_HTTPS</strong>: 
+        If your website supports SSL/TLS and you want insecure connections to automatically redirect to secure connections, set the $FORCE_HTTPS variable in <i>libs/URLParse.php</i> to <i>true</i>.
+    </li>
+</ol>
+
+<p>If you have any difficulties getting HelloWorld! set up, <a href="/contact.htm">contact me</a>, and I'll be glad to help.</p>
+
+
+<h3>Adding Pages</h3>
+
+<p>To add a page, you need to do two things:</p>
+
+<ol>
+    <li>Create a file containing the page contents.</li>
+    <li>Add the page to the page information array.</li>
+</ol>
+
+<p>All page content files go inside the <i>/pages/</i> folder. 
+There is no correlation between the URL to access the page and the location of the page content file in <i>/pages</i>.
+You can organize the files in <i>/pages</i> any way you like. The URL is set by the page information array.
+</p>
+
+<p>For example, if we want to add a contact information page, we first create the file <i>/pages/contact.html</i>:</p>
+
+<div class="code">
+&lt;h2&gt;Contact Information&lt;/h2&gt;<br />
+<br />
+&lt;p&gt;Phone number: 555-1234&lt;/p&gt;
 </div>
 
-<p>This is the &quot;CMS&quot; we use to give each page on this website the same header and navbar. It was designed to be as simple as possible. Through this simplicity, we obtain a much higher level of security than that of a complex and feature packed CMS like WordPress, Drupal, or Joomla. If you just need a simple website and you're familiar with HTML and CSS, HelloWorld! will do the job.</p>
-<h2>Features</h2>
-<ul>
-	<li>Doesn't require database software.</li>
-	<li>Very simple &amp; secure.</li>
-	<li>Highly customizable.</li>
-	<li>Free (open source).</li>
-	<li>Easily create many pages with the same layout.</li>
-	<li>Includes the script-free CSS menu system created by <a href="http://grc.com/">Gibson Research Corporation</a>.</li>
-	<li>To use it, all you'll need to know is HTML, CSS, and a tiny bit of PHP.</li>
-</ul>
-<h2>Download</h2>
-<p><strong><a href="/source/helloworldv1.1.tar.gz">Download HelloWorld! PHP v1.1 (8KB)</a></strong></p>
+<p>Then, to make this page accessible from the web, we must add it to the page information array. To edit this, open <i>/libs/URLParse.php</i>.
+Search for &quot;$PAGE_INFO&quot;, and you should find something like this:
+</p>
+
+<div class="code">
+&nbsp;&nbsp; &nbsp;private static $PAGE_INFO = array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;&quot; =&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_FILE =&gt; &quot;home.html&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// Handles /index and /index.htm<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;index&quot; =&gt; &nbsp; &nbsp; &nbsp;array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_RDIR =&gt; &quot;&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;index.html&quot; =&gt; &nbsp;array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_RDIR =&gt; &quot;&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;index.php&quot; =&gt; &nbsp;array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_RDIR =&gt; &quot;&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;about&quot; =&gt; &nbsp; &nbsp; &nbsp;array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_FILE =&gt; &quot;about.html&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_TITL =&gt; &quot;About Page&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_METD =&gt; &quot;About HelloWorld CMS.&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_METK =&gt; &quot;about&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);<br />
+</div>
+
+<p>Add another element to the array for the contact page as the following code demonstrates:</p>
+
+
+<div class="code">
+&nbsp;&nbsp; &nbsp;private static $PAGE_INFO = array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;&quot; =&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_FILE =&gt; &quot;home.html&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// Handles /index and /index.htm<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;index&quot; =&gt; &nbsp; &nbsp; &nbsp;array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_RDIR =&gt; &quot;&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;index.html&quot; =&gt; &nbsp;array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_RDIR =&gt; &quot;&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;index.php&quot; =&gt; &nbsp;array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_RDIR =&gt; &quot;&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;about&quot; =&gt; array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_FILE =&gt; &quot;about.html&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_TITL =&gt; &quot;About Page&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_METD =&gt; &quot;About HelloWorld CMS.&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_METK =&gt; &quot;about&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+<div class="codehl">
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;contact&quot; =&gt; array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_FILE =&gt; &quot;contact.html&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_TITL =&gt; &quot;Contact Page&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_METD =&gt; &quot;Contact Information&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P_METK =&gt; &quot;contact&quot;,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;),<br />
+</div>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);
+</div>
+
+<p>You're probably wondering the strings are for. 
+The &quot;contact&quot; string in the first highlighted line specifies the URL of the page without the .htm extension. 
+In this case, it is &quot;contact&quot; so the page URL will be <i>http://example.com/contact.htm</i>. 
+The P_FILE string is the path to the file containing the page body. 
+It is relative to the <i>/pages</i> directory. 
+In this case, the P_FILE string is referring to the <i>/pages/contact.htm</i> file we made earlier.
+The P_TITL string is the title of the page (usually displayed in the web browser's title bar).
+The P_METD string specifies what to put in the <a href="http://searchenginewatch.com/article/2067564/How-To-Use-HTML-Meta-Tags">META description tag</a>. 
+P_METK specifies what to put in the META keywords tag.
+</p>
+
+<p>After you have added the page content file and added the page to the page information array, you can edit <i>index.php</i> to add the URL to your navbar (if you have one).</p>
+
+
+<h3>Removing Pages</h3>
+
+<p>To remove a page, delete its file in <i>/pages</i> and remove its entry from the page information array in <i>libs/URLParse.php</i></p>
+
+<h3>Modifying Pages</h3>
+
+<p>To modify a page, modify its file in <i>/pages</i>. That's it!.
+</p>
+
+
+<h3>Editing the Layout/Theme</h3>
+<p>
+All requests are processed by <i>index.php</i>, and the page body is included into it. So to edit the website layout/theme, edit <i>index.php</i> accordingly. Just be sure that the method call <i>URLParse::ProcessURL();</i> comes before any HTML code. The method call <i>URLParse::IncludePageContents();</i> is what includes the page body.
+</p>

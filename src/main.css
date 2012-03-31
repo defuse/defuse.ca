@@ -272,6 +272,10 @@ ul {
     font-size: 8pt;
 }
 
+.codehl {
+    font-weight: bold;
+}
+
 .badcode {
     background-image: url('/images/grid-red.gif') !important;
 }
