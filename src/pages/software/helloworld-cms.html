@@ -1,9 +1,9 @@
 <h1>HelloWorld! - A Light &amp; Secure &quot;CMS&quot; for PHP</h1>
 
-<p>This is the &quot;CMS&quot; we use to give each page on this website the same header and navbar. &quot;CMS&quot; is in quotes because it technically isn't a Content Management System, it's just an easy and secure way to use the same HTML/CSS layout on many pages without having to duplicate the layout code for every page. It's not at all as feature rich as a true CMS like WordPress or Drupal, but it's certainly more secure.
+<p>This is the &quot;CMS&quot; defuse.ca uses to give each page on the website the same layout without having to duplicate the layout code. &quot;CMS&quot; is in quotes because it technically isn't a Content Management System, it's just an easy and secure way to use the same HTML/CSS layout on many pages without having to duplicate the layout code for every page. It's not at all as feature rich as a true CMS like WordPress or Drupal, but it's certainly more secure.
 </p>
 
-<p>HelloWorld! does not include a WYSIWYG editor, so to create and edit pages, you will need to know a bit of HTML (and maybe some CSS). If you are unfamiliar with HTML, it is very easy to learn. A web search for &quot;HTML Tutorial&quot; should turn up some good results.</p>
+<p>HelloWorld! does not include a WYSIWYG editor, so to create and edit pages, you will need to know a bit of HTML (and maybe some CSS). If you are unfamiliar with HTML, it is very easy to learn. A web search for &quot;HTML tutorial&quot; should turn up some good results. See the tutorial below for instructions on adding and modifying pages.</p>
 
 <p>I have seen too many websites vulnerable to <a href="https://en.wikipedia.org/wiki/Remote_file_inclusion">Remote File Inclusion</a> exploits because they attempted to make something like HelloWorld! without thinking about security. HelloWorld! was designed with security as the top priority, and has been put into the public domain to help solve this problem.
 </p>
@@ -21,8 +21,6 @@
 <h3>Download</h3>
 <p><strong><a href="/source/helloworld-2.0.zip">Download HelloWorld! v2.0 (8KB)</a></strong></p>
 
-<h2>Using HelloWorld!</h2>
-
 <h3>System Requirements</h3>
 <ul>
     <li>Apache web server with mod_php5 and <i>.htaccess</i> files enabled.</li>
@@ -35,26 +33,29 @@
 The ability to run from a sub-folder will be added in a future version. 
 </p>
 
+<h2>Using HelloWorld!</h2>
+
+
 <h3>Setup</h3>
 
 <ol>
-    <li><strong>Upload</strong>: 
+    <li style="padding: 10px;"><strong>Upload</strong>: 
         Download HelloWorld! using the link above, extract the archive, and upload it to the root directory of your domain. 
         Make sure you upload all three <i>.htaccess</i> files (<i>/.htaccess</i>, <i>/pages/.htaccess</i>, <i>/libs/.htaccess</i>). 
         The leading period means &quot;hidden file&quot; in unix-like operating systems, so they are easy to miss.
     </li>
-    <li><strong>Test</strong>:
+    <li style="padding: 10px;"><strong>Test</strong>:
         Visit your domain to make sure HelloWorld! is working properly.
         You should see something like <a href="http://helloworld.defuse.ca/">this</a>.
         Click the navbar links to make sure everything works.
     </li>
-    <li><strong>Change $MASTER_HOST and $ACCEPTED_HOSTS</strong>: 
+    <li style="padding: 10px;"><strong>Change $MASTER_HOST and $ACCEPTED_HOSTS</strong>: 
         These variables are located in <i>libs/URLParse.php</i>. $MASTER_HOST specifies the domain name of your website. If a request is made to HelloWorld! but with a URL containing a different hostname, the user will be redirected to the same URL, but with $MASTER_DOMAIN as the hostname. $ACCEPTED_DOMAINS is an array of hostnames that should not be redirected to $MASTER_HOST (useful if you have a development server that is accessed using a different hostname).
     </li>
-    <li><strong>Change default title and META tags</strong>:
+    <li style="padding: 10px;"><strong>Change default title and <a href="http://searchenginewatch.com/article/2067564/How-To-Use-HTML-Meta-Tags">META</a> tags</strong>:
         In <i>libs/URLParse.php</i>, find $DEFAULT_TITLE, $DEFAULT_META_DESC, and $DEFAULT_META_KEYWORDS, and change them to something suitable to your website.
     </li>
-    <li><strong>Change $FORCE_HTTPS</strong>: 
+    <li style="padding: 10px;"><strong>Change $FORCE_HTTPS</strong>: 
         If your website supports SSL/TLS and you want insecure connections to automatically redirect to secure connections, set the $FORCE_HTTPS variable in <i>libs/URLParse.php</i> to <i>true</i>.
     </li>
 </ol>
@@ -155,7 +156,7 @@ It is relative to the <i>/pages</i> directory.
 In this case, the P_FILE string is referring to the <i>/pages/contact.htm</i> file we made earlier.
 The P_TITL string is the title of the page (usually displayed in the web browser's title bar).
 The P_METD string specifies what to put in the <a href="http://searchenginewatch.com/article/2067564/How-To-Use-HTML-Meta-Tags">META description tag</a>. 
-P_METK specifies what to put in the META keywords tag.
+P_METK specifies what to put in the META keywords tag. When any of P_TITL, P_METD, or P_METK are not specified, the default value is used.
 </p>
 
 <p>After you have added the page content file and added the page to the page information array, you can edit <i>index.php</i> to add the URL to your navbar (if you have one).</p>
