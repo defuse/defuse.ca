@@ -140,7 +140,7 @@ class URLParse
                     P_METD => "C# and C++ implementation of the BLOWFISH block cipher.",
                     ),
             "php-hash-cracker" => array(
-                    P_FILE => "projects/php-hash-cracker.php",
+                    P_FILE => "software/php-hash-cracker.php",
                     P_TITL => "Salted Hash Cracking PHP Script - Defuse Cyber-Security",
                     P_METD => "Dictionary hash cracking PHP scripts (supports LOTS of hash types!!)",
                     P_METK => "hash cracking, dictionary attack, php hash cracking script",
