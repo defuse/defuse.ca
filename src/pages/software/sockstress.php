@@ -37,7 +37,7 @@
 <h2>Download Sockstress</h2>
 
 <p>
-    Download C Source: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a></strong>
+    Download Public Domain C Source: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a></strong>
 </p>
 
 <p>Note: This is not <em>the</em> sockstress tool created by Outpost24. This is my own implementation of the concept.</p>
@@ -61,7 +61,7 @@
         The sockstress attack has been known to render operating systems 
         unbootable. NEVER run it on a production system unless all data has been 
         backed up and you are prepared to re-install the OS. Also be aware of 
-        any network devices, that save connection state, between the attack machine and victim machine. They
+        any network devices that save connection state (such as a NAT router) between the attack machine and victim machine. They
         may get overloaded too. You have been warned.
         </p>
     </div>
@@ -79,7 +79,18 @@
 
     <p>To view the sockstress help menu, run:</p>
 <div class="code">
-        # ./sockstress -h
+        # ./sockstress -h<br />
+SOCKSTRESS - CVE-2008-4609 | havoc@defuse.ca<br />
+Usage: ./sockstress &lt;ip&gt;:&lt;port&gt; &lt;interface&gt; [-p payload] [-d delay]<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&lt;ip&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Victim IP address<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&lt;port&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Victim port<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&lt;interface&gt; &nbsp; &nbsp; Local network interface (e.g. eth0)<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-p payload &nbsp; &nbsp; &nbsp;File containing data to send after connecting<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Payload can be at most 1000 bytes<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-d delay &nbsp; &nbsp; &nbsp; &nbsp;Microseconds between SYN packets (default: 10000)<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Help menu<br />
+<br />
+&nbsp;**You must configure your firewall to drop TCP reset packets sent to &lt;ip&gt;**
 </div>
 
     <p>To execute an attack, sockstress requires three parameters:</p>
@@ -115,13 +126,13 @@
 </div>
     
     <p>Example payloads for making DNS requests, requesting web pages, and sending
-    mail with SMTP are provided in the payloads folder (included in the source).</p>
+    mail with SMTP are provided with the source code.</p>
 
     <p>To run a sockstress attack against multiple ports, you must run multiple
     instances of the tool. The attack can be amplified by assigning many IP
     addresses to a single machine and running an instance of the attack from
     each IP. This improves the attack because sockstress will quickly establish
-    a connection from every source port, so more IP addresses will be needed to
+    a connection from every source port, so more IP addresses are needed to
     open more connections (more sets of source ports).</p>
 <h2>How can I prevent sockstress attacks?</h2>
 
@@ -145,10 +156,10 @@
     attack.</p>
 
     <p>You're probably wondering what it looks like to be under attack by sockstress. 
-        The output of <i>netstat -tn</i> will look something like this:</p>
+        The output of <i>netstat -tn</i> will look something like <a href="/downloads/sockstress.txt">this</a>:</p>
 
     <div class="code">
-    ...<br />
+    <a href="/downloads/sockstress.txt" style="text-decoration: none;">...</a><br />
 tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:16022 &nbsp; &nbsp; ESTABLISHED<br />
 tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:26244 &nbsp; &nbsp; ESTABLISHED<br />
 tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:6786 &nbsp; &nbsp; &nbsp;ESTABLISHED<br />
@@ -165,7 +176,7 @@ tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;1 192.168.1.10:80 &nbsp; &nbsp; 
 tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:54779 &nbsp; &nbsp; ESTABLISHED<br />
 tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:59578 &nbsp; &nbsp; ESTABLISHED<br />
 tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:38544 &nbsp; &nbsp; ESTABLISHED<br />
-...
+<a href="/downloads/sockstress.txt" style="text-decoration: none;">...</a>
     </div>
 
 <h2>Is releasing this code ethical?</h2>
