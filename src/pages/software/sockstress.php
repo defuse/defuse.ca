@@ -31,6 +31,7 @@
 </p>
 <p>    
     For more information on sockstress, see <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Sockstress">Sockstress on Wikipedia</a>
+    or listen to the <a href="http://media.grc.com/sn/sn-164.mp3">SecurityNow! Sockstress Episode</a>.
 </p>
 
 <h2>Download Sockstress</h2>
