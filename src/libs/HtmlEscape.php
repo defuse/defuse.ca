@@ -3,11 +3,12 @@ class HtmlEscape
 {
     public static function escapeText($text, $brTags, $tabWidth)
     {
-        // Escape all characters that have a special meaning in HTML
-        $esc = htmlspecialchars($text, ENT_QUOTES);
+        // Replace tabs with spaces -- Must be done before htmlspecialchars 
+        // because the tab width is dependant upon the cursor position.
+        $esc = self::tabsToSpaces($text, $tabWidth);
 
-        // Replace tabs with spaces
-        $esc = str_replace("\t", str_repeat(" ", $tabWidth), $esc);
+        // Escape all characters that have a special meaning in HTML
+        $esc = htmlspecialchars($esc, ENT_QUOTES);
 
         // Replace repeated spaces with &nbsp;
         //      This is tricky. Spaces cannot simply be replaced with &nbsp;
@@ -15,7 +16,7 @@ class HtmlEscape
         //      normal spaces in between pairs of &nbsp; to let the line break.
         //      The space must come before the &nbsp; because we want three
         //      spaces in a row to turn into " &nbsp; " not "&nbsp;  " (which
-        //      will look like two spaces in the browser.
+        //      will look like two spaces in the browser).
         $esc = str_replace("  ", " &nbsp;", $esc);
 
         // HTML ignores leading spaces in elements like <p> and <div> so we 
@@ -39,6 +40,37 @@ class HtmlEscape
         }
 
         return $esc;
+    }
+
+    private static function tabsToSpaces($text, $tabWidth)
+    {
+        $spaces = "";
+        $cursor = 0; 
+        for($i = 0; $i < strlen($text); $i++)
+        {
+            if($text[$i] == "\t")
+            {
+                // Add spaces until the cursor position is divisible by 
+                // $tabWidth, adding at least one space so that if $cursor
+                // is already divisible by $tabWidth, we add $tabWidth spaces.
+                $spaces .= " ";
+                $cursor++;
+                while($cursor % $tabWidth != 0)
+                {
+                    $spaces .= " ";
+                    $cursor++;
+                }
+            }
+            else
+            {
+                $spaces .= $text[$i];
+                $cursor++;
+                // Reset the cursor position to zero on CR or LF
+                if($text[$i] == "\n" || $text[$i] == "\r")
+                    $cursor = 0;
+            }
+        }
+        return $spaces;
     }
 }
 ?>
