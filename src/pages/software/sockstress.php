@@ -27,7 +27,7 @@
     This implementation of sockstress takes the idea a little further by 
     allowing the user to specify a payload, which will be sent along with the
     last packet of the three-way handshake, so in addition to opening a 
-    connection, the attacker can request a webpage, perform a DNS lookup, etc.
+    connection, the attacker can request a webpage, perform a DNS lookup, or anything else that can fit in one packet.
 </p>
 <p>    
     For more information on sockstress, see <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Sockstress">Sockstress on Wikipedia</a>
@@ -176,7 +176,7 @@ tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; 
         <li><a href="http://www.2shared.com/file/L4VC9Wdp/sockstresstar.html">http://www.2shared.com/file/L4VC9Wdp/sockstresstar.html</a></li>
     </ul>
     
-    <p>Sockstress is still somewhat effective, however, any packet hacker could
+    <p>Sockstress is still somewhat effective. However, any packet hacker could
     easily write a sockstress attack tool. For this reason, I feel it is best
     to release my sockstress tool so system administrators can test their
     systems and stronger defences can be developed.</p>
