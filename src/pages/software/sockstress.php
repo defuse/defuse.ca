@@ -37,10 +37,10 @@
 <h2>Download Sockstress</h2>
 
 <p>
-    Download Source: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a></strong>
+    Download C Source: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a></strong>
 </p>
 
-<p>Note: This is not <em>the</em> sockstress tool. This is my own implementation of the concept.</p>
+<p>Note: This is not <em>the</em> sockstress tool created by Outpost24. This is my own implementation of the concept.</p>
 
 <h3>Compiling</h3>
 
