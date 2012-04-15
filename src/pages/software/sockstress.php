@@ -1,0 +1,182 @@
+<h1>Sockstress (C implementation)</h1>
+
+<h2>What is sockstress?</h2>
+
+<p>
+    Sockstress is a Denial of Service attack on TCP services discovered in
+    2008 by Jack C. Louis from <a href="http://www.outpost24.com/">Outpost24</a>. It works by using RAW sockets
+    to establish many TCP connections to a listening service. Because the 
+    connections are established using RAW sockets, connections are established
+    without having to save any per-connection state on the attacker's machine.
+</p>
+<p>    
+    Like SYN flooding, sockstress is an asymmetric resource consumption attack:
+    It requires very little resources (time, memory, and bandwidth) to run a 
+    sockstress attack, but uses a lot of resources on the victim's machine.
+    Because of this asymmetry, a weak attacker (e.g. one bot behind a cable 
+    modem) can bring down a rather large web server.
+</p>
+<p>    
+    Unlike SYN flooding, sockstress actually completes the connections, and 
+    cannot be thwarted using SYN cookies. In the last packet of the three-way 
+    handshake a ZERO window size is advertised -- meaning that the client is 
+    unable to accept data -- forcing the victim to keep the connection alive
+    and periodically probe the client to see if it can accept data yet.
+</p>
+<p>    
+    This implementation of sockstress takes the idea a little further by 
+    allowing the user to specify a payload, which will be sent along with the
+    last packet of the three-way handshake, so in addition to opening a 
+    connection, the attacker can request a webpage, perform a DNS lookup, etc.
+</p>
+<p>    
+    For more information on sockstress, see <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Sockstress">Sockstress on Wikipedia</a>
+</p>
+
+<h2>Download Sockstress</h2>
+
+<p>
+    Download Source: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a></strong>
+</p>
+
+<p>Note: This is not <em>the</em> sockstress tool. This is my own implementation of the concept.</p>
+
+<h3>Compiling</h3>
+
+    <p>The sockstress code has been tested on Debian Linux, using the GCC compiler.</p>
+
+<div class="code">
+    # gcc -Wall -c sockstress.c <br />
+    # gcc -pthread -o sockstress sockstress.o <br />
+</div>
+
+<h2>How do I use sockstress?</h2>
+
+    <div style="background-color: #FF2222; border: solid black 1px; margin: 10px;">
+        <div style="text-align: center; font-weight: bold; border-bottom: solid black 1px;">
+            WARNING:
+        </div>
+        <p style="padding: 10px; margin: 0;">
+        The sockstress attack has been known to render operating systems 
+        unbootable. NEVER run it on a production system unless all data has been 
+        backed up and you are prepared to re-install the OS. Also be aware of 
+        any network devices, that save connection state, between the attack machine and victim machine. They
+        may get overloaded too. You have been warned.
+        </p>
+    </div>
+
+    <p>
+    Sockstress uses RAW sockets, so you must run the tool as root. You must
+    also stop your OS from sending RST packets to the victim in response to
+    unrecognized SYN/ACKs sent during the attack. To do so, set an iptables
+    rule:
+    </p>
+<div class="code">
+        # iptables -A OUTPUT -p TCP --tcp-flags rst rst -d xx.xx.xx.xx -j DROP
+</div>
+    <p>Where xx.xx.xx.xx is the victim's IP address.</p>
+
+    <p>To view the sockstress help menu, run:</p>
+<div class="code">
+        # ./sockstress -h
+</div>
+
+    <p>To execute an attack, sockstress requires three parameters:</p>
+    <ol>
+        <li>Victim IP</li>
+        <li>Victim port</li>
+        <li>Network interface to send packets from (e.g. eth0)</li>
+    </ol>
+
+    <p>For example, to run an attack on port 80 on 127.0.0.1, run:</p>
+<div class="code">
+        # ./sockstress 127.0.0.1:80 eth0
+</div>
+    
+    <p>Sockstress also allows the user to control the delay between sent SYN 
+    packets. This value is specified in microseconds with the -d option.
+    For example, to send a SYN packet every second, run:</p>
+<div class="code">
+        # ./sockstress 127.0.0.1:80 eth0 -d 1000000
+</div>
+
+    <p>You can also have sockstress send some data to the victim after the 
+    connection has been established. Do this by specifying a file containing
+    the data with the -p option. For example, to make HTTP requests:</p>
+<div class="code">
+        # ./sockstress 127.0.0.1:80 eth0 -p payloads/http
+</div>
+    <p>... where payloads/http contains:</p>
+
+<div class="code">
+    GET / HTTP/1.0
+    <br /><br />
+</div>
+    
+    <p>Example payloads for making DNS requests, requesting web pages, and sending
+    mail with SMTP are provided in the payloads folder (included in the source).</p>
+
+    <p>To run a sockstress attack against multiple ports, you must run multiple
+    instances of the tool. The attack can be amplified by assigning many IP
+    addresses to a single machine and running an instance of the attack from
+    each IP. This improves the attack because sockstress will quickly establish
+    a connection from every source port, so more IP addresses will be needed to
+    open more connections (more sets of source ports).</p>
+<h2>How can I prevent sockstress attacks?</h2>
+
+    <p>The only way to completely prevent sockstress attacks is to whitelist
+    access to TCP services. This is not practical in most situations, so the
+    best that can be done is to rate limit connections with iptables.</p>
+
+    <p>To block an IP after it opens more than 10 connections to port 80 within 
+    30 seconds, install the following iptables rules:</p>
+
+    <div class="code">
+    # iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --set <br />
+    # iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --update --seconds 30 --hitcount 10 -j DROP
+    </div>
+
+    <p style="text-align: center;"><i>Source: <a href="http://codingfreak.blogspot.ca/2010/01/iptables-rate-limit-incoming.html">
+                    http://codingfreak.blogspot.ca/2010/01/iptables-rate-limit-incoming.html</a></i></p>
+
+    <p>Note that sockstress attacks are still possible even with these rules in 
+    place. The attacker just needs more IP addresses to mount a successful 
+    attack.</p>
+
+    <p>You're probably wondering what it looks like to be under attack by sockstress. 
+        The output of <i>netstat -tn</i> will look something like this:</p>
+
+    <div class="code">
+    ...<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:16022 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:26244 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:6786 &nbsp; &nbsp; &nbsp;ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:1676 &nbsp; &nbsp; &nbsp;ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:9440 &nbsp; &nbsp; &nbsp;ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:22446 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:48356 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:21740 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:30341 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:62594 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:14492 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:31940 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;1 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:39136 &nbsp; &nbsp; FIN_WAIT1 &nbsp;<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:54779 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:59578 &nbsp; &nbsp; ESTABLISHED<br />
+tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; &nbsp; &nbsp; 192.168.1.102:38544 &nbsp; &nbsp; ESTABLISHED<br />
+...
+    </div>
+
+<h2>Is releasing this code ethical?</h2>
+
+    <p>Sockstress code has existed in the wild since (at least) 2011:</p>
+    <ul>
+        <li><a href="http://h.ackack.net/sockstress.html">http://h.ackack.net/sockstress.html</a></li>
+        <li><a href="http://www.2shared.com/file/L4VC9Wdp/sockstresstar.html">http://www.2shared.com/file/L4VC9Wdp/sockstresstar.html</a></li>
+    </ul>
+    
+    <p>Sockstress is still somewhat effective, however, any packet hacker could
+    easily write a sockstress attack tool. For this reason, I feel it is best
+    to release my sockstress tool so system administrators can test their
+    systems and stronger defences can be developed.</p>
+
