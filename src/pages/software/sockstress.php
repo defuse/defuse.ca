@@ -46,7 +46,7 @@
 
 <h3>Compiling</h3>
 
-    <p>The sockstress code has been tested on Debian Linux, using the GCC compiler.</p>
+    <p>Our sockstress code has been tested on Debian Linux, using the GCC compiler.</p>
 
 <div class="code">
     # gcc -Wall -c sockstress.c <br />
