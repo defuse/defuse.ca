@@ -35,13 +35,13 @@
 <h2>Download Sockstress</h2>
 
 <p>
-    Download defuse.ca's public domain C implementation: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a> </strong> (8 KB)
+    Download our public domain C implementation: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a> </strong> (8 KB)
     <br />
     Download the original Sockstress C source (by Outpost24): <strong><a href="/source/sockstress-outpost24.tar.gz">sockstress-outpost24.tar.gz</a></strong> (232 KB)
 </p>
 
 <p>
-    The rest of this page is about defuse.ca's implementation.
+    The rest of this page is about our implementation.
 </p>
 
 <h3>Compiling</h3>
