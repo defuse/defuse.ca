@@ -189,7 +189,7 @@ tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; 
         <li><a href="http://www.2shared.com/file/L4VC9Wdp/sockstresstar.html">Outpost24's Sockstress Source uploaded to 2shared.com in 2011</a> (mirrored <a href="/source/sockstress-outpost24.tar.gz">here</a> convenience)</li>
     </ul>
     
-    <p>Sockstress is still somewhat effective. However, any packet hacker could
+    <p>Sockstress is still effective. However, any packet hacker could
     easily write a sockstress attack tool. For this reason, I feel it is best
     to release my sockstress tool so system administrators can test their
     systems and stronger defences can be developed.</p>
