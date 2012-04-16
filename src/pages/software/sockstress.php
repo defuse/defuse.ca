@@ -2,9 +2,9 @@
 
 <p>
     Sockstress is a Denial of Service attack on TCP services discovered in
-    2008 by Jack C. Louis from <a href="http://www.outpost24.com/">Outpost24</a>. It works by using RAW sockets
+    2008 by Jack C. Louis from <a href="http://www.outpost24.com/">Outpost24</a>. It works by using raw sockets
     to establish many TCP connections to a listening service. Because the 
-    connections are established using RAW sockets, connections are established
+    connections are established using raw sockets, connections are established
     without having to save any per-connection state on the attacker's machine.
 </p>
 <p>    
@@ -69,7 +69,7 @@
     </div>
 
     <p>
-    Sockstress uses RAW sockets, so you must run the tool as root. You must
+    Sockstress uses raw sockets, so you must run the tool as root. You must
     also stop your OS from sending RST packets to the victim in response to
     unrecognized SYN/ACKs sent during the attack. To do so, set an iptables
     rule:
