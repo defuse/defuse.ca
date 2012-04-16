@@ -3,8 +3,7 @@
 <p>
     Sockstress is a Denial of Service attack on TCP services discovered in
     2008 by Jack C. Louis from <a href="http://www.outpost24.com/">Outpost24</a>. It works by using raw sockets
-    to establish many TCP connections to a listening service. Because the 
-    connections are established using raw sockets, connections are established
+    to establish many TCP connections to a listening service. Because raw sockets are used, connections are established
     without having to save any per-connection state on the attacker's machine.
 </p>
 <p>    
@@ -15,8 +14,8 @@
     modem) can bring down a rather large web server.
 </p>
 <p>    
-    Unlike SYN flooding, sockstress actually completes the connections, and 
-    cannot be thwarted using SYN cookies. In the last packet of the three-way 
+    Unlike SYN flooding, sockstress actually completes the TCP 3-way handshake, and 
+    is not thwarted by using SYN cookies. In the last packet of the three-way 
     handshake a ZERO window size is advertised -- meaning that the client is 
     unable to accept data -- forcing the victim to keep the connection alive
     and periodically probe the client to see if it can accept data yet.
@@ -25,7 +24,7 @@
     This implementation of sockstress takes the idea a little further by 
     allowing the user to specify a payload, which will be sent along with the
     last packet of the three-way handshake, so in addition to opening a 
-    connection, the attacker can request a webpage, perform a DNS lookup, or anything else that can fit in one packet.
+    connection, the attacker can request a webpage, perform a DNS lookup, send email to a SMTP server, or anything else that can fit in one packet.
 </p>
 <p>    
     For more information on sockstress, see <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Sockstress">Sockstress on Wikipedia</a>
