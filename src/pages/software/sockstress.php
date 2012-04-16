@@ -1,4 +1,4 @@
-<h1>Sockstress (C Implementation)</h1>
+<h1>Sockstress Tools &amp; Source Code</h1>
 
 <p>
     Sockstress is a Denial of Service attack on TCP services discovered in
