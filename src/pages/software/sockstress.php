@@ -54,16 +54,16 @@
 
 <h2>How do I use sockstress?</h2>
 
-    <div style="background-color: #FF2222; border: solid black 1px; margin: 10px;">
-        <div style="text-align: center; font-weight: bold; border-bottom: solid black 1px;">
+    <div style="background-color: #440000; color: white; border: solid black 3px; margin: 10px;">
+        <div style="text-align: center; font-weight: bold; border-bottom: solid black 3px; padding: 5px;">
             WARNING:
         </div>
         <p style="padding: 10px; margin: 0;">
-        The sockstress attack has been known to render operating systems 
-        unbootable. NEVER run it on a production system unless all data has been 
+        The sockstress attack has been known to render some operating systems 
+        unbootable. NEVER run it on any system unless all data has been 
         backed up and you are prepared to re-install the OS. Also be aware of 
-        any network devices that save connection state (such as a NAT router) between the attack machine and victim machine. They
-        may get overloaded too. You have been warned.
+        any network devices that save connection state (such as NAT routers) between the attack machine and victim machine. They
+        will crash too. 
         </p>
     </div>
 
