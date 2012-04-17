@@ -21,6 +21,7 @@ class SNDB
     private $date;
     private $runtime;
 
+    //TODO: handle number being too big
     function __construct($number)
     {
         $if = fopen(INDEX_FILE, "rb");

@@ -2,24 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <title>Temporary SecurityNow! Gateway</title>
-</head>
 <style type="text/css">
-
 * {
     padding: 0; margin: 0; border: 0;
 }
 
 body {
     background-color: #550000;
-}
-
-#squarediv {
-    width: 500px;
-    margin: 0 auto;
-    background-color: #F1EAD7;
-    margin-top: 20px;
-    padding: 10px;
-    border: solid black 5px;
 }
 
 h1 {
@@ -32,6 +21,33 @@ h2 {
     font-size: 12pt;
     text-align: center;
     padding-bottom: 5px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 12pt;
+    margin-top: 20px;
+}
+
+h4 {
+    font-weight: normal;
+    font-size: 8pt;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 5px;
+    font-size: 8pt;
+}
+
+#squarediv {
+    width: 500px;
+    margin: 0 auto;
+    background-color: #F1EAD7;
+    margin-top: 20px;
+    padding: 10px;
+    border: solid black 5px;
 }
 
 .links {
@@ -63,17 +79,6 @@ h2 {
     width: 100%;
 }
 
-p {
-    margin: 5px;
-    font-size: 8pt;
-}
-
-h3 {
-    text-align: center;
-    font-size: 12pt;
-    margin-top: 20px;
-}
-
 #footer {
     color: #404040;
     margin-top: 20px;
@@ -82,28 +87,26 @@ h3 {
 #footer a {
     color: #202020;
 }
-
-h4 {
-    font-weight: normal;
-    font-size: 8pt;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
 </style>
+</head>
 <body>
 
 <?php
 if(isset($_GET['e']))
 {
     $number = (int)$_GET['e'];
+}
+else
+{
+    $number = 1;
+}
 
-    if($number <= 0)
-        die("don't bother");
+if($number <= 0)
+    $number = 1;
 
-    require_once('sndb/SNDB.php');
+require_once('sndb/SNDB.php');
 
-    $ep = new SNDB($number);
+$ep = new SNDB($number);
 ?>
     <div id="squarediv">
     <h1>SecurityNow! Episode #<?php echo htmlentities($ep->getEpNumber(), ENT_QUOTES); ?>:</h1>
@@ -169,9 +172,6 @@ if(isset($_GET['e']))
 
     <p id="footer">SecurityNow! is a netcast produced by <a href="http://twit.tv/">TWiT</a> and Steve Gibson of <a href="https://www.grc.com/intro.htm">GRC</a>. Find the full list of episodes <a href="https://www.grc.com/securitynow.htm">here</a>. This page is hosted by <a href="https://defuse.ca/">defuse.ca</a> and is not endorsed by, or affiliated with, TWiT or GRC.
     </div>
-<?
-}
-?>
 
 </body>
 </html>
