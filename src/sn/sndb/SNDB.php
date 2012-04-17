@@ -21,13 +21,15 @@ class SNDB
     private $date;
     private $runtime;
 
-    //TODO: handle number being too big
     function __construct($number)
     {
         $if = fopen(INDEX_FILE, "rb");
         $if_offset = ($number - 1) * 4;
-        fseek($if, $if_offset);
+        if(fseek($if, $if_offset) == -1 || feof($if))
+            throw new Exception('Too big.');
         $eb = fread($if, 4);
+        if(empty($eb))
+            throw new Exception('Too big.');
         $df_offset = ord($eb[0]) + (ord($eb[1]) << 8) + (ord($eb[2]) << 16) + (ord($eb[3]) << 24);
         $df = fopen(DATA_FILE, "rb");
         fseek($df, $df_offset);

@@ -2,92 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <title>Temporary SecurityNow! Gateway</title>
-<style type="text/css">
-* {
-    padding: 0; margin: 0; border: 0;
-}
-
-body {
-    background-color: #550000;
-}
-
-h1 {
-    font-size: 16pt;
-    text-align: center;
-    padding-bottom: 5px;
-}
-
-h2 {
-    font-size: 12pt;
-    text-align: center;
-    padding-bottom: 5px;
-}
-
-h3 {
-    text-align: center;
-    font-size: 12pt;
-    margin-top: 20px;
-}
-
-h4 {
-    font-weight: normal;
-    font-size: 8pt;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-p {
-    margin: 5px;
-    font-size: 8pt;
-}
-
-#squarediv {
-    width: 500px;
-    margin: 0 auto;
-    background-color: #F1EAD7;
-    margin-top: 20px;
-    padding: 10px;
-    border: solid black 5px;
-}
-
-.links {
-    font-size: 8pt;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.links td {
-    padding: 20px;
-}
-
-.links td:hover {
-    background-color: #FFFFFF;
-    border: solid black 1px;
-    padding: 19px; /* compensate for border, so the box stays the same size*/
-}
-
-.ln {
-    width: 100%;
-    height: 100%;
-}
-
-.links a {
-    text-decoration: none;
-    color: black;
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
-#footer {
-    color: #404040;
-    margin-top: 20px;
-}
-
-#footer a {
-    color: #202020;
-}
-</style>
+    <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
 
@@ -106,11 +21,17 @@ if($number <= 0)
 
 require_once('sndb/SNDB.php');
 
-$ep = new SNDB($number);
+try {
+    $ep = new SNDB($number);
+}
+catch(Exception $e)
+{
+    $ep = new SNDB(1);
+}
 ?>
     <div id="squarediv">
-    <h1>SecurityNow! Episode #<?php echo htmlentities($ep->getEpNumber(), ENT_QUOTES); ?>:</h1>
-    <h2><?php echo htmlentities($ep->getTitle(), ENT_QUOTES); ?></h2>
+    <h1><a href="https://www.grc.com/securitynow.htm">SecurityNow!</a> Episode #<?php echo htmlentities($ep->getEpNumber(), ENT_QUOTES); ?></h1>
+    <h2><?php echo $ep->getTitle(); ?></h2>
     <h4><strong>Date: </strong><?php echo htmlentities($ep->getDate(), ENT_QUOTES);?> &nbsp;&nbsp;&nbsp;&nbsp; 
             <strong>Running Time: </strong><?php echo htmlentities($ep->getRunTime(), ENT_QUOTES); ?></h4>
 
