@@ -77,7 +77,9 @@ class URLParse
     private static $MASTER_HOST = "defuse.ca";
     private static $ACCEPTED_HOSTS = array(
                                             "localhost",
-                                            "192.168.1.102"
+                                            "192.168.1.102",
+                                            "defuse.h.defuse.ca",
+                                            "defuse",
                                             );
     private static $FORCE_HTTPS = true;
     private static $DEFAULT_TITLE = "Defuse Cyber-Security Research and Development";
