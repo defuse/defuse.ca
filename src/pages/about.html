@@ -44,7 +44,7 @@ if(isset($_POST['submit']))
     $message = $_POST['messagebody'];
     $headers = "From: $name <$email>\n";
     $headers .= "Reply-To: $email\n";
-    mail("firexware@defuse.ca", "DEFUSE.CA FEEDBACK", $message, $headers);
+    mail("havoc@defuse.ca", "DEFUSE.CA FEEDBACK", $message, $headers);
     ?>
         <div style="background-color:#96ff96; padding:10px; border: solid black 1px;">Your feedback has been received. Thank you VERY much.</div>
     <?
