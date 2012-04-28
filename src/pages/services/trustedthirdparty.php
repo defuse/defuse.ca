@@ -281,11 +281,11 @@ if(isset($_POST['create']))
 			</div>
 		<?
 		}
-		elseif(!AllFilesUnder50())
+		elseif(!AllFilesWithinSize())
 		{
 		?>
 			<div style="background-color: #FF9F9F; border: solid 2px black; margin:20px; padding:10px;">
-			<b>Sorry, maximum file size is 50MB.</b>
+			<b>Sorry, maximum file size is 10MB.</b>
 			</div>
 		<?
 		}
@@ -492,11 +492,11 @@ function GetFileFileInfoHTML($postname)
 	echo "Name: $filename <br />Size: $filesize <br />SHA256: $filesha256";
 }
 
-function AllFilesUnder50()
+function AllFilesWithinSize()
 {
-	return (!isset($_FILES["file1"]["tmp_name"]) || filesize($_FILES["file1"]["tmp_name"]) < 1024 * 1024 * 50) && 
-		(!isset($_FILES["file2"]["tmp_name"]) || filesize($_FILES["file2"]["tmp_name"]) < 1024 * 1024 * 50) && 
-		(!isset($_FILES["file3"]["tmp_name"]) || filesize($_FILES["file3"]["tmp_name"]) < 1024 * 1024 * 50);
+	return (!isset($_FILES["file1"]["tmp_name"]) || filesize($_FILES["file1"]["tmp_name"]) < 1024 * 1024 * 10) && 
+		(!isset($_FILES["file2"]["tmp_name"]) || filesize($_FILES["file2"]["tmp_name"]) < 1024 * 1024 * 10) && 
+		(!isset($_FILES["file3"]["tmp_name"]) || filesize($_FILES["file3"]["tmp_name"]) < 1024 * 1024 * 10);
 }
 
 function SelectRandomNumber($randombinary, $low, $high)
@@ -579,15 +579,16 @@ function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
 
 ?>
 <form action="trustedthirdparty.htm#create" method="post" enctype="multipart/form-data">
+<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
 <table>
 <tr><td>Drawing Number:</td><td><input type="text" name="drawingnumber" /></td></tr>
 <tr><td>Passcode:</td><td><input type="text" name="passcode" /></td></tr>
 <tr><td><b>Drawing Info</b></td></tr>
 <tr><td>Name:</td><td><input type="text" name="name" /></td></tr>
 <tr><td>Description:</td><td><textarea cols="50" rows="10" name="description"></textarea></td></tr>
-<tr><td>File 1 (50MB Max):</td><td><input type="file" name="file1" /> Choose <input type="text" size="2" name="randlines1" value="" /> random line(s)*</td></tr>
-<tr><td>File 2 (50MB Max):</td><td><input type="file" name="file2" /> Choose <input type="text" size="2" name="randlines2" value="" /> random line(s)*</td></tr>
-<tr><td>File 3 (50MB Max):</td><td><input type="file" name="file3" /> Choose <input type="text" size="2" name="randlines3" value="" /> random line(s)*</td></tr>
+<tr><td>File 1 (10MB Max):</td><td><input type="file" name="file1"  /> Choose <input type="text" size="2" name="randlines1" value="" /> random line(s)*</td></tr>
+<tr><td>File 2 (10MB Max):</td><td><input type="file" name="file2" /> Choose <input type="text" size="2" name="randlines2" value="" /> random line(s)*</td></tr>
+<tr><td>File 3 (10MB Max):</td><td><input type="file" name="file3" /> Choose <input type="text" size="2" name="randlines3" value="" /> random line(s)*</td></tr>
 <tr><td>&nbsp;</td><td><input type="checkbox" name="chosentwice" value="true" /> Allow lines to be chosen twice</td></tr>
 <tr><td><b>Random Numbers</b></td></tr>
 <tr><td>Number Range:</td><td>From <input type="text" size="9" name="lowval" /> to <input type="text" size="9" name="highval" /> (Inclusive. Range: -1000000000 to +1000000000)</td></tr>
