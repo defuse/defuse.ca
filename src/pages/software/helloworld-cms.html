@@ -1,25 +1,30 @@
-<h1>HelloWorld! - A Light &amp; Secure &quot;CMS&quot; for PHP</h1>
+<h1>HelloWorld! - A Light &amp; Secure CDS for PHP</h1>
 
-<p>This is the &quot;CMS&quot; defuse.ca uses to give each page on the website the same layout without having to duplicate the layout code. &quot;CMS&quot; is in quotes because it technically isn't a Content Management System, it's just an easy and secure way to use the same HTML/CSS layout on many pages without having to duplicate the layout code for every page. It's not at all as feature rich as a true CMS like WordPress or Drupal, but it's certainly more secure.
+<p>This is the Content Display System (CDS) that we use to give each page on this website the same layout without having to duplicate the layout code for every page. 
+It's different than a CMS in that its only purpose is to securely include HTML or PHP files into a singular layout file.
+It doesn't include a <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> editor or anything fancy like that, and it doesn't use a database.
 </p>
 
-<p>HelloWorld! does not include a WYSIWYG editor, so to create and edit pages, you will need to know a bit of HTML (and maybe some CSS). If you are unfamiliar with HTML, it is very easy to learn. A web search for &quot;HTML tutorial&quot; should turn up some good results. See the tutorial below for instructions on adding and modifying pages.</p>
-
-<p>I have seen too many websites vulnerable to <a href="https://en.wikipedia.org/wiki/Remote_file_inclusion">Remote File Inclusion</a> exploits because they attempted to make something like HelloWorld! without thinking about security. HelloWorld! was designed with security as the top priority, and has been put into the public domain to help solve this problem.
+<p>
+    Too many websites are vulnerable to <a href="https://en.wikipedia.org/wiki/Remote_file_inclusion">Remote File Inclusion</a> 
+    because their developers implement something like HelloWorld! without considering security. 
+    HelloWorld! has been released into the public domain to help solve this problem.
+    It was designed with security as the top priority and has been thoroughly tested.
 </p>
 
 <h3>Features</h3>
 <ul>
-	<li>Makes it easy to create multiple pages with the same layout/theme.</li>
-    <li>Each page can be given a different title, META description, and META keywords tags.</li>
-    <li>Optionally redirect all insecure connections to secure (HTTPS) ones.</li>
-	<li>Doesn't require database software.</li>
-	<li>Thoroughly audited for security vulnerabilities.</li>
+	<li>Easily create multiple pages with the same layout/theme.</li>
+    <li>Each page can be given a different title, META description, and META keywords.</li>
+    <li>Automatic redirection to https:// URL (optional).</li>
+	<li>Doesn't use database software.</li>
+	<li>Thoroughly and frequently tested for security vulnerabilities.</li>
 	<li>Free (public domain).</li>
-    <li><a href="http://helloworld.defuse.ca/">Try it out</a>.</li>
 </ul>
+
 <h3>Download</h3>
 <p><strong><a href="/source/helloworld-2.0.zip">Download HelloWorld! v2.0 (8KB)</a></strong></p>
+
 
 <h3>System Requirements</h3>
 <ul>
@@ -35,6 +40,7 @@ The ability to run from a sub-folder will be added in a future version.
 
 <h2>Using HelloWorld!</h2>
 
+<p>HelloWorld! comes with a very basic layout. You can see what it should look like once you get it installed <a href="http://helloworld.defuse.ca/">here</a>.</p>
 
 <h3>Setup</h3>
 
@@ -42,15 +48,17 @@ The ability to run from a sub-folder will be added in a future version.
     <li style="padding: 10px;"><strong>Upload</strong>: 
         Download HelloWorld! using the link above, extract the archive, and upload it to the root directory of your domain. 
         Make sure you upload all three <i>.htaccess</i> files (<i>/.htaccess</i>, <i>/pages/.htaccess</i>, <i>/libs/.htaccess</i>). 
-        The leading period means &quot;hidden file&quot; in unix-like operating systems, so they are easy to miss.
+        The leading period means &quot;hidden file&quot; in unix-like operating systems, so they are easy to miss. 
+        If .htaccess files are turned off, you can use &lt;Directory&gt; entries in the apache master configuration (see the 
+        <a href="https://httpd.apache.org/docs/2.0/mod/core.html#directory">apache documentation</a> for more details).
+    </li>
+    <li style="padding: 10px;"><strong>Change $MASTER_HOST and $ACCEPTED_HOSTS</strong>: 
+        These variables are located in <i>libs/URLParse.php</i>. $MASTER_HOST specifies the domain name of your website. If a request is made to HelloWorld! with a URL containing a different domain name, the user will be redirected to the same URL, but to the $MASTER_DOMAIN domain. $ACCEPTED_DOMAINS is an array of domain names that should not be redirected to $MASTER_HOST (useful if you have a development server and production server with different domain names).
     </li>
     <li style="padding: 10px;"><strong>Test</strong>:
         Visit your domain to make sure HelloWorld! is working properly.
         You should see something like <a href="http://helloworld.defuse.ca/">this</a>.
         Click the navbar links to make sure everything works.
-    </li>
-    <li style="padding: 10px;"><strong>Change $MASTER_HOST and $ACCEPTED_HOSTS</strong>: 
-        These variables are located in <i>libs/URLParse.php</i>. $MASTER_HOST specifies the domain name of your website. If a request is made to HelloWorld! but with a URL containing a different hostname, the user will be redirected to the same URL, but with $MASTER_DOMAIN as the hostname. $ACCEPTED_DOMAINS is an array of hostnames that should not be redirected to $MASTER_HOST (useful if you have a development server that is accessed using a different hostname).
     </li>
     <li style="padding: 10px;"><strong>Change default title and <a href="http://searchenginewatch.com/article/2067564/How-To-Use-HTML-Meta-Tags">META</a> tags</strong>:
         In <i>libs/URLParse.php</i>, find $DEFAULT_TITLE, $DEFAULT_META_DESC, and $DEFAULT_META_KEYWORDS, and change them to something suitable to your website.
