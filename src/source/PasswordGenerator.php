@@ -42,7 +42,7 @@ class PasswordGenerator
         $random = self::getRandomInts($length * 2);
         $mask = self::getMinimalBitMask($charSetLen - 1); 
 
-        $password = array();
+        $password = "";
 
         // To generate the password, we repeatedly try random integers and use the ones within the range
         // 0 to $charSetLen - 1 to select an index into the character set. This is the only known way to
@@ -53,7 +53,7 @@ class PasswordGenerator
         // It is extremely unlikely (about 2^-64) that more than $length*64 random ints are needed.
         $iterLimit = max($length, $length * 64);   // If length is close to PHP_INT_MAX we don't want to overflow.
         $randIdx = 0;
-        while(count($password) < $length)
+        while(strlen($password) < $length)
         {
             if($randIdx >= count($random))
             {
@@ -65,7 +65,7 @@ class PasswordGenerator
             $c = $random[$randIdx++] & $mask;
             // Only use the random number if it is in range, otherwise try another (next iteration).
             if($c < $charSetLen)
-                $password[] = $characterSet[$c];
+                $password .= $characterSet[$c];
 
             // Guarantee termination
             $iterLimit--;
@@ -73,7 +73,7 @@ class PasswordGenerator
                 return false;
         }
 
-        return implode($password);
+        return $password;
     }
 
     // Returns the smallest bit mask of all 1s such that ($toRepresent & mask) = $toRepresent.
