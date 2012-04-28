@@ -273,6 +273,12 @@ class URLParse
                     P_TITL => "Defuse Cyber-Security's Contact Information",
                     P_METD => "Defuse Cyber-Security's contact informaion.",
                     ),
+            "password-reset-key-escrow" => array(
+                    P_FILE => "research/password-reset-key-escrow.php",
+                    P_TITL => "Modernizing Password Reset & Key Escrow",
+                    P_METD => "Why our password reset methods suck and how we can make them better.",
+                    P_METK => "password reset security, key escrow, password recovery",
+                    ),
             "theoretical-attack-on-bitcoin" => array(
                     P_FILE => "research/theoretical-attack-on-bitcoin.html",
                     P_TITL => "Economic DDoS - A Theoretical Attack on Bitcoin - Defuse Cyber-Security",
