@@ -412,6 +412,9 @@ class URLParse
                     P_METD => "Password length and character restriction statistics. Top 100 sites.",
                     P_METK => "password, statistics, restrictions, maximum length, symbols, plain text, hashing, salt",
                     ),
+            "pphos" => array(
+                    P_RDIR => "password-policy-hall-of-shame",
+                    ),
             "password-policy-hall-of-shame" => array(
                     P_FILE => "research/hallofshame.php",
                     P_TITL => "Password Policy Hall of SHAME - Defuse Cyber-Security",
