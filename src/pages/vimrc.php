@@ -7,6 +7,10 @@
     <a href="https://vimcolorschemetest.googlecode.com/svn/colors/dw_cyan.vim">dw_cyan</a>.
 </p>
 
+<p>
+    Download my entire .vim directory <a href="/source/vim.zip">here</a>.
+</p>
+
 <div class="code">
     <?php
         require_once('libs/HtmlEscape.php');
