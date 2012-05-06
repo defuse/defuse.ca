@@ -122,7 +122,6 @@ header('Content-Type: text/html; charset=utf-8');
                 </ul>
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
             </li>
-            <li><a href="http://l3vel-69.net/" style="color: #70c4ff;">&nbsp;L3vel-69 Newsgroups</a></li>
             <li><a href="http://crackstation.net/" style="color: #C00000;">&nbsp;CrackStation.net</a></li>
 
         </ul>
@@ -306,8 +305,7 @@ header('Content-Type: text/html; charset=utf-8');
         Copyright &copy; 2012 <a href="/about.htm">Defuse Cyber Security</a> | 
         <a href="/pastebin.htm">Secure Pastebin</a> | 
         <a href="/passgen.htm">Password Generator</a> |
-        <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a> |
-        <a href="http://l3vel-69.net/" rel="external">&raquo; l3vel-69 newsgroups</a> 
+        <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a>
         </div> <!-- end footer -->
         </div> <!-- footerwrapper -->
         <?
