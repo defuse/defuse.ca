@@ -185,7 +185,7 @@ tcp6 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;0 192.168.1.10:80 &nbsp; &nbsp; 
     <p>Sockstress code has existed in the wild since (at least) 2011:</p>
     <ul>
         <li><a href="http://h.ackack.net/sockstress.html">Sockstress Perl PoC created in 2011</a></li>
-        <li><a href="http://www.2shared.com/file/L4VC9Wdp/sockstresstar.html">Outpost24's Sockstress Source uploaded to 2shared.com in 2011</a> (mirrored <a href="/source/sockstress-outpost24.tar.gz">here</a> convenience)</li>
+        <li><a href="http://www.2shared.com/file/L4VC9Wdp/sockstresstar.html">Outpost24's Sockstress Source uploaded to 2shared.com in 2011</a> (mirrored <a href="/source/sockstress-outpost24.tar.gz">here</a> for convenience)</li>
     </ul>
     
     <p>Sockstress is still effective. However, any packet hacker could
