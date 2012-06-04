@@ -19,7 +19,7 @@ if(isset($_POST['paste']))
 	$alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	$password = format($alphanum,$contents);
 	$password_length = 22;
-	if($_POST['shorturl'] == "yes")
+	if(isset($_POST['shorturl']) && $_POST['shorturl'] == "yes")
 	{
 		$password_length = 8;
 	}
