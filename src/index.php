@@ -122,7 +122,7 @@ header('Content-Type: text/html; charset=utf-8');
                 </ul>
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
             </li>
-            <li><a href="http://crackstation.net/" style="color: #C00000;">&nbsp;CrackStation.net</a></li>
+            <li><a href="http://crackstation.net/">&nbsp;CrackStation.net</a></li>
 
         </ul>
     <!--[if lte IE 6]></td></tr></table></a><![endif]-->
