@@ -27,8 +27,8 @@
  * yourself from being able to recover anyone's IP address without brute forcing
  * the 2^32 possible IP addresses. In the case of IPv6, it becomes 2^128.
  *
- * Contact: firexware@gmail.com
- * WWW:     http://ossbox.com/
+ * Contact: havoc@defuse.ca
+ * WWW:     https://defuse.ca/ 
  *
  * USAGE:
  *        In your script, use reqire_once() to import this script, then call the
@@ -134,7 +134,7 @@ class PHPCount
 		if(mysql_num_rows($q) > 0)
 		{
 			$hitInfo = mysql_fetch_array($q);
-			if($hitInfo['time'] > time() - HIT_OLD_AFTER_SECONDS) //TODO: constant-ize
+			if($hitInfo['time'] > time() - HIT_OLD_AFTER_SECONDS) 
 			{
 				return false;
 			}
@@ -207,4 +207,3 @@ class PHPCount
 		echo mysql_error();
 	}
 }
-?>
