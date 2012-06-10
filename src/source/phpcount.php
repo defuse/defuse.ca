@@ -1,7 +1,7 @@
 <?php
 /*
  * phpcount.php Ver.1.0- Provides a MySQL-based "Anonymous" hit counter.
- * Copyright (C) 2011  FireXware (firexware@gmail.com)
+ * Copyright (C) 2011 Defuse Cyber-Security 
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
