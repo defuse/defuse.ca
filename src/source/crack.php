@@ -144,7 +144,7 @@
         }
         elseif($hash_type == "lm")
         {
-             return LMHash($plaintext);        
+             return LMhash($plaintext);        
         }
         elseif($hash_type == "crypt")
         {
@@ -350,6 +350,19 @@
             else
                 printUsage("Please specify a wordlist.");
 
+            if(isset($opts['o']))
+            {
+                if($args['wordlist'] == "php://stdin")
+                    printUsage("Cannot use -o with standard input.");
+                $args['output_file'] = $opts['o'];
+                if(file_exists($args['output_file']))
+                {
+                    printUsage("Output file exists. Did you mean -f?");
+                }
+            }
+            else
+                $args['output_file'] = null;
+
             if(empty($args['wordlist']))
                 printUsage("Invalid wordlist path.");
 
@@ -377,17 +390,6 @@
                 $args['start_line'] = (int)$opts['l'];
             else
                 $args['start_line'] = 0;
-
-            if(isset($opts['o']))
-            {
-                $args['output_file'] = $opts['o'];
-                if(file_exists($args['output_file']))
-                {
-                    printUsage("Output file exists. Did you mean -f?");
-                }
-            }
-            else
-                $args['output_file'] = null;
         }
 
         if($args['hash_type'] != "crypt")
