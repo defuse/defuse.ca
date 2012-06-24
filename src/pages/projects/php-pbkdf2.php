@@ -60,3 +60,17 @@ were run on an AMD Phenom 9600 2.3GHz CPU.
         echo HtmlEscape::escapeText($code, true, 4);
     ?>
 </div>
+
+<h3>Benchmark Code</h3>
+
+<div class="code">
+&nbsp;&nbsp; &nbsp;for($i = 0; $i &lt; 25; $i++)<br />
+&nbsp;&nbsp; &nbsp;{<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$count = pow(2, $i);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$start = microtime(true);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$hash = pbkdf2(&quot;sha256&quot;, &quot;password&quot;, &quot;salt&quot;, $count, 32);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$time = microtime(true) - $start;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;printf(&quot;%10d iterations: %f seconds\n&quot;, $count, $time);<br />
+&nbsp;&nbsp; &nbsp;}<br />
+
+</div>
