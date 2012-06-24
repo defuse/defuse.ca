@@ -14,7 +14,8 @@ it for any purpose whatsoever. It complies with the <a href="https://www.ietf.or
 <h2>Benchmarks</h2>
 
 <p>
-The following benchmarks demonstrate the running time for various iteration counts. The benchmarks
+The following benchmarks demonstrate the running time for various iteration counts, using the SHA256
+hash function. The benchmarks
 were run on an AMD Phenom 9600 2.3GHz CPU.
 </p>
 
