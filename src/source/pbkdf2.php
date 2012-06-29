@@ -1,51 +1,47 @@
 <?php
+/*
+ * PBKDF2 key derivation function as defined by RSA's PKCS #5: https://www.ietf.org/rfc/rfc2898.txt
+ * $algorithm - The hash algorithm to use. Recommended: SHA256
+ * $password - The password.
+ * $salt - A salt that is unique to the password.
+ * $count - Iteration count. Higher is better, but slower. Recommended: At least 1024.
+ * $key_length - The length of the derived key in bytes.
+ * $raw_output - If true, the key is returned in raw binary format. Hex encoded otherwise.
+ * Returns: A $key_length-byte key derived from the password and salt.
+ *
+ * Test vectors can be found here: https://www.ietf.org/rfc/rfc6070.txt
+ *
+ * This implementation of PBKDF2 was originally created by https://defuse.ca
+ * With improvements by http://www.variations-of-shadow.com
+ */
+function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output = false)
+{
+    $algorithm = strtolower($algorithm);
+    if(!in_array($algorithm, hash_algos(), true))
+        die('PBKDF2 ERROR: Invalid hash algorithm.');
+    if($count <= 0 || $key_length <= 0)
+        die('PBKDF2 ERROR: Invalid parameters.');
 
-    /*
-     * PBKDF2 key derivation function as defined by RSA's PKCS #5: https://www.ietf.org/rfc/rfc2898.txt
-     * $algorithm - The hash algorithm to use. Recommended: SHA256
-     * $password - The password.
-     * $salt - A salt that is unique to the password.
-     * $count - Iteration count. Higher is better, but slower. Recommended: At least 1024.
-     * $key_length - The length of the derived key in BYTES.
-     * $hex - binary or hex output. default: false => binary
-     * Returns: A $key_length-byte key derived from the password and salt.
-     *
-     * Test vectors can be found here: https://www.ietf.org/rfc/rfc6070.txt
-     *
-     * This implementation of PBKDF2 was originally created by https://defuse.ca
-     * With improvements by http://www.variations-of-shadow.com
-     */
-    function pbkdf2($algorithm, $password, $salt, $count, $key_length, $hex = false)
-    {
-        $algorithm = strtolower($algorithm);
-        if(!in_array($algorithm, hash_algos(), true))
-            die('PBKDF2 ERROR: Invalid hash algorithm.');
-        if($count <= 0 || $key_length <= 0)
-            die('PBKDF2 ERROR: Invalid parameters.');
+    // number of blocks = ceil(key length / hash length)
+    $hash_length = strlen(hash($algorithm, "", true));
+    $block_count = 1 + (($key_length - 1) / $hash_length);
 
-        // number of blocks = ceil(key length / hash length)
-        $hash_length = strlen(hash($algorithm, "", true));
-        $block_count = $key_length / $hash_length;
-        if($key_length % $hash_length != 0)
-            $block_count += 1;
-
-        $output = "";
-        for($i = 1; $i <= $block_count; $i++) {
-            //$i encoded as 4 bytes, big endian.
-            $last = $salt . pack("N", $i);
-            // first iteration
-            $last = $xorsum = hash_hmac($algorithm, $last, $password, true);
-            // perform the other $count - 1 iterations
-            for ($j = 1; $j < $count; $j++) {
-                $xorsum ^= ($last = hash_hmac($algorithm, $last, $password, true));
-            }
-            $output .= $xorsum;
+    $output = "";
+    for($i = 1; $i <= $block_count; $i++) {
+        // $i encoded as 4 bytes, big endian.
+        $last = $salt . pack("N", $i);
+        // first iteration
+        $last = $xorsum = hash_hmac($algorithm, $last, $password, true);
+        // perform the other $count - 1 iterations
+        for ($j = 1; $j < $count; $j++) {
+            $xorsum ^= ($last = hash_hmac($algorithm, $last, $password, true));
         }
-
-        if($hex)
-            return bin2hex(substr($output, 0, $key_length));
-        else
-            return substr($output, 0, $key_length);
+        $output .= $xorsum;
     }
 
+    if($raw_output)
+        return substr($output, 0, $key_length);
+    else
+        return bin2hex(substr($output, 0, $key_length));
+}
 ?>

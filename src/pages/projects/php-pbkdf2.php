@@ -3,7 +3,9 @@
 <p>
 PBKDF2 (Password-Based Key Derivation Function) is a <a href="http://en.wikipedia.org/wiki/Key_stretching">key stretching</a> algorithm.
 It can be used to hash passwords in a computationally intensive manner, so that dictionary and
-brute-force attacks are less effective.</p>
+brute-force attacks are less effective. See <a
+href="http://crackstation.net/hashing-security.htm">CrackStation's Hashing Security Article</a> for
+instructions on implementing salted password hashing.</p>
 
 <p>
 The following code is a PBKDF2 implementation in PHP. It is in the public domain, so feel free to use
@@ -64,13 +66,27 @@ were run on an AMD Phenom 9600 2.3GHz CPU.
 <h3>Benchmark Code</h3>
 
 <div class="code">
-&nbsp;&nbsp; &nbsp;for($i = 0; $i &lt; 25; $i++)<br />
-&nbsp;&nbsp; &nbsp;{<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$count = pow(2, $i);<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$start = microtime(true);<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$hash = pbkdf2(&quot;sha256&quot;, &quot;password&quot;, &quot;salt&quot;, $count, 32);<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;$time = microtime(true) - $start;<br />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;printf(&quot;%10d iterations: %f seconds\n&quot;, $count, $time);<br />
-&nbsp;&nbsp; &nbsp;}<br />
+for($i = 0; $i &lt; 25; $i++) {<br />
+ &nbsp; &nbsp;$count = pow(2, $i);<br />
+ &nbsp; &nbsp;$start = microtime(true);<br />
+ &nbsp; &nbsp;$hash = pbkdf2(&quot;sha256&quot;, &quot;password&quot;, &quot;salt&quot;, $count, 32);<br />
+ &nbsp; &nbsp;$time = microtime(true) - $start;<br />
+ &nbsp; &nbsp;printf(&quot;%10d iterations: %f seconds\n&quot;, $count, $time);<br />
+}<br />
 
+</div>
+
+<br />
+<h3>Test Code</h3>
+
+<div style="text-align: center; padding-bottom: 10px;">
+    <a href="/source/pbkdf2-test.php"><strong>Click Here to Download</strong></a>
+</div>
+
+<div class="code">
+    <?php
+        require_once('libs/HtmlEscape.php');
+        $code = file_get_contents("source/pbkdf2-test.php");
+        echo HtmlEscape::escapeText($code, true, 4);
+    ?>
 </div>
