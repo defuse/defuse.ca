@@ -273,6 +273,12 @@ class URLParse
                     P_TITL => "Defuse Cyber-Security's Contact Information",
                     P_METD => "Defuse Cyber-Security's contact informaion.",
                     ),
+            "website-key-stretching-feasibility" => array(
+                    P_FILE => "research/website-key-stretching-feasibility.php",
+                    P_TITL => "Feasibility of Using Key Stretching in Web Applications",
+                    P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
+                    P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
+                    ),
             "password-reset-key-escrow" => array(
                     P_FILE => "research/password-reset-key-escrow.php",
                     P_TITL => "Modernizing Password Reset & Key Escrow",
