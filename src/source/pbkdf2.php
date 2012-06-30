@@ -22,9 +22,8 @@ function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output =
     if($count <= 0 || $key_length <= 0)
         die('PBKDF2 ERROR: Invalid parameters.');
 
-    // number of blocks = ceil(key length / hash length)
     $hash_length = strlen(hash($algorithm, "", true));
-    $block_count = 1 + (($key_length - 1) / $hash_length);
+    $block_count = ceil($key_length / $hash_length);
 
     $output = "";
     for($i = 1; $i <= $block_count; $i++) {
