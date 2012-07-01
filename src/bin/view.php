@@ -140,8 +140,8 @@ function encrypt()
 	var pass2 = document.getElementById("pass2").value;
 	if(pass1 == pass2 && pass1 != "")
 	{
-		var iv = "<?php echo hash("sha256", mcrypt_create_iv(512, MCRYPT_DEV_URANDOM)) ?>";
-		var salt = "<?php echo hash("sha256", mcrypt_create_iv(512, MCRYPT_DEV_URANDOM)) ?>";
+		var iv = "<?php echo bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); ?>";
+		var salt = "<?php echo bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); ?>";
 		var plain = document.getElementById("paste").value;
 		var ct = fxw.encrypt(pass1, salt, iv, plain);
 		document.getElementById("paste").value = ct;
@@ -235,16 +235,12 @@ if($postInfo !== false)
 	</div>
 	<?
 }
-else //numrows = 0, invalid or deleted paste
+else // $postInfo === false, the post does not exist.
 {
 	echo "<div id=\"sorry\">Sorry, the paste you were looking for could not be found.</div>";
 }
 
-//delete all posts older than 10 days
-$tendaysago = time() - (3600 * 24) * 10;
-mysql_query("DELETE FROM pastes WHERE time <= $tendaysago");
-
-//------FUNCTIONS---------------------------------------------------------------
+// ======================== FUNCTIONS ========================
 function PrintPasswordPrompt()
 {
 ?>

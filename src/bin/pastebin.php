@@ -77,8 +77,8 @@ function retrieve_post($urlKey)
 
 function delete_expired_posts()
 {
-    $tendaysago = time() - (3600 * 24) * 10;
-    mysql_query("DELETE FROM pastes WHERE time <= $tendaysago");
+    $oldest = time() - POST_LIFETIME_SECONDS;
+    mysql_query("DELETE FROM pastes WHERE time <= '$oldest'");
 }
 
 function get_database_id($urlKey)
@@ -101,11 +101,6 @@ function SafeDecode($data)
 	return base64_decode($data);
 }
 
-function xsssani($data)
-{
-	return htmlentities($data, ENT_QUOTES);
-}
-
 function smartslashes($data)
 {
 	if(get_magic_quotes_gpc())
@@ -118,6 +113,8 @@ function smartslashes($data)
 	}
 }
 
+// Escapes a string so that it is safe to include into a JavaScript string
+// literal.
 function js_string_escape($data)
 {
     $safe = "";
