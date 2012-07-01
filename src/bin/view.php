@@ -288,6 +288,7 @@ function decrypt(){
 	else
 	{
 		alert("Wrong password.");
+        document.getElementById("password").value = "";
 	}
 }
 </script>
