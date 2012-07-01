@@ -1,10 +1,10 @@
 <?php
-/* 	
-	Encrypted Pastebin by FireXware 
-
-	WWW: https://defuse.ca/
-	Contact: firexware@gmail.com
-*/
+/*
+ * This file is part of Defuse Cyber-Security's Secure Pastebin
+ * Find updates at: https://defuse.ca/pastebin.htm
+ * Developer contact: havoc AT defuse.ca
+ * This code is in the public domain. There is no warranty.
+ */
 
 require_once('pastebin.php');
 
