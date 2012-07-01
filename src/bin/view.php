@@ -6,6 +6,7 @@
 	Contact: firexware@gmail.com
 */
 
+// Never show a post over an insecure connection
 if($_SERVER["HTTPS"] != "on") {
    header("HTTP/1.1 301 Moved Permanently");
    header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
@@ -160,43 +161,29 @@ function encrypt()
 
 <?php
 
-require_once('info.php');
+require_once('pastebin.php');
 
-//get the url-password
+// The urlKey can be a url parameter (backwards compatibility) or part of the URL itself.
 if(isset($_GET['h']))
-{
-	$password = $_GET['h'];
-}
-else //.htaccess
-{
-	$password = substr($_SERVER['REQUEST_URI'], 1);
-}
+	$urlKey = $_GET['h'];
+else
+	$urlKey = substr($_SERVER['REQUEST_URI'], 1);
 
-//regenerate the key and db id
-$key = hash("SHA256", $password . "243f6a8885a308d313198a2e03707344a4093822299f31d0082efa98ec4e6c89452821e638d01377be5466cf34e90c6cc0a", true);
-$hash = hash("SHA256", $password);
-$query = mysql_query("SELECT * FROM pastes WHERE token='$hash'");
+$postInfo = retrieve_post($urlKey);
 
-if(mysql_num_rows($query) > 0)
+if($postInfo !== false)
 {
-	//decrypt the post
-	$query = mysql_fetch_array($query);
-
-    $timeleft = ($query['time'] + 10 * 3600 * 24) - time();
+    // Display remaining lifetime
+    $timeleft = $postInfo['timeleft'];
     $days = (int)($timeleft / (3600 * 24));
     $hours = (int)($timeleft / (3600)) % 24;
     $minutes = (int)($timeleft / 60) % 60;
     echo "<div id=\"timeleft\">This post will be deleted in $days days, $hours hours, and $minutes minutes.</div>";
 
-
-	$data = $query['data'];
-	$data = SafeDecode($query['data']);
-	$data = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $data, MCRYPT_MODE_CBC, md5($key));
-
-	if($query['jscrypt'] == "0") //client-side encryption wasn't used, so we can print it here
+	if($postInfo['jscrypt'] == false) 
 	{
-		$data = xsssani(str_replace("\0","", $data));
-		$split = explode("\n", $data);
+        // If the post wasn't encrypted in JavaScript, we can display it right away
+		$split = explode("\n", $postInfo['text']);
 		$i = 0;
 		echo '<div class="codebox"><ol>';
 		foreach($split as $line)
@@ -208,22 +195,24 @@ if(mysql_num_rows($query) > 0)
 		}
 		echo '</ol></div>';
 	}
-	else //client-side decryption is required
+	else 
 	{
-		PrintPasswordPrompt(); //shows box asking for password
-		//give space for the JS to print the text
-		echo '<div id="tofill" class="codebox"></div>';
+        // The post was encrypted in JavaScript, so we print a password prompt
+		PrintPasswordPrompt(); 
 
-		//output the JS decryption function, with the encrypted data embedded
-		PrintDecryptor(str_replace("\0","", $data));
+        // JS will fill this div with the decrypted text
+		echo '<div id="tofill" class="codebox"></div>';
+        
+        // JS decryption code
+		PrintDecryptor($postInfo['text']);
 	}
 
 	?>
 	<form name="pasteform" id="pasteform" action="https://bin.defuse.ca/add.php" method="post">
 
 	<textarea id="paste" name="paste" spellcheck="false" rows="30" cols="80"><?
-		if($query['jscrypt'] == "0")
-			echo $data;
+        if(!$postInfo['jscrypt'])
+			echo htmlentities($postInfo['text']);
 	?></textarea>
 
 	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
@@ -270,7 +259,7 @@ function PrintDecryptor($data)
 ?>
 <script type="text/javascript">
 function decrypt(){
-	var encrypted = "<? echo $data; ?>";
+	var encrypted = "<? echo js_string_escape($data); ?>";
 	var password = document.getElementById("password").value;
 	if(fxw.validate(password, encrypted))
 	{
