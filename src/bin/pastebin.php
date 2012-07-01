@@ -130,7 +130,7 @@ function js_string_escape($data)
         if(ctype_alnum($data[$i]))
             $safe .= $data[$i];
         else
-            $safe .= sprintf("\\x%02H", ord($data[$i]));
+            $safe .= sprintf("\\x%02X", ord($data[$i]));
     }
     return $safe;
 }
