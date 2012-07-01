@@ -6,12 +6,16 @@
 	Contact: firexware@gmail.com
 */
 
+require_once('pastebin.php');
+
 // Never show a post over an insecure connection
 if($_SERVER["HTTPS"] != "on") {
    header("HTTP/1.1 301 Moved Permanently");
    header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
    die();
 }
+
+delete_expired_posts();
 
 //Disable caching of viewed posts:
 header("Cache-Control: no-cache, must-revalidate"); 
