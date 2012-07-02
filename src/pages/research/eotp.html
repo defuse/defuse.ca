@@ -1,11 +1,15 @@
 <h1>Encrypting One Time Passwords [EOTP]</h1>
 <center><strong>EOTP is a cryptographic One Time Password (OTP) protocol designed to provide a static encryption key across login sessions.</strong></center>
 
-<center><p style="color: red; font-size: 16px; background-color: black; padding: 10px;"><strong>NOTE:</strong> This page is a work in progress.
-<br />
-I'm still working out the exact implementation details and the protocol as described on this page <strong>may not be secure at all</strong>.
-<br />
-<strong>DO NOT implement it... yet.</strong></p></center>
+<div style="color: white; font-size: 16px; background-color: #080078; padding: 10px; margin: 10px; border: solid black 5px;">
+    <center>This protocol is a work in progress.</center>
+    <br />
+    <div style="font-size: 8pt;">
+    In its current form, I feel it is too complex to analyze,too difficult to implement, and .
+    I will improve it when I have time. If you have an urgent need for an EOTP-like protocol, please <a href="/contact.htm" style="color: white;">contact me</a>.
+    </div>
+    <br />
+</div>
 
 <h2>What's wrong with other OTP systems like <a href="https://www.ietf.org/rfc/rfc2289.txt">S/KEY</a>, <a href="https://www.grc.com/ppp.htm">PPP</a>, and OTP-over-SMS?</h2>
 
@@ -13,31 +17,31 @@ I'm still working out the exact implementation details and the protocol as descr
 
 <center><strong>Conventional OTP schemes do not provide a static secret key that can be used for data encryption.</strong></center>
 
-<p>Conventional OTP schemes can be used as a second factor of authentication, but they can't be used to encrypt data. When a user authenticates themselves to a server, the server receives a simple "authentication success" or "authentication failure" response from the OTP system. If the server needs to encrypt data on the user's behalf, it must fall back to generating an encryption key from the user's static password. So if the server gets hacked, a user's data is as secure as their password. The attacker is able to completely bypass the OTP authentication requirement and can run brute force and dictionary attacks on the user's password.</p>
+<p>Conventional OTP schemes can be used as a second factor of authentication, but they can't be used to encrypt data. When a user authenticates themselves to a server, the server receives a simple "authentication success" or "authentication failure" response from the OTP system. If the server needs to encrypt data on the user's behalf, it must fall back to generating an encryption key from the user's static password. So if the server gets hacked, a user's data is as secure as their password. The attacker is able to completely bypass the OTP authentication requirement and can run brute-force and dictionary attacks on the user's password.</p>
 
-<p>EOTP changes the model. When EOTP is implemented, user data is encrypted with the combination of the user's password <strong>and a static key</strong> provided by EOTP.</p>
+<p>EOTP changes the model. When EOTP is implemented, user data is encrypted with the combination of the user's password and a static key provided by EOTP.</p>
 
 <h3>Requirements for EOTP</h3>
 
-<p>As is necessary with any cryptographic protocol, security requirements must be explicit and understood prior to discussing the protocol itself. The following lists desirable properties of EOTP. EOTP must...</p>
+<p>As is necessary with any cryptographic protocol, security requirements must be explicit and understood prior to discussing the protocol itself. EOTP must...</p>
 
-<ul>
+<ol>
     <li>Strongly authenticate the client.</li>
     <li>Be at least as secure as classic password authentication.</li>
     <li>Be immune to passive man in the middle attacks.</li>
-    <li>Not be vulnerable to any sort of OTP-replay attack.</li>
+    <li>Not be vulnerable to replay attacks.</li>
     <li>Provide an encryption key to the server that is static across sessions.</li>
     <li>Be secure even when an attacker has collected a large amount of OTPs.</li>
-    <li>Work indefinitely after a single setup process through a secure channel.</li>
-    <li>Not be vulnerable to a DoS scenario created by an attacker trying to guess OTPs.</li>
-    <li>Be as secure as the combination of the password and OTP. So if the password has a security factor 2<sup>n</sup> and OTP key has a security factor 2<sup>m</sup> then the static key's security factor will be 2<sup>n+m</sup>.</li>
-</ul>
+    <li>Work for a reasonably long time after a single setup process through a secure channel.</li>
+    <li>Not be vulnerable to Denial of Service attacks.</li>
+    <li>Be as secure as the combination of the password and OTP. If the password has a security factor N and OTP key has a security factor M then the static key's security factor will be N * M.</li>
+</ol>
 
 <h2>How does EOTP work?</h2>
 
 <h3>Hash Functions &amp; Notation</h3>
 
-<p>EOTP makes heavy use of <a href="https://secure.wikimedia.org/wikipedia/en/wiki/HMAC">HMAC (Hash Based Message Authentication Code)</a>. Put simply, an HMAC is a <strong>keyed</strong> <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Cryptographic_hash">hash function</a>. EOTP can be implemented using an HMAC constructed from any cryptographic hash function, but <strong>HMAC-SHA512</strong> is recommended.</p>
+<p>EOTP makes heavy use of <a href="https://secure.wikimedia.org/wikipedia/en/wiki/HMAC">HMAC (Hash Based Message Authentication Code)</a>. Put simply, an HMAC is a keyed <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Cryptographic_hash">hash function</a>. EOTP can be implemented using an HMAC constructed from any cryptographic hash function, but <strong>HMAC-SHA512</strong> is recommended.</p>
 
 <p>In the protocol description below, you will see the following notation:</p>
 
@@ -51,48 +55,21 @@ I'm still working out the exact implementation details and the protocol as descr
 
 <h3>The Setup Exchange</h3>
 
-<p>The following one-time setup procedure must be done through a secure channel. This can be something as simple as a user, Alice, using a trusted computer to communicate with a web server named Bob over a TLS connection.</p>
+<p>The following one-time setup procedure must be done through a secure channel. This can be something as simple as a user (Alice) using a trusted computer to communicate with a web server (Bob) over a TLS connection.</p>
 
 <ol>
     <li>Alice authenticates herself to Bob using the existing password-based authentication.</li>
-    <li>Alice uses a TRNG to generate three random numbers R<sub>a</sub>, R<sub>b</sub>, R<sub>x</sub> and sends them to Bob.</li>
-    <li>Bob uses a TRNG to generate three random numbers R<sub>c</sub>, R<sub>d</sub>, R<sub>y</sub> and sends them to Alice.</li>
-    <li>Bob and Alice both compute (and save) sequence key K<sub>s</sub> = H(R<sub>a</sub> || R<sub>c</sub>). Where H is a cryptographic hash function and || denotes concatenation.</li>
+    <li>Alice uses a RNG to generate three random numbers R<sub>a</sub>, R<sub>b</sub>, R<sub>x</sub> and sends them to Bob.</li>
+    <li>Bob uses a RNG to generate three random numbers R<sub>c</sub>, R<sub>d</sub>, R<sub>y</sub> and sends them to Alice.</li>
+    <li>Bob and Alice both compute (and save) sequence key K<sub>s</sub> = H(R<sub>a</sub> || R<sub>c</sub>).</li>
     <li>Bob and Alice both compute static key K<sub>t</sub> = H(R<sub>b</sub> || R<sub>d</sub>).</li>
     <li>Bob and Alice both compute (and save) salt S = H(R<sub>x</sub> || R<sub>y</sub>).</li>
-    <li>Bob uses a true random number generator to generate a master key K<sub>m</sub>.</li>
-    <li>Bob encrypts K<sub>m</sub> with key HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;) and saves the ciphertext C<sub>m</sub>. Bob destroys K<sub>m</sub>.</li>
+    <li>Bob uses a RNG to generate a master key K<sub>m</sub>.</li>
+    <li>Bob computes C<sub>m</sub> = E( HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;), K<sub>m</sub>) then destroys K<sub>m</sub></li>
     <li>Bob saves token T = HMAC(K<sub>t</sub> || S, &lt;Alice's Password&gt; || S) and destroys K<sub>t</sub>.</li>
-    <li>Bob destroys all information relating to Alice's password, even hashes and ciphertexts (other than the result of the previous step).
+    <li>Bob destroys all information related to Alice's password other than T.
     <li>Bob and Alice save 128-bit counters initialized to 0. Let I<sub>a</sub> and I<sub>b</sub> denote Alice's and Bob's counter respectively.</li>
 </ol>
-
-<p>Visually,</p>
-
-<table style="width: 400px; ">
-    <tr><th>Alice</th><th>Bob</th></tr>
-    <tr>
-        <td style="vertical-align: top;">
-            Generate R<sub>a</sub>, R<sub>b</sub>, R<sub>x--&gt;<br />
-            &lt;Alice's Password&gt; --&gt;<br />
-            K<sub>s</sub> = H(R<sub>a</sub> || R<sub>c</sub>)<br />
-            K<sub>t</sub> = H(R<sub>b</sub> || R<sub>d</sub>)<br />
-            S = H(R<sub>x</sub> || R<sub>y</sub>)<br />
-            I<sub>a</sub> = 0
-        </td>
-        <td style="vertical-align: top;">
-            &lt;--Generate R<sub>c</sub>, R<sub>d</sub>, R<sub>y<br />
-            K<sub>s</sub> = H(R<sub>a</sub> || R<sub>c</sub>)<br />
-            K<sub>t</sub> = H(R<sub>b</sub> || R<sub>d</sub>)<br />
-            S = H(R<sub>x</sub> || R<sub>y</sub>)<br />
-            Generate K<sub>m</sub><br />
-            C<sub>m</sub> = E(HMAC(K<sub>t</sub>, &lt;Alice's Password&gt;), K<sub>m</sub>)<br />
-            T = HMAC(K<sub>t</sub> || S, &lt;Alice's Password&gt; || S)<br />
-            Destroy K<sub>t</sub><br />
-            I<sub>b</sub> = 0
-        </td>
-    </tr>
-</table>
 
 <p>At this point, Bob and Alice share a secret "sequence" key K<sub>s</sub> and salt S. They both have 128-bit counters set to 0. Alice has the "static" key K<sub>t</sub>. Bob has C<sub>m</sub> which is the "master" key K<sub>m</sub> encrypted with K<sub>t</sub>, but does not have K<sub>t</sub>. Bob also has T, the HMAC of Alice's password and K<sub>t</sub>.</p>
 
@@ -372,7 +349,7 @@ It would be nice for the stronger authentication that one time passwords provide
 There are many ways EOTP can be used. It can be used in combination with a regular password, to provide multifactor authentication. It can also be used to send the user's normal password to the server if the user only rarely uses untrusted computers. This is much more secure, in my oppinion, than having a text message sent to you with a temporary password. 
 </p>
 <p>
-Also, EOTP could be implemented in a way where a user has one password for every service, and when they want to login, they use an app on their smart phone to strengthen (hash) then encrypt their password with EOTP before they ever type it in. This would solve the problem of users choosing weak passwords. No matter how bad their password is, the attacker wouldn't be able to log in without knowing the secret stored in the user's device. If the server database was ever leaked, they couldn't even brute force the user's password with the IV because all they have is an encryption key to a ciphertext that hasn't been created yet.
+Also, EOTP could be implemented in a way where a user has one password for every service, and when they want to login, they use an app on their smart phone to strengthen (hash) then encrypt their password with EOTP before they ever type it in. This would solve the problem of users choosing weak passwords. No matter how bad their password is, the attacker wouldn't be able to log in without knowing the secret stored in the user's device. If the server database was ever leaked, they couldn't even brute-force the user's password with the IV because all they have is an encryption key to a ciphertext that hasn't been created yet.
 </p>
 <p>
 Encrypting One Time Passwords (EOTP) is at least as secure as regular passwords and other one time password systems. It provides the additional benifit of providing a static key to the server, with no drawbacks. It is also very easy to implement. A OTP system that provides encryption and authentication is more secure than a OTP system that only provides authentication. Therefore, I suggest that the community reviews EOTP to verify it's security, and that EOTP becomes a standard one time password system.
