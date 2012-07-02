@@ -416,3 +416,29 @@ ul {
     color: blue;
 }
 
+.restable {
+    width: 500px;
+    margin: 0 auto;
+    font-size: 12pt;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.restable td {
+    border: solid #000000 1px;
+    margin: 0;
+}
+
+.res1 {
+    background-color: #90EE90;
+}
+
+.res2 {
+    background-color: #FFFFE0;
+}
+
+.res3 {
+    background-color: #D87093;
+}
