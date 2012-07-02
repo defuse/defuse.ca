@@ -746,7 +746,7 @@ class URLParse
             }
         }
         // Otherwise, if it's a normal page name, it should end in .htm
-        elseif(!empty($file) && strpos($file, ".htm") != strlen($file) - 4)
+        elseif(!empty($file) && strpos($file, ".htm") !== strlen($file) - 4)
         {
             // Redirect to the .htm version, preserving the parameters
             self::permRedirect(self::getUrlFront() . $file . ".htm" . self::getUrlParams()); 
