@@ -8,7 +8,6 @@ function assert_true($result, $msg)
         echo "PASS: [$msg]\n";
     else
         echo "FAIL: [$msg]\n";
-
 }
 
 // The following test vectors were taken from RFC 6070.
