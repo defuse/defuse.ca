@@ -2,6 +2,15 @@
 
 require('pbkdf2.php');
 
+function assert_true($result, $msg)
+{
+    if($result === true)
+        echo "PASS: [$msg]\n";
+    else
+        echo "FAIL: [$msg]\n";
+
+}
+
 // The following test vectors were taken from RFC 6070.
 // https://www.ietf.org/rfc/rfc6070.txt
 
@@ -58,10 +67,24 @@ foreach($pbkdf2_vectors as $test) {
         false
     );
 
-    if($realOut == $test['output'])
-        echo "PASS\n";
-    else
-        echo "FAIL\n";
+    assert_true($realOut === $test['output'], "PBKDF2 vector");
 }
+
+$good_hash = create_hash("foobar");
+assert_true(validate_password("foobar", $good_hash), "Correct password");
+assert_true(validate_password("foobar2", $good_hash) === false, "Wrong password");
+
+$h1 = explode(":", create_hash(""));
+$h2 = explode(":", create_hash(""));
+assert_true($h1[HASH_PBKDF2_INDEX] != $h2[HASH_PBKDF2_INDEX], "Different hashes");
+assert_true($h1[HASH_SALT_INDEX] != $h2[HASH_SALT_INDEX], "Different salts");
+
+assert_true(slow_equals("",""), "Slow equals empty string");
+
+assert_true(slow_equals("a", "b") === false, "Slow equals different");
+assert_true(slow_equals("aa", "b") === false, "Slow equals different length 1");
+assert_true(slow_equals("a", "bb") === false, "Slow equals different length 2");
+
+echo "Example hash: $good_hash\n";
 
 ?>
