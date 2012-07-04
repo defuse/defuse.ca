@@ -79,10 +79,11 @@ assert_true($h1[HASH_PBKDF2_INDEX] != $h2[HASH_PBKDF2_INDEX], "Different hashes"
 assert_true($h1[HASH_SALT_INDEX] != $h2[HASH_SALT_INDEX], "Different salts");
 
 assert_true(slow_equals("",""), "Slow equals empty string");
+assert_true(slow_equals("abcdef","abcdef"), "Slow equals normal string");
 
-assert_true(slow_equals("a", "b") === false, "Slow equals different");
-assert_true(slow_equals("aa", "b") === false, "Slow equals different length 1");
-assert_true(slow_equals("a", "bb") === false, "Slow equals different length 2");
+assert_true(slow_equals("aaaaaaaaaa", "aaaaaaaaab") === false, "Slow equals different");
+assert_true(slow_equals("aa", "a") === false, "Slow equals different length 1");
+assert_true(slow_equals("a", "aa") === false, "Slow equals different length 2");
 
 echo "Example hash: $good_hash\n";
 
