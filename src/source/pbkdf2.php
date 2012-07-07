@@ -55,7 +55,7 @@ function validate_password($password, $good_hash)
 function slow_equals($a, $b)
 {
     $diff = strlen($a) ^ strlen($b);
-    for($i = 0; $i < min(strlen($a), strlen($b)); $i++)
+    for($i = 0; $i < strlen($a) && $i < strlen($b); $i++)
     {
         $diff |= ord($a[$i]) ^ ord($b[$i]);
     }
