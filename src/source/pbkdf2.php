@@ -67,7 +67,7 @@ function slow_equals($a, $b)
  * $algorithm - The hash algorithm to use. Recommended: SHA256
  * $password - The password.
  * $salt - A salt that is unique to the password.
- * $count - Iteration count. Higher is better, but slower. Recommended: At least 1024.
+ * $count - Iteration count. Higher is better, but slower. Recommended: At least 1000.
  * $key_length - The length of the derived key in bytes.
  * $raw_output - If true, the key is returned in raw binary format. Hex encoded otherwise.
  * Returns: A $key_length-byte key derived from the password and salt.
