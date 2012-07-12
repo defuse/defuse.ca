@@ -23,20 +23,21 @@ class HtmlEscape
         // have to replace spaces at the beginning of the line with an &nbsp;
         // 0x20 = ASCII SPACE
         $esc = preg_replace('/^\x20/m', "&nbsp;", $esc);
+        // The same thing happens when the space is at the end of a line.
+        // Trailing spaces matter when someone copies text from the page.
+        $esc = preg_replace('/\x20(\r|\n)*$/m', "&nbsp;", $esc);
 
         if($brTags)
         {
-            // To add <br> tags, we first normalize the line endings to \n
+            // To add <br /> tags, we first normalize the line endings to \n
             // First convert Windows-style CRLF lines to \n
             $esc = str_replace("\r\n", "\n", $esc);
             // Then convert Mac-style CR lines to \n. Order matters here.
             // If we did this before replacing \r\n, we would replace \r\n with
             // \n\n, which will be two lines instead of one.
             $esc = str_replace("\r", "\n", $esc);
-            // Then add a <br /> after each \n
+            // Then add a <br /> before each \n
             $esc = str_replace("\n", "<br />\n", $esc);
-            // Note: We can't just replace \r with \n because it will convert
-            // \r\n (one line in Windows) to <br />\n<br />\n (two lines).
         }
 
         return $esc;
