@@ -187,6 +187,7 @@ header('Content-Type: text/html; charset=utf-8');
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
             </li>        
+            <li><a href="/notes/">&nbsp;Notes</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
