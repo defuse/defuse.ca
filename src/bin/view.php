@@ -192,9 +192,9 @@ if($postInfo !== false)
 		echo '<div class="codebox"><ol>';
 		foreach($split as $line)
 		{
+            $line = htmlentities($line, ENT_QUOTES);
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
 			$line = str_replace("  ", "&nbsp;&nbsp;", $line);
-            $line = htmlentities($line, ENT_QUOTES);
 			echo '<li><div class="div' . $i . '">&nbsp;' . $line . '</div></li>';
 			$i = ($i + 1) % 2;
 		}
