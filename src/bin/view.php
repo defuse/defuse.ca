@@ -217,7 +217,7 @@ if($postInfo !== false)
 
 	<textarea id="paste" name="paste" spellcheck="false" rows="30" cols="80"><?
         if(!$postInfo['jscrypt'])
-			echo htmlentities($postInfo['text']);
+			echo htmlentities($postInfo['text'], ENT_QUOTES);
 	?></textarea>
 
 	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
