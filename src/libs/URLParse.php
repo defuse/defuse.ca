@@ -207,6 +207,12 @@ class URLParse
                     P_METD => "Detailed description of the encryption technology behind the BitCannon file transfer program.",
                     P_METK => "secure, encryption, cryptography, file transfer",
                     ),
+            "backup-verify-script" =>  array(
+                    P_FILE => "software/backup-verify-script.php",
+                    P_TITL => "Script for Comparing Folders and Validating Backups",
+                    P_METD => "A command-line script for verifying backups by comparing two folders in Linux",
+                    P_METK => "backup validate, backup verify, compare folders, linux, ruby",
+                    ),
             "ip" => array(
                     P_FILE => "services/ip.php",
                     P_TITL => "Your IP Address",

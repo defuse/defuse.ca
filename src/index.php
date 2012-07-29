@@ -136,6 +136,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
             <li><a href="/php-hash-cracker.htm">&nbsp;PHP Hash Cracker</a></li>
             <li><a href="/sockstress.htm">&nbsp;Sockstress</a></li>
+            <li><a href="/backup-verify-script.htm">&nbsp;Backup Checker</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
