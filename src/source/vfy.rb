@@ -213,7 +213,7 @@ def compareDirs( relative = "" )
 end # compareDirs
 
 def printSummary
-  differPercent = ($diffCount.to_f / $itemCount.to_f * 100).round( 2 )
+  differPercent = "%.2f" % ($diffCount.to_f / $itemCount.to_f * 100)
   if $options[:machine]
     STDOUT.puts "SUMMARY: items:#{$itemCount}, diff:#{$diffCount}, " +
                 "diffpct:#{differPercent}, skip:#{$skippedCount}, " + 
