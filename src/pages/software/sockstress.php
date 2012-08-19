@@ -21,10 +21,12 @@
     and periodically probe the client to see if it can accept data yet.
 </p>
 <p>    
-    This implementation of sockstress takes the idea a little further by 
-    allowing the user to specify a payload, which will be sent along with the
-    last packet of the three-way handshake, so in addition to opening a 
-    connection, the attacker can request a webpage, perform a DNS lookup, send email to a SMTP server, or anything else that can fit in one packet.
+    This implementation of sockstress <s>takes the idea a little further</s>
+    (actually, Outpost24's code does this too) by allowing the user to specify a
+    payload, which will be sent along with the last packet of the three-way
+    handshake, so in addition to opening a connection, the attacker can request
+    a webpage, perform a DNS lookup, send email to a SMTP server, or anything
+    else that can fit in one packet.
 </p>
 <p>    
     For more information on sockstress, see <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Sockstress">Sockstress on Wikipedia</a>
