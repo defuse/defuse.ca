@@ -179,7 +179,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <ul>
                     <li><a href="/eotp.htm">&nbsp;EOTP</a></li>
                     <li><a href="/cbcmodeiv.htm">&nbsp;CBC Mode IV Security</a></li>
-                    <li><a href="http://crackstation.net/hashing-security.html" style="color:#cc0000;">&nbsp;Salted Password Hashing</a></li>
+                    <li><a href="http://crackstation.net/hashing-security.html">&nbsp;Salted Password Hashing</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
