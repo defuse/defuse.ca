@@ -25,7 +25,7 @@ class HtmlEscape
         $esc = preg_replace('/^\x20/m', "&nbsp;", $esc);
         // The same thing happens when the space is at the end of a line.
         // Trailing spaces matter when someone copies text from the page.
-        $esc = preg_replace('/\x20(\r|\n)*$/m', "&nbsp;", $esc);
+        $esc = preg_replace('/\x20(?=\r|\n)/m', "&nbsp;", $esc);
 
         if($brTags)
         {
