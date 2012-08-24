@@ -141,6 +141,11 @@ class URLParse
                 P_TITL => "Blowfish C# and C++ Source Code - Defuse Cyber-Security",
                 P_METD => "C# and C++ implementation of the BLOWFISH block cipher.",
                 ),
+            "syntax-highlighting-in-php-with-vim" => array(      
+                P_FILE => "projects/syntax-highlighting-in-php-with-vim.php",
+                P_TITL => "Scripting Vim's HTML syntax highlighting in PHP",
+                P_METD => "Using the Vim editor to highlight code syntax from PHP"
+                ),
             "inn-private-newsgroup-server-setup" => array(
                 P_FILE => "projects/inn-private-newsgroup-server-setup.php",
                 P_TITL => "Configuring a Private (Local) News Server with INN2",
