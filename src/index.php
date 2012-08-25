@@ -14,6 +14,17 @@
 
 require_once('libs/URLParse.php'); 
 require_once('libs/phpcount.php');
+require_once('libs/VimHighlight.php');
+
+function printSourceFile($path) {
+    $hl = new VimHighlight();
+    $hl->caching = true;
+    $hl->color_scheme = "jellybeans";
+    $hl->show_lines = false;
+    $hl->use_css = false;
+    $hl->setVimCommand("vim");
+    echo $hl->processFile($path);
+}
 
 // Standardize the times & dates to UTC because people don't live in the same timezone as the server.
 date_default_timezone_set("UTC"); 
@@ -63,6 +74,7 @@ header('Content-Type: text/html; charset=utf-8');
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" media="all" type="text/css" href="/mainmenu2.css" />
 <link rel="stylesheet" media="all" type="text/css" href="/main.css" />
+<link rel="stylesheet" media="all" type="text/css" href="/vimhl.css" />
 <!--[if !IE 7]>
 	<style type="text/css">
 		#wrap {display:table;height:100%}
