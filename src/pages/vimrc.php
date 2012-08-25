@@ -19,20 +19,12 @@
 
 <h2>Synchronization Script</h2>
 
-<div class="code">
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/vimupdate.sh");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+<?php
+    printSourceFile("source/vimupdate.sh");
+?>
 
 <h2>~/.vimrc</h2>
 
-<div class="code">
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/vimrc");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+<?php
+    printSourceFile("source/vimrc");
+?>
