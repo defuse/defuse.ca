@@ -1,17 +1,17 @@
 <?php
 
-//TODO: use css should be an option, becaue they could store the header
-// themselves 
-
 // Syntax highlighting with Vim.
+// Version: 0.1
 // Author: havoc@defuse.ca
 // WWW: https://defuse.ca/syntax-highlighting-in-php-with-vim.htm
 // Dependencies: vim, gvim, Xvfb (for gvim only)
 class VimHighlight
 {
-    const CACHE_SUFFIX = ".highlighted.html";
-    // TODO: Set this to an unused display number to use with Xvfb for gvim.
+    // Set this to an unused display number to use with Xvfb for gvim.
     const XVFB_DISPLAY = ":7";
+    // Override the cache directories if necessary. MUST NOT end in a slash.
+    const STRING_CACHE_DIR = null; // default: system's temp folder
+    const CACHE_SUFFIX = ".highlighted.html";
 
     // Set to true to cache the result, since executing Vim is slow.
     public $caching = false;
@@ -21,6 +21,9 @@ class VimHighlight
     public $file_type = null;
     // Whether or not to show line numbers.
     public $show_lines = true;
+    // Use CSS instead of inline font tags. Doesn't work with $body_only unless
+    // you manually put the theme's CSS into your page's <head>.
+    public $use_css = false;
     // Extra CSS to add in the style="" section of the wrapper <div> tag
     // generated when processText() or processFile() is called with 
     // $body_only = true.
@@ -28,12 +31,11 @@ class VimHighlight
     // The command to run Vim. Set to 'gvim' to get better color rendering.
     private $vim_command = "vim";
 
-    // Set this to an array of runtime folders if GetAvailableColorSchemes or
-    // GetAvailableFileTypes is taking too long. Paths may contain '~' which
-    // will be expanded to the running user's home folder, and MUST NOT end
-    // in a trailing slash '/'.
+    // Set this to an array of '~/.vim'-like folders if GetAvailableColorSchemes
+    // or GetAvailableFileTypes is taking too long. Paths may begin with '~'
+    // which will be expanded to the running user's home folder, and MUST NOT
+    // end in a slash.
     private static $RUNTIME_DIRS = null;
-
 
     public static function GetAvailableColorSchemes() {
         return self::GetVimFileNamesFromFolders(self::GetRuntimePaths("colors"));
@@ -58,10 +60,13 @@ class VimHighlight
         chmod($input_path, 0600);
         file_put_contents($input_path, $str);
 
+        $tmp = self::STRING_CACHE_DIR;
+        if($tmp === null)
+            $tmp = sys_get_temp_dir();
+        $output_path = $tmp . "/" . md5($str) . self::CACHE_SUFFIX;
         // Since we just created the input file, it will be newer than the
         // cache file, so we must ignore the modified timestamp when checking
         // the cache (the md5 ensures it's the same text).
-        $output_path = sys_get_temp_dir() . "/" . md5($str) . self::CACHE_SUFFIX;
         $html =  $this->runVim($input_path, $output_path, $body_only, true);
 
         // Clean up the input file.
@@ -126,11 +131,11 @@ class VimHighlight
             chmod($output_path, 0600);
         }
 
-        // Prepare Vim arguments for setting colorscheme, filetype, and line numbers.
         $colorscheme = "-c " . escapeshellarg("colo $this->color_scheme");
         // Default to not setting the filetype, to take advantage of Vim's autodetect.
         $ft = $this->file_type !== null ? "-c " . escapeshellarg("set filetype=$this->file_type") : "";
         $nu = "-c " . escapeshellarg($this->show_lines ? "set number" : "set nonumber");
+        $use_html_css = $this->use_css ? "1" : "0";
         $write_html_cmd = "-c " . escapeshellarg("w! $output_path");
 
         if($this->vim_command == "gvim") {
@@ -140,14 +145,13 @@ class VimHighlight
             $display = "";
         }
 
-
         system(
             $this->vim_command . $display .
             // "Don't" connect to X; pretend we have xterm with 256 colors;
             // disable plugins,  swap file, and wildcard expansion.
             " -X -T xterm -c 'set t_Co=256' --noplugin -n --literal " .
             // Enable syntax highlighting and disable CSS output.
-            " -f -c 'syn on' -c 'let html_use_css = 0' " .
+            " -f -c 'syn on' -c 'let html_use_css = $use_html_css' " .
             // Set the colorsheme, file (language) type, and line numbering.
             " $colorscheme $ft $nu " .
             // Generate the html, write it to the output file, then quit both buffers.
@@ -268,7 +272,8 @@ class VimHighlight
         if(self::$RUNTIME_DIRS) {
             return array_map(
                 function($path) use($suffix) {
-                    $path = str_replace("~", $_SERVER["HOME"], $path);
+                    // NOTE: This doesn't work with the ~username notation.
+                    $path = preg_replace("^~", $_SERVER["HOME"], $path);
                     return $path . "/" . $suffix;
                 },
                 self::$RUNTIME_DIRS
@@ -301,7 +306,6 @@ class VimHighlight
         }
         return $printable;
     }
-
 }
 
 ?>
