@@ -12,6 +12,11 @@
     Download my entire .vim directory <a href="/source/vim.zip">here</a>.
 </p>
 
+<p>
+   If you would like a list of my favourite .vimrc lines, see my blog post
+  <a href="https://defuse.ca/blog/2012/04/random-vimrc-tips/">Random vimrc tips</a>.
+</p>
+
 <h2>Screenshots</h2>
 <p style="text-align: center;"><i>These screenshots are not updated automatically, and may be out of date.</i></p>
 <center>
