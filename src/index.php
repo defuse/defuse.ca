@@ -206,6 +206,7 @@ header('Content-Type: text/html; charset=utf-8');
     <li class="headerlink" ><a href="/projects.htm">Miscellaneous<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
+            <li><a href="/vimrc.htm">&nbsp;My Vim Configuration</a></li>
             <li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>
             <li><a href="/honestyware.htm">&nbsp;Honestyware</a></li>
         </ul>
