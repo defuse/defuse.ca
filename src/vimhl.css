@@ -1,0 +1,7 @@
+.vimhighlight {
+    padding: 10px;
+    border: solid #404040 5px;
+    overflow: auto;
+    width: 100%;
+}
+
