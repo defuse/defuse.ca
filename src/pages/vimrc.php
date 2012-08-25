@@ -11,6 +11,12 @@
     Download my entire .vim directory <a href="/source/vim.zip">here</a>.
 </p>
 
+<h2>Screenshot</h2>
+
+<center>
+<img src="/images/vim.png" alt="My Vim configuration"/>
+</center>
+
 <h2>Synchronization Script</h2>
 
 <div class="code">
