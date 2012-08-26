@@ -1,17 +1,34 @@
 <?php
-
-// Syntax highlighting with Vim.
-// Version: 0.1
-// Author: havoc@defuse.ca
-// WWW: https://defuse.ca/syntax-highlighting-in-php-with-vim.htm
-// Dependencies: vim, gvim, Xvfb (for gvim only)
+/*
+ * Syntax highlighting with Vim on Linux.
+ * Version: 0.2
+ * Author: havoc@defuse.ca
+ * WWW: https://defuse.ca/syntax-highlighting-in-php-with-vim.htm
+ * License: Do whatever you want, but please give credit!
+ * Dependencies: Vim, and optionally gVim and Xvfb for better colors.
+ * NOTE: Vim will be executed as the user running this script, so any additional
+ * color schemes will have to be put either in the master Vim config folder, or
+ * in that user's ~/.vim folder. No other configuration should be necessary.
+ *
+ * When used with command-line vim, only 256 colors are available, so unless
+ * the color scheme was designed for 256-color, it will probably look bad. The
+ * solution is to install gVim and Xvfb and do the syntax highlighting with 
+ * gVim (Xvfb is a virtual X server, so you can do it on a headless server).
+ * gVim is slower. However, to speed things up you can grab the CSS produced
+ * by gVim with use_css set to true, then splice it into the <head> section
+ * of the HTML produced by command-line Vim, and it will look the same.
+ */
 class VimHighlight
 {
+    // ---------------------- CONSTANT SETTINGS -----------------------------
     // Set this to an unused display number to use with Xvfb for gvim.
     const XVFB_DISPLAY = ":7";
     // Override the cache directories if necessary. MUST NOT end in a slash.
     const STRING_CACHE_DIR = null; // default: system's temp folder
     const CACHE_SUFFIX = ".highlighted.html";
+
+
+    // ----------------------- RUNTIME SETTINGS -----------------------------
 
     // Set to true to cache the result, since executing Vim is slow.
     public $caching = false;
@@ -37,6 +54,8 @@ class VimHighlight
     // end in a slash.
     private static $RUNTIME_DIRS = null;
 
+    // ----------------------- STATIC METHODS -------------------------------
+
     public static function GetAvailableColorSchemes() {
         return self::GetVimFileNamesFromFolders(self::GetRuntimePaths("colors"));
     }
@@ -44,6 +63,8 @@ class VimHighlight
     public static function GetAvailableFileTypes() {
         return self::GetVimFileNamesFromFolders(self::GetRuntimePaths("syntax"));
     }
+
+    // ----------------------- VIM HIGHLIGHTING -----------------------------
 
     public function setVimCommand($cmd) {
         $cmd = strtolower($cmd);
@@ -84,6 +105,8 @@ class VimHighlight
         return $this->runVim($input_path, $output_path, $body_only, false);
     }
 
+    // ----------------------- PRIVATE STUFF --------------------------------
+
     private function runVim($input_path, $output_path, $body_only, $ignoretime) {
         if(!file_exists($input_path)) {
             trigger_error("Input file does not exist", E_USER_WARNING);
@@ -110,7 +133,9 @@ class VimHighlight
                 $cache_info = $this->extractInfo($cached);
                 if( $cache_info['color_scheme'] == $this->color_scheme &&
                     $cache_info['file_type'] == $this->file_type &&
-                    $cache_info['show_lines'] == $this->show_lines
+                    $cache_info['show_lines'] == $this->show_lines &&
+                    $cache_info['use_css'] == $this->use_css && 
+                    $cache_info['vim_command'] == $this->vim_command
                 ) {
                     flock($lock, LOCK_UN);
                     fclose($lock);
@@ -207,6 +232,8 @@ class VimHighlight
             'color_scheme' => $this->color_scheme,
             'file_type' => $this->file_type,
             'show_lines' => $this->show_lines,
+            'use_css' => $this->use_css,
+            'vim_command' => $this->vim_command
         );
         return serialize($info);
     }
@@ -216,30 +243,36 @@ class VimHighlight
     }
 
     private function extractBody($html) {
-        // Find <body... and </body>
-        $bodyStart = strpos($html, "<body");
-        $bodyEnd = strrpos($html, "</body>") - 1;
+        if($this->use_css) {
+            $bodyStart = strpos($html, "<pre>");
+            $bodyEnd = strrpos($html, "</pre>") + strlen("</pre>");
+            return substr($html, $bodyStart, $bodyEnd - $bodyStart + 1);
+        } else {
+            // Find <body... and </body>
+            $bodyStart = strpos($html, "<body");
+            $bodyEnd = strrpos($html, "</body>") - 1;
 
-        // Get the background color and text color from the body tag.
-        preg_match(
-            "/\\<body bgcolor=\"([^\"]+)\" text=\"([^\"]+)\"\\>/i",
-            $html,
-            $matches,
-            0, // no flags
-            $bodyStart
-        );
-        $bgcolor = $matches[1];
-        $textcolor = $matches[2];
-        $div_css = htmlentities($this->div_css);
-        // Replace the body tag with a div, so it can be put in existing HTML pages.
-        $divStart = "<div class=\"vimhighlight\" " . 
-            "style=\"color: $textcolor; background-color: $bgcolor; $div_css\">";
+            // Get the background color and text color from the body tag.
+            preg_match(
+                "/\\<body bgcolor=\"([^\"]+)\" text=\"([^\"]+)\"\\>/i",
+                $html,
+                $matches,
+                0, // no flags
+                $bodyStart
+            );
+            $bgcolor = $matches[1];
+            $textcolor = $matches[2];
+            $div_css = htmlentities($this->div_css);
+            // Replace the body tag with a div, so it can be put in existing HTML pages.
+            $divStart = "<div class=\"vimhighlight\" " . 
+                "style=\"color: $textcolor; background-color: $bgcolor; $div_css\">";
 
-        // Adjust the starting point to just after the body opening tag.
-        $bodyStart += strlen($matches[0]);
+            // Adjust the starting point to just after the body opening tag.
+            $bodyStart += strlen($matches[0]);
 
-        $innerHTML = substr($html, $bodyStart, $bodyEnd - $bodyStart + 1);
-        return $divStart . $innerHTML . "</div>";
+            $innerHTML = substr($html, $bodyStart, $bodyEnd - $bodyStart + 1);
+            return $divStart . $innerHTML . "</div>";
+        }
     }
 
     private static function GetVimFileNamesFromFolders($folders) {
