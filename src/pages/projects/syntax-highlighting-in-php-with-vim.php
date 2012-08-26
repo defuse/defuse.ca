@@ -2,5 +2,5 @@
 
 
 <?php
-    printSourceFile('source/VimHighlight.php');
+    printSourceFile('source/VimHighlight.php', true);
 ?>
