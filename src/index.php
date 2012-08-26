@@ -164,6 +164,7 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/projects.htm">Projects &amp; Code&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
+            <li><a href="/syntax-highlighting-in-php-with-vim.htm">&nbsp;PHP &amp; Vim Highlighting</a></li>
             <li><a href="/php-hit-counter.htm">&nbsp;PHP Hit Counter</a></li>
             <li><a href="/generating-random-passwords.htm">&nbsp;PHP Random Passwords</a></li>
             <li><a href="/php-pbkdf2.htm">&nbsp;PBKDF2 For PHP</a></li>
