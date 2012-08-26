@@ -24,7 +24,7 @@ class VimHighlight
     // Set this to an unused display number to use with Xvfb for gvim.
     const XVFB_DISPLAY = ":7";
     // Override the cache directories if necessary. MUST NOT end in a slash.
-    const STRING_CACHE_DIR = null; // default: system's temp folder
+    const STRING_CACHE_DIR = "/var/vimhl"; // default: system's temp folder
     const CACHE_SUFFIX = ".highlighted.html";
 
 

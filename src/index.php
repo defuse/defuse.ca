@@ -16,6 +16,17 @@ require_once('libs/URLParse.php');
 require_once('libs/phpcount.php');
 require_once('libs/VimHighlight.php');
 
+function printHlString($text, $ft, $numbers = false) {
+    $hl = new VimHighlight();
+    $hl->caching = true;
+    $hl->color_scheme = "dw_cyan";
+    $hl->show_lines = $numbers;
+    $hl->use_css = true;
+    $hl->file_type = $ft;
+    $hl->setVimCommand("vim");
+    echo '<div class="vimhighlight">' . $hl->processText($text, true) . '</div>';
+}
+
 function printSourceFile($path, $numbers = false) {
     $hl = new VimHighlight();
     $hl->caching = true;
@@ -23,7 +34,7 @@ function printSourceFile($path, $numbers = false) {
     $hl->show_lines = $numbers;
     $hl->use_css = true;
     $hl->setVimCommand("vim");
-    echo '<div class="vimhighlight">' . $hl->processFile($path) . '</div>';
+    echo '<div class="vimhighlight">' . $hl->processFile($path, true) . '</div>';
 }
 
 // Standardize the times & dates to UTC because people don't live in the same timezone as the server.
