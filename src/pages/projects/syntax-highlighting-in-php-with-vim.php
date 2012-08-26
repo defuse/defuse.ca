@@ -7,11 +7,12 @@ highlighting power in PHP. The following script is the result of that effort.
 </p>
 
 <p>
-To use it, the user that runs the PHP script (e.g. www-data on a default Debian
-installation) will need to have access to the 'vim' command (and optionally, if
-you want better color support, 'gvim' and 'Xvfb'). Any extra color schemes will
-have to be added either to the master Vim config folder, or to the runner's
-~/.vim/ folder.
+To use it, the user that runs the PHP script (e.g. www-data on a default
+Debian installation) will need to have access to the 'vim' command (and
+optionally, if you want better color support, 'gvim' and 
+'<a href="https://secure.wikimedia.org/wikipedia/en/wiki/Xvfb">Xvfb</a>').
+Any extra color schemes will have to be added either to the master Vim config
+folder, or to the runner's ~/.vim/ folder. 
 </p>
 
 <p>
