@@ -59,6 +59,6 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 </center>
 
 <?php
-    printSourceFile("source/crack.php");
+    printSourceFile("source/crack.php", true);
 ?>
 
