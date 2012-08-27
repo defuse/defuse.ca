@@ -49,6 +49,7 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 </div>
 
 <h2>Code</h2>
+
 <center>
     <p>
     <a href="/source/crack.php">
@@ -57,11 +58,7 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
     </p>
 </center>
 
-<div class="code">
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/crack.php");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+<?php
+    printSourceFile("source/crack.php");
+?>
 

@@ -263,13 +263,14 @@ ul {
 }
 
 .code {
+    padding: 10px; 
     font-family: monospace;
-    background-color: #CDCDCD;
-    background-image: url('/images/grid.gif');
-    border: solid black 1px;
-    color: black;
-    padding:10px;
-    font-size: 8pt;
+    color: #c0c0c0;
+    background-color: #000000;
+    border-radius: 15px;
+    box-shadow: 6px 6px 4px 2px #888 ;
+    background-image: url('/images/code-top.png');
+    background-repeat: repeat-x;
 }
 
 .codehl {
