@@ -13,7 +13,7 @@ Hello, world.
 </div>
 
 <p><strong>Code:</strong></p>
-<div class="code" style="font-size: 7pt;">
+<div class="code" >
 &lt;div&nbsp;style=&quot;background-color:&nbsp;#00ffe4;&nbsp;height:&nbsp;100px;&nbsp;width:&nbsp;100px;&quot;&gt;<br />
 Hello,&nbsp;world.<br />
 &lt;/div&gt;<br />
@@ -30,7 +30,7 @@ Hello,&nbsp;world.<br />
 
 <p><strong>Code:</strong></p>
 
-<div class="code" style="font-size: 7pt;">
+<div class="code" >
 &lt;div&nbsp;style=&quot;position:&nbsp;relative;&quot;&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;src=&quot;/images/blue.png&quot;&nbsp;style=&quot;width:&nbsp;100px;&nbsp;height:&nbsp;100px;&quot;&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;position:&nbsp;absolute;&nbsp;top:&nbsp;0px;&nbsp;left:&nbsp;0px;&quot;&gt;<br />
@@ -82,7 +82,7 @@ Hello,&nbsp;world.<br />
 </table>
 
 <p><strong>Code:</strong></p>
-<div class="code" style="font-size: 7pt;">
+<div class="code" >
 &lt;table style=&quot;border-collapse: collapse; float: left; margin-right: 30px;&quot;&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td style=&quot;background-color: #53ff7b; width: 2em; height: 2em; text-align: center;&quot;&gt;<br />
@@ -198,7 +198,7 @@ Hello,&nbsp;world.<br />
 
 <p><strong>Code:</strong></p>
 
-<div class="code" style="font-size: 7pt;">
+<div class="code" >
 &lt;table style=&quot;border-collapse: collapse; float: left; margin-right: 30px;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br />
