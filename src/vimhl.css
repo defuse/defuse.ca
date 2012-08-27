@@ -1,15 +1,19 @@
 /* dw_cyan with a few modifications */
 .vimhighlight a { color: inherit; }  /* use the source code color for links */
-.vimhighlight pre { padding: 10px; border: solid #404040 5px; font-family: monospace; color: #c0c0c0; background-color: #000000; }
-.vimhighlight .lnr { color: #008888; background-color: #000000; }
+.vimhighlight pre { padding: 10px; /*border: solid #404040 3px;*/ font-family: monospace; color: #c0c0c0; background-color: #000000; border-radius: 15px;
+box-shadow: 6px 6px 4px 2px #888 ;
+background-image: url('/images/code-top.png');
+background-repeat: repeat-x;
+}
+.vimhighlight .lnr { color: #008888; }
 .vimhighlight .Constant { color: #00ffff; }
-.vimhighlight .Function { color: #00ffff; background-color: #000000; }
+.vimhighlight .Function { color: #00ffff; }
 .vimhighlight .PreProc { color: #ffffff; }
 .vimhighlight .Boolean { color: #00ffff; }
-.vimhighlight .Identifier { color: #00cccc; background-color: #000000; }
+.vimhighlight .Identifier { color: #00cccc; }
 .vimhighlight .String { color: #00bbbb; }
 .vimhighlight .Operator { color: #696969; }
 .vimhighlight .Statement { color: #00ffff; font-weight: bold; }
 .vimhighlight .Type { color: #ffffff; }
 .vimhighlight .Comment { color: #696969; }
-.vimhighlight .Special { color: #ffffff; background-color: #000000; }
+.vimhighlight .Special { color: #ffffff; }
