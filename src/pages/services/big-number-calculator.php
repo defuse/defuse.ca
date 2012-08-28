@@ -80,7 +80,12 @@ if(isset($_POST['submit']))
         $ulimit_max_time = 10;
         $max_time = 8;
         $res = "";
-        $ruby = popen("ulimit -t $ulimit_max_time; ruby -e \"x = ($eqn); puts x if x.is_a?(Float); puts x.to_s($base) if x.is_a?(Fixnum) or x.is_a?(Bignum)\"", "r");
+        $safe_ruby_arg = escapeshellarg(
+            "x = ($eqn); " .
+            "puts x if x.is_a?(Float); " .
+            "puts x.to_s($base) if x.is_a?(Fixnum) or x.is_a?(Bignum)"
+        );
+        $ruby = popen("ulimit -t $ulimit_max_time; ruby -e $safe_ruby_arg", "r");
         stream_set_blocking($ruby, 0);
 
         $tooLong = false;
