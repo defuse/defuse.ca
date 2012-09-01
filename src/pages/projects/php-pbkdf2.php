@@ -55,13 +55,9 @@ were run on an AMD Phenom 9600 2.3GHz CPU.
     <a href="/source/pbkdf2.php"><strong>Click Here to Download</strong></a>
 </div>
 
-<div class="code" >
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/pbkdf2.php");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+<?php
+    printSourceFile("source/pbkdf2.php", true);
+?>
 
 <h3>Benchmark Code</h3>
 
@@ -83,10 +79,6 @@ for($i = 0; $i &lt; 25; $i++) {<br />
     <a href="/source/pbkdf2-test.php"><strong>Click Here to Download</strong></a>
 </div>
 
-<div class="code">
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/pbkdf2-test.php");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+<?php
+    printSourceFile("source/pbkdf2-test.php",true);
+?>

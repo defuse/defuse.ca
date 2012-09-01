@@ -24,22 +24,23 @@
 
 <p>The following seems to be the most common naive solution:</p>
 
-<div class="code badcode">
-&lt;?php<br />
-// THIS CODE IS INSECURE. DO NOT USE THIS CODE.<br />
-$password = &quot;&quot;;<br />
-$charset = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;;<br />
-<br />
-for($i = 0; $i &lt; 8; $i++)<br />
-{<br />
-&nbsp;&nbsp; &nbsp;$random_int = mt_rand();<br />
-&nbsp;&nbsp; &nbsp;$password .= $charset[$random_int % strlen($charset)];<br />
-}<br />
-<br />
-echo $password, &quot;\n&quot;;<br />
-<br />
-?&gt;<br />
-</div>
+<?php
+$source = '<?php
+// WARNING: THIS CODE IS INSECURE. DO NOT USE THIS CODE.
+$password = "";
+$charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+for($i = 0; $i < 8; $i++)
+{
+    $random_int = mt_rand();
+    $password .= $charset[$random_int % strlen($charset)];
+}
+
+echo $password, "\n";
+
+?>';
+printHlString($source, "php", true);
+?>
 
 <p>This code makes two mistakes. First, it uses a weak PRNG. Second, it uses a large random integer to select from a set of N elements by computing the remainder of the random integer divided by N. This is insecure. Unless the number of possible random integers is a multiple of N, some characters will have a higher chance of being picked than others.
 
@@ -58,15 +59,17 @@ The only known way to make an unbiased random selection from a set of N elements
 
 <h2>Example Usage:</h2>
 
-<div class="code">
-require_once(&#039;PasswordGenerator.php&#039;);<br />
-$ascii = PasswordGenerator::getASCIIPassword(64);<br />
-$hex = PasswordGenerator::getHexPassword(64);<br />
-$alpha = PasswordGenerator::getAlphaNumericPassword(64);<br />
-$custom = PasswordGenerator::getCustomPassword(array(&#039;a&#039;, &#039;b&#039;), 64);<br />
-echo $ascii, &quot;\n&quot;, $hex, &quot;\n&quot;, $alpha, &quot;\n&quot;, $custom, &quot;\n&quot;;<br />
-
-</div>
+<?php
+$source = '<?php
+require_once(\'PasswordGenerator.php\');
+$ascii = PasswordGenerator::getASCIIPassword(64);
+$hex = PasswordGenerator::getHexPassword(64);
+$alpha = PasswordGenerator::getAlphaNumericPassword(64);
+$custom = PasswordGenerator::getCustomPassword(array(\'a\', \'b\'), 64);
+echo $ascii, "\n", $hex, "\n", $alpha, "\n", $custom, "\n";
+?>';
+printHlString($source, "php", true);
+?>
 
 <h3>Output</h3>
 
@@ -79,13 +82,9 @@ abbababbabbaabaaaaabbabbbbababaabbabbaaabbabababbaaabbaaababbbbb
 
 <h2>PHP Source (<a href="/source/PasswordGenerator.php">download</a>):</h2>
 
-<div class="code" style="font-size: 8pt;">
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/PasswordGenerator.php");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+<?php
+    printSourceFile("source/PasswordGenerator.php", true);
+?>
 
 <h2>References</h2>
 

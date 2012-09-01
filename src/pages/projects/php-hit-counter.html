@@ -8,10 +8,7 @@
 </p>
 
 <h2>PHP Source Code</h2>
-<div class="code">
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/phpcount.php");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+
+<?php
+    printSourceFile("source/phpcount.php", true);
+?>

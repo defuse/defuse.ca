@@ -54,11 +54,7 @@ if(isset($_POST['data']))
  not as obvious as you might think!
 </p>
 
-<div class="code">
-    <?php
-        $file = file_get_contents('libs/HtmlEscape.php');
-        $file_esc = HtmlEscape::escapeText($file, true, 4);
-        echo $file_esc;
-    ?>
-</div>
+<?php
+    printSourceFile("libs/HtmlEscape.php", true);
+?>
 

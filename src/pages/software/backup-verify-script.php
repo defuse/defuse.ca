@@ -37,10 +37,6 @@ SUMMARY:<br />
     <a href="/source/vfy.rb">Download vfy.rb</a>
 </div>
 
-<div class="code">
-    <?php
-        require_once('libs/HtmlEscape.php');
-        $code = file_get_contents("source/vfy.rb");
-        echo HtmlEscape::escapeText($code, true, 4);
-    ?>
-</div>
+<?php
+    printSourceFile("source/vfy.rb", true);
+?>
