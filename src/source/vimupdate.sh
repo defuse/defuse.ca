@@ -15,7 +15,7 @@ wget -O ~/.vimrc http://defuse.ca/source/vimrc
 wget -O /tmp/vimupdate_$TMPID.zip http://defuse.ca/source/vim.zip
 unzip -o /tmp/vimupdate_$TMPID.zip -d /tmp/vimupdate_$TMPID
 rm -rf ~/.vim/*
-mv /tmp/vimupdate_$TMPID/home/firexware/.vim/* ~/.vim/
+mv /tmp/vimupdate_$TMPID/* ~/.vim/
 
 # Clean up the temporary files
 rm -f /tmp/vimupdate_$TMPID.zip
