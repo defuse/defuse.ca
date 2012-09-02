@@ -21,7 +21,10 @@ define("POST_LIFETIME_SECONDS", 3600 * 24 * 10);
 
 function commit_post($text, $jsCrypt, $short = false)
 {
-    $urlKey = PasswordGenerator::getAlphaNumericPassword($short ? 8 : 22);
+    do {
+        $urlKey = PasswordGenerator::getAlphaNumericPassword($short ? 8 : 22);
+    } while( retrieve_post( $urlKey ) !== false );
+
     $id = get_database_id($urlKey);
     $encryptionKey = get_encryption_key($urlKey);
 
