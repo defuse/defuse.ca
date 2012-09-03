@@ -1,11 +1,36 @@
 <h1>"Privacy Aware" Unique Hit Counter for PHP</h1>
-<p>This PHP class provides a hit counter that is able to count unique hits without directly recording each visitor's IP address. It does so by recording only a cryptographic hash of the IP address and page name. By hashing the IP address with page name as salt, you prevent yourself from being able to track a user as they navigate your site. You also prevent yourself from being able to recover anyone's IP address without brute forcing the 2<sup>32</sup> possible IPv4 addresses, or 2<sup>128</sup> addresses in the case of IPv6.</p>
 
-<p>It is very easy to use. All you need is PHP and a single MySQL database. All the documentation you will need is in the source code file which is licensed under the GNU GPL v3.</p>
 <p>
-    <a href="/source/phpcount.php">Download PHP Hit Counter Source Code</a> <br />
-    <a href="/source/phpcount.sql">Download PHP Hit Counter Database Structure</a>
+This PHP class provides a hit counter that is able to count unique hits without
+directly recording each visitor's IP address. It does so by recording only a
+cryptographic hash of the IP address and page name. By hashing the IP address
+with page name as salt, you prevent yourself from being able to track a user as
+they navigate your site. You also prevent yourself from being able to recover
+anyone's IP address without brute forcing through all of the assigned IP address
+blocks in use by the internet.
 </p>
+
+<p>Features:</p>
+
+<ul>
+    <li>Optionally ignore hits from search engine spiders and crawlers.</li>
+    <li>Optionally ignore hits when the client sends the
+        <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Do_not_track">
+            Do Not Track</a> header.
+    </li>
+    <li>IP address ignore list.</li>
+</ul>
+
+<p>
+It is very easy to use. All you need is PHP and a single MySQL database. All the
+documentation you will need is in the source code file which is licensed under
+the GNU GPL v3.
+</p>
+
+<ul>
+    <li><b><a href="/source/phpcount.php">Download PHPCount Source Code</a></b></li>
+    <li><b><a href="/source/phpcount.sql">Download PHPCount Database Structure</a></b></li>
+</ul>
 
 <h2>PHP Source Code</h2>
 
