@@ -241,8 +241,6 @@ header('Content-Type: text/html; charset=utf-8');
 <![endif]-->
 
 <?php
-    $dnt = isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT'] == "1";
-
     if($name != "")
         echo '<div id="content" >';
     else
@@ -251,11 +249,7 @@ header('Content-Type: text/html; charset=utf-8');
     $included = URLParse::IncludePageContents();
 
     //TODO: sometime change this to use the name instead of the path.
-    if(!$dnt)
-    {
-        PHPCount::AddHit($included, $_SERVER['REMOTE_ADDR']);
-    }
-    
+    PHPCount::AddHit($included);
 ?>
 
 </div>
@@ -288,6 +282,7 @@ header('Content-Type: text/html; charset=utf-8');
             <tr>
                 <th>DNT Header:&nbsp;&nbsp;&nbsp;</th>
                 <?php
+                    $dnt = isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT'] == "1";
                     if($dnt)
                     {
                         echo "<td><span style=\"color: #00FF00\">Enabled</span></td>";
