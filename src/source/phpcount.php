@@ -80,17 +80,11 @@ class PHPCount
         }
     }
 
-	/*
-	 * AddHit(<page identifier>, <visitor identifier>)
-	 * Adds a hit. Takes care of checking uniqueness.
-	 * $pageID - A unique string that identifies the page
-	 * $visitorID - A unique string that represents the visitor (IP address)
-	 *
-	 * For example, on a page called coolstuff.php...
-	 *      PHPCount::("coolstuff", $_SERVER['REMOTE_ADDR']);
-	 */
-	public static function AddHit($pageID)
-	{
+    /*
+     * Adds a hit to a page specified by a unique $pageID string.
+     */
+    public static function AddHit($pageID)
+    {
         if(self::IGNORE_SEARCH_BOTS && self::IsSearchBot())
             return false;
         if(in_array($_SERVER['REMOTE_ADDR'], self::$IP_IGNORE_LIST))
@@ -104,28 +98,28 @@ class PHPCount
 
         self::InitDB();
 
-		self::Cleanup();
-		self::CreateCountsIfNotPresent($pageID);
-		if(self::UniqueHit($pageID))
-		{
-			self::CountHit($pageID, true);
-			self::LogHit($pageID);
-		}
-		self::CountHit($pageID, false);
+        self::Cleanup();
+        self::CreateCountsIfNotPresent($pageID);
+        if(self::UniqueHit($pageID))
+        {
+            self::CountHit($pageID, true);
+            self::LogHit($pageID);
+        }
+        self::CountHit($pageID, false);
 
         return true;
-	}
-	
-	/*
-	 * Returns (int) the amount of hits a page has
-	 * $pageID - the page identifier
-	 * $unique - true if you want unique hit count
-	 */
-	public static function GetHits($pageID, $unique = false)
-	{
+    }
+    
+    /*
+     * Returns (int) the amount of hits a page has
+     * $pageID - the page identifier
+     * $unique - true if you want unique hit count
+     */
+    public static function GetHits($pageID, $unique = false)
+    {
         self::InitDB();
 
-		self::CreateCountsIfNotPresent($pageID);
+        self::CreateCountsIfNotPresent($pageID);
 
         $q = self::$DB->prepare(
             'SELECT hitcount FROM hits
@@ -144,18 +138,18 @@ class PHPCount
             die("Missing hit count from database!");
             return false;
         }
-	}
-	
-	/*
-	 * Returns the total amount of hits to the entire website
-	 * When $unique is FALSE, it returns the sum of all non-unique hit counts
-	 * for every page. When $unique is TRUE, it returns the sum of all unique
-	 * hit counts for every page, so the value that's returned IS NOT the 
-	 * amount of site-wide unique hits, it is the sum of each page's unique
-	 * hit count.
-	 */
-	public static function GetTotalHits($unique = false)
-	{
+    }
+    
+    /*
+     * Returns the total amount of hits to the entire website
+     * When $unique is FALSE, it returns the sum of all non-unique hit counts
+     * for every page. When $unique is TRUE, it returns the sum of all unique
+     * hit counts for every page, so the value that's returned IS NOT the 
+     * amount of site-wide unique hits, it is the sum of each page's unique
+     * hit count.
+     */
+    public static function GetTotalHits($unique = false)
+    {
         self::InitDB();
 
         $q = self::$DB->prepare(
@@ -171,10 +165,10 @@ class PHPCount
             $total += (int)$row['hitcount'];
         }
         return $total;
-	}
-	
-	/*====================== PRIVATE METHODS =============================*/
-	
+    }
+    
+    /*====================== PRIVATE METHODS =============================*/
+    
     private static function IsSearchBot()
     {
         // Of course, this is not perfect, but it at least catches the major
@@ -206,9 +200,9 @@ class PHPCount
         return false;
     }
 
-	private static function UniqueHit($pageID)
-	{
-		$ids_hash = self::IDHash($pageID);
+    private static function UniqueHit($pageID)
+    {
+        $ids_hash = self::IDHash($pageID);
 
         $q = self::$DB->prepare(
             'SELECT time FROM nodupes WHERE ids_hash = :ids_hash'
@@ -227,11 +221,11 @@ class PHPCount
         {
             return true;
         }
-	}
-	
-	private static function LogHit($pageID)
-	{
-		$ids_hash = self::IDHash($pageID);
+    }
+    
+    private static function LogHit($pageID)
+    {
+        $ids_hash = self::IDHash($pageID);
 
         $q = self::$DB->prepare(
             'SELECT time FROM nodupes WHERE ids_hash = :ids_hash'
@@ -260,10 +254,10 @@ class PHPCount
             $s->bindParam(':ids_hash', $ids_hash);
             $s->execute();
         }
-	}
-	
-	private static function CountHit($pageID, $unique)
-	{
+    }
+    
+    private static function CountHit($pageID, $unique)
+    {
         $q = self::$DB->prepare(
             'UPDATE hits SET hitcount = hitcount + 1 ' .
             'WHERE pageid = :pageid AND isunique = :isunique'
@@ -272,16 +266,16 @@ class PHPCount
         $unique = $unique ? '1' : '0';
         $q->bindParam(':isunique', $unique);
         $q->execute();
-	}
-	
-	private static function IDHash($pageID)
-	{
+    }
+    
+    private static function IDHash($pageID)
+    {
         $visitorID = $_SERVER['REMOTE_ADDR'];
-		return hash("SHA256", $pageID . $visitorID);
-	}
-	
-	private static function CreateCountsIfNotPresent($pageID)
-	{
+        return hash("SHA256", $pageID . $visitorID);
+    }
+    
+    private static function CreateCountsIfNotPresent($pageID)
+    {
         // Non-unique
         $q = self::$DB->prepare(
             'SELECT pageid FROM hits WHERE pageid = :pageid AND isunique = 0'
@@ -315,16 +309,16 @@ class PHPCount
             $s->bindParam(':pageid', $pageID);
             $s->execute();
         }
-	}
-	
-	private static function Cleanup()
-	{
-		$last_interval = time() - self::HIT_OLD_AFTER_SECONDS;
+    }
+    
+    private static function Cleanup()
+    {
+        $last_interval = time() - self::HIT_OLD_AFTER_SECONDS;
 
         $q = self::$DB->prepare(
             'DELETE FROM nodupes WHERE time < :time'
         );
         $q->bindParam(':time', $last_interval);
         $q->execute();
-	}
+    }
 }
