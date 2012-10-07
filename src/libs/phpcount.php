@@ -55,7 +55,7 @@ class PHPCount
 
     private static $IP_IGNORE_LIST = array(
         '127.0.0.1',
-        '68.144.7.7',
+        '68.147.1.250'
     );
 
     private static $DB = false;
