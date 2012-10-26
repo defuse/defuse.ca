@@ -152,12 +152,12 @@ class URLParse
                 P_METD => "How to configure a private local newsgroup server (non-UseNet) on Debian",
                 P_METK => "inn2 configuration, news server configuration, local newsgroups, cecil-id, private newsgroups",
                 ),
-            "sockstress" => array(
-                P_FILE => "software/sockstress.php",
-                P_TITL => "Sockstress Denial of Service Tool & Source Code - Defuse Cyber-Security",
-                P_METD => "A C implementation of the sockstress attack from 2008.",
-                P_METK => "sockstress, source code, denial of service, proof of concept, dos, ddos",
-                ),          
+            #"sockstress" => array(
+            #    P_FILE => "software/sockstress.php",
+            #    P_TITL => "Sockstress Denial of Service Tool & Source Code - Defuse Cyber-Security",
+            #    P_METD => "A C implementation of the sockstress attack from 2008.",
+            #    P_METK => "sockstress, source code, denial of service, proof of concept, dos, ddos",
+            #    ),          
             "php-hash-cracker" => array(
                 P_FILE => "software/php-hash-cracker.php",
                 P_TITL => "Salted Hash Cracking PHP Script - Defuse Cyber-Security",
