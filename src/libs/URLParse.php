@@ -144,7 +144,7 @@ class URLParse
             "email-spoofing-in-ruby" => array(
                 P_FILE => "projects/email-spoofing-in-ruby.php",
                 P_TITL => "Spoofing SMTP email with a Ruby script - Defuse Security",
-                P_METK => "Example script for communicating with an SMTP server in Ruby to send spoofed email.",
+                P_METD => "Example script for communicating with an SMTP server in Ruby to send spoofed email.",
                 P_METK => "email spoofing, smtp spoofing, ruby email, ruby smtp"
                 ),
             "syntax-highlighting-in-php-with-vim" => array(      
