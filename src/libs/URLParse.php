@@ -141,6 +141,12 @@ class URLParse
                 P_TITL => "Blowfish C# and C++ Source Code - Defuse Cyber-Security",
                 P_METD => "C# and C++ implementation of the BLOWFISH block cipher.",
                 ),
+            "email-spoofing-in-ruby" => array(
+                P_FILE => "projects/email-spoofing-in-ruby.php",
+                P_TITL => "Spoofing SMTP email with a Ruby script - Defuse Security",
+                P_METK => "Example script for communicating with an SMTP server in Ruby to send spoofed email.",
+                P_METK => "email spoofing, smtp spoofing, ruby email, ruby smtp"
+                ),
             "syntax-highlighting-in-php-with-vim" => array(      
                 P_FILE => "projects/syntax-highlighting-in-php-with-vim.php",
                 P_TITL => "Scripting Vim's HTML syntax highlighting in PHP",
