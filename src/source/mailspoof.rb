@@ -144,15 +144,21 @@ body.gsub!(/^\.$/, ". ")
 
 # Finally, connect to the mail server and send the mail
 
+response_lines = []
+
 begin
   puts "[-] Connecting to [#{mail_server}]..."
   s = TCPSocket.new(  mail_server , 25 ) # SMTP
   puts "[-] Connected to [#{mail_server}]. Delivering mail..."
 
   s.print "HELO #{to_domain}\r\n"
+  response_lines << s.gets
   s.print "MAIL FROM: <#{$options[:from]}>\r\n"
+  response_lines << s.gets
   s.print "RCPT TO: <#{$options[:to]}>\r\n"
+  response_lines << s.gets
   s.print "DATA\r\n"
+  response_lines << s.gets
   s.print "To: <#{$options[:to]}>\r\n"
   if $options[:human]
     s.print "From: #{$options[:human]} <#{$options[:from]}>\r\n"
@@ -165,9 +171,10 @@ begin
   s.print "Subject: #{$options[:subject]}\r\n"
   s.print body
   s.print "\r\n"
-  sleep(1) # hotmail and gmail get pissed off unless we wait a while
   s.print "\r\n.\r\n"
+  response_lines << s.gets
   s.print "QUIT\r\n"
+  response_lines << s.gets
 rescue StandardError => e
   puts "[!] Error communicating with mail server:"
   puts "    " + e.message
@@ -178,24 +185,17 @@ end
 
 puts "[-] Reading the server's response..."
 
-# FIXME: This is vulnerable to a honeypot keeping the connection alive forever
-# even after the 'QUIT'. But the user probably knows the address they're
-# sending to isn't a honeypot, so I don't care.
-lines = []
-while line = s.gets
-  lines << line
-end
 s.close
 
 # Check if the server reported any errors...
-lines.each do |lin|
+response_lines.each do |lin|
   lin =~ /^(\d+)/
   code = $1.to_i
   if [421, 450, 451, 452, 500, 501, 502, 503,
       504, 521, 530, 550, 551, 552, 553, 554].include? code
     puts "[!] Something went wrong. I got an error code [#{code}]. \n" + 
       "    The mail server said:\n"
-    lines.each { |l| puts "        " + l }
+    response_lines.each { |l| puts "        " + l }
     exit( 3 )
   end
 end
