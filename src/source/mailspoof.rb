@@ -184,7 +184,6 @@ puts "[-] Reading the server's response..."
 lines = []
 while line = s.gets
   lines << line
-  puts line
 end
 s.close
 
