@@ -181,10 +181,6 @@ rescue StandardError => e
   exit( 4 )
 end
 
-# Read the server's response.
-
-puts "[-] Reading the server's response..."
-
 s.close
 
 # Check if the server reported any errors...
