@@ -1,7 +1,7 @@
 <?php
 /*==============================================================================
 
-        Defuse Cyber-Security's Secure & Lightweight CMS in PHP for Linux.
+        Defuse Security's Secure & Lightweight CMS in PHP for Linux.
 
                       PUBLIC DOMAIN CONTRIBUTION NOTICE                             
    This work has been explicitly placed into the Public Domain for the
@@ -80,8 +80,8 @@ class URLParse
                                             "helloworld.localhost",
                                             );
     private static $FORCE_HTTPS = false;
-    private static $DEFAULT_TITLE = "Defuse Cyber-Security's HelloWorld CMS";
-    private static $DEFAULT_META_DESC = "Powered by Defuse Cyber-Security's HelloWorld CMS";
+    private static $DEFAULT_TITLE = "Defuse Security's HelloWorld CMS";
+    private static $DEFAULT_META_DESC = "Powered by Defuse Security's HelloWorld CMS";
     private static $DEFAULT_META_KEYWORDS = "helloworld, cms";
 
     private static $PAGE_INFO = array(

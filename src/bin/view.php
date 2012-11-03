@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of Defuse Cyber-Security's Secure Pastebin
+ * This file is part of Defuse Security's Secure Pastebin
  * Find updates at: https://defuse.ca/pastebin.htm
  * Developer contact: havoc AT defuse.ca
  * This code is in the public domain. There is no warranty.
@@ -26,7 +26,7 @@ header('Content-Type: text/html; charset=utf-8');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-    <title>Defuse Cyber-Security's Encrypted Pastebin</title>
+    <title>Defuse Security's Encrypted Pastebin</title>
     <style type="text/css">
     body {
         background-color: #e7e7e7; 
@@ -161,7 +161,7 @@ function encrypt()
 </script>
 <!-- End of scripts for client-side decryption -->
 
-<h1 id="header"><a href="https://defuse.ca/pastebin.htm">Defuse Cyber-Security</a>'s Secure Pastebin</h1>
+<h1 id="header"><a href="https://defuse.ca/pastebin.htm">Defuse Security</a>'s Secure Pastebin</h1>
 
 <?php
 

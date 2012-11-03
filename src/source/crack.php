@@ -216,7 +216,7 @@
     function printPreamble($wordlist, $start_line, $hash_str, $hash_type,  $left_salt, 
                     $right_salt, $output_file)
     {
-        echo "Defuse Cyber-Security's Hash Cracking Script - " . VERSION . "\n";
+        echo "Defuse Security's Hash Cracking Script - " . VERSION . "\n";
         echo "Homepage: " . DEFUSE_URL . "\n\n";
 
         $now = date("F j, Y, g:i a");

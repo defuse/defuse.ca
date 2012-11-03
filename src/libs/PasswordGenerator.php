@@ -1,7 +1,7 @@
 <?php
 /*
  * Unbiased random password generator.
- * This code is placed into the public domain by Defuse Cyber-Security.
+ * This code is placed into the public domain by Defuse Security.
  * WWW: https://defuse.ca/
  */
 class PasswordGenerator

@@ -28,7 +28,7 @@ Arguments:<br />
 <h2>Sample Output</h2>
 <div class="code">
 $ php crack.php -w small.lst -c 2c5419e6db59f283bcbb501c722e73c6 -t md5 -l a8f0h2 -r 8hf27<br />
-Defuse Cyber-Security&#039;s Hash Cracking Script - v1.1<br />
+Defuse Security&#039;s Hash Cracking Script - v1.1<br />
 Homepage: https://defuse.ca/php-hash-cracker.htm<br />
 <br />
 Begin execution: March 17, 2012, 8:31 pm <br />

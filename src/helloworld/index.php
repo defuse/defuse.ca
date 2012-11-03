@@ -1,7 +1,7 @@
 <?php
 /*==============================================================================
 
-        Defuse Cyber-Security's Secure & Lightweight CMS for PHP.
+        Defuse Security's Secure & Lightweight CMS for PHP.
 
                       PUBLIC DOMAIN CONTRIBUTION NOTICE                             
    This work has been explicitly placed into the Public Domain for the

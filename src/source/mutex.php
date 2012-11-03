@@ -4,7 +4,7 @@
  * preventing race condition attacks:
  * https://defuse.ca/race-conditions-in-web-applications.htm
  *
- * This code is explcitly placed into the public domain by Defuse Cyber-Security. 
+ * This code is explcitly placed into the public domain by Defuse Security. 
  * You are free to use it for any purpose whatsoever.
  *
  * Always test your implementation to make sure the attack is being prevented!

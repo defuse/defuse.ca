@@ -93,7 +93,7 @@ if(isset($_GET['drawingnum']))
 				<li>Obtain any related files from the organizer and verify that the <b>SHA256</b> checksum is <b>exactly identical</b> using the <a href="checksums.htm">checksum calculator</a>.</li>
 				<li>Make sure the random data is in the <strong>second</strong> text area with the title &quot;<?php echo "Results for drawing #$num"; ?>&quot;. The drawing organizer has full control over the text in the first text box.</li> 
 			</ul>
-			<p>Once you have verified each point, you can be sure that the drawing organizer was not able to influence the random numbers in any way, and you can trust the results. If you are in doubt, feel free to <a href="contact.htm">contact Defuse Cyber-Security</a>, we'll be glad to help.</p>
+			<p>Once you have verified each point, you can be sure that the drawing organizer was not able to influence the random numbers in any way, and you can trust the results. If you are in doubt, feel free to <a href="contact.htm">contact Defuse Security</a>, we'll be glad to help.</p>
 		</div>
 		<?
 		}
