@@ -1,22 +1,28 @@
 <h1>HelloWorld! - A Light &amp; Secure CDS for PHP</h1>
 
-<p>This is the Content Display System (CDS) that we use to give each page on this website the same layout without having to duplicate the layout code for every page. 
-It's different than a CMS in that its only purpose is to securely include HTML or PHP files into a singular layout file.
-It doesn't include a <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> editor or anything fancy like that, and it doesn't use a database.
+<p>
+    This is the Content Display System (CDS) that we use to give each page on
+    this website the same layout without having to duplicate the layout code for
+    every page.  It's different than a CMS in that its only purpose is to
+    securely include HTML or PHP files into a singular layout file.  It doesn't
+    include a <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> editor
+    or anything fancy like that, and it doesn't use a database.
 </p>
 
 <p>
-    Too many websites are vulnerable to <a href="https://en.wikipedia.org/wiki/Remote_file_inclusion">Remote File Inclusion</a> 
-    because their developers implement something like HelloWorld! without considering security. 
-    HelloWorld! has been released into the public domain to help solve this problem.
-    It was designed with security as the top priority and has been thoroughly tested.
+    Too many websites are vulnerable to
+    <a href="https://en.wikipedia.org/wiki/Remote_file_inclusion">Remote File Inclusion</a>
+    because their developers implement something like HelloWorld! without
+    considering security.  HelloWorld! has been released into the public domain
+    to help solve this problem.  It was designed with security as the top
+    priority and has been thoroughly tested.
 </p>
 
 <h3>Features</h3>
 <ul>
 	<li>Easily create multiple pages with the same layout/theme.</li>
     <li>Each page can be given a different title, META description, and META keywords.</li>
-    <li>Automatic redirection to https:// URL (optional).</li>
+    <li>Automatic redirection to http<b>s</b>:// URL (optional).</li>
 	<li>Doesn't use database software.</li>
 	<li>Thoroughly and frequently tested for security vulnerabilities.</li>
 	<li>Free (public domain).</li>
@@ -34,7 +40,10 @@ It doesn't include a <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a>
 
 <h2>Using HelloWorld!</h2>
 
-<p>HelloWorld! comes with a very basic layout. You can see what it should look like once you get it installed <a href="http://helloworld.defuse.ca/">here</a>.</p>
+<p>
+HelloWorld! comes with a very basic layout. You can see what it should look like
+once you get it installed <a href="http://helloworld.defuse.ca/">here</a>.
+</p>
 
 <h3>Setup</h3>
 
@@ -134,12 +143,17 @@ It doesn't include a <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a>
     <li>Add the page to the page information array.</li>
 </ol>
 
-<p>All page content files go inside the <i>/pages/</i> folder. 
-There is no correlation between the URL to access the page and the location of the page content file in <i>/pages</i>.
-You can organize the files in <i>/pages</i> any way you like. The URL is set by the page information array.
+<p>
+    All page content files go inside the <i>/pages/</i> folder.  There is no
+    correlation between the URL to access the page and the location of the page
+    content file in <i>/pages</i>.  You can organize the files in <i>/pages</i>
+    any way you like. The URL is set by the page information array.
 </p>
 
-<p>For example, if we want to add a contact information page, we first create the file <i>/pages/contact.html</i>:</p>
+<p>
+    For example, if we want to add a contact information page, we first create
+    the file <i>/pages/contact.html</i>:
+</p>
 
 <div class="code">
 &lt;h2&gt;Contact Information&lt;/h2&gt;<br />
@@ -147,8 +161,10 @@ You can organize the files in <i>/pages</i> any way you like. The URL is set by 
 &lt;p&gt;Phone number: 555-1234&lt;/p&gt;
 </div>
 
-<p>Then, to make this page accessible from the web, we must add it to the page information array. To edit this, open <i>/libs/URLParse.php</i>.
-Search for &quot;$PAGE_INFO&quot;, and you should find something like this:
+<p>
+    Then, to make this page accessible from the web, we must add it to the page
+    information array. To edit this, open <i>/libs/URLParse.php</i>.  Search for
+    &quot;$PAGE_INFO&quot;, and you should find something like this:
 </p>
 
 <div class="code">
@@ -175,7 +191,10 @@ Search for &quot;$PAGE_INFO&quot;, and you should find something like this:
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);<br />
 </div>
 
-<p>Add another element to the array for the contact page as the following code demonstrates:</p>
+<p>
+    Add another element to the array for the contact page as the following code
+    demonstrates:
+</p>
 
 
 <div class="code">
@@ -210,31 +229,47 @@ Search for &quot;$PAGE_INFO&quot;, and you should find something like this:
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);
 </div>
 
-<p>You're probably wondering the strings are for. 
-The &quot;contact&quot; string in the first highlighted line specifies the URL of the page without the .htm extension. 
-In this case, it is &quot;contact&quot; so the page URL will be <i>http://example.com/contact.htm</i>. 
-The P_FILE string is the path to the file containing the page body. 
-It is relative to the <i>/pages</i> directory. 
-In this case, the P_FILE string is referring to the <i>/pages/contact.htm</i> file we made earlier.
-The P_TITL string is the title of the page (usually displayed in the web browser's title bar).
-The P_METD string specifies what to put in the <a href="http://searchenginewatch.com/article/2067564/How-To-Use-HTML-Meta-Tags">META description tag</a>. 
-P_METK specifies what to put in the META keywords tag. When any of P_TITL, P_METD, or P_METK are not specified, the default value is used.
+<p>
+    You're probably wondering the strings are for.  The &quot;contact&quot;
+    string in the first highlighted line specifies the URL of the page without
+    the .htm extension.  In this case, it is &quot;contact&quot; so the page URL
+    will be <i>http://example.com/contact.htm</i>.  The P_FILE string is the
+    path to the file containing the page body.  It is relative to the
+    <i>/pages</i> directory.  In this case, the P_FILE string is referring to
+    the <i>/pages/contact.htm</i> file we made earlier.  The P_TITL string is
+    the title of the page (usually displayed in the web browser's title bar).
+    The P_METD string specifies what to put in the
+    <a href="http://searchenginewatch.com/article/2067564/How-To-Use-HTML-Meta-Tags">META description tag</a>.
+    P_METK specifies what to put in the META keywords tag. When any of P_TITL,
+    P_METD, or P_METK are not specified, the default value is used.
 </p>
 
-<p>After you have added the page content file and added the page to the page information array, you can edit <i>index.php</i> to add the URL to your navbar (if you have one).</p>
+<p>
+    After you have added the page content file and added the page to the page
+    information array, you can edit <i>index.php</i> to add the URL to your
+    navbar (if you have one).
+</p>
 
 
 <h3>Removing Pages</h3>
 
-<p>To remove a page, delete its file in <i>/pages</i> and remove its entry from the page information array in <i>libs/URLParse.php</i></p>
+<p>
+    To remove a page, delete its file in <i>/pages</i> and remove its entry from
+    the page information array in <i>libs/URLParse.php</i>
+</p>
 
 <h3>Modifying Pages</h3>
 
-<p>To modify a page, modify its file in <i>/pages</i>. That's it!.
+<p>
+    To modify a page, modify its file in <i>/pages</i>. That's it!.
 </p>
 
 
 <h3>Editing the Layout/Theme</h3>
 <p>
-All requests are processed by <i>index.php</i>, and the page body is included into it. So to edit the website layout/theme, edit <i>index.php</i> accordingly. Just be sure that the method call <i>URLParse::ProcessURL();</i> comes before any HTML code. The method call <i>URLParse::IncludePageContents();</i> is what includes the page body.
+    All requests are processed by <i>index.php</i>, and the page body is
+    included into it. So to edit the website layout/theme, edit <i>index.php</i>
+    accordingly.  Just be sure that the method call
+    <i>URLParse::ProcessURL();</i> comes before any HTML code. The method call
+    <i>URLParse::IncludePageContents();</i> is what includes the page body.
 </p>
