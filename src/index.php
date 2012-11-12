@@ -111,7 +111,7 @@ header('Content-Type: text/html; charset=utf-8');
 <div class="menu">
 
 <ul>
-    <li class="headerlink" ><a href="/">Home&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+    <li class="headerlink" ><a href="/">Home<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul class="leftbutton">
             <li><a href="/about.htm">&nbsp;About Defuse</a></li>
             <li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
@@ -126,7 +126,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-    <li class="headerlink" ><a href="/peerreview.htm">Services&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+    <li class="headerlink" ><a href="/peerreview.htm">Services<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <!--<li><a href="/softwaredevelopment.htm">&nbsp;Software Development</a></li>-->
             <!--<li><a href="/webdevelopment">&nbsp;Web Development</a></li>-->
@@ -149,7 +149,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-    <li class="headerlink" ><a href="/projects.htm">Software&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+    <li class="headerlink" ><a href="/projects.htm">Software<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <li><a href="/passgen.htm">&nbsp;Password Generator</a></li>
             <li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
@@ -162,7 +162,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-    <li class="headerlink" ><a href="/projects.htm">Projects &amp; Code&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+    <li class="headerlink" ><a href="/projects.htm">Projects &amp; Code<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <li><a href="/email-spoofing-in-ruby.htm">&nbsp;Ruby Email Spoofing</a></li>
             <li><a href="/syntax-highlighting-in-php-with-vim.htm">&nbsp;PHP &amp; Vim Highlighting</a></li>
@@ -184,7 +184,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-    <li class="headerlink" ><a href="/projects.htm">Research&nbsp;<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+    <li class="headerlink" ><a href="/projects.htm">Research<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <li><a href="#"><span class="drop"><span>Security</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
@@ -216,7 +216,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-    <li class="headerlink" ><a href="/projects.htm">Miscellaneous<span class="darr">&#9660;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+    <li class="headerlink" ><a href="/projects.htm">Miscellaneous<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
             <li><a href="/vimrc.htm">&nbsp;My Vim Configuration</a></li>
