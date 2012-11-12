@@ -321,7 +321,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <td><?php echo $unique; ?></td>
             </tr>
         </table>
-        Copyright &copy; 2012 <a href="/about.htm">Defuse Cyber Security</a> | 
+        Copyright &copy; 2012 <a href="/about.htm">Defuse Security</a> | 
         <a href="/pastebin.htm">Secure Pastebin</a> | 
         <a href="/passgen.htm">Password Generator</a> |
         <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a>
