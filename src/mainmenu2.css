@@ -176,7 +176,7 @@
 
 .menu ul li:hover a,
 .menu ul li a:hover {                        /* selected top-level menu items */
-	border-bottom:1px solid white;    /* these 2 lines create the push-in illusion */
+	/*border-bottom:1px solid white;*/    /* these 2 lines create the push-in illusion */
 	height:16px;
 }
 
