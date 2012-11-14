@@ -139,7 +139,13 @@ class URLParse
             "blowfish" => array(      
                 P_FILE => "projects/blowfish.html",
                 P_TITL => "Blowfish C# and C++ Source Code - Defuse Security",
-                P_METD => "C# and C++ implementation of the BLOWFISH block cipher.",
+                P_METD => "C# and C++ implementation of the BLOWFISH block cipher."
+                ),
+            "secure-php-encryption" => array(
+                P_FILE => "projects/secure-php-encryption.php",
+                P_TITL => "Encrypting Data in PHP (HowTo) - Defuse Security",
+                P_METD => "Source code for encrypting data in PHP with mcrypt. The right way to do it.",
+                P_METK => "php encrypiton, php aes, encryption in php, php decryption"
                 ),
             "email-spoofing-in-ruby" => array(
                 P_FILE => "projects/email-spoofing-in-ruby.php",
