@@ -28,6 +28,12 @@ class Crypto
 
     public static function Encrypt($plaintext, $key)
     {
+        if(strlen($key) < 16)
+        {
+            trigger_error("Key too small.", E_USER_ERROR);
+            return false;
+        }
+
         // Open the encryption module and get some parameters.
         $crypt = mcrypt_module_open(CRYPTO_CIPHER_ALG, "", CRYPTO_CIPHER_MODE, "");
         $keysize = mcrypt_enc_get_key_size($crypt);
