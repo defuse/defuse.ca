@@ -260,6 +260,12 @@ class URLParse
                 P_METD => "Find out where an IP address is located (FREE, UNLIMITED)",
                 P_METK => "ip2location, ip address, locate ip, ip to location, where is ip",
                 ),
+            "online-x86-assembler" => array(
+                P_FILE => "services/online-x86-assembler.php",
+                P_TITL => "Online x86 Instruction Assembler",
+                P_METD => "Easily find out which bytes your x86 ASM instructions assemble to.",
+                P_METK => "assembler, opcode finder, opcode lookup, online assembler, x86, intel",
+                ),
             "web-server-scan" => array(
                 P_FILE => "services/scan.php",
                 P_TITL => "Web Server Security Scan - Defuse Security",
