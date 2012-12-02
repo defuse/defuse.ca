@@ -1,11 +1,11 @@
 <?php
 require_once( 'libs/HtmlEscape.php' );
 
-
 $x86checked = "";
 $x64checked = "";
 $archName = "";
 
+// Whitelist the architecture type (either x86 or x64).
 if (isset($_POST['arch']))
 {
     switch ($_POST['arch'])
@@ -27,27 +27,30 @@ else
 {
     $x86checked = "checked=checked";
 }
-
 ?>
+
 <h1>Online x86 / x64 Assembler</h1>
 
 <p>
-This tool takes some x86 or x64 assembly instructions and converts them to their binary representation
-(machine code).  It uses GCC (AS) to assemble the code you give it and objdump to disassemble the
-resulting object file, so you can see which bytes correspond to which instructions.
+This tool takes some x86 or x64 assembly instructions and converts them to their
+binary representation (machine code).  It uses GCC (AS) to assemble the code you
+give it and objdump to disassemble the resulting object file, so you can see
+which bytes correspond to which instructions.
 </p>
 
-<p>
-<strong>Enter your assembly code</strong> (intel syntax):
-</p>
+<p><strong>Enter your assembly code</strong> (intel syntax):</p>
 
 <form action="/online-x86-assembler.htm#disassembly" method="post">
-    <textarea name="instructions" rows="15" cols="80" style="color: black; background-color: white;
-border: dashed 1px black; width: 100%;" ><?php
-    if (isset($_POST['instructions']))
-    {
-        echo htmlentities($_POST['instructions'], ENT_QUOTES);
-    }
+    <textarea 
+        name="instructions"
+        rows="15" cols="80"
+        style="color: black; background-color: white; border: dashed 1px black; width: 100%;"
+    ><?php
+        // Refill the textbox with their code so they don't have to re-type it.
+        if (isset($_POST['instructions']))
+        {
+            echo htmlentities($_POST['instructions'], ENT_QUOTES);
+        }
     ?></textarea>
     <p style="text-align: right;">
         Architecture:
@@ -59,7 +62,86 @@ border: dashed 1px black; width: 100%;" ><?php
 
 <?php
 
+if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['instructions']) != 0)
+{
+    // Anchor so we can move the user's view right to the results.
+    echo '<a name="disassembly"></a>';
 
+    $instructions = $_POST['instructions'];
+
+    // Make sure the input is a reasonable size.
+    if (strlen($instructions) < 10 * 1024)
+    {
+        // Random (hopefully unique) temporary file names.
+        $tempnam = "/tmp/" . rand();
+        $source_path = $tempnam . ".s";
+        $obj_path = $tempnam . ".o";
+
+        // Write the assembly source code.
+        $asmfile = ".intel_syntax noprefix\n_main:\n" . $instructions . "\n";
+        file_put_contents($source_path, $asmfile);
+
+        $ret = 1;
+        $output = array();
+
+        $archTick = "-m32";
+        if ($archName == "x64")
+            $archTick = "-m64";
+
+        // Assemble the source with gcc.
+        exec("gcc $archTick -c $source_path -o $obj_path 2>&1", $output, $ret);
+
+        if ($ret == 0)
+        {
+            // Use objdump to disassemble it.
+            exec("objdump -M intel -d $obj_path", $output, $ret);
+
+            if ($ret == 0)
+            {
+                $strout = implode("\n", $output);
+                printAsm($strout);
+            }
+            else
+            {
+                printError("Something went wrong!");
+            }
+        }
+        else
+        {
+            $strout = implode("\n", $output);
+            $strout = preg_replace('/\\/tmp\\/\\d+\\.s:(\d+:|)\s*/', "", $strout);
+            $strout = str_replace("Assembler messages:\n", "", $strout);
+            printError($strout);
+        }
+
+        // Delete the source and object files if they're there.
+        if (file_exists($source_path))
+            unlink($source_path);
+        if (file_exists($obj_path))
+            unlink($obj_path);
+    }
+    else 
+    {
+        printError("Sorry, your input is too big!");
+    }
+
+}
+
+// Prints $output in a red box.
+function printError($output)
+{
+    $safe_output = HtmlEscape::escapeText($output, true, 4);
+?>
+    <div style="background-color: #FFCCCC; border: solid red 1px; padding: 10px;">
+    <div style="font-family: monospace;">
+        <?php echo $safe_output; ?>
+    </div>
+    </div>
+<?
+}
+
+// Takes the output of objdump (all one string, lines separated by \n)
+// and prints the assembly/disassembly results.
 function printAsm($objdump_output)
 {
     // Find where the actual code starts
@@ -125,81 +207,5 @@ function printAsm($objdump_output)
         </div>
     </div>
 <?
-}
-
-function printError($output)
-{
-    $safe_output = HtmlEscape::escapeText($output, true, 4);
-?>
-    <div style="background-color: #FFCCCC; border: solid red 1px; padding: 10px;">
-    <div style="font-family: monospace;">
-        <?php echo $safe_output; ?>
-    </div>
-    </div>
-<?
-}
-
-if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['instructions']) != 0)
-{
-    echo '<a name="disassembly"></a>';
-
-    $instructions = $_POST['instructions'];
-
-    // Make sure the input is a reasonable size.
-    if (strlen($instructions) < 10 * 1024)
-    {
-        // Random (hopefully unique) temporary file names.
-        $tempnam = "/tmp/" . rand();
-        $source_path = $tempnam . ".s";
-        $obj_path = $tempnam . ".o";
-
-        // Write the assembly source code.
-        $asmfile = ".intel_syntax noprefix\n_main:\n" . $instructions . "\n";
-        file_put_contents($source_path, $asmfile);
-
-        $ret = 1;
-        $output = array();
-
-        $archTick = "-m32";
-        if ($archName == "x64")
-            $archTick = "-m64";
-
-        // Assemble the source with gcc.
-        exec("gcc $archTick -c $source_path -o $obj_path 2>&1", $output, $ret);
-
-        if ($ret == 0)
-        {
-            // Use objdump to disassemble it.
-            exec("objdump -M intel -d $obj_path", $output, $ret);
-
-            if ($ret == 0)
-            {
-                $strout = implode("\n", $output);
-                printAsm($strout);
-            }
-            else
-            {
-                printError("Something went wrong!");
-            }
-        }
-        else
-        {
-            $strout = implode("\n", $output);
-            $strout = preg_replace('/\\/tmp\\/\\d+\\.s:(\d+:|)\s*/', "", $strout);
-            $strout = str_replace("Assembler messages:\n", "", $strout);
-            printError($strout);
-        }
-
-        // Delete the source and object files if they're there.
-        if (file_exists($source_path))
-            unlink($source_path);
-        if (file_exists($obj_path))
-            unlink($obj_path);
-    }
-    else
-    {
-        printError("Sorry, your input is too big!");
-    }
-
 }
 ?>
