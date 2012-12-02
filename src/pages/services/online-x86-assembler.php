@@ -1,3 +1,6 @@
+<?php
+    require_once( 'libs/HtmlEscape.php' );
+?>
 <h1>Online x86 Assembler</h1>
 
 <p>
@@ -25,7 +28,6 @@ border: dashed 1px black; width: 100%;" ><?php
 
 <?php
 
-require_once( 'libs/HtmlEscape.php' );
 
 function printAsm($objdump_output)
 {
