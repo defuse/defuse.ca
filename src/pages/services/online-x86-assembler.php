@@ -1,19 +1,47 @@
 <?php
-    require_once( 'libs/HtmlEscape.php' );
+require_once( 'libs/HtmlEscape.php' );
+
+
+$x86checked = "";
+$x64checked = "";
+$archName = "";
+
+if (isset($_POST['arch']))
+{
+    switch ($_POST['arch'])
+    {
+    case "x86":
+        $archName = "x86";
+        $x86checked = "checked=checked";
+        break;
+    case "x64":
+        $archName = "x64";
+        $x64checked = "checked=checked";
+        break;
+    default:
+        $x86checked = "checked=checked";
+        $archName = "x86";
+    }
+}
+else
+{
+    $x86checked = "checked=checked";
+}
+
 ?>
-<h1>Online x86 Assembler</h1>
+<h1>Online x86 / x64 Assembler</h1>
 
 <p>
-This tool takes some x86 assembly instructions and converts them to their binary representation
+This tool takes some x86 or x64 assembly instructions and converts them to their binary representation
 (machine code).  It uses GCC (AS) to assemble the code you give it and objdump to disassemble the
-resulting object file.
+resulting object file, so you can see which bytes correspond to which instructions.
 </p>
 
 <p>
 <strong>Enter your assembly code</strong> (intel syntax):
 </p>
 
-<form action="/online-x86-assembler.htm" method="post">
+<form action="/online-x86-assembler.htm#disassembly" method="post">
     <textarea name="instructions" rows="15" cols="80" style="color: black; background-color: white;
 border: dashed 1px black; width: 100%;" ><?php
     if (isset($_POST['instructions']))
@@ -22,6 +50,9 @@ border: dashed 1px black; width: 100%;" ><?php
     }
     ?></textarea>
     <p style="text-align: right;">
+        Architecture:
+        <input type="radio" name="arch" value="x86" <?php echo $x86checked; ?> /> x86
+        <input type="radio" name="arch" value="x64" <?php echo $x64checked; ?> /> x64
         <input type="submit" name="submit" value="Assemble" />
     </p>
 </form>
@@ -88,7 +119,9 @@ function printAsm($objdump_output)
         </div>
     <div style="font-size: 16pt; padding-bottom: 10px; padding-top: 10px;">Disassembly:</div>
         <div style="font-family: monospace;">
+        <p>
             <?php echo $safe_code; ?>
+        </p>
         </div>
     </div>
 <?
@@ -127,8 +160,12 @@ if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['i
         $ret = 1;
         $output = array();
 
+        $archTick = "-m32";
+        if ($archName == "x64")
+            $archTick = "-m64";
+
         // Assemble the source with gcc.
-        exec("gcc -m32 -c $source_path -o $obj_path 2>&1", $output, $ret);
+        exec("gcc $archTick -c $source_path -o $obj_path 2>&1", $output, $ret);
 
         if ($ret == 0)
         {
