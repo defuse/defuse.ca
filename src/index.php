@@ -138,6 +138,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/pdfcleaner.htm">&nbsp;PDFCleaner</a></li>
 
             <li><a href="/big-number-calculator.htm">&nbsp;Big Number Calculator</a></li>
+            <li><a href="/online-x86-assembler.htm">&nbsp;Online x86 Assembler</a></li>
             <li><a href="/checksums.htm">&nbsp;Checksum Calculator</a></li>
             <li><a href="/html-sanitize.htm">&nbsp;HTML Sanitizer</a></li>
 
