@@ -1,13 +1,13 @@
 <h1>Online x86 Assembler</h1>
 
 <p>
-This tool takes some x86 assembly instructions and converts them to their binary
-(byte) representations. It can be useful for exploit development, reverse engineering,
-and cracking.
+This tool takes some x86 assembly instructions and converts them to their binary representation
+(machine code).  It uses GCC (AS) to assemble the code you give it and objdump to disassemble the
+resulting object file.
 </p>
 
 <p>
-<strong>Enter your x86 instructions</strong> (intel syntax, one per line):
+<strong>Enter your assembly code</strong> (intel syntax, one per line):
 </p>
 
 <form action="/online-x86-assembler.htm" method="post">
@@ -40,12 +40,54 @@ function printAsm($objdump_output)
     $code = preg_replace('/(\\n|^)\\s*/', "\n", $code);
     $code = trim($code);
 
+    $justBytes = "";
+    $lines = explode("\n", $code);
+    foreach ($lines as $line)
+    {
+        $colon = strpos($line, ":");
+        $matches = array();
+        preg_match('/([a-zA-Z0-9]{2}\s+)+/', $line, $matches);
+        $justBytes .= $matches[0];
+    }
+
+    $justBytes = strtoupper($justBytes);
+    $justBytes = str_replace("00", "ZERO", $justBytes);
+    $justBytes = str_replace(" ", "", $justBytes);
+    $justBytes = str_replace("\t", "", $justBytes);
+    $safe_justBytes = htmlentities($justBytes, ENT_QUOTES);
+    $safe_justBytes = str_replace("ZERO", "<b>00</b>", $safe_justBytes);
+    $justBytes = str_replace("ZERO", "00", $justBytes);
+
+    $safe_byteString = "";
+    $safe_arrayDef = "{";
+    for ($i = 0; $i < strlen($justBytes); $i+=2)
+    {
+        $hex = htmlentities(substr($justBytes, $i, 2), ENT_QUOTES);
+        $safe_byteString .= "\x" . $hex;
+        $safe_arrayDef .= " 0x" . $hex;
+        if ($i + 2 < strlen($justBytes))
+            $safe_arrayDef .= ",";
+    }
+    $safe_arrayDef .= " }";
+
     $safe_code = HtmlEscape::escapeText($code, true, 4);
 ?>
-    <div style="background-color: #CCFFCC; border: solid #00FF00 1px; padding: 10px;">
-    <div style="font-family: monospace;">
-        <?php echo $safe_code; ?>
-    </div>
+    <div style="padding: 10px;">
+    <div style="font-size: 16pt; padding-bottom: 10px;">Assembly:</div>
+        <div style="font-family: monospace;">
+            <p><b>Raw Hex</b> (zero bytes in bold):</p>
+                <p><?php echo $safe_justBytes; ?>&nbsp;&nbsp;&nbsp;</p>
+            <p><b>String Constant:</b></p>
+                <p>&quot;<?php echo $safe_byteString; ?>&quot;</p>
+            <p><b>Array Constant:</b> </p>
+            <p>
+            <?php echo $safe_arrayDef; ?>
+            </p>
+        </div>
+    <div style="font-size: 16pt; padding-bottom: 10px; padding-top: 10px;">Disassembly:</div>
+        <div style="font-family: monospace;">
+            <?php echo $safe_code; ?>
+        </div>
     </div>
 <?
 }
@@ -68,49 +110,57 @@ if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['i
 
     $instructions = $_POST['instructions'];
 
-    // TODO: sanity check on the size and number of lines 
-
-    $asmfile = ".intel_syntax noprefix\n_main:\n" . $instructions . "\n";
-
-    $tempnam = "/tmp/" . rand();
-    $source_path = $tempnam . ".s";
-    $obj_path = $tempnam . ".o";
-
-    file_put_contents($source_path, $asmfile);
-
-    $ret = 1;
-    $output = array();
-
-    // Assemble the source with gcc.
-    exec("gcc -m32 -c $source_path -o $obj_path 2>&1", $output, $ret);
-
-    if ($ret == 0)
+    // Make sure the input is a reasonable size.
+    if (strlen($instructions) < 10 * 1024)
     {
-        // Use objdump to disassemble it.
-        exec("objdump -M intel -d $obj_path", $output, $ret);
+        // Random (hopefully unique) temporary file names.
+        $tempnam = "/tmp/" . rand();
+        $source_path = $tempnam . ".s";
+        $obj_path = $tempnam . ".o";
+
+        // Write the assembly source code.
+        $asmfile = ".intel_syntax noprefix\n_main:\n" . $instructions . "\n";
+        file_put_contents($source_path, $asmfile);
+
+        $ret = 1;
+        $output = array();
+
+        // Assemble the source with gcc.
+        exec("gcc -m32 -c $source_path -o $obj_path 2>&1", $output, $ret);
 
         if ($ret == 0)
         {
-            $strout = implode("\n", $output);
-            printAsm($strout);
+            // Use objdump to disassemble it.
+            exec("objdump -M intel -d $obj_path", $output, $ret);
+
+            if ($ret == 0)
+            {
+                $strout = implode("\n", $output);
+                printAsm($strout);
+            }
+            else
+            {
+                printError("Something went wrong!");
+            }
         }
         else
         {
-            printError("Something went wrong!");
+            $strout = implode("\n", $output);
+            $strout = preg_replace('/\\/tmp\\/\\d+\\.s:(\d+:|)\s*/', "", $strout);
+            $strout = str_replace("Assembler messages:\n", "", $strout);
+            printError($strout);
         }
+
+        // Delete the source and object files if they're there.
+        if (file_exists($source_path))
+            unlink($source_path);
+        if (file_exists($obj_path))
+            unlink($obj_path);
     }
     else
     {
-        $strout = implode("\n", $output);
-        $strout = preg_replace('/\\/tmp\\/\\d+\\.s:(\d+:|)\s*/', "", $strout);
-        $strout = str_replace("Assembler messages:\n", "", $strout);
-        printError($strout);
+        printError("Sorry, your input is too big!");
     }
 
-    // Delete the source and object files if they're there.
-    if (file_exists($source_path))
-        unlink($source_path);
-    if (file_exists($obj_path))
-        unlink($obj_path);
 }
 ?>
