@@ -10,7 +10,7 @@ resulting object file.
 </p>
 
 <p>
-<strong>Enter your assembly code</strong> (intel syntax, one per line):
+<strong>Enter your assembly code</strong> (intel syntax):
 </p>
 
 <form action="/online-x86-assembler.htm" method="post">
