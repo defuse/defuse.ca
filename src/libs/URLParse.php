@@ -262,7 +262,7 @@ class URLParse
                 ),
             "online-x86-assembler" => array(
                 P_FILE => "services/online-x86-assembler.php",
-                P_TITL => "Online x86 Instruction Assembler",
+                P_TITL => "Online x86 and x64 Intel Instruction Assembler",
                 P_METD => "Easily find out which bytes your x86 ASM instructions assemble to.",
                 P_METK => "assembler, opcode finder, opcode lookup, online assembler, x86, intel",
                 ),
