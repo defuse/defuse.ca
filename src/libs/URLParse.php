@@ -100,6 +100,9 @@ class URLParse
             "index.php" =>  array(
                 P_RDIR => "",
                 ),
+            "key" => array(
+                P_RDIR => "contact"
+                ),
             "about" =>      array(
                 P_FILE => "about.html",
                 P_METD => "About Defuse Security."
