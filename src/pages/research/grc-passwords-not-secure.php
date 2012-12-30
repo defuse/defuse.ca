@@ -25,7 +25,7 @@ So, how does the attack work?
 
 <p>
 GRC's generator is very simple: it's AES-256 used to encrypt a sequence of
-increasing digits in CBC mode. It starts with 3 parameters: the initialization
+increasing numbers in CBC mode. It starts with 3 parameters: the initialization
 vector (IV), the counter (COUNTER), and the secret key (KEY). In each iteration, the following steps
 are executed: 
 </p>
