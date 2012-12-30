@@ -317,6 +317,12 @@ class URLParse
                 P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
                 P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
                 ),
+            "grc-passwords-not-secure" => array(
+                P_FILE => "research/grc-passwords-not-secure.php",
+                P_TITL => "GRC's Perfect Password Generator is Not Cryptographically Secure",
+                P_METD => "Why GRC's Perfect Password Generator is not a CSPRNG",
+                P_METK => "grc perfect passwords, security of grc perfect passwords, csprng, cryptographically secure, state compromise extension",
+                ),
             "password-reset-key-escrow" => array(
                 P_FILE => "research/password-reset-key-escrow.php",
                 P_TITL => "Modernizing Password Reset & Key Escrow",
