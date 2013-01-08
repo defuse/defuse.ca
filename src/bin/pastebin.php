@@ -10,7 +10,7 @@ require_once('PasswordGenerator.php');
 
 // Database connection
 $username="ossbox";
-$password="Nw552SfbbZp";
+$password="AfBZ87hLsOWU1Z";
 $database="cracky_bin";
 mysql_connect("localhost",$username,$password);
 @mysql_select_db($database) or die( "Unable to select database");

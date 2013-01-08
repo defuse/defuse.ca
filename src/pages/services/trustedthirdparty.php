@@ -13,7 +13,7 @@ date_default_timezone_set("UTC");
 
 $dbhost = 'localhost';
 $dbuser = 'ossbox';
-$dbpass = 'Nw552SfbbZp';
+$dbpass = 'AfBZ87hLsOWU1Z';
 
 $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die ('Error connecting to mysql');
 

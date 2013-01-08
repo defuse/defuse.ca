@@ -1,6 +1,6 @@
 <?php
 $user = "pphos";
-$pass = "3cjBPCoqKu34G";
+$pass = "emymQCgXWGAjgVN";
 $database = "pphos";
 $conn = mysql_connect("localhost", $user, $pass) or die('Sorry! Problem connecting to the database...');
 mysql_select_db($database, $conn) or die ('Sorry! Problem connecting to the database...');

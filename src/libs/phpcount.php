@@ -71,7 +71,7 @@ class PHPCount
             self::$DB = new PDO(
                 'mysql:host=localhost;dbname=phpcount',
                 'phpcount', // Username
-                'YRgPlRJgTY9C', // Password
+                'nbJWxucjlOzPOJv6', // Password
                 array(PDO::ATTR_PERSISTENT => true)
             );
         }
