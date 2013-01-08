@@ -1,4 +1,7 @@
 <?php
+die('This page has been removed temporarily for a security audit.');
+?>
+<?php
     set_time_limit(20);
 
     $eqn = "";

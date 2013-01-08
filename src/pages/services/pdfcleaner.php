@@ -1,3 +1,6 @@
+<?php
+die('This page has been removed temporarily for a security audit.');
+?>
 <h1>PDFCleaner</h1>
 <div style="text-align:center;">An <b>Experimental</b> PDF Exploit Sanitizer</div>
 <br />

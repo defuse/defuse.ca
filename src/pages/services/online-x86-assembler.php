@@ -1,4 +1,7 @@
 <?php
+    die('This page has been removed temporarily for a security audit.');
+?>
+<?php
 require_once( 'libs/HtmlEscape.php' );
 
 $x86checked = "";

@@ -1,4 +1,7 @@
 <?php
+die('This page has been removed temporarily for a security audit.');
+?>
+<?php
 /*
  * This file is Copyright (C) 2011 Defuse.ca
  * This code is provided for peer review purposes only.
