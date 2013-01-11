@@ -1,7 +1,4 @@
 <?php
-    die('This page has been removed temporarily for a security audit.');
-?>
-<?php
 require_once( 'libs/HtmlEscape.php' );
 
 $x86checked = "";
@@ -72,11 +69,13 @@ if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['i
 
     $instructions = $_POST['instructions'];
 
-    // Make sure the input is a reasonable size.
-    if (strlen($instructions) < 10 * 1024)
+    // Make sure the input is a reasonable size and safe to compile.
+    if (strlen($instructions) < 10 * 1024 && isSafeCode($instructions))
     {
         // Random (hopefully unique) temporary file names.
         $tempnam = "/tmp/" . rand();
+        // WARNING: So that GCC doesn't pipe the file through CPP (processing 
+        // macros, etc), the extension must be .s (lowercase) not .S (uppercase).
         $source_path = $tempnam . ".s";
         $obj_path = $tempnam . ".o";
 
@@ -125,9 +124,39 @@ if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['i
     }
     else 
     {
-        printError("Sorry, your input is too big!");
+        printError(
+            "Sorry, your input is too big or contains unsafe directives! \n" .
+            "The period (.) character must not appear anywhere in your source code."
+        );
     }
 
+}
+
+function isSafeCode($asm)
+{
+    // Whitelist 'safe' directives. A list of directives can be found here:
+    // http://sourceware.org/binutils/docs-2.23.1/as/Pseudo-Ops.html#Pseudo-Ops
+    // Notes:
+    //  - .fill et al. are deemed unsafe because of potential DoS (huge output).
+    $safe_directives = array(
+        ".ascii", ".asciz", ".align", ".balign",
+        ".byte", ".int", ".double", ".quad", ".octa", ".word"
+    );
+
+    foreach ($safe_directives as $directive)
+        $asm = str_replace($directive, "", $asm);
+
+
+    // These comments have special meaning to as. They don't seem dangerous but
+    // reject anyway to be safe.
+    if (strpos($asm,"#NO_APP",0) !== false || strpos($asm,"#APP",0) !== false)
+        return false;
+
+    // If the source contains any other directives, reject.
+    // Yes, this will make it fail if there's a non-directive period in a string
+    // constant, but if we want to check for that safely we need to go beyond
+    // strpos and even regular expressions.
+    return strpos($asm, ".", 0) === false; 
 }
 
 // Prints $output in a red box.
@@ -164,7 +193,10 @@ function printAsm($objdump_output)
     {
         $colon = strpos($line, ":");
         $matches = array();
-        preg_match('/([a-zA-Z0-9]{2}\s+)+/', $line, $matches);
+        $res = preg_match('/([a-zA-Z0-9]{2}\s+)+/', $line, $matches);
+        // Ignore the line if it doesn't have the expected run of hex digits.
+        if ($res == 0 || $res == false)
+            continue;
         $justBytes .= $matches[0];
     }
 
