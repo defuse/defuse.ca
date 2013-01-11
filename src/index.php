@@ -42,7 +42,7 @@ date_default_timezone_set("UTC");
 
 //Strengthen the server's CSPRNG
 $entropy = implode(gettimeofday()) . implode($_SERVER) . implode($_GET) . implode($_POST) . implode($_COOKIE) . implode($_ENV) . microtime() . mt_rand() . mt_rand();
-file_put_contents("/dev/random", $entropy);
+file_put_contents("/dev/urandom", $entropy);
 
 $name = URLParse::ProcessURL();
 
@@ -126,7 +126,7 @@ header('Content-Type: text/html; charset=utf-8');
 </ul>
 
 <ul>
-    <li class="headerlink" ><a href="/peerreview.htm">Services<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+    <li class="headerlink" ><a href="/services.htm">Services<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <!--<li><a href="/softwaredevelopment.htm">&nbsp;Software Development</a></li>-->
             <!--<li><a href="/webdevelopment">&nbsp;Web Development</a></li>-->
