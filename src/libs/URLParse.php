@@ -275,6 +275,12 @@ class URLParse
                 P_METD => "Test your web server for common configuration problems such as open relay, zone transfer, and much more.",
                 P_METK => "security scan, web server scan, zone transfer test, open relay test",
                 ),
+            "pdftribute" => array(
+                P_FILE => "pdftribute.php",
+                P_TITL => "#pdftribute",
+                P_METD => "#pdftribute",
+                P_METK => "#pdftribute",
+                ),
             "webdevelopment" => array(
                 P_FILE => "services/webdevelopment.html",
                 P_TITL => "Custom Web Design and Development - Defuse Security",
