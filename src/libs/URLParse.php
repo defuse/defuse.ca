@@ -323,6 +323,13 @@ class URLParse
                 P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
                 P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
                 ),
+            "web-browser-javascript-cryptography" => array(
+                P_FILE => "research/web-browser-javascript-cryptography.php",
+                P_TITL => "Web Browser Cryptography is a Good Thing",
+                P_METD => "Arguments for and against doing cryptography in the browser.",
+                P_METK => "javascript cryptography, web browser cryptography, browser cryptography,
+                encryption",
+                ),
             "grc-passwords-not-secure" => array(
                 P_FILE => "research/grc-passwords-not-secure.php",
                 P_TITL => "GRC's Perfect Password Generator is Not Cryptographically Secure",
