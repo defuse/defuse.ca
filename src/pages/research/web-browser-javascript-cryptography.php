@@ -5,7 +5,7 @@ Recently I have seen a lot of security experts objecting to the use of
 Javascript in the browser for cryptography. Most of these objections have been
 raised in response to the release of two websites that implement their cryptography in Javascript: <a href="https://crypto.cat/">Nadim Kobeissi's Cryptocat</a> and <a
 href="https://mega.co.nz/">Kim Dotcom's Mega</a>. In response to the objections,
-I give a (very) high-level description of a code signing system that could make it safe
+I give a very high-level description of a code signing system that could make it safe
 to do cryptography in Javascript, and argue that we should start working at
 making web browser cryptography secure.
 </p>
@@ -61,7 +61,7 @@ The objections fall into three categories, which I will address individually.
         <p>
         Such a system would  be very simple and easy to implement for
         different browsers. It could even be standardized and built directly into
-        our browsers. At the very least, it
+        our browsers or the HTTP protocol. At the very least, it
         would be more efficient than moving all of the application's
         client-side logic into a browser extension that has to be maintained for
         many different browsers (which is what happened to Cryptocat in response
@@ -86,12 +86,21 @@ The objections fall into three categories, which I will address individually.
 
         <ul>
             <li>
-             We have to trust Microsoft not to give us malicious code and to
-             ensure no one else can modify their code.
+            <p>
+             Windows users have to trust Microsoft to not include malicious code and to
+             ensure no one else can modify the Windows source code.
+            </p>
             </li>
             <li>
-            We have to trust Mozilla not to give us malicious code and to ensure
-            the integrity of their source code.
+            <p>
+            Firefox users have to trust Mozilla to not let any malicious changes
+            into the Firefox source code.
+            </p>
+            </li>
+            <li>
+            <p>
+            And so on...
+            </p>
             </li>
         </ul><br />
 
