@@ -24,7 +24,11 @@ href="/contact.htm">send me a note</a> or <a href="https://twitter.com/#!/defuse
             Programming Methodology 
         </a>
     </li>
-    <li>TODO: Calculus I</li>
+    <li>
+        <a href="http://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/index.htm">
+            Single Variable Calculus
+        </a>
+    </li>
     <li>TODO: Basic logic course</li>
     <li>TODO: Linear algebra</li>
 </ul>
