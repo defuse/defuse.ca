@@ -156,6 +156,12 @@ class URLParse
                 P_METD => "Example script for communicating with an SMTP server in Ruby to send spoofed email.",
                 P_METK => "email spoofing, smtp spoofing, ruby email, ruby smtp"
                 ),
+            "online-free-computer-science-education" => array(
+                P_FILE => "projects/online-free-computer-science-education.php",
+                P_TITL => "Computer Science Video Lecture Collection",
+                P_METD => "A collection of computer science related videos from various universities.",
+                P_METK => "computer science lecture, programming lecture, education, free education"
+                ),
             "syntax-highlighting-in-php-with-vim" => array(      
                 P_FILE => "projects/syntax-highlighting-in-php-with-vim.php",
                 P_TITL => "Scripting Vim's HTML syntax highlighting in PHP",
