@@ -141,4 +141,9 @@ href="/contact.htm">send me a note</a> or <a href="https://twitter.com/#!/defuse
             Handbook of Applied Cryptography
         </a>
     </li>
+    <li>
+        <a href="https://www.grc.com/securitynow.htm">
+           SecurityNow! Podcast
+        </a>
+    </li>
 </ul>
