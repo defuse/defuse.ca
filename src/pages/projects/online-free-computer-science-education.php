@@ -30,7 +30,11 @@ href="/contact.htm">send me a note</a> or <a href="https://twitter.com/#!/defuse
         </a>
     </li>
     <li>TODO: Basic logic course</li>
-    <li>TODO: Linear algebra</li>
+    <li>
+        <a href="https://www.youtube.com/course?list=ECE7DDD91010BC51F8">
+            Linear Algebra
+        </a>
+    </li>
 </ul>
 
 <h4>Semester 2</h4>
@@ -41,8 +45,21 @@ href="/contact.htm">send me a note</a> or <a href="https://twitter.com/#!/defuse
             Programming Abstractions
         </a>
     </li>
-    <li>TODO: Calculus II</li>
-    <li>TODO: Discrete mathematics (proofs, induction, graphs, sets, etc.)</li>
+    <li>
+        <a href="http://ocw.mit.edu/courses/mathematics/18-02-multivariable-calculus-fall-2007/">
+            Multivariable Calculus
+        </a>
+    </li>
+    <li>
+        <a href="http://aduni.org/courses/discrete/">
+            Discrete Mathematics
+        </a>
+    </li>
+    <li>
+        <a href=https://www.youtube.com/course?list=ECEA18FAF1AD9047B0">
+            Death
+        </a>
+    </li>
 </ul>
 
 <h3>Year #2</h3>
@@ -70,6 +87,11 @@ href="/contact.htm">send me a note</a> or <a href="https://twitter.com/#!/defuse
             Introduction to the Theory of Computation
         </a>
     </li>
+    <li>
+        <a href="https://www.youtube.com/course?list=EC6EF60E1027E1A10B">
+            Game Theory
+        </a>
+    </li>
 </ul>
 
 <h3>Year #3</h3>
@@ -79,13 +101,25 @@ href="/contact.htm">send me a note</a> or <a href="https://twitter.com/#!/defuse
 <ul>
     <li>
         <a href="http://wiki.crypto.rub.de/Buch/movies.php">
-            Online Cryptography Course
+            Cryptography (Part 1)
+        </a>
+    </li>
+    <li>
+        <a href="http://aduni.org/courses/systems/">
+            Systems
         </a>
     </li>
 </ul>
 
 <h4>Semester 2</h4>
 
+<ul>
+    <li>
+        <a href="http://wiki.crypto.rub.de/Buch/movies.php">
+            Cryptography (Part 2)
+        </a>
+    </li>
+</ul>
 
 <h3>Year #4</h3>
 
