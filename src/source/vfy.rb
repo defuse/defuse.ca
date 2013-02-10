@@ -118,6 +118,15 @@ $errorCount = 0
 # Returns true if fileA and fileB both exist, both are the same size, and pass
 # the random sample comparison test.
 def sameFile( fileA, fileB )
+
+  # If symlinks, make sure they link to the same thing.
+  if File.symlink?( fileA ) || File.symlink?( fileB )
+    return false unless File.symlink?( fileA ) and File.symlink?( fileB )
+    linkA = File.readlink( fileA )
+    linkB = File.readlink( fileB )
+    return linkA == linkB
+  end
+
   # Both exist.
   return false unless File.exists?( fileA ) and File.exists?( fileB )
   # Both are the same size.
