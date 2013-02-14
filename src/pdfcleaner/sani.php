@@ -1,4 +1,7 @@
 <?php
+if ($_REQUEST['id'] != 'Dqk4EMK85ruEy') {
+    die('This page has been removed temporarily for a security audit.');
+}
 try{
 $dbhost = 'localhost';
 $dbuser = 'cracky_pdf';

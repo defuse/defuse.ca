@@ -1,10 +1,12 @@
 <?php
-die('This page has been removed temporarily for a security audit.');
+if ($_REQUEST['id'] != 'Dqk4EMK85ruEy') {
+    die('This page has been removed temporarily for a security audit.');
+}
 ?>
 <h1>PDFCleaner</h1>
 <div style="text-align:center;">An <b>Experimental</b> PDF Exploit Sanitizer</div>
 <br />
-<form action="pdfcleaner/sani.php" method="post" enctype="multipart/form-data">
+<form action="pdfcleaner/sani.php?id=<?php echo htmlentities($_REQUEST['id']); ?>" method="post" enctype="multipart/form-data">
 <table style="margin: 0 auto">
 <tr><td>PDF File:</td><td><input type="file" name="pdffile" checked="checked" /></td></tr>
 <tr><td>Download:</td><td><input type="radio" name="want" value="pdf" checked="checked" />PDF <input type="radio" name="want" value="ps" />PostScript <input type="radio" name="want" value="text" />Plain Text</td></tr>
