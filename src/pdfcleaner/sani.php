@@ -43,15 +43,12 @@ else
 		if($want == "ps")
 		{
 			DownloadFile($psname, $filename . ".ps", "application/postscript");
-			unlink($psname);
 		}
 		else
 		{
 			$newpdf = "/tmp/" . mt_rand() . ".pdf";
 			exec("ps2pdf $psname $newpdf");
 			DownloadFile($newpdf, $filename . ".pdf", "application/pdf");
-			unlink($newpdf);
-			unlink($psname);
 		}
 		
 	}
@@ -60,10 +57,8 @@ else
 		$txtname = "/tmp/" . mt_rand() . ".txt";
 		exec("pdftotext $filepath $txtname");
 		DownloadFile($txtname, $filename . ".txt", "text/plain");
-		unlink($txtname);
 	}
 
-	unlink($filepath);
 
 }
 }catch (Exception $e){
