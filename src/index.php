@@ -101,13 +101,14 @@ header('Content-Type: text/html; charset=utf-8');
 <div class="menuminwidth0"><div class="menuminwidth1"><div class="menuminwidth2">
 <div id="masthead">
     <div style="font-size:30px;"><img src="/images/1by1.gif" alt="Defuse Security Research and Development" /></div>
-<!--
-    <div style="text-align:center; position: absolute; top: 10px; right: 0px;">
-        <a href="https://www.eff.org/pages/blue-ribbon-campaign">
-            <img src="/images/br.gif" alt="Join the Blue Ribbon Online Free Speech Campaign" />
+    <div id="sm">
+        <a href="https://twitter.com/defusesec" title="Follow @DefuseSec on twitter!">
+            <img id="twitterlogo" src="/images/twitter.png" height="25" width="30" />
+            Twitter
         </a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://defuse.ca/blog/" title="Defuse Security's Blog.">Blog</a>
     </div>
--->
 </div>
 
 <div class="menu">
