@@ -131,7 +131,7 @@ header('Content-Type: text/html; charset=utf-8');
 <script type="text/javascript" src="https://defuse.ca/js/cryptoHelpers.js" ></script>
 <script type="text/javascript" src="https://defuse.ca/js/jsHash.js" ></script>
 <script type="text/javascript" src="https://defuse.ca/js/aes.js" ></script>
-<script type="text/javascript" src="https://defuse.ca/js/firexware.js" ></script>
+<script type="text/javascript" src="https://defuse.ca/js/defuse.js" ></script>
 <script type="text/javascript">
 <!--
 function encrypt()

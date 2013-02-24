@@ -1,5 +1,5 @@
 /*
- * 			FireXware's JavaScript library
+ * 			Defuse Security's JavaScript library
  * 			       https://defuse.ca/
  *
  *                      PUBLIC DOMAIN CONTRIBUTION NOTICE							 
