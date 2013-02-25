@@ -100,7 +100,7 @@
 	background-image: url('/images/navbg.png');
 	background-repeat: repeat-x;
 	font-family: Verdana, Helvetica, Arial, sans-serif;
-	font-size:14px;         /* this (and also below) sets the menu's font size */ /*FIREXWARE EDIT: was 12*/
+	font-size:14px;         /* this (and also below) sets the menu's font size */ /*DEFUSE EDIT: was 12*/
 	border-bottom:1px solid black;        /* give us a black border underneath */
 }
 
@@ -256,7 +256,7 @@
 	position:absolute;
 	margin-top:-1px;	      /* bring the top edge of the 3rd level menu up one */
 	top:0;
-	/*left:8.08333em;*/ /*CHANGE BY FIREXWARE: use super wide always*/
+	/*left:8.08333em;*/ /*CHANGE BY DEFUSE: use super wide always*/
 	left:13.5em;
 	width:14em;
 }
