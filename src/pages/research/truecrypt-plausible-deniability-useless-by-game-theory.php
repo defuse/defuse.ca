@@ -82,7 +82,7 @@ So if you and the government are both rational and self-interested, then you are
 </p>
 
 <p>
-So, at least in this situation (which arguably is why the feature exists), TrueCrypt's plausible deniability doesn't give dissident any advantage. In fact, it could make things worse for the dissident if they don't know about the feature and end up being tortured for a password that doesn't even exist.
+So, at least in this situation (which arguably is why the feature exists), TrueCrypt's plausible deniability doesn't give dissidents any advantage. In fact, it could make things worse for the dissident if they don't know about the feature and end up being tortured for a password that doesn't even exist.
 </p>
 
 <p>
