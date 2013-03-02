@@ -329,6 +329,12 @@ class URLParse
                 P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
                 P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
                 ),
+            "truecrypt-plausible-deniability-useless-by-game-theory" => array(
+                P_FILE => "research/truecrypt-plausible-deniability-useless-by-game-theory.php",
+                P_TITL => "TrueCrypt's Plausible Deniability (Hidden Volumes) is Theoretically Useless",
+                P_METD => "How game theory shows that TrueCrypt's hidden volume feature is provably useless in some scenarios.",
+                P_METK => "game theory, truecrypt plausible deniability",
+                ),
             "web-browser-javascript-cryptography" => array(
                 P_FILE => "research/web-browser-javascript-cryptography.php",
                 P_TITL => "Web Browser Cryptography is a Good Thing",
