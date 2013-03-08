@@ -202,7 +202,6 @@ header('Content-Type: text/html; charset=utf-8');
                     <li><a href="/filesystem-events-ntfs-permissions.htm">&nbsp;File-System Events</a></li>
                     <li><a href="/onedetection.htm">&nbsp;PUP Confusion</a></li>
                     <li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
-                    <li><a href="/softwaresecurity.htm">&nbsp;Software Security</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
