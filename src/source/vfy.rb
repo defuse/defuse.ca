@@ -16,6 +16,7 @@
 #   FILE: - File in original missing from, or different, in backup.
 #   SKIP: - Skipping directory specified by --ignore.
 #   SYMLINK: - Symlink to directory skipped and not not following (no --follow).
+#   DIFFS - Not recursing into dir because it is on a different filesystem.
 #   ERROR: - Error reading file or directory.
 #   DEBUG: - Debug information only shown when called with --verbose.
 
@@ -47,6 +48,12 @@ optparse = OptionParser.new do |opts|
   $options[:follow] = false
   opts.on( '-f', '--[no-]follow', 'Follow symlinks' ) do |val|
     $options[:follow] = val
+  end
+
+  # Set this option to NOT cross filesystem boundaries.
+  $options[:one_filesystem] = false
+  opts.on( '-x', '--one-filesystem', 'Stay on one file system (in <original>)' ) do |val|
+    $options[:one_filesystem] = true
   end
 
   # If a folder in original doesn't exist in backup, the number of items in 
@@ -202,9 +209,18 @@ def compareDirs( relative = "" )
       backupPath = File.join( backup, item )
 
       if File.directory? origPath
+        # Skip symlinks if told to do so...
         if File.symlink?( origPath ) and not $options[:follow]
           $skippedCount += 1
           STDOUT.puts "SYMLINK: [#{origPath}] skipped."
+          next
+        end
+        # Stay on one filesystem if told to do so...
+        outerDev = File::Stat.new( original ).dev
+        innerDev = File::Stat.new( origPath ).dev
+        if outerDev != innerDev and $options[:one_filesystem]
+          $skippedCount += 1
+          STDOUT.puts "DIFFFS: [#{origPath}] is on a different file system. Skipped."
           next
         end
         compareDirs( File.join( relative, item ) )
