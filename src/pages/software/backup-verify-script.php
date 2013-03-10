@@ -10,10 +10,11 @@ it can be used to easily determine if a backup is valid and recent.
 <h2>Usage</h2>
 
 <div class="code">
-Usage: vfy.rb [options] &lt;original&gt; &lt;backup&gt;<br />
+Usage: /usr/bin/vfy [options] &lt;original&gt; &lt;backup&gt;<br />
 &nbsp;&nbsp; &nbsp;-v, --verbose &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Print what is being done<br />
 &nbsp;&nbsp; &nbsp;-m, --machine &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Output summary in machine-readable format<br />
 &nbsp;&nbsp; &nbsp;-f, --[no-]follow &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Follow symlinks<br />
+&nbsp;&nbsp; &nbsp;-x, --one-filesystem &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Stay on one file system (in &lt;original&gt;)<br />
 &nbsp;&nbsp; &nbsp;-c, --count &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Count files in unmatched directories<br />
 &nbsp;&nbsp; &nbsp;-i, --ignore DIR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Don&#039;t process DIR<br />
 &nbsp;&nbsp; &nbsp;-s, --samples COUNT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Comparison sample count (default: 0)<br />
