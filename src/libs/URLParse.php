@@ -139,6 +139,12 @@ class URLParse
                 P_METD => "My Vim configuration file",
                 P_METK => "vim, vimrc, vim configuration"
                 ),          
+            "the-universe-is-made-of-cheese" => array(
+                P_FILE => "misc/the-universe-is-made-of-cheese.php",
+                P_TITL => "The Universe is Made of Cheese - A Formal Proof",
+                P_METD => "A logical proof that the universe consists entirely of cheese.",
+                P_METK => "cheese paradox, universe made of cheese, logical proof"
+            ),
             "blowfish" => array(      
                 P_FILE => "projects/blowfish.html",
                 P_TITL => "Blowfish C# and C++ Source Code - Defuse Security",
