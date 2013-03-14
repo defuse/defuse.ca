@@ -26,29 +26,39 @@ the size of the universe or the object were infinite).
 </p>
 
 <p> 
-Let <i>c</i> be the largest conceivable block of cheese such that FST(c) is
-minimal. In other words, there is no theoretical block of cheese <i>c'</i> such
-that <i>FST(c') &lt; FST(c)</i>.  Clearly, <i>FST(c)</i> is finite, since all
-positive infinities are larger than all positive finite reals. So there exists
-at most a finite amount of space-time that is not occupied by this block of
-cheese, <i>c</i>.
+Let <i>c</i> be the largest <em>conceivable</em> block of cheese
+i.e. with FST(c) being minimal.  In other words, there is no conceivable block
+of cheese <i>c'</i> such that <i>FST(c') &lt; FST(c)</i>.  We can imagine
+a block of cheese that leaves all but a finite amount of space-time unoccupied.
+Clearly, then, <i>FST(c)</i> is finite, since all positive infinities are larger
+than all positive finite reals.  So there exists at most a finite amount of
+space-time that is not occupied by this block of cheese, <i>c</i>.
 </p>
 
 <p>
 Further, <em>every</em> point in space-time must be occupied by <i>c</i>, since
-if it were not, it would be possible to construct a block of cheese <i>c'</i>
-with <i>FST(c') &lt; FST(c)</i> by placing cheese in the space not occupied by
-<i>c</i> and then melting it into <i>c</i> to form a block of cheese with
-a lesser value of FST. But there is no such block of cheese <i>c'</i> for which
-<i>FST(c') &lt; FST(c)</i>, so this is a contradiction, and therefore it must be
-the case that every point in space-time is occupied by <i>c</i>. So <i>FST(c)
-= 0</i>.
+if it were not, we could conceive of a block of cheese <i>c'</i> with <i>FST(c')
+&lt; FST(c)</i> by placing cheese in the space not occupied by <i>c</i> and then
+melting it into <i>c</i>. But there is no such block of cheese <i>c'</i> for
+which <i>FST(c') &lt; FST(c)</i>, so this is a contradiction, and therefore it
+must be the case that every point in space-time is occupied by <i>c</i>. So
+<i>FST(c) = 0</i>.
 </p>
 
 <p>
-Therefore, every point in space-time is occupied by cheese.  So, in the past,
-present, and future, every point of space has been, is, and forever will be
-occupied by cheese. 
+So far it has been shown that there is a conceivable, or theoretical, block of
+cheese that occupies every point of space-time. But this object must in fact
+<em>be real</em>, since if it did not exist in the real world, our universe,
+there would be some points in space-time which it does not occupy, so <i>FST(c)
+> 0</i>. But <i>FST(c) = 0</i>, so that would be a contradiction. Therefore <i>c</i>
+really exists in our physical world.
+</p>
+
+<p>
+Therefore, every point in space-time, including those in the real world, are
+occupied by cheese.  So, in the past, present, and future, every point of space,
+including the space of which our universe consists, has been, is, and forever
+will be occupied by cheese. 
 </p>
 
 <p>
