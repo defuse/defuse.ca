@@ -145,6 +145,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "the-meaning-of-if" => array(
+                P_FILE => "misc/the-meaning-of-if.php",
+                P_TITL => "The meaning of \"IF\" -- An Introduction to Formal Logic",
+                P_METD => "What the word \"If\" means in formal logic",
+                P_METK => "formal logic introduction, meaning of if, what if means"
+            ),
             "blowfish" => array(      
                 P_FILE => "projects/blowfish.html",
                 P_TITL => "Blowfish C# and C++ Source Code - Defuse Security",
