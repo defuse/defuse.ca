@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "syntaxhighlightingvim",
+        "defuse_pages",
+        "Using the Vim Editor for Syntax Highlighting in PHP",
+        "Generate syntax-highlighted code automatically in PHP with Vim.",
+        "https://defuse.ca/syntax-highlighting-in-php-with-vim.htm"
+    );
+?>
 <h1>Using the <i>Vim</i> Editor for Syntax Highlighting in PHP</h1>
 
 <p>

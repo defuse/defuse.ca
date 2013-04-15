@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "phppbkdf2",
+        "defuse_pages",
+        "PBKDF2 for PHP",
+        "A fast implementation of the PBKDF2 key stretching function in PHP.",
+        "https://defuse.ca/php-pbkdf2.htm"
+    );
+?>
 <h1>PBKDF2 For PHP</h1>
 
 <p>

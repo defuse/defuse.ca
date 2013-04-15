@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "forceprinthtmlbg",
+        "defuse_pages",
+        "Forcing HTML/CSS Background Color to Print",
+        "How to force browsers to print the background color of HTML elements (using images).",
+        "https://defuse.ca/force-print-background.htm"
+    );
+?>
 <h1>How to Force HTML/CSS Background Color for Printing</h1>
 
 <p>Web browsers, by default, remove background colors when printing. Unfortunately, this can't be overridden using HTML, CSS, or JavaScript. The user has to change a setting in the browser to print background colors. However, it is possible to fake the background color using an image, if you really need the background color to print by default.</p>

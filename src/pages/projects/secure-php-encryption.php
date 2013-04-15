@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "securephpencryption",
+        "defuse_pages",
+        "How to Encrypt Data in PHP",
+        "The right way to encrypt data in PHP.",
+        "https://defuse.ca/secure-php-encryption.htm"
+    );
+?>
 <h1>How to Encrypt Data in PHP</h1>
 
 <p>
