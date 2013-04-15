@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "phphashcracker",
+        "defuse_pages",
+        "Salted Hash Cracking PHP Script",
+        "A script for cracking hashes when all you have is PHP.",
+        "https://defuse.ca/php-hash-cracker.htm"
+    );
+?>
 <h1>Salted Hash Cracking PHP Script</h1>
 
 <p>

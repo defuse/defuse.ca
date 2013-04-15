@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "backupverifyscript",
+        "defuse_pages",
+        "Backup Verifier Script (Ruby)",
+        "A Ruby script that compares two directories and reports the differences.",
+        "https://defuse.ca/backup-verify-script.htm"
+    );
+?>
 <h1>[Ruby] Backup Verifier Script</h1>
 
 <p>
