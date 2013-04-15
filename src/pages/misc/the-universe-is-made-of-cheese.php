@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "universeOfCheese",
+        "defuse_pages",
+        "The Cheese Universe Paradox",
+        "A formal proof that the universe is made entirely of cheese.",
+        "https://defuse.ca/the-universe-is-made-of-cheese.htm"
+    );
+?>
 <h1>The Cheese Paradox</h1>
 
 

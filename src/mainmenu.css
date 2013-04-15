@@ -42,6 +42,9 @@
 	width:100%;
 	height:119px;/* 36px masthead height + 18px button height + 1px lower border*/
 	min-width:800px;
+    /* So the drop-down menu appears ABOVE the upvote arrows */
+    /* Why set this here? Because it works! see http://stackoverflow.com/a/3998006 */
+    z-index: 1000;
 }
 
 /* suppress our whole menu when not an interactive mode (when printing, etc.) */

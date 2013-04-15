@@ -107,6 +107,10 @@ class URLParse
                 P_FILE => "about.html",
                 P_METD => "About Defuse Security."
                 ),
+            "all-pages" =>      array(
+                P_FILE => "all-pages.php",
+                P_METD => "A list of all pages on defuse.ca, sorted by popularity."
+                ),
             "library" => array(
                 P_FILE => "library.php",
                 P_METD => "The books I have read and am reading.",

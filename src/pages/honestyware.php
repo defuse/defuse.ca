@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "honestyware",
+        "defuse_pages",
+        "Honestyware",
+        "A philosophy for selling software and other digital content on the internet.",
+        "https://defuse.ca/honestyware.htm"
+    );
+?>
 <h1>Honestyware&trade;</h1>
 
 <center>

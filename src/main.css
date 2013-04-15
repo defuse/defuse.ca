@@ -468,3 +468,80 @@ ul {
 .res3 {
     background-color: #D87093;
 }
+
+
+
+.upvotearrows {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12pt;
+
+    /* Fixed position so it is visible as the user scrolls down the page */
+    position: fixed;
+    top: 150px;
+    left: 20px;
+    /* Make the drop-down menu cover the arrows */
+    /* NOTE: This depends on the corresponding entry in mainmenu.css
+     * (.menuinwidth0) */
+    z-index: 0;
+}
+
+.upvotearrowsinlist {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12pt;
+
+    margin-left: 0px;
+    margin-right: 10px;
+    width: 50px;
+    position: static;
+    float: left;
+}
+
+.upvotearrow {
+}
+
+.upvotedownarrow {
+}
+
+.upvoteform {
+    padding: 0;
+    margin: 0;
+}
+
+.upvotecount {
+    color: #606060;
+}
+
+.upvotecount_upvoted {
+    color: #ff8b60;
+}
+
+.upvotecount_downvoted {
+    color: #9494ff;
+}
+
+.upvote_pagelist {
+
+}
+
+
+.upvote_list_title {
+    font-weight: bold;
+}
+
+.upvote_list_desc {
+    color: black;
+}
+
+.upvote_list_arrowcell {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: top;
+}
+
+.upvote_list_titlecell {
+    vertical-align: top;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

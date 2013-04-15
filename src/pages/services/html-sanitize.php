@@ -1,6 +1,15 @@
 <?php
     require_once('libs/HtmlEscape.php');
 ?>
+<?php
+    Upvote::render_arrows(
+        "onlinehtmlsanitize",
+        "defuse_pages",
+        "HTML Escape Tool",
+        "A tool for HTML-escaping text so that it looks and behaves exactly like it does in a text editor.",
+        "https://defuse.ca/html-sanitize.htm"
+    );
+?>
 <h1>Online HTML Escape Tool (htmlspecialchars, htmlentities)</h1>
 <p>This tool will take your text and convert all the special characters to their proper HTML codes, so you can paste text with special characters or HTML code onto your website.
    It has been carefully designed so that the HTML produced by this tool looks and <em>behaves</em> exactly like the original text does in a text editor.

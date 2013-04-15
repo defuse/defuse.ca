@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "email_spoofing_ruby",
+        "defuse_pages",
+        "Email Spoofing in Ruby",
+        "A Ruby script for spoofing email to SMTP servers.",
+        "https://defuse.ca/email-spoofing-in-ruby.htm"
+    );
+?>
 <h1>Spoofing Email with Ruby</h1>
 
 <p> Here's a Ruby script that spoofs email directly to the destination's SMTP

@@ -30,6 +30,15 @@
     }
 ?>
 
+<?php
+    Upvote::render_arrows(
+        "bignumbercalculator",
+        "defuse_pages",
+        "Big Number Calculator",
+        "A tool for calculating with huge numbers.",
+        "https://defuse.ca/big-number-calculator.htm"
+    );
+?>
 <h1>Online Big Number Calculator</h1>
 <form action="/big-number-calculator.htm" method="post">
     <div style="text-align: center;">

@@ -24,6 +24,15 @@
     }
 ?>
 
+<?php
+    Upvote::render_arrows(
+        "onlinechecksums",
+        "defuse_pages",
+        "Online Hash Calculator",
+        "A tool for computing hashes (MD5, SHA1, SHA2, etc.) of text and files.",
+        "https://defuse.ca/checksums.htm"
+    );
+?>
 <h1>Online Text &amp; File Checksum Calculator</h1>
 <p>This page lets you hash ASCII text or a file with many different hash algorithms. Checksums are commonly used to verify the integrety of data. The most common use is to verify that a file has been downloaded without error. The data you enter here is 100% private, neither the data nor hash values are ever recorded.</p>
 <p><strong>Enter some ASCII or UNICODE text...</strong></p>

@@ -29,6 +29,15 @@ else
 }
 ?>
 
+<?php
+    Upvote::render_arrows(
+        "onlinex86assembler",
+        "defuse_pages",
+        "Online x86 / x64 Assembler",
+        "Assemble x86 and x64 code in your browser!",
+        "https://defuse.ca/online-x86-assembler.htm"
+    );
+?>
 <h1>Online x86 / x64 Assembler</h1>
 
 <p>

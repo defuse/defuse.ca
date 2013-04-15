@@ -22,6 +22,15 @@ mysql_select_db($dbname);
 
 ?>
 
+<?php
+    Upvote::render_arrows(
+        "trent",
+        "defuse_pages",
+        "TRENT - Trusted Random Entropy",
+        "A free trusted third party random number generator.",
+        "https://defuse.ca/trustedthirdparty.htm"
+    );
+?>
 <!-- Begin TRENT Header -->
 <div style="font-size: 8pt; text-align:center; border-bottom: solid #000000 5px; padding-bottom: 5px;">
 <img src="/images/trusted_third_party.png" alt="TRENT - Trusted Random Entropy Generator" title="TRENT - Trusted Third Party" />
