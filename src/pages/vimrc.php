@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "myvimrc",
+        "defuse_pages",
+        "My Vim Configuration",
+        "My configuration of the Vim text and code editor.",
+        "https://defuse.ca/vimrc.htm"
+    );
+?>
 <h1>My .vimrc</h1>
 
 <p>

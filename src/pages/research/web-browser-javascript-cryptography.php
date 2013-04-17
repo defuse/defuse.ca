@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "webbrowsercryptography",
+        "defuse_pages",
+        "Web Browser Cryptography is a Good Thing",
+        "Why we should support the development of browser-based crypto applications.",
+        "https://defuse.ca/web-browser-javascript-cryptography.htm"
+    );
+?>
 <h1>Web Browser Cryptography is a Good Thing</h1>
 
 <p>

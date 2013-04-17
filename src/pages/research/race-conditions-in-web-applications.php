@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "raceconditions",
+        "defuse_pages",
+        "Practical Race Condition Vulnerabilities in Web Applications",
+        "An example of a web application (PHP) vulnerable to a race condition, and how to fix it.",
+        "https://defuse.ca/race-conditions-in-web-applications.htm"
+    );
+?>
 <h1>Practical Race Condition Vulnerabilities in Web Applications</h1>
 
 <h2>What are Race Conditions?</h2>

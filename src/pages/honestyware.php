@@ -7,7 +7,7 @@
         "https://defuse.ca/honestyware.htm"
     );
 ?>
-<h1>Honestyware&trade;</h1>
+<h1>Honestyware</h1>
 
 <center>
     <img src="/images/honestyware.png" alt="&quot;You MUST buy this software&quot; is replaced by &quot;You CAN buy this software.&quot;" />

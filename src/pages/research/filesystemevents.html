@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "filesystemevents",
+        "defuse_pages",
+        "File System Events Leak Folder Contents",
+        "An information disclosure vulnerability in Windows shared folders that lets you see what's in folers you can't access.",
+        "https://defuse.ca/filesystem-events-ntfs-permissions.htm"
+    );
+?>
 <h1>File System Events Leak Folder Contents</h1>
 
 <p>Using the .NET framework's FileSystemWatcher class, it's possible to monitor a folder and it's sub-folders for file creations, modifications, and deletions. The Windows API fails to take NTFS permissions into account when raising these events. By logging these events, it is possible to obtain a partial list of files inside a private folder. This also extends to folders shared over the network.

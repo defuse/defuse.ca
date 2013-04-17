@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "truecryptgametheory",
+        "defuse_pages",
+        "TrueCrypt's Plausible Deniability is Theoretically Useless",
+        "Why you really ought to have a hidden volume, even if you don't need one.",
+        "https://defuse.ca/truecrypt-plausible-deniability-useless-by-game-theory.htm"
+    );
+?>
 <h1>TrueCrypt's Plausible Deniability is Theoretically Useless</h1>
 
 <p>

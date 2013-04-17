@@ -90,6 +90,15 @@ function GroupDigits($num)
 	}
 ?>
 
+<?php
+    Upvote::render_arrows(
+        "pphos",
+        "defuse_pages",
+        "Password Policy Hall of Shame",
+        "A list of web sites that store passwords in plain text, restrict password length, or restrict password characters",
+        "https://defuse.ca/password-policy-hall-of-shame.htm"
+    );
+?>
 <h1 style="text-align: center; border-bottom: none;">Password Policy Hall of <span style="color:red;">SHAME</span></h1>
 <div style="width:600px; text-align:center; margin: 0 auto; border-top: #AA0000 solid 5px; border-bottom: #AA0000 solid 5px;">
 <span style="font-size: 20px;">Storing passwords in PLAIN TEXT is <span style="color:red;"><b>NOT SAFE</b></span>.</span>
