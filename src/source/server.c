@@ -90,7 +90,7 @@ int main(int argc, char **argv)
     // GnuTLS will call psk_creds to ask for the key associated with the
     // client's username.
     gnutls_psk_set_server_credentials_function(cred, psk_creds);
-    // Pass the "credentials to the GnuTLS session. GnuTLS does NOT make an
+    // Pass the "credentials" to the GnuTLS session. GnuTLS does NOT make an
     // internal copy of the information, so we have to keep the 'cred' structure
     // in memory (and not modify it) until we're done with this session.
     res = gnutls_credentials_set(session, GNUTLS_CRD_PSK, cred);
