@@ -172,6 +172,7 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/projects.htm">Projects &amp; Code<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
+            <li><a href="/gnutls-psk-client-server-example.htm">&nbsp;GnuTLS PSK Example</a></li>
             <li><a href="/secure-php-encryption.htm">&nbsp;Encryption in PHP</a></li>
             <li><a href="/email-spoofing-in-ruby.htm">&nbsp;Ruby Email Spoofing</a></li>
             <li><a href="/syntax-highlighting-in-php-with-vim.htm">&nbsp;PHP &amp; Vim Highlighting</a></li>

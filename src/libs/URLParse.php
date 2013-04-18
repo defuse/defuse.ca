@@ -166,6 +166,12 @@ class URLParse
                 P_METD => "Source code for encrypting data in PHP with mcrypt. The right way to do it.",
                 P_METK => "php encrypiton, php aes, encryption in php, php decryption"
                 ),
+            "gnutls-psk-client-server-example" => array(
+                P_FILE => "projects/gnutls-psk-client-server-example.php",
+                P_TITL => "GnuTLS Pre-Shared Key (PSK) Client-Server Example Code",
+                P_METD => "How to establish an SSL/TLS connection with GnuTLS and PSK authentication.",
+                P_METK => "gnutls, ssl, tls, https, client, server, psk, authentication"
+                ),
             "email-spoofing-in-ruby" => array(
                 P_FILE => "projects/email-spoofing-in-ruby.php",
                 P_TITL => "Spoofing SMTP email with a Ruby script - Defuse Security",
