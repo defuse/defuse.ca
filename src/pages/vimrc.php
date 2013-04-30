@@ -22,6 +22,11 @@
 </p>
 
 <p>
+    You can also find my entire <a href="https://github.com/defuse/vim">Vim configuration on
+    GitHub</a>.
+</p>
+
+<p>
    If you would like a list of my favourite .vimrc lines, see my blog post
   <a href="https://defuse.ca/blog/2012/04/random-vimrc-tips/">Random vimrc tips</a>.
 </p>
