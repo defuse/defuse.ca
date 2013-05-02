@@ -175,6 +175,7 @@ class Crypto
         if (Crypto::Decrypt($ciphertext, $wrong_key))
         {
             echo "FAIL: Ciphertext decrypts with an incorrect key.";
+            return false;
         }
 
         echo "PASS\n";

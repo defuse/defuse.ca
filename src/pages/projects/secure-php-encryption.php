@@ -21,7 +21,7 @@ by applying the following diff (the code on this page is also updated):
 
 <div style="border: solid black 1px; padding: 10px; margin-top: 5px;">
 --- /tmp/Crypto.php &nbsp; &nbsp; 2013-05-02 06:39:28.059745329 -0600<br />
-+++ source/Crypto.php &nbsp; 2013-05-02 06:52:17.987744595 -0600<br />
++++ source/Crypto.php &nbsp; 2013-05-02 07:05:16.959752519 -0600<br />
 @@ -116,7 +116,7 @@<br />
 &nbsp;&nbsp; &nbsp; &nbsp;*/<br />
 &nbsp;&nbsp; &nbsp; public static function CreateSubkey($master, $purpose, $bytes)<br />
@@ -31,7 +31,7 @@ by applying the following diff (the code on this page is also updated):
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if(strlen($source) &lt; $bytes) {<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trigger_error(&quot;Subkey too big.&quot;, E_USER_ERROR);<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return $source; // fail safe<br />
-@@ -168,6 +168,15 @@<br />
+@@ -168,6 +168,16 @@<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return false;<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; }<br />
 &nbsp;<br />
@@ -42,6 +42,7 @@ by applying the following diff (the code on this page is also updated):
 + &nbsp; &nbsp; &nbsp; &nbsp;if (Crypto::Decrypt($ciphertext, $wrong_key))<br />
 + &nbsp; &nbsp; &nbsp; &nbsp;{<br />
 + &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;FAIL: Ciphertext decrypts with an incorrect key.&quot;;<br />
++ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return false;<br />
 + &nbsp; &nbsp; &nbsp; &nbsp;}<br />
 +<br />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; echo &quot;PASS\n&quot;;<br />
