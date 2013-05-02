@@ -54,6 +54,10 @@ by applying the following diff (the code on this page is also updated):
 The first change fixes the actual problem. The second adds a test for it.
 </p>
 
+<p>
+<b>Credit:</b> This bug was found and reported by Juho Vanhanen.
+</p>
+
 </div>
 
 <p>
