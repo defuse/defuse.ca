@@ -116,7 +116,7 @@ class Crypto
      */
     public static function CreateSubkey($master, $purpose, $bytes)
     {
-        $source = hash_hmac("sha512", $purpose, true);
+        $source = hash_hmac("sha512", $purpose, $master, true);
         if(strlen($source) < $bytes) {
             trigger_error("Subkey too big.", E_USER_ERROR);
             return $source; // fail safe
@@ -166,6 +166,15 @@ class Crypto
         {
             echo "FAIL: Ciphertext tampering not detected.";
             return false;
+        }
+
+        $key = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+        $data = "abcdef";
+        $ciphertext = Crypto::Encrypt($data, $key);
+        $wrong_key = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+        if (Crypto::Decrypt($ciphertext, $wrong_key))
+        {
+            echo "FAIL: Ciphertext decrypts with an incorrect key.";
         }
 
         echo "PASS\n";
