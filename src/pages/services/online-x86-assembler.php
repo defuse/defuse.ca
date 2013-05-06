@@ -200,9 +200,9 @@ function printAsm($objdump_output)
     $lines = explode("\n", $code);
     foreach ($lines as $line)
     {
-        $colon = strpos($line, ":");
         $matches = array();
-        $res = preg_match('/([a-zA-Z0-9]{2}\s+)+/', $line, $matches);
+        // Note: there might be a bug here if the mnemonic is equal to a hex byte.
+        $res = preg_match('/([a-fA-F0-9]{2}(\s+|$))+/', $line, $matches);
         // Ignore the line if it doesn't have the expected run of hex digits.
         if ($res == 0 || $res == false)
             continue;
