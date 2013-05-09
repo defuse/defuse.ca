@@ -137,6 +137,12 @@ class URLParse
                 P_METD => "Defuse Security Resume",
                 P_METK => "defuse cyber security, resume"
                 ),          
+            "reading-list" => array(
+                P_FILE => "reading-list.php",
+                P_TITL => "Reading List - Defuse Security",
+                P_METD => "Everything I have read so far.",
+                P_METK => "reading list, infosec"
+                ),          
             "vimrc" => array(     
                 P_FILE => "vimrc.php",
                 P_TITL => "My .vimrc - Defuse Security",
