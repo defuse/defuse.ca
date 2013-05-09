@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "reading_list",
+        "defuse_pages",
+        "Reading List",
+        "A list of the books I have read.",
+        "https://defuse.ca/reading-list.htm"
+    );
+?>
 <h1>Reading List</h1>
 
 <p>
