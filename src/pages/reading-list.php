@@ -22,6 +22,7 @@ read, talks watched, and ocw course lectures watched.
 <ul>
     <li><b>Godel, Escher, Bach: An Eternal Golden Braid (Hofstadter)</b></li>
     <li>How to Disappear: Erase Your Digital Footprint, Leave False Trails, and Vanish Without a Trace</li>
+    <li>A Guide To Kernel Exploitation</li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
 </ul>
 
