@@ -360,8 +360,8 @@ class URLParse
             "exploiting-cpp-vtables" => array(
                 P_FILE => "research/exploiting-cpp-vtables.php",
                 P_TITL => "Instance Replacement: Exploiting C++ VTABLES",
-                P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
-                P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
+                P_METD => "How C++ classes are represented, how VTABLES work, and how to exploit them.",
+                P_METK => "vtable overwriting, vtable exploit, buffer overflow, vulnerability",
                 ),
             "truecrypt-plausible-deniability-useless-by-game-theory" => array(
                 P_FILE => "research/truecrypt-plausible-deniability-useless-by-game-theory.php",
