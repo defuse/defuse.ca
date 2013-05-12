@@ -357,6 +357,12 @@ class URLParse
                 P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
                 P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
                 ),
+            "exploiting-cpp-vtables" => array(
+                P_FILE => "research/exploiting-cpp-vtables.php",
+                P_TITL => "Instance Replacement: Exploiting C++ VTABLES",
+                P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
+                P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
+                ),
             "truecrypt-plausible-deniability-useless-by-game-theory" => array(
                 P_FILE => "research/truecrypt-plausible-deniability-useless-by-game-theory.php",
                 P_TITL => "TrueCrypt's Plausible Deniability (Hidden Volumes) is Theoretically Useless",
