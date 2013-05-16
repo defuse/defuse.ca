@@ -357,6 +357,12 @@ class URLParse
                 P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
                 P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
                 ),
+            "microsoft-reads-your-skype-messages" => array(
+                P_FILE => "research/microsoft-reads-your-skype-messages.php",
+                P_TITL => "Confirmation of H-Online's Skype Results: Microsoft Visits Links",
+                P_METD => "An independent confirmation of Microsoft's skype spying.",
+                P_METK => "h-online skype, skype spying, microsoft, skype security",
+                ),
             "exploiting-cpp-vtables" => array(
                 P_FILE => "research/exploiting-cpp-vtables.php",
                 P_TITL => "Instance Replacement: Exploiting C++ VTABLES",
