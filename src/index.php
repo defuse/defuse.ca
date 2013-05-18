@@ -124,6 +124,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
             <li><a href="/reading-list.htm">&nbsp;Reading List</a></li>
             <!-- <li><a href="/projects.htm">&nbsp;Project List</a></li> -->
+            <li><a href="/hypothetico/">&nbsp;Hypothetico</a></li>
             <li><a href="https://twitter.com/#!/defusesec" >&nbsp;Twitter</a></li>
             <li><a href="https://github.com/defuse" >&nbsp;GitHub</a></li>
             <li><a href="https://defuse.ca/blog/" >&nbsp;Blog</a></li>

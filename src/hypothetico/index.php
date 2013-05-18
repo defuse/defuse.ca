@@ -37,7 +37,7 @@ header('Content-Type: text/html; charset=utf-8');
 <body>
 
     <div id="header">
-        <img src="/hypothetico/hypothetico-logo.png" alt="Fringe" />
+        <img src="/hypothetico/hypothetico-logo.png" alt="HYPOTHETICO" />
     </div>
 
     <div id="navbar">
