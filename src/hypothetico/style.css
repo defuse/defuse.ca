@@ -51,15 +51,12 @@ a {
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    }
+}
 
-    .boxheader {
+.boxheader {
     background-color: #002740;
     color: white;
     font-size: 12px;
-    /*height: 20px;
-    line-height: 20px;
-    vertical-align: middle;*/
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 10px;
@@ -75,9 +72,6 @@ a {
     background-color: #002740;
     border-top: solid #404040 1px;
     color: white;
-    /*height: 20px;
-    line-height: 20px;
-    vertical-align: middle;*/
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 20px;
