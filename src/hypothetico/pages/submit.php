@@ -24,6 +24,7 @@
         <li>Isomorphisms between fields.</li>
         <li>Strange ways of thinking of well-known things.</li>
         <li>Strange ways of explaining things.</li>
+        <li>Multiple levels of meaning.</li>
         <li>Anything thought-provoking.</li>
     </ul>
 
@@ -33,8 +34,16 @@
     no line is longer than 80 characters, and should not be longer than 200
     lines. The length requirement may seem harsh, but we are interested in
     thought-provoking ideas, and we want to leave the reader with time to think.
-    Please use correct spelling and grammar, unless not doing so is an
-    intentional component of your work.
+    There is no minimum length. If you can do something really clever in one
+    line, we'll accept it.
+    </p>
+
+    <p>
+    As always, please use correct spelling and grammar, unless not doing so is
+    an intentional component of your work. Your submission doesn't have to be
+    English prose, though. It could be a poem, sequence of mathematical
+    equations, unique ASCII art, or even a nonsensical sequence of characters
+    that exhibits some interesting pattern.
     </p>
 
     <p>
