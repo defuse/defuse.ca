@@ -4,3 +4,4 @@ Disallow: /fytons.html
 Disallow: /bitcannon.htm
 Disallow: /bitcannon-cryptography.htm
 Disallow: /r&d/
+Disallow: /301/
