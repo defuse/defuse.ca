@@ -9,11 +9,11 @@
 require_once('PasswordGenerator.php');
 
 // Database connection
-$username="ossbox";
-$password="AfBZ87hLsOWU1Z";
-$database="cracky_bin";
-mysql_connect("localhost",$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+require_once('/etc/creds.php');
+$creds = Creds::getCredentials("pastebin");
+mysql_connect($creds[C_HOST],$creds[C_USER],$creds[C_PASS]);
+@mysql_select_db($creds[C_DATB]) or die( "Unable to select database");
+unset($creds);
 
 // Constants
 define("IV_BYTES", 16);

@@ -11,14 +11,11 @@
 // Set the default date to UTC so TRENT is usable from different time zones.
 date_default_timezone_set("UTC"); 
 
-$dbhost = 'localhost';
-$dbuser = 'ossbox';
-$dbpass = 'AfBZ87hLsOWU1Z';
-
-$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die ('Error connecting to mysql');
-
-$dbname = 'cracky_trent';
-mysql_select_db($dbname);
+require_once('/etc/creds.php');
+$creds = Creds::getCredentials("trent");
+$conn = mysql_connect($creds[C_HOST], $creds[C_USER], $creds[C_PASS]) or die ('Error connecting to mysql');
+mysql_select_db($creds[C_DATB]);
+unset($creds);
 
 ?>
 

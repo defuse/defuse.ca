@@ -1,9 +1,9 @@
 <?php
-$user = "pphos";
-$pass = "emymQCgXWGAjgVN";
-$database = "pphos";
-$conn = mysql_connect("localhost", $user, $pass) or die('Sorry! Problem connecting to the database...');
-mysql_select_db($database, $conn) or die ('Sorry! Problem connecting to the database...');
+require_once('/etc/creds.php');
+$creds = Creds::getCredentials("pphos");
+$conn = mysql_connect($creds[C_HOST], $creds[C_USER], $creds[C_PASS]) or die('Sorry! Problem connecting to the database...');
+mysql_select_db($creds[C_DATB], $conn) or die ('Sorry! Problem connecting to the database...');
+unset($creds);
 
 $alt = 0;
 function PrintSite($name, $desc, $alexa, $domain, $min, $max, $charset, $usercount)

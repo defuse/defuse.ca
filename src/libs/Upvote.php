@@ -1,5 +1,7 @@
 <?php
 
+require_once('/etc/creds.php');
+
 // INSPIRED BY THIS POST:
 // http://steve-yegge.blogspot.ca/2006/03/blog-or-get-off-pot.html
 
@@ -15,12 +17,14 @@ class Upvote
             return;
 
         try {
+            $creds = Creds::getCredentials("df_upvote");
             self::$DB = new PDO(
-                'mysql:host=localhost;dbname=upvotes',
-                'upvotes', // Username
-                'ykqLBE29TMzIzr', // Password
+                "mysql:host={$creds[C_HOST]};dbname={$creds[C_DATB]}",
+                $creds[C_USER], // Username
+                $creds[C_PASS], // Password
                 array(PDO::ATTR_PERSISTENT => true)
             );
+            unset($creds);
         } catch(Exception $e) {
             die('Failed to connect to upvotes database');
         }

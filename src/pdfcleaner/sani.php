@@ -1,18 +1,21 @@
 <?php
-if ($_REQUEST['id'] != 'Dqk4EMK85ruEy') {
     die('This page has been removed temporarily for a security audit.');
-}
 try{
-$dbhost = 'localhost';
-$dbuser = 'cracky_pdf';
-$dbpass = 'skOwoQe2Q';
+    require_once('/etc/creds.php');
+    $creds = Creds::getCredentials("pdfcleaner");
+$dbhost = $creds[C_HOST];
+$dbuser = $creds[C_USER];
+$dbpass = $creds[C_PASS];
 /*
 $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die ('Error connecting to mysql');
-$dbname = 'cracky_pdf';
+$dbname = $creds[C_DATB];
 mysql_select_db($dbname);
 
 $q = mysql_query("UPDATE ctr SET count=count + 1");
 */
+
+unset($creds);
+
 if ($_FILES["file"]["error"] > 0)
 {
 	echo "Error: File upload failed.";

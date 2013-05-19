@@ -1,22 +1,20 @@
 <?php
     function loginToIpLocationDB()
     {
-        $username = "ip2location";
-        $password = "epHuWeypZF5";
-
         $result = FALSE;
         try {
-            $result = new PDO('mysql:host=localhost;dbname=ip2location',
-                                $username,
-                                $password,
-                                array(PDO::ATTR_PERSISTENT => true)
-                                );
+            $creds = Creds::getCredentials("ip2loc");
+            $result = new PDO(
+                "mysql:host={$creds[C_HOST]};dbname={$creds[C_DATB]}",
+                $creds[C_USER], // Username
+                $creds[C_PASS], // Password
+                array(PDO::ATTR_PERSISTENT => true)
+            );
+            unset($creds);
         } catch(Exception $e) {
             $result = FALSE;
         }
 
-        unset($username);
-        unset($password);
         return $result;
     }
 

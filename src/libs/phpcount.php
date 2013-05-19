@@ -37,6 +37,8 @@
  * NOTE: You must set the database credentials in the InitDB method.
  */
 
+require_once('/etc/creds.php');
+
 class PHPCount
 {
    /*
@@ -68,12 +70,14 @@ class PHPCount
         try
         {
             // TODO: Set the database login credentials.
+            $creds = Creds::getCredentials("df_phpcount");
             self::$DB = new PDO(
-                'mysql:host=localhost;dbname=phpcount',
-                'phpcount', // Username
-                'nbJWxucjlOzPOJv6', // Password
+                "mysql:host={$creds[C_HOST]};dbname={$creds[C_DATB]}",
+                $creds[C_USER], // Username
+                $creds[C_PASS], // Password
                 array(PDO::ATTR_PERSISTENT => true)
             );
+            unset($creds);
         }
         catch(Exception $e)
         {
