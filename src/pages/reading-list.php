@@ -35,6 +35,7 @@ read, talks watched, and ocw course lectures watched.
     <li>Computer Networking: A Top-Down Approach (Kurose, Ross)</li>
     <li>Pirate Cinema</li>
     <li>God is Not Great (Hitchens)</li>
+    <li>Pro Git (Scott Chacon)</li>
 </ul>
 
 <h2>2012 and Before</h2>
