@@ -1,1 +1,15 @@
 src/hypothetico
+src/blog
+src/blog-backend
+src/files
+src/notes
+src/sitemap.xml
+src/source/calc.rb
+src/source/vim.zip
+src/source/vimrc
+src/subversion.txt
+src/tmp_w
+src/tmp_d
+src/tmp_m
+src/tmp
+*.highlighted.html
