@@ -1,4 +1,80 @@
 <?php
+
+    $supported_hashes = hash_algos();
+    $supported_hashes[] = "NTLM";
+    $supported_hashes[] = "LM";
+    $supported_hashes[] = "md5(md5())";
+    $supported_hashes[] = "MySQL4.1+";
+    natcasesort($supported_hashes);
+
+    function extended_hash($hashType, $word, $binary)
+    {
+        if(in_array($hashType, hash_algos())) {
+            return hash($hashType, $word, $binary);
+        } elseif($hashType == "NTLM") {
+            $hash = NTLMHash($word);
+            if($binary == FALSE)
+                $hash = bin2hex($hash);
+            return $hash;
+        } elseif($hashType == "md5(md5())") {
+            return hash("md5", hash("md5", $word), $binary);
+        } elseif($hashType == "MySQL4.1+") {
+            return hash("sha1", hash("sha1", $word, true), $binary);
+        } elseif($hashType == "LM") {
+            $hash = LMHash($word);
+            if ($binary == FALSE)
+                $hash = bin2hex($hash);
+            return $hash;
+        }
+    }
+
+    function NTLMHash($Input)
+    {
+        // Convert the password from UTF8 to UTF16 (little endian)
+        $Input=@iconv('UTF-8','UTF-16LE',$Input);
+        $MD4Hash=hash('md4',$Input, true);
+        return $MD4Hash;
+    }
+
+    function LMhash($string)
+    {
+        $string = strtoupper(substr($string,0,14));
+
+        $p1 = LMhash_DESencrypt(substr($string, 0, 7));
+        $p2 = LMhash_DESencrypt(substr($string, 7, 7));
+
+        return $p1.$p2;
+    }
+
+    function LMhash_DESencrypt($string)
+    {
+        $key = array();
+        $tmp = array();
+        $len = strlen($string);
+
+        for ($i=0; $i<7; ++$i)
+            $tmp[] = $i < $len ? ord($string[$i]) : 0;
+
+        $key[] = $tmp[0] & 254;
+        $key[] = ($tmp[0] << 7) | ($tmp[1] >> 1);
+        $key[] = ($tmp[1] << 6) | ($tmp[2] >> 2);
+        $key[] = ($tmp[2] << 5) | ($tmp[3] >> 3);
+        $key[] = ($tmp[3] << 4) | ($tmp[4] >> 4);
+        $key[] = ($tmp[4] << 3) | ($tmp[5] >> 5);
+        $key[] = ($tmp[5] << 2) | ($tmp[6] >> 6);
+        $key[] = $tmp[6] << 1;
+    
+        $is = mcrypt_get_iv_size(MCRYPT_DES, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($is, MCRYPT_RAND);
+        $key0 = "";
+    
+        foreach ($key as $k)
+            $key0 .= chr($k);
+        $crypt = mcrypt_encrypt(MCRYPT_DES, $key0, "KGS!@#$%", MCRYPT_MODE_ECB, $iv);
+
+        return $crypt;
+    }
+
     $sanidata = "";
 
     if(isset($_POST['data']))
@@ -54,11 +130,10 @@ if(isset($data))
         $filename = "(" . htmlentities($_FILES['filetohash']['name'], ENT_QUOTES) . ")";
     }
     echo "<a name=\"checksums\"></a><h2>Checkums $filename</h2>";
-    $hashes = hash_algos();
     echo "<table border=\"0\" cellpadding=\"10\" style=\"font-family:monospace;\" >";
-    foreach($hashes as $hashtype)
+    foreach($supported_hashes as $hashtype)
     {
-        $hash = hash($hashtype, $data);
+        $hash = extended_hash($hashtype, $data, false);
         if(strlen($hash) > 64)
         {
             $hash = substr($hash,0,64) . "<br />" . substr($hash,64);
@@ -70,8 +145,7 @@ if(isset($data))
 else
 {
     echo "<h2>Supported Hash Algorithms</h2><p>";
-    $hashes = hash_algos();
-    foreach($hashes as $hashtype)
+    foreach($supported_hashes as $hashtype)
     {
         echo "$hashtype ";
     }
