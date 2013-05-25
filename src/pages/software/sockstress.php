@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "sockstress",
+        "defuse_pages",
+        "Sockstress DoS Tool",
+        "A public domain C implementation of the sockstress DoS attack.",
+        "https://defuse.ca/sockstress.htm"
+    );
+?>
 <h1>Sockstress Tools &amp; Source Code</h1>
 
 <p>
