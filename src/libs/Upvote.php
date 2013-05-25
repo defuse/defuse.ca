@@ -11,19 +11,24 @@ require_once('/etc/creds.php');
 
 class Upvote
 {
+
+# ----------------------------------------------------------------------------
+# Configuration:
+# ----------------------------------------------------------------------------
+
     // Let IP addresses vote again after this many seconds have elapsed.
     const VOTE_OLD_AFTER_SECONDS = 86400; 
 
     // PDO connection to the database (set in InitDB()).
     private static $DB = false;
 
+    // TODO: Fill in your database credentials here.
     private static function InitDB()
     {
         if (self::$DB)
             return;
 
         try {
-            // TODO: Fill in your database credentials here.
             $creds = Creds::getCredentials("df_upvote");
             self::$DB = new PDO(
                 "mysql:host={$creds[C_HOST]};dbname={$creds[C_DATB]}",
@@ -37,138 +42,105 @@ class Upvote
         }
     }
 
+# ----------------------------------------------------------------------------
+# Rendering:
+# ----------------------------------------------------------------------------
+
+    // Render the upvote arrow for a page.
+    // If the page does not exist, it will be created.
+    // If the page already exists, but the category, title, description, or
+    // canonical url differ, then those properties are updated in the database.
     public static function render_arrows(
+        // Unique, unchanging page ID. Must be a valid CSS class name.
         $permanent_id, 
+        // Category ID. $permanent_id must be unique even ACROSS categories.
         $category, 
+        // Short page title used in the table link.
         $title, 
+        // Short page description shown in the table under the link.
         $description, 
+        // Canonical url to the page.
         $canonical_url,
+        // The class to give the surrounding div. Used internally.
         $class = "upvotearrows"
     )
     {
         self::add_counter($permanent_id, $category, $title, $description, $canonical_url);
-        $upvotes = (int)self::get_upvotes($permanent_id);
-        $downvotes = (int)self::get_downvotes($permanent_id);
-        $total = $upvotes - $downvotes;
-        $current_url = self::get_page_url();
-        $user_action = self::get_user_action($permanent_id);
-        if ($user_action == "upvote") {
-            $countclass = "upvotecount_upvoted";
-        } elseif ($user_action == "downvote") {
-            $countclass = "upvotecount_downvoted";
-        } else {
-            $countclass = "upvotecount";
-        }
-        $upFormName = "upvoteUpForm" . $permanent_id;
-        $downFormName = "upvoteDownForm" . $permanent_id;
-        $upImageName = "upvoteUpImage" . $permanent_id;
-        $downImageName = "upvoteDownImage" . $permanent_id;
-        $counterName = "upvoteCounter" . $permanent_id;
-        $js_id = self::js_string_escape($permanent_id);
         ?>
-<!-- ALL CREDIT TO reddit.com FOR THE ARROW STYLE! -->
-<div class="<?php echo htmlentities($class, ENT_QUOTES); ?>">
-    <div class="upvoteuparrow">
-        <form 
-            action="<?php echo htmlentities($current_url, ENT_QUOTES); ?>" 
-            method="post"
-            onsubmit="return upvoteSubmit('<?php echo $js_id; ?>', 'up')"
-            class="upvoteform <?php echo htmlentities($upFormName, ENT_QUOTES); ?>"
-        >
-            <input type="hidden" name="upvotes_direction" value="up" />
-            <input type="hidden" name="upvotes_id" value="<?php echo htmlentities($permanent_id, ENT_QUOTES); ?>" />
-            <?  if ($user_action == "upvote") { ?>
-                <input id="upupup"
-                    type="image" src="/images/upvote-selected.gif" alt="Upvote" 
-                    name="<?php echo htmlentities($upImageName, ENT_QUOTES); ?>"
-                />
-            <? } else { ?>
-                <input id="upupup"
-                    type="image" src="/images/upvote.gif" alt="Upvote"
-                    name="<?php echo htmlentities($upImageName, ENT_QUOTES); ?>"
-                />
-            <? } ?>
-        </form>
-    </div>
-    <div 
-        class="<?php echo htmlentities($countclass, ENT_QUOTES); ?> <?php echo htmlentities($counterName, ENT_QUOTES); ?>"
-    >
-    <?php echo htmlentities($total, ENT_QUOTES); ?> 
-    </div>
-    <div class="upvotedownarrow">
-        <form 
-            action="<?php echo htmlentities($current_url, ENT_QUOTES); ?>"
-            method="post"
-            onsubmit="return upvoteSubmit('<?php echo $js_id; ?>', 'down')"
-            class="upvoteform <?php echo htmlentities($downFormName, ENT_QUOTES); ?>"
-        >
-            <input type="hidden" name="upvotes_direction" value="down" />
-            <input type="hidden" name="upvotes_id" value="<?php echo htmlentities($permanent_id, ENT_QUOTES); ?>" />
-            <?  if ($user_action == "downvote") { ?>
-                <input 
-                    type="image" src="/images/downvote-selected.gif" alt="Downvote" 
-                    name="<?php echo htmlentities($downImageName, ENT_QUOTES); ?>"
-                />
-            <? } else { ?>
-                <input 
-                    type="image" src="/images/downvote.gif" alt="Downvote"
-                    name="<?php echo htmlentities($downImageName, ENT_QUOTES); ?>"
-                />
-            <? } ?>
-        </form>
-    </div>
-</div>
+            <div class="<?php echo self::htmle($class); ?>">
+            <?
+                self::render_uparrow($permanent_id);
+                self::render_count($permanent_id);
+                self::render_downarrow($permanent_id);
+            ?>
+            </div>
         <?
     }
 
+    // Render a table of page links beside their upvote arrows.
+    // If $maximum is set, it is the maximum number of pages to show.
+    // If $category is set, only pages in that category are shown.
     public static function render_list($maximum = null, $category = null)
     {
-        self::InitDB();
-        $max_clause = ($maximum === null) ? "" : "LIMIT " . (int)$maximum;
-        $cat_clause = ($category === null) ? "" : "WHERE category = :category";
-        $q = self::$DB->prepare(
-            "SELECT * FROM counts $cat_clause
-             ORDER BY (upvotes - downvotes) DESC $max_clause"
-         );
-        if ($category != null) {
-            $q->bindParam(':category', $category);
-        }
-        $q->execute();
-
+        $q = self::get_list_rows($maximum, $category);
         echo '<table class="upvote_pagelist">';
-
         while (($res = $q->fetch()) !== FALSE) {
-            $safe_title = htmlentities($res['title'], ENT_QUOTES);
-            $safe_description = htmlentities($res['description'], ENT_QUOTES);
-            $safe_url = htmlentities($res['canonical_url'], ENT_QUOTES);
-
-        ?>
-            <tr>
-            <td class="upvote_list_arrowcell">
-            <?php
-                self::render_arrows(
-                    $res['permanent_id'],
-                    $res['category'],
-                    $res['title'],
-                    $res['description'],
-                    $res['canonical_url'],
-                    "upvotearrowsinlist"
-                );
-            ?>
-            </td>
-            <td class="upvote_list_titlecell">
-                <a class="upvote_list_title" href="<?php echo $safe_url; ?>">
-                    <?php echo $safe_title; ?>
-                </a>
-                <div class="upvote_list_desc">
-                    <?php echo $safe_description; ?>
-                </div>
-            </td>
-            </tr>
-        <?
+            self::render_list_row($res);
         }
-
         echo '</table>';
+    }
+
+# ----------------------------------------------------------------------------
+# Request Processing:
+# ----------------------------------------------------------------------------
+
+    // Look for an arrow click POST request and process it if there is one.
+    // Set $redirect_get to true to 302 redirect to the current page so the user
+    // doesn't get a re-submit warning when they refresh.
+    public static function process_post($redirect_get = false)
+    {
+        if (isset($_POST['upvotes_id']) && isset($_POST['upvotes_direction'])) {
+            $permanent_id = $_POST['upvotes_id'];
+            $direction = $_POST['upvotes_direction'];
+            self::process_vote($permanent_id, $direction);
+            if ($redirect_get) {
+                $url = self::get_page_url();
+                header("Location: $url", TRUE, 302);
+            }
+        }
+    }
+
+    // Look for an arrow click AJAX request and process it if there is one.
+    public static function process_ajax()
+    {
+        if (isset($_POST['upvotes_id']) && isset($_POST['upvotes_direction'])) {
+            // Add the vote.
+            $permanent_id = $_POST['upvotes_id'];
+            $direction = $_POST['upvotes_direction'];
+            self::process_vote($permanent_id, $direction);
+
+            // Tell the client what the arrows/counter should look like now.
+            $upvotes = self::get_upvotes($permanent_id);
+            $downvotes = self::get_downvotes($permanent_id);
+            $total = $upvotes - $downvotes;
+
+            switch (self::get_user_action($permanent_id)) {
+                case "upvote":
+                    $uparrow = "Y";
+                    $downarrow = "N";
+                    break;
+                case "downvote":
+                    $uparrow = "N";
+                    $downarrow = "Y";
+                    break;
+                default:
+                    $uparrow = "N";
+                    $downarrow = "N";
+            }
+            self::send_ajax_response("pass", $uparrow, $downarrow, $total);
+        } else {
+            self::send_ajax_response("fail", "", "", "", "");
+        }
     }
 
     private static function add_counter(
@@ -181,12 +153,12 @@ class Upvote
     {
         self::InitDB();
 
-        if (preg_match("/\\A[a-z][a-z0-9._\\-]+\\Z/", $permanent_id) !== 1) {
-            trigger_error( "Invalid upvote permanent id.", E_USER_ERROR );
+        if (preg_match("/\\A[a-zA-Z][a-zA-Z0-9._\\-]+\\Z/", $permanent_id) !== 1) {
+            trigger_error( "Invalid upvote permanent id [$permanent_id].", E_USER_ERROR );
             return;
         }
-        if (preg_match("/\\A[a-z][a-z0-9._\\-]+\\Z/", $category) !== 1) {
-            trigger_error( "Invalid upvote category id.", E_USER_ERROR );
+        if (preg_match("/\\A[a-zA-Z][a-zA-Z0-9._\\-]+\\Z/", $category) !== 1) {
+            trigger_error( "Invalid upvote category id [$category].", E_USER_ERROR );
             return;
         }
 
@@ -230,57 +202,155 @@ class Upvote
         }
     }
 
-    public static function process_post($redirect_get = false)
+    private static function render_uparrow($permanent_id)
     {
-        if (isset($_POST['upvotes_id']) && isset($_POST['upvotes_direction'])) {
-            $permanent_id = $_POST['upvotes_id'];
-            $direction = $_POST['upvotes_direction'];
-            self::process_vote($permanent_id, $direction);
-            if ($redirect_get) {
-                $url = self::get_page_url();
-                header("Location: $url", TRUE, 302);
-            }
-        }
+        $upFormName = "upvoteUpForm" . $permanent_id;
+        $upImageName = "upvoteUpImage" . $permanent_id;
+    ?>
+        <div class="upvoteuparrow">
+            <form 
+                action="<?php echo self::htmle(self::get_page_url()); ?>" 
+                method="post"
+                onsubmit="return upvoteSubmit('<?php echo self::jse($permanent_id); ?>', 'up')"
+                class="upvoteform <?php echo self::htmle($upFormName); ?>"
+            >
+                <input type="hidden" name="upvotes_direction" value="up" />
+                <input type="hidden" name="upvotes_id" value="<?php echo self::htmle($permanent_id); ?>" />
+                <?  if (self::get_user_action($permanent_id) == "upvote") { ?>
+                    <input id="upupup"
+                        type="image" src="/images/upvote-selected.gif" alt="Upvote" 
+                        name="<?php echo self::htmle($upImageName); ?>"
+                    />
+                <? } else { ?>
+                    <input id="upupup"
+                        type="image" src="/images/upvote.gif" alt="Upvote"
+                        name="<?php echo self::htmle($upImageName); ?>"
+                    />
+                <? } ?>
+            </form>
+        </div>
+    <?
     }
 
-    public static function process_ajax()
+    private static function render_downarrow($permanent_id)
     {
-        if (isset($_POST['upvotes_id']) && isset($_POST['upvotes_direction'])) {
-            $permanent_id = $_POST['upvotes_id'];
-            $direction = $_POST['upvotes_direction'];
-
-            self::process_vote($permanent_id, $direction);
-
-            $existing_action = self::get_user_action($permanent_id);
-            $upvotes = (int)self::get_upvotes($permanent_id);
-            $downvotes = (int)self::get_downvotes($permanent_id);
-            $total = $upvotes - $downvotes;
-
-            header('Content-Type: text/xml');
-            $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n";
-            $xml .= "<response>\n";
-            $xml .= "<status>pass</status>\n";
-            if ($existing_action == "upvote") {
-                $xml .= "<uparrow>Y</uparrow>\n";
-            } else {
-                $xml .= "<uparrow>N</uparrow>\n";
-            }
-            if ($existing_action == "downvote") {
-                $xml .= "<downarrow>Y</downarrow>\n";
-            } else {
-                $xml .= "<downarrow>N</downarrow>\n";
-            }
-            $xml .= "<total>" . htmlentities($total, ENT_QUOTES) . "</total>\n";
-            $xml .= "</response>\n";
-            self::send_xml_response($xml);
-        } else {
-            $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n";
-            $xml .= "<response>\n";
-            $xml .= "<status>fail</status>\n";
-            $xml .= "</response>\n";
-            self::send_xml_response($xml);
-        }
+        $downFormName = "upvoteDownForm" . $permanent_id;
+        $downImageName = "upvoteDownImage" . $permanent_id;
+    ?>
+        <div class="upvotedownarrow">
+            <form 
+                action="<?php echo self::htmle(self::get_page_url()); ?>" 
+                method="post"
+                onsubmit="return upvoteSubmit('<?php echo self::jse($permanent_id); ?>', 'down')"
+                class="upvoteform <?php echo self::htmle($downFormName); ?>"
+            >
+                <input type="hidden" name="upvotes_direction" value="down" />
+                <input type="hidden" name="upvotes_id" value="<?php echo self::htmle($permanent_id); ?>" />
+                <?  if (self::get_user_action($permanent_id) == "downvote") { ?>
+                    <input 
+                        type="image" src="/images/downvote-selected.gif" alt="Downvote" 
+                        name="<?php echo self::htmle($downImageName); ?>"
+                    />
+                <? } else { ?>
+                    <input 
+                        type="image" src="/images/downvote.gif" alt="Downvote"
+                        name="<?php echo self::htmle($downImageName); ?>"
+                    />
+                <? } ?>
+            </form>
+        </div>
+    <?
     }
+
+    private static function render_count($permanent_id)
+    {
+        switch(self::get_user_action($permanent_id)) {
+            case "upvote":
+                $countclass = "upvotecount_upvoted";
+                break;
+            case "downvote":
+                $countclass = "upvotecount_downvoted";
+                break;
+            default:
+                $countclass = "upvotecount";
+        }
+        $counterName = "upvoteCounter" . $permanent_id;
+        $upvotes = (int)self::get_upvotes($permanent_id);
+        $downvotes = (int)self::get_downvotes($permanent_id);
+        $total = $upvotes - $downvotes;
+    ?>
+        <div class="<?php echo self::htmle($countclass . " " . $counterName); ?>" >
+            <?php echo self::htmle($total); ?> 
+        </div>
+    <?
+    }
+
+    private static function get_list_rows($maximum = null, $category = null)
+    {
+        self::InitDB();
+        $max_clause = ($maximum === null) ? "" : "LIMIT " . (int)$maximum;
+        $cat_clause = ($category === null) ? "" : "WHERE category = :category";
+        $q = self::$DB->prepare(
+            "SELECT * FROM counts $cat_clause
+             ORDER BY (upvotes - downvotes) DESC $max_clause"
+         );
+        if ($category != null) {
+            $q->bindParam(':category', $category);
+        }
+        $q->execute();
+        return $q;
+    }
+
+    private static function render_list_row($res)
+    {
+        $safe_title = htmlentities($res['title'], ENT_QUOTES);
+        $safe_description = htmlentities($res['description'], ENT_QUOTES);
+        $safe_url = htmlentities($res['canonical_url'], ENT_QUOTES);
+
+        ?>
+            <tr>
+                <td class="upvote_list_arrowcell">
+                    <?php
+                        self::render_arrows(
+                            $res['permanent_id'],
+                            $res['category'],
+                            $res['title'],
+                            $res['description'],
+                            $res['canonical_url'],
+                            "upvotearrowsinlist"
+                        );
+                    ?>
+                </td>
+                <td class="upvote_list_titlecell">
+                    <a class="upvote_list_title" href="<?php echo $safe_url; ?>">
+                        <?php echo $safe_title; ?>
+                    </a>
+                    <div class="upvote_list_desc">
+                        <?php echo $safe_description; ?>
+                    </div>
+                </td>
+            </tr>
+        <?
+    }
+
+    private static function send_ajax_response($status, $uparrow, $downarrow, $total)
+    {
+        $status = self::htmle($status);
+        $uparrow = self::htmle($uparrow);
+        $downarrow = self::htmle($downarrow);
+        $total = self::htmle($total);
+
+        $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n";
+        $xml .= "<response>\n";
+        $xml .= "<status>$status</status>\n";
+        $xml .= "<uparrow>$uparrow</uparrow>\n";
+        $xml .= "<downarrow>$downarrow</downarrow>\n";
+        $xml .= "<total>$total</total>\n";
+        $xml .= "</response>\n";
+
+        self::send_xml_response($xml);
+    }
+
 
     private static function send_xml_response($xml)
     {
@@ -457,7 +527,12 @@ class Upvote
         return $pageURL;
     }
 
-    private static function js_string_escape($data)
+    private static function htmle($str)
+    {
+        return htmlentities($str, ENT_QUOTES);
+    }
+
+    private static function jse($data)
     {
         $safe = "";
         for($i = 0; $i < strlen($data); $i++)
