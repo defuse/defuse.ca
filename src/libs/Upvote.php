@@ -1,14 +1,20 @@
 <?php
+/*
+ * PHP Upvote/Downvote System.
+ * Written by Taylor Hornby. May 24, 2013.
+ *
+ * This work was inspired by this blog post:
+ * http://steve-yegge.blogspot.ca/2006/03/blog-or-get-off-pot.html
+ */
 
 require_once('/etc/creds.php');
 
-// INSPIRED BY THIS POST:
-// http://steve-yegge.blogspot.ca/2006/03/blog-or-get-off-pot.html
-
 class Upvote
 {
+    // Let IP addresses vote again after this many seconds have elapsed.
     const VOTE_OLD_AFTER_SECONDS = 86400; 
 
+    // PDO connection to the database (set in InitDB()).
     private static $DB = false;
 
     private static function InitDB()
@@ -17,6 +23,7 @@ class Upvote
             return;
 
         try {
+            // TODO: Fill in your database credentials here.
             $creds = Creds::getCredentials("df_upvote");
             self::$DB = new PDO(
                 "mysql:host={$creds[C_HOST]};dbname={$creds[C_DATB]}",
@@ -56,9 +63,6 @@ class Upvote
         $downFormName = "upvoteDownForm" . $permanent_id;
         $upImageName = "upvoteUpImage" . $permanent_id;
         $downImageName = "upvoteDownImage" . $permanent_id;
-        // FIXME: because IE doesn't recognize the name="" attribute on anything
-        // but form elements, I'm using an ID for now. This means that if there
-        // are ever two vote arrows rendered for the SAME thing, it will BREAK!
         $counterName = "upvoteCounter" . $permanent_id;
         $js_id = self::js_string_escape($permanent_id);
         ?>
@@ -69,8 +73,7 @@ class Upvote
             action="<?php echo htmlentities($current_url, ENT_QUOTES); ?>" 
             method="post"
             onsubmit="return upvoteSubmit('<?php echo $js_id; ?>', 'up')"
-            name="<?php echo htmlentities($upFormName, ENT_QUOTES); ?>"
-            class="upvoteform"
+            class="upvoteform <?php echo htmlentities($upFormName, ENT_QUOTES); ?>"
         >
             <input type="hidden" name="upvotes_direction" value="up" />
             <input type="hidden" name="upvotes_id" value="<?php echo htmlentities($permanent_id, ENT_QUOTES); ?>" />
@@ -88,8 +91,7 @@ class Upvote
         </form>
     </div>
     <div 
-        class="<?php echo htmlentities($countclass, ENT_QUOTES); ?>"
-        id="<?php echo htmlentities($counterName, ENT_QUOTES); ?>"
+        class="<?php echo htmlentities($countclass, ENT_QUOTES); ?> <?php echo htmlentities($counterName, ENT_QUOTES); ?>"
     >
     <?php echo htmlentities($total, ENT_QUOTES); ?> 
     </div>
@@ -98,8 +100,7 @@ class Upvote
             action="<?php echo htmlentities($current_url, ENT_QUOTES); ?>"
             method="post"
             onsubmit="return upvoteSubmit('<?php echo $js_id; ?>', 'down')"
-            name="<?php echo htmlentities($downFormName, ENT_QUOTES); ?>"
-            class="upvoteform"
+            class="upvoteform <?php echo htmlentities($downFormName, ENT_QUOTES); ?>"
         >
             <input type="hidden" name="upvotes_direction" value="down" />
             <input type="hidden" name="upvotes_id" value="<?php echo htmlentities($permanent_id, ENT_QUOTES); ?>" />
@@ -118,11 +119,6 @@ class Upvote
     </div>
 </div>
         <?
-    }
-
-    public static function get_category_list()
-    {
-
     }
 
     public static function render_list($maximum = null, $category = null)
@@ -184,6 +180,15 @@ class Upvote
     )
     {
         self::InitDB();
+
+        if (preg_match("/\\A[a-z][a-z0-9._\\-]+\\Z/", $permanent_id) !== 1) {
+            trigger_error( "Invalid upvote permanent id.", E_USER_ERROR );
+            return;
+        }
+        if (preg_match("/\\A[a-z][a-z0-9._\\-]+\\Z/", $category) !== 1) {
+            trigger_error( "Invalid upvote category id.", E_USER_ERROR );
+            return;
+        }
 
         $q = self::$DB->prepare(
             'SELECT * FROM counts

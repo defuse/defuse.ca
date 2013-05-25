@@ -11,8 +11,23 @@ function createXmlHttpRequest() {
     }
 }
 
+// Returns an array of elements of type 'tag' that have class 'klass'
+function findElementsWithClass( tag, klass ) {
+    // This function was adapted from http://stackoverflow.com/a/3808886
+    var elems = document.getElementsByTagName(tag);
+    var elems_with_class = new Array();
+    for (var i = 0; i < elems.length; i++) {
+        // If we didn't add the spaces, then it could match part of another
+        // class. e.g. class="abc" klass="bc".
+        if ((' ' + elems[i].className + ' ').indexOf(' ' + klass + ' ') > -1) {
+            elems_with_class.push(elems[i])
+        }
+    }
+    return elems_with_class;
+}
+
 function upvoteSubmit(id, direction) {
-    xmlhttp = createXmlHttpRequest();
+    var xmlhttp = createXmlHttpRequest();
     if (xmlhttp == null) {
         // fall back to regular form submission
         return true;
@@ -21,50 +36,76 @@ function upvoteSubmit(id, direction) {
     xmlhttp.open("POST", "/upvote.php", true);
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            xml = xmlhttp.responseXML;
+            // The following code runs when we get a reply from an AJAX request.
+
+            // Put the results in variables for easy access.
+            var xml = xmlhttp.responseXML;
             if (xml != null) {
-                xmlStatus = xml.getElementsByTagName('status')[0].firstChild.data;
-                xmlUpArrow = xml.getElementsByTagName('uparrow')[0].firstChild.data;
-                xmlDownArrow = xml.getElementsByTagName('downarrow')[0].firstChild.data;
-                xmlTotal = xml.getElementsByTagName('total')[0].firstChild.data;
+                // "pass" if everything went well.
+                var xmlStatus = xml.getElementsByTagName('status')[0].firstChild.data;
+                if ( xmlStatus == "pass" ) {
+                    // "Y" if the up arrow should be highlighted.
+                    var xmlUpArrow = xml.getElementsByTagName('uparrow')[0].firstChild.data;
+                    // "Y" if the down arrow should be highlighted.
+                    var xmlDownArrow = xml.getElementsByTagName('downarrow')[0].firstChild.data;
+                    // The new vote total.
+                    var xmlTotal = xml.getElementsByTagName('total')[0].firstChild.data;
+                }
             }
 
+            // Fall back to a regular POST request if the AJAX failed.
             if (xml == null || xmlStatus != "pass") {
                 if (direction == "up") {
-                    document.forms["upvoteUpForm" + id].submit();
+                    var forms = findElementsWithClass('form', "upvoteUpForm" + id);
+                    for (var i = 0; i < forms.length; i++) {
+                        forms[i].submit();
+                        break;
+                    }
                 } else if (direction == "down") {
-                    document.forms["upvoteDownForm" + id].submit();
+                    var forms = findElementsWithClass('form', "upvoteDownForm" + id);
+                    for (var i = 0; i < forms.length; i++) {
+                        forms[i].submit();
+                        break;
+                    }
                 }
                 return;
             }
 
-            upImages = document.getElementsByName("upvoteUpImage" + id);
-            for (i = 0; i < upImages.length; i++) {
+            // Upvote arrows.
+            var upImages = document.getElementsByName("upvoteUpImage" + id);
+            for (var i = 0; i < upImages.length; i++) {
                 if (xmlUpArrow == "Y") {
                     upImages[i].src = "/images/upvote-selected.gif";
                 } else {
                     upImages[i].src = "/images/upvote.gif";
                 }
             }
-            downImages = document.getElementsByName("upvoteDownImage" + id);
-            for (i = 0; i < downImages.length; i++) {
+            
+            // Downvote arrows.
+            var downImages = document.getElementsByName("upvoteDownImage" + id);
+            for (var i = 0; i < downImages.length; i++) {
                 if (xmlDownArrow == "Y") {
                     downImages[i].src = "/images/downvote-selected.gif";
                 } else {
                     downImages[i].src = "/images/downvote.gif";
                 }
             }
-            // FIXME: Use a better way of identifying the counter that allows
-            // multiple of the same upvote/downvote arrows.
-            counter = document.getElementById("upvoteCounter" + id);
-            if (xmlUpArrow == "Y") {
-                counter.className = "upvotecount_upvoted";
-            } else if (xmlDownArrow == "Y") {
-                counter.className = "upvotecount_downvoted";
-            } else {
-                counter.className = "upvotecount";
+
+            // Find all "counters" (displayed counts) for this id.
+            var counter_class = 'upvoteCounter' + id;
+            var counters = findElementsWithClass('div', counter_class);
+            // Update the color and number of each one.
+            for (var i = 0; i < counters.length; i++) {
+                var counter = counters[i];
+                if (xmlUpArrow == "Y") {
+                    counter.className = "upvotecount_upvoted " + counter_class;
+                } else if (xmlDownArrow == "Y") {
+                    counter.className = "upvotecount_downvoted " + counter_class;
+                } else {
+                    counter.className = "upvotecount " + counter_class;
+                }
+                counter.innerHTML = parseInt(xmlTotal);
             }
-            counter.innerHTML = parseInt(xmlTotal);
         }
     }
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -74,3 +115,4 @@ function upvoteSubmit(id, direction) {
     );
     return false;
 }
+
