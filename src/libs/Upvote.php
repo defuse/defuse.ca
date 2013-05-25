@@ -1,11 +1,4 @@
 <?php
-/*
- * PHP Upvote/Downvote System.
- * Written by Taylor Hornby. May 24, 2013.
- *
- * This work was inspired by this blog post:
- * http://steve-yegge.blogspot.ca/2006/03/blog-or-get-off-pot.html
- */
 
 require_once('/etc/creds.php');
 
@@ -22,7 +15,6 @@ class Upvote
     // PDO connection to the database (set in InitDB()).
     private static $DB = false;
 
-    // TODO: Fill in your database credentials here.
     private static function InitDB()
     {
         if (self::$DB)
@@ -31,6 +23,7 @@ class Upvote
         try {
             $creds = Creds::getCredentials("df_upvote");
             self::$DB = new PDO(
+                // TODO: Fill in your host, database, username, and password.
                 "mysql:host={$creds[C_HOST]};dbname={$creds[C_DATB]}",
                 $creds[C_USER], // Username
                 $creds[C_PASS], // Password
@@ -97,7 +90,7 @@ class Upvote
     // Look for an arrow click POST request and process it if there is one.
     // Set $redirect_get to true to 302 redirect to the current page so the user
     // doesn't get a re-submit warning when they refresh.
-    public static function process_post($redirect_get = false)
+    public static function process_post($redirect_get = true)
     {
         if (isset($_POST['upvotes_id']) && isset($_POST['upvotes_direction'])) {
             $permanent_id = $_POST['upvotes_id'];
@@ -143,64 +136,93 @@ class Upvote
         }
     }
 
-    private static function add_counter(
-        $permanent_id, 
-        $category, 
-        $title, 
-        $description, 
-        $canonical_url
-    )
+# ----------------------------------------------------------------------------
+# Automated Voting:
+# ----------------------------------------------------------------------------
+
+    public static function give_upvote($permanent_id, $undo_downvote = false)
     {
         self::InitDB();
-
-        if (preg_match("/\\A[a-zA-Z][a-zA-Z0-9._\\-]+\\Z/", $permanent_id) !== 1) {
-            trigger_error( "Invalid upvote permanent id [$permanent_id].", E_USER_ERROR );
-            return;
-        }
-        if (preg_match("/\\A[a-zA-Z][a-zA-Z0-9._\\-]+\\Z/", $category) !== 1) {
-            trigger_error( "Invalid upvote category id [$category].", E_USER_ERROR );
-            return;
-        }
-
+        $undo = $undo_downvote ? ", downvotes = downvotes - 1" : "";
         $q = self::$DB->prepare(
-            'SELECT * FROM counts
+            "UPDATE counts SET upvotes = upvotes + 1 $undo
+             WHERE permanent_id = :permanent_id"
+         );
+        $q->bindParam(':permanent_id', $permanent_id);
+        $q->execute();
+    }
+
+    public static function undo_upvote($permanent_id)
+    {
+        self::InitDB();
+        $q = self::$DB->prepare(
+            'UPDATE counts SET upvotes = upvotes - 1
+             WHERE permanent_id = :permanent_id'
+         );
+        $q->bindParam(':permanent_id', $permanent_id);
+        $q->execute();
+    }
+
+    public static function get_upvotes($permanent_id)
+    {
+        self::InitDB();
+        $q = self::$DB->prepare(
+            'SELECT upvotes FROM counts 
              WHERE permanent_id = :permanent_id'
         );
         $q->bindParam(':permanent_id', $permanent_id);
         $q->execute();
 
         if (($res = $q->fetch()) !== FALSE) {
-            if ($res['category'] != $category || $res['title'] != $title ||
-                $res['description'] != $description || 
-                $res['canonical_url'] != $canonical_url ) {
-                $q = self::$DB->prepare(
-                    'UPDATE counts SET category=:category, title=:title,
-                     description=:description, canonical_url=:canonical_url
-                     WHERE permanent_id = :permanent_id'
-                 );
-                $q->bindParam(':category', $category);
-                $q->bindParam(':permanent_id', $permanent_id);
-                $q->bindParam(':title', $title);
-                $q->bindParam(':description', $description);
-                $q->bindParam(':canonical_url', $canonical_url);
-                $q->execute();
-            }
+            return $res['upvotes'];
         } else {
-            $q = self::$DB->prepare(
-                'INSERT INTO counts (category, permanent_id, title, description, canonical_url, upvotes, downvotes)
-                 VALUES (:category, :permanent_id, :title, :description, :canonical_url, :upvotes, :downvotes)'
-             );
-            $q->bindParam(':category', $category);
-            $q->bindParam(':permanent_id', $permanent_id);
-            $q->bindParam(':title', $title);
-            $q->bindParam(':description', $description);
-            $q->bindParam(':canonical_url', $canonical_url);
-            $zero = 0;
-            $q->bindParam(':upvotes', $zero);
-            $q->bindParam(':downvotes', $zero);
-            $q->execute();
+            return 0;
         }
     }
+
+    public static function give_downvote($permanent_id, $undo_upvote = false)
+    {
+        self::InitDB();
+        $undo = $undo_upvote ? ", upvotes = upvotes - 1" : "";
+        $q = self::$DB->prepare(
+            "UPDATE counts SET downvotes = downvotes + 1 $undo
+             WHERE permanent_id = :permanent_id"
+         );
+        $q->bindParam(':permanent_id', $permanent_id);
+        $q->execute();
+    }
+
+    public static function undo_downvote($permanent_id)
+    {
+        self::InitDB();
+        $q = self::$DB->prepare(
+            'UPDATE counts SET downvotes = downvotes - 1
+             WHERE permanent_id = :permanent_id'
+         );
+        $q->bindParam(':permanent_id', $permanent_id);
+        $q->execute();
+    }
+
+    public static function get_downvotes($permanent_id)
+    {
+        self::InitDB();
+        $q = self::$DB->prepare(
+            'SELECT downvotes FROM counts 
+             WHERE permanent_id = :permanent_id'
+        );
+        $q->bindParam(':permanent_id', $permanent_id);
+        $q->execute();
+
+        if (($res = $q->fetch()) !== FALSE) {
+            return $res['downvotes'];
+        } else {
+            return 0;
+        }
+    }
+
+# ----------------------------------------------------------------------------
+# Rendering (Private):
+# ----------------------------------------------------------------------------
 
     private static function render_uparrow($permanent_id)
     {
@@ -285,22 +307,6 @@ class Upvote
     <?
     }
 
-    private static function get_list_rows($maximum = null, $category = null)
-    {
-        self::InitDB();
-        $max_clause = ($maximum === null) ? "" : "LIMIT " . (int)$maximum;
-        $cat_clause = ($category === null) ? "" : "WHERE category = :category";
-        $q = self::$DB->prepare(
-            "SELECT * FROM counts $cat_clause
-             ORDER BY (upvotes - downvotes) DESC $max_clause"
-         );
-        if ($category != null) {
-            $q->bindParam(':category', $category);
-        }
-        $q->execute();
-        return $q;
-    }
-
     private static function render_list_row($res)
     {
         $safe_title = htmlentities($res['title'], ENT_QUOTES);
@@ -333,30 +339,83 @@ class Upvote
         <?
     }
 
-    private static function send_ajax_response($status, $uparrow, $downarrow, $total)
+    private static function get_list_rows($maximum = null, $category = null)
     {
-        $status = self::htmle($status);
-        $uparrow = self::htmle($uparrow);
-        $downarrow = self::htmle($downarrow);
-        $total = self::htmle($total);
-
-        $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n";
-        $xml .= "<response>\n";
-        $xml .= "<status>$status</status>\n";
-        $xml .= "<uparrow>$uparrow</uparrow>\n";
-        $xml .= "<downarrow>$downarrow</downarrow>\n";
-        $xml .= "<total>$total</total>\n";
-        $xml .= "</response>\n";
-
-        self::send_xml_response($xml);
+        self::InitDB();
+        $max_clause = ($maximum === null) ? "" : "LIMIT " . (int)$maximum;
+        $cat_clause = ($category === null) ? "" : "WHERE category = :category";
+        $q = self::$DB->prepare(
+            "SELECT * FROM counts $cat_clause
+             ORDER BY (upvotes - downvotes) DESC $max_clause"
+         );
+        if ($category != null) {
+            $q->bindParam(':category', $category);
+        }
+        $q->execute();
+        return $q;
     }
 
+# ----------------------------------------------------------------------------
+# Request Processing (Private):
+# ----------------------------------------------------------------------------
 
-    private static function send_xml_response($xml)
+    private static function add_counter(
+        $permanent_id, 
+        $category, 
+        $title, 
+        $description, 
+        $canonical_url
+    )
     {
-        header('Content-Type: text/xml');
-        echo $xml;
-        die();
+        self::InitDB();
+
+        if (preg_match("/\\A[a-zA-Z][a-zA-Z0-9._\\-]+\\Z/", $permanent_id) !== 1) {
+            trigger_error( "Invalid upvote permanent id [$permanent_id].", E_USER_ERROR );
+            return;
+        }
+        if (preg_match("/\\A[a-zA-Z][a-zA-Z0-9._\\-]+\\Z/", $category) !== 1) {
+            trigger_error( "Invalid upvote category id [$category].", E_USER_ERROR );
+            return;
+        }
+
+        $q = self::$DB->prepare(
+            'SELECT * FROM counts
+             WHERE permanent_id = :permanent_id'
+        );
+        $q->bindParam(':permanent_id', $permanent_id);
+        $q->execute();
+
+        if (($res = $q->fetch()) !== FALSE) {
+            if ($res['category'] != $category || $res['title'] != $title ||
+                $res['description'] != $description || 
+                $res['canonical_url'] != $canonical_url ) {
+                $q = self::$DB->prepare(
+                    'UPDATE counts SET category=:category, title=:title,
+                     description=:description, canonical_url=:canonical_url
+                     WHERE permanent_id = :permanent_id'
+                 );
+                $q->bindParam(':category', $category);
+                $q->bindParam(':permanent_id', $permanent_id);
+                $q->bindParam(':title', $title);
+                $q->bindParam(':description', $description);
+                $q->bindParam(':canonical_url', $canonical_url);
+                $q->execute();
+            }
+        } else {
+            $q = self::$DB->prepare(
+                'INSERT INTO counts (category, permanent_id, title, description, canonical_url, upvotes, downvotes)
+                 VALUES (:category, :permanent_id, :title, :description, :canonical_url, :upvotes, :downvotes)'
+             );
+            $q->bindParam(':category', $category);
+            $q->bindParam(':permanent_id', $permanent_id);
+            $q->bindParam(':title', $title);
+            $q->bindParam(':description', $description);
+            $q->bindParam(':canonical_url', $canonical_url);
+            $zero = 0;
+            $q->bindParam(':upvotes', $zero);
+            $q->bindParam(':downvotes', $zero);
+            $q->execute();
+        }
     }
 
     private static function process_vote($permanent_id, $direction)
@@ -381,15 +440,31 @@ class Upvote
         }
     }
 
-    private static function remove_old_vote_history()
+
+    private static function send_ajax_response($status, $uparrow, $downarrow, $total)
     {
-        self::InitDB();
-        $q = self::$DB->prepare(
-            'DELETE FROM history WHERE time_added < :delete_before'
-        );
-        $delete_before = time() - self::VOTE_OLD_AFTER_SECONDS;
-        $q->bindParam(':delete_before', $delete_before);
-        $q->execute();
+        $status = self::htmle($status);
+        $uparrow = self::htmle($uparrow);
+        $downarrow = self::htmle($downarrow);
+        $total = self::htmle($total);
+
+        $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n";
+        $xml .= "<response>\n";
+        $xml .= "<status>$status</status>\n";
+        $xml .= "<uparrow>$uparrow</uparrow>\n";
+        $xml .= "<downarrow>$downarrow</downarrow>\n";
+        $xml .= "<total>$total</total>\n";
+        $xml .= "</response>\n";
+
+        self::send_xml_response($xml);
+    }
+
+
+    private static function send_xml_response($xml)
+    {
+        header('Content-Type: text/xml');
+        echo $xml;
+        die();
     }
 
     private static function set_user_action($permanent_id, $action)
@@ -434,90 +509,24 @@ class Upvote
         }
     }
 
-    private static function give_upvote($permanent_id, $undo_downvote = false)
-    {
-        self::InitDB();
-        $undo = $undo_downvote ? ", downvotes = downvotes - 1" : "";
-        $q = self::$DB->prepare(
-            "UPDATE counts SET upvotes = upvotes + 1 $undo
-             WHERE permanent_id = :permanent_id"
-         );
-        $q->bindParam(':permanent_id', $permanent_id);
-        $q->execute();
-    }
-
-    private static function give_downvote($permanent_id, $undo_upvote = false)
-    {
-        self::InitDB();
-        $undo = $undo_upvote ? ", upvotes = upvotes - 1" : "";
-        $q = self::$DB->prepare(
-            "UPDATE counts SET downvotes = downvotes + 1 $undo
-             WHERE permanent_id = :permanent_id"
-         );
-        $q->bindParam(':permanent_id', $permanent_id);
-        $q->execute();
-    }
-
-    private static function undo_upvote($permanent_id)
+    private static function remove_old_vote_history()
     {
         self::InitDB();
         $q = self::$DB->prepare(
-            'UPDATE counts SET upvotes = upvotes - 1
-             WHERE permanent_id = :permanent_id'
-         );
-        $q->bindParam(':permanent_id', $permanent_id);
-        $q->execute();
-    }
-
-    private static function undo_downvote($permanent_id)
-    {
-        self::InitDB();
-        $q = self::$DB->prepare(
-            'UPDATE counts SET downvotes = downvotes - 1
-             WHERE permanent_id = :permanent_id'
-         );
-        $q->bindParam(':permanent_id', $permanent_id);
-        $q->execute();
-    }
-
-    private static function get_upvotes($permanent_id)
-    {
-        self::InitDB();
-        $q = self::$DB->prepare(
-            'SELECT upvotes FROM counts 
-             WHERE permanent_id = :permanent_id'
+            'DELETE FROM history WHERE time_added < :delete_before'
         );
-        $q->bindParam(':permanent_id', $permanent_id);
+        $delete_before = time() - self::VOTE_OLD_AFTER_SECONDS;
+        $q->bindParam(':delete_before', $delete_before);
         $q->execute();
-
-        if (($res = $q->fetch()) !== FALSE) {
-            return $res['upvotes'];
-        } else {
-            return 0;
-        }
     }
 
-    private static function get_downvotes($permanent_id)
-    {
-        self::InitDB();
-        $q = self::$DB->prepare(
-            'SELECT downvotes FROM counts 
-             WHERE permanent_id = :permanent_id'
-        );
-        $q->bindParam(':permanent_id', $permanent_id);
-        $q->execute();
-
-        if (($res = $q->fetch()) !== FALSE) {
-            return $res['downvotes'];
-        } else {
-            return 0;
-        }
-    }
+# ----------------------------------------------------------------------------
+# Utility Functions (Private):
+# ----------------------------------------------------------------------------
 
     private static function get_page_url()
     {
         // Taken from: http://stackoverflow.com/a/1229924
-        // FIXME: Apache only!
         $pageURL = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
         if ($_SERVER["SERVER_PORT"] != "80") {
             $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
