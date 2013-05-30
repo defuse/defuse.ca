@@ -1,17 +1,13 @@
-function createXmlHttpRequest() {
-    try {
-        if (window.XMLHttpRequest) {
-            return new XMLHttpRequest();
-        } else {
-            return new ActiveXObject("Microsoft.XMLHTTP");
-        }
-    } catch (err) {
-        return null;
-    }
-}
+/*
+ *                      Defuse Security's Upvote System
+ *                             https://defuse.ca/
+ */
+
+var upvote;
+if (!upvote) var upvote = {};
 
 // Returns an array of elements of type 'tag' that have class 'klass'
-function findElementsWithClass( tag, klass ) {
+upvote.findElementsWithClass = function (tag, klass) {
     // This function was adapted from http://stackoverflow.com/a/3808886
     var elems = document.getElementsByTagName(tag);
     var elems_with_class = new Array();
@@ -23,10 +19,22 @@ function findElementsWithClass( tag, klass ) {
         }
     }
     return elems_with_class;
-}
+};
 
-function upvoteSubmit(id, direction) {
-    var xmlhttp = createXmlHttpRequest();
+upvote.createXmlHttpRequest = function () {
+    try {
+        if (window.XMLHttpRequest) {
+            return new XMLHttpRequest();
+        } else {
+            return new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    } catch (err) {
+        return null;
+    }
+};
+
+upvote.submit = function (id, direction) {
+    var xmlhttp = upvote.createXmlHttpRequest();
     if (xmlhttp == null) {
         // fall back to regular form submission
         return true;
@@ -92,7 +100,7 @@ function upvoteSubmit(id, direction) {
 
             // Find all "counters" (displayed counts) for this id.
             var counter_class = 'upvoteCounter' + id;
-            var counters = findElementsWithClass('div', counter_class);
+            var counters = upvote.findElementsWithClass('div', counter_class);
             // Update the color and number of each one.
             for (var i = 0; i < counters.length; i++) {
                 var counter = counters[i];
@@ -106,12 +114,12 @@ function upvoteSubmit(id, direction) {
                 counter.innerHTML = parseInt(xmlTotal);
             }
         }
-    }
+    };
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(
         'upvotes_direction=' + encodeURIComponent(direction) + 
         '&upvotes_id=' + encodeURIComponent(id)
     );
     return false;
-}
+};
 

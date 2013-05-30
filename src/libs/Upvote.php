@@ -233,7 +233,7 @@ class Upvote
             <form 
                 action="<?php echo self::htmle(self::get_page_url()); ?>" 
                 method="post"
-                onsubmit="return upvoteSubmit('<?php echo self::jse($permanent_id); ?>', 'up')"
+                onsubmit="return upvote.submit('<?php echo self::jse($permanent_id); ?>', 'up')"
                 class="upvoteform <?php echo self::htmle($upFormName); ?>"
             >
                 <input type="hidden" name="upvotes_direction" value="up" />
@@ -263,7 +263,7 @@ class Upvote
             <form 
                 action="<?php echo self::htmle(self::get_page_url()); ?>" 
                 method="post"
-                onsubmit="return upvoteSubmit('<?php echo self::jse($permanent_id); ?>', 'down')"
+                onsubmit="return upvote.submit('<?php echo self::jse($permanent_id); ?>', 'down')"
                 class="upvoteform <?php echo self::htmle($downFormName); ?>"
             >
                 <input type="hidden" name="upvotes_direction" value="down" />
