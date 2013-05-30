@@ -4,13 +4,15 @@
  */
 
 var upvote;
-if (!upvote) var upvote = {};
+if (!upvote) {
+    var upvote = {};
+}
 
 // Returns an array of elements of type 'tag' that have class 'klass'
 upvote.findElementsWithClass = function (tag, klass) {
     // This function was adapted from http://stackoverflow.com/a/3808886
     var elems = document.getElementsByTagName(tag);
-    var elems_with_class = new Array();
+    var elems_with_class = [];
     for (var i = 0; i < elems.length; i++) {
         // If we didn't add the spaces, then it could match part of another
         // class. e.g. class="abc" klass="bc".
