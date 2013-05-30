@@ -61,7 +61,7 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' &&
     $_SERVER['HTTP_HOST'] != "localhost" && 
     $_SERVER['HTTP_HOST'] != "192.168.1.102")
 {
-    header('Strict-Transport-Security: max-age=604800'); /* 7 days */
+    header('Strict-Transport-Security: max-age=31536000'); /* one year */
 }
 
 // Prevent pages from being displayed in iframes. Not supported by all browsers.
