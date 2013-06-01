@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Long Cat HTML5 Canvas Version</title>
+<script src="/js/modernizr.js"></script>
+<script type="text/javascript">
+
+window.addEventListener("load", eventWindowLoaded, false);
+
+function eventWindowLoaded() {
+    canvasApp();
+}
+
+function canvasSupport() {
+    return Modernizr.canvas;
+}
+
+function canvasApp() {
+    if (!canvasSupport()) {
+        return;
+    }
+
+    var theCanvas = document.getElementById("canvasOne");
+    var context = theCanvas.getContext("2d");
+
+    var longcat1 = new Image();
+    longcat1.addEventListener('load', catLoaded);
+    longcat1.src = "/images/longcat-part1.jpg";
+
+    var longcat2 = new Image();
+    longcat2.addEventListener('load', catLoaded);
+    longcat2.src = "/images/longcat-part2.jpg";
+
+    var loadCount = 0;
+    function catLoaded(e) {
+        loadCount++;
+        if (loadCount == 2) {
+            gameLoop();
+        }
+    }
+
+    var windowX = 0;
+    var windowY = 0;
+    var windowWidth = 600;
+    var windowHeight = 600;
+    var dy = 20;
+
+    function drawScreen() {
+        context.fillStyle = "#000000";
+        context.fillRect(0, 0, theCanvas.width, theCanvas.height);
+
+        if (windowY + windowHeight < longcat1.height) {
+            // The window is entirely in longcat1.
+            context.drawImage(longcat1, windowX, windowY, windowWidth,
+                    windowHeight, 0, 0, windowWidth, windowHeight);
+        } else if (windowY < longcat1.height) {
+            // The window crosses the boundary between longcat1 and longcat2.
+            left = longcat1.height - windowY;
+            context.drawImage(longcat1, windowX, windowY, windowWidth,
+                    left, 0, 0, windowWidth, left);
+            context.drawImage(longcat2, windowX, 0, windowWidth, windowHeight,
+                    0, left, windowWidth, windowHeight);
+        } else {
+            // The window is entirely in longcat2.
+            context.drawImage(longcat2, windowX, windowY - longcat1.height,
+                    windowWidth, windowHeight, 0, 0, windowWidth, windowHeight);
+        }
+
+        windowY += dy;
+        if (windowY + windowHeight >= (longcat1.height + longcat2.height)) {
+            windowY = (longcat1.height + longcat2.height) - windowHeight;
+            dy = -dy;
+        }
+        if (windowY < 0) {
+            windowY = 0;
+            dy = -dy;
+        }
+    }
+
+    function gameLoop() {
+        setTimeout(gameLoop, 20);
+        drawScreen();
+    }
+}
+
+</script>
+</head>
+    <body>
+        <div style="position: absolute; top: 50px; left: 50px;">
+            <canvas id="canvasOne" width="600" height="600" style="border: solid black 5px;">
+                Your browser does not support HTML5 canvas.
+            </canvas>
+            <p>
+            <a href="https://github.com/defuse/canvas">source code</a>
+            </p>
+        </div>
+    </body>
+</html>
