@@ -536,13 +536,11 @@ function GetLineText($filepath, $lineidx)
 {
 	$fh = fopen($filepath, 'r');
 	$i = 0;
-	while(!feof($fh))
-	{
-		$line = fgets($fh, 1000);
+    while (($line = fgets($fh)) !== FALSE) {
 		if($i == $lineidx)
 			return $line;
-		$i++;
-	}
+        $i++;
+    }
 	fclose($fh);
 	return $i;
 }
@@ -552,19 +550,17 @@ function CountFileLines($filepath)
 	if(is_dir($filepath))
 		return 0;
 	$fh = fopen($filepath, 'r');
-	$i = 0;
-	while(!feof($fh))
-	{
-		fgets($fh); //advance to the next line
-		$i++;
-	}
+    $i = 0;
+    while (($line = fgets($fh)) !== FALSE) {
+        $i++;
+    }
 	fclose($fh);
 	return $i;
 }
 
 function EnoughLines($path, $num)
 {
-	return !file_exists($path) || $num == 0 ||  CountFileLines($path) > $num;
+	return !file_exists($path) || $num == 0 ||  CountFileLines($path) >= $num;
 }
 
 function GetRandomLinesOutput($path, $numlines, $noLineRepeat)
