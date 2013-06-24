@@ -20,16 +20,22 @@ read, talks watched, and ocw course lectures watched.
 <h2>In Progress</h2>
 
 <ul>
-    <li><b>Godel, Escher, Bach: An Eternal Golden Braid (Hofstadter)</b></li>
     <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
+    <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 2A</li>
 </ul>
 
 <h2>Next</h2>
 
 <ul>
-    <li>Intel Manuals</li>
+    <li>English Dictionary</li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
     <li>A Guide To Kernel Exploitation</li>
+    <li>Cryptanalysis (Helen Fouc&eacute;)</li>
+    <li>The Social Network Business Plan (David Silver)</li>
+    <li>Biology (Peter Raven)</li>
+    <li>Conceptual Physics (Hewitt)</li>
+    <li>Illustrated Guide to Aerodynamics</li>
+    <li>Aerodynamics for Naval Aviators</li>
 </ul>
 
 <h2>2013</h2>
@@ -39,12 +45,14 @@ read, talks watched, and ocw course lectures watched.
     <li>Cypherpunks (Assange et. al.)</li>
     <li>The Elements of Moral Philosophy (Rachels)</li>
     <li>Computer Networking: A Top-Down Approach (Kurose, Ross)</li>
-    <li>Pirate Cinema</li>
-    <li>God is Not Great (Hitchens)</li>
+    <li>Pirate Cinema (Cory Doctorow)</li>
+    <li>God is Not Great (Christopher Hitchens)</li>
     <li>Pro Git (Scott Chacon)</li>
     <li>How to Disappear: Erase Your Digital Footprint, Leave False Trails, and Vanish Without a Trace</li>
     <li>JavaScript: The Good Parts</li>
     <li>HTML5 Canvas</li>
+    <li><b>Godel, Escher, Bach: An Eternal Golden Braid (Hofstadter)</b></li>
+    <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 1</li>
 </ul>
 
 <h2>2012 and Before</h2>
@@ -78,7 +86,7 @@ read, talks watched, and ocw course lectures watched.
  <li>The Standard C Library</li>
  <li>The God Delusion (Dawkins)</li>
  <li>The Magic Of Reality</li>
- <li><b>Little Brother</b></li>
+ <li><b>Little Brother (Cory Doctorow)</b></li>
  <li>Nineteen Eighty Four</li>
  <li>Quantum Computing (Reiffel, Polak) (no i don't understand this at all)</li>
 </ul>
