@@ -122,7 +122,6 @@ header('Content-Type: text/html; charset=utf-8');
         <ul class="leftbutton">
             <li><a href="/about.htm">&nbsp;About Defuse</a></li>
             <li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
-            <li><a href="/reading-list.htm">&nbsp;Reading List</a></li>
             <!-- <li><a href="/projects.htm">&nbsp;Project List</a></li> -->
             <li><a href="/hypothetico/">&nbsp;Hypothetico</a></li>
             <li><a href="https://twitter.com/#!/defusesec" >&nbsp;Twitter</a></li>
@@ -236,6 +235,8 @@ header('Content-Type: text/html; charset=utf-8');
     <li class="headerlink" ><a href="/projects.htm">Miscellaneous<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
+            <li><a href="/reading-list.htm">&nbsp;Reading List</a></li>
+            <li><a href="/writing-tips.htm">&nbsp;Writing Tips</a></li>
             <li><a href="/the-universe-is-made-of-cheese.htm">&nbsp;Cheese Universe</a></li>
             <li><a href="/vimrc.htm">&nbsp;My Vim Configuration</a></li>
             <li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>

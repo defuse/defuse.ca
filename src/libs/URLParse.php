@@ -155,6 +155,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "writing-tips" => array(
+                P_FILE => "misc/writing-tips.php",
+                P_TITL => "Writing Tips",
+                P_METD => "Some tips to make your writing better.",
+                P_METK => "writing tips, good writing, clear writing"
+            ),
             "the-meaning-of-if" => array(
                 P_FILE => "misc/the-meaning-of-if.php",
                 P_TITL => "The meaning of \"IF\" -- An Introduction to Formal Logic",
