@@ -128,10 +128,10 @@ header('Content-Type: text/html; charset=utf-8');
 </head>
 <body>
 <!-- Scripts required for client-side decryption -->
-<script type="text/javascript" src="https://defuse.ca/js/cryptoHelpers.js" ></script>
-<script type="text/javascript" src="https://defuse.ca/js/jsHash.js" ></script>
-<script type="text/javascript" src="https://defuse.ca/js/aes.js" ></script>
-<script type="text/javascript" src="https://defuse.ca/js/defuse.js" ></script>
+<script type="text/javascript" src="/js/cryptoHelpers.js" ></script>
+<script type="text/javascript" src="/js/jsHash.js" ></script>
+<script type="text/javascript" src="/js/aes.js" ></script>
+<script type="text/javascript" src="/js/defuse.js" ></script>
 <script type="text/javascript">
 <!--
 function encrypt()
@@ -171,7 +171,7 @@ require_once('pastebin.php');
 if(isset($_GET['h']))
 	$urlKey = $_GET['h'];
 else
-	$urlKey = substr($_SERVER['REQUEST_URI'], 1);
+	$urlKey = substr($_SERVER['REQUEST_URI'], 3);
 
 $postInfo = retrieve_post($urlKey);
 
@@ -213,7 +213,7 @@ if($postInfo !== false)
 	}
 
 	?>
-	<form name="pasteform" id="pasteform" action="https://bin.defuse.ca/add.php" method="post">
+	<form name="pasteform" id="pasteform" action="/bin/add.php" method="post">
 
 	<textarea id="paste" name="paste" spellcheck="false" rows="30" cols="80"><?
         if(!$postInfo['jscrypt'])

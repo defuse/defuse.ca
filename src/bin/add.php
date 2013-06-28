@@ -26,7 +26,8 @@ if(isset($_POST['paste']))
     );
 
 	//redirect user to the view page
-	header("Location: https://bin.defuse.ca/$urlKey");
+    $http_host = $_SERVER['HTTP_HOST'];
+	header("Location: https://{$http_host}/b/{$urlKey}");
 }
 else
 {
