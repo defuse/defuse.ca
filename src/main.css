@@ -499,6 +499,10 @@ ul {
 }
 
 .upvotearrow {
+    border: 0;
+}
+.upvotearrow input {
+    border: 0;
 }
 
 .upvotedownarrow {

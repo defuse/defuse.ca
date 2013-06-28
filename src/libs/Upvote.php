@@ -239,12 +239,12 @@ class Upvote
                 <input type="hidden" name="upvotes_direction" value="up" />
                 <input type="hidden" name="upvotes_id" value="<?php echo self::htmle($permanent_id); ?>" />
                 <?  if (self::get_user_action($permanent_id) == "upvote") { ?>
-                    <input id="upupup"
+                    <input
                         type="image" src="/images/upvote-selected.gif" alt="Upvote" 
                         name="<?php echo self::htmle($upImageName); ?>"
                     />
                 <? } else { ?>
-                    <input id="upupup"
+                    <input
                         type="image" src="/images/upvote.gif" alt="Upvote"
                         name="<?php echo self::htmle($upImageName); ?>"
                     />
