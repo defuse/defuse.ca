@@ -167,6 +167,12 @@ function encrypt()
 
 require_once('pastebin.php');
 
+if (strpos($_SERVER['HTTP_HOST'], "bin.defuse.ca") !== false) {
+    $urlKey = substr($_SERVER['REQUEST_URI'], 1);
+    header("Location: https://defuse.ca/b/{$urlKey}");
+    die();
+}
+
 // The urlKey can be a url parameter (backwards compatibility) or part of the URL itself.
 if(isset($_GET['h']))
 	$urlKey = $_GET['h'];
