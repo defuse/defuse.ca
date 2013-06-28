@@ -103,7 +103,11 @@ int main(int argc, char **argv)
     // Run `gnutls-cli -l` to see what your GnuTLS supports.
     const char *error = NULL;
     // Here we allow all 128+ bit ciphers except RC4 and disable SSL3 and TLS1.0.
-    res = gnutls_priority_set_direct(session, "SECURE128:-VERS-SSL3.0:-VERS-TLS1.0:-ARCFOUR-128", &error);
+    res = gnutls_priority_set_direct(
+        session,
+        "SECURE128:-VERS-SSL3.0:-VERS-TLS1.0:-ARCFOUR-128:+PSK:+DHE-PSK",
+        &error
+    );
     if (res != GNUTLS_E_SUCCESS) {
         error_exit("gnutls_priority_set_direct() failed.\n");
     }
