@@ -111,7 +111,7 @@ header('Content-Type: text/html; charset=utf-8');
             Twitter
         </a>
         &nbsp;&middot;&nbsp;
-        <a href="https://defuse.ca/blog/" title="Defuse Security's Blog.">Blog</a>
+        <a href="https://github.com/defuse" title="Defuse Security's GitHub">GitHub</a>
     </div>
 </div>
 
