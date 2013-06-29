@@ -10,6 +10,41 @@
 var fxw;
 if (!fxw) var fxw = {};
 
+fxw.allhtmlsani = function(text)
+{
+	var sani = [];
+	var i = 0;
+	for(i = 0; i < text.length; i++)
+	{
+		var curChar = text.charCodeAt(i);
+		//Sanitize curChar if it isn't a CR, LF, TAB, or SPACE
+		if(curChar != 10 && curChar != 13 && curChar != 9 && curChar != 32)
+		{
+			sani.push("&#" + curChar + ";"); 
+		}
+		else
+		{
+			sani.push(String.fromCharCode(curChar));
+		}
+	}
+	text = sani.join('');
+
+	//Now deal with spaces, tabs, and newlines
+	text = text.replace(/\r\n/g, "\n");
+	text = text.replace(/\r/g, "\n");
+	text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+	text = text.replace(/\s\s/g, "&nbsp;&nbsp;");
+	text = text.replace(/\n/g, "<br />");
+	return text;
+}
+
+/* !!!! THESE ENCRYPTION FUNCTIONS ARE DEPRECATED. USE encrypt.js. !!!! */
+/* !!!! THESE ENCRYPTION FUNCTIONS ARE DEPRECATED. USE encrypt.js. !!!! */
+/* !!!! THESE ENCRYPTION FUNCTIONS ARE DEPRECATED. USE encrypt.js. !!!! */
+/* !!!! THESE ENCRYPTION FUNCTIONS ARE DEPRECATED. USE encrypt.js. !!!! */
+/* !!!! THESE ENCRYPTION FUNCTIONS ARE DEPRECATED. USE encrypt.js. !!!! */
+/* !!!! THESE ENCRYPTION FUNCTIONS ARE DEPRECATED. USE encrypt.js. !!!! */
+
 //password - the password used to derrive the key
 //salt - random salt that should be unique per encryption. MUST be 256 bits hex
 //iv - random IV that should be unique per encryption. MUST be 256 bits hex
@@ -50,30 +85,3 @@ fxw.decrypt = function(password, cipherText)
 	return cryptoHelpers.decode_utf8(utf8Plaintext);
 }
 
-fxw.allhtmlsani = function(text)
-{
-	var sani = [];
-	var i = 0;
-	for(i = 0; i < text.length; i++)
-	{
-		var curChar = text.charCodeAt(i);
-		//Sanitize curChar if it isn't a CR, LF, TAB, or SPACE
-		if(curChar != 10 && curChar != 13 && curChar != 9 && curChar != 32)
-		{
-			sani.push("&#" + curChar + ";"); 
-		}
-		else
-		{
-			sani.push(String.fromCharCode(curChar));
-		}
-	}
-	text = sani.join('');
-
-	//Now deal with spaces, tabs, and newlines
-	text = text.replace(/\r\n/g, "\n");
-	text = text.replace(/\r/g, "\n");
-	text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
-	text = text.replace(/\s\s/g, "&nbsp;&nbsp;");
-	text = text.replace(/\n/g, "<br />");
-	return text;
-}

@@ -128,33 +128,31 @@ header('Content-Type: text/html; charset=utf-8');
 </head>
 <body>
 <!-- Scripts required for client-side decryption -->
-<script type="text/javascript" src="/js/cryptoHelpers.js" ></script>
-<script type="text/javascript" src="/js/jsHash.js" ></script>
-<script type="text/javascript" src="/js/aes.js" ></script>
-<script type="text/javascript" src="/js/defuse.js" ></script>
+<script type="text/javascript" src="/js/sjcl.js"></script>
+<script type="text/javascript" src="/js/encrypt.js"></script>
+<script type="text/javascript" src="/js/defuse.js"></script>
+
 <script type="text/javascript">
 <!--
-function encrypt()
+function encryptPaste()
 {
 	var pass1 = document.getElementById("pass1").value;
 	var pass2 = document.getElementById("pass2").value;
 	if(pass1 == pass2 && pass1 != "")
 	{
-		var iv = "<?php echo bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); ?>";
-		var salt = "<?php echo bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); ?>";
 		var plain = document.getElementById("paste").value;
-		var ct = fxw.encrypt(pass1, salt, iv, plain);
+		var ct = encrypt.encrypt(pass1, plain);
 		document.getElementById("paste").value = ct;
 		document.getElementById("jscrypt").value = "yes";
 		document.pasteform.submit();
 	}
 	else if(pass1 != pass2)
 	{
-		alert("Your passwords do not match! Please try again.");
+		alert("Passwords do not match.");
 	}
 	else if(pass1 == "")
 	{
-		alert("Encrypting with no password is pointless!");
+		alert("You must provide a password.");
 	}
 }
 -->
@@ -235,7 +233,7 @@ if($postInfo !== false)
 		Password: 
 		<input type="password" id="pass1" value="" size="8" /> &nbsp;
 		Verify: <input type="password" id="pass2" value="" size="8" /> 
-		<input type="button" value="Encrypt &amp; Post" onclick="encrypt()" /> 
+		<input type="button" value="Encrypt &amp; Post" onclick="encryptPaste()" /> 
 		<noscript>
 			<b>[ Please Enable JavaScript ]</b>
 		</noscript>
@@ -253,7 +251,7 @@ function PrintPasswordPrompt()
 ?>
 	<div id="passwordprompt">
         <b>Enter Password:</b> 
-        <input type="password" id="password" name="password" value="" /><input type="button" name="decrypt" value="Decrypt" onClick="decrypt();" />
+        <input type="password" id="password" name="password" value="" /><input type="button" name="decrypt" value="Decrypt" onClick="decryptPaste();" />
         <noscript>
 			<b>[ Please Enable JavaScript ]</b>
         </noscript>
@@ -265,13 +263,12 @@ function PrintDecryptor($data)
 {
 ?>
 <script type="text/javascript">
-function decrypt(){
-	var encrypted = "<? echo js_string_escape($data); ?>";
-	var password = document.getElementById("password").value;
-	if(fxw.validate(password, encrypted))
-	{
+function decryptPaste(){
+    try {
+        var encrypted = "<? echo js_string_escape($data); ?>";
+        var password = document.getElementById("password").value;
+        var plaintext = encrypt.decrypt(password, encrypted);
 		document.getElementById("passwordprompt").innerHTML = "";
-		var plaintext = fxw.decrypt(password, encrypted);
 
 		document.getElementById("paste").value = plaintext;
 
@@ -291,12 +288,14 @@ function decrypt(){
 		var fill = document.getElementById("tofill");
         fill.style.display = "block";
 		fill.innerHTML = fancyLines.join('');
-	}
-	else
-	{
-		alert("Wrong password.");
-        document.getElementById("password").value = "";
-	}
+
+    } catch (e) {
+        if (e.constructor == sjcl.exception.corrupt) {
+            alert('Wrong password or corrupted/invalid ciphertext.');
+        } else {
+            alert(e);
+        }
+    }
 }
 </script>
 <?

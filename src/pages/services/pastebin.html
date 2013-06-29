@@ -27,39 +27,47 @@
 	Client-Side Password: 
 	<input type="password" id="pass1" value="" /> &nbsp;
 	Verify: <input type="password" id="pass2" value="" /> 
-	<input type="button" value="Encrypt &amp; Post" onclick="encrypt()" />
+	<input type="button" value="Encrypt &amp; Post" onclick="encryptPaste()" />
 </div> <!-- /enc -->
 <!--end of client-side encryption options-->
 
 <!-- Scripts for client-side encryption -->
-<script type="text/javascript" src="/js/cryptoHelpers.js" ></script>
-<script type="text/javascript" src="/js/jsHash.js" ></script>
-<script type="text/javascript" src="/js/aes.js" ></script>
-<script type="text/javascript" src="/js/defuse.js" ></script>
+<script type="text/javascript" src="/js/sjcl.js"></script>
+<script type="text/javascript" src="/js/encrypt.js"></script>
 
 <script type="text/javascript">
 <!--
-function encrypt()
+
+/* Use server-side code to fill this with a random 256 bit hex string. */
+var entropy = "<?php echo bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); ?>";
+sjcl.random.addEntropy(entropy, entropy.length * 4, "server");
+
+/* Collect entropy from mouse movements and key-presses */
+try {
+    sjcl.random.startCollectors();
+} catch (e) {
+    /* Ignore it -- server entropy is good enough. */
+}
+
+function encryptPaste()
 {
 	var pass1 = document.getElementById("pass1").value;
 	var pass2 = document.getElementById("pass2").value;
 	if(pass1 == pass2 && pass1 != "")
 	{
-		var iv = "<?php echo bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); ?>";
-		var salt = "<?php echo bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); ?>";
 		var plain = document.getElementById("paste").value;
-		var ct = fxw.encrypt(pass1, salt, iv, plain);
+		var ct = encrypt.encrypt(pass1, plain);
 		document.getElementById("paste").value = ct;
 		document.getElementById("jscrypt").value = "yes";
 		document.pasteform.submit();
 	}
 	else if(pass1 != pass2)
 	{
-		alert("Your passwords do not match! Please try again.");
+		alert("Passwords do not match.");
 	}
 	else if(pass1 == "")
 	{
-		alert("Encrypting with no password is pointless!");
+		alert("You must provide a password.");
 	}
 }
 -->
