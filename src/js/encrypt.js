@@ -32,13 +32,13 @@ encrypt.encrypt = function(password, plaintext) {
     var iv_bits = sjcl.random.randomWords(4);
 
     /* Generate the key from the password and salt with PBKDF2 */
-    var key = sjcl.misc.pbkdf2(password, salt_bits, 5000, 128);
+    var key = sjcl.misc.pbkdf2(password, salt_bits, 1000, 128);
 
     /* Encrypt the plaintext */
     var aes = new sjcl.cipher.aes(key);
     var ct_bits = sjcl.mode.ocb2.encrypt(aes, pt_bits, iv_bits, [], 64);
 
-    return encrypt.pack_ciphertext(5000, salt_bits, iv_bits, ct_bits);
+    return encrypt.pack_ciphertext(1000, salt_bits, iv_bits, ct_bits);
 };
 
 /* Decrypts a string that was encrypted with encrypt.encrypt().
