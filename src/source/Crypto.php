@@ -76,7 +76,7 @@ class Crypto
         $akey = self::CreateSubkey($key, "authentication", CRYPTO_KEY_BYTE_SIZE);
 
         // Make sure the HMAC is correct. If not, the ciphertext has been changed.
-        if($hmac === hash_hmac(CRYPTO_HMAC_ALG, $ciphertext, $akey, true))
+        if(self::SlowEquals($hmac, hash_hmac(CRYPTO_HMAC_ALG, $ciphertext, $akey, true)))
         {
             // Open the encryption module and get some parameters.
             $crypt = mcrypt_module_open(CRYPTO_CIPHER_ALG, "", CRYPTO_CIPHER_MODE, "");
@@ -109,20 +109,6 @@ class Crypto
             // If the ciphertext has been modified, refuse to decrypt it.
             return false;
         }
-    }
-
-    /*
-     * Creates a sub-key from a master key for a specific purpose.
-     */
-    public static function CreateSubkey($master, $purpose, $bytes)
-    {
-        $source = hash_hmac("sha512", $purpose, $master, true);
-        if(strlen($source) < $bytes) {
-            trigger_error("Subkey too big.", E_USER_ERROR);
-            return $source; // fail safe
-        }
-
-        return substr($source, 0, $bytes);
     }
 
     /*
@@ -181,6 +167,34 @@ class Crypto
         echo "PASS\n";
         return true;
     }
+
+    /*
+     * Creates a sub-key from a master key for a specific purpose.
+     */
+    private static function CreateSubkey($master, $purpose, $bytes)
+    {
+        $source = hash_hmac("sha512", $purpose, $master, true);
+        if(strlen($source) < $bytes) {
+            trigger_error("Subkey too big.", E_USER_ERROR);
+            return $source; // fail safe
+        }
+
+        return substr($source, 0, $bytes);
+    }
+
+    /*
+     * Compares two strings in constant time.
+     */
+    private static function SlowEquals($a, $b)
+    {
+        $diff = strlen($a) ^ strlen($b);
+        for($i = 0; $i < strlen($a) && $i < strlen($b); $i++)
+        {
+            $diff |= ord($a[$i]) ^ ord($b[$i]);
+        }
+        return $diff === 0;
+    }
+
 }
 
 // Run the test when and only when this script is executed on the command line.
