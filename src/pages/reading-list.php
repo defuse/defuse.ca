@@ -97,6 +97,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>Dissecting Android Malware: Characterization and Evolution</li>
   <li>A fistful of red-pills: How to automatically generate procedures to detect CPU emulators (Paleari et al.)</li>
   <li><b>ELFbac: Using the Loader Format for Intent-Level Semantics and Fine-Grained Protection (Bangert et al.)</b></li>
   <li>Native Client: A Sandbox for Portable, Untrusted x86 Native Code (Yee et al.)</li>
