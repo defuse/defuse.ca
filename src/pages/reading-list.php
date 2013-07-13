@@ -10,16 +10,17 @@
 <h1>Reading List</h1>
 
 <p>
-This is just a list of everything I've read. It is certainly incomplete.
-Ordering within the year sections is not meaningful. My favourite books are in
-bold. I apologize for not listing all of the authors' names out of laziness;
-I'll get around to adding them sometime. I will also consider adding papers
-read, talks watched, and ocw course lectures watched.
+This is an incomplete list of things that I have read. It includes only books
+and academic papers. Ordering within the year sections is not meaningful. My
+favourite books and papers are in bold.  I apologize for not listing all of the
+authors' names out of laziness; I'll get around to adding them sometime.
+A web search of the title is usually enough to find the book or paper.
 </p>
 
 <h2>In Progress</h2>
 
 <ul>
+    <li>A Guide To Kernel Exploitation</li>
     <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 2A</li>
 </ul>
@@ -29,7 +30,6 @@ read, talks watched, and ocw course lectures watched.
 <ul>
     <li>English Dictionary</li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
-    <li>A Guide To Kernel Exploitation</li>
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
     <li>The Social Network Business Plan (David Silver)</li>
     <li>Biology (Peter Raven)</li>
@@ -89,4 +89,35 @@ read, talks watched, and ocw course lectures watched.
  <li><b>Little Brother (Cory Doctorow)</b></li>
  <li>Nineteen Eighty Four</li>
  <li>Quantum Computing (Reiffel, Polak) (no i don't understand this at all)</li>
+</ul>
+
+<a name="papers"></a>
+<h2>Papers</h2>
+
+<h3>2013</h3>
+
+<ul>
+  <li>A fistful of red-pills: How to automatically generate procedures to detect CPU emulators (Paleari et al.)</li>
+  <li><b>ELFbac: Using the Loader Format for Intent-Level Semantics and Fine-Grained Protection (Bangert et al.)</b></li>
+  <li>Native Client: A Sandbox for Portable, Untrusted x86 Native Code (Yee et al.)</li>
+  <li>Graphical Passwords: Learning from the First Twelve Years (Biddle et al.)</li>
+  <li>Chosen Ciphertext Attacks Against Protocols Based on the RSA Encryption Standard PKCS #1 (Daniel Bleichenbacher)</li>
+  <li>Jump-Oriented Programming: A New Class of Code-Reuse Attack (Bletsch et al.)</li>
+  <li>BotMiner: Clustering Analysis of Network Traffic for Protocol- and Structure-Independent Botnet Detection (Gu et al.)</li>
+  <li>kBouncer: Efficient and Transparent ROP Mitigation (Vasilis Pappas)</li>
+  <li>Remote Timing Attacks are Practical (David Brumley, Dan Boneh)</li>
+  <li>Secure Execution via Program Shepherding (Kiriansky et al.)</li>
+  <li>QEMU, a Fast and Portable Dynamic Translator (Fabrice Bellard)</li>
+  <li>Smashing the Gadgets: Hindering Return-Oriented Programming Using In-Place Code Randomization (Pappas et al.)</li>
+  <li>SegSlice: Towards a New Class of Secure Programming Primitives for Trustworthy Platforms (Bratus et al.)</li>
+  <li>Composition Patterns of Hacking (Bratus et al.)</li>
+  <li>Reliable Research: Towards Experimental Standards for Computer Science (Justin Zobel)</li>
+  <li>Control-Flow Integrity (Abadi et al.)</li>
+  <li><b>Beyond Stack Smashing: Recent Advances in Exploiting Buffer Overruns (Jonathan Pincus, Brandon Baker)</b></li>
+  <li>Return-Oriented Programming: Systems, Languages, and Applications (Roemer et al.)</li>
+  <li>Countering Code-Injection Attacks with Instruction-Set Randomization (Kc et al.)</li>
+  <li>Honeywords: Making Password-Cracking Detectable (Ari Juels, Ronald L. Rivest)</li>
+  <li>Vx32: Lightweight User-level Sandboxing on the x86 (Bryan Ford, Russ Cox)</li>
+  <li>Q: Exploit Hardening Made Easy (Schwartz et al.)</li>
+  <li><b>Non-Control-Data Attacks are Realistic Threats (Chen et al.)</b></li>
 </ul>
