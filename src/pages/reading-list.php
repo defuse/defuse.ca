@@ -97,6 +97,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li><b>Impeding Malware Analysis Using Conditional Code Obfuscation (Sharif et al.)</b></li>
   <li><b>Obfuscation of Executable Code to Improve Resistance to Static Disassembly (Cullen Linn, Saumya Debray)</b></li>
   <li>Dissecting Android Malware: Characterization and Evolution (Yajin Zhou, Xuxian Jiang)</li>
   <li>A fistful of red-pills: How to automatically generate procedures to detect CPU emulators (Paleari et al.)</li>
