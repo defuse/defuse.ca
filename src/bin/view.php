@@ -232,7 +232,7 @@ if($postInfo !== false)
          <option value="15552000">6 Months</option>
          <option value="2592000">30 Days</option>
          <option value="864000" selected="selected">10 Days</option>
-         <option value="122400">24 Hours</option>
+         <option value="86400">1 Day</option>
          <option value="3600">60 Minutes</option>
          <option value="600">10 Minutes</option>
      </select>
