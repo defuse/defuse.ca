@@ -17,9 +17,8 @@ unset($creds);
 
 // Constants
 define("IV_BYTES", 16);
-define("POST_LIFETIME_SECONDS", 3600 * 24 * 10);
 
-function commit_post($text, $jsCrypt, $short = false)
+function commit_post($text, $jsCrypt, $lifetime_seconds, $short = false)
 {
     do {
         $urlKey = PasswordGenerator::getAlphaNumericPassword($short ? 8 : 22);
@@ -42,7 +41,7 @@ function commit_post($text, $jsCrypt, $short = false)
     );
 
     $jsCrypted = $jsCrypt ? 1 : 0;
-    $time = time();
+    $time = (int)(time() + $lifetime_seconds);
 
     mysql_query(
         "INSERT INTO pastes (token, data, time, jscrypt) 
@@ -62,7 +61,7 @@ function retrieve_post($urlKey)
         $cols = mysql_fetch_array($query);
 
         $postInfo = array();
-        $postInfo['timeleft'] = ($cols['time'] + POST_LIFETIME_SECONDS) - time();
+        $postInfo['timeleft'] = $cols['time'] - time();
         $postInfo['jscrypt'] = $cols['jscrypt'] == "1";
 
         $encryptionKey = get_encryption_key($urlKey);
@@ -87,8 +86,8 @@ function retrieve_post($urlKey)
 
 function delete_expired_posts()
 {
-    $oldest = time() - POST_LIFETIME_SECONDS;
-    mysql_query("DELETE FROM pastes WHERE time <= '$oldest'");
+    $now = time();
+    mysql_query("DELETE FROM pastes WHERE time <= '$now'");
 }
 
 function get_database_id($urlKey)

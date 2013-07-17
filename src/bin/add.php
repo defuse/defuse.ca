@@ -22,6 +22,7 @@ if(isset($_POST['paste']))
     $urlKey = commit_post(
         $data,
         isset($_POST['jscrypt']) && $_POST['jscrypt'] == "yes", 
+        (isset($_POST['lifetime']) ? (int)$_POST['lifetime'] : 3600*24*10),
         isset($_POST['shorturl']) && $_POST['shorturl'] == "yes"
     );
 
