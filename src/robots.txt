@@ -1,5 +1,6 @@
 User-agent: * 
 Disallow: /bin/
+Disallow: /b/
 Disallow: /fytons.html
 Disallow: /bitcannon.htm
 Disallow: /bitcannon-cryptography.htm
