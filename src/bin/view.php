@@ -226,7 +226,16 @@ if($postInfo !== false)
 
 	<input id="jscrypt" type="hidden" name="jscrypt" value="no" />
 	<input style="width:300px;" type="submit" name="submitpaste" value="Post Without Password Encryption" />
-	<input type="checkbox" name="shorturl" value="yes" /> Short URL
+	<input type="checkbox" name="shorturl" value="yes" /> Use shorter URL.
+     Expire in
+     <select name="lifetime">
+         <option value="15552000">6 Months</option>
+         <option value="2592000">30 Days</option>
+         <option value="864000" selected="selected">10 Days</option>
+         <option value="122400">24 Hours</option>
+         <option value="3600">60 Minutes</option>
+         <option value="600">10 Minutes</option>
+     </select>
     </form>
 
 	<div id="encinfo">
