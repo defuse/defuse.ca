@@ -1,3 +1,4 @@
+<?php /*
 <h1>GRC's Perfect Password Generator is not Cryptographically Secure</h1>
 
 <p>
@@ -103,4 +104,6 @@ the attacker won't be able to reverse the generator.
 
 <p>
 </p>
-
+ */
+?>
+Actually, it is. :-)
