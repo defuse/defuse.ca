@@ -20,7 +20,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li>A Guide To Kernel Exploitation</li>
+    <li><b>A Guide To Kernel Exploitation</b></li>
     <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 2A</li>
 </ul>
