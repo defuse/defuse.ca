@@ -97,6 +97,8 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>Magazines and Vmem: Extending the Slab Allocator to Many CPUs and Arbitrary Resources (Jeff Bonwick, Jonathan Adams)</li>
+  <li><b><a href="http://download.intel.com/design/intarch/papers/cache6.pdf">An untitled paper from Intel on cache</a></b></li>
   <li><b>PEBIL: Efficient Static Binary Instrumentation for Linux (Laurenzano et al.)</b></li>
   <li>An API for Runtime Code Patching (Bryan Buck, Jeffery K. Hollingsworth) (The DynInst API)</li>
   <li>PLTO: A Link-Time Optimizer for the Intel IA-32 Architecture (Schwarz et al.)</li>
