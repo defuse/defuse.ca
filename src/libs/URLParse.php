@@ -155,6 +155,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "x-plane-combat" => array(
+                P_FILE => "misc/x-plane-combat.php",
+                P_TITL => "Combat in X-Plane: Weapon Setup, Enemy Aircraft, and Targeting",
+                P_METD => "How to fight in the X-Plane simulator.",
+                P_METK => "x-plane combat, fighter jet, flight simulator, weapon select, enemy aircraft"
+            ),
             "writing-tips" => array(
                 P_FILE => "misc/writing-tips.php",
                 P_TITL => "Writing Tips",

@@ -237,6 +237,7 @@ header('Content-Type: text/html; charset=utf-8');
             <!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
             <li><a href="/reading-list.htm">&nbsp;Reading List</a></li>
             <li><a href="/writing-tips.htm">&nbsp;Writing Tips</a></li>
+            <li><a href="/x-plane-combat.htm">&nbsp;X-Plane Combat</a></li>
             <li><a href="/the-universe-is-made-of-cheese.htm">&nbsp;Cheese Universe</a></li>
             <li><a href="/vimrc.htm">&nbsp;My Vim Configuration</a></li>
             <li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>
