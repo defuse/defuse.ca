@@ -375,6 +375,12 @@ class URLParse
                 P_METD => "An independent confirmation of Microsoft's skype spying.",
                 P_METK => "h-online skype, skype spying, microsoft, skype security",
                 ),
+            "cracking-synergy-bad-cryptography" => array(
+                P_FILE => "research/cracking-synergy-bad-cryptography.php",
+                P_TITL => "Cracking Synergy's Bad Cryptography",
+                P_METD => "A tool to crack Synergy's homebrew cryptography",
+                P_METK => "synergy, cryptography, crack, homebrew, keyboard sharing, mouse sharing",
+                ),
             "exploiting-cpp-vtables" => array(
                 P_FILE => "research/exploiting-cpp-vtables.php",
                 P_TITL => "Instance Replacement: Exploiting C++ VTABLES",
