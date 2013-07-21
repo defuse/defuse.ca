@@ -137,5 +137,5 @@ A web search of the title is usually enough to find the book or paper.
   <li>Smashing The Stack For Fun And Profit (Aleph One)</li>
   <li>The Conscience of a Hacker (Hacker's Manifesto) by The Mentor</li>
   <li>Phrack Issue #1, #2</li>
-  <li>Gitmo Is Killing Me</li>
+  <li>Gitmo Is Killing Me (New York Times)</li>
 </ul>
