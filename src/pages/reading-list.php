@@ -130,3 +130,12 @@ A web search of the title is usually enough to find the book or paper.
   <li>Q: Exploit Hardening Made Easy (Schwartz et al.)</li>
   <li><b>Non-Control-Data Attacks are Realistic Threats (Chen et al.)</b></li>
 </ul>
+
+<a name="zines"></a>
+<h2>E-Zines &amp; Other</h2>
+<ul>
+  <li>Smashing The Stack For Fun And Profit (Aleph One)</li>
+  <li>The Conscience of a Hacker (Hacker's Manifesto) by The Mentor</li>
+  <li>Phrack Issue #1, #2</li>
+  <li>Gitmo Is Killing Me</li>
+</ul>
