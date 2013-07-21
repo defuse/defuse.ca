@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "xplanecombat",
+        "defuse_pages",
+        "Combat in X-Plane 10",
+        "How to configure X-Plane 10 for combat.",
+        "https://defuse.ca/x-plane-combat.htm"
+    );
+?>
 <h1>Combat in X-Plane 10</h1>
 
 <p>
