@@ -369,6 +369,12 @@ class URLParse
                 P_METD => "How much does using key stretching to hash passwords cost? Is it reasonable?",
                 P_METK => "web application, key stretching feasibility, password hashing, cpu intensive hash function",
                 ),
+            "password-hashing-after-phc" => array(
+                P_FILE => "research/password-hashing-after-phc.php",
+                P_TITL => "Password Hashing After PHC",
+                P_METD => "Giving authenticators an advantage over password crackers with cache.",
+                P_METK => "password hashing competition, key stretching, caching",
+                ),
             "microsoft-reads-your-skype-messages" => array(
                 P_FILE => "research/microsoft-reads-your-skype-messages.php",
                 P_TITL => "Confirmation of H-Online's Skype Results: Microsoft Visits Links",
