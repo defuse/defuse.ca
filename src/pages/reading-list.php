@@ -97,6 +97,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>On Protection by Layout Randomization (Bartin Abadi, Gordon Plotkin)</li>
   <li>Security and Privacy Considerations in Digital Death (Locasto et al.)</li>
   <li>The security impact of a new cryptographic library (Bernstein et al.)</li>
   <li>Magazines and Vmem: Extending the Slab Allocator to Many CPUs and Arbitrary Resources (Jeff Bonwick, Jonathan Adams)</li>
