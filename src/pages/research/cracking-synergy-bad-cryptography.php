@@ -157,3 +157,10 @@ and injecting commands. It is not possible to iteratively improve the current
 protocol into something secure. It must be re-engineered.
 </p>
 
+<h2>What the Synergy Developers Have Done</h2>
+
+<p>
+To date, the Synergy developers have acknowledged the problem and have stated
+"We will get right on improving our crypto based on your findings." An issue has
+not yet been created in their issue tracking system.
+</p>
