@@ -97,6 +97,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>An Oblivious Password Cracking Server (Calvo et al.)</li>
   <li><b>BREACH: Reviving the Crime Attack (Gluck et al.)</b></li>
   <li><b>Church's thesis meets the N-body problem (Warren D. Smith)</b></li>
   <li>On Protection by Layout Randomization (Bartin Abadi, Gordon Plotkin)</li>
