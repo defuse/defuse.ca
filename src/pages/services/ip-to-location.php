@@ -10,6 +10,7 @@
                 $creds[C_PASS], // Password
                 array(PDO::ATTR_PERSISTENT => true)
             );
+            $result->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             unset($creds);
         } catch(Exception $e) {
             $result = FALSE;

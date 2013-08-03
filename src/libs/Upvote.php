@@ -29,6 +29,7 @@ class Upvote
                 $creds[C_PASS], // Password
                 array(PDO::ATTR_PERSISTENT => true)
             );
+            self::$DB->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             unset($creds);
         } catch(Exception $e) {
             die('Failed to connect to upvotes database');
