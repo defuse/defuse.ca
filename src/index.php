@@ -122,7 +122,6 @@ header('Content-Type: text/html; charset=utf-8');
         <ul class="leftbutton">
             <li><a href="/about.htm">&nbsp;About Defuse</a></li>
             <li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
-            <!-- <li><a href="/projects.htm">&nbsp;Project List</a></li> -->
             <li><a href="/hypothetico/">&nbsp;Hypothetico</a></li>
             <li><a href="https://twitter.com/#!/defusesec" >&nbsp;Twitter</a></li>
             <li><a href="https://github.com/defuse" >&nbsp;GitHub</a></li>
@@ -137,20 +136,13 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/services.htm">Services<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
-            <!--<li><a href="/softwaredevelopment.htm">&nbsp;Software Development</a></li>-->
-            <!--<li><a href="/webdevelopment">&nbsp;Web Development</a></li>-->
-            <!--<li><a href="/peerreview.htm">&nbsp;Peer Review &amp; Testing</a></li>-->
-
-            
             <li><a href="/pastebin.htm">&nbsp;Encrypted Pastebin</a></li>
             <li><a href="/trustedthirdparty.htm">&nbsp;TRENT - Trusted RNG</a></li>
             <li><a href="/big-number-calculator.htm">&nbsp;Big Number Calculator</a></li>
             <li><a href="/online-x86-assembler.htm">&nbsp;Online x86 Assembler</a></li>
             <li><a href="/checksums.htm">&nbsp;Checksum Calculator</a></li>
             <li><a href="/html-sanitize.htm">&nbsp;HTML Sanitizer</a></li>
-
             <li><a href="http://crackstation.net/">&nbsp;CrackStation.net</a></li>
-
         </ul>
     <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
@@ -181,14 +173,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/generating-random-passwords.htm">&nbsp;PHP Random Passwords</a></li>
             <li><a href="/php-pbkdf2.htm">&nbsp;PBKDF2 For PHP</a></li>
             <li><a href="/force-print-background.htm">&nbsp;Force Print BG Color</a></li>
-            <!--<li><a href="/csharpthreadlibrary.htm">&nbsp;PolyThread</a></li>-->
             <li><a href="/passwordbolt.htm">&nbsp;Password Bolt [BETA]</a></li>
-            <!--<li><a href="/gpucrack.htm">&nbsp;GPU MD5+Salt Cracker</a></li>-->
-            <!--<li><a href="/simppsk.htm">&nbsp;SimpPSK</a></li>-->
-            <!--<li><a href="/blowfish.htm">&nbsp;Blowfish C#/C++</a></li>-->
-            <!--<li><a href="/blowfish.htm">&nbsp;BLOWFISH C# &amp; C++</a></li>-->
-            
-            <!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
@@ -234,7 +219,6 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/projects.htm">Miscellaneous<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
-            <!--<li><a href="wordlists.htm">&nbsp;WordLists</a></li>-->
             <li><a href="/reading-list.htm">&nbsp;Reading List</a></li>
             <li><a href="/writing-tips.htm">&nbsp;Writing Tips</a></li>
             <li><a href="/x-plane-combat.htm">&nbsp;X-Plane Combat</a></li>
