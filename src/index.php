@@ -40,6 +40,21 @@ function printSourceFile($path, $numbers = false) {
     echo '<div class="vimhighlight">' . $hl->processFile($path, true) . '</div>';
 }
 
+function action_alert()
+{
+?>
+    <div id="actionalert">
+        <span class="alcatch">
+            Today is <a href="http://1984day.com/">1984 day</a>. Tell your
+            government representatives that you oppose NSA spying!
+        </span>
+        <br />
+        Canadians should write a letter to
+            <a href="http://www.parl.gc.ca/Parlinfo/Compilations/HouseofCommons/MemberByPostalCode.aspx?Menu=HOC">their MP</a>.
+    </div>
+<?
+}
+
 // Standardize the times & dates to UTC because people don't live in the same timezone as the server.
 date_default_timezone_set("UTC"); 
 
@@ -101,6 +116,10 @@ header('Content-Type: text/html; charset=utf-8');
 
 <!-- This menuing system was made by Steve Gibson at GRC.COM 
             see more at http://www.grc.com/menudemo.htm -->
+
+<?php
+    action_alert();
+?>
 
 <div class="menuminwidth0"><div class="menuminwidth1"><div class="menuminwidth2">
 <div id="masthead">

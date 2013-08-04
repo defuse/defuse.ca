@@ -69,6 +69,28 @@ textarea {
     color: #00FFFF;
 }
 
+#actionalert {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12pt;
+}
+
+.alcatch {
+    color: #FFFF00;
+    font-size: 16pt;
+}
+
+#actionalert a {
+    color: white;
+}
+
+#actionalert a:hover {
+    color: red;
+}
+
 #twitterlogo {
     vertical-align: middle;
     margin-right: 2px;
