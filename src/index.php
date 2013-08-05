@@ -42,6 +42,7 @@ function printSourceFile($path, $numbers = false) {
 
 function action_alert()
 {
+    return;
 ?>
     <div id="actionalert">
         <span class="alcatch">
