@@ -20,27 +20,24 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li><b>A Guide To Kernel Exploitation</b></li>
-    <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
-    <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 2A</li>
+    <li>The Oxford Reference Dictionary</li>
 </ul>
 
 <h2>Next</h2>
 
 <ul>
+    <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
+    <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
     <li>English Dictionary</li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
     <li>The Social Network Business Plan (David Silver)</li>
-    <li>Biology (Peter Raven)</li>
-    <li>Conceptual Physics (Hewitt)</li>
-    <li>Illustrated Guide to Aerodynamics</li>
-    <li>Aerodynamics for Naval Aviators</li>
 </ul>
 
 <h2>2013</h2>
 
 <ul>
+    <li><b>A Guide To Kernel Exploitation</b></li>
     <li><b>Philosophy of Science (Curd, Cover, Pincock)</b></li>
     <li>Cypherpunks (Assange et. al.)</li>
     <li>The Elements of Moral Philosophy (Rachels)</li>
@@ -97,6 +94,8 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>Cheating the ELF: Subversive Dynamic Linking to Libraries (the grugq)</li>
+  <li>Dissent in Numbers: Making Strong Anonymity Scale (Wolinsky et al.)</li>
   <li>XFI: Software Guards for System Address Spaces (Erlingsson et al.)</li>
   <li>Language-Independent Sandboxing of Just-In-Time Compilation and Self-Modifying Code (Jason Ansel, Petr Marchenko)</li>
   <li>An Oblivious Password Cracking Server (Calvo et al.)</li>
