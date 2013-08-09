@@ -363,6 +363,12 @@ class URLParse
                 P_TITL => "Defuse Security's Contact Information",
                 P_METD => "Defuse Security's contact informaion.",
                 ),
+            "mitigating-breach-tls-attack-in-php" => array(
+                P_FILE => "research/mitigating-breach-tls-attack-in-php.php",
+                P_TITL => "PHP Code for Mitigating the BREACH attack on SSL/TLS.",
+                P_METD => "PHP functions for defending secrets against the BREACH attack.",
+                P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
+                ),
             "website-key-stretching-feasibility" => array(
                 P_FILE => "research/website-key-stretching-feasibility.php",
                 P_TITL => "Feasibility of Using Key Stretching in Web Applications",
