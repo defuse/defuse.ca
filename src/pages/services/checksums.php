@@ -5,7 +5,30 @@
     $supported_hashes[] = "LM";
     $supported_hashes[] = "md5(md5())";
     $supported_hashes[] = "MySQL4.1+";
-    natcasesort($supported_hashes);
+    usort($supported_hashes, "hash_display_order");
+
+    function hash_display_order($a, $b)
+    {
+        /* Put common hashes first for easy access. This defines their order. */
+        static $COMMON_HASHES = array(
+            "md5", "LM", "NTLM",
+            "sha1", "sha256", "sha384", "sha512",
+            "md5(md5())", "MySQL4.1+", "ripemd160", "whirlpool"
+        ); 
+        /* If they're both common, order them according to the array. */
+        if (in_array($a, $COMMON_HASHES) && in_array($b, $COMMON_HASHES)) {
+            return array_search($a, $COMMON_HASHES) - array_search($b, $COMMON_HASHES);
+        /* If $a is common and $b isn't, put $a first. */
+        } elseif (in_array($a, $COMMON_HASHES) && !in_array($b, $COMMON_HASHES)) {
+            return -1;
+        /* If $b is common and $a isn't, put $b first. */
+        } elseif (!in_array($a, $COMMON_HASHES) && in_array($b, $COMMON_HASHES)) {
+            return 1;
+        /* Otherwise (they aren't common), order them lexicographically. */
+        } else {
+            return strnatcasecmp($a, $b);
+        }
+    }
 
     function extended_hash($hashType, $word, $binary)
     {
@@ -134,10 +157,6 @@ if(isset($data))
     foreach($supported_hashes as $hashtype)
     {
         $hash = extended_hash($hashtype, $data, false);
-        if(strlen($hash) > 64)
-        {
-            $hash = substr($hash,0,64) . "<br />" . substr($hash,64);
-        }
         echo "<tr><th>$hashtype</th><td>$hash</td></tr>";
     }
     echo "</table>";
