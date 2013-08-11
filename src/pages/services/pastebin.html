@@ -149,3 +149,11 @@ and view the paste.
 <?php
     printSourceFile("source/makepaste.sh");
 ?>
+
+<p>
+Tip: If you're trying to send the command through Twitter, but Twitter is
+turning the URL into a link, you can add a "$x" between the slashes in
+"https://", like this: "https:/$x/". Twitter won't turn it into a link, and when
+the recipient pastes it into their terminal, the $x will (usually) expand to the
+empty string.
+</p>
