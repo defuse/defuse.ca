@@ -17,6 +17,30 @@ if($_SERVER["HTTPS"] != "on") {
 
 delete_expired_posts();
 
+if (strpos($_SERVER['HTTP_HOST'], "bin.defuse.ca") !== false) {
+    $urlKey = substr($_SERVER['REQUEST_URI'], 1);
+    header("Location: https://defuse.ca/b/{$urlKey}");
+    die();
+}
+
+$keyEnd = strpos($_SERVER['REQUEST_URI'], "?");
+if ($keyEnd === false) {
+    $keyEnd = strlen($_SERVER['REQUEST_URI']);
+}
+$urlKey = substr($_SERVER['REQUEST_URI'], 3, $keyEnd - 3);
+
+$postInfo = retrieve_post($urlKey);
+
+if (isset($_GET['raw']) && $_GET['raw'] == "true") {
+    header('Content-Type: text/plain');
+    if ($postInfo['jscrypt'] == false) {
+        echo $postInfo['text'];
+    } else {
+        echo "ERROR: This paste was encrypted with client-side encryption.";
+    }
+    die();
+}
+
 //Disable caching of viewed posts:
 header("Cache-Control: no-cache, must-revalidate"); 
 header("Expires: Mon, 01 Jan 1990 00:00:00 GMT"); 
@@ -163,21 +187,6 @@ function encryptPaste()
 
 <?php
 
-require_once('pastebin.php');
-
-if (strpos($_SERVER['HTTP_HOST'], "bin.defuse.ca") !== false) {
-    $urlKey = substr($_SERVER['REQUEST_URI'], 1);
-    header("Location: https://defuse.ca/b/{$urlKey}");
-    die();
-}
-
-// The urlKey can be a url parameter (backwards compatibility) or part of the URL itself.
-if(isset($_GET['h']))
-	$urlKey = $_GET['h'];
-else
-	$urlKey = substr($_SERVER['REQUEST_URI'], 3);
-
-$postInfo = retrieve_post($urlKey);
 
 if($postInfo !== false)
 {
