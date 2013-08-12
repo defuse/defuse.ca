@@ -138,12 +138,14 @@ Here's a diagram of the encryption process:
 
 <p>
 This bash script reads standard input, encrypts it, then uploads it to the
-pastebin. It prints a command anyone can paste into their terminal to download
-and view the paste.
+pastebin. It then prints the command to download and decrypt the paste.
 </p>
 
 <p>
-<b>Warning:</b> This is experimental and should not be relied on yet.
+<b>Warning:</b> The download-and-decrypt command contains the encryption
+password.  It will be visible to other users via the process list (ps aux), and
+will be saved in your shell history. For maximum security, omit the --passphrase
+option and paste the password separately.
 </p>
 
 <div style="text-align: center;">
@@ -155,9 +157,7 @@ and view the paste.
 ?>
 
 <p>
-Tip: If you're trying to send the command through Twitter, but Twitter is
-turning the URL into a link, you can add a "$x" between the slashes in
-"https://", like this: "https:/$x/". Twitter won't turn it into a link, and when
-the recipient pastes it into their terminal, the $x will (usually) expand to the
-empty string.
+Tip: To send the command over Twitter, put an "$x" between the slashes in
+"https://", like "https:/$x/". Doing so stops Twitter from transforming it into
+a link.
 </p>
