@@ -95,13 +95,13 @@ to use as other pastebin services.
 </p>
 
 <p>
-The text you paste here will be encrypted and sent over an SSL/TLS connection so
+The text you submit here will be encrypted and sent over an SSL/TLS connection so
 that it will never be seen by anyone unless they know the URL and, if one was
 used, the client-side password. If someone gains full root access to the server,
-they will not be able to decrypt existing pastes, but <em>can</em> access new
-ones before they are encrypted. In other words, pastes are secure if and only if
-the server had not been compromised before they were created. If we get a court
-order to decrypt an existing post, we will not be able to comply.
+they will not be able to decrypt existing posts, but <em>can</em> access new
+ones before they are encrypted. In other words, posts are secure if and only if
+the server was not compromised before they were created. If we get a court order
+to decrypt an existing post, we will not be able to comply.
 </p>
 
 <p>
@@ -110,13 +110,13 @@ order to decrypt an existing post, we will not be able to comply.
 
 <p>
 We have a <a href="/robots.txt">robots.txt</a> entry to stop search engines from
-indexing the pastes. Search engines are free to ignore the robots.txt file, so
+indexing the posts. Search engines are free to ignore the robots.txt file, so
 this is not guaranteed.
 </p>
 
 <p>
 If logging were enabled on the server, then the pastebin URLs would be written
-to the log file and the system administrator could see the pastes. For this
+to the log file and the system administrator could see the posts. For this
 reason, access logging is disabled on the server. If access logging must be
 enabled for some reason, there are rules in place to ensure requests with
 pastebin URLs or Referers are not logged.
@@ -137,7 +137,7 @@ Here's how the encryption works:
 
 <p>
 This bash script reads standard input, encrypts it, then uploads it to the
-pastebin. It then prints the command to download and decrypt the paste.
+pastebin. It then prints the command to download and decrypt the post.
 </p>
 
 <p>
