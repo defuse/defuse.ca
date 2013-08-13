@@ -141,6 +141,7 @@ A web search of the title is usually enough to find the book or paper.
 <a name="zines"></a>
 <h2>E-Zines &amp; Other</h2>
 <ul>
+  <li>International Journal of PoC || GTFO: Issue 0x00, A CFP with PoC</li>
   <li>Smashing The Stack For Fun And Profit (Aleph One)</li>
   <li>The Conscience of a Hacker (Hacker's Manifesto) by The Mentor</li>
   <li>Phrack Issue #1 to #5</li>
