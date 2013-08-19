@@ -84,13 +84,29 @@ A web search of the title is usually enough to find the book or paper.
  <li>The God Delusion (Dawkins)</li>
  <li>The Magic Of Reality</li>
  <li><b>Little Brother (Cory Doctorow)</b></li>
- <li>Nineteen Eighty Four</li>
+ <li>Nineteen Eighty Four (George Orwell)</li>
  <li>Quantum Computing (Reiffel, Polak) (no i don't understand this at all)</li>
  <li>Clean Code: A Handbook of Agile Software Craftsmanship (Robert C.  Martin)</li>
  <li>Structured Computer Organization (Andrew S. Tanenbaum)</li>
  <li>Agile Web Development With Rails (Sam Ruby, Dave Thomas, David Hansson)</li>
  <li>Assembly Language for x86 Processors (Kip Irvine)</li>
  <li>The Essentials of Technical Communication (Elizabeth Tebeaux, Sam Dragga)</li>
+ <li>Daemon (Daniel Suarez)</li>
+ <li>Freedom (Daniel Suarez)</li>
+ <li>Last Words (George Carlin)</li>
+ <li>When Will Jesus Bring The Porkchops (George Carlin)</li>
+ <li>The Black Hole War (Leonard Susskind)</li>
+ <li>13 Things That Don't Make Sense (Michael Brooks)</li>
+ <li>Physics of the Impossible (Michio Kaku)</li>
+ <li>On Intelligence (Jeff Hawkins)</li>
+ <li>The Selfish Gene (Richard Dawkins)</li>
+ <li>Man of La Mancha</li>
+ <li>The War of the Worlds (H. G. Wells)</li>
+ <li>Stealing the Network: How to Own the Box</li>
+ <li>Stealing the Network: How to Own an Identity</li>
+ <li>Stealing the Network: How to Own A Continent</li>
+ <li>A Brief History of Time (Stephen Hawking)</li>
+ <!-- <li>Hacking Vim (Kim Shulz)</li> -->
 </ul>
 
 <a name="papers"></a>
