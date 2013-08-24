@@ -37,6 +37,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2013</h2>
 
 <ul>
+    <li>The Anarchist Cookbook (William Powell)</li>
     <li><b>A Guide To Kernel Exploitation</b></li>
     <li><b>Philosophy of Science (Curd, Cover, Pincock)</b></li>
     <li>Cypherpunks (Assange et. al.)</li>
