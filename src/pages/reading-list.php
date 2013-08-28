@@ -116,6 +116,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>A Fistful of Bitcoins: Characterizing Payments Among Men with No Names (Meiklejohn et al.)</li>
   <li>How to Write Shared Libraries (Ulrich Drepper)</li>
   <li>Cheating the ELF: Subversive Dynamic Linking to Libraries (the grugq)</li>
   <li>Dissent in Numbers: Making Strong Anonymity Scale (Wolinsky et al.)</li>
