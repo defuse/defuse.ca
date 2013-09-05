@@ -131,7 +131,6 @@ A web search of the title is usually enough to find the book or paper.
   <li>Security and Privacy Considerations in Digital Death (Locasto et al.)</li>
   <li>The security impact of a new cryptographic library (Bernstein et al.)</li>
   <li>Magazines and Vmem: Extending the Slab Allocator to Many CPUs and Arbitrary Resources (Jeff Bonwick, Jonathan Adams)</li>
-  <li><b><a href="http://download.intel.com/design/intarch/papers/cache6.pdf">An untitled paper from Intel on cache</a></b></li>
   <li><b>PEBIL: Efficient Static Binary Instrumentation for Linux (Laurenzano et al.)</b></li>
   <li>An API for Runtime Code Patching (Bryan Buck, Jeffery K. Hollingsworth) (The DynInst API)</li>
   <li>PLTO: A Link-Time Optimizer for the Intel IA-32 Architecture (Schwarz et al.)</li>
@@ -167,6 +166,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>E-Zines &amp; Other</h2>
 <ul>
   <li><b>Megamos Crypto, Responsible Disclosure, and the Chilling Effect of Volkswagen Aktiengesellschaft vs Garcia, et al (Robert Carolina, Kenneth G. Paterson)</b></li>
+  <li><b><a href="http://download.intel.com/design/intarch/papers/cache6.pdf">An untitled paper from Intel on cache</a></b></li>
   <li>International Journal of PoC || GTFO: Issue 0x00, A CFP with PoC</li>
   <li>Smashing The Stack For Fun And Profit (Aleph One)</li>
   <li>The Conscience of a Hacker (Hacker's Manifesto) by The Mentor</li>
