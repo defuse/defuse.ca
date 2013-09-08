@@ -1,15 +1,16 @@
 <h1>About Defuse Security</h1>
 
-
 <p>
-    Defuse Security is a one-person security research and development "organization".
-    We develop software and research security in the hope that someone will find it useful.
-    Defuse Security is a hobby project - we do not seek to earn a profit, we just want to make our home (the internet) a little more secure.
-
-    There really isn't much more to say except that we hope you will benefit from our existence in some way.
+Defuse Security is a one-person security research and development group. We
+develop security-related open-source software. All Defuse Security pages and
+software are developed and maintained by Taylor Hornby, unless otherwise noted.
 </p>
 
-<p><strong><a href="/resume.htm">Click Here for My R&eacute;sum&eacute;</a></strong></p>
+<p>
+You can find Taylor on <a href="https://twitter.com/defusesec">Twitter</a> and
+<a href="https://github.com/defuse">GitHub</a>. His resume is
+<a href="/resume.htm">here</a>.
+<p>
 
 <h2>Defuse.ca's Privacy and Usability Policy</h2>
 <ul>
@@ -18,19 +19,19 @@
 	<li>I will never put ads on this site no matter how popular it gets.</li>
 	<li>I will refrain from including external content (from other domains) as much as possible.</li>
 	<li>This site will always be functional with JavaScript disabled.</li>
-	<li>I keep no logs other than a salted SHA256 hash of your IP for the hit counter (explained below).</li>
+	<li>Assume every request made to this website is logged (including your User-Agent and IP address).</li>
 </ul>
 
-<h3>The Hit Counter</h3>
-<p>In order to count unique hits, I must be able to tell if an IP address has visited a page in the past. I do not store the IP address directly, I hash them along with the name of the page (like salt). Since the IPs are hashed using the page name as salt, I can tell if an IP has visited a specific page in the past but I cannot enumerate the IP addresses that have visited a page or correlate hits from the same IP across different pages. To do so, I would have to crack the IP hashes, which would involve creating a 4 Billion entry look-up table for each page on this site. The look-up tables would take up more than 150 gigabytes of hard drive space each (multiply that by the number of pages on this website) and would take me over a month to create.</p>
+<h2>Like the Script-Free Drop-Down Menu?</h2>
 
-<p>You can get the source code for the hit counter here: <a href="/php-hit-counter.htm">"Privacy Aware" Unique Hit Counter for PHP</a>.</p>
-
-<h2>Like the Script-Free Menu?</h2>
-
-<p>The JavaScript-free drop-down menu that you see near the top of every page on this website was created and released into the public domain by <a href="http://grc.com/">Steve Gibson</a>. If you run a website, I highly recommend checking it out since it works very well with nearly every browser, and most security conscious users browse the web with JavaScript disabled.</p>
-
+<p>
+<a href="https://www.grc.com/intro.htm">Steve Gibson</a> created the CSS-only
+menu that this website uses. He put it in the public domain, so anyone can use
+it for free. It is, in my opinion, the most reliable CSS-only drop-down menu
+ever created.
+</p>
 <center><strong><a href="http://www.grc.com/menu2/invitro.htm">Click Here to get Steve Gibson's script-free CSS menu</a></strong></center>
+
 <a name="feedback"></a>
 <h2>Feedback</h2>
 <?php
@@ -43,7 +44,9 @@ if(isset($_POST['submit']))
     $headers .= "Reply-To: $email\n";
     mail("havoc@defuse.ca", "DEFUSE.CA FEEDBACK", $message, $headers);
     ?>
-        <div style="background-color:#96ff96; padding:10px; border: solid black 1px;">Your feedback has been received. Thank you VERY much.</div>
+    <div style="background-color:#96ff96; padding:10px; border: solid black 1px;">
+        Your feedback has been received. Thank you VERY much.
+    </div>
     <?
 }
 ?>
@@ -52,8 +55,8 @@ if(isset($_POST['submit']))
 <table>
 <tr><td><b>Your Name:</b></td><td><input type="text" name="name" maxlength="50" /> (optional)</td></tr>
 <tr><td><b>Your Email:</b></td><td><input type="text" name="email" maxlength="100" /> (optional, unless you want me to reply)</td></tr>
-<tr><td><b>Your Message:</b></td><td><textarea name="messagebody" rows="15" cols="80"></textarea></td></tr>
-<tr><td></td><td>Everything you submit here is completely anonymous unless you provide a name or email.</td></tr>
+<tr><td><b>Your Message:</b></td><td><textarea name="messagebody" id="messagebody" rows="15" cols="80"></textarea></td></tr>
+<tr><td></td><td>If you want to submit this form anonymously, use <a href="https://www.torproject.org/">Tor</a>.</td></tr>
 <tr><td></td><td><input type="submit" name="submit" value="Submit Feedback" /></td></tr>
 </table>
 </form>
