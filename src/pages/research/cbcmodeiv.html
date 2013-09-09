@@ -8,41 +8,58 @@
     );
 ?>
 <h1>Encryption - CBC Mode IV: Secret or Not?</h1>
-I've seen a lot of forum threads discussing whether or not the IV (Initialization Vector) used in the CBC (Cipher Block Chaining) mode of encryption needs to be secret. These threads usually end up with heated flame wars, some people saying IV are by definition public knowledge and are to be sent along eith the ciphertext, while others say that if the IV isn't kept secret, it provides no benefit at all.
-<br /><br />
-First, get familiar with how CBC mode works:<br />
+
+<p>
+When encrypting with CBC mode, the Initialization Vector (IV) is:
+</p>
+
+<ul>
+    <li>Random</li>
+    <li>Unpredictable</li>
+    <li>Not secret</li>
+</ul>
+
+<p>
+This page explains why. First, get familiar with how CBC mode works:
+</p>
+
 <center>
 <img src="/images/cbc_encryption.png" alt="CBC mode of operation encryption" />
 <img src="/images/cbc_decryption.png" alt="CBC mode of operation decryption" />
 <br />
 (images taken from <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Block_cipher_modes_of_operation">Wikipedia</a>)
 </center>
-<br /><br />
-Now, we know that if we keep the IV private, that is secure. But are there really any problems with making it public?
-<br /><br />
+
+<p>
 There are three scenarios where an attacker could possibly abuse the IV:
+</p>
+
 <ul>
-	<li>Knowledge of the IV before encryption</li>
-	<li>Knowledge of the IV after encryption</li>
-	<li>Ability to alter the IV if sent with the ciphertext</li>
+	<li>Knowledge of the IV before encryption (predictable IVs).</li>
+	<li>Knowledge of the IV after encryption.</li>
+	<li>Ability to alter the IV before decryption.</li>
 </ul>
+
+<p>
+The next sections will discuss the security implications of an attacker with
+those capabilities.
+</p>
 
 <h2>Nonrandom and Predictable IVs</h2>
 
 <h3>Statistical Correlations between IV and Plaintext</h3>
 
 <p>
-The IV must be chosen randomly before each encryption. To see why, consider what
-would happen if a counter, starting from zero, was used as an IV. Suppose the
-first message sent is 0x0000000000000000. The IV would be 0x0000000000000000, so
-the input to the block cipher is 0x0000000000000000. Now, suppose a second
-message 0x0000000000000001 is encrypted. This time, the IV is
-0x0000000000000001, causing the input to the block cipher to be the same as
-before: 0x0000000000000000 (because 1 XOR 1 is 0). So, both messages encrypt to
-the same ciphertext, which tells the adversary that they were <em>different</em>
-(since the IV is different, but the ciphertexts are the same). This shows how
-nonrandom IVs are more likely to correlate with the plaintext and leak
-information.
+The IV must be random. To see why, consider what would happen if a counter,
+starting from zero, was used as an IV. Suppose the first message sent is
+0x0000000000000000. The IV would be 0x0000000000000000, so the input to the
+block cipher is 0x0000000000000000. Now, suppose a second message
+0x0000000000000001 is encrypted. This time, the IV is 0x0000000000000001,
+causing the input to the block cipher to be the same as before:
+0x0000000000000000 (because 1 XOR 1 is 0). So, both messages encrypt to the same
+ciphertext, which tells the adversary that they were <em>different</em> (since
+the IV is different, but the ciphertexts are the same). This shows how nonrandom
+IVs are more likely to correlate with the plaintext and leak information.
 </p>
 
 <p>
@@ -78,7 +95,7 @@ shouldn't be able to do any better than this.
 <p>
 Mallory doesn't have to guess, though, because he can use a chosen-plaintext
 attack on the CBC-mode encryption system to figure out if C corresponds to A, or
-D corresponds to A. Mallory knows that the IV alice used to encrypt A was IVA,
+D corresponds to A. Mallory knows that the IV Alice used to encrypt A was IVA,
 and he knows that the input to the block cipher was A XOR IVA. Mallory just
 needs to know whether the block cipher encryption of A XOR IVA is C or D.
 Mallory asks the encryption system for the next IV, IVN, and sends it the
@@ -86,8 +103,8 @@ plaintext A XOR IVA XOR IVN to encrypt. The system follows CBC mode, XORing
 Mallory's plaintext with IVA and passing the result to the block cipher. IVA XOR
 IVA is 0, so the system passes A XOR IVA to the block cipher, and gives Mallory
 the ciphertext. What Mallory gets back is either C or D, whichever one
-corresponds to plaintext A. In this case, Mallory gets back C, tells alice that
-C corresponds to A, and wins $1000 with 100% probabability.
+corresponds to plaintext A. In this case, Mallory gets back C, tells Alice that
+C corresponds to A, and wins $1000 with 100% probability.
 </p>
 
 <p>
@@ -95,24 +112,45 @@ Mallory would not have been able to do this if he could not predict the IV,
 since the plaintext he sends to the system depends on the next IV.
 </p>
 
-<h2>Knowledge of IV after encryption</h2>
+<h2>Knowledge of IV After Encryption</h2>
 
 <p>
-If the attacker knows the IV and the ciphertext to an encrypted plaintext, the IV is still providing it's intended security benifits. The IV is XORed with the plaintext BEFORE it is encrypted. The attacker would need to know the encryption key to obtain the plaintext that is XORed with the IV. The IV still randomizes the entire chain, the attacker can't do anything about that. If the attacker knows the IV but not the key, the sytem is still secure.
+The IV's purpose is to ensure same plaintexts encrypt to different ciphertexts.
+When an adversary learns the IV after the plaintext has been encrypted, no harm
+is done, since it has already served its purpose.
 </p>
 
-<h2>Altering the IV In Transit</h2>
-An attacker can use the IV to his advantage in the following situation:
-<ul>
-	<li>The IV is sent with the ciphertext</li>
-	<li>The attacker can modify the IV (or any ciphertext block) in transit</li>
-	<li>The attacker knows the plaintext of the first (or any) block</li>
-</ul>
-<br />
-With those abilities, the attacker can control what the ciphertext decrypts to, for the block of plaintext he knows. The attack is simple. For example he knows the first block is 0xFFFFFF.... and the IV is 0xAAAAAAA.... If he wanted the first block to be 0x000000.... he can compute the value of the data coming right out of the cipher (before the XOR) by XORing the known plaintext and the IV. Using this value, he can create a new IV, so that when it gets XORed with that data, the first block of plaintext will be what he wants. In our example, he does 0xFFFF... XOR 0xAAAAA.... and gets 0x555555.... To make the first block of plaintext decrypt to 0x0000000 he computes the "new" IV by doing 0x0000000.... XOR 0x555555.... to get 0x55555.... He replaces the IV with 0x555555... and when the client decrypts the message, the first block will be 0x00000... instead of it's original value of 0xFFFFFFF.... Doing this will not cause any other corruption of the plaintext.
-<br /><br />
-This attack can be <b>practical</b> depending on the application, and can be applied to any block for which the plaintext is known, by changing the previous block's ciphertext. This is a fundamental problem with CBC mode, it is a problem <b>even when the IV is kept secret</b>. This attack also applies to other encryption modes like CTR. The only way to get around this is to <b>always verify the authenticity of the ciphertext</b> using a keyed HMAC.
+<p>
+The IV can be made public <em>after</em> encryption, without impacting the
+security of the system. Usually, it is prefixed to the ciphertext.
+</p>
+
+<h2>Altering the IV Before Decryption</h2>
+
+<p>
+If the adversary can alter the IV, without detection, before the ciphertext is
+decrypted, then they can corrupt the first block of plaintext. If the adversary
+knows the first block of plaintext is P, and wants it to decrypt to Z, they can
+alter the IV to be P XOR Z, which will cause the first block to decrypt to
+Z (since P XOR Z XOR P = Z).
+</p>
+
+<p>
+Encryption provides secrecy, not authentication or integrety. If encryption is
+used in a setting where the adversary can modify the IV or ciphertext, it must
+be authenticated. The right way to do this is to have the encrypter apply
+a keyed Message Authentication Code (MAC), like HMAC, to the IV and ciphertext,
+and have the receiving party check that the MAC is correct before decrypting.
+</p>
+
 <h2>Conclusion</h2>
-Those are the threats. Now that you understand them, you should be able to conclude that the IV is allowed to be public, and sent with the ciphertext. But no matter if the IV is private or public, you should always authenticate the ciphertext. <b>Symmetric encryption provides confidentiality, not authentication or data integrety.</b>
+
+The above sections explain why, when implementing CBC-mode encryption:
+
+<ul>
+    <li>The IV must be random and unpredictable.</li>
+    <li>The IV can be (and usually is) made public.</li>
+    <li>The IV and ciphertext must be integrity-protected with a MAC.</li>
+</li>
 
 
