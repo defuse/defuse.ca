@@ -138,7 +138,7 @@ Z (since P XOR Z XOR P = Z).
 <p>
 Encryption provides secrecy, not authentication or integrety. If encryption is
 used in a setting where the adversary can modify the IV or ciphertext, it must
-be authenticated. The right way to do this is to have the encrypter apply
+be authenticated. The right way to do this is to have the sending party apply
 a keyed Message Authentication Code (MAC), like HMAC, to the IV and ciphertext,
 and have the receiving party check that the MAC is correct before decrypting.
 </p>
