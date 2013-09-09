@@ -130,9 +130,9 @@ security of the system. Usually, it is prefixed to the ciphertext.
 <p>
 If the adversary can alter the IV, without detection, before the ciphertext is
 decrypted, then they can corrupt the first block of plaintext. If the adversary
-knows the first block of plaintext is P, and wants it to decrypt to Z, they can
-alter the IV to be P XOR Z, which will cause the first block to decrypt to
-Z (since P XOR Z XOR P = Z).
+knows the first block of plaintext is P and the original IV is OIV, and wants it
+to decrypt to Z, they can alter the IV to be P XOR Z XOR OIV, which will cause
+the first block to decrypt to Z (since (P XOR OIV) XOR (P XOR Z XOR OIV) = Z).
 </p>
 
 <p>
