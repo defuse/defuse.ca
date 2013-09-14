@@ -78,6 +78,10 @@ textarea {
     font-size: 12pt;
 }
 
+#references span:target {
+    background-color: #ccddff;
+}
+
 .alcatch {
     color: #FFFF00;
     font-size: 16pt;

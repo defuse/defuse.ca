@@ -6,6 +6,19 @@
         "Should the IV in CBC mode be kept secret?",
         "https://defuse.ca/cbcmodeiv.htm"
     );
+    $b = new Bibliography();
+    $b->addReference(
+        "1",
+        "Problems with Proposed IP Cryptography",
+        "Phil Rogaway",
+        "April 3, 1995",
+        "http://www.vpnc.org/ietf-ipsec/92.ipsec/msg01847.html"
+    );
+    $b->addGeneralReference(
+        "2",
+        "Twitter discussion between @DefuseSec and @tqbf",
+        "https://twitter.com/tqbf/status/376873119199137792"
+    );
 ?>
 <h1>Encryption - CBC Mode IV: Secret or Not?</h1>
 
@@ -51,7 +64,7 @@ those capabilities.
 
 <p>
 The IV must be random. To see why, consider what would happen if a counter,
-starting from zero, was used as an IV. Suppose the first message sent is
+starting from zero, was used as an IV<?php $b->cite("1"); ?>. Suppose the first message sent is
 0x0000000000000000. The IV would be 0x0000000000000000, so the input to the
 block cipher is 0x0000000000000000. Now, suppose a second message
 0x0000000000000001 is encrypted. This time, the IV is 0x0000000000000001,
@@ -73,7 +86,8 @@ likely for the IV to coincide with the first plaintext block by accident.
 <h3>Chosen-Plaintext Attacks</h3>
 
 <p>
-Randomness is not enough, though. IVs have to be unpredictable, too.
+Randomness is not enough, though. IVs have to be unpredictable, too<?php
+$b->cite("2"); ?>.
 </p>
 
 <p>
@@ -153,6 +167,9 @@ The above sections explain why, when encrypting with CBC mode:
     <li>The IV must be random and unpredictable.</li>
     <li>The IV can be (and usually is) made public.</li>
     <li>The IV and ciphertext must be authenticated with a MAC.</li>
-</li>
+</ul>
+
+
+<?php $b->printBibliography(); ?>
 
 

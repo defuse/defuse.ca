@@ -16,6 +16,7 @@ require_once('libs/URLParse.php');
 require_once('libs/phpcount.php');
 require_once('libs/VimHighlight.php');
 require_once('libs/Upvote.php');
+require_once('libs/Bibliography.php');
 
 Upvote::process_post(true);
 
