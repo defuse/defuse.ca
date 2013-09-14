@@ -117,6 +117,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>Explicit Authentication Response Considered Harmful (Lianying Zhao and Mohammad Mannan)</li>
   <li>Cryptanalysis of the SIMON Family of Block Ciphers (Hoda A. Alkhzaimi, Martin M. Lauridsen)</li>
   <li>Master-Key Cryptosystems (Matt Blaze et al.)</li>
   <li>Towards Efficient Traffic-analysis Resistant Anonymity Networks (Le Blond et al.)</li>
