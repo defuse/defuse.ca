@@ -369,6 +369,12 @@ class URLParse
                 P_METD => "PHP functions for defending secrets against the BREACH attack.",
                 P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
                 ),
+            "flush-reload-side-channel" => array(
+                P_FILE => "research/flush-reload-side-channel.php",
+                P_TITL => "Implications of the FLUSH+RELOAD Side-Channel Attack",
+                P_METD => "The FLUSH+RELOAD side-channel attack breaks security in multi-user environments.",
+                P_METK => "FLUSH+RELOAD, side channel attack, multi-user security",
+                ),
             "website-key-stretching-feasibility" => array(
                 P_FILE => "research/website-key-stretching-feasibility.php",
                 P_TITL => "Feasibility of Using Key Stretching in Web Applications",
