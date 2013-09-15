@@ -117,6 +117,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>FLUSH+RELOAD: a High Resolution, Low Noise, L3 Cache Side-Channel Attack (Yuval Yarom, Katrina Falkner)</li>
   <li>Structural Realism: The Best of Both Worlds? (John Worrall)</li>
   <li>Explicit Authentication Response Considered Harmful (Lianying Zhao and Mohammad Mannan)</li>
   <li>Cryptanalysis of the SIMON Family of Block Ciphers (Hoda A. Alkhzaimi, Martin M. Lauridsen)</li>
