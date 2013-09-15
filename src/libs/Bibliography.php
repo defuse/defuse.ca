@@ -52,7 +52,7 @@ class Bibliography
         ksort($this->references);
         foreach ($this->references as $key => $html) {
             $safe_key = htmlentities($key, ENT_QUOTES);
-            echo "<a name=\"cite_$safe_key\"></a><span id=\"cite_$safe_key\">$safe_key. $html</span>";
+            echo "<a name=\"cite_$safe_key\"></a>$safe_key. <span id=\"cite_$safe_key\">$html</span>";
             echo "<br />";
         }
         echo '</div>';
