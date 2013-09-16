@@ -3,6 +3,7 @@
 .vimhighlight pre {
     padding: 10px; 
     font-family: monospace;
+    font-size: 8pt;
     color: #c0c0c0;
     background-color: #000000;
     border-radius: 15px;

@@ -82,6 +82,11 @@ textarea {
     background-color: #ccddff;
 }
 
+.ref_item {
+    padding-bottom: 10px;
+    font-size: 10pt;
+}
+
 .alcatch {
     color: #FFFF00;
     font-size: 16pt;
@@ -129,19 +134,20 @@ textarea {
 #content {
 	text-align: left;
 	margin: 0 auto; 
-	width: 80%; 
-	max-width: 1000px; 
-	min-width: 800px;
+	width: 800px; 
 	margin-top:5px;
 	background-color:white;
-	padding-left: 30px;
-	padding-right:30px;
+	padding-left: 0px;
+	padding-right:0px;
 
 	padding-top:5px;
 
     /*overflow: auto;*/
     padding-bottom: 140px; /* total #footer height + desired padding */
 
+    font-family: Helvetica, arial, freesans, clean, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 #contenthome {
@@ -167,18 +173,21 @@ textarea {
 }
 
 #content h2 {
-	font-size: 16pt;
+	font-size: 18pt;
     border-bottom: solid 1px #AAAAAA;
     font-family: "Times New Roman", "Times", serif;
     font-weight: normal;
 }
 
 #content h3 {
-	font-size: 13pt;
+	font-size: 16pt;
+    font-family: "Times New Roman", "Times", serif;
+    font-weight: normal;
 }
 
 #content h4 {
-	font-size: 10pt;
+	font-size: 12pt;
+	font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
 }
 
 .majorlink {
@@ -317,6 +326,7 @@ ul {
 .code {
     padding: 10px; 
     font-family: monospace;
+    font-size: 8pt;
     color: #c0c0c0;
     background-color: #000000;
     border-radius: 15px;
@@ -542,6 +552,7 @@ ul {
 
 .upvotecount {
     color: #606060;
+    font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
 }
 
 .upvotecount_upvoted {
