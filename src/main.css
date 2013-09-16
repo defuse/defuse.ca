@@ -11,32 +11,32 @@ html {
 }
 
 body {
-	width:100%; 
-	height:100%;
-	color:black;
-	font-size:10pt;
-	font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
+    width:100%; 
+    height:100%;
+    color:black;
+    font-size:10pt;
+    font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
     background-color: white;
 }
 
 /*Opera Fix (css sticky footer) */
 body:before {
-	content:"";
-	height:100%;
-	float:left;
-	width:0;
-	margin-top:-32767px;/
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;/
 }
 
 body, img, button, iframe, ul, li, hr  { 
-	margin:0; padding:0; border:0; 
+    margin:0; padding:0; border:0; 
 }
 
 table { 
-	margin:0;
-	padding:0;
-	text-align:left;
-	font-size:10pt; 
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size:10pt; 
 }
 
 textarea {
@@ -107,40 +107,40 @@ textarea {
 }
 
 #homediv {
-	text-align: center; 
-	color: white;
+    text-align: center; 
+    color: white;
 }
 
 #homediv h2 {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 #homediv li {
-	font-size: 20px;
-	margin-top: 10px;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 .homelink {
-	color: white;
-	text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
 .homeul {
-	text-align: left;
-	width: 420px;
-	margin: 0 auto;
+    text-align: left;
+    width: 420px;
+    margin: 0 auto;
 }
 
 #content {
-	text-align: left;
-	margin: 0 auto; 
-	width: 800px; 
-	margin-top:5px;
-	background-color:white;
-	padding-left: 0px;
-	padding-right:0px;
+    text-align: left;
+    margin: 0 auto; 
+    width: 800px; 
+    margin-top:5px;
+    background-color:white;
+    padding-left: 0px;
+    padding-right:0px;
 
-	padding-top:5px;
+    padding-top:5px;
 
     /*overflow: auto;*/
     padding-bottom: 140px; /* total #footer height + desired padding */
@@ -151,7 +151,7 @@ textarea {
 }
 
 #contenthome {
-	margin-top:20px;
+    margin-top:20px;
 }
 
 #contenthome li {
@@ -160,63 +160,63 @@ textarea {
 
 
 #content h1 {
-	width:100%;
-	padding-bottom:15px;
-	text-align: center;
-	padding-top: 10px;
-	margin-top:0;
+    width:100%;
+    padding-bottom:15px;
+    text-align: center;
+    padding-top: 10px;
+    margin-top:0;
     margin-bottom: 20px;
-	border-bottom: solid #000000 3px; /*#333333*/
+    border-bottom: solid #000000 3px; /*#333333*/
     font-size: 25px;
     font-family: "Times New Roman", "Times", serif;
     font-weight: normal;
 }
 
 #content h2 {
-	font-size: 18pt;
+    font-size: 18pt;
     border-bottom: solid 1px #AAAAAA;
     font-family: "Times New Roman", "Times", serif;
     font-weight: normal;
 }
 
 #content h3 {
-	font-size: 16pt;
+    font-size: 16pt;
     font-family: "Times New Roman", "Times", serif;
     font-weight: normal;
 }
 
 #content h4 {
-	font-size: 12pt;
-	font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
+    font-size: 12pt;
+    font-family: verdana, tahoma, arial, helvetica, sans-serif, "MS Sans Serif";
 }
 
 .majorlink {
-	color:white;
-	text-decoration: none;
-	font-size: 16px;
+    color:white;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 a:hover {
-	color:#FF0000;
+    color:#FF0000;
 }
 
 #undergrad {
-	background-image: url('/images/undergrad.png');
-	height: 10px;
-	margin-top: 1px;
-	width: 100%;
+    background-image: url('/images/undergrad.png');
+    height: 10px;
+    margin-top: 1px;
+    width: 100%;
 }
 
 #latest a:link {
-	color: red;
+    color: red;
 }
 
 #latest a:hover {
-	color: white;
+    color: white;
 }
 
 #latest a:visited {
-	color: red;
+    color: red;
 }
 
 ul {
@@ -241,12 +241,12 @@ ul {
 
 /* These DO NOT affect the PASTEBIN page! */
 .div1 {
-	background-color: #d4d4d4 ;
-	word-wrap: break-word;
+    background-color: #d4d4d4 ;
+    word-wrap: break-word;
 }
 
 .div0 {
-	word-wrap: break-word;
+    word-wrap: break-word;
 }
 
 #footerborder {
@@ -291,23 +291,23 @@ ul {
 }
 
 .codeskillbox {
-	background-color: white;
-	color: black;
-	font-size: 40px;
-	text-align: center;
-	border: solid black 1px;
-	margin: 0 auto;
-	margin-bottom: 30px;
-	width: 750px;
+    background-color: white;
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    border: solid black 1px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 750px;
 }
 
 .codeskillheader {
-	background-color: #000;
-	color: white;
-	text-align: center;
-	padding: 5px;
-	font-size: 20px;
-	border-bottom: solid black 1px;
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    border-bottom: solid black 1px;
 }
 
 .honestywarebox {
@@ -350,8 +350,8 @@ ul {
 }
 
 .nopaddingatall {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .pphostbl {
