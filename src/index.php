@@ -217,37 +217,48 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/projects.htm">Research<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
-            <li><a href="#"><span class="drop"><span>Security</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+            <li><a href="#"><span class="drop"><span>Vulns &amp; Exploits</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
                     <li><a href="/flush-reload-side-channel.htm">&nbsp;FLUSH+RELOAD</a></li>
-                    <li><a href="/mitigating-breach-tls-attack-in-php.htm">&nbsp;PHP BREACH Defense</a></li>
-                    <li><a href="/microsoft-reads-your-skype-messages.htm">&nbsp;Skype Spying</a></li>        
                     <li><a href="/exploiting-cpp-vtables.htm">&nbsp;C++ VTABLES</a></li>        
-                    <li><a href="/truecrypt-plausible-deniability-useless-by-game-theory.htm">&nbsp;TrueCrypt &amp; Game Theory</a></li>        
+                    <li><a href="/cracking-synergy-bad-cryptography.htm">&nbsp;Cracking Synergy</a></li>
+                    <li><a href="/mitigating-breach-tls-attack-in-php.htm">&nbsp;PHP BREACH Defense</a></li>
                     <li><a href="/race-conditions-in-web-applications.htm">&nbsp;Race Conditions</a></li>        
-                    <li><a href="/passwordrestrictions.htm">&nbsp;Password Restrictions</a></li>        
-                    <li><a href="/password-policy-hall-of-shame.htm">&nbsp;Password Hall of Shame</a></li>        
-                    <li><a href="/web-application-security.htm">&nbsp;Website Security</a></li>        
                     <li><a href="/filesystem-events-ntfs-permissions.htm">&nbsp;File-System Events</a></li>
                     <li><a href="/onedetection.htm">&nbsp;PUP Confusion</a></li>
-                    <li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
             </li>
             <li><a href="#"><span class="drop"><span>Crypto</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
-                    <li><a href="/password-hashing-after-phc.htm">&nbsp;Hash Caching<a></li>
-                    <li><a href="/web-browser-javascript-cryptography.htm">&nbsp;Browser Cryptography</a></li>        
-                    <li><a href="/cracking-synergy-bad-cryptography.htm">&nbsp;Synergy</a></li>
-                    <li><a href="/eotp.htm">&nbsp;EOTP</a></li>
                     <li><a href="/cbcmodeiv.htm">&nbsp;CBC Mode IV Security</a></li>
+                    <li><a href="/eotp.htm">&nbsp;EOTP</a></li>
+                    <li><a href="/truecrypt-plausible-deniability-useless-by-game-theory.htm">&nbsp;TrueCrypt &amp; Game Theory</a></li>        
+                    <li><a href="/web-browser-javascript-cryptography.htm">&nbsp;Browser Cryptography</a></li>        
+                </ul>
+
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            </li>        
+            <li><a href="#"><span class="drop"><span>Passwords</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+                <ul>
+                    <li><a href="/password-hashing-after-phc.htm">&nbsp;Hash Caching<a></li>
+                    <li><a href="/passwordrestrictions.htm">&nbsp;Password Restrictions</a></li>        
+                    <li><a href="/password-policy-hall-of-shame.htm">&nbsp;Password Hall of Shame</a></li>        
                     <li><a href="http://crackstation.net/hashing-security.html">&nbsp;Salted Password Hashing</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
             </li>        
-            <li><a href="/notes/">&nbsp;Notes</a></li>
+            <li><a href="#"><span class="drop"><span>Other</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+                <ul>
+                    <li><a href="/web-application-security.htm">&nbsp;Website Security</a></li>        
+                    <li><a href="/bitcoin-pool-ddos.htm">&nbsp;BitCoin Centralization</a></li>
+                    <li><a href="/microsoft-reads-your-skype-messages.htm">&nbsp;Skype Spying</a></li>        
+                </ul>
+
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            </li>        
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
