@@ -114,9 +114,9 @@ on another user in many different ways. Here are some that I can think of:
         ?>.
     </li>
     <li>
-        Code that runs when the mouse is moved or clicked: Learn which
-        direction the user is moving the mouse and where they click on the
-        screen.
+        Code that runs when the mouse is moved, clicked, or hovered: Learn which
+        direction the user is moving the mouse, where they hover, and where they
+        click.
     </li>
     <li>
         Spell checkers.
