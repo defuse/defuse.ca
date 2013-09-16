@@ -39,10 +39,10 @@
 <h1>FLUSH+RELOAD: Multi-User Systems are Doomed</h1>
 
 <p>
-I just finished reading a paper<?php $b->cite("1"); ?> in which Yarom and
-Falkner describe an L3 cache side-channel attack. The attack allows a 'spy'
-process to monitor a 'victim' process's activity, even if the victim process is
-owned by a different user and is running on a different CPU core.
+I read a paper<?php $b->cite("1"); ?> in which Yarom and Falkner describe an L3
+cache side-channel attack. The attack allows a 'spy' process to monitor
+a 'victim' process's activity, even if the victim process is owned by
+a different user and is running on a different CPU core.
 </p>
 
 <p>
@@ -56,12 +56,24 @@ time, the spy can tell whether or not the victim executed the code during the
 wait interval.
 </p>
 
+<br />
+<center>
+<img src="/images/flush-reload-timing.png">
+</center>
+<br />
+
 <p>
 The paper demonstrates that this can be done with a resolution of 1.5 MHz. The
 authors show that it is enough to extract an RSA private key from a GnuPG
 process, with an error rate of only 1.6%, by observing <em>just one</em> signing
 operation.
 </p>
+
+<br />
+<center>
+<img src="/images/flush-reload-square-reduce-multiply.png">
+</center>
+<br />
 
 <h2>Speculation</h2>
 
