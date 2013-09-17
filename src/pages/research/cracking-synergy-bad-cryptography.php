@@ -7,6 +7,9 @@
         "https://defuse.ca/cracking-synergy-bad-cryptography.htm"
     );
 ?>
+<div class="pagedate">
+July 20, 2013
+</div>
 <h1>Cracking Synergy's Bad Cryptography</h1>
 
 <p>
