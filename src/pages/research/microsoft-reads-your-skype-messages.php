@@ -7,6 +7,9 @@
         "https://defuse.ca/microsoft-reads-your-skype-messages.htm"
     );
 ?>
+<div class="pagedate">
+May 16, 2013
+</div>
 <h1>Confirmed: Microsoft Visits Links You Send In Skype</h1>
 
 <p>

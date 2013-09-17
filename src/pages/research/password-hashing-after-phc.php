@@ -7,6 +7,9 @@
         "https://defuse.ca/password-hashing-after-phc.htm"
     );
 ?>
+<div class="pagedate">
+July 26, 2013
+</div>
 <h1>Password Hashing After the PHC</h1>
 
 <p>

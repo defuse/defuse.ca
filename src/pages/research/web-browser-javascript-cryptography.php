@@ -7,6 +7,9 @@
         "https://defuse.ca/web-browser-javascript-cryptography.htm"
     );
 ?>
+<div class="pagedate">
+January 23, 2013
+</div>
 <h1>Web Browser Cryptography is a Good Thing</h1>
 
 <p>

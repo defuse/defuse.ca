@@ -7,6 +7,9 @@
         "https://defuse.ca/mitigating-breach-tls-attack-in-php.htm"
     );
 ?>
+<div class="pagedate">
+August 9, 2013
+</div>
 <h1>Mitigating the BREACH Attack in PHP</h1>
 
 <p>

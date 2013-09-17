@@ -7,6 +7,9 @@
         "https://defuse.ca/truecrypt-plausible-deniability-useless-by-game-theory.htm"
     );
 ?>
+<div class="pagedate">
+March 2, 2013
+</div>
 <h1>TrueCrypt's Plausible Deniability is Theoretically Useless</h1>
 
 <p>

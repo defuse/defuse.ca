@@ -7,6 +7,9 @@
         "https://defuse.ca/race-conditions-in-web-applications.htm"
     );
 ?>
+<div class="pagedate">
+December 21, 2011
+</div>
 <h1>Practical Race Condition Vulnerabilities in Web Applications</h1>
 
 <h2>What are Race Conditions?</h2>
