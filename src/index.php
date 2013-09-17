@@ -121,6 +121,7 @@ header('Content-Type: text/html; charset=utf-8');
 <link rel="stylesheet" media="all" type="text/css" href="/main.css" />
 <link rel="stylesheet" media="all" type="text/css" href="/mainmenu.css" />
 <link rel="stylesheet" media="all" type="text/css" href="/vimhl.css" />
+<link rel="stylesheet" media="print" type="text/css" href="/print.css" />
 <!--[if !IE 7]>
 	<style type="text/css">
 		#wrap {display:table;height:100%}
