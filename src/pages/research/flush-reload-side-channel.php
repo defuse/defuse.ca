@@ -36,6 +36,9 @@
         "http://www3.alcatel-lucent.com/bstj/vol28-1949/articles/bstj28-4-656.pdf"
     );
 ?>
+<div class="pagedate">
+September 15, 2013
+</div>
 <h1>FLUSH+RELOAD: Multi-User Systems are Doomed</h1>
 
 <p>
