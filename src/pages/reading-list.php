@@ -117,6 +117,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li><b>mov is Turing Complete (Stephen Dolan)</b></li>
   <li><b>You Can Type, but You Can't Hide: A Stealthy GPU-based Keylogger (Evangelos Ladakis et al.)</b></li>
   <li><b>FLUSH+RELOAD: a High Resolution, Low Noise, L3 Cache Side-Channel Attack (Yuval Yarom, Katrina Falkner)</b></li>
   <li>Structural Realism: The Best of Both Worlds? (John Worrall)</li>
