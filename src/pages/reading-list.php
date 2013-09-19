@@ -20,7 +20,8 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li>The Oxford Reference Dictionary</li>
+    <li><b>Gray's Anatomy (15th edition)</b></li>
+    <li>Fallen Dragon (Peter F. Hamilton)</li>
 </ul>
 
 <h2>Next</h2>
