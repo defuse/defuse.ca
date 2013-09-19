@@ -118,6 +118,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>Truncating TLS Connections to Violate Beliefs in Web Applications (Ben Smyth and Alfredo Pironti)</li>
   <li><b>Multicollisions in iterated hash functions. Application to cascaded constructions. (Atoine Joux)</b></li>
   <li><b>Mobile Malware: Why the Traditional AV Paradigm is Doomed, and How to Use Physics to Detect Undesirable Routines (Markus Jakobsson, Guy Stewart)</b></li>
   <li><b>mov is Turing Complete (Stephen Dolan)</b></li>
