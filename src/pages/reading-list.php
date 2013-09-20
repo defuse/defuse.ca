@@ -28,11 +28,14 @@ A web search of the title is usually enough to find the book or paper.
 
 <ul>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
-    <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
-    <li>English Dictionary</li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
     <li>The Social Network Business Plan (David Silver)</li>
+    <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
+    <li>English Dictionary</li>
+    <li>The Qur'an</li>
+    <li>The Bible</li>
+    <li>How to Win Friends & Influence People</li>
 </ul>
 
 <h2>2013</h2>
