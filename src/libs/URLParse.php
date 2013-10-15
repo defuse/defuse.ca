@@ -155,6 +155,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "contributors" => array(
+                P_FILE => "misc/contributors.php",
+                P_TITL => "Contributors",
+                P_METD => "A list of people and organizations that have contributed to Defuse Security",
+                P_METK => "contribution, donation, thanks"
+            ),
             "rules-for-working-with-me" => array(
                 P_FILE => "misc/rules-for-working-with-me.php",
                 P_TITL => "Rules For Working With Me",
