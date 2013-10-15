@@ -276,6 +276,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/asuskeyboarddefect.htm">&nbsp;ASUS G51 Keyboard</a></li>
             <li><a href="/honestyware.htm">&nbsp;Honestyware</a></li>
             <li><a href="/online-free-computer-science-education.htm">&nbsp;CS Education</a></li>
+            <li><a href="/rules-for-working-with-me.htm">&nbsp;Working With Me</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
