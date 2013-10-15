@@ -20,13 +20,15 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li><b>Gray's Anatomy (15th edition)</b></li>
-    <li>Fallen Dragon (Peter F. Hamilton)</li>
+    <li>Auto Fundamentals (Stockel, Stockel, and Johanson)</li>
+    <li><b>The Feynman Lectures on Physics, Volume I</b></li>
 </ul>
 
 <h2>Next</h2>
 
 <ul>
+    <li><b>Gray's Anatomy (15th edition)</b></li>
+    <li>Fallen Dragon (Peter F. Hamilton)</li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
