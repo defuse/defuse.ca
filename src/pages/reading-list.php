@@ -37,7 +37,10 @@ A web search of the title is usually enough to find the book or paper.
     <li>English Dictionary</li>
     <li>The Qur'an</li>
     <li>The Bible</li>
-    <li>How to Win Friends & Influence People</li>
+    <li>How to Win Friends &amp; Influence People</li>
+    <li>The ARRL Handbook For Radio Communications</li>
+    <li>The Feynman Lectures on Physics, Volume II</li>
+    <li>The Feynman Lectures on Physics, Volume III</li>
 </ul>
 
 <h2>2013</h2>
