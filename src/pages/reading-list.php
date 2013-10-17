@@ -195,4 +195,5 @@ A web search of the title is usually enough to find the book or paper.
   <li>The Conscience of a Hacker (Hacker's Manifesto) by The Mentor</li>
   <li>Phrack Issue #1 to #5</li>
   <li>Gitmo Is Killing Me (New York Times)</li>
+  <li>Notation Guide For Precalculus and Calculus Students (Sean Raleigh)</li>
 </ul>
