@@ -126,6 +126,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li><b>Stealthy Dopant-Level Hardware Trojans (Becker et al.)</b></li>
   <li>Universal security from bits and mips to pools, lakes - and beyond (Arjen K. Lenstra et al.)</li>
   <li>Truncating TLS Connections to Violate Beliefs in Web Applications (Ben Smyth and Alfredo Pironti)</li>
   <li><b>Multicollisions in iterated hash functions. Application to cascaded constructions. (Atoine Joux)</b></li>
