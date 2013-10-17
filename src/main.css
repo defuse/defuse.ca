@@ -526,7 +526,7 @@ ul {
 
     /* Fixed position so it is visible as the user scrolls down the page */
     position: fixed;
-    top: 150px;
+    top: 190px;
     left: 20px;
     /* Make the drop-down menu cover the arrows */
     /* NOTE: This depends on the corresponding entry in mainmenu.css
