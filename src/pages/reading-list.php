@@ -197,4 +197,5 @@ A web search of the title is usually enough to find the book or paper.
   <li>Phrack Issue #1 to #5</li>
   <li>Gitmo Is Killing Me (New York Times)</li>
   <li>Notation Guide For Precalculus and Calculus Students (Sean Raleigh)</li>
+  <li>RFC 1036 - Standard for Interchange of USENET Messages</li>
 </ul>
