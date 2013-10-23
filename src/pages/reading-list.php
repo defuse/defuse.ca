@@ -126,6 +126,8 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>Chaff: Engineering an Efficient SAT Solver (Matthew W. Moskewicz et al.)</li>
+  <li>On the possibility of a major impact on Uranus in the past century (N. D.  Tyson et al.)</li>
   <li><b>Stealthy Dopant-Level Hardware Trojans (Becker et al.)</b></li>
   <li>Universal security from bits and mips to pools, lakes - and beyond (Arjen K. Lenstra et al.)</li>
   <li>Truncating TLS Connections to Violate Beliefs in Web Applications (Ben Smyth and Alfredo Pironti)</li>
