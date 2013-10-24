@@ -20,7 +20,10 @@ list. I cannot explain why knowing about rocks on Mars is more important than
 memorizing the arrangement of stones in the street in front of my house. I will
 never directly experience the former, whereas I experience the latter almost
 every day. I can only say that permutations of rocks are uninteresting to me
-unless they are something like 225,000,000 km away.
+unless they are something like 225,000,000 km away. For most people, the
+permutations of fabric that cover some individuals at events like The Academy
+Awards is somewhat interesting. To me, it is much less interesting than the
+arrangement of stones outside my house.
 </p>
 
 <p>
