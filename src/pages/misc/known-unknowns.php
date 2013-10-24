@@ -69,6 +69,7 @@ arrangement of stones outside my house.
         Arts
         <ul>
             <li>Photography</li>
+            <li>Typesetting</li>
         </ul>
     </li>
     <li>
@@ -96,6 +97,18 @@ arrangement of stones outside my house.
             <li>1970's</li>
             <li>1980's</li>
             <li>1990's</li>
+        </ul>
+    </li>
+    <li>Farming</li>
+    <li>Law</li>
+    <li>Fashion</li>
+    <li>Government</li>
+    <li>
+        Languages
+        <ul>
+            <li>Spanish</li>
+            <li>German</li>
+            <li>Russian</li>
         </ul>
     </li>
 </ul>
