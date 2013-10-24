@@ -269,6 +269,7 @@ header('Content-Type: text/html; charset=utf-8');
     <li class="headerlink" ><a href="/projects.htm">Miscellaneous<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <li><a href="/reading-list.htm">&nbsp;Reading List</a></li>
+            <li><a href="/known-unknowns.htm">&nbsp;Known Unknowns</a></li>
             <li><a href="/writing-tips.htm">&nbsp;Writing Tips</a></li>
             <li><a href="/x-plane-combat.htm">&nbsp;X-Plane Combat</a></li>
             <li><a href="/the-universe-is-made-of-cheese.htm">&nbsp;Cheese Universe</a></li>
