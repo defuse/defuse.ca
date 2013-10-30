@@ -126,7 +126,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
-  <li>On the Possibility of Gas-Rich Dwarf Galaxies in the Lyman-Alpha Forest</li>
+  <li>On the Possibility of Gas-Rich Dwarf Galaxies in the Lyman-Alpha Forest (Neil deGrasse Tyson)</li>
   <li><b>Taking the example of computer systems engineering for the analysis of biological cell systems (Tessa Pronk et al.)</b></li>
   <li>Chaff: Engineering an Efficient SAT Solver (Matthew W. Moskewicz et al.)</li>
   <li>On the possibility of a major impact on Uranus in the past century (N. D.  Tyson et al.)</li>
