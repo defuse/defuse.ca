@@ -637,12 +637,6 @@ class URLParse
                 P_METD => "Calculate enormous mathematical equations from within your browser.",
                 P_METK => "big number calculator, online calculator, bigint, galactic calculator",
                 ),
-            "pdfcleaner" => array(
-                P_FILE => "services/pdfcleaner.php",
-                P_TITL => "PDF Exploit Sanitizer and Cleaner - Remove exploits from PDF files - Defuse Security",
-                P_METD => "PDF Exploit Remover. Remove ANY exploit from a PDF files. Even unknown exploits.",
-                P_METK => "pdf exploit, exploit remover, unknown exploit, sanitizer",
-                ),
             "tics" => array(
                 P_FILE => "research/tics.html",
                 P_TITL => "TICS - Time Intensive Computer Solvable CAPTCHA Alternative - Defuse Security",
