@@ -614,11 +614,6 @@ class URLParse
                 P_METD => "Source code for a job-based multi-threading library for the .NET framework. Written in C#.",
                 P_METK => "multi-threading, threads, c#, library, job based, parallel",
                 ),
-            "simppsk" => array(
-                P_FILE => "projects/simppsk.html",
-                P_TITL => "SimpPSK - A simple pre-shared key authentication and session key exchange implementation - Defuse Security",
-                P_METK => "pre-shared key, key exchange, library, c++, c plus plus",
-                ),
             "checksums" => array(
                 P_FILE => "services/checksums.php",
                 P_TITL => "Online Text and File Hash Calculator - MD5, SHA1, SHA256, SHA512, WHIRLPOOL Hash Calculator - Defuse Security",
