@@ -29,51 +29,13 @@
 
 require_once('PasswordHash.php');
 
-echo "Sample hash:\n";
-$hash = create_hash("test_password");
-echo $hash . "\n";
-
-echo "\nTest results:\n";
-
-// Test vector raw output.
-$a = bin2hex(pbkdf2("sha1", "password", "salt", 2, 20, true));
-$b = "ea6c014dc72d6f8ccd1ed92ace1d41f0d8de8957";
-if ($a === $b) {
-    echo "pass\n";
-} else { 
-    echo "FAIL\n";
-}
-
-// Test vector hex output.
-$a = pbkdf2("sha1", "password", "salt", 2, 20, false);
-$b = "ea6c014dc72d6f8ccd1ed92ace1d41f0d8de8957";
-if ($a === $b) {
-    echo "pass\n";
-} else { 
-    echo "FAIL\n";
-}
-
-$hash_of_password = create_hash("password");
-
-// Test correct password.
-if (validate_password("password", $hash_of_password)) {
-    echo "pass\n";
-} else {
-    echo "FAIL\n";
-}
-
-// Test wrong password.
-if (validate_password("wrong_password", $hash_of_password) === FALSE) {
-    echo "pass\n";
-} else {
-    echo "FAIL\n";
-}
-
-// Test bad hash.
-if (validate_password("password", "") === FALSE) {
-    echo "pass\n";
-} else {
-    echo "FAIL\n";
+for ($i = 0; $i <= 24; $i++) {
+    $iters = (int)pow(2, $i);
+    $start = microtime(true);
+    pbkdf2("sha256", "password".$i, "salt".$i, $iters, 16, true);
+    $end = microtime(true);
+    $seconds = $end - $start;
+    printf("%10d iterations: %f seconds\n", $iters, $seconds);
 }
 
 ?>

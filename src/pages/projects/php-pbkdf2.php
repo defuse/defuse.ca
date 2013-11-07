@@ -17,8 +17,9 @@ href="http://crackstation.net/hashing-security.htm">CrackStation's Hashing Secur
 instructions on implementing salted password hashing.</p>
 
 <p>
-The following code is a PBKDF2 implementation in PHP. It is in the public domain, so feel free to use
-it for any purpose whatsoever. It complies with the <a href="https://www.ietf.org/rfc/rfc6070.txt">PBKDF2 test vectors in RFC 6070</a>. Performance improvements to the original code were provided by <a href="http://www.variations-of-shadow.com/">variations-of-shadow.com</a>.
+The following code is a PBKDF2 implementation in PHP. It complies with the
+<a href="https://www.ietf.org/rfc/rfc6070.txt">PBKDF2 test vectors in RFC 6070</a>.
+Performance improvements to the original code were provided by <a href="http://www.variations-of-shadow.com/">variations-of-shadow.com</a>.
 </p>
 
 
@@ -61,25 +62,22 @@ were run on an AMD Phenom 9600 2.3GHz CPU.
 <h2>Source Code</h2>
 
 <div style="text-align: center; padding-bottom: 10px;">
-    <a href="/source/pbkdf2.php"><strong>Click Here to Download</strong></a>
+    <a href="/source/PasswordHash.php"><strong>Click Here to Download</strong></a>
 </div>
 
 <?php
-    printSourceFile("source/pbkdf2.php", true);
+    printSourceFile("source/PasswordHash.php", true);
 ?>
 
 <h3>Benchmark Code</h3>
 
-<div class="code">
-for($i = 0; $i &lt; 25; $i++) {<br />
- &nbsp; &nbsp;$count = pow(2, $i);<br />
- &nbsp; &nbsp;$start = microtime(true);<br />
- &nbsp; &nbsp;$hash = pbkdf2(&quot;sha256&quot;, &quot;password&quot;, &quot;salt&quot;, $count, 32);<br />
- &nbsp; &nbsp;$time = microtime(true) - $start;<br />
- &nbsp; &nbsp;printf(&quot;%10d iterations: %f seconds\n&quot;, $count, $time);<br />
-}<br />
-
+<div style="text-align: center; padding-bottom: 10px;">
+    <a href="/source/pbkdf2-benchmark.php"><strong>Click Here to Download</strong></a>
 </div>
+
+<?php
+    printSourceFile("source/pbkdf2-benchmark.php", true);
+?>
 
 <br />
 <h3>Test Code</h3>
