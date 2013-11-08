@@ -627,11 +627,6 @@ class URLParse
                 P_METD => "Calculate enormous mathematical equations from within your browser.",
                 P_METK => "big number calculator, online calculator, bigint, galactic calculator",
             ),
-            "flashsupercomputer" => array(
-                P_FILE => "research/flashsupercomputer.html",
-                P_TITL => "Building a Distributed Supercomputer with Flash - Defuse Security",
-                P_METD => "Easy, super-scalable supercomputing.",
-            ),
             "stopspying" => array(
                 P_FILE => "research/stopspying.php",
                 P_TITL => "Stop Spying! Bills C-50, C-51, C-52. Warrantless Wiretaps in Canada.",
