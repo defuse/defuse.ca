@@ -1,5 +1,5 @@
 /* Command Line Password Generator for Windows and UNIX-like systems.
- * Copyright (C) 2011  FireXware <firexware@gmail.com>
+ * Copyright (C) 2011  Taylor Hornby
  * https://defuse.ca/ 
  *
  * This program is free software: you can redistribute it and/or modify

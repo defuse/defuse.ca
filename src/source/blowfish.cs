@@ -1,7 +1,7 @@
 ﻿//Blowfish encryption (ECB, CBC and CTR mode) as defined by Bruce Schneier here: http://www.schneier.com/paper-blowfish-fse.html
 //Complies with test vectors found here: http://www.schneier.com/code/vectors.txt
 //non-standard mode provided to be usable with the javascript crypto library found here: http://etherhack.co.uk/symmetric/blowfish/blowfish.html
-//By FireXware, 1/7/1010, Contact: firexware@hotmail.com
+//By Taylor Hornby, 1/7/1010, 
 //Code is partly adopted from the javascript crypto library by Daniel Rench
 
 /*USAGE:

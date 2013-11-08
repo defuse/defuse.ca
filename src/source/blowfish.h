@@ -1,6 +1,6 @@
 //blowfish.h
 //This code is in the public domain.
-//Created by FireXware (contact: firexware@hotmail.com)
+//Created by Taylor Hornby 
 //May 8, 2010.
 //Ported from my C# blowfish code which was ported from the JavaScript crypto library found here:
 //  http://etherhack.co.uk/symmetric/blowfish/blowfish.html
