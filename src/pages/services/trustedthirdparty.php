@@ -1,12 +1,23 @@
 <?php
 /*
- * This file is Copyright (C) 2011 Defuse.ca
- * This code is provided for peer review purposes only.
- * It may not be distributed, copied, or altered in any way.
- *
- * Sorry, I just don't want backdoored RNG services that look like TRENT to be created.
- * Thanks for your understanding.
-*/
+ * Defuse.ca
+ * Copyright (C) 2013  Taylor Hornby
+ * 
+ * This file is part of Defuse.
+ * 
+ * Defuse is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ * 
+ * Defuse is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 // Set the default date to UTC so TRENT is usable from different time zones.
 date_default_timezone_set("UTC"); 
