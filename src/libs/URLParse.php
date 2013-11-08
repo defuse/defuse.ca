@@ -627,10 +627,6 @@ class URLParse
                 P_METD => "Calculate enormous mathematical equations from within your browser.",
                 P_METK => "big number calculator, online calculator, bigint, galactic calculator",
             ),
-            "tics" => array(
-                P_FILE => "research/tics.html",
-                P_TITL => "TICS - Time Intensive Computer Solvable CAPTCHA Alternative - Defuse Security",
-            ),
             "browserui" => array(
                 P_FILE => "research/browserui.html",
                 P_TITL => "Redesigning the Web Browser GUI - Defuse Security",
