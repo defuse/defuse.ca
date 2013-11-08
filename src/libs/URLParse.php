@@ -298,12 +298,6 @@ class URLParse
                 P_METD => "Custom secure software development to suit your needs.",
                 P_METK => "software development, custom software, programming, security",
             ),
-            "ip-to-location" => array(
-                P_FILE => "services/ip-to-location.php",
-                P_TITL => "IP Address To Location (Country, City) - Defuse Security",
-                P_METD => "Find out where an IP address is located (FREE, UNLIMITED)",
-                P_METK => "ip2location, ip address, locate ip, ip to location, where is ip",
-            ),
             "online-x86-assembler" => array(
                 P_FILE => "services/online-x86-assembler.php",
                 P_TITL => "Online x86 and x64 Intel Instruction Assembler",
