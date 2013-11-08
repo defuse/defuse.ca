@@ -419,11 +419,6 @@ class URLParse
                 P_METD => "Why our password reset methods suck and how we can make them better.",
                 P_METK => "password reset security, key escrow, password recovery",
             ),
-            "theoretical-attack-on-bitcoin" => array(
-                P_FILE => "research/theoretical-attack-on-bitcoin.html",
-                P_TITL => "Economic DDoS - A Theoretical Attack on Bitcoin - Defuse Security",
-                P_METD => "State-sponsored attacks could secretly destroy the bitcoin economy.",
-            ),
             "blockwise-factoring" => array(
                 P_FILE => "research/blockwise-factoring.php",
                 P_TITL => "Blockwise Factoring - An efficient and simple method for factoring small integers. ",
