@@ -627,11 +627,6 @@ class URLParse
                 P_METD => "Calculate enormous mathematical equations from within your browser.",
                 P_METK => "big number calculator, online calculator, bigint, galactic calculator",
             ),
-            "browserui" => array(
-                P_FILE => "research/browserui.html",
-                P_TITL => "Redesigning the Web Browser GUI - Defuse Security",
-                P_METD => "The web browser needs a redesign..",
-            ),
             "flashsupercomputer" => array(
                 P_FILE => "research/flashsupercomputer.html",
                 P_TITL => "Building a Distributed Supercomputer with Flash - Defuse Security",
