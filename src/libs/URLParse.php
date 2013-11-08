@@ -561,12 +561,6 @@ class URLParse
                 P_METD => "HTML/CSS Hack to get browsers to print background colors.",
                 P_METK => "print background color, html, css, force print background color, print stylesheet",
             ),
-            "csharpthreadlibrary" => array(
-                P_FILE => "projects/csharpthreadlibrary.html",
-                P_TITL => "PolyThread - C# Thread Library - Defuse Security",
-                P_METD => "Source code for a job-based multi-threading library for the .NET framework. Written in C#.",
-                P_METK => "multi-threading, threads, c#, library, job based, parallel",
-            ),
             "checksums" => array(
                 P_FILE => "services/checksums.php",
                 P_TITL => "Online Text and File Hash Calculator - MD5, SHA1, SHA256, SHA512, WHIRLPOOL Hash Calculator - Defuse Security",
