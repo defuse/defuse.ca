@@ -280,18 +280,6 @@ class URLParse
                 P_METD => "Password bolt, an extremely secure web based password manager.",
                 P_METK => "passwordbolt, password manager, password, online password manager, web password manager, open source",
             ),
-            "bitcannon" =>  array(
-                P_FILE => "software/bitcannon.html",
-                P_TITL => "BitCannon - The cross-platform, fast, secure, encrypted internet file transfer program for Windows, Macintosh, and Linux - Defuse Security",
-                P_METD => "Easily and quickly transfer large files over a direct encrypted connection.",
-                P_METK => "encrypted file transfer, fast file transfer, secure file transfer, windows, mac, linux",
-            ),
-            "bitcannon-cryptography" => array(
-                P_FILE => "software/bitcannoncrypto.html",
-                P_TITL => "BitCannon - Cryptographic Protocol Description - Defuse Security",
-                P_METD => "Detailed description of the encryption technology behind the BitCannon file transfer program.",
-                P_METK => "secure, encryption, cryptography, file transfer",
-            ),
             "backup-verify-script" =>  array(
                 P_FILE => "software/backup-verify-script.php",
                 P_TITL => "Script for Comparing Folders and Validating Backups",
@@ -657,11 +645,6 @@ class URLParse
             ),
             "scratch" => array(
                 P_FILE => "scratch.html",
-                P_TITL => "",
-                P_METD => "",
-            ),
-            "r&d/bitcannon-experimental" => array(
-                P_FILE => "rd/bitcannon-exp.html",
                 P_TITL => "",
                 P_METD => "",
             ),
