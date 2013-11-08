@@ -516,12 +516,6 @@ class URLParse
                 P_TITL => "Real Random Number Generator for Windows - Defuse Security",
                 P_METD => "A real random number generator for Windows",
             ),
-            "dotnetbenchmark" => array(
-                P_FILE => "software/dotnetbenchmark.html",
-                P_TITL => "Benchmark Tool for the .NET Framework - Defuse Security",
-                P_METD => "A benchmark tool for the .NET Framework",
-                P_METK => "dot net framework, benchmark",
-            ),
             "eotp" => array(
                 P_FILE => "research/eotp.html",
                 P_TITL => "Encrypting One Time Passwords System - Defuse Security",
