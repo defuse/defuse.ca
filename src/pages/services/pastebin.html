@@ -90,28 +90,40 @@ Pastebins are useful for sending text over Twitter or instant messaging, but the
 most popular ones do not provide any security. Posts on "pastebin.com" are
 indexed by search engines. You can
 <a href="https://encrypted.google.com/search?q=%22BEGIN%2bRSA%2bPRIVATE%2bKEY%22%2b%2bsite%3Apastebin.com" rel="nofollow">search for private keys</a>.
-This pastebin aims to protect your data as much as possible, while being as easy
+This pastebin aims to protect your data as much as possible while being as easy
 to use as other pastebin services.
 </p>
 
 <p>
-The text you submit here will be encrypted and sent over an SSL/TLS connection so
-that it will never be seen by anyone unless they know the URL and, if one was
-used, the client-side password. If someone gains full root access to the server,
-they will not be able to decrypt existing posts, but <em>can</em> access new
-ones before they are encrypted. In other words, posts are secure if and only if
-the server was not compromised before they were created. If we get a court order
-to decrypt an existing post, we will not be able to comply.
+The text you submit here will be encrypted and sent over an SSL/TLS connection
+so that it should never be seen by anyone unless they know the URL and, if one
+was used, the client-side password. For maximum security, use a strong
+client-side password and transmit it through a secure channel (such as
+OTR-encrypted chat or PGP-encrypted email).
 </p>
 
 <p>
-<b>For maximum security, always use a strong client-side password.</b>
+<b>Important Security Note:</b>&nbsp; Someone with access to the web server will not be able to
+decrypt the posts already stored in the database, but they <em>can</em>:
+</p>
+
+<ul>
+    <li>Modify the JavaScript encryption code to make it save your password.</li>
+    <li>View your post as it is being submitted.</li>
+    <li>View your post as it is being viewed.</li>
+</ul>
+
+<p>
+This means that you must trust the operator of the server hosting this website.
+You must trust that law enforcement has not compelled the operator to provide
+the decrypted posts. So far, that has not happened (check often to see if this
+text has been removed).
 </p>
 
 <p>
 We have a <a href="/robots.txt">robots.txt</a> entry to stop search engines from
-indexing the posts. Search engines are free to ignore the robots.txt file, so
-this is not guaranteed.
+indexing the posts. Search engines can ignore the robots.txt file, so this is
+not guaranteed.
 </p>
 
 <p>
