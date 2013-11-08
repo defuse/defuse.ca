@@ -111,11 +111,6 @@ class URLParse
                 P_FILE => "all-pages.php",
                 P_METD => "A list of all pages on defuse.ca, sorted by popularity."
                 ),
-            "library" => array(
-                P_FILE => "library.php",
-                P_METD => "The books I have read and am reading.",
-                P_METK => "library, book collection, book review, security books",
-                ),
             "honestyware" => array(
                 P_FILE => "honestyware.php",
                 P_TITL => "Honestyware - The right way to sell software.",
