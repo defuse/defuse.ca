@@ -286,12 +286,6 @@ class URLParse
                 P_METD => "Your IP Address!",
                 P_METK => "online IP address, what is my ip, ip address, ssl ip address",
             ),
-            "statzzz" => array(
-                P_FILE => "stats.php",
-                P_TITL => "Server Statistics",
-                P_METD => "Server Statistics",
-                P_METK => "server statistics",
-            ),
             "softwaredevelopment" => array(
                 P_FILE => "services/softwaredevelopment.html",
                 P_TITL => "Custom Software Development - Defuse Security",
