@@ -516,12 +516,6 @@ class URLParse
                 P_TITL => "Real Random Number Generator for Windows - Defuse Security",
                 P_METD => "A real random number generator for Windows",
             ),
-            "textractor" => array(
-                P_FILE => "software/textractor.html",
-                P_TITL => "Textractor - A tool for extracting words from large binary files - Defuse Security",
-                P_METD => "A Windows and Linux tool for extracting words or sequences of alphabetical characters from large binary files",
-                P_METK => "extract, words, wordlist creator, extract words",
-            ),
             "dotnetbenchmark" => array(
                 P_FILE => "software/dotnetbenchmark.html",
                 P_TITL => "Benchmark Tool for the .NET Framework - Defuse Security",
