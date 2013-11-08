@@ -117,12 +117,6 @@ class URLParse
                 P_METK => "honestyware, free software, trust user",
                 P_METD => "Honestyware is a revolutionary way to sell software that embraces piracy."
             ),
-            "purchase" => array(
-                P_FILE => "purchase.php",
-                P_TITL => "Purchase Confirmation",
-                P_METK => "purchase complete",
-                P_METD => "The page you see when you buy something from Defuse."
-            ),
             "donated" => array(
                 P_FILE => "donated.html"
             ),
