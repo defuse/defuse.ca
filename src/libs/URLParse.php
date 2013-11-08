@@ -561,12 +561,6 @@ class URLParse
                 P_METD => "HTML/CSS Hack to get browsers to print background colors.",
                 P_METK => "print background color, html, css, force print background color, print stylesheet",
             ),
-            "waterfall" => array(
-                P_FILE => "projects/waterfall.html",
-                P_TITL => "Waterfall Password Cracking Algorithm - Defuse Security",
-                P_METD => "The Waterfall password cracking algorithm with implementation and source code.",
-                P_METK => "password cracking, memorable passwords, keyspace reduction, fast dictionary attack",
-            ),
             "csharpthreadlibrary" => array(
                 P_FILE => "projects/csharpthreadlibrary.html",
                 P_TITL => "PolyThread - C# Thread Library - Defuse Security",
