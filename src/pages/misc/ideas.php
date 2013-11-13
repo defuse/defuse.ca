@@ -7,7 +7,7 @@ Need an idea? I have lots. They all suck so you're free to take them.
 <ul>
     <li> GUI+commandline tool to unify all software documentation, and bring it all offline, so you don't have to google. Maybe community supported.</li>
     <li> Modify the Bochs x86 emulator to demonstrate the problem with the Linux kernel's use of RDRAND.</li>
-    <li>Ruby gems as malware infection vector.<li>
+    <li>Ruby gems as malware infection vector.</li>
     <li>Find a way to make Vim think '-' is part of a word yet not chomp off the dash when doing a dw on foo-&gt;bar() (it makes it &gt;bar).</li>
     <li>Tiger IDS script to check logs for requests that aren't whitelisted.</li>
     <li>GPG and OTR tutorial for noobs.</li>
