@@ -69,4 +69,11 @@ https://dl.acm.org/citation.cfm?id=RFC2444&coll=DL&dl=GUIDE&CFID=335732681&CFTOK
     <li>Figure out how to count Latin Squares.</li>
     <li>Statically infer which functions can be the target of a function pointer by comparing parameter setup (in the caller) and use (in the callee).</li>
     <li>Audit truecrypt code.</li>
+    <li>Make tutorial videos on stuff.</li>
+    <li>Tool (browser add-on) to make it easier to black-box pen test xmlhttprequest, soap, etc.</li>
+    <li>Scholarship lottery: $10 to enter, for every 1000 entries, 1 student wins $10,000 (not randomly, selected by merit).</li>
+    <li>Password trainer: a desktop app that remembers a password you're trying to memorize and periodically forces you to re-type it, until you remember it.</li>
+    <li>x86_64 benchmark written in assembly to actually test ALL instructions.</li>
+    <li>Rewrite password bolt.</li>
+    <li>A database with "guaranteed erasure" - Keep it stored in RAM across multiple redundant machines, so that things can reliably be deleted from it. (See "Boojum" in cryptography engineering)</li>
 </ul>
