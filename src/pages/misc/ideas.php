@@ -1,7 +1,8 @@
 <h1>Ideas</h1>
 
 <p>
-Need an idea? I have lots. They all suck so you're free to take them.
+Need an idea? I have lots. Most of them suck, and I don't have time to do them.
+Feel free to take them.
 </p>
 
 <ul>
