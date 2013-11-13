@@ -144,6 +144,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "ideas" => array(
+                P_FILE => "misc/ideas.php",
+                P_TITL => "Ideas",
+                P_METD => "Lots of ideas.",
+                P_METK => "ideas, useless ideas, crazy ideas, list"
+            ),
             "known-unknowns" => array(
                 P_FILE => "misc/known-unknowns.php",
                 P_TITL => "Known Unknowns",
