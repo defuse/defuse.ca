@@ -20,14 +20,13 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li>Auto Fundamentals (Stockel, Stockel, and Johanson)</li>
     <li><b>The Feynman Lectures on Physics, Volume I</b></li>
+    <li>How to Win Friends &amp; Influence People</li>
 </ul>
 
 <h2>Next</h2>
 
 <ul>
-    <li>How to Win Friends &amp; Influence People</li>
     <li>The Social Network Business Plan (David Silver)</li>
     <li>Fallen Dragon (Peter F. Hamilton)</li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
@@ -47,6 +46,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2013</h2>
 
 <ul>
+    <li>Auto Fundamentals (Stockel, Stockel, and Johanson)</li>
     <li><b>A Mathematician's Lament (Paul Lockhart)</b></li>
     <li>The Anarchist Cookbook (William Powell)</li>
     <li><b>A Guide To Kernel Exploitation</b></li>
