@@ -21,13 +21,12 @@ A web search of the title is usually enough to find the book or paper.
 
 <ul>
     <li><b>The Feynman Lectures on Physics, Volume I</b></li>
-    <li>How to Win Friends &amp; Influence People</li>
+    <li>The Social Network Business Plan (David Silver)</li>
 </ul>
 
 <h2>Next</h2>
 
 <ul>
-    <li>The Social Network Business Plan (David Silver)</li>
     <li>Fallen Dragon (Peter F. Hamilton)</li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
     <li>The Bible</li>
@@ -46,6 +45,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2013</h2>
 
 <ul>
+    <li><b>How to Win Friends &amp; Influence People (Dale Carnegie)</b></li>
     <li>Auto Fundamentals (Stockel, Stockel, and Johanson)</li>
     <li><b>A Mathematician's Lament (Paul Lockhart)</b></li>
     <li>The Anarchist Cookbook (William Powell)</li>
