@@ -40,6 +40,7 @@ A web search of the title is usually enough to find the book or paper.
     <li>The Feynman Lectures on Physics, Volume III</li>
     <li>Feynman Lectures on Computation</li>
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
+    <li>The Ancestor's Tale (Richard Dawkins)</li>
 </ul>
 
 <h2>2013</h2>
