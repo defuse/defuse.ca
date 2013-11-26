@@ -40,12 +40,12 @@ A web search of the title is usually enough to find the book or paper.
     <li>The Feynman Lectures on Physics, Volume III</li>
     <li>Feynman Lectures on Computation</li>
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
-    <li>The Ancestor's Tale (Richard Dawkins)</li>
 </ul>
 
 <h2>2013</h2>
 
 <ul>
+    <li>The Ancestor's Tale (Richard Dawkins)</li>
     <li><b>How to Win Friends &amp; Influence People (Dale Carnegie)</b></li>
     <li>Auto Fundamentals (Stockel, Stockel, and Johanson)</li>
     <li><b>A Mathematician's Lament (Paul Lockhart)</b></li>
