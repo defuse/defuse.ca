@@ -45,6 +45,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2013</h2>
 
 <ul>
+    <li><b>Surely You're Joking, Mr. Feynman! (Richard Feynman)</b></li>
     <li>The Ancestor's Tale (Richard Dawkins)</li>
     <li><b>How to Win Friends &amp; Influence People (Dale Carnegie)</b></li>
     <li>Auto Fundamentals (Stockel, Stockel, and Johanson)</li>
