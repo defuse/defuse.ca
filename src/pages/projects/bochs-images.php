@@ -115,3 +115,39 @@ boot: disk
 ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
 ata0-master: type=disk, path=&quot;DebianWheezy.img&quot;, cylinders=4161, heads=8, spt=63
 </pre>
+
+<h2>Debian Jessie (64-bit)</h2>
+
+<p>
+This is the current 64-bit "testing" release of Debian.
+</p>
+
+<center>
+<a href="/files/DebianJessie64.img.xz"><strong>Download DebianJessie64.img.xz (197MiB)</strong></a>
+</center>
+
+<h3>Default Users</h3>
+
+<pre>
+Username: root
+Password: toor
+
+Username: bochs
+Password: bochs
+</pre>
+
+<h3>Debian Jessie Bochs Configuration</h3>
+
+<pre>
+# System configuration.
+romimage: file=$BXSHARE/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+cpu: model=corei7_ivy_bridge_3770k, ips=120000000
+clock: sync=slowdown
+megs: 1024
+boot: disk
+
+# Hard disks.
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, path=&quot;DebianWheezy.img&quot;, cylinders=4161, heads=8, spt=63
+</pre>
