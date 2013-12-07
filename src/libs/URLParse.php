@@ -191,6 +191,11 @@ class URLParse
                 P_TITL => "Blowfish C# and C++ Source Code - Defuse Security",
                 P_METD => "C# and C++ implementation of the BLOWFISH block cipher."
             ),
+            "bochs-images" => array(      
+                P_FILE => "projects/bochs-images.php",
+                P_TITL => "Disk Images for the Bochs x86 Emulator",
+                P_METD => "Various operating systems installed on disk images for Bochs."
+            ),
             "secure-php-encryption" => array(
                 P_FILE => "projects/secure-php-encryption.php",
                 P_TITL => "Encrypting Data in PHP (HowTo) - Defuse Security",
