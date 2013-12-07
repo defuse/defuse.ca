@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "bochsdiskimages",
+        "defuse_pages",
+        "Bochs Disk Images",
+        "Disk images for the Bochs x86 emulator.",
+        "https://defuse.ca/bochs-images.htm"
+    );
+?>
 <div class="pagedate">
 December 6, 2013
 </div>
