@@ -149,5 +149,5 @@ boot: disk
 
 # Hard disks.
 ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
-ata0-master: type=disk, path=&quot;DebianWheezy.img&quot;, cylinders=4161, heads=8, spt=63
+ata0-master: type=disk, path=&quot;DebianJessie64.img&quot;, cylinders=4161, heads=8, spt=63
 </pre>
