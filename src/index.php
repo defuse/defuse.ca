@@ -385,6 +385,9 @@ header('Content-Type: text/html; charset=utf-8');
         <a href="/pastebin.htm">Secure Pastebin</a> | 
         <a href="/passgen.htm">Password Generator</a> |
         <a href="http://crackstation.net/" rel="external">&raquo; CrackStation</a>
+        <span style="float: right;">
+            <a href="https://flattr.com/submit/auto?user_id=earthrise&url=https%3A%2F%2Fdefuse.ca%2F" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
+        </span>
         </div> <!-- end footer -->
         </div> <!-- footerwrapper -->
         <?
