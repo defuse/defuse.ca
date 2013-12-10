@@ -129,7 +129,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
-  <li>Cache Based Remote Timing Attack on the AES (Onur Acil&ccedil;mez et al.)</li>
+  <li>Cache Based Remote Timing Attack on the AES (Onur Acii&ccedil;mez et al.)</li>
   <li>Practical Timing Side Channel Attacks Against Kernel Space ASLR (Ralf Hund et al.)</li>
   <li>Cache-timing attacks on AES (Daniel J. Bernstein)</li>
   <li><b>Implementation and Implications of a Stealth Hard-Drive Backdoor (Jonas Zaddach et al.)</b></li>
