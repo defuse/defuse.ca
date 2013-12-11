@@ -381,6 +381,12 @@ class URLParse
                 P_METD => "Giving authenticators an advantage over password crackers with cache.",
                 P_METK => "password hashing competition, key stretching, caching",
             ),
+            "bochs-hacking-guide" => array(
+                P_FILE => "research/bochs-hacking-guide.php",
+                P_TITL => "Bochs Hacking Guide",
+                P_METD => "Hacking the Bochs x86 CPU emulator. Changing and adding instructions.",
+                P_METK => "bochs, emulator, cpu, architecture, x86, intel, ia-32",
+            ),
             "microsoft-reads-your-skype-messages" => array(
                 P_FILE => "research/microsoft-reads-your-skype-messages.php",
                 P_TITL => "Confirmation of H-Online's Skype Results: Microsoft Visits Links",
