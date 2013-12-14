@@ -567,3 +567,207 @@ some new ones, and test our changes in the VM we just made.
 
 <h2>Modifying Bochs</h2>
 
+<p>
+In this section you'll be introduced to the Bochs source code and walked through
+the process of modifying and adding instructions to the CPU. You'll be using the
+virtual machine we created above to test out your modifications.
+</p>
+
+<p>
+Open up the Bochs source code directory (which you were using in the "Compiling
+Bochs" section), and you'll see something like this (subdirectories are in
+bold).
+</p>
+
+<pre>
+$ ls
+aclocal.m4 &nbsp; &nbsp; &nbsp; <b>cpu</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; logio.cc &nbsp; &nbsp; &nbsp; &nbsp;pc_system.cc
+<b>bios</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cpudb.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ltdl.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;pc_system.h
+bochs.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;crc.cc &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ltdlconf.h.in &nbsp; plugin.cc
+<b>build</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>disasm</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ltdl.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;plugin.h
+<b>bx_debug</b> &nbsp; &nbsp; &nbsp; &nbsp; <b>doc</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ltmain.sh &nbsp; &nbsp; &nbsp; README
+bxversion.h.in &nbsp; <b>docs-html</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; main.cc &nbsp; &nbsp; &nbsp; &nbsp; README-plugins
+bxversion.rc.in &nbsp;extplugin.h &nbsp; &nbsp; &nbsp; &nbsp; Makefile.in &nbsp; &nbsp; README.rfb
+CHANGES &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;gdbstub.cc &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>memory</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;README-wxWidgets
+config.cc &nbsp; &nbsp; &nbsp; &nbsp;<b>gui</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b>misc</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TESTFORM.txt
+config.guess &nbsp; &nbsp; <b>host</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;msrs.def &nbsp; &nbsp; &nbsp; &nbsp;TODO
+config.h.in &nbsp; &nbsp; &nbsp;install-sh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;osdep.cc &nbsp; &nbsp; &nbsp; &nbsp;win32_enh_dbg.rc
+config.sub &nbsp; &nbsp; &nbsp; <b>instrument</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;osdep.h &nbsp; &nbsp; &nbsp; &nbsp; win32res.rc
+configure &nbsp; &nbsp; &nbsp; &nbsp;<b>iodev</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; param_names.h &nbsp; wxbochs.rc
+configure.in &nbsp; &nbsp; LICENSE &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PARAM_TREE.txt
+COPYING &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;load32bitOShack.cc &nbsp;<b>patches</b>
+</pre>
+
+<p>
+There's lots of code here, but we'll be focusing on the cpu folder, which
+contains the C++ implementations of all of the x86 instructions. Let me
+highlight the important files.
+</p>
+
+<ul>
+    <li>
+        <p><strong>cpu/ia_opcodes.h</strong></p>
+        <p>
+            This file specifies all of the CPU opcodes (instructions) and which
+            C++ methods implement them.
+        </p>
+    </li>
+    <li>
+        <p><strong>cpu/cpu.h</strong></p>
+        <p>
+            The BX_CPU_C class, representing the system's CPU, is declared in
+            this file. If you want to make modifications to other parts of the
+            CPU, like adding a new register, this is where you do it. This file
+            also contains the declarations of all the C++ methods implementing
+            instructions.
+        </p>
+    </li>
+    <li>
+        <p><strong>cpu/fetchdecode.cc</strong></p>
+        <p>
+            In fetchdecode.cc, there is a table which maps the actual opcode
+            numbers to the opcode structure created in ia_opcodes.h. This file
+            also houses the fetch-decode cycle of the CPU.
+        </p>
+    </li>
+    <li>
+        <p><strong>cpu/fetchdecode64.cc</strong></p>
+        <p>
+            This is like fetchdecode.cc, except for 64-bit CPUs. Any changes you
+            make in fetchdecode.cc should usually be mirrored in this file.
+        </p>
+    </li>
+</ul>
+
+<p>
+Carefully read through these files, and you'll have a good understanding of how
+the CPU is implemented in Bochs. The methods that implement actual instructions
+are declared in cpu.h, but are defined in many .cc files in the cpu folder. For
+example, cpu/arith32.cc defines the implementation of the 32-bit arithmetic
+instructions, including INC, ADD, SUB, etc. Read through some of these files as
+well, to get an idea of how instructions are implemented.
+</p>
+
+<h3>Turning XOR into ADD</h3>
+
+<p>
+With this basic understanding of the CPU in Bochs, we can start making changes.
+Just for fun, we'll change the XOR instruction to ADD the operands instead. This
+will probably break everything we try to run in our VM, but it will be fun to
+see how and where things break.
+</p>
+
+<p>
+<b>Note:</b> This is a pretty lame example of modifying an instruction, so if
+you've already thought of another instruction you'd like to modify, try that
+instead!
+</p>
+
+<p>
+The implementation of the various variants of the XOR instruction are spread
+across logical8.cc, logical16.cc, logical32.cc, and logical64.cc. We'll only
+change the 32-bit register-XOR-register variant. So open up logical32.cc. You'll
+see the definitions for a bunch of 32-bit XOR variants:
+</p>
+
+<pre>
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_EdGdM(bxInstruction_c *i)
+// ...
+
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_GdEdR(bxInstruction_c *i)
+// ...
+
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_GdEdM(bxInstruction_c *i)
+// ...
+
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_EdIdM(bxInstruction_c *i)
+// ...
+
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_EdIdR(bxInstruction_c *i)
+// ...
+</pre>
+
+<p>
+What are these weird "EdGdM" things? They are abbreviations of the format of the
+operand.  For example "Ed" means, essentially, a doubleword (32-bit) memory
+address or register. "Gd" means a doubleword (32-bit) register. The full list
+can be found in Appendix A, section A.2 of the 
+<a href="http://download.intel.com/products/processor/manual/325383.pdf">
+Intel IA-32 Architectures Software Developer's Manual Volume 2.</a>
+</p>
+
+<p>
+To keep things simple, we'll only change the "EdGdM" variant. Its
+implementation looks like this:
+</p>
+
+<pre>
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_EdGdM(bxInstruction_c *i)
+{
+&nbsp;&nbsp;Bit32u op1_32, op2_32;
+
+&nbsp;&nbsp;bx_address eaddr = BX_CPU_CALL_METHODR(i-&gt;ResolveModrm, (i));
+
+&nbsp;&nbsp;op1_32 = read_RMW_virtual_dword(i-&gt;seg(), eaddr);
+&nbsp;&nbsp;op2_32 = BX_READ_32BIT_REG(i-&gt;src());
+&nbsp;&nbsp;<b>op1_32 ^= op2_32;</b>
+&nbsp;&nbsp;write_RMW_virtual_dword(op1_32);
+
+&nbsp;&nbsp;SET_FLAGS_OSZAPC_LOGIC_32(op1_32);
+
+&nbsp;&nbsp;BX_NEXT_INSTR(i);
+}
+</pre>
+
+<p>
+Just change the "op1_32 ^= op2_32;" line (in bold) to "op1_32 += op2_32;". Now,
+all the XOR instructions of this variant become ADDs. You can also make Bochs
+log the fact that your modified instruction was executed by adding a line like
+the following.
+</p>
+
+<pre>
+BX_PANIC((&quot;My modified XOR instruction executed!&quot;));
+</pre>
+
+<p>
+BX_PANIC will halt the processor and present you with a message box that lets
+you continue the execution or quit the simulator.
+</p>
+
+<center>
+<img src="/images/bochs-panic.png" alt="Bochs Panic Message" />
+</center>
+
+<p>
+You can also use BX_ERROR, BX_INFO, and BX_DEBUG, which correspond to Bochs'
+different log levels. You can
+<a href="http://bochs.sourceforge.net/doc/docbook/user/bochsrc.html#BOCHSOPT-LOG">
+set the log level log file in the bochsrc</a>. By default, logs are sent to
+standard output.
+</p>
+
+<p>
+With the change made, re-compile Bochs and see if the VM will boot.
+</p>
+
+<pre>
+$ ./my_configure.sh   # (You made this in the "Compiling Bochs" section.)
+$ make -j 4
+$ make install
+$ cd my_build/bin
+# ./bochs -f bochsrc -q
+</pre>
+
+<p>
+Surprisingly, the VM boots successfully (at least for me) despite the broken XOR
+instruction getting executed hundreds of times. You may have different results.
+</p>
+
+<p>
+This was a simple (and rather dumb) example of how to modify an instruction in
+Bochs. Revert the instruction's code back to the way it was, re-compile Bochs,
+then in the next section, we will add a whole new instruction to the CPU.
+</p>
+
+<h3>Adding an Instruction</h3>

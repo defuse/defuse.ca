@@ -129,6 +129,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li><b>Timing Analysis of Keystrokes and Timing Attacks on SSH (Dawn Xiaodong Song et al.)<b></li>
   <li>Are AES x86 Cache Timing Attacks Still Feasible? (Keaton Mowery et al.)</li>
   <li>A Cache Timing Attack on AES in Virtualization Environments (Michael Wei&szlig; et al.)</li>
   <li>Cache Based Remote Timing Attack on the AES (Onur Acii&ccedil;mez et al.)</li>
