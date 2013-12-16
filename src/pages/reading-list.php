@@ -129,6 +129,8 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+  <li>A Primitive for Revealing Stealthy Peripheral-Based Attacks on the
+Computing Platform's Main Memory (Patrick Stewin)</li>
   <li>An Empirical Study of Cryptographic Misuse in Android Applications (Manuel Egele, David Brumley, Yanick Fratantonio, Christopher Kruegel)</li>
   <li><b>Cache Attacks and Countermeasures: the Case of AES (Extended Version) (Dag Arne Osvik et al.)</b></li>
   <li><b>Timing Analysis of Keystrokes and Timing Attacks on SSH (Dawn Xiaodong Song et al.)</b></li>
