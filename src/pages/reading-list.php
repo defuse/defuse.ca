@@ -129,6 +129,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2013</h3>
 
 <ul>
+    <li><b>Subversion of Social Movements by Adversarial Agents (Eric L.  Nelson)</b></li>
     <li><b>Why Chosen Ciphertext Security Matters (Victor Shoup)</b></li>
     <li>Soil Diversity and Hydration as Observed by ChemCam at Gale Crater, Mars (P. Meslin et al.)</li>
     <li>A Primitive for Revealing Stealthy Peripheral-Based Attacks on the Computing Platform's Main Memory (Patrick Stewin)</li>
