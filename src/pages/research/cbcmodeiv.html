@@ -117,8 +117,8 @@ and he knows that the input to the block cipher was A XOR IVA. Mallory just
 needs to know whether the block cipher encryption of A XOR IVA is C or D.
 Mallory asks the encryption system for the next IV, IVN, and sends it the
 plaintext A XOR IVA XOR IVN to encrypt. The system follows CBC mode, XORing
-Mallory's plaintext with IVA and passing the result to the block cipher. IVA XOR
-IVA is 0, so the system passes A XOR IVA to the block cipher, and gives Mallory
+Mallory's plaintext with IVN and passing the result to the block cipher. IVN XOR
+IVN is 0, so the system passes A XOR IVA to the block cipher, and gives Mallory
 the ciphertext. What Mallory gets back is either C or D, whichever one
 corresponds to plaintext A. In this case, Mallory gets back C, tells Alice that
 C corresponds to A, and wins $1000 with 100% probability.
