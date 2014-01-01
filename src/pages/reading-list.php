@@ -20,13 +20,15 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li><b>The Feynman Lectures on Physics, Volume I</b></li>
     <li>The Social Network Business Plan (David Silver)</li>
+    <li>Feynman Lectures on Computation</li>
 </ul>
 
 <h2>Next</h2>
 
 <ul>
+    <li>The Art of Software Security Assessment (Mark Dowd et al.)</li>
+    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
     <li>Fallen Dragon (Peter F. Hamilton)</li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
     <li>The Bible</li>
@@ -38,7 +40,6 @@ A web search of the title is usually enough to find the book or paper.
     <li>The ARRL Handbook For Radio Communications</li>
     <li>The Feynman Lectures on Physics, Volume II</li>
     <li>The Feynman Lectures on Physics, Volume III</li>
-    <li>Feynman Lectures on Computation</li>
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
 </ul>
 
