@@ -144,6 +144,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "pocorgtfo" => array(
+                P_FILE => "misc/pocorgtfo.php",
+                P_TITL => "PoC || GTFO Mirror",
+                P_METD => "Mirror of all the Poc || GTFO issues.",
+                P_METK => "proof, of, concept, or, get, the, fuck, out"
+            ),
             "ideas" => array(
                 P_FILE => "misc/ideas.php",
                 P_TITL => "Ideas",
