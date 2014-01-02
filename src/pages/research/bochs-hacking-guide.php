@@ -743,7 +743,7 @@ you continue the execution or quit the simulator.
 You can also use BX_ERROR, BX_INFO, and BX_DEBUG, which correspond to Bochs'
 different log levels. You can
 <a href="http://bochs.sourceforge.net/doc/docbook/user/bochsrc.html#BOCHSOPT-LOG">
-set the log level log file in the bochsrc</a>. By default, logs are sent to
+set the log level and log file in the bochsrc</a>. By default, logs are sent to
 standard output.
 </p>
 
@@ -770,4 +770,299 @@ Bochs. Revert the instruction's code back to the way it was, re-compile Bochs,
 then in the next section, we will add a whole new instruction to the CPU.
 </p>
 
-<h3>Adding an Instruction</h3>
+<h3>Adding Registers and Instructions</h3>
+
+<p>
+In this example, we'll add a new register to the CPU, along with two new
+instructions for moving its value in and out of the EAX register. We'll call the
+new register "ENX" (N for "new"), and the two new instructions will be:
+</p>
+
+<ul>
+    <li>RDENX: Copy the value of the ENX register into the EAX register.</li>
+    <li>WRENX: Copy the value of the EAX register into the ENX register.</li>
+</ul>
+
+<h4>Adding the ENX Register</h4>
+
+<p>
+Adding a general purpose register to Bochs is easy. To do so, open cpu.h and
+find:
+</p>
+
+<pre>
+#if BX_SUPPORT_X86_64
+# define BX_GENERAL_REGISTERS 16
+#else
+# define BX_GENERAL_REGISTERS 8
+#endif
+</pre>
+
+<p>
+This is the number of general purpose registers. Change it to:
+</p>
+
+<pre>
+#if BX_SUPPORT_X86_64
+# define BX_GENERAL_REGISTERS 17
+#else
+# define BX_GENERAL_REGISTERS 8
+#endif
+</pre>
+
+<p>
+Next, find the register number definitions:
+</p>
+
+<pre>
+#define BX_32BIT_REG_EAX 0
+#define BX_32BIT_REG_ECX 1
+#define BX_32BIT_REG_EDX 2
+#define BX_32BIT_REG_EBX 3
+...
+</pre>
+
+<p>
+Add the following to name the new register:
+</p>
+
+<pre>
+#define BX_32BIT_REG_ENX 8
+#define BX_64BIT_REG_RNX 16
+</pre>
+
+<p>
+That's all you have to do to add a general purpose register. If you want to add
+some CPU-specific storage that isn't a register (e.g. an internal buffer or
+cache), you can just add it as a member variable to the CPU class in cpu.h
+</p>
+
+<h4>Adding the RDENX and WRENX Instructions</h4>
+
+<p>
+Next, we'll add two 32-bit instructions that use our new RNX register.
+</p>
+
+<p>
+First, we need to choose opcodes for our new instructions. We'll use 0F3B and
+0F3C, since they are currently undefined for Intel CPUs:
+</p>
+
+<ul>
+    <li>0F 3B: RDENX</li>
+    <li>0F 3C: WRENX</li>
+</ul>
+
+<p>
+To add these to the CPU, first add the implementations. Add the function
+prototypes to cpu.h alongside the others (search for "BX_INSF_TYPE NOP").
+</p>
+
+<pre>
+BX_SMF BX_INSF_TYPE RDENX(bxInstruction_c *) BX_CPP_AttrRegparmN(1);
+BX_SMF BX_INSF_TYPE WRENX(bxInstruction_c *) BX_CPP_AttrRegparmN(1);
+</pre>
+
+<p>
+Add the implementations to data_xfer32.cc:
+</p>
+
+<pre>
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::RDENX(bxInstruction_c *i)
+{
+    // Copy ENX into EAX.
+    Bit32u enx = get_reg32(BX_32BIT_REG_ENX);
+    set_reg32(BX_32BIT_REG_EAX, enx);
+
+    BX_NEXT_INSTR(i);
+}
+
+BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::WRENX(bxInstruction_c *i)
+{
+    // Copy EAX into ENX.
+    Bit32u eax = get_reg32(BX_32BIT_REG_EAX);
+    set_reg32(BX_32BIT_REG_ENX, eax);
+
+    BX_NEXT_INSTR(i);
+}
+</pre>
+
+<p>
+Next, add this to ia_opcodes.h.
+</p>
+
+<pre>
+bx_define_opcode(BX_IA_RDENX, &amp;BX_CPU_C::RDENX, &amp;BX_CPU_C::RDENX, 0, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, 0)
+bx_define_opcode(BX_IA_WRENX, &amp;BX_CPU_C::WRENX, &amp;BX_CPU_C::WRENX, 0, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, 0)
+</pre>
+
+<p>
+Now, in fetchdecode.cc, replace <b>both occurrences</b> of:
+</p>
+
+<pre>
+/* 0F 3B /w */ { 0, BX_IA_ERROR },
+/* 0F 3C /w */ { 0, BX_IA_ERROR },
+</pre>
+
+<p>
+with
+</p>
+
+<pre>
+/* 0F 3B /w */ { 0, BX_IA_RDENX },
+/* 0F 3C /w */ { 0, BX_IA_WRENX },
+</pre>
+
+<p>
+<strong>Note:</strong> If you're adding an instruction that needs a ModR/M byte
+(our RDENX and WRENX examples don't), you have to update the BxOpcodeHasModrm32
+table.
+</p>
+
+<p>
+That's it. These instructions should work now.
+</p>
+
+<h4>Testing the New Instructions</h4>
+
+<p>
+We just finished adding a new register and new instructions to Bochs. Compile
+Bochs (see the previous sections if you've forgotten how), then we'll write
+a program to test the new instructions.
+</p>
+
+<p>
+Here's a program written in GNU assembly language to test the new instructions
+and register: 
+</p>
+
+<pre>
+.intel_syntax noprefix
+.global main
+.text
+
+# If the new instructions work, this program should print:
+# &quot;EAX is 1337!&quot;
+
+main:
+&nbsp;&nbsp; &nbsp;# Put 1337 into EAX
+&nbsp;&nbsp; &nbsp;mov &nbsp; &nbsp; eax, 1337
+&nbsp;&nbsp; &nbsp;# WRENX: Copy EAX&#039;s value (1337) into ENX
+&nbsp;&nbsp; &nbsp;.byte 0x0F, 0x3C
+&nbsp;&nbsp; &nbsp;# Zero EAX
+&nbsp;&nbsp; &nbsp;mov &nbsp; &nbsp; eax, 0
+&nbsp;&nbsp; &nbsp;# RDENX: Copy ENX&#039;s value (1337) into EAX.
+&nbsp;&nbsp; &nbsp;.byte 0x0F, 0x3B
+
+&nbsp;&nbsp; &nbsp;# Push EAX onto the stack (second argument to printf)
+&nbsp;&nbsp; &nbsp;push &nbsp; &nbsp;eax
+
+&nbsp;&nbsp; &nbsp;# Push the format string&#039;s address onto the stack (first arg to printf).
+&nbsp;&nbsp; &nbsp;lea &nbsp; &nbsp; eax, format
+&nbsp;&nbsp; &nbsp;push &nbsp; &nbsp;eax
+
+&nbsp;&nbsp; &nbsp;# Call printf.
+&nbsp;&nbsp; &nbsp;call &nbsp; &nbsp;printf
+
+&nbsp;&nbsp; &nbsp;# Clean up the arguments on the stack.
+&nbsp;&nbsp; &nbsp;add &nbsp; &nbsp; esp, 8
+
+&nbsp;&nbsp; &nbsp;# Return 0 from main().
+&nbsp;&nbsp; &nbsp;mov &nbsp; &nbsp; eax, 0
+&nbsp;&nbsp; &nbsp;ret
+
+format:
+&nbsp;&nbsp; &nbsp;.asciz &quot;EAX is %d!\n&quot;
+</pre>
+
+<p>
+Compile it with:
+</p>
+
+<pre>
+gcc -m32 test.s -o test
+</pre>
+
+<p>
+Copy the test binary into the VM. Put it in the root of the disk image and it
+will show up in /mnt/sda1/test. Start Bochs and run it. You should get "EAX is
+1337!" proving that the new register and instructions work.
+</p>
+
+<center>
+<img src="/images/bochs-instructions-working.png" alt="Bochs Panic Message" />
+</center>
+
+<h3>Useful Functions</h3>
+
+<p>
+Here are some functions that might come in handy while writing Bochs
+instructions. There many functions that are not listed here. Look for them in
+the implementations of other instructions.
+</p>
+
+<ul>
+    <li>
+        <p><strong>Bit32u get_reg32(unsigned reg)</strong></p>
+        <p>
+            Returns the value of a 32-bit register. The 'reg' argument can be
+            one of BX_32BIT_REG_EAX, BX_32BIT_REG_EBX, BX_32BIT_REG_ECX, etc.
+        </p>
+    </li>
+    <li>
+        <p><strong>void set_reg32(unsigned reg, Bit32u val)</strong></p>
+
+        <p>
+            Sets the value of a 32-bit register to 'val.' The 'reg' parameter
+            accepts the same values as get_reg32's 'reg' parameter (see above).
+        </p>
+    </li>
+    <li>
+        <p><strong>void push_32(Bit32u value32)</strong></p>
+
+        <p>
+            Pushes a 32-bit value onto the stack.
+        </p>
+    </li>
+    <li>
+        <p><strong>Bit32u pop_32(void)</strong></p>
+
+        <p>
+            Pops a 32-bit value off of the stack.
+        </p>
+    </li>
+    <li>
+        <p><strong>void write_virtual_dword(unsigned seg, Bit32u (or Bit64u) offset, Bit32u data)</strong></p>
+
+        <p>
+            Writes a 32-bit value to memory. The 'seg' parameter specifies the
+            segment, e.g. BX_SEG_REG_DS. The 'offset' parameter is the virtual
+            address. The 'data' parameter is the 32-bit value to write at the
+            address. 
+        </p>
+    </li>
+    <li>
+        <p><strong>Bit32u read_virtual_dword(unsigned seg, (or Bit64u) Bit32u offset)</strong></p>
+
+        <p>
+            Reads a 32-bit value from memory. The 'seg' specifies the segment,
+            e.g. BX_SEG_REG_DS. The 'offset' parameter is the virtual address.
+        </p>
+    </li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>
+If you followed this guide successfully, you should know how to get a (possibly
+modified) modern Linux kernel running in Bochs, as well as have some idea about
+how to experiment with changing the x86 architecture. Where you go from here is
+up to you. The possibilities for research and learning are almost endless.
+Certainly you can think of something clever or fun to do with your new skills!
+</p>
+
+<p>
+If you have suggestions or questions related to this guide, please don't
+hesitate to <a href="/contact.htm">contact me</a>.
+</p>
