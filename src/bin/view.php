@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of Defuse Security's Secure Pastebin
+ * This file is part of Defuse Security's Pastebin
  * Find updates at: https://defuse.ca/pastebin.htm
  * Developer contact: havoc AT defuse.ca
  * This code is in the public domain. There is no warranty.
@@ -183,7 +183,7 @@ function encryptPaste()
 </script>
 <!-- End of scripts for client-side decryption -->
 
-<h1 id="header"><a href="https://defuse.ca/pastebin.htm">Defuse Security</a>'s Secure Pastebin</h1>
+<h1 id="header"><a href="https://defuse.ca/pastebin.htm">Defuse Security</a>'s Pastebin</h1>
 
 <?php
 
@@ -319,5 +319,11 @@ function decryptPaste(){
 <?
 }
 ?>
+<p>
+<strong>Important Note:</strong> This page contains user-submitted content. In
+no way is Defuse Security responsible for its contents. If this page contains
+illegal information please <a href="https://defuse.ca/contact.htm">report it to
+us</a>.
+</p>
 </body>
 </html>
