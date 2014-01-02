@@ -221,6 +221,7 @@ header('Content-Type: text/html; charset=utf-8');
         <ul>
             <li><a href="#"><span class="drop"><span>Vulns &amp; Exploits</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
+                    <li><a href="/instruction-filters.htm">&nbsp;Instruction Filters</a></li>
                     <li><a href="/flush-reload-side-channel.htm">&nbsp;FLUSH+RELOAD</a></li>
                     <li><a href="/exploiting-cpp-vtables.htm">&nbsp;C++ VTABLES</a></li>        
                     <li><a href="/cracking-synergy-bad-cryptography.htm">&nbsp;Cracking Synergy</a></li>

@@ -369,6 +369,12 @@ class URLParse
                 P_METD => "PHP functions for defending secrets against the BREACH attack.",
                 P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
             ),
+            "instruction-filters" => array(
+                P_FILE => "research/instruction-filters.php",
+                P_TITL => "Instruction Filters as an Exploitation Defense",
+                P_METD => "Disabling CPU instructions to thwart ROP and other attacks.",
+                P_METK => "instruction set filters, insfilter, research",
+            ),
             "flush-reload-side-channel" => array(
                 P_FILE => "research/flush-reload-side-channel.php",
                 P_TITL => "Implications of the FLUSH+RELOAD Side-Channel Attack",
