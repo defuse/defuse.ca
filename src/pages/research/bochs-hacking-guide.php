@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "bochshacking",
+        "defuse_pages",
+        "Bochs Hacking Guide",
+        "Hacking the Bochs x86 CPU emulator.",
+        "https://defuse.ca/bochs-hacking-guide.htm"
+    );
+?>
 <div class="pagedate">
 January 2, 2013
 </div>
