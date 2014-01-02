@@ -1,8 +1,20 @@
+<div class="pagedate">
+January 2, 2013
+</div>
 <h1>Bochs Hacking Guide</h1>
 
 <p>
-The purpose of this guide is to get you started with hacking the <a
+This guide will get you started hacking the <a
 href="http://bochs.sourceforge.net/">Bochs</a> IA-32 (x86) processor emulator.
+It is a result of a <a href="/instruction-filters.htm">research project</a>,
+aided by <a href="http://pages.cpsc.ucalgary.ca/~locasto/">Dr. Michael E.
+Locasto</a>, in which I modified Bochs and the Linux kernel to implement an
+exploit defense system based on disabling some of the CPU's instructions. If you
+want to use Bochs to experiment with architecture changes, this guide will get
+you going in the right direction.
+</p>
+
+<p>
 Bochs is similar to virtual machine software like VirtualBox and VMWare, except
 that all instructions are emulated by C++ code. Therefore, Bochs is very slow,
 but also extremely versatile. Once you know your way around Bochs, you can do
