@@ -24,24 +24,25 @@ you going in the right direction.
 </p>
 
 <p>
-Bochs is similar to virtual machine software like VirtualBox and VMWare, except
-that all instructions are emulated by C++ code. Therefore, Bochs is very slow,
-but also extremely versatile. Once you know your way around Bochs, you can do
-all sorts of cool things like modifying the behavior of existing instructions,
-or even adding totally new instructions to the architecture.
+Bochs is similar to virtual machine software like QEMU, VirtualBox, and VMWare,
+except that all instructions are implemented in C++ code. Therefore, Bochs is
+very slow, but also extremely versatile. Once you know your way around Bochs,
+you can do all sorts of cool things like modifying the behavior of existing
+instructions, or even adding totally new instructions to the architecture.
+Studying the Bochs source code is also a great way to learn about x86.
 </p>
 
 <p>
 This guide will walk you through the steps of compiling Bochs and running
 a modern Linux kernel inside it. After that, you will be introduced to Bochs'
-source code, and you will be shown how to modify and add CPU instructions.
+source code, and you will be shown how to add and modify CPU instructions.
 </p>
 
 <p>
 This guide was written for Linux-based operating systems so it assumes the
 reader has basic Linux skills (can use the command line, can compile software,
-knows what the kernel is, etc.), although it should apply just as well to other
-operating systems.
+knows what the kernel is, etc.), although it should apply to other operating
+systems too.
 </p>
 
 <h2>Compiling Bochs</h2>
@@ -63,7 +64,7 @@ one this guide will be using.
 After you've downloaded the source code, extract it:
 </p>
 
-<pre>
+<pre class="code">
 $ tar xvf bochs-2.6.2.tar.gz 
 $ cd bochs-2.6.2
 </pre>
@@ -72,7 +73,7 @@ $ cd bochs-2.6.2
 Bochs provides a bunch of build configurations for various operating systems:
 </p>
 
-<pre>
+<pre class="code">
 $ ls .conf.*
 .conf.amigaos     .conf.linux  .conf.macosx   .conf.sparc         .conf.win32-vcpp
 .conf.everything  .conf.macos  .conf.nothing  .conf.win32-cygwin
@@ -85,7 +86,7 @@ script, though, since none of these work very well in all cases. Create a file
 called "my_configure.sh" and put this inside it:
 </p>
 
-<pre>
+<pre class="code">
 #!/bin/bash
 
 # This is the folder that bochs will install to. Feel free to change this to
@@ -136,7 +137,7 @@ so I'll leave it out of this guide.
 To build Bochs, just run:
 </p>
 
-<pre>
+<pre class="code">
 $ ./my_configure.sh
 $ make -j 4
 $ make install
@@ -148,7 +149,7 @@ that folder, then, in the next section, we will make a disk image and install
 Tiny Core Linux in Bochs.
 </p>
 
-<pre>
+<pre class="code">
 $ cd ./my_build/bin
 </pre>
 
@@ -165,7 +166,7 @@ of file. We have to create one that fits a specific hard disk geometry
 The size of a disk image is equal to:
 <p>
 
-<pre>
+<pre class="code">
 disk image size (bytes) = cylinders * heads * spt * 512
 </pre>
 
@@ -176,7 +177,7 @@ cylinder count. If we want an N megabyte disk, then we calculate the number of
 cylinders as follows:
 </p>
 
-<pre>
+<pre class="code">
 cylinders = N * 1024 * 1024 / 512 / 8 / 63
 </pre>
 
@@ -184,7 +185,7 @@ cylinders = N * 1024 * 1024 / 512 / 8 / 63
 We can put this into a script called "create_disk_image.sh" to automate it:
 <p>
 
-<pre>
+<pre class="code">
 #!/bin/bash
 # Usage: ./create_disk_sectors &lt;megabytes&gt; &lt;path&gt;
 # For example, to create a 4GB disk image, run:
@@ -206,7 +207,7 @@ Now, if we want to create a 1GB disk image to install an operating system, we
 can run:
 </p>
 
-<pre>
+<pre class="code">
 $ ./create_disk_image.sh 1024 bochs-disk-image.img
 2097144+0 records in
 2097144+0 records out
@@ -238,12 +239,12 @@ CorePlus-current.iso</a> right now, since it will take some time.
 
 <p>
 The first thing we need to do is create a "bochsrc" file. This is the Bochs
-configuration file. It defines all of the various hardware components of the
-virtual system being emulated. Here's an example bochsrc file, that will work
-with Tiny Core Linux and the disk image we created in the last section.
+configuration file. It configures all of the hardware parts of the virtual
+system. Here's an example bochsrc file that will work with Tiny Core Linux and
+the disk image we created in the last section.
 </p>
 
-<pre>
+<pre class="code">
 # System configuration.
 romimage: file=$BXSHARE/BIOS-bochs-latest
 vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
@@ -264,10 +265,10 @@ ata1-master: type=cdrom, path=&quot;CorePlus-current.iso&quot;, status=inserted
 <p>
 This configuration defines a system with 256 megabytes of RAM, a hard disk, and
 a CDROM drive. The CPU is set to emulate the features of the Intel Core i7 Ivy
-Bridge 3770K processor. The "clock:" line determines how Bochs will synchronize
+Bridge 3770K processor. The "clock" line determines how Bochs will synchronize
 the VM's clock with the host system's clock. When set to "slowdown", performance
 is sacrificed in favor of reproducibility and keeping the clock in sync with the
-host system. The "boot:" line sets the boot order.
+host system. The "boot" line sets the boot order.
 </p>
 
 <p>
@@ -291,7 +292,7 @@ After you've created the bochsrc file and waited for the Tiny Core Linux ISO to
 download, you're ready to boot the virtual machine.
 </p>
 
-<pre>
+<pre class="code">
 $ ./bochs -f ./bochsrc -q
 </pre>
 
@@ -353,17 +354,16 @@ Linux VM we created earlier.
 </p>
 
 <p>
-Tiny Core Linux has their own Wiki page about
+This section of the guide is based on Tiny Core Linux's Wiki page about
 <a href="http://wiki.tinycorelinux.net/wiki:custom_kernel">
-compiling a custom kernel</a>, which this section of the guide is based off of,
-and may be helpful to the reader.
+compiling a custom kernel</a>.
 </p>
 
 <p>
 Building the Linux kernel is easy. First, download and extract it:
 </p>
 
-<pre>
+<pre class="code">
 $ wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.4.tar.xz
 $ tar xvf linux-3.12.4.tar.xz
 $ cd linux-3.12.4.tar.xz
@@ -375,7 +375,7 @@ Download Tiny Core's
 and save it in .config.
 </p>
 
-<pre>
+<pre class="code">
 $ wget http://tinycorelinux.net/5.x/x86/release/src/kernel/config-3.8.13-tinycore
 $ mv config-3.8.13-tinycore .config
 </pre>
@@ -399,7 +399,7 @@ The next two commands actually compile the kernel and some kernel modules. If
 you get asked more questions, just pick the default answer.
 </p>
 
-<pre>
+<pre class="code">
 $ make bzImage -j 4
 $ make modules -j 4
 </pre>
@@ -413,7 +413,7 @@ have to add ARCH="x86" to all of your make commands.
 Next, make a folder to hold the compiled kernel modules and install them there.
 </p>
 
-<pre>
+<pre class="code">
 $ mkdir ./my_modules
 $ make INSTALL_MOD_PATH="./my_modules" modules_install firmware_install
 </pre>
@@ -443,7 +443,7 @@ package in the AUR. In Debian, you can apt-get install kpartx.
 Start off with a shell script to mount the image. Save this in mount.sh.
 </p>
 
-<pre>
+<pre class="code">
 #!/bin/bash
 kpartx -a -v bochs-disk-image.img
 mount -o loop /dev/mapper/loop0p1 /mnt/myimage
@@ -458,7 +458,7 @@ else you are using your computer for.
 Then, save this unmounting script in unmount.sh.
 </p>
 
-<pre>
+<pre class="code">
 #!/bin/bash
 umount /mnt/myimage
 kpartx -d -v disk.img
@@ -468,7 +468,7 @@ kpartx -d -v disk.img
 The script mounts the disk image to /mnt/myimage, so create that directory.
 </p>
 
-<pre>
+<pre class="code">
 $ mkdir /mnt/myimage
 </pre>
 
@@ -485,7 +485,7 @@ filesystem works. If you look in the mounted image, you'll find a structure like
 this:
 </p>
 
-<pre>
+<pre class="code">
 # tree /mnt/myimage/
 /mnt/myimage/
 ├── lost+found
@@ -518,7 +518,7 @@ kernel modules to core.gz, which is a gzipped cpio file.
 Backup the old files so you can recover if you screw up the kernel install.
 </p>
 
-<pre>
+<pre class="code">
 # cp /mnt/myimage/tce/boot/core.gz /mnt/myimage/tce/boot/core.gz-backup
 # cp /mnt/myimage/tce/boot/vmlinuz /mnt/myimage/tce/boot/vmlinuz-backup
 </pre>
@@ -527,7 +527,7 @@ Backup the old files so you can recover if you screw up the kernel install.
 To install the new kernel, first replace vmlinuz with the new bzImage.
 </p>
 
-<pre>
+<pre class="code">
 # cp arch/x86/boot/bzImage /mnt/myimage/tce/boot/vmlinuz
 </pre>
 
@@ -536,7 +536,7 @@ Now, we'll need to rebuild the core.gz file with the new kernel modules. Copy it
 over to your system and extract it:
 </p>
 
-<pre>
+<pre class="code">
 # mkdir core_extract
 # cd core_extract
 # cp /mnt/myimage/tce/boot/core.gz core.gz
@@ -549,7 +549,7 @@ Copy the new kernel modules into lib/modules and the new firmware into
 lib/firmware.
 </p>
 
-<pre>
+<pre class="code">
 # mv ../my_modules/lib/firmware/ lib/
 # mv ../my_modules/lib/modules/3.12.4-tinycore/ lib/modules/
 </pre>
@@ -559,8 +559,8 @@ Put everything back into a cpio file, and gzip it like it was. Then install it
 back to the disk image.
 </p>
 
-<pre>
-# find . | cpio -ov --format='newc' &lt; core
+<pre class="code">
+# find . | cpio -ov --format='newc' &gt; core
 # gzip core
 # mv core.gz /mnt/myimage/tce/boot/core.gz
 </pre>
@@ -600,7 +600,7 @@ Bochs" section), and you'll see something like this (subdirectories are in
 bold).
 </p>
 
-<pre>
+<pre class="code">
 $ ls
 aclocal.m4 &nbsp; &nbsp; &nbsp; <b>cpu</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; logio.cc &nbsp; &nbsp; &nbsp; &nbsp;pc_system.cc
 <b>bios</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cpudb.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ltdl.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;pc_system.h
@@ -685,13 +685,13 @@ instead!
 </p>
 
 <p>
-The implementation of the various variants of the XOR instruction are spread
+The implementation of the variants of the XOR instruction are spread
 across logical8.cc, logical16.cc, logical32.cc, and logical64.cc. We'll only
 change the 32-bit register-XOR-register variant. So open up logical32.cc. You'll
 see the definitions for a bunch of 32-bit XOR variants:
 </p>
 
-<pre>
+<pre class="code">
 BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_EdGdM(bxInstruction_c *i)
 // ...
 
@@ -722,7 +722,7 @@ To keep things simple, we'll only change the "EdGdM" variant. Its
 implementation looks like this:
 </p>
 
-<pre>
+<pre class="code">
 BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::XOR_EdGdM(bxInstruction_c *i)
 {
 &nbsp;&nbsp;Bit32u op1_32, op2_32;
@@ -747,7 +747,7 @@ log the fact that your modified instruction was executed by adding a line like
 the following.
 </p>
 
-<pre>
+<pre class="code">
 BX_PANIC((&quot;My modified XOR instruction executed!&quot;));
 </pre>
 
@@ -772,7 +772,7 @@ standard output.
 With the change made, re-compile Bochs and see if the VM will boot.
 </p>
 
-<pre>
+<pre class="code">
 $ ./my_configure.sh   # (You made this in the "Compiling Bochs" section.)
 $ make -j 4
 $ make install
@@ -811,7 +811,7 @@ Adding a general purpose register to Bochs is easy. To do so, open cpu.h and
 find:
 </p>
 
-<pre>
+<pre class="code">
 #if BX_SUPPORT_X86_64
 # define BX_GENERAL_REGISTERS 16
 #else
@@ -823,11 +823,11 @@ find:
 This is the number of general purpose registers. Change it to:
 </p>
 
-<pre>
+<pre class="code">
 #if BX_SUPPORT_X86_64
 # define BX_GENERAL_REGISTERS 17
 #else
-# define BX_GENERAL_REGISTERS 8
+# define BX_GENERAL_REGISTERS 9
 #endif
 </pre>
 
@@ -835,7 +835,7 @@ This is the number of general purpose registers. Change it to:
 Next, find the register number definitions:
 </p>
 
-<pre>
+<pre class="code">
 #define BX_32BIT_REG_EAX 0
 #define BX_32BIT_REG_ECX 1
 #define BX_32BIT_REG_EDX 2
@@ -847,7 +847,7 @@ Next, find the register number definitions:
 Add the following to name the new register:
 </p>
 
-<pre>
+<pre class="code">
 #define BX_32BIT_REG_ENX 8
 #define BX_64BIT_REG_RNX 16
 </pre>
@@ -879,7 +879,7 @@ To add these to the CPU, first add the implementations. Add the function
 prototypes to cpu.h alongside the others (search for "BX_INSF_TYPE NOP").
 </p>
 
-<pre>
+<pre class="code">
 BX_SMF BX_INSF_TYPE RDENX(bxInstruction_c *) BX_CPP_AttrRegparmN(1);
 BX_SMF BX_INSF_TYPE WRENX(bxInstruction_c *) BX_CPP_AttrRegparmN(1);
 </pre>
@@ -888,7 +888,7 @@ BX_SMF BX_INSF_TYPE WRENX(bxInstruction_c *) BX_CPP_AttrRegparmN(1);
 Add the implementations to data_xfer32.cc:
 </p>
 
-<pre>
+<pre class="code">
 BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::RDENX(bxInstruction_c *i)
 {
     // Copy ENX into EAX.
@@ -912,7 +912,7 @@ BX_INSF_TYPE BX_CPP_AttrRegparmN(1) BX_CPU_C::WRENX(bxInstruction_c *i)
 Next, add this to ia_opcodes.h.
 </p>
 
-<pre>
+<pre class="code">
 bx_define_opcode(BX_IA_RDENX, &amp;BX_CPU_C::RDENX, &amp;BX_CPU_C::RDENX, 0, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, 0)
 bx_define_opcode(BX_IA_WRENX, &amp;BX_CPU_C::WRENX, &amp;BX_CPU_C::WRENX, 0, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, BX_SRC_NONE, 0)
 </pre>
@@ -921,7 +921,7 @@ bx_define_opcode(BX_IA_WRENX, &amp;BX_CPU_C::WRENX, &amp;BX_CPU_C::WRENX, 0, BX_
 Now, in fetchdecode.cc, replace <b>both occurrences</b> of:
 </p>
 
-<pre>
+<pre class="code">
 /* 0F 3B /w */ { 0, BX_IA_ERROR },
 /* 0F 3C /w */ { 0, BX_IA_ERROR },
 </pre>
@@ -930,7 +930,7 @@ Now, in fetchdecode.cc, replace <b>both occurrences</b> of:
 with
 </p>
 
-<pre>
+<pre class="code">
 /* 0F 3B /w */ { 0, BX_IA_RDENX },
 /* 0F 3C /w */ { 0, BX_IA_WRENX },
 </pre>
@@ -954,11 +954,10 @@ a program to test the new instructions.
 </p>
 
 <p>
-Here's a program written in GNU assembly language to test the new instructions
-and register: 
+Here's a program written in GAS to test the new instructions and register: 
 </p>
 
-<pre>
+<pre class="code">
 .intel_syntax noprefix
 .global main
 .text
@@ -1001,7 +1000,7 @@ format:
 Compile it with:
 </p>
 
-<pre>
+<pre class="code">
 gcc -m32 test.s -o test
 </pre>
 
@@ -1015,12 +1014,19 @@ will show up in /mnt/sda1/test. Start Bochs and run it. You should get "EAX is
 <img src="/images/bochs-instructions-working.png" alt="Bochs Panic Message" />
 </center>
 
+<p>
+Of course, if you want the new instructions to work properly when they are used
+by two processes at the same time, you'll have to modify the Linux kernel to
+save and restore the ENX register across context switches. I won't cover that in
+this guide.
+</p>
+
 <h3>Useful Functions</h3>
 
 <p>
-Here are some functions that might come in handy while writing Bochs
-instructions. There many functions that are not listed here. Look for them in
-the implementations of other instructions.
+Here are some functions that might come in handy when writing CPU
+instructions. There are many functions that are not listed here. Look for them
+in the implementations of other instructions.
 </p>
 
 <ul>
@@ -1076,11 +1082,11 @@ the implementations of other instructions.
 <h2>Conclusion</h2>
 
 <p>
-If you followed this guide successfully, you should know how to get a (possibly
-modified) modern Linux kernel running in Bochs, as well as have some idea about
-how to experiment with changing the x86 architecture. Where you go from here is
-up to you. The possibilities for research and learning are almost endless.
-Certainly you can think of something clever or fun to do with your new skills!
+If you followed this guide, you should know how to get a (possibly modified)
+modern Linux kernel running in Bochs and how to experiment with changing the
+architecture. Where you go from here is up to you. The possibilities for
+research and learning are almost endless.  Certainly you can think of something
+clever or fun to do with your new skills!
 </p>
 
 <p>
