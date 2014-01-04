@@ -136,7 +136,7 @@ $ sha256sum 100_0432.JPG
 <p>
 If your adversary finds the image file or learns what orientation the pieces
 fell in, they'll be able to recover your random number. To prevent this, make
-sure you shred the image file after you're done with it. To dispose of the paper
+sure you overwrite the image file after you're done with it. To dispose of the paper
 segments, put them back in the container and shake for a little while before
 throwing them out.
 </p>
@@ -149,9 +149,10 @@ should be fine.
 </p>
 
 <p>
-If you used a digital camera with an SD card, make sure you shred the entire SD
-card, or better, shred it then physically destroy it. If you used a scanner,
-unplug the power cord for a few minutes to remove any trace of the image in
+If you used a digital camera with an SD card, make sure you overwrite the entire
+SD card, or better, overwrite it then physically destroy it. If you used
+a scanner, unplug the power cord for a few minutes to remove any trace of the
+image in
 non-volatile memory (warning: some scanners <a href="http://www.cbsnews.com/news/digital-photocopiers-loaded-with-secrets/">save every image to a hard drive</a>, in
 which case you're out of luck). Using a webcam attached directly to your PC is
 a much better option.
