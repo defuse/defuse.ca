@@ -8,7 +8,7 @@
     );
 ?>
 <div class="pagedate">
-January 2, 2014
+January 4, 2014
 </div>
 <h1>A Manual Random Number Generator</h1>
 
