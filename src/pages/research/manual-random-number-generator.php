@@ -152,7 +152,7 @@ should be fine.
 If you used a digital camera with an SD card, make sure you shred the entire SD
 card, or better, shred it then physically destroy it. If you used a scanner,
 unplug the power cord for a few minutes to remove any trace of the image in
-non-volatile memory (warning: some scanners save every image to a hard drive, in
+non-volatile memory (warning: some scanners <a href="http://www.cbsnews.com/news/digital-photocopiers-loaded-with-secrets/">save every image to a hard drive</a>, in
 which case you're out of luck). Using a webcam attached directly to your PC is
 a much better option.
 </p>
