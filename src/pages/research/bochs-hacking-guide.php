@@ -8,7 +8,7 @@
     );
 ?>
 <div class="pagedate">
-January 2, 2013
+January 2, 2014
 </div>
 <h1>Bochs Hacking Guide</h1>
 
