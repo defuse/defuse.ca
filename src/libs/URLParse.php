@@ -369,6 +369,12 @@ class URLParse
                 P_METD => "PHP functions for defending secrets against the BREACH attack.",
                 P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
             ),
+            "manual-random-number-generator" => array(
+                P_FILE => "research/manual-random-number-generator.php",
+                P_TITL => "Manually Generating Random Numbers",
+                P_METD => "Manually generating random numbers for cryptographic use.",
+                P_METK => "random numbers, true random, csprng, cryptographically secure",
+            ),
             "instruction-filters" => array(
                 P_FILE => "research/instruction-filters.php",
                 P_TITL => "Instruction Filters as an Exploitation Defense",
