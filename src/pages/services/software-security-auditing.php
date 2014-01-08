@@ -25,6 +25,8 @@ What I can do:
     <li>Check web code for XSS, SQL injection, session, password hashing, etc.  vulnerabilities.</li>
     <li>Evaulate the design and implementation of cryptography software.</li>
     <li>Look for memory corruption bugs in C and C++ code.</li>
+    <li>Write proof-of-concept exploits for vulnerabilities.</li>
+    <li>Check the security of your Linux server and the services it runs.</li>
 </ul>
 
 <p>

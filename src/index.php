@@ -172,6 +172,7 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/services.htm">Services<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
+            <li><a href="/software-security-auditing.htm">&nbsp;Security Auditing</a></li>
             <li><a href="/pastebin.htm">&nbsp;Encrypted Pastebin</a></li>
             <li><a href="/trustedthirdparty.htm">&nbsp;TRENT - Trusted RNG</a></li>
             <li><a href="/big-number-calculator.htm">&nbsp;Big Number Calculator</a></li>
