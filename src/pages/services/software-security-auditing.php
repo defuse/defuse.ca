@@ -9,7 +9,8 @@ published free software (under a GPL-like license).
 </p>
 
 <p>
-I am not an experienced code auditor, but it's something I really like to do,
+I am not an experienced code auditor, but it's something I <a
+href="http://www.cryptofails.com/">really like to do</a>,
 and I am pretty good with security (see my <a
 href="/resume.htm">r&eacute;sum&eacute;</a>). So this will also be a learning experience for
 me. That's good for you, too: I will not charge for the time I need to spend
