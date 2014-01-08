@@ -309,6 +309,12 @@ class URLParse
                 P_METD => "Custom secure software development to suit your needs.",
                 P_METK => "software development, custom software, programming, security",
             ),
+            "software-security-auditing" => array(
+                P_FILE => "services/software-security-auditing.php",
+                P_TITL => "Software Security Auditing",
+                P_METD => "Get your software audited for security bugs.",
+                P_METK => "software security, exploits, auditing",
+            ),
             "online-x86-assembler" => array(
                 P_FILE => "services/online-x86-assembler.php",
                 P_TITL => "Online x86 and x64 Intel Instruction Assembler",
