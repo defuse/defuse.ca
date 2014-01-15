@@ -129,6 +129,12 @@ A web search of the title is usually enough to find the book or paper.
 <a name="papers"></a>
 <h2>Papers</h2>
 
+<h3>2014</h3>
+
+<ul>
+    <li>A Personal View of Average-Case Complexity (Russell Impagliazzo)</li>
+</ul>
+
 <h3>2013</h3>
 
 <ul>
