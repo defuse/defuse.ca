@@ -17,9 +17,13 @@ This report is the result of a paid 10-hour security audit of <a
 href="http://www.arg0.net/encfs">EncFS</a>. It has been <a
 href="http://sourceforge.net/mailarchive/message.php?msg_id=31849549">posted to
 the EncFS mailing list</a>, so check there for follow-up. I feel that full
-disclosure is the best approach for disclosing these vulnerabilities, since by
-doing so, users can immediately re-evaluate their use of EncFS, and some of the
-issues have already been disclosed but haven't been fixed.
+disclosure is the best approach for disclosing these vulnerabilities, since some
+of the issues have already been disclosed but haven't been fixed, and by
+disclosing them, users can immediately re-evaluate their use of EncFS.
+</p>
+
+<p>
+Thanks to Igor Sviridov for funding this audit.
 </p>
 
 <pre>
