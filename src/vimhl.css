@@ -37,3 +37,6 @@
 .vimhighlight .Type { color: #ffffff; }
 .vimhighlight .Comment { color: #696969; }
 .vimhighlight .Special { color: #ffffff; }
+
+/* Vim 7.4+ */
+.vimhighlight .LineNr { color: #008888; }

@@ -244,7 +244,7 @@ class VimHighlight
 
     private function extractBody($html) {
         if($this->use_css) {
-            $bodyStart = strpos($html, "<pre>");
+            $bodyStart = strpos($html, "<pre");
             $bodyEnd = strrpos($html, "</pre>") + strlen("</pre>");
             return substr($html, $bodyStart, $bodyEnd - $bodyStart + 1);
         } else {

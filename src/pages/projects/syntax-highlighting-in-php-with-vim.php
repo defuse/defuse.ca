@@ -45,7 +45,21 @@ EOC;
 printHlString($source, "php", false);
 ?>
 
-<p>Here's the script (<a href="/source/VimHighlight.php">download</a>):</p>
+<h2>Download</h2>
+
+<p>
+The script is displayed below (using itself!).
+You can <a href="/source/VimHighlight.php">download it here</a> or 
+<a href="https://github.com/defuse/vimhl">find it on github</a>.
+</p>
+
+<p>
+<b>Note:</b> This script has recently been <a
+href="https://github.com/defuse/vimhl/commit/93a531f0a16e5f37937d9e3697f4e39eccefd3cc">updated</a>
+to work with Vim 7.4. Also note that Vim 7.4 uses a different class name for the
+line numbers. It now uses ".LineNr" instead of ".lnr". Update your CSS file
+accordingly. 
+</p>
 
 <?php
     printSourceFile('source/VimHighlight.php', true);
