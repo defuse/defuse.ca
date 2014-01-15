@@ -375,6 +375,12 @@ class URLParse
                 P_METD => "PHP functions for defending secrets against the BREACH attack.",
                 P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
             ),
+            "audits/encfs" => array(
+                P_FILE => "audits/encfs.php",
+                P_TITL => "EncFS Security Audit",
+                P_METD => "Security audit of the EncFS encrypted filesystem.",
+                P_METK => "encfs, security audit, cryptography",
+            ),
             "manual-random-number-generator" => array(
                 P_FILE => "research/manual-random-number-generator.php",
                 P_TITL => "Manually Generating Random Numbers",

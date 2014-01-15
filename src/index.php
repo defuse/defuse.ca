@@ -255,6 +255,13 @@ header('Content-Type: text/html; charset=utf-8');
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
             </li>        
+            <li><a href="#"><span class="drop"><span>Audits</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+                <ul>
+                    <li><a href="/audits/encfs.htm">&nbsp;EncFS</a></li>
+                </ul>
+
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            </li>
             <li><a href="#"><span class="drop"><span>Other</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
                     <li><a href="/bochs-hacking-guide.htm">&nbsp;Hacking Bochs</a></li>
