@@ -28,6 +28,7 @@ What I can do:
     <li>Look for memory corruption bugs in C and C++ code.</li>
     <li>Write proof-of-concept exploits for vulnerabilities.</li>
     <li>Check the security of your Linux server and the services it runs.</li>
+    <li>Responsibly disclose vulnerabilities to vendors.</li>
 </ul>
 
 <p>
