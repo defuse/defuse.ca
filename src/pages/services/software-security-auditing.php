@@ -32,7 +32,8 @@ What I can do:
 </ul>
 
 <p>
-I am especially interested in auditing software that uses cryptography.
+Here's an <a href="/audits/encfs.htm">example of my work</a>. I am especially
+interested in auditing software that uses cryptography.
 </p>
 
 <p>
