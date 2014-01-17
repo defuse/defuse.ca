@@ -98,7 +98,7 @@ if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['i
 
 function printAssemblyResults($results)
 {
-    $safe_justBytes = htmlentities($results['hex_zero_bold'], ENT_QUOTES);
+    $safe_justBytes = $results['hex_zero_bold'];
     $safe_byteString = htmlentities($results['string'], ENT_QUOTES);
     $safe_arrayDef = htmlentities($results['array'], ENT_QUOTES);
     $safe_code = HtmlEscape::escapeText($results['code'], true, 4);
