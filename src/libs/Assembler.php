@@ -124,7 +124,11 @@ class Assembler
             // Note: there might be a bug here if the mnemonic is equal to a hex byte.
             // The negative lookahead for a colon is to filter out lables, e.g.
             // "00000013 <location1>:"
-            $res = preg_match('/([a-fA-F0-9]{2}(\s+|$))+(?!.*:)/', $line, $matches);
+            // The [^s] before the negative lookahead for colon is to stop it
+            // from thinking segment:offset addresses are the separator between
+            // the disassembly address and code (the ^s forces it not to match
+            // cs:, ds:, etc. Example: JMP DWORD PTR ds:0x0
+            $res = preg_match('/([a-fA-F0-9]{2}(\s+|$))+(?!.*[^s]:)/', $line, $matches);
             // Ignore the line if it doesn't have the expected run of hex digits.
             if ($res == 0 || $res == false)
                 continue;
