@@ -26,6 +26,15 @@ disclosing them, users can immediately re-evaluate their use of EncFS.
 Thanks to Igor Sviridov for funding this audit.
 </p>
 
+<p>
+<b>Note:</b> The severity ratings are subjective and not representative of an
+actual user's risk, since they do not account for the probability of being
+exploited (thanks <a
+href="https://twitter.com/solardiz/status/424141135712616448">@solardiz</a>).
+Users should decide based on their own usage of EncFS. I have removed them to
+preemptively avoid confusion. This was my mistake, and I apologize.
+</p>
+
 <pre>
 -------------------------------------------------------------------------------
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;EncFS Security Audit
@@ -61,7 +70,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 2.1. Same Key Used for Encryption and Authentication
 
-&nbsp;&nbsp;SEVERITY: 3
+&nbsp;&nbsp;<s>SEVERITY: 3</s>
 
 &nbsp;&nbsp;EncFS uses the same key for encrypting data and computing MACs. This is
 &nbsp;&nbsp;generally considered to be bad practice.
@@ -70,7 +79,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 2.2. Stream Cipher Used to Encrypt Last File Block
 
-&nbsp;&nbsp;SEVERITY: 7
+&nbsp;&nbsp;<s>SEVERITY: 7</s>
 
 &nbsp;&nbsp;As reported in [1], EncFS uses a stream cipher mode to encrypt the last file
 &nbsp;&nbsp;block. The change log says that the ability to add random bytes to a block was
@@ -96,7 +105,7 @@ Thanks to Igor Sviridov for funding this audit.
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
 2.3. Generating Block IV by XORing Block Number
 
-&nbsp;&nbsp;SEVERITY: 7
+&nbsp;&nbsp;<s>SEVERITY: 7</s>
 
 &nbsp;&nbsp;Given the File IV (an IV unique to a file), EncFS generates per-block IVs by
 &nbsp;&nbsp;XORing the File IV with the Block Number. This is not a good solution, as it
@@ -117,7 +126,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 2.4. File Holes are Not Authenticated
 
-&nbsp;&nbsp;SEVERITY: 5
+&nbsp;&nbsp;<s>SEVERITY: 5</s>
 
 &nbsp;&nbsp;File holes allow large files to contain &quot;holes&quot; of all zero bytes, which are
 &nbsp;&nbsp;not saved to disk. EncFS supports these, but it determines if a file block is
@@ -130,7 +139,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 2.5. MACs Not Compared in Constant Time
 
-&nbsp;&nbsp;SEVERITY: 6
+&nbsp;&nbsp;<s>SEVERITY: 6</s>
 
 &nbsp;&nbsp;MACs are not compared in constant time (MACFileIO.cpp, Line 209). This allows
 &nbsp;&nbsp;an attacker with write access to the ciphertext to use a timing attack to
@@ -140,7 +149,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 2.6. 64-bit MACs
 
-&nbsp;&nbsp;SEVERITY: 5
+&nbsp;&nbsp;<s>SEVERITY: 5</s>
 
 &nbsp;&nbsp;EncFS uses 64-bit MACs. This is not long enough, as they can be forged in 2^64
 &nbsp;&nbsp;time, which is feasible today.
@@ -149,7 +158,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 2.7. Editing Configuration File Disables MACs
 
-&nbsp;&nbsp;SEVERITY: 7
+&nbsp;&nbsp;<s>SEVERITY: 7</s>
 
 &nbsp;&nbsp;The purpose of MAC headers is to prevent an attacker with read/write access to
 &nbsp;&nbsp;the ciphertext from being able to make changes without being detected.
@@ -171,14 +180,14 @@ Thanks to Igor Sviridov for funding this audit.
 
 3.1. Padding Oracle
 
-&nbsp;&nbsp;POSSIBLE SEVERITY: 8
+&nbsp;&nbsp;<s>POSSIBLE SEVERITY: 8</s>
 
 &nbsp;&nbsp;EncFS uses Mac-then-Encrypt. This might make decryption padding oracles
 &nbsp;&nbsp;possible through timing attacks.
 
 3.2. Chosen Ciphertext Attacks
 
-&nbsp;&nbsp;POSSIBLE SEVERITY: 10
+&nbsp;&nbsp;<s>POSSIBLE SEVERITY: 10</s>
 
 &nbsp;&nbsp;Since the same key is used to encrypt all files, it may be possible for an
 &nbsp;&nbsp;attacker with read/write access to the ciphertext and partial read access to
@@ -190,7 +199,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 3.3. Possible Out of Bounds Write in StreamNameIO and BlockNameIO
 
-&nbsp;&nbsp;POSSIBLE SEVERITY: 7
+&nbsp;&nbsp;<s>POSSIBLE SEVERITY: 7</s>
 
 &nbsp;&nbsp;There is a possible buffer overflow in the encodeName method of StreamNameIO
 &nbsp;&nbsp;and BlockNameIO. The methods write to the &#039;encodedName&#039; argument without
@@ -199,7 +208,7 @@ Thanks to Igor Sviridov for funding this audit.
 
 3.4. 64-bit Initialization Vectors
 
-&nbsp;&nbsp;POSSIBLE SEVERITY: 5
+&nbsp;&nbsp;<s>POSSIBLE SEVERITY: 5</s>
 
 &nbsp;&nbsp;Initialization vectors are only 64 bits, even when using AES instead of
 &nbsp;&nbsp;Blowfish. This may lead to vulnerabilities when encrypting large (or lots of)
