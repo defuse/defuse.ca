@@ -133,6 +133,7 @@ A web search of the title is usually enough to find the book or paper.
 
 <ul>
     <li>A Personal View of Average-Case Complexity (Russell Impagliazzo)</li>
+    <li>Towards an Ethical Code for Information Security? (Steven J. Greenwald et al.)</li>
 </ul>
 
 <h3>2013</h3>
