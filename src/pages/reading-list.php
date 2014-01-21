@@ -132,6 +132,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Cryptfs: A Stackable Vnode Level Encryption File System (Erez Zadok et al.)</li>
     <li>A Personal View of Average-Case Complexity (Russell Impagliazzo)</li>
     <li>Towards an Ethical Code for Information Security? (Steven J. Greenwald et al.)</li>
 </ul>
