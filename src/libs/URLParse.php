@@ -103,6 +103,9 @@ class URLParse
             "key" => array(
                 P_RDIR => "contact"
             ),
+            "audits/" => array(
+                P_RDIR => "software-security-auditing"
+            ),
             "about" => array(
                 P_FILE => "about.html",
                 P_METD => "About Defuse Security."
