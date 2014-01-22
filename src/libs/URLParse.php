@@ -384,6 +384,12 @@ class URLParse
                 P_METD => "Security audit of the EncFS encrypted filesystem.",
                 P_METK => "encfs, security audit, cryptography",
             ),
+            "audits/ecryptfs" => array(
+                P_FILE => "audits/ecryptfs.php",
+                P_TITL => "eCryptfs Security Audit",
+                P_METD => "Security audit of the eCryptfs encrypted filesystem.",
+                P_METK => "eCryptfs, security audit, cryptography",
+            ),
             "manual-random-number-generator" => array(
                 P_FILE => "research/manual-random-number-generator.php",
                 P_TITL => "Manually Generating Random Numbers",
