@@ -21,7 +21,7 @@ A web search of the title is usually enough to find the book or paper.
 
 <ul>
     <li>The Social Network Business Plan (David Silver)</li>
-    <li>Computational Complexity (Sanjeev Arora and Boaz Barak)</li>
+    <li><b>Computational Complexity (Sanjeev Arora and Boaz Barak)</b></li>
 </ul>
 
 <h2>Next</h2>
