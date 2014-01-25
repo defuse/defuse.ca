@@ -43,10 +43,15 @@ A web search of the title is usually enough to find the book or paper.
     <li>Cryptanalysis (Helen Fouc&eacute;)</li>
 </ul>
 
+<h2>2014</h2>
+
+<ul>
+    <li>Feynman Lectures on Computation (Richard Feynman)</li>
+</ul>
+
 <h2>2013</h2>
 
 <ul>
-    <li>Feynman Lectures on Computation</li>
     <li><b>Time Reborn (Lee Smolin)</b></li>
     <li><b>Surely You're Joking, Mr. Feynman! (Richard Feynman)</b></li>
     <li>The Ancestor's Tale (Richard Dawkins)</li>
@@ -132,6 +137,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li><b>Paradigm Regained: Abstraction Mechanisms for Access Control</b></li>
     <li>eCryptfs: An Enterprise-class Cryptographic Filesystem for Linux (Michael Austin Halcrow)</li>
     <li>Cryptfs: A Stackable Vnode Level Encryption File System (Erez Zadok et al.)</li>
     <li>A Personal View of Average-Case Complexity (Russell Impagliazzo)</li>
