@@ -211,7 +211,6 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/generating-random-passwords.htm">&nbsp;PHP Random Passwords</a></li>
             <li><a href="/php-pbkdf2.htm">&nbsp;PBKDF2 For PHP</a></li>
             <li><a href="/force-print-background.htm">&nbsp;Force Print BG Color</a></li>
-            <li><a href="/passwordbolt.htm">&nbsp;Password Bolt [BETA]</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
