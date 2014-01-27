@@ -288,12 +288,6 @@ class URLParse
                 P_METD => "A lightweight, ultra-secure CMS for PHP",
                 P_METK => "secure cms, php cms, light cms, small cms, tiny cms, cms",
             ),
-            "passwordbolt" => array(
-                P_FILE => "software/passwordbolt.html",
-                P_TITL => "Password Bolt Password Manager - Defuse Security",
-                P_METD => "Password bolt, an extremely secure web based password manager.",
-                P_METK => "passwordbolt, password manager, password, online password manager, web password manager, open source",
-            ),
             "backup-verify-script" =>  array(
                 P_FILE => "software/backup-verify-script.php",
                 P_TITL => "Script for Comparing Folders and Validating Backups",
