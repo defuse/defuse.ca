@@ -258,6 +258,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <ul>
                     <li><a href="/audits/encfs.htm">&nbsp;EncFS</a></li>
                     <li><a href="/audits/ecryptfs.htm">&nbsp;eCryptfs</a></li>
+                    <li><a href="/audits/zerobin.htm">&nbsp;ZeroBin</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->

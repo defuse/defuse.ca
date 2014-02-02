@@ -18,6 +18,30 @@ This is the result of a 4-hour security audit of
 audit was performed for free as a service to the free/opensource community.
 </p>
 
+<p>
+If you would like to see more audits like this, please donate:
+</p>
+
+<table style="width: 320px; margin: 0 auto;">
+    <tr>
+        <td>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+            target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="98P9C5D5QH7YC">
+            <input type="image"
+            src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0"
+            name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+            width="1" height="1">
+            </form>
+        </td>
+        <td>
+            <script id='fb3bxet'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=earthrise&url=https%3A%2F%2Fdefuse.ca%2Faudits%2Fzerobin.htm';f.title='Flattr';f.height=62;f.width=55;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb3bxet');</script>
+        </td>
+    </tr>
+</table>
+
 <pre>
 -----------------------------------------------------------------------
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Security Audit of ZeroBin
