@@ -137,6 +137,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Cuckoo Cycle: a memory-hard proof-of-work system (John Tromp)</li>
     <li><b>Paradigm Regained: Abstraction Mechanisms for Access Control</b></li>
     <li>eCryptfs: An Enterprise-class Cryptographic Filesystem for Linux (Michael Austin Halcrow)</li>
     <li>Cryptfs: A Stackable Vnode Level Encryption File System (Erez Zadok et al.)</li>
