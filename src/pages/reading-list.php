@@ -46,6 +46,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li>A Universe From Nothing (Lawrence M. Krauss)</li>
     <li>Feynman Lectures on Computation (Richard Feynman)</li>
 </ul>
 
