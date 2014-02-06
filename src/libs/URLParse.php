@@ -378,6 +378,12 @@ class URLParse
                 P_METD => "Security audit of the EncFS encrypted filesystem.",
                 P_METK => "encfs, security audit, cryptography",
             ),
+            "audits/encfs-old" => array(
+                P_FILE => "audits/encfs-old.php",
+                P_TITL => "EncFS Security Audit",
+                P_METD => "Security audit of the EncFS encrypted filesystem.",
+                P_METK => "encfs, security audit, cryptography",
+            ),
             "audits/ecryptfs" => array(
                 P_FILE => "audits/ecryptfs.php",
                 P_TITL => "eCryptfs Security Audit",
