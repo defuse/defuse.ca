@@ -38,6 +38,7 @@ Here are some examples of my work:
 <ul>
     <li><a href="/audits/encfs.htm">EncFS</a></li>
     <li><a href="/audits/ecryptfs.htm">eCryptfs</a></li>
+    <li><a href="/audits/zerobin.htm">ZeroBin</a></li>
 </ul>
 
 <p>
