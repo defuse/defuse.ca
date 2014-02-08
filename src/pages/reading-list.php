@@ -241,4 +241,5 @@ A web search of the title is usually enough to find the book or paper.
     <li>Gitmo Is Killing Me (New York Times)</li>
     <li>Notation Guide For Precalculus and Calculus Students (Sean Raleigh)</li>
     <li>RFC 1036 - Standard for Interchange of USENET Messages</li>
+    <li>RFC 5869 - HMAC-based Extract-and-Expand Key Derivation Function</li>
 </ul>
