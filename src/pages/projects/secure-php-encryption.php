@@ -95,6 +95,11 @@ cryptographer for help. Almost all cryptosystem failures are due to
 implementation errors.
 </p>
 
+<p>
+Also take a look at <a
+href="https://github.com/jedisct1/libsodium-php">libsodium-php</a>.
+</p>
+
 <center><strong><a href="/source/Crypto.php">Download Crypto.php</a></strong></center>
 
 <?php

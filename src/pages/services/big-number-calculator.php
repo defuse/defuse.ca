@@ -188,7 +188,7 @@ function containsUnsafeChars($eqn)
 {
     if(strpos($eqn, "..") !== false)
         return true;
-    $whitelist = "1234567890()*^|&%/+-<>. x";
+    $whitelist = "1234567890abcdefABCDEF()*^|&%/+-<>. x";
     for($i = 0; $i < strlen($eqn); $i++)
     {
         $ch = substr($eqn, $i, 1);
