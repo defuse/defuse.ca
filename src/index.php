@@ -292,7 +292,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/online-free-computer-science-education.htm">&nbsp;CS Education</a></li>
             <li><a href="/rules-for-working-with-me.htm">&nbsp;Working With Me</a></li>
             <li><a href="/contributors.htm">&nbsp;Contributors</a></li>
-            <li><a href="/contributors.htm">&nbsp;PoC || GTFO Mirror</a></li>
+            <li><a href="/pocorgtfo.htm">&nbsp;PoC || GTFO Mirror</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
