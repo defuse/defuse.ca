@@ -16,8 +16,7 @@ records and detecting whether the domain being spoofed has SPF records, so you
 can see how to do those in Ruby, too.  </p>
 
 <p style="text-align: center;">
-    <strong><a href="/source/mailspoof.rb">Download</a></strong>
+    <strong>
+        <a href="https://github.com/defuse/email-spoofing">Source Code on GitHub</a>
+    </strong>
 </p>
-<?php
-    printSourceFile("source/mailspoof.rb",true);
-?>
