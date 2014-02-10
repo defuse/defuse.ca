@@ -89,11 +89,13 @@ ic4vQ2OXMsOzCmsMnhEHFRc6rp2oDBUDq9KZJnFXsHbKO8xh5Kcpp9T4ZHFPcVg7<br />
 abbababbabbaabaaaaabbabbbbababaabbabbaaabbabababbaaabbaaababbbbb
 </div>
 
-<h2>PHP Source (<a href="/source/PasswordGenerator.php">download</a>):</h2>
+<h2>PHP Source Code</h2>
 
-<?php
-    printSourceFile("source/PasswordGenerator.php", true);
-?>
+<p style="text-align: center;">
+    <strong>
+        <a href="https://github.com/defuse/php-passgen">Source Code on GitHub</a>
+    </strong>
+</p>
 
 <h2>References</h2>
 
