@@ -14,7 +14,7 @@ to:
         </ul>
     </li>
     <li>
-        <a href=http://openwall.info/wiki/people/solar/bio">Solar Designer</a> for:
+        <a href="http://openwall.info/wiki/people/solar/bio">Solar Designer</a> for:
         <ul>
             <li>Very useful criticism of my password hashing article.</li>
             <li>Advice on various things (side channel resistence, etc.)</li>
