@@ -191,7 +191,6 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/passgen.htm">&nbsp;Password Generator</a></li>
             <li><a href="/helloworld-cms.htm">&nbsp;HelloWorld! Secure CMS</a></li>
             <li><a href="/php-hash-cracker.htm">&nbsp;PHP Hash Cracker</a></li>
-            <li><a href="/sockstress.htm">&nbsp;Sockstress</a></li>
             <li><a href="/backup-verify-script.htm">&nbsp;Backup Checker</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -202,7 +201,6 @@ header('Content-Type: text/html; charset=utf-8');
     <li class="headerlink" ><a href="/projects.htm">Projects &amp; Code<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
             <li><a href="/bochs-images.htm">&nbsp;Bochs Disk Images</a></li>
-            <li><a href="/sockstress.htm">&nbsp;Sockstress</a></li>
             <li><a href="/gnutls-psk-client-server-example.htm">&nbsp;GnuTLS PSK Example</a></li>
             <li><a href="/secure-php-encryption.htm">&nbsp;Encryption in PHP</a></li>
             <li><a href="/email-spoofing-in-ruby.htm">&nbsp;Ruby Email Spoofing</a></li>
@@ -221,6 +219,7 @@ header('Content-Type: text/html; charset=utf-8');
         <ul>
             <li><a href="#"><span class="drop"><span>Vulns &amp; Exploits</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
+                    <li><a href="/sockstress.htm">&nbsp;Sockstress</a></li>
                     <li><a href="/instruction-filters.htm">&nbsp;Instruction Filters</a></li>
                     <li><a href="/flush-reload-side-channel.htm">&nbsp;FLUSH+RELOAD</a></li>
                     <li><a href="/exploiting-cpp-vtables.htm">&nbsp;C++ VTABLES</a></li>        
