@@ -61,13 +61,10 @@ RIGHT SALT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 <center>
     <p>
-    <a href="/source/crack.php">
-    <strong>Click here to download the script.</strong>
+    <a href="https://github.com/defuse/helloworld-cms">
+    <strong>Source Code on GitHub</strong>
     </a>
     </p>
 </center>
 
-<?php
-    printSourceFile("source/crack.php", true);
-?>
 
