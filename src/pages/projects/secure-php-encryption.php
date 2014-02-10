@@ -100,3 +100,8 @@ implementation errors.
         <a href="https://github.com/defuse/php-encryption">Source Code on GitHub</a>
     </strong>
 </center>
+
+<p>
+If you're looking for more than symmetric encryption and decryption, check out
+<a href="https://github.com/jedisct1/libsodium-php">libsodium-php</a>.
+</p>
