@@ -48,9 +48,8 @@ printHlString($source, "php", false);
 <h2>Download</h2>
 
 <p>
-The script is displayed below (using itself!).
-You can <a href="/source/VimHighlight.php">download it here</a> or 
-<a href="https://github.com/defuse/vimhl">find it on github</a>.
+You can <a href="https://github.com/defuse/vimhl">find the PHP Vim Syntax
+Highlighting script on GitHub</a>.
 </p>
 
 <p>
@@ -60,7 +59,3 @@ to work with Vim 7.4. Also note that Vim 7.4 uses a different class name for the
 line numbers. It now uses ".LineNr" instead of ".lnr". Update your CSS file
 accordingly. 
 </p>
-
-<?php
-    printSourceFile('source/VimHighlight.php', true);
-?>
