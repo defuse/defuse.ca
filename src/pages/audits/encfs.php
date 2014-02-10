@@ -240,7 +240,7 @@ report <a href="/audits/encfs-old.htm">here</a>.
 
 &nbsp;&nbsp;EncFS is probably safe as long as the adversary only gets one copy of
 &nbsp;&nbsp;the ciphertext and nothing more. EncFS is not safe if the adversary
-&nbsp;&nbsp;has the opportunity to two or more snapshots of the ciphertext at
+&nbsp;&nbsp;has the opportunity to see two or more snapshots of the ciphertext at
 &nbsp;&nbsp;different times. EncFS attempts to protect files from malicious
 &nbsp;&nbsp;modification, but there are serious problems with this feature.
 
