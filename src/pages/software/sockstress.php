@@ -45,7 +45,10 @@
 <h2>Download Sockstress</h2>
 
 <p>
-    Download our public domain C implementation: <strong><a href="/source/sockstress.tar.gz">sockstress.tar.gz</a> </strong> (8 KB)
+    The source code to our public domain C implementation is
+    <strong>
+        <a href="https://github.com/defuse/sockstress">on GitHub</a>
+    </strong>
     <br />
     Download the original Sockstress C source (by Outpost24): <strong><a href="/source/sockstress-outpost24.tar.gz">sockstress-outpost24.tar.gz</a></strong> (232 KB)
 </p>
