@@ -44,9 +44,5 @@ SUMMARY:<br />
 <h2>Script</h2>
 
 <div style="text-align: center; font-weight: bold; padding-bottom: 20px;">
-    <a href="/source/vfy.rb">Download vfy.rb</a>
+    <a href="https://github.com/defuse/backup-verify">Source Code on GitHub</a>
 </div>
-
-<?php
-    printSourceFile("source/vfy.rb", true);
-?>
