@@ -237,9 +237,6 @@ href="/audits/encfs-old.htm">here</a>.
 &nbsp;&nbsp;The EncFS author says that a 2.0 version is being developed [3]. This
 &nbsp;&nbsp;would be a good time to fix the old problems.
 
-&nbsp;&nbsp;As it is now, EncFS is not suitable for protecting mission-critical
-&nbsp;&nbsp;data.
-
 &nbsp;&nbsp;EncFS is probably safe as long as the adversary only gets one copy of
 &nbsp;&nbsp;the ciphertext and nothing more. EncFS is not safe if the adversary
 &nbsp;&nbsp;has the opportunity to two or more snapshots of the ciphertext at
