@@ -79,12 +79,12 @@ most common pitfalls are:
     </li>
 </ol>
 
+<h2>PHP Encryption Library</h2>
 
 <p>
 The following PHP class does encryption and decryption with AES-128 and uses
 HMAC-SHA256 for authentication. It uses PKCS #7 padding so that decryption will
 always return a string that is exactly the same as the one that was encrypted.
-See the <kbd>Test()</kbd> method for sample usage.
 </p>
 
 <p>
@@ -95,13 +95,8 @@ cryptographer for help. Almost all cryptosystem failures are due to
 implementation errors.
 </p>
 
-<p>
-Also take a look at <a
-href="https://github.com/jedisct1/libsodium-php">libsodium-php</a>.
-</p>
-
-<center><strong><a href="/source/Crypto.php">Download Crypto.php</a></strong></center>
-
-<?php
-    printSourceFile("source/Crypto.php",true);
-?>
+<center>
+    <strong>
+        <a href="https://github.com/defuse/php-encryption">Source Code on GitHub</a>
+    </strong>
+</center>
