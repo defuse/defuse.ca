@@ -28,10 +28,11 @@ Thanks to Igor Sviridov for funding this audit.
 
 <p>
 <b>Note:</b> This report was updated on February 5, 2014, thanks to feedback
-from Robert Freudenreich, to correct a technical inaccuracy about how
-initialization vectors are generated and to clarify the conclusion of the
-report. You can see the old version of the report <a
-href="/audits/encfs-old.htm">here</a>.
+from <a href="https://twitter.com/robfreudenreich">Robert Freudenreich</a>
+(founder and CTO of <a href="https://www.boxcryptor.com/">boxcryptor</a>), to
+correct a technical inaccuracy about how initialization vectors are generated
+and to clarify the conclusion of the report. You can see the old version of the
+report <a href="/audits/encfs-old.htm">here</a>.
 </p>
 
 <pre>
