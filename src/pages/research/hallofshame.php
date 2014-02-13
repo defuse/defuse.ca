@@ -101,7 +101,7 @@ function GroupDigits($num)
 ?>
 <h1 style="text-align: center; border-bottom: none;">Password Policy Hall of <span style="color:red;">SHAME</span></h1>
 
-<div style="border: solid red 5px; padding: 20px;">
+<div style="border: solid red 5px; padding: 20px; margin-bottom: 300px;">
 <center>
 <span style="font-size: 20pt;">THIS PAGE IS DEPRECATED</span>
 </center>
