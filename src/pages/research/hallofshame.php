@@ -100,6 +100,20 @@ function GroupDigits($num)
     );
 ?>
 <h1 style="text-align: center; border-bottom: none;">Password Policy Hall of <span style="color:red;">SHAME</span></h1>
+
+<div style="border: solid red 5px; margin: 20px;">
+<span style="font-size: 20pt;">THIS PAGE IS DEPRECATED</span>
+<p>
+I no longer have time to keep updating this page. I could automate it,
+but I don't have time to do that either. So for now this page will remain
+frozen, and will probably contain incorrect information.
+</p>
+<p>
+If you want to pick up the project, <a href="/contact.htm">email me</a> and I'll
+redirect this page to yours.
+</p>
+</div>
+
 <div style="width:600px; text-align:center; margin: 0 auto; border-top: #AA0000 solid 5px; border-bottom: #AA0000 solid 5px;">
 <span style="font-size: 20px;">Storing passwords in PLAIN TEXT is <span style="color:red;"><b>NOT SAFE</b></span>.</span>
 <br />
