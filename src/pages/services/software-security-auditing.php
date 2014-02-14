@@ -2,14 +2,14 @@
 
 <p>
 I want to work with you to make sure your code is secure. I'm available 10 hours
-per week, for $20 CAD per hour, to look over your designs and code to make sure
-they are secure. To give back to the community, I'll reduce my rate to $15 per
-hour for published free or open source software (GPL-like or BSD-like license).
+per week, for $25 CAD per hour, to look over your designs and code to make sure
+they are secure. To give back to the community, I'll reduce my rate to <b>$15
+per hour</b> for published free or open source software (GPL-like or BSD-like
+license).
 </p>
 
 <p>
-I am not an experienced code auditor, but it's something I <a
-href="http://www.cryptofails.com/">really like to do</a>,
+I am not an experienced code auditor, but it's something I really like to do,
 and I am pretty good with security (see my <a
 href="/resume.htm">r&eacute;sum&eacute;</a>). So this will also be a learning
 experience for me. That's good for you, too: I will not charge for the time
@@ -40,6 +40,7 @@ Here are some examples of my work:
     <li><a href="/audits/ecryptfs.htm">eCryptfs</a></li>
     <li><a href="/audits/pefs.htm">PEFS</a></li>
     <li><a href="/audits/zerobin.htm">ZeroBin</a></li>
+    <li><a href="http://www.cryptofails.com/">Crypto Fails</a></li>
 </ul>
 
 <p>
