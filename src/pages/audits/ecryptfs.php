@@ -113,6 +113,10 @@ Thanks to Igor Sviridov for funding this audit.
 &nbsp;&nbsp; than CBC, such as GCM and CTR, which are being discussed on the
 &nbsp;&nbsp; mailing list [1,2].
 
+&nbsp;&nbsp; Update (February 14, 2014): Filename encryption actually uses ECB
+&nbsp;&nbsp; mode, so the random bytes are useless. Thanks to <a href="https://twitter.com/samuelks">@samuelks</a> for
+&nbsp;&nbsp; reporting this.
+
 3. Future Work
 
 &nbsp;&nbsp; The following sections document what should be prioritized in future
