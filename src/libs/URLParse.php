@@ -390,6 +390,12 @@ class URLParse
                 P_METD => "Security audit of the eCryptfs encrypted filesystem.",
                 P_METK => "eCryptfs, security audit, cryptography",
             ),
+            "audits/pefs" => array(
+                P_FILE => "audits/pefs.php",
+                P_TITL => "PEFS Security Audit",
+                P_METD => "Security audit of the PEFS encrypted filesystem.",
+                P_METK => "PEFS, security audit, cryptography",
+            ),
             "audits/zerobin" => array(
                 P_FILE => "audits/zerobin.php",
                 P_TITL => "ZeroBin Security Audit",
