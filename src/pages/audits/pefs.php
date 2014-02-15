@@ -13,7 +13,7 @@ February 14, 2014
 <h1>PEFS Security Audit</h1>
 
 <p>
-This is the result of a short 10-hour security audit of <a
+This is the result of a short 13-hour security audit of <a
 href="https://wiki.freebsd.org/PEFS">Private Encrypted File System (PEFS)</a>.
 </p>
 
