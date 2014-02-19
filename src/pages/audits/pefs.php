@@ -18,7 +18,8 @@ href="https://wiki.freebsd.org/PEFS">Private Encrypted File System (PEFS)</a>.
 </p>
 
 <p>
-Thanks to Matt Olander for funding this audit.
+Thanks to <a href="http://www.ixsystems.com">Matt Olander</a> for funding this
+audit.
 </p>
 
 <pre>
