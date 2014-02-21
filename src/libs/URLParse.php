@@ -372,6 +372,12 @@ class URLParse
                 P_METD => "PHP functions for defending secrets against the BREACH attack.",
                 P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
             ),
+            "side-channels-in-encoding-functions" => array(
+                P_FILE => "research/side-channels-in-encoding-functions.php",
+                P_TITL => "Side Channel Attacks in Hex and Base64 Encoding",
+                P_METD => "Do encoding functions like bin2hex and base64_encode create side channels?",
+                P_METK => "side channel, side channel attack, encoding, bin2hex, base64",
+            ),
             "audits/encfs" => array(
                 P_FILE => "audits/encfs.php",
                 P_TITL => "EncFS Security Audit",
