@@ -918,7 +918,7 @@ bx_define_opcode(BX_IA_WRENX, &amp;BX_CPU_C::WRENX, &amp;BX_CPU_C::WRENX, 0, BX_
 </pre>
 
 <p>
-Now, in fetchdecode.cc, replace <b>both occurrences</b> of:
+Now, in fetchdecode.cc, replace...
 </p>
 
 <pre class="code">
@@ -927,12 +927,30 @@ Now, in fetchdecode.cc, replace <b>both occurrences</b> of:
 </pre>
 
 <p>
-with
+...with...
 </p>
 
 <pre class="code">
 /* 0F 3B /w */ { 0, BX_IA_RDENX },
 /* 0F 3C /w */ { 0, BX_IA_WRENX },
+</pre>
+
+<p>
+Also replace the following (the difference is the "/w" has changed to "/d")...
+</p>
+
+<pre class="code">
+/* 0F 3B /d */ { 0, BX_IA_ERROR },
+/* 0F 3C /d */ { 0, BX_IA_ERROR },
+</pre>
+
+<p>
+...with...
+</p>
+
+<pre class="code">
+/* 0F 3B /d */ { 0, BX_IA_RDENX },
+/* 0F 3C /d */ { 0, BX_IA_WRENX },
 </pre>
 
 <p>
