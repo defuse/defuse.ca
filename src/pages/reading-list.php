@@ -139,6 +139,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>On Reusing Ephemeral Keys in Diffie-Hellman Key Agreement Protocols (Alfred Menezes and Berkant Ustaoglu)</li>
     <li>OONI: Open Observatory of Network Interference</li>
     <li>The ND2DB attack: Database content extraction using attacks on the indexing algorithms (Ariel Futoransky et al.)</li>
     <li><b>Exposing Private Information by Timing Web Applications (Andrew Bortz et al.)</b></li>
