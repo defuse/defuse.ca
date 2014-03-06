@@ -195,6 +195,12 @@ class URLParse
                 P_METD => "What the word \"If\" means in formal logic",
                 P_METK => "formal logic introduction, meaning of if, what if means"
             ),
+            "web-browser-negative-feedback" => array(
+                P_FILE => "projects/web-browser-negative-feedback.php",
+                P_TITL => "Negative Feedback for Insecure Connections",
+                P_METD => "Should web browser interfaces provide negative feedback when the connection is insecure?",
+                P_METK => "negative feedback, insecure connections, http, https, ssl, tls, ev"
+            ),
             "blowfish" => array(      
                 P_FILE => "projects/blowfish.html",
                 P_TITL => "Blowfish C# and C++ Source Code - Defuse Security",
