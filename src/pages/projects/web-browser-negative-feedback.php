@@ -41,7 +41,7 @@ they won't know that the page is insecure:
 </center>
 
 <p>
-Even though insecure connections are still extremely popular, there's no reason
+Even though insecure connections are still extremely common, there's no reason
 it has to be this way. The browser <em>could</em> warn the user by displaying
 a broken lock, like this:
 </p>
