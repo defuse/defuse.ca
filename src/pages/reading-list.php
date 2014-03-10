@@ -73,7 +73,7 @@ A web search of the title is usually enough to find the book or paper.
     <li>How to Disappear: Erase Your Digital Footprint, Leave False Trails, and Vanish Without a Trace</li>
     <li>JavaScript: The Good Parts</li>
     <li>HTML5 Canvas</li>
-    <li><b>Godel, Escher, Bach: An Eternal Golden Braid (Hofstadter)</b></li>
+    <li><b>G&#246;del, Escher, Bach: An Eternal Golden Braid (Douglas Hofstadter)</b></li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 1</li>
 </ul>
 
