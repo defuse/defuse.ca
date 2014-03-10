@@ -46,6 +46,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li><b>Death By Black Hole (Neil DeGrasse Tyson)</b></li>
     <li>Rocks &amp; Minerals (Dr. R. F. Symes)</li>
     <li>A Universe From Nothing (Lawrence M. Krauss)</li>
     <li>Feynman Lectures on Computation (Richard Feynman)</li>
