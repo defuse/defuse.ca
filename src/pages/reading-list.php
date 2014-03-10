@@ -141,6 +141,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>&quot;Ooh Aah... Just a Little Bit&quot; : A small amount of side channel can go a long way (Naomi Benger et al.)</li>
     <li>Programming with D-Wave: Map Coloring Problem (E. D. Dahl)</li>
     <li>I Know Why You Went to the Clinic: Risks and Realization of HTTPS Traffic Analysis (Brad Miller et al.)</li>
     <li>On Reusing Ephemeral Keys in Diffie-Hellman Key Agreement Protocols (Alfred Menezes and Berkant Ustaoglu)</li>
