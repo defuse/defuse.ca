@@ -238,8 +238,10 @@ A web search of the title is usually enough to find the book or paper.
 </ul>
 
 <a name="zines"></a>
-<h2>E-Zines &amp; Other</h2>
+<h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li>2600 Winter 2013-2014</li>
+    <li>National Geographic February 2014</li>
     <li>JSOU Report 12-3: Understanding the Form, Function, and Logic of Clandestine Insurgent and Terrorist Networks: The First Step in Effective Counternetwork Operations, Chapter 3</li>
     <li><b>Megamos Crypto, Responsible Disclosure, and the Chilling Effect of Volkswagen Aktiengesellschaft vs Garcia, et al (Robert Carolina, Kenneth G. Paterson)</b></li>
     <li><b><a href="http://download.intel.com/design/intarch/papers/cache6.pdf">An untitled paper from Intel on cache</a></b></li>
