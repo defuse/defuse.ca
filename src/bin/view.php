@@ -53,7 +53,7 @@ header('Content-Type: text/html; charset=utf-8');
     <title>Defuse Security's Encrypted Pastebin</title>
     <style type="text/css">
     body {
-        background-color: #e7e7e7; 
+        background-color: #F0F0F0; 
         color:black;
         padding: 0;
         margin: 0;
@@ -63,7 +63,7 @@ header('Content-Type: text/html; charset=utf-8');
     
     .codebox {
         font-family:monospace; 
-        background-color: #e7e7e7; 
+        background-color: #F0F0F0; 
         /*border: solid black 1px;*/
         padding-left: 20px;
         clear:both;
@@ -81,7 +81,7 @@ header('Content-Type: text/html; charset=utf-8');
     
     .div0 {
         font-family: monospace;
-        background-color: #e7e7e7;
+        background-color: #F0F0F0;
         margin-right: 10px;
     }
     /* every second row of text is shaded */
