@@ -16,6 +16,7 @@ Create and submit a PHP RFC to deprecate the MCRYPT_RAND parameter:
     https://github.com/php/php-src/pull/579#issuecomment-37357596
 </pre>
 
+<a name="random"></a>
 <h2>Linux Kernel /dev/random Cache Side Channel</h2>
 
 <pre>
