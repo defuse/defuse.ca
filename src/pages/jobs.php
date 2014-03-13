@@ -22,8 +22,10 @@ Create and submit a PHP RFC to deprecate the MCRYPT_RAND parameter:
 <pre>
 I will pay: $50 USD.
 
-There is a <a href="https://github.com/torvalds/linux/blob/master/drivers/char/random.c#L516">
-possible cache side channel vulnerability in /dev/random</a>. Create
-a compelling case (possibly a PoC) for its existence and report it to the Linux
-kernel people.
+There is a possible cache side channel vulnerability in /dev/random:
+
+    https://github.com/torvalds/linux/blob/master/drivers/char/random.c#L516
+
+Create a compelling case (possibly a PoC) for its existence and report it to the
+Linux kernel people (mailing list or something?)
 </pre>
