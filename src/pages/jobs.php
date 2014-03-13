@@ -3,8 +3,9 @@
 <p>
 This page lists small tasks that I want to do, but don't have time to do. If you
 complete one of them successfully, I will pay you (by Paypal or Bitcoin). If two
-people do the same thing, I will pay the one who finished it first. I reserve
-the right to not pay anybody anything.
+people do the same thing, I will pay the one who finished it first. Please tell
+me what you are going to do before you start. I reserve the right to not pay
+anybody anything.
 </p>
 
 <h2>PHP RFC</h2>
