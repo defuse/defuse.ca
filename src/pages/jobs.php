@@ -9,7 +9,7 @@ the right to not pay anybody anything.
 
 <h2>PHP RFC</h2>
 <pre>
-I will pay: $20 USD.
+I will pay: $30 USD.
 
 Create and submit a PHP RFC to deprecate the MCRYPT_RAND parameter:
 
