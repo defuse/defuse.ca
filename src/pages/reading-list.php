@@ -248,6 +248,7 @@ A web search of the title is usually enough to find the book or paper.
     <li>International Journal of PoC || GTFO: Issue 0x00</li>
     <li>International Journal of PoC || GTFO: Issue 0x01</li>
     <li>International Journal of PoC || GTFO: Issue 0x02</li>
+    <li>International Journal of PoC || GTFO: Issue 0x03</li>
     <li>Smashing The Stack For Fun And Profit (Aleph One)</li>
     <li>The Conscience of a Hacker (Hacker's Manifesto) by The Mentor</li>
     <li>Phrack Issue #1 to #5</li>
