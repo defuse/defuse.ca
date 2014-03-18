@@ -20,21 +20,27 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li>The Social Network Business Plan (David Silver)</li>
+    <li><b>The Art of Software Security Assessment (Mark Dowd et al.)</b></li>
+    <li><b>The Art of Strategy (Avinash K. Dixit and Barry J Nalebuff)</b></li>
+    <li>The U.S. Army/Marine Corps Counterinsurgency Field Manual</li>
+</ul>
+
+<h2>Stalled (Finished signifigant portions)</h2>
+
+<ul>
     <li><b>Computational Complexity (Sanjeev Arora and Boaz Barak)</b></li>
+    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
+    <li><b>Gray's Anatomy (15th edition)</b></li>
+    <li>The Art of Computer Programming Volume 1 (Knuth)</li>
 </ul>
 
 <h2>Next</h2>
 
 <ul>
-    <li>The Art of Software Security Assessment (Mark Dowd et al.)</li>
-    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
+    <li>The Social Network Business Plan (David Silver)</li>
     <li>Fallen Dragon (Peter F. Hamilton)</li>
     <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
     <li>The Bible</li>
-    <li><b>Gray's Anatomy (15th edition)</b></li>
-    <li>The Art of Computer Programming Volume 1 (Knuth)</li>
-    <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
     <li>The Qur'an</li>
     <li>English Dictionary</li>
     <li>The ARRL Handbook For Radio Communications</li>
@@ -56,6 +62,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2013</h2>
 
 <ul>
+    <li>On the Origin of Species By Means of Natural Selection (Charles Darwin)</li>
     <li><b>Time Reborn (Lee Smolin)</b></li>
     <li><b>Surely You're Joking, Mr. Feynman! (Richard Feynman)</b></li>
     <li>The Ancestor's Tale (Richard Dawkins)</li>
