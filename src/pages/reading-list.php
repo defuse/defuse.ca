@@ -148,6 +148,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>DetecTor (Kai Engert)</li>
     <li>Threema security assessment (Hristo Dimitrov et al.)</li>
     <li>&quot;Ooh Aah... Just a Little Bit&quot; : A small amount of side channel can go a long way (Naomi Benger et al.)</li>
     <li>Programming with D-Wave: Map Coloring Problem (E. D. Dahl)</li>
