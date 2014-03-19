@@ -148,6 +148,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li><b>Bitcoin: censorship-resistant currency and domain name system to the people (Du&scaron;an Barok)</b></li>
     <li><b>Framing Signals&mdash;A Return to Portable Shellcode (Erik Bosman and Herbert Bos)</b></li>
     <li>DetecTor (Kai Engert)</li>
     <li>Threema security assessment (Hristo Dimitrov et al.)</li>
