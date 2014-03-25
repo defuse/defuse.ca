@@ -131,7 +131,7 @@ A web search of the title is usually enough to find the book or paper.
    <li>The Black Hole War (Leonard Susskind)</li>
    <li>13 Things That Don't Make Sense (Michael Brooks)</li>
    <li>Physics of the Impossible (Michio Kaku)</li>
-   <li>On Intelligence (Jeff Hawkins)</li>
+   <li><b>On Intelligence (Jeff Hawkins)</b></li>
    <li>The Selfish Gene (Richard Dawkins)</li>
    <li>Man of La Mancha</li>
    <li>The War of the Worlds (H. G. Wells)</li>
