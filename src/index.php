@@ -295,7 +295,15 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="/online-free-computer-science-education.htm">&nbsp;CS Education</a></li>
             <li><a href="/rules-for-working-with-me.htm">&nbsp;Working With Me</a></li>
             <li><a href="/contributors.htm">&nbsp;Contributors</a></li>
-            <li><a href="/pocorgtfo.htm">&nbsp;PoC || GTFO Mirror</a></li>
+            <li><a href="#"><span class="drop"><span>Mirrors</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+                <ul>
+                    <li><a href="/pocorgtfo.htm">&nbsp;PoC || GTFO Mirror</a></li>
+                    <li><a href="/tor-mirror/">&nbsp;Tor Mirror 1</a></li>
+                    <li><a href="https://crackstation.net/tor-mirror/">&nbsp;Tor Mirror 2</a></li>
+                </ul>
+
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            </li>        
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>
