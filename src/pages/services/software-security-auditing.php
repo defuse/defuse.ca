@@ -9,16 +9,6 @@ license).
 </p>
 
 <p>
-I am not an experienced code auditor, but it's something I really like to do,
-and I am pretty good with security (see my <a
-href="/resume.htm">r&eacute;sum&eacute;</a>). So this will also be a learning
-experience for me. That's good for you, too: I will not charge for the time
-I need to spend learning new technologies in order to evaluate your security.
-I'll only charge for the time I'm actually looking at your design/code and
-writing reports.
-</p>
-
-<p>
 What I can do:
 </p>
 
