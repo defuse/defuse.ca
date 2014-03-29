@@ -163,7 +163,7 @@ protocol into something secure. It must be re-engineered.
 <h2>What the Synergy Developers Have Done</h2>
 
 <p>
-To date, the Synergy developers have acknowledged the problem and have stated
-"We will get right on improving our crypto based on your findings." An issue has
-not yet been created in their issue tracking system.
+This bug is being tracked in
+<a href="http://synergy-foss.org/spit/issues/details/3760/">Bug #3760</a>. The
+status of the ticket is "Fixed", although I haven't confirmed that it really is.
 </p>
