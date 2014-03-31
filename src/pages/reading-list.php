@@ -21,15 +21,15 @@ A web search of the title is usually enough to find the book or paper.
 
 <ul>
     <li><b>The Art of Software Security Assessment (Mark Dowd et al.)</b></li>
-    <li><b>The Art of Strategy (Avinash K. Dixit and Barry J Nalebuff)</b></li>
-    <li>The U.S. Army/Marine Corps Counterinsurgency Field Manual</li>
+    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
 </ul>
 
 <h2>Stalled (Finished signifigant portions)</h2>
 
 <ul>
+    <li><b>The Art of Strategy (Avinash K. Dixit and Barry J Nalebuff)</b></li>
+    <li>The U.S. Army/Marine Corps Counterinsurgency Field Manual</li>
     <li><b>Computational Complexity (Sanjeev Arora and Boaz Barak)</b></li>
-    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
     <li><b>Gray's Anatomy (15th edition)</b></li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
 </ul>
