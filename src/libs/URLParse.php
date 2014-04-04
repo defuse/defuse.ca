@@ -141,6 +141,12 @@ class URLParse
                 P_METD => "My Vim configuration file",
                 P_METK => "vim, vimrc, vim configuration"
             ),          
+            "transparency" => array(     
+                P_FILE => "transparency.php",
+                P_TITL => "Transparency Report",
+                P_METD => "",
+                P_METK => ""
+            ),          
             "the-universe-is-made-of-cheese" => array(
                 P_FILE => "misc/the-universe-is-made-of-cheese.php",
                 P_TITL => "The Universe is Made of Cheese - A Formal Proof",
