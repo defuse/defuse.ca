@@ -282,6 +282,7 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/projects.htm">Miscellaneous<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul>
+            <li><a href="/transparency.htm">&nbsp;Transparency</a></li>
             <li><a href="/jobs.htm">&nbsp;Jobs</a></li>
             <li><a href="/reading-list.htm">&nbsp;Reading List</a></li>
             <li><a href="/known-unknowns.htm">&nbsp;Known Unknowns</a></li>
