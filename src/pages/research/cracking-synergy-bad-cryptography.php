@@ -165,5 +165,7 @@ protocol into something secure. It must be re-engineered.
 <p>
 This bug is being tracked in
 <a href="http://synergy-foss.org/spit/issues/details/3760/">Bug #3760</a>. The
-status of the ticket is "Fixed", although I haven't confirmed that it really is.
+status of the ticket is "Fixed", although all that was done is disable all modes
+except CFB mode. This breaks this specific attack, but is probably still
+vulnerable to other active attacks.
 </p>
