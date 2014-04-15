@@ -52,6 +52,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li><b>Feynman's Tips On Physics (Richard Feynman, Michael A. Gottleib, Ralph Leighton)</b></li>
     <li>The Art of War (Sun Tzu)</li>
     <li><b>Death By Black Hole (Neil DeGrasse Tyson)</b></li>
     <li>Rocks &amp; Minerals (Dr. R. F. Symes)</li>
