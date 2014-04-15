@@ -36,13 +36,13 @@ class PasswordGenerator
             return false;
 
         $charSetLen = count($characterSet);
-        if($charSetLen <= 0)
+        if($charSetLen == 0)
             return false;
 
-        $random = self::getRandomInts($charSetLen * 2);
+        $random = self::getRandomInts($length * 2);
         $mask = self::getMinimalBitMask($charSetLen - 1); 
 
-        $password = array();
+        $password = "";
 
         // To generate the password, we repeatedly try random integers and use the ones within the range
         // 0 to $charSetLen - 1 to select an index into the character set. This is the only known way to
@@ -53,11 +53,11 @@ class PasswordGenerator
         // It is extremely unlikely (about 2^-64) that more than $length*64 random ints are needed.
         $iterLimit = max($length, $length * 64);   // If length is close to PHP_INT_MAX we don't want to overflow.
         $randIdx = 0;
-        while(count($password) < $length)
+        while(strlen($password) < $length)
         {
             if($randIdx >= count($random))
             {
-                $random = self::getRandomInts($charSetLen);
+                $random = self::getRandomInts(2*($length - strlen($password)));
                 $randIdx = 0;
             }
 
@@ -65,7 +65,8 @@ class PasswordGenerator
             $c = $random[$randIdx++] & $mask;
             // Only use the random number if it is in range, otherwise try another (next iteration).
             if($c < $charSetLen)
-                $password[] = $characterSet[$c];
+                $password .= self::sidechannel_safe_array_index($characterSet, $c);
+            // FIXME: check the return value
 
             // Guarantee termination
             $iterLimit--;
@@ -73,7 +74,24 @@ class PasswordGenerator
                 return false;
         }
 
-        return implode($password);
+        return $password;
+    }
+
+    // Returns the character at index $index in $string in constant time.
+    private static function sidechannel_safe_array_index($string, $index)
+    {
+        // FIXME: Make the const-time hack below work for all integer sizes, or
+        // check it properly.
+        if (count($string) > 65535 || $index > count($string)) {
+            return false;
+        }
+        $character = 0;
+        for ($i = 0; $i < count($string); $i++) {
+            $x = $i ^ $index;
+            $mask = (((($x | ($x >> 16)) & 0xFFFF) + 0xFFFF) >> 16) - 1;
+            $character |= ord($string[$i]) & $mask;
+        }
+        return chr($character);
     }
 
     // Returns the smallest bit mask of all 1s such that ($toRepresent & mask) = $toRepresent.

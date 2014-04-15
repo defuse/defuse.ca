@@ -57,7 +57,7 @@ class PasswordGenerator
         {
             if($randIdx >= count($random))
             {
-                $random = self::getRandomInts(2*($length - count($password)));
+                $random = self::getRandomInts(2*($length - strlen($password)));
                 $randIdx = 0;
             }
 
@@ -65,7 +65,8 @@ class PasswordGenerator
             $c = $random[$randIdx++] & $mask;
             // Only use the random number if it is in range, otherwise try another (next iteration).
             if($c < $charSetLen)
-                $password .= $characterSet[$c];
+                $password .= self::sidechannel_safe_array_index($characterSet, $c);
+            // FIXME: check the return value
 
             // Guarantee termination
             $iterLimit--;
@@ -74,6 +75,23 @@ class PasswordGenerator
         }
 
         return $password;
+    }
+
+    // Returns the character at index $index in $string in constant time.
+    private static function sidechannel_safe_array_index($string, $index)
+    {
+        // FIXME: Make the const-time hack below work for all integer sizes, or
+        // check it properly.
+        if (count($string) > 65535 || $index > count($string)) {
+            return false;
+        }
+        $character = 0;
+        for ($i = 0; $i < count($string); $i++) {
+            $x = $i ^ $index;
+            $mask = (((($x | ($x >> 16)) & 0xFFFF) + 0xFFFF) >> 16) - 1;
+            $character |= ord($string[$i]) & $mask;
+        }
+        return chr($character);
     }
 
     // Returns the smallest bit mask of all 1s such that ($toRepresent & mask) = $toRepresent.
