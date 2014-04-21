@@ -402,6 +402,12 @@ class URLParse
                 P_METD => "Security audit of the EncFS encrypted filesystem.",
                 P_METK => "encfs, security audit, cryptography",
             ),
+            "audits/hash0" => array(
+                P_FILE => "audits/hash0.php",
+                P_TITL => "Hash0 Security Audit",
+                P_METD => "Security audit of the Hash0 password system",
+                P_METK => "hash0, security audit, cryptography, passwords",
+            ),
             "audits/encfs-old" => array(
                 P_FILE => "audits/encfs-old.php",
                 P_TITL => "EncFS Security Audit",

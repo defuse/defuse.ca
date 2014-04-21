@@ -260,6 +260,7 @@ header('Content-Type: text/html; charset=utf-8');
                     <li><a href="/audits/ecryptfs.htm">&nbsp;eCryptfs</a></li>
                     <li><a href="/audits/zerobin.htm">&nbsp;ZeroBin</a></li>
                     <li><a href="/audits/pefs.htm">&nbsp;PEFS</a></li>
+                    <li><a href="/audits/hash0.htm">&nbsp;Hash0</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
