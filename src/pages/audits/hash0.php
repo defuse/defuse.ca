@@ -13,7 +13,7 @@ April 13, 2014
 <h1>Hash0 Security Audit</h1>
 
 <p>
-This is the result of a 4-hour security audit of
+This is the result of a 5-hour security audit of
 <a href="https://github.com/dannysu/hash0">Hash0</a>, which is a tool for
 turning a master password into unique passwords for websites based on the domain
 name (like pwdhash). Thanks to Hash0's author Danny Su for funding this audit.
