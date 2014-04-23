@@ -2,8 +2,8 @@
 
 <p>
 I want to work with you to make sure your code is secure. I'm available 10 hours
-per week, for $30 CAD per hour, to look over your designs and code to make sure
-they are secure. To give back to the community, I'll reduce my rate to <b>$20
+per week, for $50 CAD per hour, to look over your designs and code to make sure
+they are secure. To give back to the community, I'll reduce my rate to <b>$30
 per hour</b> for published free or open source software (GPL-like or BSD-like
 license).
 </p>
