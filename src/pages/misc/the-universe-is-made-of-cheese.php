@@ -87,5 +87,22 @@ here.
 </p>
 
 <p>
-... none yet!
+Here's one response. I haven't had time to check it, but it sounds right:
 </p>
+
+<pre>
+Here’s my take on it:
+
+In the first three paragraphs, the function *FST* was clearly meant to
+denote something which maps objects *whether imagined or real* onto
+space-time volumes.  The mere fact that we can compute *FST*(*x*) for some
+*x* does not require that *x* exists.  Thus, the step in the second
+sentence of the fourth paragraph that goes “if it did not exist in the real
+world … *FST*(*c*) &gt; 0” is invalid, and the attempted *reductio ad
+absurdum*falls apart.
+
+Alternatively, if *FST* was intended only to apply to actually existing
+objects, the first paragraph is already assuming the conclusion, namely
+that *c* exists, and the argument is circular.
+</pre>
+
