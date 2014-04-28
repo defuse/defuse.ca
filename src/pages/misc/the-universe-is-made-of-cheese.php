@@ -87,7 +87,8 @@ here.
 </p>
 
 <p>
-Here's one response. I haven't had time to check it, but it sounds right:
+Here's one response from ctamblyn. I haven't had time to check it, but it sounds
+right:
 </p>
 
 <pre>
