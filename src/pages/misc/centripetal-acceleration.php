@@ -1,5 +1,13 @@
+<?php
+    Upvote::render_arrows(
+        "centripetalaccel",
+        "defuse_pages",
+        "Centripetal Acceleration",
+        "Deriving the centripetal acceleration equation.",
+        "https://defuse.ca/centripetal-acceleration.htm"
+    );
+?>
 <h1>Centripetal Acceleration</h1>
-
 
 <p>
 A mass <b>M</b> is connected by a string of length <b>r</b> to a point <b>C</b>.
