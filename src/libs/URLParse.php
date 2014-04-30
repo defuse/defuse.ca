@@ -153,6 +153,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "centripetal-acceleration" => array(
+                P_FILE => "misc/centripetal-acceleration.php",
+                P_TITL => "Centripetal Acceleration",
+                P_METD => "A derivation of the Centripetal Acceleration equation",
+                P_METK => "centripetal force, centripetal acceleration"
+            ),
             "jobs" => array(
                 P_FILE => "jobs.php",
                 P_TITL => "Jobs",
