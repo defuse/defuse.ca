@@ -7,7 +7,9 @@ The mass is orbiting <i>C</i> in a circle with a constant tangential velocity
 <i>v</i>.  What is the radial acceleration <i>a</i> of the mass?
 </p>
 
-\textbf{PICTURE HERE}
+<center>
+<img src="/images/phys_ca_d1.png">
+</center>
 
 <p>
 The well-known equation for the acceleration is <i>a = v<sup>2</sup>/r</i>. It's
@@ -45,17 +47,13 @@ Consider two snapshots of the rotating system at times <i>t<sub>0</sub></i> and
 <i>t<sub>1</sub></i>.
 </p>
 
-<p>
-<strong>At t<sub>0</sub></strong>
-</p>
-
-\textbf{IMAGE FOR t0}
-
-<p>
-<strong>At t<sub>1</sub></strong>
-</p>
-
-\textbf{IMAGE FOR t1}
+<center>
+<div style="width: 300px; display: inline-block;"><strong>t<sub>0</sub></strong></div>
+<div style="width: 300px; display: inline-block;"><strong>t<sub>1</sub></strong></div>
+<br />
+<img src="/images/phys_ca_d2.png" width="300">
+<img src="/images/phys_ca_d3.png" width="300">
+</center>
 
 <p>
 At <i>t<sub>0</sub></i>, the mass's momentum is completely in the <i>y</i>
