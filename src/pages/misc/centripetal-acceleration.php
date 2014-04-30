@@ -2,39 +2,76 @@
 
 
 <p>
-Suppose a mass $M$ is connected by a string of length $r$ to a point $C$, and
-that $M$ is orbiting $C$ with a constant tangential velocity $v$ (in a circle).
-What is the acceleration of the mass?
+A mass <i>M</i> is connected by a string of length <i>r</i> to a point <i>C</i>.
+The mass is orbiting <i>C</i> in a circle with a constant tangential velocity
+<i>v</i>.  What is the radial acceleration <i>a</i> of the mass?
 </p>
 
 \textbf{PICTURE HERE}
 
 <p>
-The famous equation for the acceleration is $a = v^2/r$. It's usually
-derived by taking the second derivative of the position vector with respect to
-time. I figured out a different way to do it, which involves only basic geometry
-and computing the average value of $\sin(x)$ with an integral. 
+The well-known equation for the acceleration is <i>a = v<sup>2</sup>/r</i>. It's
+usually derived by taking the second derivative of <i>M</i>'s position vector
+with respect to time. 
 </p>
 
 <p>
-Consider two snapshots of the rotating system at times $t_0$ and $t_1$.
+I worked out a different way to do it, which involves only basic geometry and
+the average value of <i>sin(x)</i> from <i>0</i> to <i>&pi;</i>.  We find the
+centripetal force by the following process:
+</p>
+
+<ol>
+    <li>
+        Use a simple method to find the average value of some function <i>f</i>.
+        For this problem, <i>f</i> is the force in the <i>y</i> direction.
+    </li>
+    <li>
+        Write <i>f</i> in terms of some unknown <i>x</i>. For this problem,
+        <i>x</i> is the radial force.
+    </li>
+    <li>
+        Equate the two <em>averages</em> to solve for <i>x</i>.
+    </li>
+</ol>
+
+<p>
+I suspect this process will prove useful for solving other problems as well.
+Let's see how we can use it to solve the centripetal acceleration problem.
+</p>
+
+<p>
+Consider two snapshots of the rotating system at times <i>t<sub>0</sub></i> and
+<i>t<sub>1</sub></i>.
+</p>
+
+<p>
+<strong>At t<sub>0</sub></strong>
 </p>
 
 \textbf{IMAGE FOR t0}
 
+<p>
+<strong>At t<sub>1</sub></strong>
+</p>
+
 \textbf{IMAGE FOR t1}
 
 <p>
-At $t_0$, the mass's momentum is completely in the $y$ direction. There is no
-$x$ component to the momentum. At $t_1$, half a revolution later, the momentum
-is in exactly the opposite direction. 
+At <i>t<sub>0</sub></i>, the mass's momentum is completely in the <i>y</i>
+direction.  There is no <i>x</i> component to the momentum. At
+<i>t<sub>1</sub></i>, half a revolution later, the momentum is in the exact
+opposite direction. 
 </p>
 
 <p>
-If the momentum at time $t_0$ is $Mv$ and the momentum at time $t_1$ is $M(-v)$,
-then the total change in momentum is $-MV - MV = -2MV$. We can get the
-\emph{average} change in momentum, \emph{which is the same as the average force
-in the $y$ direction} by dividing by the time.
+If the momentum at time <i>t<sub>0</sub></i> is <i>Mv</i> and the momentum at
+time <i>t<sub>1</sub></i> is <i>M(-v)</i>, then the total change in momentum is
+<i>-Mv - Mv = -2Mv</i>. We can get the <em>average</em> rate of change of the
+momentum in the <i>y</i> direction by dividing by the time. Since the force in
+the <i>y</i> direction is the rate of change of momentum in the <i>y</i>
+direction, this is also equal to the <em>average force</em> in the <i>y</i>
+direction.
 </p>
 
 <center>
@@ -42,11 +79,14 @@ in the $y$ direction} by dividing by the time.
 </center>
 
 <p>
-Okay, that tells us the \emph{average} force in the $y$ direction, but that's
-not the force we want. We want the radial force. But look! We know how to write
-the force in the $y$ direction as a function of the radial force. If the radial
-force is $F_s$ and $\theta$ is the angle the string makes with the $y$ axis,
-then:
+Okay, that tells us the average force in the <i>y</i> direction, but
+that's not the force we want. We want the radial force. 
+</p>
+
+<p>
+But look! We know how to write the force in the <i>y</i> direction as a function
+of the radial force. If the radial force is <i>F<sub>s</sub></i> and
+<i>&theta;</i> is the angle the string makes with the <i>y</i> axis, then:
 </p>
 
 <center>
@@ -54,8 +94,9 @@ then:
 </center>
 
 <p>
-So the \emph{average} of $F_s\sin(\theta)$ over the half-circle of motion will
-be equal to the average of $F_y$, which we already know as $F_{y_{avg}}$!
+So the <em>average</em> of <i>F<sub>s</sub>sin(&theta;)</i> over the half-circle
+of motion will be equal to the average of <i>F<sub>y</sub></i>, which we already
+know as <i>F<sub>y<sub>avg</sub></sub></i>!
 </p>
 
 <center>
@@ -63,19 +104,9 @@ be equal to the average of $F_y$, which we already know as $F_{y_{avg}}$!
 </center>
 
 <p>
-That's it! The radial force $F_s$ is $-Mv^2/r$. Because $F=ma$, the radial
-acceleration is therefore $a = -v^2/r$. It is negative because it is towards the
-center of the circle. If we are only interested in the magnitude, then $a
-= v^2/r$.
+That's it! The radial force <i>F<sub>s</sub></i> is <i>-Mv<sup>2</sup>/r</i>.
+Then, since <i>F=ma</i>, the radial acceleration is <i>a = -v<sup>2</sup>/r</i>.
+It is negative because it is towards the center of the circle. If we are only
+interested in the magnitude, then <i>a = v<sup>2</sup>/r</i>.
 </p>
 
-<p>
-Here's a summary of what we did. The general process might be applicable to
-other problems.
-</p>
-
-<ol>
-    <li>Use a simple method to find the average value of some function $f$ (in this example, the average force).</li>
-    <li>Write $f$ in terms of some unknown $x$ (in this example, the radial force).</li>
-    <li>Equate the two \emph{averages} to solve for $x$.</li>
-</ol>
