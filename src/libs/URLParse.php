@@ -620,12 +620,14 @@ class URLParse
                 P_METD => "Should the initialization vector used for CBC mode be kept secret?",
                 P_METK => "cbc mode, encryption, initialization vector, iv, secret, secure",
             ),
+            /*
             "passwordrestrictions" => array(
                 P_FILE => "research/passwordrestrictions.html",
                 P_TITL => "INSANE Password Restrictions",
                 P_METD => "Why websites that enforce maximum password length and character set may not be safe to use",
                 P_METK => "password restrictions, hashing, plaintext passwords, maximum length, special symbols",
             ),
+             */
             "password-policy-statistics" => array(
                 P_FILE => "research/password-policy-statistics.php",
                 P_TITL => "Password Policy Statistics - Defuse Security",

@@ -247,7 +247,6 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="#"><span class="drop"><span>Passwords</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
                     <li><a href="/password-hashing-after-phc.htm">&nbsp;Hash Caching</a></li>
-                    <li><a href="/passwordrestrictions.htm">&nbsp;Password Restrictions</a></li>        
                     <li><a href="/password-policy-hall-of-shame.htm">&nbsp;Password Hall of Shame</a></li>        
                     <li><a href="http://crackstation.net/hashing-security.html">&nbsp;Salted Password Hashing</a></li>
                 </ul>
