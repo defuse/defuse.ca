@@ -81,6 +81,11 @@ Thanks to Igor Sviridov for funding this audit.
 &nbsp;&nbsp; better than the way EncFS does it, but it doesn&#039;t seem safe. It would
 &nbsp;&nbsp; be much better to use proper CBC ESSIV mode or XTS mode.
 
+&nbsp;&nbsp; Correction 12/05/2014: XTS mode is probably not the ideal option, see
+&nbsp;&nbsp; Thomas Ptacek&#039;s blog post for good reasons why:
+
+&nbsp;&nbsp; &nbsp; &nbsp; http://sockpuppet.org/blog/2014/04/30/you-dont-want-xts/
+
 &nbsp;&nbsp; There is a comment in the code that derives the IV...
 
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;/* TODO: It is probably secure to just cast the least
@@ -114,7 +119,7 @@ Thanks to Igor Sviridov for funding this audit.
 &nbsp;&nbsp; mailing list [1,2].
 
 &nbsp;&nbsp; Update (February 14, 2014): Filename encryption actually uses ECB
-&nbsp;&nbsp; mode, so the random bytes are useless. Thanks to <a href="https://twitter.com/samuelks">@samuelks</a> for
+&nbsp;&nbsp; mode, so the random bytes are useless. Thanks to @samuelks for
 &nbsp;&nbsp; reporting this.
 
 3. Future Work

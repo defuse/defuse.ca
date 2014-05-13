@@ -321,6 +321,11 @@ audit.
 &nbsp;&nbsp; XTS mode, PBKDF2, and HKDF. It also diligently zeroes buffers that
 &nbsp;&nbsp; once contained sensitive information. This makes auditing easier.
 
+&nbsp;&nbsp; Correction 12/05/2014: XTS mode is probably not the ideal option, see
+&nbsp;&nbsp; Thomas Ptacek&#039;s blog post for good reasons why:
+
+&nbsp;&nbsp; &nbsp; &nbsp; http://sockpuppet.org/blog/2014/04/30/you-dont-want-xts/
+
 4. Recommendations
 
 &nbsp;&nbsp; There are some things that PEFS could do better:

@@ -136,6 +136,11 @@ report <a href="/audits/encfs-old.htm">here</a>.
 
 &nbsp;&nbsp;EncFS should use a mode like XTS for random-access block encryption.
 
+&nbsp;&nbsp;Correction 12/05/2014: XTS mode is probably not the ideal option, see
+&nbsp;&nbsp;Thomas Ptacek&#039;s blog post for good reasons why:
+
+&nbsp;&nbsp; &nbsp; &nbsp;http://sockpuppet.org/blog/2014/04/30/you-dont-want-xts/
+
 2.4. File Holes are Not Authenticated
 
 &nbsp;&nbsp;Exploitability: High
@@ -214,6 +219,11 @@ report <a href="/audits/encfs-old.htm">here</a>.
 &nbsp;&nbsp;for which they have no plaintext access.
 
 &nbsp;&nbsp;EncFS should consider using XTS mode.
+
+&nbsp;&nbsp;Correction 12/05/2014: XTS mode is probably not the ideal option, see
+&nbsp;&nbsp;Thomas Ptacek&#039;s blog post for good reasons why:
+
+&nbsp;&nbsp; &nbsp; &nbsp;http://sockpuppet.org/blog/2014/04/30/you-dont-want-xts/
 
 3.3. Possible Out of Bounds Write in StreamNameIO and BlockNameIO
 
