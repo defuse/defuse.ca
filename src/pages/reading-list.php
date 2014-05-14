@@ -149,6 +149,9 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li><b>The Collateral Damage of Internet Censorship by DNS Injection (Five Anonymous Authors)</b></li>
+    <li>Whiskey, Weed, and Wukan on the World Wide Web: On Measuring Censors' Resources and Motivations (Nicholas Aase et al.)</li>
+    <li>Bypassing Internet Censorship for News Broadcasters (Karl Kathuria)</li>
     <li><b>Building web applications on top of encrypted data using Mylar (Raluca Ada Popa et al.)</b></li>
     <li><b>End-To-End Arguments in System Design (J.H Saltzer et al.)</b></li>
     <li><b>Bitcoin: censorship-resistant currency and domain name system to the people (Du&scaron;an Barok)</b></li>
