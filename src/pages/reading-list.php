@@ -149,6 +149,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Leibniz's Mill Argument Against Mechanical Materialism Revisted (Paul Lodge)</li>
     <li>Using Clustering to Detect Chinese Censorware (Becker Polverini, William M. Pottenger)</li>
     <li><b>The Collateral Damage of Internet Censorship by DNS Injection (Five Anonymous Authors)</b></li>
     <li>Whiskey, Weed, and Wukan on the World Wide Web: On Measuring Censors' Resources and Motivations (Nicholas Aase et al.)</li>
