@@ -13,8 +13,8 @@ May 31, 2014
 <h1>TrueCrypt 7.1a Hashes</h1>
 
 <p>
-Here are the SHA256 and SHA1 hashes of all TrueCrypt version 7.1a files. The
-signature of the list can be verified with <a href="/contact.htm">my public
+Here are the SHA256, SHA1, and MD5 hashes of all TrueCrypt version 7.1a files.
+The signature of the list can be verified with <a href="/contact.htm">my public
 key.</a> The <kbd>TrueCrypt_v7.1a.zip</kbd> file is <a
 href="https://www.grc.com/misc/truecrypt/truecrypt.htm">GRC's archive of all
 TrueCrypt v7.1a materials</a>.
