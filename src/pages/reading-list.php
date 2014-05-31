@@ -149,6 +149,7 @@ A web search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>(DRAFT) Avoiding a War on Unauthorized Computation: Why Exploit Regulation is the Biggest Danger to Coder Freedom and Future Security (Sergey Bratus, Anna Shubina)</li>
     <li>Leibniz's Mill Argument Against Mechanical Materialism Revisted (Paul Lodge)</li>
     <li>Using Clustering to Detect Chinese Censorware (Becker Polverini, William M. Pottenger)</li>
     <li><b>The Collateral Damage of Internet Censorship by DNS Injection (Five Anonymous Authors)</b></li>
