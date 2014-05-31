@@ -171,6 +171,12 @@ class URLParse
                 P_METD => "Mirror of all the Poc || GTFO issues.",
                 P_METK => "proof, of, concept, or, get, the, fuck, out"
             ),
+            "truecrypt-7.1a-hashes" => array(
+                P_FILE => "misc/truecrypt-7.1a-hashes.php",
+                P_TITL => "TrueCrypt 7.1a Hashes",
+                P_METD => "SHA256 and SHA1 hashes of the last version of TrueCrypt.",
+                P_METK => "TrueCrypt, 7.1a, 7.1, SHA256, MD5, SHA1"
+            ),
             "ideas" => array(
                 P_FILE => "misc/ideas.php",
                 P_TITL => "Ideas",
