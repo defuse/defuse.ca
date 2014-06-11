@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Code Files</title><link href="/blog2/" rel="alternate"></link><link href="/blog2/feeds/all-en.atom.xml" rel="self"></link><id>/blog2/</id><updated>2012-03-30T23:47:00-06:00</updated><entry><title>Starting with Pelican</title><link href="/blog2/starting-with-pelican.html" rel="alternate"></link><updated>2012-03-30T23:47:00-06:00</updated><author><name>F. Javier Alba</name></author><id>tag:/blog2,2012-03-30:starting-with-pelican.html</id><summary type="html">&lt;div class="section" id="introduction"&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Hi!&lt;/p&gt;
+&lt;p&gt;This is my first rst post!&lt;/p&gt;
+&lt;p&gt;And this is a link to a &lt;a class="reference external" href="http://moliware.com/"&gt;page&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="blog"></category><category term="rst"></category><category term="pelican"></category></entry></feed>
