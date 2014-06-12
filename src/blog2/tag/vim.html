@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The Code Files - vim</title>
+        <link rel="stylesheet" href="/blog2/theme/css/main.css" />
+        <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog2/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog2/category/life.html">life</a></li>
+                    <li><a href="/blog2/category/linux.html">linux</a></li>
+                    <li><a href="/blog2/category/programming.html">programming</a></li>
+                    <li><a href="/blog2/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/blog2/vim-rainbow-parentheses-work-in-php.html">Vim: Make Rainbow Parentheses Work in PHP</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-12-22T00:00:00">
+                Sat 22 December 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/programming.html">programming</a>. </p>
+<p>tags: <a href="/blog2/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info --><p><strong>EDIT:</strong> What I propose here doesn't actually fix it, it still fails when
+there's a greater-than sign inside an if statement. I have spent over 8 hours
+trying to get this to work and that is too much, so I am giving up. If you find
+a solution, please email it to me.</p>
+<p>I use this script to get rainbow parentheses in Vim:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/kien/rainbow_parentheses.vim">https://github.com/kien/rainbow_parentheses.vim</a></li>
+<li><a class="reference external" href="http://www.vim.org/scripts/script.php?script_id=3772">http://www.vim.org/scripts/script.php?script_id=3772</a></li>
+</ul>
+<p>It colors nested parentheses like this:</p>
+<img alt="Vim Rainbow Parentheses" src="https://defuse.ca/images/rainbow.png" />
+<p>Unfortunately, it doesn't work with PHP, because the PHP syntax file only allows
+its own syntax regions to appear inside the <tt class="docutils literal"><span class="pre">&lt;?php</span></tt> and <tt class="docutils literal"><span class="pre">?&gt;</span></tt> tags. The fix
+is simple:</p>
+<ol class="arabic simple">
+<li>Copy the 'system' php syntax file (usually
+<tt class="docutils literal">/usr/local/share/vim/vim73/syntax/php.vim</tt>) to your personal
+<tt class="docutils literal"><span class="pre">~/.vim/syntax</span></tt> folder (create it if it does not exist).</li>
+</ol>
+<ol class="arabic simple">
+<li>Edit <tt class="docutils literal"><span class="pre">~/.vim/syntax/php.vim</span></tt>, find the line that starts with <tt class="docutils literal">syn cluster
+phpClTop</tt> and add <tt class="docutils literal">level16</tt> to the end of the 'contains' list on that
+line. If you have set <tt class="docutils literal">g:rbpt_max</tt> in your .vimrc, then you will need to
+change the &quot;16&quot; to that value.</li>
+</ol>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

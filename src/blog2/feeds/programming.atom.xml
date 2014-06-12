@@ -222,4 +222,109 @@ METHINKS IT IS LIKE A WEASEL -- vs. -- METHINKSOIT IS LIKE A WEAWEL (Gen: 5110)
 &lt;span class="k"&gt;end&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/div&gt;
-</summary><category term="evolution"></category></entry></feed>
+</summary><category term="evolution"></category></entry><entry><title>Factorization Correlation Experimentation Tool</title><link href="/blog2/factorization-genetic-algorithm-correlation.html" rel="alternate"></link><updated>2013-01-25T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-01-25:factorization-genetic-algorithm-correlation.html</id><summary type="html">&lt;p&gt;Here's a Ruby script to experiment with correlations that may be useful in
+developing a genetic (evolutionary) algorithm for factoring the product of two
+primes. The comments explain it:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;#!/usr/bin/env ruby&lt;/span&gt;
+&lt;span class="c1"&gt;# Let C = F1 * F2, where F1 and F2 are primes.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This script gives a visual aid to help determine if the value of some function&lt;/span&gt;
+&lt;span class="c1"&gt;# (specified by the user) on a test integer is correlated with the test&lt;/span&gt;
+&lt;span class="c1"&gt;# integer's hamming distance from min(F1, F2).&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# If such a correlation exists, it may be possible to use that function to&lt;/span&gt;
+&lt;span class="c1"&gt;# calculate the 'fitness' of test integers in a genetic (evolutionary) algorithm&lt;/span&gt;
+&lt;span class="c1"&gt;# for factoring C.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Of course the function must be efficiently computable without knowing the&lt;/span&gt;
+&lt;span class="c1"&gt;# factorization of C.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Set the function by modifying the 'function' method below. Set the F1 and F2&lt;/span&gt;
+&lt;span class="c1"&gt;# by modifying the 'F1' and 'F2' variables below. C is calculated from F1 and&lt;/span&gt;
+&lt;span class="c1"&gt;# F2.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Some interesting functions are:&lt;/span&gt;
+&lt;span class="c1"&gt;#   - The hamming distance between C and the test integer.&lt;/span&gt;
+
+&lt;span class="c1"&gt;# If you don't have the gnuplot gem, run `gem install gnuplot`&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'gnuplot'&lt;/span&gt;
+
+&lt;span class="no"&gt;F1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;8831&lt;/span&gt;
+&lt;span class="no"&gt;F2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;12479&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Set this to true to make the multiplicity of points visible by adding random&lt;/span&gt;
+&lt;span class="c1"&gt;# variations in their horizontal position.&lt;/span&gt;
+&lt;span class="no"&gt;JITTER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+
+&lt;span class="no"&gt;F_DESC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HammingDistance(test, C)&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;potentialFactor&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;hammingDistance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;potentialFactor&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ----------------------------------------------------------------------------&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hammingDistance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+
+&lt;span class="n"&gt;compareFactor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;F1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;F2&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;
+&lt;span class="n"&gt;composite&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;F1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="no"&gt;F2&lt;/span&gt;
+
+&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="no"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ceil&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;hammingDistance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compareFactor&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;100_000&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="ss"&gt;Gnuplot&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:open&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;gp&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="ss"&gt;Gnuplot&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;gp&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;C = F1 * F2 where F1 and F2 are prime. &lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;n&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                &lt;span class="s2"&gt;&amp;quot;C = &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;F1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="no"&gt;F2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;; F1 = &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;F1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;; F2 = &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;F2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HammingDistance(test, min(F1, F2))&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt; &lt;span class="no"&gt;F_DESC&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xrange&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;[0:]&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yrange&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;[0:]&amp;quot;&lt;/span&gt;
+
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="no"&gt;JITTER&lt;/span&gt;
+      &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="ss"&gt;Gnuplot&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:DataSet&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;JITTER&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;dots&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;points&amp;quot;&lt;/span&gt;
+      &lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;notitle&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="factorization"></category></entry><entry><title>Vim: Make Rainbow Parentheses Work in PHP</title><link href="/blog2/vim-rainbow-parentheses-work-in-php.html" rel="alternate"></link><updated>2012-12-22T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-22:vim-rainbow-parentheses-work-in-php.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; What I propose here doesn't actually fix it, it still fails when
+there's a greater-than sign inside an if statement. I have spent over 8 hours
+trying to get this to work and that is too much, so I am giving up. If you find
+a solution, please email it to me.&lt;/p&gt;
+&lt;p&gt;I use this script to get rainbow parentheses in Vim:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/kien/rainbow_parentheses.vim"&gt;https://github.com/kien/rainbow_parentheses.vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.vim.org/scripts/script.php?script_id=3772"&gt;http://www.vim.org/scripts/script.php?script_id=3772&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It colors nested parentheses like this:&lt;/p&gt;
+&lt;img alt="Vim Rainbow Parentheses" src="https://defuse.ca/images/rainbow.png" /&gt;
+&lt;p&gt;Unfortunately, it doesn't work with PHP, because the PHP syntax file only allows
+its own syntax regions to appear inside the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;&amp;lt;?php&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?&amp;gt;&lt;/span&gt;&lt;/tt&gt; tags. The fix
+is simple:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Copy the 'system' php syntax file (usually
+&lt;tt class="docutils literal"&gt;/usr/local/share/vim/vim73/syntax/php.vim&lt;/tt&gt;) to your personal
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vim/syntax&lt;/span&gt;&lt;/tt&gt; folder (create it if it does not exist).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Edit &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vim/syntax/php.vim&lt;/span&gt;&lt;/tt&gt;, find the line that starts with &lt;tt class="docutils literal"&gt;syn cluster
+phpClTop&lt;/tt&gt; and add &lt;tt class="docutils literal"&gt;level16&lt;/tt&gt; to the end of the 'contains' list on that
+line. If you have set &lt;tt class="docutils literal"&gt;g:rbpt_max&lt;/tt&gt; in your .vimrc, then you will need to
+change the &amp;quot;16&amp;quot; to that value.&lt;/li&gt;
+&lt;/ol&gt;
+</summary><category term="vim"></category></entry></feed>

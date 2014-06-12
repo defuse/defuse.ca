@@ -26,6 +26,7 @@ connection to overload, "knocking" the connection offline and making it
 unresponsive. See the below diagram for an example of this:
  
 .. image:: /images/breshie-ddos.png
+    :alt: DDoS diagram
  
 As you can see from the above diagram, the attacker sends a command to the
 servers/PCs that are under his/her control, which then send the dummy data to
