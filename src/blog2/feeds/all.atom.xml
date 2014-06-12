@@ -197,7 +197,215 @@ arguments in LaTeX. First, add this to your preamble:&lt;/p&gt;
     &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[$\therefore$]&lt;/span&gt; Therefore, Your Conclusion.
 &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;
-</summary><category term="latex"></category></entry><entry><title>Windows Magnifier Hack</title><link href="/blog2/windows-magnifier-password-reset.rst.html" rel="alternate"></link><updated>2013-02-19T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-02-19:windows-magnifier-password-reset.rst.html</id><summary type="html">&lt;p&gt;Steps to reset a Windows account password given physical access to the box:&lt;/p&gt;
+</summary><category term="latex"></category></entry><entry><title>[Ruby] Genetic String Evolver</title><link href="/blog2/genetic-string-evolver-in-ruby.html" rel="alternate"></link><updated>2013-02-19T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-02-19:genetic-string-evolver-in-ruby.html</id><summary type="html">&lt;p&gt;Inspired by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Weasel_program"&gt;Richard Dawkins' weasel program&lt;/a&gt;, this is a genetic algorithm,
+written in Ruby, to evolve the same &amp;quot;METHINKS IT IS LIKE A WEASEL&amp;quot; string. It's
+really fun to experiment with changing the probability constants (mutation,
+reproduction) and the algorithm in &lt;tt class="docutils literal"&gt;Evolver#advance&lt;/tt&gt;, which advances the
+population of strings to the next generation. Have fun!&lt;/p&gt;
+&lt;p&gt;The default algorithm works as follows:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Initialize a population of random strings.&lt;/li&gt;
+&lt;li&gt;Mutate each string with probability 'mutation_probability'.&lt;/li&gt;
+&lt;li&gt;Breed each string with another random string from the population with
+probability 'breed_probability', keeping the newborn population separate.&lt;/li&gt;
+&lt;li&gt;Kill random newborns until the number of newborns is less than 1/4 of the
+size of the main population.&lt;/li&gt;
+&lt;li&gt;Select a random half of the main population and replace its weakest (furthest
+from the target) members with the remaining newborns.&lt;/li&gt;
+&lt;li&gt;Go back to Step 2.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In about 5000-10000 generations, the strongest member of the population
+stabilizes to the target string.&lt;/p&gt;
+&lt;p&gt;The same algorithm can be applied to other problems, like finding the maximum of
+a mathematical function, by just modifying &lt;tt class="docutils literal"&gt;Weasel.rb&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="section" id="sample-output"&gt;
+&lt;h2&gt;Sample Output&lt;/h2&gt;
+&lt;p&gt;The left column is the population's strongest member. The right column is the
+population's weakest member.&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+YAPXMLHQFORHPPNVWF DISTEBZEK -- vs. -- YZLHUURLMPKITAP ZYVTTSIZZCQV (Gen: 0)
+YAPXMLHQFORHPPNVWF DISTEBZEK -- vs. -- CXZWQCVCUAZFDOUSZNRCXDQPNENR (Gen: 1)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- CXZWQCVCUAZFDOUSZNRCXDQPNENR (Gen: 2)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- J ICBDLWUGASSNRS YENZDLVBJ V (Gen: 3)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- NJQPSUPJUBEUQGNEBPRCMHIVBJ V (Gen: 4)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- NJQPSUPJUBEUQGNEBPRCMHIVBJ V (Gen: 5)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. --  RQPSUPJUBEUQWSFJTJ OWHRTKIM (Gen: 6)
+MDLDIGLMBUJPTV LWEC W FMNINL -- vs. -- ZXZNNKDUGWIVLKARQLMDKCIZ FGW (Gen: 7)
+MDLDIGLMBUJPTV LWEC W FMNINL -- vs. -- ZXZNNKDUGWIVLKARQLMDKCIZ FGW (Gen: 8)
+...
+MDPXKNIS MVHXZ LHCC W ODACEL -- vs. -- MDLDMFQS MVHCZ LHCCGW IQACDY (Gen: 100)
+MDPXKNIS MVHXZ LHCC W ODACEL -- vs. -- MDJDIFVS M DAS HHXC W TSACEL (Gen: 101)
+MDPXKNIS MVHXZ LHCC W ODACEL -- vs. -- MDJDMNQS MVGXZ LHCC W FQACDL (Gen: 102)
+MADIMNQS MVDXZ LHCE W ODACEL -- vs. -- MDJDMNQS MVGXZ LHEC W FMACIL (Gen: 103)
+MDPXKNQS MVDAS HHCE W ODACEL -- vs. -- MDJDMNQS MVGXZ LHEC W FMACIL (Gen: 104)
+MDPXKNQS MVDAS HHCE W ODACEL -- vs. -- MAPXYNCM MVHXZ LHTC D DQACIL (Gen: 105)
+...
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHINIS IVHWS LHKEXA VMAQEL (Gen: 400)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHINIS RVHIS LHKEEA VMAQEL (Gen: 401)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHINIS RVHIS LHKEEA VMAQEL (Gen: 402)
+METHINIS ITHIS LHKE A VMACEL -- vs. -- METHINIS IVHWS LHKEXA VMAQEL (Gen: 403)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHFNIS RVHIS LHKE A VMAQEL (Gen: 404)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHFNIS RRHIS LHKE A VMAQEL (Gen: 405)
+...
+METHINIS IV IS LHKE A WMAQEL -- vs. -- MVTHINIS IV IS QHKE AMVMAQEL (Gen: 800)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METUINIS IV IS LHKE AMVMEQEL (Gen: 801)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METUINIS IV IS LHKE AMVMEQEL (Gen: 802)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METUINIS IV IS LHKE AMVMEQEL (Gen: 803)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METHINIS IVQISKLHKE A VMAQEL (Gen: 804)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METCINIS IV RS LHKK A WMAQEL (Gen: 805)
+...
+METHINKS IT IS LIKE A WEAWEL -- vs. -- ROTHINKS IT IS LIKE A WEAHEL (Gen: 5106)
+METHINKS IT IS LIKE A WEAWEL -- vs. -- MOTHINKS ITSIS VIKE A WEAWEL (Gen: 5107)
+METHINKS IT IS LIKE A WEAWEL -- vs. -- MOTHINKS ITSIS VIKE A WEAWEL (Gen: 5108)
+METHINKS IT IS LIKE A WEAWEL -- vs. -- METHINKSOIT IS LIKE A WEAWEL (Gen: 5109)
+METHINKS IT IS LIKE A WEASEL -- vs. -- METHINKSOIT IS LIKE A WEAWEL (Gen: 5110)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="main-rb"&gt;
+&lt;h2&gt;Main.rb&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'./Evolver.rb'&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'./Weasel.rb'&lt;/span&gt;
+
+&lt;span class="n"&gt;evolver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="no"&gt;Weasel&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setup&lt;/span&gt;
+
+&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;best&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; -- vs. -- &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;worst&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; (Gen: &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;) &lt;/span&gt;&lt;span class="se"&gt;\r&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;advance&lt;/span&gt;
+  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="evolver-rb"&gt;
+&lt;h2&gt;Evolver.rb&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;# WARNING: I have never even read `On the Origin of Species` so do not mistake&lt;/span&gt;
+&lt;span class="c1"&gt;# this horrible code to be anything like what happens in nature.&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Evolver&lt;/span&gt;
+
+  &lt;span class="kp"&gt;attr_reader&lt;/span&gt; &lt;span class="ss"&gt;:population&lt;/span&gt;
+  &lt;span class="kp"&gt;attr_accessor&lt;/span&gt; &lt;span class="ss"&gt;:population_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:mutation_probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:breed_probability&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;klass&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;entity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;klass&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;mutation_probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;07&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;breed_probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setup&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population_size&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;entity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;advance&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;mutation_probability&lt;/span&gt;
+        &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mutate&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="n"&gt;newborns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;breed_probability&lt;/span&gt;
+        &lt;span class="n"&gt;newborns&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Limit the number of newborns to at most 1/4 of the population size.&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;
+      &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shuffle!&lt;/span&gt;
+      &lt;span class="n"&gt;newborns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Select a random half of the population to be candidates for dying.&lt;/span&gt;
+    &lt;span class="n"&gt;killed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shuffle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# Sort them by goodness value in increasing order.&lt;/span&gt;
+    &lt;span class="n"&gt;killed&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort!&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+      &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt;
+        &lt;span class="mi"&gt;1&lt;/span&gt;
+      &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Replace the weakest death candidates with the newborns.&lt;/span&gt;
+    &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;subj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;killed&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subj&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;best&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inject&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;worst&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inject&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="weasel-rb"&gt;
+&lt;h2&gt;Weasel.rb&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Weasel&lt;/span&gt;
+  &lt;span class="kp"&gt;attr_reader&lt;/span&gt; &lt;span class="ss"&gt;:str&lt;/span&gt;
+
+  &lt;span class="no"&gt;ALPHABET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ &amp;quot;&lt;/span&gt;
+  &lt;span class="no"&gt;TARGET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;METHINKS IT IS LIKE A WEASEL&amp;quot;&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;random&lt;/span&gt;
+    &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="no"&gt;TARGET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="no"&gt;Weasel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;mutate&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;organism&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;split&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;front&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;back&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;organism&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;split&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;organism&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="no"&gt;Weasel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;front&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;back&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;goodness&lt;/span&gt;
+    &lt;span class="n"&gt;hamming&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;hamming&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;ord&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="no"&gt;TARGET&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;ord&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;hamming&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_s&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+</summary><category term="evolution"></category></entry><entry><title>Windows Magnifier Hack</title><link href="/blog2/windows-magnifier-password-reset.rst.html" rel="alternate"></link><updated>2013-02-19T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-02-19:windows-magnifier-password-reset.rst.html</id><summary type="html">&lt;p&gt;Steps to reset a Windows account password given physical access to the box:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Boot a Linux live cd and mount C:somewhere.&lt;/li&gt;
 &lt;li&gt;Find magnifier.exe (somewhere in System32) and replace it with cmd.exe.&lt;/li&gt;
