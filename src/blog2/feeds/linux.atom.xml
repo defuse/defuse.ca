@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog2/" rel="alternate"></link><link href="/blog2/feeds/linux.atom.xml" rel="self"></link><id>/blog2/</id><updated>2013-04-29T00:00:00-06:00</updated><entry><title>Switching Desktops/Workspaces with Mouse Buttons</title><link href="/blog2/linux-switch-virtual-desktop-workspace-mouse-button.html" rel="alternate"></link><updated>2013-04-29T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-04-29:linux-switch-virtual-desktop-workspace-mouse-button.html</id><summary type="html">&lt;p&gt;I had to uninstall compiz today, and I absolutely can't live without being able
+to switch virtual desktops (also known as workspaces) with the buttons on the
+side of my mouse. Here's how you do it:&lt;/p&gt;
+&lt;p&gt;First, install &lt;strong&gt;xbindkeys&lt;/strong&gt; and &lt;strong&gt;xdotool&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install xbindkeys xdotool
+&lt;/pre&gt;
+&lt;p&gt;Then create a &lt;strong&gt;.xbindkeysrc&lt;/strong&gt; file in your home folder:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+vim ~/.xbindkeysrc
+&lt;/pre&gt;
+&lt;p&gt;Into this file, put the following:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+# -- Move Right --
+# This is the general command that works with any number of workspaces:
+# &amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % $(xdotool get_num_desktops))&amp;quot;
+# This is the optimized command for 5 workspaces:
+&amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % 5)&amp;quot;
+    b:8
+
+# -- Move Left --
+# This is the general command that works with any number of workspaces:
+# &amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + $(expr $(xdotool get_num_desktops) - 1)) % $(xdotool get_num_desktops))&amp;quot;
+# This is the optimized command for 5 workspaces:
+&amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 4) % 5)&amp;quot;
+    b:9
+&lt;/pre&gt;
+&lt;p&gt;In the above config, replace &amp;quot;8&amp;quot; with the number of the button you want to use
+to move right, and &amp;quot;9&amp;quot; with the number of the button you want to use to move
+left. If you don't know what the button numbers are, run &amp;lt;b&amp;gt;xev&amp;lt;/b&amp;gt;, press the
+one you want while hovering your mouse over the window, and you'll see it in the
+output.&lt;/p&gt;
+&lt;p&gt;The command that's uncommented works with a 5-workspace setup. If you want it to
+work with X desktops either comment that one out and uncomment the general
+command, or replace &amp;quot;5&amp;quot; with X and &amp;quot;4&amp;quot; with X - 1.&lt;/p&gt;
+&lt;p&gt;Then add &lt;strong&gt;xbindkeys&lt;/strong&gt; (no arguments) to your startup applications. If you want windows to &amp;quot;edge switch&amp;quot; (switch workspaces when you drag them across the side of your screen), look at &lt;a class="reference external" href="http://lifehacker.com/263508/add-screen-actions-with-brightside"&gt;brightside&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note: &lt;a class="reference external" href="http://forum.pinguyos.com/Thread-HOWTO-Mouse-buttons-to-change-workspaces-in-gnome-shell"&gt;HOWTO: Mouse buttons to change workspaces in gnome-shell&lt;/a&gt; helped me figure out how to do this.&lt;/p&gt;
+</summary><category term="xbindkeys"></category></entry></feed>

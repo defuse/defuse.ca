@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The Code Files - xbindkeys</title>
+        <link rel="stylesheet" href="/blog2/theme/css/main.css" />
+        <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog2/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog2/category/life.html">life</a></li>
+                    <li><a href="/blog2/category/linux.html">linux</a></li>
+                    <li><a href="/blog2/category/programming.html">programming</a></li>
+                    <li><a href="/blog2/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/blog2/linux-switch-virtual-desktop-workspace-mouse-button.html">Switching Desktops/Workspaces with Mouse Buttons</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-04-29T00:00:00">
+                Mon 29 April 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/blog2/tag/xbindkeys.html">xbindkeys</a></p>
+</footer><!-- /.post-info --><p>I had to uninstall compiz today, and I absolutely can't live without being able
+to switch virtual desktops (also known as workspaces) with the buttons on the
+side of my mouse. Here's how you do it:</p>
+<p>First, install <strong>xbindkeys</strong> and <strong>xdotool</strong>:</p>
+<pre class="code bash literal-block">
+apt-get install xbindkeys xdotool
+</pre>
+<p>Then create a <strong>.xbindkeysrc</strong> file in your home folder:</p>
+<pre class="code bash literal-block">
+vim ~/.xbindkeysrc
+</pre>
+<p>Into this file, put the following:</p>
+<pre class="code text literal-block">
+# -- Move Right --
+# This is the general command that works with any number of workspaces:
+# &quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % $(xdotool get_num_desktops))&quot;
+# This is the optimized command for 5 workspaces:
+&quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % 5)&quot;
+    b:8
+
+# -- Move Left --
+# This is the general command that works with any number of workspaces:
+# &quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + $(expr $(xdotool get_num_desktops) - 1)) % $(xdotool get_num_desktops))&quot;
+# This is the optimized command for 5 workspaces:
+&quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 4) % 5)&quot;
+    b:9
+</pre>
+<p>In the above config, replace &quot;8&quot; with the number of the button you want to use
+to move right, and &quot;9&quot; with the number of the button you want to use to move
+left. If you don't know what the button numbers are, run &lt;b&gt;xev&lt;/b&gt;, press the
+one you want while hovering your mouse over the window, and you'll see it in the
+output.</p>
+<p>The command that's uncommented works with a 5-workspace setup. If you want it to
+work with X desktops either comment that one out and uncomment the general
+command, or replace &quot;5&quot; with X and &quot;4&quot; with X - 1.</p>
+<p>Then add <strong>xbindkeys</strong> (no arguments) to your startup applications. If you want windows to &quot;edge switch&quot; (switch workspaces when you drag them across the side of your screen), look at <a class="reference external" href="http://lifehacker.com/263508/add-screen-actions-with-brightside">brightside</a>.</p>
+<p>Note: <a class="reference external" href="http://forum.pinguyos.com/Thread-HOWTO-Mouse-buttons-to-change-workspaces-in-gnome-shell">HOWTO: Mouse buttons to change workspaces in gnome-shell</a> helped me figure out how to do this.</p>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

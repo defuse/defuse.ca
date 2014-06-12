@@ -1,19 +1,10 @@
-Starting with Pelican
+Switching to Pelican
 #####################
-:date: 2012-03-30 23:47
+:slug: switching-to-pelican
+:author: Taylor Hornby
+:date: 2014-06-10 09:56
 :category: programming
-:tags: python, blog, rst, pelican
-:author: F\. Javier Alba
-:excerpt: This is an excerpt of my post.
+:tags: blog, meta
 
-Introduction
-------------
+I'm switching this blog to Pelican. That is all.
 
-Hi!
-
-This is my first rst post!
-
-And this is a link to a page_
-
-
-.. _page: http://moliware.com/

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Starting with Pelican</title>
+        <title>Enabling TLS v1.1 on Firefox 23</title>
         <link rel="stylesheet" href="/blog2/theme/css/main.css" />
         <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
 
@@ -15,34 +15,44 @@
         <header id="banner" class="body">
                 <h1><a href="/blog2/">The Code Files </a></h1>
                 <nav><ul>
-                    <li class="active"><a href="/blog2/category/programming.html">programming</a></li>
+                    <li><a href="/blog2/category/life.html">life</a></li>
+                    <li><a href="/blog2/category/linux.html">linux</a></li>
+                    <li><a href="/blog2/category/programming.html">programming</a></li>
+                    <li class="active"><a href="/blog2/category/security.html">security</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/blog2/starting-with-pelican.html" rel="bookmark"
-           title="Permalink to Starting with Pelican">Starting with Pelican</a></h1>
+        <a href="/blog2/enabling-tls-11-on-firefox-version-23.html" rel="bookmark"
+           title="Permalink to Enabling TLS v1.1 on Firefox 23">Enabling TLS v1.1 on Firefox 23</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2012-03-30T23:47:00">
-                Fri 30 March 2012
+        <abbr class="published" title="2013-08-09T00:00:00">
+                Fri 09 August 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="/blog2/author/f-javier-alba.html">F. Javier Alba</a>
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
         </address>
-<p>In <a href="/blog2/category/programming.html">programming</a>. </p>
-<p>tags: <a href="/blog2/tag/python.html">python</a><a href="/blog2/tag/blog.html">blog</a><a href="/blog2/tag/rst.html">rst</a><a href="/blog2/tag/pelican.html">pelican</a></p>
-</footer><!-- /.post-info -->      <div class="section" id="introduction">
-<h2>Introduction</h2>
-<p>Hi!</p>
-<p>This is my first rst post!</p>
-<p>And this is a link to a <a class="reference external" href="http://moliware.com/">page</a></p>
-</div>
+<p>In <a href="/blog2/category/security.html">security</a>. </p>
+<p>tags: <a href="/blog2/tag/firefox.html">firefox</a></p>
+</footer><!-- /.post-info -->      <p>Change the following settings in Firefox's <a class="reference external" href="about:config">about:config</a> to enable TLS v1.1.</p>
+<img alt="Enabling TLS 1.1 in Firefox 23" src="https://defuse.ca/images/ff23-tls.png" />
+<p><strong>Steps</strong></p>
+<ol class="arabic simple">
+<li>Open a new tab and type <a class="reference external" href="about:config">about:config</a> into the address bar.</li>
+<li>Search for tls.version.</li>
+<li>Set security.tls.version.max to 2. This enables TLS 1.1.</li>
+<li>Set security.tls.version.min to 1. This disables SSL 3.0.</li>
+</ol>
+<p>Be aware that setting tls.version.max to 3 will enable TLS v1.2 in a future
+release of Firefox, but setting it to 3 in version 23 actually makes it fall
+back to using <em>only</em> TLS 1.0. So for now, set it to 2.</p>
+<p>The image was contributed by <a class="reference external" href="https://twitter.com/voodooKobra">&#64;voodooKobra</a>.</p>
 
     </div><!-- /.entry-content -->
 

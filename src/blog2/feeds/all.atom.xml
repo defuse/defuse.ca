@@ -1,8 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog2/" rel="alternate"></link><link href="/blog2/feeds/all.atom.xml" rel="self"></link><id>/blog2/</id><updated>2012-03-30T23:47:00-06:00</updated><entry><title>Starting with Pelican</title><link href="/blog2/starting-with-pelican.html" rel="alternate"></link><updated>2012-03-30T23:47:00-06:00</updated><author><name>F. Javier Alba</name></author><id>tag:/blog2,2012-03-30:starting-with-pelican.html</id><summary type="html">&lt;div class="section" id="introduction"&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Hi!&lt;/p&gt;
-&lt;p&gt;This is my first rst post!&lt;/p&gt;
-&lt;p&gt;And this is a link to a &lt;a class="reference external" href="http://moliware.com/"&gt;page&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</summary><category term="python"></category><category term="blog"></category><category term="rst"></category><category term="pelican"></category></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog2/" rel="alternate"></link><link href="/blog2/feeds/all.atom.xml" rel="self"></link><id>/blog2/</id><updated>2014-06-10T09:56:00-06:00</updated><entry><title>Switching to Pelican</title><link href="/blog2/switching-to-pelican.html" rel="alternate"></link><updated>2014-06-10T09:56:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2014-06-10:switching-to-pelican.html</id><summary type="html">&lt;p&gt;I'm switching this blog to Pelican. That is all.&lt;/p&gt;
+</summary><category term="blog"></category><category term="meta"></category></entry><entry><title>How to Maximize X in Your Life</title><link href="/blog2/how-to-maximize-anything-in-your-life.html" rel="alternate"></link><updated>2013-11-01T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-11-01:how-to-maximize-anything-in-your-life.html</id><summary type="html">&lt;p&gt;How to maximize X (success, happiness, skill, or whatever) in your life:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Every week, spend at least an hour reviewing what you did the previous week.
+Think of what you could have done better to increase X even more. Apply the
+things you find to the next week.&lt;/li&gt;
+&lt;li&gt;Every month, spend at least an hour reviewing your review process. Are your
+weekly reviews making you improve X? Think about how you could make your
+review process better. Do you need more time for the weekly reviews? What
+other changes to the reviews can you make so they're more effective? Apply
+these changes in the next month.&lt;/li&gt;
+&lt;li&gt;Every year, spend at least an hour reviewing your monthly review of review
+process. Are your monthly reviews improving the effectiveness of your weekly
+reviews? How can you make your monthly reviews better? Apply these changes in
+the next year.&lt;/li&gt;
+&lt;li&gt;Every 5 years, review the yearly reviews in the same way.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you graph y = X(t) as a curve, the days of your life represent actual
+increases in the value of X. The weekly reviews represent increases in the slope
+(first derivative) of X(t), making it increase faster. The monthly reviews
+increases the rate at which the slope of X(t) increases (second derivative). The
+yearly reviews increase the rate at which the rate at which the slope is
+increasing (third derivative). The 5-year reviews increase the fourth
+derivative, and so on, if you wish to apply more levels of review.&lt;/p&gt;
+&lt;p&gt;I believe this process to be the best a human being can do to approximate
+exponential growth of some property of themselves within their lifetime.&lt;/p&gt;
+</summary><category term="life"></category></entry><entry><title>Enabling TLS v1.1 on Firefox 23</title><link href="/blog2/enabling-tls-11-on-firefox-version-23.html" rel="alternate"></link><updated>2013-08-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-08-09:enabling-tls-11-on-firefox-version-23.html</id><summary type="html">&lt;p&gt;Change the following settings in Firefox's &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; to enable TLS v1.1.&lt;/p&gt;
+&lt;img alt="Enabling TLS 1.1 in Firefox 23" src="https://defuse.ca/images/ff23-tls.png" /&gt;
+&lt;p&gt;&lt;strong&gt;Steps&lt;/strong&gt;&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Open a new tab and type &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; into the address bar.&lt;/li&gt;
+&lt;li&gt;Search for tls.version.&lt;/li&gt;
+&lt;li&gt;Set security.tls.version.max to 2. This enables TLS 1.1.&lt;/li&gt;
+&lt;li&gt;Set security.tls.version.min to 1. This disables SSL 3.0.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Be aware that setting tls.version.max to 3 will enable TLS v1.2 in a future
+release of Firefox, but setting it to 3 in version 23 actually makes it fall
+back to using &lt;em&gt;only&lt;/em&gt; TLS 1.0. So for now, set it to 2.&lt;/p&gt;
+&lt;p&gt;The image was contributed by &lt;a class="reference external" href="https://twitter.com/voodooKobra"&gt;&amp;#64;voodooKobra&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="firefox"></category></entry><entry><title>What is DDoS? (Guest Post)</title><link href="/blog2/what-is-ddos.html" rel="alternate"></link><updated>2013-05-12T00:00:00-06:00</updated><author><name>Breshie</name></author><id>tag:/blog2,2013-05-12:what-is-ddos.html</id><summary type="html">&lt;p&gt;This is a guest post by BreShiE.&lt;/p&gt;
+&lt;p&gt;DDoS attacks are becoming more and more frequent in today's world, with any
+average person being able to download or purchase such tools from online, public
+forums. You may have heard about the self proclaimed hacktivist group
+&amp;quot;Anonymous&amp;quot; and their infamous take-downs of websites such as &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Operation_Payback"&gt;MasterCard,
+PayPal and The Bank of America&lt;/a&gt;. Well, these websites were taken offline for
+a period of time by an attack known as &amp;quot;DDoS&amp;quot;, but what is DDoS?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DDoS&lt;/strong&gt; stands for &lt;strong&gt;Distributed Denial of Service&lt;/strong&gt;. DDoS attacks work by
+collecting multiple infected machines or servers with certain scripts, or
+malware, intended to send data from the infected server or home connection to
+a victims. This means the attacker can overload the victim connection, by
+flooding it with loads and loads of dummy data, eventually causing the victim
+connection to overload, &amp;quot;knocking&amp;quot; the connection offline and making it
+unresponsive. See the below diagram for an example of this:&lt;/p&gt;
+&lt;img alt="" src="/images/breshie-ddos.png" /&gt;
+&lt;p&gt;As you can see from the above diagram, the attacker sends a command to the
+servers/PCs that are under his/her control, which then send the dummy data to
+the victim connection and overloads the connection, making it hard or impossible
+for the victim's users to communicate with the victim. There's also what is
+known as &amp;quot;DoS&amp;quot; which is often not as strong as a DDoS attack, but if the
+attacker is using a server with a strong connection, this attack can still be
+devastating. One thing to &lt;strong&gt;note&lt;/strong&gt; would be that there are companies which fight
+to prevent this exact attack and that is why you never see big sites like eBay,
+YouTube and Google go down. With this &lt;a class="reference external" href="http://www.bbc.co.uk/news/technology-17472447"&gt;huge scare about &amp;quot;hackers being able to
+take down the internet&amp;quot;&lt;/a&gt;, it's baloney. The only way it would be possible, is
+if the data-centers were to be physically blown up, not DDoS attacks via the
+internet.  If you wish to know more on this subject, visit &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Distributed_denial_of_service#Distributed_attack"&gt;Wikipedia's page on
+DDoS&lt;/a&gt;&lt;/p&gt;
+</summary><category term="ddos"></category></entry><entry><title>Switching Desktops/Workspaces with Mouse Buttons</title><link href="/blog2/linux-switch-virtual-desktop-workspace-mouse-button.html" rel="alternate"></link><updated>2013-04-29T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-04-29:linux-switch-virtual-desktop-workspace-mouse-button.html</id><summary type="html">&lt;p&gt;I had to uninstall compiz today, and I absolutely can't live without being able
+to switch virtual desktops (also known as workspaces) with the buttons on the
+side of my mouse. Here's how you do it:&lt;/p&gt;
+&lt;p&gt;First, install &lt;strong&gt;xbindkeys&lt;/strong&gt; and &lt;strong&gt;xdotool&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install xbindkeys xdotool
+&lt;/pre&gt;
+&lt;p&gt;Then create a &lt;strong&gt;.xbindkeysrc&lt;/strong&gt; file in your home folder:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+vim ~/.xbindkeysrc
+&lt;/pre&gt;
+&lt;p&gt;Into this file, put the following:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+# -- Move Right --
+# This is the general command that works with any number of workspaces:
+# &amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % $(xdotool get_num_desktops))&amp;quot;
+# This is the optimized command for 5 workspaces:
+&amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % 5)&amp;quot;
+    b:8
+
+# -- Move Left --
+# This is the general command that works with any number of workspaces:
+# &amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + $(expr $(xdotool get_num_desktops) - 1)) % $(xdotool get_num_desktops))&amp;quot;
+# This is the optimized command for 5 workspaces:
+&amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 4) % 5)&amp;quot;
+    b:9
+&lt;/pre&gt;
+&lt;p&gt;In the above config, replace &amp;quot;8&amp;quot; with the number of the button you want to use
+to move right, and &amp;quot;9&amp;quot; with the number of the button you want to use to move
+left. If you don't know what the button numbers are, run &amp;lt;b&amp;gt;xev&amp;lt;/b&amp;gt;, press the
+one you want while hovering your mouse over the window, and you'll see it in the
+output.&lt;/p&gt;
+&lt;p&gt;The command that's uncommented works with a 5-workspace setup. If you want it to
+work with X desktops either comment that one out and uncomment the general
+command, or replace &amp;quot;5&amp;quot; with X and &amp;quot;4&amp;quot; with X - 1.&lt;/p&gt;
+&lt;p&gt;Then add &lt;strong&gt;xbindkeys&lt;/strong&gt; (no arguments) to your startup applications. If you want windows to &amp;quot;edge switch&amp;quot; (switch workspaces when you drag them across the side of your screen), look at &lt;a class="reference external" href="http://lifehacker.com/263508/add-screen-actions-with-brightside"&gt;brightside&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note: &lt;a class="reference external" href="http://forum.pinguyos.com/Thread-HOWTO-Mouse-buttons-to-change-workspaces-in-gnome-shell"&gt;HOWTO: Mouse buttons to change workspaces in gnome-shell&lt;/a&gt; helped me figure out how to do this.&lt;/p&gt;
+</summary><category term="xbindkeys"></category></entry></feed>

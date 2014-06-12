@@ -12,4 +12,5 @@ src/tmp_w
 src/tmp_d
 src/tmp_m
 src/tmp
+blog-source/__pycache__
 *.highlighted.html
