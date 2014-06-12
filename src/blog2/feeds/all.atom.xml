@@ -183,4 +183,18 @@ characters, completely random) in about 20 minutes using this script.&lt;/p&gt;
   &lt;span class="n"&gt;round&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;continue?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;round&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;
-</summary><category term="ruby"></category><category term="passwords"></category></entry></feed>
+</summary><category term="ruby"></category><category term="passwords"></category></entry><entry><title>[LaTeX] Typesetting Premise and Conclusion Form Arguments</title><link href="/blog2/latex-premise-conclusion-form-arguments.html" rel="alternate"></link><updated>2013-02-23T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-02-23:latex-premise-conclusion-form-arguments.html</id><summary type="html">&lt;p&gt;This is the easiest way I have found to typeset premise and conclusion style
+arguments in LaTeX. First, add this to your preamble:&lt;/p&gt;
+&lt;pre class="code latex literal-block"&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;amssymb&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Then use something like this to typeset the argument:&lt;/p&gt;
+&lt;pre class="code latex literal-block"&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[1.]&lt;/span&gt; Premise One.
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[2.]&lt;/span&gt; Premise Two.
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[3.]&lt;/span&gt; Premise Three.
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[$\therefore$]&lt;/span&gt; Therefore, Your Conclusion.
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="latex"></category></entry></feed>
