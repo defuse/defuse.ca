@@ -197,4 +197,15 @@ arguments in LaTeX. First, add this to your preamble:&lt;/p&gt;
     &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[$\therefore$]&lt;/span&gt; Therefore, Your Conclusion.
 &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;
-</summary><category term="latex"></category></entry></feed>
+</summary><category term="latex"></category></entry><entry><title>Windows Magnifier Hack</title><link href="/blog2/windows-magnifier-password-reset.rst.html" rel="alternate"></link><updated>2013-02-19T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2013-02-19:windows-magnifier-password-reset.rst.html</id><summary type="html">&lt;p&gt;Steps to reset a Windows account password given physical access to the box:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Boot a Linux live cd and mount C:somewhere.&lt;/li&gt;
+&lt;li&gt;Find magnifier.exe (somewhere in System32) and replace it with cmd.exe.&lt;/li&gt;
+&lt;li&gt;Boot to the Windows login screen.&lt;/li&gt;
+&lt;li&gt;Press WinKey + U&lt;/li&gt;
+&lt;li&gt;Start the magnifier, which should run cmd.exe.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://support.microsoft.com/kb/149427"&gt;Change the password in the Command Prompt&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Note that this will destroy all data encrypted with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Encrypting_File_System"&gt;EFS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I'm not sure who thought of this first, but if I knew, I would credit them here.&lt;/p&gt;
+</summary><category term="windows"></category></entry></feed>

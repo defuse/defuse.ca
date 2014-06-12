@@ -3,7 +3,7 @@
 :slug: ruby-password-training-script
 :author: Taylor Hornby
 :date: 2013-03-28 00:00
-:category: programming, security
+:category: security
 :tags: ruby, passwords
 
 This is a simple Ruby script that helps you memorize a password by making you
