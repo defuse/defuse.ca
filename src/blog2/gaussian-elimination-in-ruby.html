@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Gaussian (Gauss-Jordan) Elimination in Ruby</title>
+        <link rel="stylesheet" href="/blog2/theme/css/main.css" />
+        <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog2/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog2/category/life.html">life</a></li>
+                    <li><a href="/blog2/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/blog2/category/math.html">math</a></li>
+                    <li><a href="/blog2/category/programming.html">programming</a></li>
+                    <li><a href="/blog2/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/blog2/gaussian-elimination-in-ruby.html" rel="bookmark"
+           title="Permalink to Gaussian (Gauss-Jordan) Elimination in Ruby">Gaussian (Gauss-Jordan) Elimination in Ruby</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-11-11T00:00:00">
+                Sun 11 November 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/math.html">math</a>. </p>
+<p>tags: <a href="/blog2/tag/gaussian-elimination.html">gaussian elimination</a><a href="/blog2/tag/matrices.html">matrices</a></p>
+</footer><!-- /.post-info -->      <p>I had to do some Gaussian elimination for an assignment. So here's Gaussian
+elimination in Ruby:</p>
+<pre class="code ruby literal-block">
+<span class="c1"># Performs an in-place Gaussian elimination on an NxN matrix 'matrix' (2D array</span>
+<span class="c1"># of Numeric objects) and an N-element vector 'vector.' (array of N Numerics).</span>
+<span class="k">def</span> <span class="nf">gaussianElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+<span class="mi">0</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">pivotIdx</span><span class="o">|</span>
+    <span class="c1"># Find the best pivot. This is the one who has the largest absolute value</span>
+    <span class="c1"># relative to his row (scaled partial pivoting). This step can be omitted</span>
+    <span class="c1"># to improve speed at the cost of increased error.</span>
+    <span class="n">maxRelVal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">pivotIdx</span>
+    <span class="p">(</span><span class="n">pivotIdx</span><span class="p">)</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+    <span class="n">relVal</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">pivotIdx</span><span class="o">]</span> <span class="o">/</span> <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">].</span><span class="n">map</span><span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span><span class="o">.</span><span class="n">abs</span> <span class="p">}</span><span class="o">.</span><span class="n">max</span>
+    <span class="k">if</span> <span class="n">relVal</span> <span class="o">&gt;=</span> <span class="n">maxRelVal</span>
+        <span class="n">maxRelVal</span> <span class="o">=</span> <span class="n">relVal</span>
+        <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">row</span>
+    <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Swap the best pivot row into place.</span>
+    <span class="n">matrix</span><span class="o">[</span><span class="n">pivotIdx</span><span class="o">]</span><span class="p">,</span> <span class="n">matrix</span><span class="o">[</span><span class="n">maxIdx</span><span class="o">]</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">[</span><span class="n">maxIdx</span><span class="o">]</span><span class="p">,</span> <span class="n">matrix</span><span class="o">[</span><span class="n">pivotIdx</span><span class="o">]</span>
+    <span class="n">vector</span><span class="o">[</span><span class="n">pivotIdx</span><span class="o">]</span><span class="p">,</span> <span class="n">vector</span><span class="o">[</span><span class="n">maxIdx</span><span class="o">]</span> <span class="o">=</span> <span class="n">vector</span><span class="o">[</span><span class="n">maxIdx</span><span class="o">]</span><span class="p">,</span> <span class="n">vector</span><span class="o">[</span><span class="n">pivotIdx</span><span class="o">]</span>
+
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">[</span><span class="n">pivotIdx</span><span class="o">][</span><span class="n">pivotIdx</span><span class="o">]</span>
+    <span class="c1"># Loop over each row below the pivot row.</span>
+    <span class="p">(</span><span class="n">pivotIdx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+    <span class="c1"># Find factor so that [this row] = [this row] - factor*[pivot row]</span>
+    <span class="c1"># leaves 0 in the pivot column.</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">pivotIdx</span><span class="o">]/</span><span class="n">pivot</span>
+    <span class="c1"># We know it will be zero.</span>
+    <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">pivotIdx</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
+    <span class="c1"># Compute [this row] = [this row] - factor*[pivot row] for the other cols.</span>
+    <span class="p">(</span><span class="n">pivotIdx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">].</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">col</span><span class="o">|</span>
+        <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">-=</span> <span class="n">factor</span><span class="o">*</span><span class="n">matrix</span><span class="o">[</span><span class="n">pivotIdx</span><span class="o">][</span><span class="n">col</span><span class="o">]</span>
+    <span class="k">end</span>
+    <span class="n">vector</span><span class="o">[</span><span class="n">row</span><span class="o">]</span> <span class="o">-=</span> <span class="n">factor</span><span class="o">*</span><span class="n">vector</span><span class="o">[</span><span class="n">pivotIdx</span><span class="o">]</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">return</span> <span class="o">[</span><span class="n">matrix</span><span class="p">,</span><span class="n">vector</span><span class="o">]</span>
+<span class="k">end</span>
+
+<span class="c1"># Assumes 'matrix' is in row echelon form.</span>
+<span class="k">def</span> <span class="nf">backSubstitution</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+<span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span> <span class="mi">0</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+    <span class="n">tail</span> <span class="o">=</span> <span class="n">vector</span><span class="o">[</span><span class="n">row</span><span class="o">]</span>
+    <span class="p">(</span><span class="n">row</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">col</span><span class="o">|</span>
+    <span class="n">tail</span> <span class="o">-=</span> <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">*</span> <span class="n">vector</span><span class="o">[</span><span class="n">col</span><span class="o">]</span>
+    <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
+    <span class="k">end</span>
+    <span class="n">vector</span><span class="o">[</span><span class="n">row</span><span class="o">]</span> <span class="o">=</span> <span class="n">tail</span> <span class="o">/</span> <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">row</span><span class="o">]</span>
+    <span class="n">matrix</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">row</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># Example usage:</span>
+<span class="nb">require</span> <span class="s1">'pp'</span>
+
+<span class="c1"># A system of equations: matrix * X = vector</span>
+<span class="n">matrix</span> <span class="o">=</span>
+<span class="o">[</span>
+    <span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span>
+    <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span>
+    <span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span>
+    <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span>
+<span class="o">]</span>
+<span class="n">vector</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="c1"># Create a backup for verification.</span>
+<span class="n">matrix_backup</span> <span class="o">=</span> <span class="no">Marshal</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="no">Marshal</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+<span class="n">vector_backup</span><span class="o">=</span> <span class="n">vector</span><span class="o">.</span><span class="n">dup</span>
+
+<span class="c1"># Gaussian elemination to put the system in row echelon form.</span>
+<span class="n">gaussianElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+<span class="c1"># Back-substitution to solve the system.</span>
+<span class="n">backSubstitution</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+
+<span class="c1"># Print the result.</span>
+<span class="n">pp</span> <span class="n">matrix</span>
+<span class="n">pp</span> <span class="n">vector</span>
+
+<span class="c1"># Verify the result.</span>
+<span class="n">pass</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="mi">0</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="n">matrix_backup</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span>  <span class="o">|</span><span class="n">eqn</span><span class="o">|</span>
+<span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="mi">0</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="n">matrix_backup</span><span class="o">[</span><span class="n">eqn</span><span class="o">].</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">term</span><span class="o">|</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">matrix_backup</span><span class="o">[</span><span class="n">eqn</span><span class="o">][</span><span class="n">term</span><span class="o">]</span> <span class="o">*</span> <span class="n">vector</span><span class="o">[</span><span class="n">term</span><span class="o">]</span>
+<span class="k">end</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">vector_backup</span><span class="o">[</span><span class="n">eqn</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">.</span><span class="mo">0000000001</span>
+    <span class="n">pass</span> <span class="o">=</span> <span class="kp">false</span>
+    <span class="k">break</span>
+<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">pass</span>
+<span class="nb">puts</span> <span class="s2">&quot;Verification PASSED.&quot;</span>
+<span class="k">else</span>
+<span class="nb">puts</span> <span class="s2">&quot;Verification FAILED.&quot;</span>
+<span class="k">end</span>
+</pre>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

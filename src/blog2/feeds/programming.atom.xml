@@ -327,4 +327,78 @@ phpClTop&lt;/tt&gt; and add &lt;tt class="docutils literal"&gt;level16&lt;/tt&gt
 line. If you have set &lt;tt class="docutils literal"&gt;g:rbpt_max&lt;/tt&gt; in your .vimrc, then you will need to
 change the &amp;quot;16&amp;quot; to that value.&lt;/li&gt;
 &lt;/ol&gt;
-</summary><category term="vim"></category></entry></feed>
+</summary><category term="vim"></category></entry><entry><title>Why Unsafe State != Deadlock</title><link href="/blog2/why-unsafe-state-deadlock.html" rel="alternate"></link><updated>2012-12-10T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-10:why-unsafe-state-deadlock.html</id><summary type="html">&lt;p&gt;You have a list of processes and a list of resources, and for each process you
+have:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The number of each resource they will &lt;em&gt;ever&lt;/em&gt; need at once.&lt;/li&gt;
+&lt;li&gt;The number of each resource they are currently allocated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When a process makes a request for a resource, you only allocate the resource if
+allocating the resource does not put the system into an &lt;em&gt;unsafe state&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;What is an unsafe state?&lt;/p&gt;
+&lt;p&gt;A system is in a safe state &lt;em&gt;only if&lt;/em&gt; there exists an allocation sequence that
+allows the processes to finish executing. Equivalently, if the system is in
+a safe state, then there exists an allocation sequence that allows the processes
+to finish executing. By contrapositive, if there is no allocation sequence that
+allows the processes to finish executing, then the system is in an unsafe state.&lt;/p&gt;
+&lt;p&gt;This is &lt;em&gt;not&lt;/em&gt; equivalent to the converse: &amp;quot;If the system is in an unsafe state,
+then there is no allocation sequence that allows the processes to finish
+executing.&amp;quot;&lt;/p&gt;
+&lt;p&gt;So how can a system be in an unsafe state but have an allocation sequence that
+allows all processes to finish executing? Remember the assumption that the
+banker's algorithm makes: It assumes all processes will request &lt;em&gt;all&lt;/em&gt; resources
+they would &lt;em&gt;ever&lt;/em&gt; need at once, then terminate, releasing all of the resources
+they just requested and the ones they held. The assumption that can be incorrect
+is that processes request &lt;em&gt;all&lt;/em&gt; resources they will ever need. There might not
+be an allocation sequence that allows all the processes to finish executing if
+they do request &lt;em&gt;all&lt;/em&gt; resources they will ever need, but if the processes
+&lt;em&gt;actually don't&lt;/em&gt; request all resources they will ever need (maybe one less, for
+example), then it might be enough for the system to avoid getting caught in
+a deadlock.&lt;/p&gt;
+&lt;p&gt;See the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Banker%27s_algorithm"&gt;Wikipedia article on Banker's Algorithm&lt;/a&gt; for a much better
+explanation.&lt;/p&gt;
+</summary><category term="threads"></category></entry><entry><title>x86 Stack Diagrams</title><link href="/blog2/x86-stack-diagrams.html" rel="alternate"></link><updated>2012-08-14T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-14:x86-stack-diagrams.html</id><summary type="html">&lt;p&gt;All of the x86 stack diagrams I could find are either cluttered with too much
+information, can't be read from a distance, or put the high address on top (I'm
+sure there are people who prefer that but... I'm not one of them). So I made my
+own.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;With low address on top (stack growing up, strcpy going down):&lt;/strong&gt;&lt;/p&gt;
+&lt;img alt="x86 Stack with low addresses on top" src="https://defuse.ca/images/stack-low-high.gif" /&gt;
+&lt;p&gt;&lt;strong&gt;With high address on top (stack growing down, strcpy going up):&lt;/strong&gt;&lt;/p&gt;
+&lt;img alt="x86 Stack with high addresses on top" src="https://defuse.ca/images/stack-high-low.gif" /&gt;
+</summary><category term="x86"></category><category term="assembly"></category></entry><entry><title>Visual Basic's "With" in Ruby</title><link href="/blog2/visual-basic-with-in-ruby.html" rel="alternate"></link><updated>2012-08-04T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-04:visual-basic-with-in-ruby.html</id><summary type="html">&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;with&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="no"&gt;Math&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Deeply nested modules&lt;/span&gt;
+&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Foo&lt;/span&gt;
+  &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Bar&lt;/span&gt;
+
+    &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Baz&lt;/span&gt;
+      &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+      &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;aMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Biz&lt;/span&gt;
+      &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;anotherMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;hello &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="ss"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Bar&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="ss"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Baz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;aMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="ss"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Biz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;anotherMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bob&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="basic"></category></entry></feed>

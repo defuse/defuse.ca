@@ -36,4 +36,41 @@ work with X desktops either comment that one out and uncomment the general
 command, or replace &amp;quot;5&amp;quot; with X and &amp;quot;4&amp;quot; with X - 1.&lt;/p&gt;
 &lt;p&gt;Then add &lt;strong&gt;xbindkeys&lt;/strong&gt; (no arguments) to your startup applications. If you want windows to &amp;quot;edge switch&amp;quot; (switch workspaces when you drag them across the side of your screen), look at &lt;a class="reference external" href="http://lifehacker.com/263508/add-screen-actions-with-brightside"&gt;brightside&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Note: &lt;a class="reference external" href="http://forum.pinguyos.com/Thread-HOWTO-Mouse-buttons-to-change-workspaces-in-gnome-shell"&gt;HOWTO: Mouse buttons to change workspaces in gnome-shell&lt;/a&gt; helped me figure out how to do this.&lt;/p&gt;
-</summary><category term="xbindkeys"></category></entry></feed>
+</summary><category term="xbindkeys"></category></entry><entry><title>Raspberry PI: Enable MPlayer and VLC audio on Raspbian</title><link href="/blog2/raspberry-pi-enable-mplayer-and-vlc-audio-on-rasbian.html" rel="alternate"></link><updated>2012-08-02T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-02:raspberry-pi-enable-mplayer-and-vlc-audio-on-rasbian.html</id><summary type="html">&lt;!-- NOTE: The slug misspells raspbian intentionally so it matches the old URL. --&gt;
+&lt;p&gt;If mplayer is giving you an error like the following...&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+AO: [pulse] Init failed: Connection refused
+Failed to initialize audio driver 'pulse'
+[AO_ALSA] Unable to set hw-parameters: Invalid argument
+Failed to initialize audio driver 'alsa'
+[AO SDL] Samplerate: 44100Hz Channels: Stereo Format floatle
+[AO SDL] using aalib audio driver.
+[AO SDL] Unsupported audio format: 0x1d.
+[AO SDL] Unable to open audio: No available audio device
+Failed to initialize audio driver 'sdl:aalib'
+Could not open/initialize audio device -&amp;gt; no sound.
+Audio: no sound
+Video: no video
+&lt;/pre&gt;
+&lt;p&gt;... add the following to /etc/asound.conf (create it if it does not exist):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+pcm.!default {
+    type hw
+    card 0
+}
+
+ctl.!default {
+    type hw
+    card 0
+}
+&lt;/pre&gt;
+&lt;p&gt;Then, run:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+modprobe snd_bcm2835
+&lt;/pre&gt;
+&lt;p&gt;Then add the following &lt;tt class="docutils literal"&gt;/etc/modules&lt;/tt&gt; (unless it's already there):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+snd-bcm2835
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=66&amp;amp;t=7107"&gt;Source - &amp;quot;ALSA on Raspbian&amp;quot;&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="raspberry pi"></category><category term="raspbian"></category></entry></feed>

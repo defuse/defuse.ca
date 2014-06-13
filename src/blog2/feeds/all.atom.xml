@@ -521,7 +521,7 @@ phpClTop&lt;/tt&gt; and add &lt;tt class="docutils literal"&gt;level16&lt;/tt&gt
 line. If you have set &lt;tt class="docutils literal"&gt;g:rbpt_max&lt;/tt&gt; in your .vimrc, then you will need to
 change the &amp;quot;16&amp;quot; to that value.&lt;/li&gt;
 &lt;/ol&gt;
-</summary><category term="vim"></category></entry><entry><title>Encrypted Automatic Backups with Public Key Cryptography</title><link href="/blog2/encrypted-automatic-backups-with-pkc.html" rel="alternate"></link><updated>2012-12-06T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-06:encrypted-automatic-backups-with-pkc.html</id><summary type="html">&lt;p&gt;Here's how to do encrypted automated backups without having to store the
+</summary><category term="vim"></category></entry><entry><title>Encrypted Automatic Backups with Public Key Cryptography</title><link href="/blog2/encrypted-automatic-backups-with-pkc.html" rel="alternate"></link><updated>2012-12-16T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-16:encrypted-automatic-backups-with-pkc.html</id><summary type="html">&lt;p&gt;Here's how to do encrypted automated backups without having to store the
 password in the backup script. The script should be self-explanatory (after all,
 it is 50 lines of comments for just one real line of code).&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
@@ -586,4 +586,362 @@ it is 50 lines of comments for just one real line of code).&lt;/p&gt;
 tar cf - -C &lt;span class="nv"&gt;$DIRECTORY&lt;/span&gt; . | &lt;span class="se"&gt;\
 &lt;/span&gt;    gpg -z 9 --batch --yes --encrypt --recipient &lt;span class="nv"&gt;$GPG_RECIPIENT&lt;/span&gt; --output &lt;span class="nv"&gt;$OUTPUT_FILE&lt;/span&gt;
 &lt;/pre&gt;
-</summary><category term="backups"></category></entry></feed>
+</summary><category term="backups"></category></entry><entry><title>Increasing Collisions in Password Hashing</title><link href="/blog2/increasing-collisions-in-password-hashing.html" rel="alternate"></link><updated>2012-12-11T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-11:increasing-collisions-in-password-hashing.html</id><summary type="html">&lt;p&gt;With this post I will try to show how, in a theoretical scenario, deliberately
+weakening the collision resistance of a password hash function can increase
+security. This is by no means a formal proof.&lt;/p&gt;
+&lt;p&gt;Suppose Alice has an account on two computer systems &lt;em&gt;X&lt;/em&gt; and &lt;em&gt;Y&lt;/em&gt;. She uses the
+same password on both systems.&lt;/p&gt;
+&lt;p&gt;Suppose both systems implement the following password hashing scheme: Let &lt;em&gt;t&lt;/em&gt; be
+some positive integer. Given a password &lt;em&gt;P&lt;/em&gt;, compute the entropy of the password
+&lt;em&gt;H(P)&lt;/em&gt;. Create and store a salted &lt;em&gt;B&lt;/em&gt;-bit hash of &lt;em&gt;P&lt;/em&gt; where &lt;em&gt;B = H(P) - lg(t)&lt;/em&gt;.
+To verify a password, wait for &lt;em&gt;t&lt;/em&gt; units of time then check the hash in the
+usual manner. Here, the entropy of the password is the logarithm base two of the
+number of guesses it will take an adversary to guess the exact password. Also
+suppose that it takes one unit of time to compute a hash.&lt;/p&gt;
+&lt;p&gt;I claim that using this scheme, Alice's accounts are no less secure than if we
+used 256-bit hashes (if &lt;em&gt;H(P) &amp;lt; 256&lt;/em&gt;), and that if System &lt;em&gt;X&lt;/em&gt; gets compromised,
+then her account on System &lt;em&gt;Y&lt;/em&gt; is more secure than if we used 256-bit hashes.&lt;/p&gt;
+&lt;p&gt;To see why, note two things:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The probability of any random string &lt;em&gt;S&lt;/em&gt; having the same hash as Alice's
+password &lt;em&gt;P&lt;/em&gt; is &lt;em&gt;1/(2^B)&lt;/em&gt;. So if Mallory tries to guess Alice's password
+using an online attack, it will take about &lt;em&gt;2^B&lt;/em&gt; guesses, so about &lt;em&gt;2^B * t&lt;/em&gt;
+time. So the effective security against an online attack is &lt;em&gt;B + lg(t)&lt;/em&gt;. By
+the construction, &lt;em&gt;B + lg(t) = H(P)&lt;/em&gt; so this is no easier than guessing &lt;em&gt;P&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Suppose Mallory roots System &lt;em&gt;X&lt;/em&gt; and gets the &lt;em&gt;B&lt;/em&gt;-bit hash of Alice's
+password. It takes Mallory about &lt;em&gt;2^B&lt;/em&gt; guesses to find a preimage. But since
+&lt;em&gt;B = H(P) - lg(t)&lt;/em&gt;, Mallory will find about &lt;em&gt;t&lt;/em&gt; collisions when she performs
+the same search she would if it was instead a 256-bit hash (this is not at
+all a formal argument, but hopefully you see the idea behind it).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By supposition, Mallory has rooted System &lt;em&gt;X&lt;/em&gt;, so there is no point trying to
+secure Alice's account on &lt;em&gt;X&lt;/em&gt; anymore. All that remains is the security of
+Alice's account on system &lt;em&gt;Y&lt;/em&gt;. This breaks down if Mallory can get read-only
+access to the hash database without rooting... but suppose the root password is
+stored in plain text in the hash database ;) .&lt;/p&gt;
+&lt;p&gt;Because System &lt;em&gt;Y&lt;/em&gt; is using different salts, it is unlikely that any of the &lt;em&gt;t&lt;/em&gt;
+collisions Mallory found, except &lt;em&gt;P&lt;/em&gt; itself, can be used to authenticate as
+Alice to System &lt;em&gt;Y&lt;/em&gt; (reader: double check this). So Mallory's best option is to
+try authenticating to System &lt;em&gt;Y&lt;/em&gt; as Alice using the &lt;em&gt;t&lt;/em&gt; collisions as passwords
+guesses, since she knows &lt;em&gt;P&lt;/em&gt; is one of those &lt;em&gt;t&lt;/em&gt; collisions, and by construction
+&lt;em&gt;lg(t) &amp;lt; H(P)&lt;/em&gt;. This will take &lt;em&gt;t * t&lt;/em&gt; time, for an effective security of &lt;em&gt;2
+* lg(t)&lt;/em&gt; bits.&lt;/p&gt;
+&lt;p&gt;If, instead, System &lt;em&gt;X&lt;/em&gt; was using standard 256-bit hashes, Mallory would have
+found the exact &lt;em&gt;P&lt;/em&gt; and could get into System &lt;em&gt;Y&lt;/em&gt; on the first try. Using this
+scheme it takes about &lt;em&gt;t&lt;/em&gt; tries. So by weakening the hash, Alice's account on
+System &lt;em&gt;Y&lt;/em&gt; is more secure than it would have been had the hash not been
+weakened.&lt;/p&gt;
+&lt;p&gt;Of course, this system is impractical, since it assumes knowledge of how Mallory
+would guess &lt;em&gt;P&lt;/em&gt;, and thus the entropy of &lt;em&gt;P&lt;/em&gt;. It also assumes that if Alice's
+hash on System &lt;em&gt;X&lt;/em&gt; gets compromised, then the security of her account on &lt;em&gt;X&lt;/em&gt; no
+longer matters at all, which is obviously not always the case. It is
+nevertheless interesting to see how the altruism of the compromised system can
+increase the security of Alice's account on the other system.&lt;/p&gt;
+&lt;p&gt;Another problem is that the user must wait &lt;em&gt;t&lt;/em&gt; units of time when logging in, so
+in practice there would be tradeoff between security and log-in wait time.
+Locking the accounts after significantly less than &lt;em&gt;t&lt;/em&gt; attempts might be
+a better approach.&lt;/p&gt;
+&lt;p&gt;It doesn't look like it can be made any better than this, since if you decrease
+B any further, finding collisions with an online attack becomes easier than
+guessing P, but it is still an online (thus detectable, stoppable) attack so it
+might still be harder. I would guess that the wait time &lt;em&gt;t&lt;/em&gt; would be better
+spent computing iterations of PBKDF2 or similar.&lt;/p&gt;
+</summary><category term="passwords"></category><category term="hashing"></category></entry><entry><title>Why Unsafe State != Deadlock</title><link href="/blog2/why-unsafe-state-deadlock.html" rel="alternate"></link><updated>2012-12-10T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-10:why-unsafe-state-deadlock.html</id><summary type="html">&lt;p&gt;You have a list of processes and a list of resources, and for each process you
+have:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The number of each resource they will &lt;em&gt;ever&lt;/em&gt; need at once.&lt;/li&gt;
+&lt;li&gt;The number of each resource they are currently allocated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When a process makes a request for a resource, you only allocate the resource if
+allocating the resource does not put the system into an &lt;em&gt;unsafe state&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;What is an unsafe state?&lt;/p&gt;
+&lt;p&gt;A system is in a safe state &lt;em&gt;only if&lt;/em&gt; there exists an allocation sequence that
+allows the processes to finish executing. Equivalently, if the system is in
+a safe state, then there exists an allocation sequence that allows the processes
+to finish executing. By contrapositive, if there is no allocation sequence that
+allows the processes to finish executing, then the system is in an unsafe state.&lt;/p&gt;
+&lt;p&gt;This is &lt;em&gt;not&lt;/em&gt; equivalent to the converse: &amp;quot;If the system is in an unsafe state,
+then there is no allocation sequence that allows the processes to finish
+executing.&amp;quot;&lt;/p&gt;
+&lt;p&gt;So how can a system be in an unsafe state but have an allocation sequence that
+allows all processes to finish executing? Remember the assumption that the
+banker's algorithm makes: It assumes all processes will request &lt;em&gt;all&lt;/em&gt; resources
+they would &lt;em&gt;ever&lt;/em&gt; need at once, then terminate, releasing all of the resources
+they just requested and the ones they held. The assumption that can be incorrect
+is that processes request &lt;em&gt;all&lt;/em&gt; resources they will ever need. There might not
+be an allocation sequence that allows all the processes to finish executing if
+they do request &lt;em&gt;all&lt;/em&gt; resources they will ever need, but if the processes
+&lt;em&gt;actually don't&lt;/em&gt; request all resources they will ever need (maybe one less, for
+example), then it might be enough for the system to avoid getting caught in
+a deadlock.&lt;/p&gt;
+&lt;p&gt;See the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Banker%27s_algorithm"&gt;Wikipedia article on Banker's Algorithm&lt;/a&gt; for a much better
+explanation.&lt;/p&gt;
+</summary><category term="threads"></category></entry><entry><title>Gaussian (Gauss-Jordan) Elimination in Ruby</title><link href="/blog2/gaussian-elimination-in-ruby.html" rel="alternate"></link><updated>2012-11-11T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-11-11:gaussian-elimination-in-ruby.html</id><summary type="html">&lt;p&gt;I had to do some Gaussian elimination for an assignment. So here's Gaussian
+elimination in Ruby:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;# Performs an in-place Gaussian elimination on an NxN matrix 'matrix' (2D array&lt;/span&gt;
+&lt;span class="c1"&gt;# of Numeric objects) and an N-element vector 'vector.' (array of N Numerics).&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gaussianElimination&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="c1"&gt;# Find the best pivot. This is the one who has the largest absolute value&lt;/span&gt;
+    &lt;span class="c1"&gt;# relative to his row (scaled partial pivoting). This step can be omitted&lt;/span&gt;
+    &lt;span class="c1"&gt;# to improve speed at the cost of increased error.&lt;/span&gt;
+    &lt;span class="n"&gt;maxRelVal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="n"&gt;maxIdx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pivotIdx&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;relVal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abs&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;relVal&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;maxRelVal&lt;/span&gt;
+        &lt;span class="n"&gt;maxRelVal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;relVal&lt;/span&gt;
+        &lt;span class="n"&gt;maxIdx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Swap the best pivot row into place.&lt;/span&gt;
+    &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;maxIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;maxIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;maxIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;maxIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;pivot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="c1"&gt;# Loop over each row below the pivot row.&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="c1"&gt;# Find factor so that [this row] = [this row] - factor*[pivot row]&lt;/span&gt;
+    &lt;span class="c1"&gt;# leaves 0 in the pivot column.&lt;/span&gt;
+    &lt;span class="n"&gt;factor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]/&lt;/span&gt;&lt;span class="n"&gt;pivot&lt;/span&gt;
+    &lt;span class="c1"&gt;# We know it will be zero.&lt;/span&gt;
+    &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="c1"&gt;# Compute [this row] = [this row] - factor*[pivot row] for the other cols.&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+        &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-=&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-=&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pivotIdx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Assumes 'matrix' is in row echelon form.&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;backSubstitution&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;downto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-=&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Example usage:&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'pp'&lt;/span&gt;
+
+&lt;span class="c1"&gt;# A system of equations: matrix * X = vector&lt;/span&gt;
+&lt;span class="n"&gt;matrix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;
+    &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;vector&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Create a backup for verification.&lt;/span&gt;
+&lt;span class="n"&gt;matrix_backup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Marshal&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;Marshal&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;vector_backup&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dup&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Gaussian elemination to put the system in row echelon form.&lt;/span&gt;
+&lt;span class="n"&gt;gaussianElimination&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# Back-substitution to solve the system.&lt;/span&gt;
+&lt;span class="n"&gt;backSubstitution&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Print the result.&lt;/span&gt;
+&lt;span class="n"&gt;pp&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;
+&lt;span class="n"&gt;pp&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Verify the result.&lt;/span&gt;
+&lt;span class="n"&gt;pass&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+
+&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix_backup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;  &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;eqn&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matrix_backup&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;eqn&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;matrix_backup&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;eqn&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;vector_backup&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;eqn&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abs&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;0000000001&lt;/span&gt;
+    &lt;span class="n"&gt;pass&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+    &lt;span class="k"&gt;break&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;pass&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Verification PASSED.&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Verification FAILED.&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="gaussian elimination"></category><category term="matrices"></category></entry><entry><title>The Machine that Alters Votes (2012 USA Election)</title><link href="/blog2/the-machine-that-alters-votes-2012-usa-election.html" rel="alternate"></link><updated>2012-11-06T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-11-06:the-machine-that-alters-votes-2012-usa-election.html</id><summary type="html">&lt;p&gt;So there's &lt;a class="reference external" href="https://www.youtube.com/watch?v=QdpGd74DrBM"&gt;this video&lt;/a&gt; of a voting machine that selects Romney when you try to
+click on Obama.&lt;/p&gt;
+&lt;p&gt;To someone who has had some experience with touch screen technology, it looks
+like the touch system is just out of sync with the UI, which could be fixed by
+re-calibrating the system. According to the uploader, it is not a calibration
+issue, because they tried tapping other names and they all worked fine. You can
+find the uploader's comments in the description of the video. I have no reason
+to doubt the uploader's sincerity, since &lt;a class="reference external" href="http://www.motherjones.com/mojo/2012/11/romney-loving-voting-machine-recalibrated-and-back-online"&gt;according to Mother Jones&lt;/a&gt; the
+machine was actually taken out of service and &amp;quot;recalibrated.&amp;quot; So the video is
+(probably) not fake.&lt;/p&gt;
+&lt;p&gt;A lot of people are now assuming this was done intentionally to steal votes from
+Obama in favor of Romney. The mainstream media is picking up on the story as
+well. The problem with this belief is that if someone did intentionally make the
+voting machine behave this way, they could have done something far worse. They
+could have made the system swap the votes invisibly, behind-the-scenes, so that
+nobody ever notices.&lt;/p&gt;
+&lt;p&gt;If it was done intentionally, and whoever did it could have made the machine
+swap votes invisibly, then you have to ask the question: Why did they make it
+visible? Certainly if a &lt;em&gt;lot&lt;/em&gt; of these machines started doing what is seen in
+the video, a lot of people would notice, and it would be clear that there was
+some kind of fraud was going on. The election results would clearly be invalid.
+A lot of vote-altering machines would invalidate the election, but just one is
+enough to make everyone panic and to get the story covered by the popular news
+media, giving Romney some potentially bad publicity. So a possibly better
+explanation, if it was intentional, is that it was done by a supporter of one of
+the &lt;em&gt;other&lt;/em&gt; candidates.&lt;/p&gt;
+&lt;p&gt;Or, it could just be a bug. I think it is.&lt;/p&gt;
+</summary><category term="voting"></category></entry><entry><title>Coders, PLEASE STOP inventing your own hash functions!</title><link href="/blog2/coders-please-stop-inventing-your-own-hash-functions.html" rel="alternate"></link><updated>2012-08-21T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-21:coders-please-stop-inventing-your-own-hash-functions.html</id><summary type="html">&lt;p&gt;Today, I came across an &lt;a class="reference external" href="&amp;quot;http://arstechnica.com/security/2012/08/passwords-under-assault/"&gt;article on password cracking&lt;/a&gt;. In the comment section
+I saw someone had posted (presumably right after they just read about salting)
+the following reply:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+My solution: don't store hashes as a single SHA1 or MD5 result ...
+combine it for further obfuscation. A hash is designed to fall into
+enemy hands, so don't make it easy to produce rainbow tables.
+
+SAMPLE - All other password weaknesses still apply!
+
+function generateHash($name, $pass)
+{
+$salt = '';
+for($i = 0; $i &amp;lt; strlen($name); $i++) { $salt = $i . $salt . $name . $i; }
+return (sha1($salt . $pass) . sha1($pass . $name . $salt));
+}
+&lt;/pre&gt;
+&lt;p&gt;This code is exactly as secure as &lt;tt class="docutils literal"&gt;sha1( $name . $pass );&lt;/tt&gt;. It does not make
+it harder to produce rainbow tables, it is &lt;a class="reference external" href="https://defuse.ca/blog/2012/06/what-is-security-through-obscurity/"&gt;security through obscurity&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I come across an example like this almost ever week. Please stop inventing your
+own hash functions and use a &lt;a class="reference external" href="https://crackstation.net/hashing-security.htm"&gt;standard salted and iterated key derivation
+function&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="passwords"></category><category term="hashing"></category></entry><entry><title>x86 Stack Diagrams</title><link href="/blog2/x86-stack-diagrams.html" rel="alternate"></link><updated>2012-08-14T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-14:x86-stack-diagrams.html</id><summary type="html">&lt;p&gt;All of the x86 stack diagrams I could find are either cluttered with too much
+information, can't be read from a distance, or put the high address on top (I'm
+sure there are people who prefer that but... I'm not one of them). So I made my
+own.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;With low address on top (stack growing up, strcpy going down):&lt;/strong&gt;&lt;/p&gt;
+&lt;img alt="x86 Stack with low addresses on top" src="https://defuse.ca/images/stack-low-high.gif" /&gt;
+&lt;p&gt;&lt;strong&gt;With high address on top (stack growing down, strcpy going up):&lt;/strong&gt;&lt;/p&gt;
+&lt;img alt="x86 Stack with high addresses on top" src="https://defuse.ca/images/stack-high-low.gif" /&gt;
+</summary><category term="x86"></category><category term="assembly"></category></entry><entry><title>Recovering CBC-mode IV via Chosen Ciphertext</title><link href="/blog2/recovering-cbc-mode-iv-chosen-ciphertext.html" rel="alternate"></link><updated>2012-08-12T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-12:recovering-cbc-mode-iv-chosen-ciphertext.html</id><summary type="html">&lt;p&gt;Suppose a system uses a constant internal initialization vector to
+encrypt/decrypt data in CBC mode, and you'd like to know what it is. If you can
+make the system decrypt chosen ciphertexts, this is how you do it:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Make the system decrypt two equal blocks of ciphertext (e.g. all zeroes).&lt;/li&gt;
+&lt;li&gt;XOR the two resulting blocks of &amp;quot;plaintext&amp;quot; together.&lt;/li&gt;
+&lt;li&gt;XOR that with the original ciphertext block.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Visually:&lt;/p&gt;
+&lt;img alt="Recovering IV with chosen ciphertext" src="https://defuse.ca/images/iv-recovery.gif" /&gt;
+&lt;p&gt;The best I can think of for recovering a static IV under chosen plaintext is
+a meet-in-the-middle attack as follows.&lt;/p&gt;
+&lt;p&gt;Observation 1: We can specify input directly to the cipher by:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Encrypt a one-block plaintext X, getting the resulting ciphertext C.&lt;/li&gt;
+&lt;li&gt;Encrypt the two-block plaintext X||(Y xor C), where Y is the block we want to
+feed directly into the cipher.&lt;/li&gt;
+&lt;li&gt;The second block of ciphertext will be the result of feeding Y directly into
+the cipher.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Observation 2: We can encrypt the IV itself and variations of it by varying the
+first block of plaintext. Formally C = E(V xor IV), when V is the first block of
+plaintext. We'll call V a &amp;quot;variation vector.&amp;quot;&lt;/p&gt;
+&lt;p&gt;So,&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Create a lookup table mapping 2^64 (assuming the block size is 128 bits)
+random variation vectors &lt;em&gt;from&lt;/em&gt; the resulting ciphertext. This lets us look
+up what variation we made to the IV to result in a given ciphertext block.&lt;/li&gt;
+&lt;li&gt;Use the method in observation 1 to encrypt random blocks fed directly into
+the cipher. Look up each ciphertext in the table from step (1). If it's
+there, then the IV is &amp;lt;the block that was fed directly into the cipher&amp;gt; XOR
+&amp;lt;the variation vector&amp;gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The lookup table from step (1) gives us a 1 in 2^64 chance of finding the IV per
+known plaintext-ciphertext pair. So it should take about 2^64 iterations in step
+(2) before we recover the IV.&lt;/p&gt;
+</summary><category term="cryptography"></category></entry><entry><title>Visual Basic's "With" in Ruby</title><link href="/blog2/visual-basic-with-in-ruby.html" rel="alternate"></link><updated>2012-08-04T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-04:visual-basic-with-in-ruby.html</id><summary type="html">&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;with&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="no"&gt;Math&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Deeply nested modules&lt;/span&gt;
+&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Foo&lt;/span&gt;
+  &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Bar&lt;/span&gt;
+
+    &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Baz&lt;/span&gt;
+      &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+      &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;aMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Biz&lt;/span&gt;
+      &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;anotherMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;hello &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="ss"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Bar&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="ss"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Baz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;aMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="ss"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Biz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;anotherMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bob&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="basic"></category></entry><entry><title>Raspberry PI: Enable MPlayer and VLC audio on Raspbian</title><link href="/blog2/raspberry-pi-enable-mplayer-and-vlc-audio-on-rasbian.html" rel="alternate"></link><updated>2012-08-02T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-02:raspberry-pi-enable-mplayer-and-vlc-audio-on-rasbian.html</id><summary type="html">&lt;!-- NOTE: The slug misspells raspbian intentionally so it matches the old URL. --&gt;
+&lt;p&gt;If mplayer is giving you an error like the following...&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+AO: [pulse] Init failed: Connection refused
+Failed to initialize audio driver 'pulse'
+[AO_ALSA] Unable to set hw-parameters: Invalid argument
+Failed to initialize audio driver 'alsa'
+[AO SDL] Samplerate: 44100Hz Channels: Stereo Format floatle
+[AO SDL] using aalib audio driver.
+[AO SDL] Unsupported audio format: 0x1d.
+[AO SDL] Unable to open audio: No available audio device
+Failed to initialize audio driver 'sdl:aalib'
+Could not open/initialize audio device -&amp;gt; no sound.
+Audio: no sound
+Video: no video
+&lt;/pre&gt;
+&lt;p&gt;... add the following to /etc/asound.conf (create it if it does not exist):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+pcm.!default {
+    type hw
+    card 0
+}
+
+ctl.!default {
+    type hw
+    card 0
+}
+&lt;/pre&gt;
+&lt;p&gt;Then, run:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+modprobe snd_bcm2835
+&lt;/pre&gt;
+&lt;p&gt;Then add the following &lt;tt class="docutils literal"&gt;/etc/modules&lt;/tt&gt; (unless it's already there):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+snd-bcm2835
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=66&amp;amp;t=7107"&gt;Source - &amp;quot;ALSA on Raspbian&amp;quot;&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="raspberry pi"></category><category term="raspbian"></category></entry></feed>

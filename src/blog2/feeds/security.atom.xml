@@ -131,7 +131,7 @@ characters, completely random) in about 20 minutes using this script.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;Note that this will destroy all data encrypted with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Encrypting_File_System"&gt;EFS&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I'm not sure who thought of this first, but if I knew, I would credit them here.&lt;/p&gt;
-</summary><category term="windows"></category></entry><entry><title>Encrypted Automatic Backups with Public Key Cryptography</title><link href="/blog2/encrypted-automatic-backups-with-pkc.html" rel="alternate"></link><updated>2012-12-06T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-06:encrypted-automatic-backups-with-pkc.html</id><summary type="html">&lt;p&gt;Here's how to do encrypted automated backups without having to store the
+</summary><category term="windows"></category></entry><entry><title>Encrypted Automatic Backups with Public Key Cryptography</title><link href="/blog2/encrypted-automatic-backups-with-pkc.html" rel="alternate"></link><updated>2012-12-16T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-16:encrypted-automatic-backups-with-pkc.html</id><summary type="html">&lt;p&gt;Here's how to do encrypted automated backups without having to store the
 password in the backup script. The script should be self-explanatory (after all,
 it is 50 lines of comments for just one real line of code).&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
@@ -196,4 +196,149 @@ it is 50 lines of comments for just one real line of code).&lt;/p&gt;
 tar cf - -C &lt;span class="nv"&gt;$DIRECTORY&lt;/span&gt; . | &lt;span class="se"&gt;\
 &lt;/span&gt;    gpg -z 9 --batch --yes --encrypt --recipient &lt;span class="nv"&gt;$GPG_RECIPIENT&lt;/span&gt; --output &lt;span class="nv"&gt;$OUTPUT_FILE&lt;/span&gt;
 &lt;/pre&gt;
-</summary><category term="backups"></category></entry></feed>
+</summary><category term="backups"></category></entry><entry><title>Increasing Collisions in Password Hashing</title><link href="/blog2/increasing-collisions-in-password-hashing.html" rel="alternate"></link><updated>2012-12-11T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-12-11:increasing-collisions-in-password-hashing.html</id><summary type="html">&lt;p&gt;With this post I will try to show how, in a theoretical scenario, deliberately
+weakening the collision resistance of a password hash function can increase
+security. This is by no means a formal proof.&lt;/p&gt;
+&lt;p&gt;Suppose Alice has an account on two computer systems &lt;em&gt;X&lt;/em&gt; and &lt;em&gt;Y&lt;/em&gt;. She uses the
+same password on both systems.&lt;/p&gt;
+&lt;p&gt;Suppose both systems implement the following password hashing scheme: Let &lt;em&gt;t&lt;/em&gt; be
+some positive integer. Given a password &lt;em&gt;P&lt;/em&gt;, compute the entropy of the password
+&lt;em&gt;H(P)&lt;/em&gt;. Create and store a salted &lt;em&gt;B&lt;/em&gt;-bit hash of &lt;em&gt;P&lt;/em&gt; where &lt;em&gt;B = H(P) - lg(t)&lt;/em&gt;.
+To verify a password, wait for &lt;em&gt;t&lt;/em&gt; units of time then check the hash in the
+usual manner. Here, the entropy of the password is the logarithm base two of the
+number of guesses it will take an adversary to guess the exact password. Also
+suppose that it takes one unit of time to compute a hash.&lt;/p&gt;
+&lt;p&gt;I claim that using this scheme, Alice's accounts are no less secure than if we
+used 256-bit hashes (if &lt;em&gt;H(P) &amp;lt; 256&lt;/em&gt;), and that if System &lt;em&gt;X&lt;/em&gt; gets compromised,
+then her account on System &lt;em&gt;Y&lt;/em&gt; is more secure than if we used 256-bit hashes.&lt;/p&gt;
+&lt;p&gt;To see why, note two things:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The probability of any random string &lt;em&gt;S&lt;/em&gt; having the same hash as Alice's
+password &lt;em&gt;P&lt;/em&gt; is &lt;em&gt;1/(2^B)&lt;/em&gt;. So if Mallory tries to guess Alice's password
+using an online attack, it will take about &lt;em&gt;2^B&lt;/em&gt; guesses, so about &lt;em&gt;2^B * t&lt;/em&gt;
+time. So the effective security against an online attack is &lt;em&gt;B + lg(t)&lt;/em&gt;. By
+the construction, &lt;em&gt;B + lg(t) = H(P)&lt;/em&gt; so this is no easier than guessing &lt;em&gt;P&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Suppose Mallory roots System &lt;em&gt;X&lt;/em&gt; and gets the &lt;em&gt;B&lt;/em&gt;-bit hash of Alice's
+password. It takes Mallory about &lt;em&gt;2^B&lt;/em&gt; guesses to find a preimage. But since
+&lt;em&gt;B = H(P) - lg(t)&lt;/em&gt;, Mallory will find about &lt;em&gt;t&lt;/em&gt; collisions when she performs
+the same search she would if it was instead a 256-bit hash (this is not at
+all a formal argument, but hopefully you see the idea behind it).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By supposition, Mallory has rooted System &lt;em&gt;X&lt;/em&gt;, so there is no point trying to
+secure Alice's account on &lt;em&gt;X&lt;/em&gt; anymore. All that remains is the security of
+Alice's account on system &lt;em&gt;Y&lt;/em&gt;. This breaks down if Mallory can get read-only
+access to the hash database without rooting... but suppose the root password is
+stored in plain text in the hash database ;) .&lt;/p&gt;
+&lt;p&gt;Because System &lt;em&gt;Y&lt;/em&gt; is using different salts, it is unlikely that any of the &lt;em&gt;t&lt;/em&gt;
+collisions Mallory found, except &lt;em&gt;P&lt;/em&gt; itself, can be used to authenticate as
+Alice to System &lt;em&gt;Y&lt;/em&gt; (reader: double check this). So Mallory's best option is to
+try authenticating to System &lt;em&gt;Y&lt;/em&gt; as Alice using the &lt;em&gt;t&lt;/em&gt; collisions as passwords
+guesses, since she knows &lt;em&gt;P&lt;/em&gt; is one of those &lt;em&gt;t&lt;/em&gt; collisions, and by construction
+&lt;em&gt;lg(t) &amp;lt; H(P)&lt;/em&gt;. This will take &lt;em&gt;t * t&lt;/em&gt; time, for an effective security of &lt;em&gt;2
+* lg(t)&lt;/em&gt; bits.&lt;/p&gt;
+&lt;p&gt;If, instead, System &lt;em&gt;X&lt;/em&gt; was using standard 256-bit hashes, Mallory would have
+found the exact &lt;em&gt;P&lt;/em&gt; and could get into System &lt;em&gt;Y&lt;/em&gt; on the first try. Using this
+scheme it takes about &lt;em&gt;t&lt;/em&gt; tries. So by weakening the hash, Alice's account on
+System &lt;em&gt;Y&lt;/em&gt; is more secure than it would have been had the hash not been
+weakened.&lt;/p&gt;
+&lt;p&gt;Of course, this system is impractical, since it assumes knowledge of how Mallory
+would guess &lt;em&gt;P&lt;/em&gt;, and thus the entropy of &lt;em&gt;P&lt;/em&gt;. It also assumes that if Alice's
+hash on System &lt;em&gt;X&lt;/em&gt; gets compromised, then the security of her account on &lt;em&gt;X&lt;/em&gt; no
+longer matters at all, which is obviously not always the case. It is
+nevertheless interesting to see how the altruism of the compromised system can
+increase the security of Alice's account on the other system.&lt;/p&gt;
+&lt;p&gt;Another problem is that the user must wait &lt;em&gt;t&lt;/em&gt; units of time when logging in, so
+in practice there would be tradeoff between security and log-in wait time.
+Locking the accounts after significantly less than &lt;em&gt;t&lt;/em&gt; attempts might be
+a better approach.&lt;/p&gt;
+&lt;p&gt;It doesn't look like it can be made any better than this, since if you decrease
+B any further, finding collisions with an online attack becomes easier than
+guessing P, but it is still an online (thus detectable, stoppable) attack so it
+might still be harder. I would guess that the wait time &lt;em&gt;t&lt;/em&gt; would be better
+spent computing iterations of PBKDF2 or similar.&lt;/p&gt;
+</summary><category term="passwords"></category><category term="hashing"></category></entry><entry><title>The Machine that Alters Votes (2012 USA Election)</title><link href="/blog2/the-machine-that-alters-votes-2012-usa-election.html" rel="alternate"></link><updated>2012-11-06T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-11-06:the-machine-that-alters-votes-2012-usa-election.html</id><summary type="html">&lt;p&gt;So there's &lt;a class="reference external" href="https://www.youtube.com/watch?v=QdpGd74DrBM"&gt;this video&lt;/a&gt; of a voting machine that selects Romney when you try to
+click on Obama.&lt;/p&gt;
+&lt;p&gt;To someone who has had some experience with touch screen technology, it looks
+like the touch system is just out of sync with the UI, which could be fixed by
+re-calibrating the system. According to the uploader, it is not a calibration
+issue, because they tried tapping other names and they all worked fine. You can
+find the uploader's comments in the description of the video. I have no reason
+to doubt the uploader's sincerity, since &lt;a class="reference external" href="http://www.motherjones.com/mojo/2012/11/romney-loving-voting-machine-recalibrated-and-back-online"&gt;according to Mother Jones&lt;/a&gt; the
+machine was actually taken out of service and &amp;quot;recalibrated.&amp;quot; So the video is
+(probably) not fake.&lt;/p&gt;
+&lt;p&gt;A lot of people are now assuming this was done intentionally to steal votes from
+Obama in favor of Romney. The mainstream media is picking up on the story as
+well. The problem with this belief is that if someone did intentionally make the
+voting machine behave this way, they could have done something far worse. They
+could have made the system swap the votes invisibly, behind-the-scenes, so that
+nobody ever notices.&lt;/p&gt;
+&lt;p&gt;If it was done intentionally, and whoever did it could have made the machine
+swap votes invisibly, then you have to ask the question: Why did they make it
+visible? Certainly if a &lt;em&gt;lot&lt;/em&gt; of these machines started doing what is seen in
+the video, a lot of people would notice, and it would be clear that there was
+some kind of fraud was going on. The election results would clearly be invalid.
+A lot of vote-altering machines would invalidate the election, but just one is
+enough to make everyone panic and to get the story covered by the popular news
+media, giving Romney some potentially bad publicity. So a possibly better
+explanation, if it was intentional, is that it was done by a supporter of one of
+the &lt;em&gt;other&lt;/em&gt; candidates.&lt;/p&gt;
+&lt;p&gt;Or, it could just be a bug. I think it is.&lt;/p&gt;
+</summary><category term="voting"></category></entry><entry><title>Coders, PLEASE STOP inventing your own hash functions!</title><link href="/blog2/coders-please-stop-inventing-your-own-hash-functions.html" rel="alternate"></link><updated>2012-08-21T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-21:coders-please-stop-inventing-your-own-hash-functions.html</id><summary type="html">&lt;p&gt;Today, I came across an &lt;a class="reference external" href="&amp;quot;http://arstechnica.com/security/2012/08/passwords-under-assault/"&gt;article on password cracking&lt;/a&gt;. In the comment section
+I saw someone had posted (presumably right after they just read about salting)
+the following reply:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+My solution: don't store hashes as a single SHA1 or MD5 result ...
+combine it for further obfuscation. A hash is designed to fall into
+enemy hands, so don't make it easy to produce rainbow tables.
+
+SAMPLE - All other password weaknesses still apply!
+
+function generateHash($name, $pass)
+{
+$salt = '';
+for($i = 0; $i &amp;lt; strlen($name); $i++) { $salt = $i . $salt . $name . $i; }
+return (sha1($salt . $pass) . sha1($pass . $name . $salt));
+}
+&lt;/pre&gt;
+&lt;p&gt;This code is exactly as secure as &lt;tt class="docutils literal"&gt;sha1( $name . $pass );&lt;/tt&gt;. It does not make
+it harder to produce rainbow tables, it is &lt;a class="reference external" href="https://defuse.ca/blog/2012/06/what-is-security-through-obscurity/"&gt;security through obscurity&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I come across an example like this almost ever week. Please stop inventing your
+own hash functions and use a &lt;a class="reference external" href="https://crackstation.net/hashing-security.htm"&gt;standard salted and iterated key derivation
+function&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="passwords"></category><category term="hashing"></category></entry><entry><title>Recovering CBC-mode IV via Chosen Ciphertext</title><link href="/blog2/recovering-cbc-mode-iv-chosen-ciphertext.html" rel="alternate"></link><updated>2012-08-12T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-08-12:recovering-cbc-mode-iv-chosen-ciphertext.html</id><summary type="html">&lt;p&gt;Suppose a system uses a constant internal initialization vector to
+encrypt/decrypt data in CBC mode, and you'd like to know what it is. If you can
+make the system decrypt chosen ciphertexts, this is how you do it:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Make the system decrypt two equal blocks of ciphertext (e.g. all zeroes).&lt;/li&gt;
+&lt;li&gt;XOR the two resulting blocks of &amp;quot;plaintext&amp;quot; together.&lt;/li&gt;
+&lt;li&gt;XOR that with the original ciphertext block.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Visually:&lt;/p&gt;
+&lt;img alt="Recovering IV with chosen ciphertext" src="https://defuse.ca/images/iv-recovery.gif" /&gt;
+&lt;p&gt;The best I can think of for recovering a static IV under chosen plaintext is
+a meet-in-the-middle attack as follows.&lt;/p&gt;
+&lt;p&gt;Observation 1: We can specify input directly to the cipher by:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Encrypt a one-block plaintext X, getting the resulting ciphertext C.&lt;/li&gt;
+&lt;li&gt;Encrypt the two-block plaintext X||(Y xor C), where Y is the block we want to
+feed directly into the cipher.&lt;/li&gt;
+&lt;li&gt;The second block of ciphertext will be the result of feeding Y directly into
+the cipher.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Observation 2: We can encrypt the IV itself and variations of it by varying the
+first block of plaintext. Formally C = E(V xor IV), when V is the first block of
+plaintext. We'll call V a &amp;quot;variation vector.&amp;quot;&lt;/p&gt;
+&lt;p&gt;So,&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Create a lookup table mapping 2^64 (assuming the block size is 128 bits)
+random variation vectors &lt;em&gt;from&lt;/em&gt; the resulting ciphertext. This lets us look
+up what variation we made to the IV to result in a given ciphertext block.&lt;/li&gt;
+&lt;li&gt;Use the method in observation 1 to encrypt random blocks fed directly into
+the cipher. Look up each ciphertext in the table from step (1). If it's
+there, then the IV is &amp;lt;the block that was fed directly into the cipher&amp;gt; XOR
+&amp;lt;the variation vector&amp;gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The lookup table from step (1) gives us a 1 in 2^64 chance of finding the IV per
+known plaintext-ciphertext pair. So it should take about 2^64 iterations in step
+(2) before we recover the IV.&lt;/p&gt;
+</summary><category term="cryptography"></category></entry></feed>
