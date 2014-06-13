@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>How to install mod_ruby on Debian Squeeze</title>
+        <link rel="stylesheet" href="/blog2/theme/css/main.css" />
+        <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog2/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog2/category/life.html">life</a></li>
+                    <li class="active"><a href="/blog2/category/linux.html">linux</a></li>
+                    <li><a href="/blog2/category/math.html">math</a></li>
+                    <li><a href="/blog2/category/programming.html">programming</a></li>
+                    <li><a href="/blog2/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/blog2/how-to-install-mod_ruby-on-debian-squeeze.html" rel="bookmark"
+           title="Permalink to How to install mod_ruby on Debian Squeeze">How to install mod_ruby on Debian Squeeze</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-07-22T00:00:00">
+                Sun 22 July 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/blog2/tag/mod_ruby.html">mod_ruby</a></p>
+</footer><!-- /.post-info -->      <p>If you're a PHP developer that's starting to fall in love with ruby (like me),
+you'll want to know how to write &quot;PHP-style&quot; web applications in ruby, for small
+web apps that don't need the complexity of Ruby on Rails. You want:</p>
+<ol class="arabic simple">
+<li>No per-app configuration necessary. Installing the app is as simple as
+uploading the script files.</li>
+<li>Each ruby file you upload is an independent web page, e.g.
+<a class="reference external" href="http://example.com/foo.rhtml">http://example.com/foo.rhtml</a>.</li>
+<li>Scripts are HTML with ruby code inside delimiters (like php's &lt;?php and ?&gt;).</li>
+<li>Scripts have easy access to GET and POST data, as well as HTTP headers and
+cookies.</li>
+<li>Scripts can easily send headers, set cookies, etc.</li>
+</ol>
+<p>Unfortunately, to get this working on Debian Squeeze, some initial configuration
+required, but it's a one time thing and quick in comparison to the per-app
+configuration required by RoR.</p>
+<p>First, install mod_ruby:</p>
+<pre class="code bash literal-block">
+apt-get install libapache2-mod-ruby
+</pre>
+<p>Second, add the following to your site's configuration and read the embedded
+comments. Note that in order to lower the ruby safe level with the RubySafeLevel
+directive (default is 1), it must appear <strong>outside any &quot;files&quot;, &quot;directory&quot;, and
+&quot;virtualhost&quot; blocks.</strong> If not, you will get an error like: <tt class="docutils literal">mod_ruby: can't
+decrease RubySafeLevel</tt>.</p>
+<pre class="code text literal-block">
+&lt;IfModule mod_ruby.c&gt;
+    RubyRequire apache/ruby-run
+    RubyRequire apache/eruby-run
+
+    # Safe level 1 does taint checking, but also won't let you run .rb scripts
+    # from a world-writable folder. I highly recommend keeping this at 1, but
+    # in a development environment, you can change it to 0 to make scripts
+    # run from world-writable folders (OTOH, you really DO want to develop with
+    # taint checking turned on).
+    RubySafeLevel 1
+
+    # Override the mime types in /etc/mime.types so the output of the script
+    # is displayed in the browser, not sent as a download. Some guides will
+    # tell you to comment out the corresponding entries in /etc/mime.types, but
+    # don't do that as it will affect the entire system, not just apache.
+    AddType text/html .rb
+    AddType text/html .rbx
+    AddType text/html .rhtml
+
+    # NOTE: To make .rb files execute, you will need to add:
+    #  Options +ExecCGI
+    # to the &lt;Directory&gt; they are in. You DON'T need to do this for .rhtml.
+    &lt;Files *.rb&gt;
+        SetHandler ruby-object
+        RubyHandler Apache::RubyRun.instance
+    &lt;/Files&gt;
+    &lt;Files *.rbx&gt;
+        SetHandler ruby-object
+        RubyHandler Apache::RubyRun.instance
+    &lt;/Files&gt;
+    &lt;Files *.rhtml&gt;
+        SetHandler ruby-object
+        RubyHandler Apache::ERubyRun.instance
+    &lt;/Files&gt;
+&lt;/IfModule&gt;
+</pre>
+<p>Now, .rhtml files will work like PHP files:</p>
+<pre class="code erb literal-block">
+<span class="x">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello, world!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Even numbers less than 100:
+    &lt;ul&gt;
+    </span><span class="cp">&lt;%</span>
+      <span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+        <span class="nb">puts</span> <span class="s2">&quot;&lt;li&gt;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">&lt;/li&gt;&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+      <span class="k">end</span>
+    <span class="cp">%&gt;</span><span class="x">
+    &lt;/ul&gt;
+    </span><span class="cp">&lt;%</span>
+      <span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+    <span class="cp">%&gt;</span><span class="x">
+      This text repeats &lt;b&gt;50&lt;/b&gt; times! &lt;br /&gt;
+    </span><span class="cp">&lt;%</span>
+      <span class="k">end</span>
+    <span class="cp">%&gt;</span><span class="x">
+  &lt;/body&gt;
+&lt;/html&gt;</span>
+</pre>
+<p>And .rb files will work like CGIs:</p>
+<pre class="code ruby literal-block">
+<span class="c1">#!/usr/bin/ruby</span>
+<span class="nb">puts</span> <span class="s2">&quot;&lt;ul&gt;&quot;</span>
+<span class="mi">300</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="s2">&quot;&lt;li&gt;Some text!&lt;/li&gt;&quot;</span>
+<span class="k">end</span>
+<span class="nb">puts</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span>
+</pre>
+<p>In both types of script, you can use <a class="reference external" href="http://modruby.net/en/doc/?Apache%3A%3ARequest">Apache.request</a> to read GET and POST
+data, set cookies, etc.</p>
+<pre class="code erb literal-block">
+<span class="x">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello, world!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+   GET data in rhtml mod_ruby!
+   </span><span class="cp">&lt;%</span>
+   <span class="no">Apache</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">paramtable</span><span class="o">[</span><span class="s1">'count'</span><span class="o">].</span><span class="n">to_i</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+     <span class="nb">puts</span> <span class="n">n</span>
+   <span class="k">end</span>
+   <span class="cp">%&gt;</span><span class="x">
+  &lt;/body&gt;
+&lt;/html&gt;</span>
+</pre>
+<div class="section" id="why">
+<h2>Why?</h2>
+<p>Writing this post made me realize I'm trying to make ruby do something it
+doesn't (yet) do well. PHP has so many built-in features for doing web stuff
+like htmlentities, built-in mysql access, and easy access to GET and POST data
+through $_GET and $_POST (note that Apache.request.paramtable includes both GET
+and POST data, which is bad for security), so for now, I think I'll stick with
+PHP until there's a better zero-config lightweight ruby web framework. Sinatra
+is the best I have seen so far, but configuring it with Apache is still far too
+complicated, in my opinion.</p>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

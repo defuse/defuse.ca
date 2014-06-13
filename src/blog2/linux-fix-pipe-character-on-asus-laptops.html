@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>The Code Files - Tags</title>
+        <title>Linux: Fix pipe character on ASUS laptops</title>
         <link rel="stylesheet" href="/blog2/theme/css/main.css" />
         <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
 
@@ -16,43 +16,44 @@
                 <h1><a href="/blog2/">The Code Files </a></h1>
                 <nav><ul>
                     <li><a href="/blog2/category/life.html">life</a></li>
-                    <li><a href="/blog2/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/blog2/category/linux.html">linux</a></li>
                     <li><a href="/blog2/category/math.html">math</a></li>
                     <li><a href="/blog2/category/programming.html">programming</a></li>
                     <li><a href="/blog2/category/security.html">security</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
-
 <section id="content" class="body">
-    <h1>Tags for The Code Files</h1>        <li><a href="/blog2/tag/assembly.html">assembly</a> (1)</li>
-        <li><a href="/blog2/tag/backups.html">backups</a> (1)</li>
-        <li><a href="/blog2/tag/basic.html">basic</a> (1)</li>
-        <li><a href="/blog2/tag/blog.html">blog</a> (1)</li>
-        <li><a href="/blog2/tag/cryptography.html">cryptography</a> (1)</li>
-        <li><a href="/blog2/tag/ddos.html">ddos</a> (1)</li>
-        <li><a href="/blog2/tag/evolution.html">evolution</a> (1)</li>
-        <li><a href="/blog2/tag/factorization.html">factorization</a> (1)</li>
-        <li><a href="/blog2/tag/firefox.html">firefox</a> (1)</li>
-        <li><a href="/blog2/tag/gaussian-elimination.html">gaussian elimination</a> (1)</li>
-        <li><a href="/blog2/tag/hashing.html">hashing</a> (2)</li>
-        <li><a href="/blog2/tag/keyboard.html">keyboard</a> (1)</li>
-        <li><a href="/blog2/tag/latex.html">latex</a> (1)</li>
-        <li><a href="/blog2/tag/life.html">life</a> (1)</li>
-        <li><a href="/blog2/tag/matrices.html">matrices</a> (1)</li>
-        <li><a href="/blog2/tag/meta.html">meta</a> (1)</li>
-        <li><a href="/blog2/tag/mod_ruby.html">mod_ruby</a> (1)</li>
-        <li><a href="/blog2/tag/passwords.html">passwords</a> (3)</li>
-        <li><a href="/blog2/tag/raspberry-pi.html">raspberry pi</a> (1)</li>
-        <li><a href="/blog2/tag/raspbian.html">raspbian</a> (1)</li>
-        <li><a href="/blog2/tag/ruby.html">ruby</a> (1)</li>
-        <li><a href="/blog2/tag/threads.html">threads</a> (1)</li>
-        <li><a href="/blog2/tag/vim.html">vim</a> (1)</li>
-        <li><a href="/blog2/tag/voting.html">voting</a> (1)</li>
-        <li><a href="/blog2/tag/windows.html">windows</a> (1)</li>
-        <li><a href="/blog2/tag/x86.html">x86</a> (1)</li>
-        <li><a href="/blog2/tag/xbindkeys.html">xbindkeys</a> (1)</li>
-</section>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/blog2/linux-fix-pipe-character-on-asus-laptops.html" rel="bookmark"
+           title="Permalink to Linux: Fix pipe character on ASUS laptops">Linux: Fix pipe character on ASUS laptops</a></h1>
+    </header>
 
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-07-27T00:00:00">
+                Fri 27 July 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/blog2/tag/keyboard.html">keyboard</a></p>
+</footer><!-- /.post-info -->      <p>Is your pipe/backslash key not typing pipes and backslashes? Is it typing
+less-than and greater-than symbols? If so, add...</p>
+<pre class="code text literal-block">
+key &lt;LSGT&gt; { [ backslash, bar, backslash, bar] };
+</pre>
+<p>..to <cite>/usr/share/X11/xkb/symbols/us</cite> in the <cite>kxb_symbols</cite> <cite>&quot;basic&quot;</cite> section.</p>
+<p>This seems to be a problem with ASUS laptops, I've seen two of them doing this.</p>
+<p>Reference: <a class="reference external" href="http://forums.fedoraforum.org/showthread.php?t=240415">http://forums.fedoraforum.org/showthread.php?t=240415</a></p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>

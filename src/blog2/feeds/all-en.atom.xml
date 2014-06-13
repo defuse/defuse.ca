@@ -944,4 +944,136 @@ modprobe snd_bcm2835
 snd-bcm2835
 &lt;/pre&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=66&amp;amp;t=7107"&gt;Source - &amp;quot;ALSA on Raspbian&amp;quot;&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="raspberry pi"></category><category term="raspbian"></category></entry></feed>
+</summary><category term="raspberry pi"></category><category term="raspbian"></category></entry><entry><title>Linux: Fix pipe character on ASUS laptops</title><link href="/blog2/linux-fix-pipe-character-on-asus-laptops.html" rel="alternate"></link><updated>2012-07-27T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-07-27:linux-fix-pipe-character-on-asus-laptops.html</id><summary type="html">&lt;p&gt;Is your pipe/backslash key not typing pipes and backslashes? Is it typing
+less-than and greater-than symbols? If so, add...&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+key &amp;lt;LSGT&amp;gt; { [ backslash, bar, backslash, bar] };
+&lt;/pre&gt;
+&lt;p&gt;..to &lt;cite&gt;/usr/share/X11/xkb/symbols/us&lt;/cite&gt; in the &lt;cite&gt;kxb_symbols&lt;/cite&gt; &lt;cite&gt;&amp;quot;basic&amp;quot;&lt;/cite&gt; section.&lt;/p&gt;
+&lt;p&gt;This seems to be a problem with ASUS laptops, I've seen two of them doing this.&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="reference external" href="http://forums.fedoraforum.org/showthread.php?t=240415"&gt;http://forums.fedoraforum.org/showthread.php?t=240415&lt;/a&gt;&lt;/p&gt;
+</summary><category term="keyboard"></category></entry><entry><title>How to install mod_ruby on Debian Squeeze</title><link href="/blog2/how-to-install-mod_ruby-on-debian-squeeze.html" rel="alternate"></link><updated>2012-07-22T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-07-22:how-to-install-mod_ruby-on-debian-squeeze.html</id><summary type="html">&lt;p&gt;If you're a PHP developer that's starting to fall in love with ruby (like me),
+you'll want to know how to write &amp;quot;PHP-style&amp;quot; web applications in ruby, for small
+web apps that don't need the complexity of Ruby on Rails. You want:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;No per-app configuration necessary. Installing the app is as simple as
+uploading the script files.&lt;/li&gt;
+&lt;li&gt;Each ruby file you upload is an independent web page, e.g.
+&lt;a class="reference external" href="http://example.com/foo.rhtml"&gt;http://example.com/foo.rhtml&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Scripts are HTML with ruby code inside delimiters (like php's &amp;lt;?php and ?&amp;gt;).&lt;/li&gt;
+&lt;li&gt;Scripts have easy access to GET and POST data, as well as HTTP headers and
+cookies.&lt;/li&gt;
+&lt;li&gt;Scripts can easily send headers, set cookies, etc.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Unfortunately, to get this working on Debian Squeeze, some initial configuration
+required, but it's a one time thing and quick in comparison to the per-app
+configuration required by RoR.&lt;/p&gt;
+&lt;p&gt;First, install mod_ruby:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install libapache2-mod-ruby
+&lt;/pre&gt;
+&lt;p&gt;Second, add the following to your site's configuration and read the embedded
+comments. Note that in order to lower the ruby safe level with the RubySafeLevel
+directive (default is 1), it must appear &lt;strong&gt;outside any &amp;quot;files&amp;quot;, &amp;quot;directory&amp;quot;, and
+&amp;quot;virtualhost&amp;quot; blocks.&lt;/strong&gt; If not, you will get an error like: &lt;tt class="docutils literal"&gt;mod_ruby: can't
+decrease RubySafeLevel&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;lt;IfModule mod_ruby.c&amp;gt;
+    RubyRequire apache/ruby-run
+    RubyRequire apache/eruby-run
+
+    # Safe level 1 does taint checking, but also won't let you run .rb scripts
+    # from a world-writable folder. I highly recommend keeping this at 1, but
+    # in a development environment, you can change it to 0 to make scripts
+    # run from world-writable folders (OTOH, you really DO want to develop with
+    # taint checking turned on).
+    RubySafeLevel 1
+
+    # Override the mime types in /etc/mime.types so the output of the script
+    # is displayed in the browser, not sent as a download. Some guides will
+    # tell you to comment out the corresponding entries in /etc/mime.types, but
+    # don't do that as it will affect the entire system, not just apache.
+    AddType text/html .rb
+    AddType text/html .rbx
+    AddType text/html .rhtml
+
+    # NOTE: To make .rb files execute, you will need to add:
+    #  Options +ExecCGI
+    # to the &amp;lt;Directory&amp;gt; they are in. You DON'T need to do this for .rhtml.
+    &amp;lt;Files *.rb&amp;gt;
+        SetHandler ruby-object
+        RubyHandler Apache::RubyRun.instance
+    &amp;lt;/Files&amp;gt;
+    &amp;lt;Files *.rbx&amp;gt;
+        SetHandler ruby-object
+        RubyHandler Apache::RubyRun.instance
+    &amp;lt;/Files&amp;gt;
+    &amp;lt;Files *.rhtml&amp;gt;
+        SetHandler ruby-object
+        RubyHandler Apache::ERubyRun.instance
+    &amp;lt;/Files&amp;gt;
+&amp;lt;/IfModule&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Now, .rhtml files will work like PHP files:&lt;/p&gt;
+&lt;pre class="code erb literal-block"&gt;
+&lt;span class="x"&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, world!&amp;lt;/title&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    Even numbers less than 100:
+    &amp;lt;ul&amp;gt;
+    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+      &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+        &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;/li&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+    &amp;lt;/ul&amp;gt;
+    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+      &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+      This text repeats &amp;lt;b&amp;gt;50&amp;lt;/b&amp;gt; times! &amp;lt;br /&amp;gt;
+    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;And .rb files will work like CGIs:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;#!/usr/bin/ruby&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;ul&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;li&amp;gt;Some text!&amp;lt;/li&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;/ul&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;In both types of script, you can use &lt;a class="reference external" href="http://modruby.net/en/doc/?Apache%3A%3ARequest"&gt;Apache.request&lt;/a&gt; to read GET and POST
+data, set cookies, etc.&lt;/p&gt;
+&lt;pre class="code erb literal-block"&gt;
+&lt;span class="x"&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, world!&amp;lt;/title&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+   GET data in rhtml mod_ruby!
+   &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+   &lt;span class="no"&gt;Apache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;paramtable&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'count'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;to_i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+     &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+   &lt;span class="k"&gt;end&lt;/span&gt;
+   &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;div class="section" id="why"&gt;
+&lt;h2&gt;Why?&lt;/h2&gt;
+&lt;p&gt;Writing this post made me realize I'm trying to make ruby do something it
+doesn't (yet) do well. PHP has so many built-in features for doing web stuff
+like htmlentities, built-in mysql access, and easy access to GET and POST data
+through $_GET and $_POST (note that Apache.request.paramtable includes both GET
+and POST data, which is bad for security), so for now, I think I'll stick with
+PHP until there's a better zero-config lightweight ruby web framework. Sinatra
+is the best I have seen so far, but configuring it with Apache is still far too
+complicated, in my opinion.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="mod_ruby"></category></entry></feed>
