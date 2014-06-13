@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Using 'wmctrl' to Quickly Switch Between Open Applications</title>
+        <link rel="stylesheet" href="/blog2/theme/css/main.css" />
+        <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog2/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog2/category/life.html">life</a></li>
+                    <li class="active"><a href="/blog2/category/linux.html">linux</a></li>
+                    <li><a href="/blog2/category/math.html">math</a></li>
+                    <li><a href="/blog2/category/programming.html">programming</a></li>
+                    <li><a href="/blog2/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/blog2/wmctrl-switch-applications-keyboard-shortcut.html" rel="bookmark"
+           title="Permalink to Using 'wmctrl' to Quickly Switch Between Open Applications">Using 'wmctrl' to Quickly Switch Between Open Applications</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-06-23T00:00:00">
+                Sat 23 June 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/blog2/tag/wmctrl.html">wmctrl</a></p>
+</footer><!-- /.post-info -->      <p>The <tt class="docutils literal">wmctrl</tt> program allows you to programatically bring a running application
+to the foreground on Linux. It works even with compiz enabled, and will switch
+to the virtual desktop that the application is running in before bringing it to
+the foreground. This makes it a perfect utility for mapping keyboard shortcuts
+to quickly switch between applications you leave running all the time.</p>
+<p>To install wmctrl on Debian:</p>
+<pre class="code bash literal-block">
+apt-get install wmctrl
+</pre>
+<p>For example, to switch to Thunderbird:</p>
+<pre class="code bash literal-block">
+wmctrl -a <span class="s2">&quot;Mozilla Thunderbird&quot;</span>
+</pre>
+<p>The <tt class="docutils literal"><span class="pre">-a</span></tt> argument makes wmctrl switch to the first window it finds with the
+provided string in its title. See wmctrl's manpage for more information.</p>
+<p>You can map a command like this to a keyboard shortcut using the (in Debian)
+<tt class="docutils literal">System <span class="pre">-&gt;</span> Preferences <span class="pre">-&gt;</span> Keyboard Shortcuts</tt> utility.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

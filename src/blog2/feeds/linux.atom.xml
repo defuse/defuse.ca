@@ -205,4 +205,32 @@ PHP until there's a better zero-config lightweight ruby web framework. Sinatra
 is the best I have seen so far, but configuring it with Apache is still far too
 complicated, in my opinion.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="mod_ruby"></category></entry></feed>
+</summary><category term="mod_ruby"></category></entry><entry><title>Using 'wmctrl' to Quickly Switch Between Open Applications</title><link href="/blog2/wmctrl-switch-applications-keyboard-shortcut.html" rel="alternate"></link><updated>2012-06-23T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-23:wmctrl-switch-applications-keyboard-shortcut.html</id><summary type="html">&lt;p&gt;The &lt;tt class="docutils literal"&gt;wmctrl&lt;/tt&gt; program allows you to programatically bring a running application
+to the foreground on Linux. It works even with compiz enabled, and will switch
+to the virtual desktop that the application is running in before bringing it to
+the foreground. This makes it a perfect utility for mapping keyboard shortcuts
+to quickly switch between applications you leave running all the time.&lt;/p&gt;
+&lt;p&gt;To install wmctrl on Debian:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install wmctrl
+&lt;/pre&gt;
+&lt;p&gt;For example, to switch to Thunderbird:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+wmctrl -a &lt;span class="s2"&gt;&amp;quot;Mozilla Thunderbird&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-a&lt;/span&gt;&lt;/tt&gt; argument makes wmctrl switch to the first window it finds with the
+provided string in its title. See wmctrl's manpage for more information.&lt;/p&gt;
+&lt;p&gt;You can map a command like this to a keyboard shortcut using the (in Debian)
+&lt;tt class="docutils literal"&gt;System &lt;span class="pre"&gt;-&amp;gt;&lt;/span&gt; Preferences &lt;span class="pre"&gt;-&amp;gt;&lt;/span&gt; Keyboard Shortcuts&lt;/tt&gt; utility.&lt;/p&gt;
+</summary><category term="wmctrl"></category></entry><entry><title>Disable 'locate' Command Index Databases</title><link href="/blog2/disable-locate-command-databases.html" rel="alternate"></link><updated>2012-06-20T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-20:disable-locate-command-databases.html</id><summary type="html">&lt;p&gt;If you use Truecrypt on GNU/Linux, you will want to stop mlocate (the locate
+command) from automatically indexing your files and compromising your privacy.&lt;/p&gt;
+&lt;p&gt;To do so on Debian Squeeze:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get remove mlocate rm /etc/cron.daily/mlocate
+&lt;/pre&gt;
+&lt;p&gt;The database files are stored in:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+/var/lib/mlocate/
+&lt;/pre&gt;
+&lt;p&gt;Delete them with your secure-delete utility of choice.&lt;/p&gt;
+</summary><category term="locate"></category></entry></feed>

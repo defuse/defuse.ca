@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>The Code Files - Authors</title>
+        <title>The Code Files - locate</title>
         <link rel="stylesheet" href="/blog2/theme/css/main.css" />
         <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
 
@@ -23,11 +23,34 @@
                 </ul></nav>
         </header><!-- /#banner -->
 
-<section id="content" class="body">
-    <h1>Authors on The Code Files</h1>        <li><a href="/blog2/author/breshie.html">Breshie</a> (1)</li>
-        <li><a href="/blog2/author/taylor-hornby.html">Taylor Hornby</a> (26)</li>
-</section>
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/blog2/disable-locate-command-databases.html">Disable 'locate' Command Index Databases</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-06-20T00:00:00">
+                Wed 20 June 2012
+        </abbr>
 
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/blog2/tag/locate.html">locate</a></p>
+</footer><!-- /.post-info --><p>If you use Truecrypt on GNU/Linux, you will want to stop mlocate (the locate
+command) from automatically indexing your files and compromising your privacy.</p>
+<p>To do so on Debian Squeeze:</p>
+<pre class="code bash literal-block">
+apt-get remove mlocate rm /etc/cron.daily/mlocate
+</pre>
+<p>The database files are stored in:</p>
+<pre class="code bash literal-block">
+/var/lib/mlocate/
+</pre>
+<p>Delete them with your secure-delete utility of choice.</p>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>
