@@ -55,10 +55,10 @@ a JavaScript string literal.</p>
 <span class="p">}</span>
 </pre>
 <p>Example:</p>
-<pre class="code html literal-block">
-<span class="nt">&lt;script&gt;</span>
-<span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;&lt;?php echo js_string_escape($bar); ?&gt;&quot;</span><span class="p">;</span>
-<span class="nt">&lt;/script&gt;</span>
+<pre class="code php literal-block">
+<span class="x">&lt;script&gt;
+var foo = &quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">js_string_escape</span><span class="p">(</span><span class="nv">$bar</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;;
+&lt;/script&gt;</span>
 </pre>
 <p>The standard htmlentities and htmlspecialchars functions don't work because
 JavaScript will interpret the HTML entities as a part of the literal string (not

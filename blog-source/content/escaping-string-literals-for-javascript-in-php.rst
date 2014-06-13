@@ -28,7 +28,7 @@ a JavaScript string literal.
 
 Example:
 
-.. code:: html
+.. code:: php
 
     <script>
     var foo = "<?php echo js_string_escape($bar); ?>";

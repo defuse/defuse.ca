@@ -360,10 +360,10 @@ a JavaScript string literal.&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;Example:&lt;/p&gt;
-&lt;pre class="code html literal-block"&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;foo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;?php echo js_string_escape($bar); ?&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;pre class="code php literal-block"&gt;
+&lt;span class="x"&gt;&amp;lt;script&amp;gt;
+var foo = &amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="nx"&gt;js_string_escape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$bar&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;quot;;
+&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;The standard htmlentities and htmlspecialchars functions don't work because
 JavaScript will interpret the HTML entities as a part of the literal string (not
