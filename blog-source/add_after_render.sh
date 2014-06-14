@@ -1,3 +1,3 @@
 #!/bin/bash
-git add ../src/blog2
+git add ../src/blog
 git add content

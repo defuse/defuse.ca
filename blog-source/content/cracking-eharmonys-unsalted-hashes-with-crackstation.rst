@@ -12,7 +12,7 @@ password hash databases have been breached. In all three cases, passwords were
 stored as an unsalted hash. I've already reported the `results of cracking
 LinkedIn's password hashes with CrackStation`_, now it's eHarmony's turn.
 
-.. _`results of cracking LinkedIn's password hashes with CrackStation`: https://defuse.ca/blog/2012/06/cracking-linkedin-hashes-with-crackstation/
+.. _`results of cracking LinkedIn's password hashes with CrackStation`: https://defuse.ca/blog/cracking-linkedin-hashes-with-crackstation.html
 
 eHarmony stored their users' passwords as an unsalted md5 hash. The leaked file
 contains 1,516,877 hashes. You can download the original file from one of either

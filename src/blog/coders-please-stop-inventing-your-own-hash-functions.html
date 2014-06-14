@@ -59,7 +59,7 @@ return (sha1($salt . $pass) . sha1($pass . $name . $salt));
 }
 </pre>
 <p>This code is exactly as secure as <tt class="docutils literal">sha1( $name . $pass );</tt>. It does not make
-it harder to produce rainbow tables, it is <a class="reference external" href="https://defuse.ca/blog/2012/06/what-is-security-through-obscurity/">security through obscurity</a>.</p>
+it harder to produce rainbow tables, it is <a class="reference external" href="https://defuse.ca/blog/what-is-security-through-obscurity.html">security through obscurity</a>.</p>
 <p>I come across an example like this almost ever week. Please stop inventing your
 own hash functions and use a <a class="reference external" href="https://crackstation.net/hashing-security.htm">standard salted and iterated key derivation
 function</a>.</p>

@@ -28,7 +28,7 @@
 
 <p>
    If you would like a list of my favourite .vimrc lines, see my blog post
-  <a href="https://defuse.ca/blog/2012/04/random-vimrc-tips/">Random vimrc tips</a>.
+  <a href="https://defuse.ca/blog/random-vimrc-tips.html">Random vimrc tips</a>.
 </p>
 
 <h2>Screenshots</h2>

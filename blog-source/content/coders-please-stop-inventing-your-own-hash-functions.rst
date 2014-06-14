@@ -30,7 +30,7 @@ the following reply:
 This code is exactly as secure as ``sha1( $name . $pass );``. It does not make
 it harder to produce rainbow tables, it is `security through obscurity`_.
 
-.. _`security through obscurity`: https://defuse.ca/blog/2012/06/what-is-security-through-obscurity/
+.. _`security through obscurity`: https://defuse.ca/blog/what-is-security-through-obscurity.html
 
 I come across an example like this almost ever week. Please stop inventing your
 own hash functions and use a `standard salted and iterated key derivation
