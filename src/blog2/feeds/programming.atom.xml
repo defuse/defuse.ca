@@ -401,4 +401,335 @@ own.&lt;/p&gt;
   &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="ss"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Biz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;anotherMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bob&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;end&lt;/span&gt;
 &lt;/pre&gt;
-</summary><category term="basic"></category></entry></feed>
+</summary><category term="basic"></category></entry><entry><title>Ruby Obfuscation</title><link href="/blog2/ruby-obfuscation.html" rel="alternate"></link><updated>2012-05-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-28:ruby-obfuscation.html</id><summary type="html">&lt;p&gt;Just having fun...&lt;/p&gt;
+&lt;div class="section" id="obfuscated-1"&gt;
+&lt;h2&gt;Obfuscated #1&lt;/h2&gt;
+&lt;p&gt;This evaluates to the string &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;&amp;quot;?&amp;quot;&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="sc"&gt;??????????????&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;????????&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;?????:??&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; &amp;quot;?&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="obfuscated-2"&gt;
+&lt;h2&gt;Obfuscated #2&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="vg"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vg"&gt;$c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;[$s=['p '],[$s&amp;lt;&amp;lt;[*1?3??'+?&amp;lt;+?3:?y:?]],$s+=[?b],$s|=[*?y+?'],$s[2,0]=5??r+?u:?$],($i+=1)&amp;lt;30?eval($s.join&amp;lt;&amp;lt;?;&amp;lt;&amp;lt;$c):nil]&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;div class="section" id="output"&gt;
+&lt;h3&gt;Output&lt;/h3&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="obfuscation"></category></entry><entry><title>Ruby Maze Solver</title><link href="/blog2/ruby-maze-solver.html" rel="alternate"></link><updated>2012-05-27T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-27:ruby-maze-solver.html</id><summary type="html">&lt;p&gt;Here's a recursive-backtracking ASCII maze solver I wrote to practice ruby. The
+&lt;tt class="docutils literal"&gt;o&lt;/tt&gt;'s are the solution.&lt;/p&gt;
+&lt;div class="section" id="output"&gt;
+&lt;h2&gt;Output&lt;/h2&gt;
+&lt;pre class="code text literal-block"&gt;
+$ ruby maze.rb maze.txt
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++oooooooo  ++++++++++++++++++++++ ++++++++++++++++++++++++        ++++ ++++++
++oooo++ +++o++++++++++++++++++++++++ ++++ +++++++++++++++++++ +++ +++++++ ++++++
+++++ ++   oo+++++++++++++++++++ ++++ ++++                 +++ +++ +++++++ ++++++
+++++ ++ ++o++++++++ooooooo+++++ ++++ ++++ +++++++++++++++++++ +++         ++++++
+++   +++++o++++++++o+++++o+++++           ++++ ++++++++++++++ ++++++++ +++++++++
+++++++++++o++++++++o+++++o+++++ +++++ ++++++++ +++oooooooooooooo++++++ +++++++++
+++++++++++o+oooooooo+++++ooooooo+++++ ++++++++ +++o++++++++ +++o++++++ +++++++++
+++++++++++ooo++++++++++++ +++++o+++++ +++++++++   o++++++++++++o++++++ +++++++++
++++++++++++++++++++++++++      o++++++++++++++++++o      ++++++o       +++++++++
++++++++ +++++++++++++++++++++++o++++++oooooo++++++o+++++ ++++++o++++++++++++++++
++++++++ +++++++++++++++++++++++o++++++o++++o++++++o+++++ ++++++o++++++++++++++++
+++      ++++++++++oooooooooooooo++++++o++++o++++++o+++++ ++++++oooooooo+++++++++
++++++++ ++++++++++o+++++++++++++++++++o++++oooooooo+++++++++++++ +++++o+++++++++
++++++++           o+++++ooooooooooooooo+++++++ +++++++           ++Xooo+++++++++
+++++++++++++++++++ooooooo+++++++++++++++++++++ ++++++++++++++++++++F++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;#!/usr/bin/env ruby&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ------------------------------ Example Maze ------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++          ++++++++++++++++++++++ ++++++++++++++++++++++++        ++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +X   ++ +++ ++++++++++++++++++++++++ ++++ +++++++++++++++++++ +++ +++++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++ ++     +++++++++++++++++++ ++++ ++++                 +++ +++ +++++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++ ++ ++ ++++++++       +++++ ++++ ++++ +++++++++++++++++++ +++         ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++   +++++ ++++++++ +++++ +++++           ++++ ++++++++++++++ ++++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++ ++++++++ +++++ +++++ +++++ ++++++++ +++              ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++ +        +++++       +++++ ++++++++ +++ ++++++++ +++ ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++   ++++++++++++ +++++ +++++ +++++++++    ++++++++++++ ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++++++++++++++++++++       ++++++++++++++++++       ++++++        +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ +++++++++++++++++++++++ ++++++      ++++++ +++++ ++++++ ++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ +++++++++++++++++++++++ ++++++ ++++ ++++++ +++++ ++++++ ++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++      ++++++++++              ++++++ ++++ ++++++ +++++ ++++++        +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ ++++++++++ +++++++++++++++++++ ++++        +++++++++++++ +++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++            +++++               +++++++ +++++++           ++    +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++       +++++++++++++++++++++ ++++++++++++++++++++F++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;
+  &lt;span class="n"&gt;printUsage&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;maze&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'r'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;rescue&lt;/span&gt;
+    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Cannot read file.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;printUsage&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;solver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;MazeSolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;solver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;solve&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;solver&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Maze has no solution&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;printUsage&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;USAGE: ruby maze.rb &amp;lt;mazefile&amp;gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# A recursive backtracking maze solver.&lt;/span&gt;
+&lt;span class="c1"&gt;# The maze is specified as an ASCII grid (each line is one row), where:&lt;/span&gt;
+&lt;span class="c1"&gt;# - 'X' marks the starting position of the player.&lt;/span&gt;
+&lt;span class="c1"&gt;# - 'F' marks the goal.&lt;/span&gt;
+&lt;span class="c1"&gt;# - ' ' (space) marks the area where the player is allowed to move.&lt;/span&gt;
+&lt;span class="c1"&gt;# - Everything else marks area where the player is NOT allowed to move.&lt;/span&gt;
+&lt;span class="c1"&gt;# The maze string must not contain the character 'o' (lowercase oh) since it is&lt;/span&gt;
+&lt;span class="c1"&gt;# used to mark the solution path.&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MazeSolver&lt;/span&gt;
+
+  &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'X'&lt;/span&gt;
+  &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;
+  &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'F'&lt;/span&gt;
+  &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt;
+
+  &lt;span class="no"&gt;DELTA_ROW&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="no"&gt;DELTA_COL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Movement directions are specified internally by a 'delta', which is an&lt;/span&gt;
+  &lt;span class="c1"&gt;# array where [0] is the change in row and [1] is the change in column.&lt;/span&gt;
+  &lt;span class="c1"&gt;# The player is only allowed to move up, down, left, and right.&lt;/span&gt;
+  &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# Split the maze string into an array of arrays of characters.&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;findPlayer&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Find the player on the maze grid and check that the maze is valid.&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;findPlayer&lt;/span&gt;
+    &lt;span class="n"&gt;playerFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+    &lt;span class="n"&gt;finishFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rowIndex&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;colIndex&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'More than one player'&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;playerFound&lt;/span&gt;
+            &lt;span class="n"&gt;playerFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+            &lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rowIndex&lt;/span&gt;
+            &lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;colIndex&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="n"&gt;finishFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Track marker playerFound in maze'&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'No player'&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="n"&gt;playerFound&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Solve the maze. Returns true if it has been solved, false if it cannot be solved.&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solve&lt;/span&gt;
+    &lt;span class="n"&gt;possibleMovements&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;moveBy&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+      &lt;span class="k"&gt;break&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;solve&lt;/span&gt;
+      &lt;span class="n"&gt;undoMoveBy&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;adjacentToFinish?&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Return an array of valid movement deltas (to SPACE_CHARs) from the current position&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;possibleMovements&lt;/span&gt;
+    &lt;span class="n"&gt;deltas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+    &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;deltas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;canMoveBy?&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;deltas&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;moveBy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Invalid movement&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="n"&gt;canMoveBy?&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;undoMoveBy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;reverse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;adjacentToFinish?&lt;/span&gt;
+    &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;canMoveBy?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_s&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;main&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+</summary><category term="search"></category></entry><entry><title>My Favorite 'Rubyisms'</title><link href="/blog2/my-favorite-rubyisms.html" rel="alternate"></link><updated>2012-05-16T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-16:my-favorite-rubyisms.html</id><summary type="html">&lt;p&gt;I've been using Ruby at work to write &lt;a class="reference external" href="http://watir.com/"&gt;watir&lt;/a&gt; tests, and I am constantly amazed
+at how elegant it is. Here are some of my favorite techniques:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pass a default value block to Hash.new to implement a memoized recursive
+function:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;fibonacci&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Hash&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Use an anonymous array to perform some operation on a constant set of things
+without repeating yourself:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Instead of:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Use an anonymous array to check of some variable is equal to any of a set of things:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Invalid sport'&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;include?&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Instead of:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Invalid sport'&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'golf'&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Initialize an array using a range and map, and use rand() with to_s to
+generate random strings:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;randomStrings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Array&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;users&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;testUser%d&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="ruby"></category></entry><entry><title>Random .vimrc Tips</title><link href="/blog2/random-vimrc-tips.html" rel="alternate"></link><updated>2012-04-29T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-04-29:random-vimrc-tips.html</id><summary type="html">&lt;p&gt;Here are some of my favorite .vimrc lines.&lt;/p&gt;
+&lt;p&gt;Save quickly from any mode by pressing CTRL+:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+imap &amp;lt;C-\&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;Cr&amp;gt;
+map &amp;lt;C-\&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;Cr&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Make indenting and de-indenting in visual mode preserve the selection:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+vnoremap &amp;gt; &amp;gt;&amp;lt;CR&amp;gt;gv
+vnoremap &amp;lt; &amp;lt;&amp;lt;CR&amp;gt;gv
+&lt;/pre&gt;
+&lt;p&gt;Quick case insensitive search with double slash or double question mark:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map // /\c
+map ?? ?\c
+&lt;/pre&gt;
+&lt;p&gt;Make the j and k keys move up by a line on the screen rather than a line in the
+file (very useful when navigating a long line that has wrapped many times):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map j gj
+map k gk
+&lt;/pre&gt;
+&lt;p&gt;Highlight column 80 (Vim 7.3+ only):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+if v:version &amp;gt;= 703
+    set cc=80
+    hi ColorColumn ctermbg=Gray ctermfg=Black guibg=#404040
+    command Skinny set cc=73
+    command Wide set cc=80
+endif
+&lt;/pre&gt;
+&lt;p&gt;Don’t show the splash screen:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+set shortmess+=I
+&lt;/pre&gt;
+&lt;p&gt;Keep the cursor 4 lines away from the top or bottom to automatically preserve
+context when editing near the top or bottom of the window:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+set scrolloff=4
+&lt;/pre&gt;
+&lt;p&gt;Make CTRL+u and CTRL+d less confusing:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map &amp;lt;C-u&amp;gt; 10&amp;lt;C-Y&amp;gt;10k
+map &amp;lt;C-d&amp;gt; 10&amp;lt;C-E&amp;gt;10j
+&lt;/pre&gt;
+&lt;p&gt;Scroll the screen with ALT+{j,k}:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map &amp;lt;A-j&amp;gt; 2&amp;lt;C-E&amp;gt;
+map &amp;lt;A-k&amp;gt; 2&amp;lt;C-Y&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Easy paste toggle:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot; Allow middle-click pasting of large texts in terminal
+set pastetoggle=&amp;lt;F5&amp;gt;
+&amp;quot; Clear paste mode when going back to normal mode
+au InsertLeave * set nopaste
+&lt;/pre&gt;
+&lt;p&gt;Switch windows quickly with CTRL+{h,j,k,l}:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot; This breaks backspace in a terminal, but I never use backspace in normal mode
+map &amp;lt;C-h&amp;gt; &amp;lt;C-W&amp;gt;h
+map &amp;lt;C-j&amp;gt; &amp;lt;C-W&amp;gt;j
+map &amp;lt;C-k&amp;gt; &amp;lt;C-W&amp;gt;k
+map &amp;lt;C-l&amp;gt; &amp;lt;C-W&amp;gt;l
+&amp;quot; This would break in a terminal where ^H is backspace.
+if has(&amp;quot;gui_running&amp;quot;)
+    imap &amp;lt;C-h&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;h
+endif
+imap &amp;lt;C-j&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;j
+imap &amp;lt;C-k&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;k
+imap &amp;lt;C-l&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;l
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://defuse.ca/vimrc.htm"&gt;Click here for my entire Vim configuration.&lt;/a&gt;&lt;/p&gt;
+</summary><category term="vim"></category></entry></feed>

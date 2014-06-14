@@ -1157,7 +1157,58 @@ apt-get remove mlocate rm /etc/cron.daily/mlocate
 /var/lib/mlocate/
 &lt;/pre&gt;
 &lt;p&gt;Delete them with your secure-delete utility of choice.&lt;/p&gt;
-</summary><category term="locate"></category></entry><entry><title>Cracking eHarmony's Unsalted Hashes with CrackStation</title><link href="/blog2/cracking-eharmonys-unsalted-hashes-with-crackstation.html" rel="alternate"></link><updated>2012-06-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-09:cracking-eharmonys-unsalted-hashes-with-crackstation.html</id><summary type="html">&lt;p&gt;This week, LinkedIn, eHarmony, and last.fm have all confirmed that their
+</summary><category term="locate"></category></entry><entry><title>Awesome Desktop Calculator using Ruby's IRB</title><link href="/blog2/awesome-desktop-calculator-using-rubys-irb.html" rel="alternate"></link><updated>2012-06-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-09:awesome-desktop-calculator-using-rubys-irb.html</id><summary type="html">&lt;p&gt;Ruby is an awesome programming language. Its metaprogramming capabilities make
+it easy to turn the interactive ruby interpreter (irb) into an awesome desktop
+calculator. To do so, we can make irb execute a ruby script, containing some
+calculator extensions before it starts, with the following command:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+irb -r /path/to/the/file.rb
+&lt;/pre&gt;
+&lt;p&gt;Of course, you will want to make an alias or keyboard shortcut for this. In
+bash, this can be done by adding something like the following to ~/.bashrc:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nb"&gt;alias &lt;/span&gt;&lt;span class="nv"&gt;rcalc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'irb -r /path/to/the/file.rb'&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Here's a link to my &lt;a class="reference external" href="https://defuse.ca/source/calc.rb"&gt;custom ruby calculator script&lt;/a&gt;. Here's what it does:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
++----------------------------- RUBY CALCULATOR -------------------------------+
+|  0b - Binary    .b - To Binary      Constants: E, PI                        |
+|  0x - Hex       .h - To Hex         _ gives last result                     |
+|  0  - Octal     .o - To Octal       q quits                                 |
++-----------------------------------------------------------------------------+
+|  Window closes after 10 minutes of inactivity. Type 'keepalive' to disable. |
++-----------------------------------------------------------------------------+
+irb(main):001:0&amp;gt; 0b11111111
+=&amp;gt; 255
+irb(main):002:0&amp;gt; _.h
+=&amp;gt; &amp;quot;ff&amp;quot;
+irb(main):003:0&amp;gt; PI
+=&amp;gt; 3.14159265358979
+irb(main):004:0&amp;gt; E
+=&amp;gt; 2.71828182845905
+irb(main):005:0&amp;gt; 2**256 / 3**5
+WARNING: Integer division with remainder.
+=&amp;gt; 476510655297597512031156316908180690754197467759837712096533267522276253662
+irb(main):006:0&amp;gt; 6/3
+=&amp;gt; 2
+irb(main):007:0&amp;gt; 5.0/2
+=&amp;gt; 2.5
+irb(main):012:0&amp;gt; sin(PI/2)
+=&amp;gt; 1.0
+irb(main):008:0&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;I will be adding functionality to this script as I need it. Some things I'm
+planning are:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Unit conversions&lt;/li&gt;
+&lt;li&gt;Easier way to convert strings in different bases to integers&lt;/li&gt;
+&lt;li&gt;Efficient factorial function&lt;/li&gt;
+&lt;li&gt;Common sequences such as Fibonacci&lt;/li&gt;
+&lt;li&gt;Common formulas&lt;/li&gt;
+&lt;li&gt;Common constants (c, G, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you have any ideas, please leave a comment and I'll add it to the list.&lt;/p&gt;
+</summary><category term="calculator"></category></entry><entry><title>Cracking eHarmony's Unsalted Hashes with CrackStation</title><link href="/blog2/cracking-eharmonys-unsalted-hashes-with-crackstation.html" rel="alternate"></link><updated>2012-06-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-09:cracking-eharmonys-unsalted-hashes-with-crackstation.html</id><summary type="html">&lt;p&gt;This week, LinkedIn, eHarmony, and last.fm have all confirmed that their
 password hash databases have been breached. In all three cases, passwords were
 stored as an unsalted hash. I've already reported the &lt;a class="reference external" href="https://defuse.ca/blog/2012/06/cracking-linkedin-hashes-with-crackstation/"&gt;results of cracking
 LinkedIn's password hashes with CrackStation&lt;/a&gt;, now it's eHarmony's turn.&lt;/p&gt;
@@ -1228,4 +1279,568 @@ e838f7db8ef56faa9b49e8215dfbbee7 :: KITABLAR
 22d541659b917e40146f4d4256b2a2e2 :: LETSTALK2
 4e953e9a0a0f2503e8b8269b2c4a8057 :: 1MEMO1
 &lt;/pre&gt;
-</summary><category term="passwords"></category><category term="hashing"></category><category term="eharmony"></category></entry></feed>
+</summary><category term="passwords"></category><category term="hashing"></category><category term="eharmony"></category></entry><entry><title>Cracking LinkedIn's Hashes with Crackstation</title><link href="/blog2/cracking-linkedin-hashes-with-crackstation.html" rel="alternate"></link><updated>2012-06-08T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-08:cracking-linkedin-hashes-with-crackstation.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://linkedin.com/"&gt;LinkedIn&lt;/a&gt;'s user database has been &lt;a class="reference external" href="https://news.ycombinator.com/item?id=4073309"&gt;breached&lt;/a&gt;. The passwords were hashed with
+SHA1, but salt was not used. 6 million of them have been published to the
+internet. You can download them via &lt;a class="reference external" href="http://thepiratebay.se/torrent/7334648/LinkedIn_Password_Hashes"&gt;torrent&lt;/a&gt; or via HTTP from &lt;a class="reference external" href="http://defuse.ca/files/linkedin-sha1.txt"&gt;defuse.ca's
+mirror&lt;/a&gt;. 3.5 million of them have had their first 5 hex digits replaced with
+zero -- some suspect this was used as a way to mark which have been cracked by
+another party &lt;a class="reference external" href="https://news.ycombinator.com/item?id=4073928"&gt;(source)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A bit of googling reveals that LinkedIn has about 120 million registered
+accounts, so the 6,143,150 hashes represent about 5% of LinkedIn users
+Correction: Since duplicates were removed from the hash list, it must represent
+a much larger portion of LinkedIn users. Since passwords are so often re-used,
+I wouldn't be surprised if it was the entire database. 3,521,180 have been
+cracked by an unknown third party. That leaves 2,621,970 for me to try to crack
+with &lt;a class="reference external" href="https://crackstation.net/"&gt;CrackStation&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="what-is-crackstation"&gt;
+&lt;h2&gt;What is CrackStation?&lt;/h2&gt;
+&lt;p&gt;CrackStation is basically a giant lookup table -- a sorted list of hashes,
+mapped to their corresponding plaintext. To crack a hash, all I have to do is
+run a binary search through the hash index file to get the location of the
+plaintext in the wordlist file. This process is very efficient; a 200GB index
+file (15 billion hashes) can be searched in only a fraction of a second, even on
+a standard 7200rpm hard disk.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="crackstation-results"&gt;
+&lt;h2&gt;CrackStation Results&lt;/h2&gt;
+&lt;p&gt;It took 31.8 hours to process all 2,621,970 not-yet-cracked hashes. That's an
+average of 22 hashes processed per second. In the end, I was able to crack
+31,831 hashes -- about 1.2%. CrackStation's &amp;quot;medium&amp;quot; dictionary, which has
+1,493,677,782 entries, cracked 23,529 (0.8%) of them. The &amp;quot;huge&amp;quot; dictionary,
+which has 15,171,326,912 cracked 10034 (0.3%) of them. These figures are not
+exclusive -- 1732 hashes were cracked by both dictionaries (I did not optimize).&lt;/p&gt;
+&lt;p&gt;Duplicates were removed from the original list of hashes, so I cannot provide
+&amp;quot;most common passwords&amp;quot; statistics. Here's a random sample of what I cracked (I
+will not be releasing the full list):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+6764dcf2d9c84b9d66fd5c8a78691affde1045e1 :: sangeetalahiri
+d6b3ebab49bd83a60de4f5b84d9fe61eff5cba73 :: DualPhone
+c79b146f16d3442bb2adb00cf9a6e456aacdb877 :: juan.rondon
+777bb3743c7424b477ae95f0b002cffc3a6d8f57 :: Charlcombe1
+a567e183044b8a881a8aec41387614f7963b60be :: hydroworx1
+7f97cd544c2937e494265a6a5a4ae3edf6a391e8 :: Jetravaille
+87f11d9ccda89e463cf92e3f84dbf1f5b9b5f84a :: Nangiya1
+1168caf06e26fb82642b069dc306b9a849e9448f :: kab&amp;#64;las
+3722fd3f3cded4dc1231df6b16190364eaf71184 :: grasmachien
+5a61c766bb6ea7294a6a0e6e2ccbda8c4eed0ebc :: Eidner4
+&lt;/pre&gt;
+&lt;p&gt;These results aren't really meaningful, since I only tried to crack the set of
+hashes that were not already cracked by someone else, but it was a fun exercise
+to test the strength of CrackStation's password dictionaries. It is also a great
+demonstration of why salt is &lt;strong&gt;crucial&lt;/strong&gt; to password security. If we assume that
+all of the previously-cracked hashes could have been cracked by CrackStation,
+then I would have been able to crack 3,553,011 (57.8%) in only 78 hours, or 19
+hours if cracked them in parallel on a quad-disk quad-core system. That figure
+is consistent with other bulk cracking jobs CrackStation has done in the past.&lt;/p&gt;
+&lt;p&gt;The reason I cannot crack the ones that had their first 5 hex digits set to
+00000 is because CrackStation's indexes are sorted on the first 48 bits of the
+hash, with the first bits being the most significant. Without all of those bits,
+I can't do a binary search through the index file. I could rebuild the index
+using the last 48 bits of the hash, but that would take days and hundreds of
+gigabytes of hard drive space. I don't want LinkedIn users' passwords that bad.
+If there is significant public interest in the results, then I will consider
+doing it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;This kind of attack wouldn't work if the hashes were salted. If they were
+salted, I'd have to run a dictionary attack on each hash individually, which can
+take upwards of an hour per hash for a similar-quality attack. So if you run
+a website that stores user passwords, please make sure they are &lt;a class="reference external" href="https://crackstation.net/hashing-security.htm"&gt;hashed with
+salt&lt;/a&gt;. If they aren't, (LinkedIn, are you listening?), then you are an
+irresponsible webmaster.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="passwords"></category><category term="hashing"></category><category term="linkedin"></category></entry><entry><title>What is Security Through Obscurity</title><link href="/blog2/what-is-security-through-obscurity.html" rel="alternate"></link><updated>2012-06-04T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-04:what-is-security-through-obscurity.html</id><summary type="html">&lt;p&gt;Today a member of &lt;a class="reference external" href="https://www.grc.com/discussions.htm"&gt;GRC's Newsgroups&lt;/a&gt; posed a question about security through
+obscurity:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It seems to me that ALL digital security is EXACTLY &amp;quot;security through
+obscurity&amp;quot;. Take, for example, AES... It isn't that the possible range of
+keys is unknown, it is just a cleverly hidden needle in an enormously HUGE
+haystack.  It could actually be possible to arrive at the correct key on the
+first guess.  However, I wouldn't bet anything you care about on that, since
+it would be about as likely as me saying, &amp;quot;I'm thinking of a particular atom
+somewhere in the universe. Can you guess which one?&amp;quot; Nevertheless, in set
+notation, it would be trivial to describe the set which includes the correct
+key. It is simply obscured by all the wrong keys.&lt;/p&gt;
+&lt;p&gt;So, by your definition, what is &lt;em&gt;real&lt;/em&gt; security?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It's a very interesting question, and it made me realize that in all of the
+research I've done on cryptography, I've never seen a formal definition of
+security through obscurity. It took me a while to come up with a reasonable
+response (something other than &amp;quot;I know it when I see it.&amp;quot;). My first thought was
+anything that doesn't follow &lt;cite&gt;Kerckhoffs's principle&lt;/cite&gt; is security through
+obscurity, but I wanted something more general. After a bit more thinking,
+I decided that measurability is the main distinction between something that
+isn't security through obscurity, and something that is. Here's what I wrote:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Informally, I would define security, with respect to cryptography, as
+something that requires a well-defined and measurable amount of resources to
+break in a specific scenario.&lt;/p&gt;
+&lt;p&gt;For example, if a message is encrypted in AES-256 in CBC mode, with a random
+key, and the adversary knows the plaintext is english, but doesn't know
+anything about the key, then the security factor is 2^256 i.e. the adversary
+has to do on average 2^255 operations to successfully decrypt the
+ciphertext.&lt;/p&gt;
+&lt;p&gt;Note that this means that even if the key is just one bit, it is still
+&amp;quot;real&amp;quot; security, as long as the adversary knows that the key is either &amp;quot;1&amp;quot;
+or &amp;quot;0&amp;quot;. It is very weak security, but the difficulty of cracking it is still
+well-defined and computable.&lt;/p&gt;
+&lt;p&gt;Security though obscurity is anything that doesn't have a well-defined and
+computable &amp;quot;security factor&amp;quot; in at least one scenario.&lt;/p&gt;
+&lt;p&gt;For example, if you are trying to smuggle pirated software across the U.S.
+border, you may choose to encode the data into the least significant bits of
+the RGB values in an image file. There is software for doing (and un-doing)
+this, so it would not be hard for the border patrol officer to extract the
+data, if he knew it was there. Your security rests on whether or not the
+officer will know to look in the least significant bits for hidden data.
+This is not well-defined and cannot be computed into a &amp;quot;security factor&amp;quot;
+like above.&lt;/p&gt;
+&lt;p&gt;A real-world example is if you just won the lottery and you are looking for
+a place to hide your money (supposing banks don't exist):&lt;/p&gt;
+&lt;p&gt;You could choose to buy a safe, rated to withstand 60 minutes of attack with
+blow torches. This is &amp;quot;real&amp;quot; security, the amount of work an adversary has
+to do to break into the safe is well-defined and computable.&lt;/p&gt;
+&lt;p&gt;You could also choose to hide your money inside the door of your car
+(between the interior panel and the exterior metal). It would not be at all
+difficult for an adversary to steal your money, if they knew it was there.
+The security provided by &amp;quot;Will the adversary ever think that I am hiding the
+money in the door of my car?&amp;quot; is not well-defined nor computable, so this is
+security through obscurity.&lt;/p&gt;
+&lt;p&gt;This is just my opinion on the matter. Cryptography texts and/or experienced
+cryptographers may disagree.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This definition can be applied to the idea of trying to keep an encryption
+algorithm secret. If the security of the algorithm depends on it's secrecy, then
+it is security through obscurity, because the amount of work an adversary (who
+can run chosen plaintext and chosen ciphertext attacks) has to do to reverse
+engineer the algorithm is not well-defined and cannot be computed.&lt;/p&gt;
+</summary><category term="obscurity"></category></entry><entry><title>Ruby Obfuscation</title><link href="/blog2/ruby-obfuscation.html" rel="alternate"></link><updated>2012-05-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-28:ruby-obfuscation.html</id><summary type="html">&lt;p&gt;Just having fun...&lt;/p&gt;
+&lt;div class="section" id="obfuscated-1"&gt;
+&lt;h2&gt;Obfuscated #1&lt;/h2&gt;
+&lt;p&gt;This evaluates to the string &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;&amp;quot;?&amp;quot;&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="sc"&gt;??????????????&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;????????&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;?????:??&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; &amp;quot;?&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="obfuscated-2"&gt;
+&lt;h2&gt;Obfuscated #2&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="vg"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vg"&gt;$c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;[$s=['p '],[$s&amp;lt;&amp;lt;[*1?3??'+?&amp;lt;+?3:?y:?]],$s+=[?b],$s|=[*?y+?'],$s[2,0]=5??r+?u:?$],($i+=1)&amp;lt;30?eval($s.join&amp;lt;&amp;lt;?;&amp;lt;&amp;lt;$c):nil]&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;div class="section" id="output"&gt;
+&lt;h3&gt;Output&lt;/h3&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="obfuscation"></category></entry><entry><title>Ruby Maze Solver</title><link href="/blog2/ruby-maze-solver.html" rel="alternate"></link><updated>2012-05-27T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-27:ruby-maze-solver.html</id><summary type="html">&lt;p&gt;Here's a recursive-backtracking ASCII maze solver I wrote to practice ruby. The
+&lt;tt class="docutils literal"&gt;o&lt;/tt&gt;'s are the solution.&lt;/p&gt;
+&lt;div class="section" id="output"&gt;
+&lt;h2&gt;Output&lt;/h2&gt;
+&lt;pre class="code text literal-block"&gt;
+$ ruby maze.rb maze.txt
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++oooooooo  ++++++++++++++++++++++ ++++++++++++++++++++++++        ++++ ++++++
++oooo++ +++o++++++++++++++++++++++++ ++++ +++++++++++++++++++ +++ +++++++ ++++++
+++++ ++   oo+++++++++++++++++++ ++++ ++++                 +++ +++ +++++++ ++++++
+++++ ++ ++o++++++++ooooooo+++++ ++++ ++++ +++++++++++++++++++ +++         ++++++
+++   +++++o++++++++o+++++o+++++           ++++ ++++++++++++++ ++++++++ +++++++++
+++++++++++o++++++++o+++++o+++++ +++++ ++++++++ +++oooooooooooooo++++++ +++++++++
+++++++++++o+oooooooo+++++ooooooo+++++ ++++++++ +++o++++++++ +++o++++++ +++++++++
+++++++++++ooo++++++++++++ +++++o+++++ +++++++++   o++++++++++++o++++++ +++++++++
++++++++++++++++++++++++++      o++++++++++++++++++o      ++++++o       +++++++++
++++++++ +++++++++++++++++++++++o++++++oooooo++++++o+++++ ++++++o++++++++++++++++
++++++++ +++++++++++++++++++++++o++++++o++++o++++++o+++++ ++++++o++++++++++++++++
+++      ++++++++++oooooooooooooo++++++o++++o++++++o+++++ ++++++oooooooo+++++++++
++++++++ ++++++++++o+++++++++++++++++++o++++oooooooo+++++++++++++ +++++o+++++++++
++++++++           o+++++ooooooooooooooo+++++++ +++++++           ++Xooo+++++++++
+++++++++++++++++++ooooooo+++++++++++++++++++++ ++++++++++++++++++++F++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;#!/usr/bin/env ruby&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ------------------------------ Example Maze ------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++          ++++++++++++++++++++++ ++++++++++++++++++++++++        ++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +X   ++ +++ ++++++++++++++++++++++++ ++++ +++++++++++++++++++ +++ +++++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++ ++     +++++++++++++++++++ ++++ ++++                 +++ +++ +++++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++ ++ ++ ++++++++       +++++ ++++ ++++ +++++++++++++++++++ +++         ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++   +++++ ++++++++ +++++ +++++           ++++ ++++++++++++++ ++++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++ ++++++++ +++++ +++++ +++++ ++++++++ +++              ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++ +        +++++       +++++ ++++++++ +++ ++++++++ +++ ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++   ++++++++++++ +++++ +++++ +++++++++    ++++++++++++ ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++++++++++++++++++++       ++++++++++++++++++       ++++++        +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ +++++++++++++++++++++++ ++++++      ++++++ +++++ ++++++ ++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ +++++++++++++++++++++++ ++++++ ++++ ++++++ +++++ ++++++ ++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++      ++++++++++              ++++++ ++++ ++++++ +++++ ++++++        +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ ++++++++++ +++++++++++++++++++ ++++        +++++++++++++ +++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++            +++++               +++++++ +++++++           ++    +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++       +++++++++++++++++++++ ++++++++++++++++++++F++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;
+  &lt;span class="n"&gt;printUsage&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;maze&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'r'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;rescue&lt;/span&gt;
+    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Cannot read file.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;printUsage&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;solver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;MazeSolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;solver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;solve&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;solver&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Maze has no solution&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;printUsage&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;USAGE: ruby maze.rb &amp;lt;mazefile&amp;gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# A recursive backtracking maze solver.&lt;/span&gt;
+&lt;span class="c1"&gt;# The maze is specified as an ASCII grid (each line is one row), where:&lt;/span&gt;
+&lt;span class="c1"&gt;# - 'X' marks the starting position of the player.&lt;/span&gt;
+&lt;span class="c1"&gt;# - 'F' marks the goal.&lt;/span&gt;
+&lt;span class="c1"&gt;# - ' ' (space) marks the area where the player is allowed to move.&lt;/span&gt;
+&lt;span class="c1"&gt;# - Everything else marks area where the player is NOT allowed to move.&lt;/span&gt;
+&lt;span class="c1"&gt;# The maze string must not contain the character 'o' (lowercase oh) since it is&lt;/span&gt;
+&lt;span class="c1"&gt;# used to mark the solution path.&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MazeSolver&lt;/span&gt;
+
+  &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'X'&lt;/span&gt;
+  &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;
+  &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'F'&lt;/span&gt;
+  &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt;
+
+  &lt;span class="no"&gt;DELTA_ROW&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="no"&gt;DELTA_COL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Movement directions are specified internally by a 'delta', which is an&lt;/span&gt;
+  &lt;span class="c1"&gt;# array where [0] is the change in row and [1] is the change in column.&lt;/span&gt;
+  &lt;span class="c1"&gt;# The player is only allowed to move up, down, left, and right.&lt;/span&gt;
+  &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# Split the maze string into an array of arrays of characters.&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;findPlayer&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Find the player on the maze grid and check that the maze is valid.&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;findPlayer&lt;/span&gt;
+    &lt;span class="n"&gt;playerFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+    &lt;span class="n"&gt;finishFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rowIndex&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;colIndex&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'More than one player'&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;playerFound&lt;/span&gt;
+            &lt;span class="n"&gt;playerFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+            &lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rowIndex&lt;/span&gt;
+            &lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;colIndex&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="n"&gt;finishFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Track marker playerFound in maze'&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'No player'&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="n"&gt;playerFound&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Solve the maze. Returns true if it has been solved, false if it cannot be solved.&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solve&lt;/span&gt;
+    &lt;span class="n"&gt;possibleMovements&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;moveBy&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+      &lt;span class="k"&gt;break&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;solve&lt;/span&gt;
+      &lt;span class="n"&gt;undoMoveBy&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;adjacentToFinish?&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Return an array of valid movement deltas (to SPACE_CHARs) from the current position&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;possibleMovements&lt;/span&gt;
+    &lt;span class="n"&gt;deltas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+    &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;deltas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;canMoveBy?&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;deltas&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;moveBy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Invalid movement&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="n"&gt;canMoveBy?&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;undoMoveBy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;reverse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;adjacentToFinish?&lt;/span&gt;
+    &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;canMoveBy?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_s&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;main&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+</summary><category term="search"></category></entry><entry><title>My Favorite 'Rubyisms'</title><link href="/blog2/my-favorite-rubyisms.html" rel="alternate"></link><updated>2012-05-16T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-16:my-favorite-rubyisms.html</id><summary type="html">&lt;p&gt;I've been using Ruby at work to write &lt;a class="reference external" href="http://watir.com/"&gt;watir&lt;/a&gt; tests, and I am constantly amazed
+at how elegant it is. Here are some of my favorite techniques:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pass a default value block to Hash.new to implement a memoized recursive
+function:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;fibonacci&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Hash&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Use an anonymous array to perform some operation on a constant set of things
+without repeating yourself:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Instead of:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Use an anonymous array to check of some variable is equal to any of a set of things:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Invalid sport'&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;include?&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Instead of:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Invalid sport'&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'golf'&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Initialize an array using a range and map, and use rand() with to_s to
+generate random strings:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;randomStrings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Array&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;users&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;testUser%d&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="ruby"></category></entry><entry><title>The Economics of Password Cracking</title><link href="/blog2/the-economics-of-password-cracking.html" rel="alternate"></link><updated>2012-05-05T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-05:the-economics-of-password-cracking.html</id><summary type="html">&lt;p&gt;We know that it's possible to come up with a password that no computer on earth
+can crack. Use true random data to generate a sequence of 20 characters from the
+full ASCII printable set, spend an hour memorizing, and you're good. We also
+know that most people don't do that. What we don't know (or at least often
+forget) is that people don't need to do that.&lt;/p&gt;
+&lt;p&gt;We estimate our password strength by the amount of time it would take the
+fastest imaginable supercomputer to search through the set of all passwords of
+equal or less length and find ours. What we often forget is that the bad guys
+don't have those kinds of resources, and they rarely ever crack passwords via
+brute-force search.&lt;/p&gt;
+&lt;p&gt;Why not? Because most bad guys won't build a billion-dollar supercomputer to
+crack one password, and most people with billion-dollar supercomputers aren't
+willing to rent out their processing power for password cracking. It isn't
+profitable, and those supercomputers can be used for better things like
+scientific research.&lt;/p&gt;
+&lt;p&gt;The Bitcoin network is currently computing 11.74 trillion sha256 hashes per
+second (&lt;a class="reference external" href="http://bitcoinwatch.com/"&gt;see here for current stats&lt;/a&gt;). The network will compute &lt;tt class="docutils literal"&gt;3.702x10^20&lt;/tt&gt;
+hashes in one year if it continues at it the same rate (my guess is that it will
+grow, but it's already over 10 times as powerful as &lt;cite&gt;the fastest known
+supercomputer&lt;/cite&gt;).  That may seem like a lot of hashes, but if you do the math,
+you'll see that its not even enough to do a brute-force search through the set
+of all 11-character ASCII passwords. &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;log(3.702x1020)/log(95)&lt;/span&gt; = 10.40&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;Read it again: &lt;strong&gt;The Bitcoin network is made up of millions of dollars worth of
+hardware and is 10x faster than the fastest known supercomputer, but it can not
+brute-force guess an 11-character password in a year.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There is no business model that makes brute-force password cracking profitable.
+To see why, consider the following argument:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;If the password can't be cracked with good quality dictionaries or rainbow
+tables, it is long and complex.&lt;/li&gt;
+&lt;li&gt;Since the fastest distributed computing network on earth can barely search
+through the set of all 10-character ASCII passwords in a year, the
+probability of cracking a long and complex password via brute-force search in
+a reasonable amount of time is low.&lt;/li&gt;
+&lt;li&gt;Since the probability of successfully cracking a password via brute-force is
+low, to make any money, you must charge the customer even if you cannot crack
+it.&lt;/li&gt;
+&lt;li&gt;Since the probability of successfully cracking a password via brute-force is
+low, and the customer must pay even if you cannot crack it, the customer will
+not be willing to pay very much.&lt;/li&gt;
+&lt;li&gt;A decent brute-force attack requires a lot of time on an expensive
+supercomputer, so you must charge a lot.&lt;/li&gt;
+&lt;li&gt;(4) and (5) are incompatible with each other, so it is impossible to run
+a profitable brute-force cracking business.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Of course (4) may not hold true when the customer is a government and the
+password is the key to winning a war, but most passwords don't have that much
+value.&lt;/p&gt;
+&lt;p&gt;What this tells us is that we don't need to worry about brute-force attacks.
+They always succeed (by definition), but rarely in a reasonable amount of time
+and there is rarely ever a password valuable enough to justify one.&lt;/p&gt;
+&lt;p&gt;So ironically, the most profitable kind of password cracking requires very
+little computational resources (a single 6-core system satisfies
+&lt;a class="reference external" href="https://crackstation.net/"&gt;crackstation.net&lt;/a&gt;'s needs). The key to being profitable in the password
+cracking industry is to be clever and do as much as you can without
+a supercomputer. That means implementing extremely fast look-up tables and
+constructing extremely effective dictionaries -- going after the low-hanging
+fruit.&lt;/p&gt;
+&lt;p&gt;That's exactly what the bad guys do, and that's exactly what my hash cracking
+service does. If you want your password to be secure, don't worry about
+comparing its strength to a hypothetical supercomputer, just make sure it's not
+a low-hanging fruit, and make brute-force search the only option for your
+adversary. Then they probably won't even bother trying.&lt;/p&gt;
+&lt;p&gt;The easiest way to get out of the low-hanging fruit zone is to make your
+password long. Take a look at &lt;a class="reference external" href="https://www.grc.com/haystack.htm"&gt;GRC's Password Haystacks&lt;/a&gt; page for some good
+advice.&lt;/p&gt;
+&lt;p&gt;Here's a tip: My hash cracking service is backed by the largest known password
+cracking dictionary, which has just over 15 billion entries. There are over
+7 billion possible 5-character ASCII strings. So if you include 5 random ASCII
+characters in your password and pad it out to at least 12 characters with
+something memorable (not a word!), you can be pretty sure that your password
+isn't a low-hanging fruit.&lt;/p&gt;
+</summary><category term="passwords"></category><category term="hashing"></category><category term="cracking"></category></entry><entry><title>Random .vimrc Tips</title><link href="/blog2/random-vimrc-tips.html" rel="alternate"></link><updated>2012-04-29T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-04-29:random-vimrc-tips.html</id><summary type="html">&lt;p&gt;Here are some of my favorite .vimrc lines.&lt;/p&gt;
+&lt;p&gt;Save quickly from any mode by pressing CTRL+:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+imap &amp;lt;C-\&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;Cr&amp;gt;
+map &amp;lt;C-\&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;Cr&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Make indenting and de-indenting in visual mode preserve the selection:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+vnoremap &amp;gt; &amp;gt;&amp;lt;CR&amp;gt;gv
+vnoremap &amp;lt; &amp;lt;&amp;lt;CR&amp;gt;gv
+&lt;/pre&gt;
+&lt;p&gt;Quick case insensitive search with double slash or double question mark:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map // /\c
+map ?? ?\c
+&lt;/pre&gt;
+&lt;p&gt;Make the j and k keys move up by a line on the screen rather than a line in the
+file (very useful when navigating a long line that has wrapped many times):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map j gj
+map k gk
+&lt;/pre&gt;
+&lt;p&gt;Highlight column 80 (Vim 7.3+ only):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+if v:version &amp;gt;= 703
+    set cc=80
+    hi ColorColumn ctermbg=Gray ctermfg=Black guibg=#404040
+    command Skinny set cc=73
+    command Wide set cc=80
+endif
+&lt;/pre&gt;
+&lt;p&gt;Don’t show the splash screen:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+set shortmess+=I
+&lt;/pre&gt;
+&lt;p&gt;Keep the cursor 4 lines away from the top or bottom to automatically preserve
+context when editing near the top or bottom of the window:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+set scrolloff=4
+&lt;/pre&gt;
+&lt;p&gt;Make CTRL+u and CTRL+d less confusing:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map &amp;lt;C-u&amp;gt; 10&amp;lt;C-Y&amp;gt;10k
+map &amp;lt;C-d&amp;gt; 10&amp;lt;C-E&amp;gt;10j
+&lt;/pre&gt;
+&lt;p&gt;Scroll the screen with ALT+{j,k}:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map &amp;lt;A-j&amp;gt; 2&amp;lt;C-E&amp;gt;
+map &amp;lt;A-k&amp;gt; 2&amp;lt;C-Y&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Easy paste toggle:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot; Allow middle-click pasting of large texts in terminal
+set pastetoggle=&amp;lt;F5&amp;gt;
+&amp;quot; Clear paste mode when going back to normal mode
+au InsertLeave * set nopaste
+&lt;/pre&gt;
+&lt;p&gt;Switch windows quickly with CTRL+{h,j,k,l}:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot; This breaks backspace in a terminal, but I never use backspace in normal mode
+map &amp;lt;C-h&amp;gt; &amp;lt;C-W&amp;gt;h
+map &amp;lt;C-j&amp;gt; &amp;lt;C-W&amp;gt;j
+map &amp;lt;C-k&amp;gt; &amp;lt;C-W&amp;gt;k
+map &amp;lt;C-l&amp;gt; &amp;lt;C-W&amp;gt;l
+&amp;quot; This would break in a terminal where ^H is backspace.
+if has(&amp;quot;gui_running&amp;quot;)
+    imap &amp;lt;C-h&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;h
+endif
+imap &amp;lt;C-j&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;j
+imap &amp;lt;C-k&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;k
+imap &amp;lt;C-l&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;l
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://defuse.ca/vimrc.htm"&gt;Click here for my entire Vim configuration.&lt;/a&gt;&lt;/p&gt;
+</summary><category term="vim"></category></entry><entry><title>Clipboard over SSH with Vim</title><link href="/blog2/clipboard-over-ssh-with-vim.html" rel="alternate"></link><updated>2012-04-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-04-28:clipboard-over-ssh-with-vim.html</id><summary type="html">&lt;p&gt;The following is a simple and easy way to get clipboard sharing with Vim working
+between two Linux installations (specifically a desktop and remote server).&lt;/p&gt;
+&lt;p&gt;First install &lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt; on both your local machine and the server:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install xclip
+&lt;/pre&gt;
+&lt;p&gt;Installing &lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt; will bring along some dependencies like &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;x11-common&lt;/span&gt;&lt;/tt&gt;, but
+don't worry, you don't need to run an X server on the server to get this
+working.&lt;/p&gt;
+&lt;p&gt;Next, enable X11 forwarding on the server. Add the following to
+&lt;tt class="docutils literal"&gt;/etc/ssh/sshd_config&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+X11Forwarding yes
+&lt;/pre&gt;
+&lt;p&gt;Then add the following to the server's &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vimrc&lt;/span&gt;&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+vmap &lt;span class="s2"&gt;&amp;quot;+y :!xclip -f -sel clip
+map &amp;quot;&lt;/span&gt;+p :r!xclip -o -sel clip
+&lt;/pre&gt;
+&lt;p&gt;This will remap the &lt;tt class="docutils literal"&gt;&amp;quot;+y&lt;/tt&gt; (copy) and &lt;tt class="docutils literal"&gt;&amp;quot;+p&lt;/tt&gt; (paste) commands to use
+&lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Now you're done. SSH into the server with &lt;tt class="docutils literal"&gt;ssh &lt;span class="pre"&gt;-X&lt;/span&gt;&lt;/tt&gt;, fire up vim, and see if it
+works. If you don't want to type &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-X&lt;/span&gt;&lt;/tt&gt; every time, you can add &lt;tt class="docutils literal"&gt;ForwardX11
+yes&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;/etc/ssh/ssh_config&lt;/tt&gt; on your local machine to make it always try to
+forward X.&lt;/p&gt;
+&lt;p&gt;Source: &lt;a class="reference external" href="http://vim.wikia.com/wiki/GNU/Linux_clipboard_copy/paste_with_xclip"&gt;http://vim.wikia.com/wiki/GNU/Linux_clipboard_copy/paste_with_xclip&lt;/a&gt;&lt;/p&gt;
+</summary><category term="clipboard"></category><category term="ssh"></category></entry></feed>

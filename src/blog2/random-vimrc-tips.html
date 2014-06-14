@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Random .vimrc Tips</title>
+        <link rel="stylesheet" href="/blog2/theme/css/main.css" />
+        <link href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog2/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog2/category/life.html">life</a></li>
+                    <li><a href="/blog2/category/linux.html">linux</a></li>
+                    <li><a href="/blog2/category/math.html">math</a></li>
+                    <li class="active"><a href="/blog2/category/programming.html">programming</a></li>
+                    <li><a href="/blog2/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/blog2/random-vimrc-tips.html" rel="bookmark"
+           title="Permalink to Random .vimrc Tips">Random .vimrc Tips</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-04-29T00:00:00">
+                Sun 29 April 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog2/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog2/category/programming.html">programming</a>. </p>
+<p>tags: <a href="/blog2/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info -->      <p>Here are some of my favorite .vimrc lines.</p>
+<p>Save quickly from any mode by pressing CTRL+:</p>
+<pre class="code text literal-block">
+imap &lt;C-\&gt; &lt;Esc&gt;:w&lt;Cr&gt;
+map &lt;C-\&gt; &lt;Esc&gt;:w&lt;Cr&gt;
+</pre>
+<p>Make indenting and de-indenting in visual mode preserve the selection:</p>
+<pre class="code text literal-block">
+vnoremap &gt; &gt;&lt;CR&gt;gv
+vnoremap &lt; &lt;&lt;CR&gt;gv
+</pre>
+<p>Quick case insensitive search with double slash or double question mark:</p>
+<pre class="code text literal-block">
+map // /\c
+map ?? ?\c
+</pre>
+<p>Make the j and k keys move up by a line on the screen rather than a line in the
+file (very useful when navigating a long line that has wrapped many times):</p>
+<pre class="code text literal-block">
+map j gj
+map k gk
+</pre>
+<p>Highlight column 80 (Vim 7.3+ only):</p>
+<pre class="code text literal-block">
+if v:version &gt;= 703
+    set cc=80
+    hi ColorColumn ctermbg=Gray ctermfg=Black guibg=#404040
+    command Skinny set cc=73
+    command Wide set cc=80
+endif
+</pre>
+<p>Don’t show the splash screen:</p>
+<pre class="code text literal-block">
+set shortmess+=I
+</pre>
+<p>Keep the cursor 4 lines away from the top or bottom to automatically preserve
+context when editing near the top or bottom of the window:</p>
+<pre class="code text literal-block">
+set scrolloff=4
+</pre>
+<p>Make CTRL+u and CTRL+d less confusing:</p>
+<pre class="code text literal-block">
+map &lt;C-u&gt; 10&lt;C-Y&gt;10k
+map &lt;C-d&gt; 10&lt;C-E&gt;10j
+</pre>
+<p>Scroll the screen with ALT+{j,k}:</p>
+<pre class="code text literal-block">
+map &lt;A-j&gt; 2&lt;C-E&gt;
+map &lt;A-k&gt; 2&lt;C-Y&gt;
+</pre>
+<p>Easy paste toggle:</p>
+<pre class="code text literal-block">
+&quot; Allow middle-click pasting of large texts in terminal
+set pastetoggle=&lt;F5&gt;
+&quot; Clear paste mode when going back to normal mode
+au InsertLeave * set nopaste
+</pre>
+<p>Switch windows quickly with CTRL+{h,j,k,l}:</p>
+<pre class="code text literal-block">
+&quot; This breaks backspace in a terminal, but I never use backspace in normal mode
+map &lt;C-h&gt; &lt;C-W&gt;h
+map &lt;C-j&gt; &lt;C-W&gt;j
+map &lt;C-k&gt; &lt;C-W&gt;k
+map &lt;C-l&gt; &lt;C-W&gt;l
+&quot; This would break in a terminal where ^H is backspace.
+if has(&quot;gui_running&quot;)
+    imap &lt;C-h&gt; &lt;Esc&gt;&lt;C-W&gt;h
+endif
+imap &lt;C-j&gt; &lt;Esc&gt;&lt;C-W&gt;j
+imap &lt;C-k&gt; &lt;Esc&gt;&lt;C-W&gt;k
+imap &lt;C-l&gt; &lt;Esc&gt;&lt;C-W&gt;l
+</pre>
+<p><a class="reference external" href="https://defuse.ca/vimrc.htm">Click here for my entire Vim configuration.</a></p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

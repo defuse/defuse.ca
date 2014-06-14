@@ -233,4 +233,81 @@ apt-get remove mlocate rm /etc/cron.daily/mlocate
 /var/lib/mlocate/
 &lt;/pre&gt;
 &lt;p&gt;Delete them with your secure-delete utility of choice.&lt;/p&gt;
-</summary><category term="locate"></category></entry></feed>
+</summary><category term="locate"></category></entry><entry><title>Awesome Desktop Calculator using Ruby's IRB</title><link href="/blog2/awesome-desktop-calculator-using-rubys-irb.html" rel="alternate"></link><updated>2012-06-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-09:awesome-desktop-calculator-using-rubys-irb.html</id><summary type="html">&lt;p&gt;Ruby is an awesome programming language. Its metaprogramming capabilities make
+it easy to turn the interactive ruby interpreter (irb) into an awesome desktop
+calculator. To do so, we can make irb execute a ruby script, containing some
+calculator extensions before it starts, with the following command:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+irb -r /path/to/the/file.rb
+&lt;/pre&gt;
+&lt;p&gt;Of course, you will want to make an alias or keyboard shortcut for this. In
+bash, this can be done by adding something like the following to ~/.bashrc:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nb"&gt;alias &lt;/span&gt;&lt;span class="nv"&gt;rcalc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'irb -r /path/to/the/file.rb'&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Here's a link to my &lt;a class="reference external" href="https://defuse.ca/source/calc.rb"&gt;custom ruby calculator script&lt;/a&gt;. Here's what it does:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
++----------------------------- RUBY CALCULATOR -------------------------------+
+|  0b - Binary    .b - To Binary      Constants: E, PI                        |
+|  0x - Hex       .h - To Hex         _ gives last result                     |
+|  0  - Octal     .o - To Octal       q quits                                 |
++-----------------------------------------------------------------------------+
+|  Window closes after 10 minutes of inactivity. Type 'keepalive' to disable. |
++-----------------------------------------------------------------------------+
+irb(main):001:0&amp;gt; 0b11111111
+=&amp;gt; 255
+irb(main):002:0&amp;gt; _.h
+=&amp;gt; &amp;quot;ff&amp;quot;
+irb(main):003:0&amp;gt; PI
+=&amp;gt; 3.14159265358979
+irb(main):004:0&amp;gt; E
+=&amp;gt; 2.71828182845905
+irb(main):005:0&amp;gt; 2**256 / 3**5
+WARNING: Integer division with remainder.
+=&amp;gt; 476510655297597512031156316908180690754197467759837712096533267522276253662
+irb(main):006:0&amp;gt; 6/3
+=&amp;gt; 2
+irb(main):007:0&amp;gt; 5.0/2
+=&amp;gt; 2.5
+irb(main):012:0&amp;gt; sin(PI/2)
+=&amp;gt; 1.0
+irb(main):008:0&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;I will be adding functionality to this script as I need it. Some things I'm
+planning are:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Unit conversions&lt;/li&gt;
+&lt;li&gt;Easier way to convert strings in different bases to integers&lt;/li&gt;
+&lt;li&gt;Efficient factorial function&lt;/li&gt;
+&lt;li&gt;Common sequences such as Fibonacci&lt;/li&gt;
+&lt;li&gt;Common formulas&lt;/li&gt;
+&lt;li&gt;Common constants (c, G, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you have any ideas, please leave a comment and I'll add it to the list.&lt;/p&gt;
+</summary><category term="calculator"></category></entry><entry><title>Clipboard over SSH with Vim</title><link href="/blog2/clipboard-over-ssh-with-vim.html" rel="alternate"></link><updated>2012-04-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-04-28:clipboard-over-ssh-with-vim.html</id><summary type="html">&lt;p&gt;The following is a simple and easy way to get clipboard sharing with Vim working
+between two Linux installations (specifically a desktop and remote server).&lt;/p&gt;
+&lt;p&gt;First install &lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt; on both your local machine and the server:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install xclip
+&lt;/pre&gt;
+&lt;p&gt;Installing &lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt; will bring along some dependencies like &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;x11-common&lt;/span&gt;&lt;/tt&gt;, but
+don't worry, you don't need to run an X server on the server to get this
+working.&lt;/p&gt;
+&lt;p&gt;Next, enable X11 forwarding on the server. Add the following to
+&lt;tt class="docutils literal"&gt;/etc/ssh/sshd_config&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+X11Forwarding yes
+&lt;/pre&gt;
+&lt;p&gt;Then add the following to the server's &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vimrc&lt;/span&gt;&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+vmap &lt;span class="s2"&gt;&amp;quot;+y :!xclip -f -sel clip
+map &amp;quot;&lt;/span&gt;+p :r!xclip -o -sel clip
+&lt;/pre&gt;
+&lt;p&gt;This will remap the &lt;tt class="docutils literal"&gt;&amp;quot;+y&lt;/tt&gt; (copy) and &lt;tt class="docutils literal"&gt;&amp;quot;+p&lt;/tt&gt; (paste) commands to use
+&lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Now you're done. SSH into the server with &lt;tt class="docutils literal"&gt;ssh &lt;span class="pre"&gt;-X&lt;/span&gt;&lt;/tt&gt;, fire up vim, and see if it
+works. If you don't want to type &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-X&lt;/span&gt;&lt;/tt&gt; every time, you can add &lt;tt class="docutils literal"&gt;ForwardX11
+yes&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;/etc/ssh/ssh_config&lt;/tt&gt; on your local machine to make it always try to
+forward X.&lt;/p&gt;
+&lt;p&gt;Source: &lt;a class="reference external" href="http://vim.wikia.com/wiki/GNU/Linux_clipboard_copy/paste_with_xclip"&gt;http://vim.wikia.com/wiki/GNU/Linux_clipboard_copy/paste_with_xclip&lt;/a&gt;&lt;/p&gt;
+</summary><category term="clipboard"></category><category term="ssh"></category></entry></feed>

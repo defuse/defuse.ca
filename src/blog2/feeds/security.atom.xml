@@ -465,4 +465,211 @@ e838f7db8ef56faa9b49e8215dfbbee7 :: KITABLAR
 22d541659b917e40146f4d4256b2a2e2 :: LETSTALK2
 4e953e9a0a0f2503e8b8269b2c4a8057 :: 1MEMO1
 &lt;/pre&gt;
-</summary><category term="passwords"></category><category term="hashing"></category><category term="eharmony"></category></entry></feed>
+</summary><category term="passwords"></category><category term="hashing"></category><category term="eharmony"></category></entry><entry><title>Cracking LinkedIn's Hashes with Crackstation</title><link href="/blog2/cracking-linkedin-hashes-with-crackstation.html" rel="alternate"></link><updated>2012-06-08T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-08:cracking-linkedin-hashes-with-crackstation.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://linkedin.com/"&gt;LinkedIn&lt;/a&gt;'s user database has been &lt;a class="reference external" href="https://news.ycombinator.com/item?id=4073309"&gt;breached&lt;/a&gt;. The passwords were hashed with
+SHA1, but salt was not used. 6 million of them have been published to the
+internet. You can download them via &lt;a class="reference external" href="http://thepiratebay.se/torrent/7334648/LinkedIn_Password_Hashes"&gt;torrent&lt;/a&gt; or via HTTP from &lt;a class="reference external" href="http://defuse.ca/files/linkedin-sha1.txt"&gt;defuse.ca's
+mirror&lt;/a&gt;. 3.5 million of them have had their first 5 hex digits replaced with
+zero -- some suspect this was used as a way to mark which have been cracked by
+another party &lt;a class="reference external" href="https://news.ycombinator.com/item?id=4073928"&gt;(source)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A bit of googling reveals that LinkedIn has about 120 million registered
+accounts, so the 6,143,150 hashes represent about 5% of LinkedIn users
+Correction: Since duplicates were removed from the hash list, it must represent
+a much larger portion of LinkedIn users. Since passwords are so often re-used,
+I wouldn't be surprised if it was the entire database. 3,521,180 have been
+cracked by an unknown third party. That leaves 2,621,970 for me to try to crack
+with &lt;a class="reference external" href="https://crackstation.net/"&gt;CrackStation&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="what-is-crackstation"&gt;
+&lt;h2&gt;What is CrackStation?&lt;/h2&gt;
+&lt;p&gt;CrackStation is basically a giant lookup table -- a sorted list of hashes,
+mapped to their corresponding plaintext. To crack a hash, all I have to do is
+run a binary search through the hash index file to get the location of the
+plaintext in the wordlist file. This process is very efficient; a 200GB index
+file (15 billion hashes) can be searched in only a fraction of a second, even on
+a standard 7200rpm hard disk.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="crackstation-results"&gt;
+&lt;h2&gt;CrackStation Results&lt;/h2&gt;
+&lt;p&gt;It took 31.8 hours to process all 2,621,970 not-yet-cracked hashes. That's an
+average of 22 hashes processed per second. In the end, I was able to crack
+31,831 hashes -- about 1.2%. CrackStation's &amp;quot;medium&amp;quot; dictionary, which has
+1,493,677,782 entries, cracked 23,529 (0.8%) of them. The &amp;quot;huge&amp;quot; dictionary,
+which has 15,171,326,912 cracked 10034 (0.3%) of them. These figures are not
+exclusive -- 1732 hashes were cracked by both dictionaries (I did not optimize).&lt;/p&gt;
+&lt;p&gt;Duplicates were removed from the original list of hashes, so I cannot provide
+&amp;quot;most common passwords&amp;quot; statistics. Here's a random sample of what I cracked (I
+will not be releasing the full list):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+6764dcf2d9c84b9d66fd5c8a78691affde1045e1 :: sangeetalahiri
+d6b3ebab49bd83a60de4f5b84d9fe61eff5cba73 :: DualPhone
+c79b146f16d3442bb2adb00cf9a6e456aacdb877 :: juan.rondon
+777bb3743c7424b477ae95f0b002cffc3a6d8f57 :: Charlcombe1
+a567e183044b8a881a8aec41387614f7963b60be :: hydroworx1
+7f97cd544c2937e494265a6a5a4ae3edf6a391e8 :: Jetravaille
+87f11d9ccda89e463cf92e3f84dbf1f5b9b5f84a :: Nangiya1
+1168caf06e26fb82642b069dc306b9a849e9448f :: kab&amp;#64;las
+3722fd3f3cded4dc1231df6b16190364eaf71184 :: grasmachien
+5a61c766bb6ea7294a6a0e6e2ccbda8c4eed0ebc :: Eidner4
+&lt;/pre&gt;
+&lt;p&gt;These results aren't really meaningful, since I only tried to crack the set of
+hashes that were not already cracked by someone else, but it was a fun exercise
+to test the strength of CrackStation's password dictionaries. It is also a great
+demonstration of why salt is &lt;strong&gt;crucial&lt;/strong&gt; to password security. If we assume that
+all of the previously-cracked hashes could have been cracked by CrackStation,
+then I would have been able to crack 3,553,011 (57.8%) in only 78 hours, or 19
+hours if cracked them in parallel on a quad-disk quad-core system. That figure
+is consistent with other bulk cracking jobs CrackStation has done in the past.&lt;/p&gt;
+&lt;p&gt;The reason I cannot crack the ones that had their first 5 hex digits set to
+00000 is because CrackStation's indexes are sorted on the first 48 bits of the
+hash, with the first bits being the most significant. Without all of those bits,
+I can't do a binary search through the index file. I could rebuild the index
+using the last 48 bits of the hash, but that would take days and hundreds of
+gigabytes of hard drive space. I don't want LinkedIn users' passwords that bad.
+If there is significant public interest in the results, then I will consider
+doing it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;This kind of attack wouldn't work if the hashes were salted. If they were
+salted, I'd have to run a dictionary attack on each hash individually, which can
+take upwards of an hour per hash for a similar-quality attack. So if you run
+a website that stores user passwords, please make sure they are &lt;a class="reference external" href="https://crackstation.net/hashing-security.htm"&gt;hashed with
+salt&lt;/a&gt;. If they aren't, (LinkedIn, are you listening?), then you are an
+irresponsible webmaster.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="passwords"></category><category term="hashing"></category><category term="linkedin"></category></entry><entry><title>What is Security Through Obscurity</title><link href="/blog2/what-is-security-through-obscurity.html" rel="alternate"></link><updated>2012-06-04T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-06-04:what-is-security-through-obscurity.html</id><summary type="html">&lt;p&gt;Today a member of &lt;a class="reference external" href="https://www.grc.com/discussions.htm"&gt;GRC's Newsgroups&lt;/a&gt; posed a question about security through
+obscurity:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It seems to me that ALL digital security is EXACTLY &amp;quot;security through
+obscurity&amp;quot;. Take, for example, AES... It isn't that the possible range of
+keys is unknown, it is just a cleverly hidden needle in an enormously HUGE
+haystack.  It could actually be possible to arrive at the correct key on the
+first guess.  However, I wouldn't bet anything you care about on that, since
+it would be about as likely as me saying, &amp;quot;I'm thinking of a particular atom
+somewhere in the universe. Can you guess which one?&amp;quot; Nevertheless, in set
+notation, it would be trivial to describe the set which includes the correct
+key. It is simply obscured by all the wrong keys.&lt;/p&gt;
+&lt;p&gt;So, by your definition, what is &lt;em&gt;real&lt;/em&gt; security?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It's a very interesting question, and it made me realize that in all of the
+research I've done on cryptography, I've never seen a formal definition of
+security through obscurity. It took me a while to come up with a reasonable
+response (something other than &amp;quot;I know it when I see it.&amp;quot;). My first thought was
+anything that doesn't follow &lt;cite&gt;Kerckhoffs's principle&lt;/cite&gt; is security through
+obscurity, but I wanted something more general. After a bit more thinking,
+I decided that measurability is the main distinction between something that
+isn't security through obscurity, and something that is. Here's what I wrote:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Informally, I would define security, with respect to cryptography, as
+something that requires a well-defined and measurable amount of resources to
+break in a specific scenario.&lt;/p&gt;
+&lt;p&gt;For example, if a message is encrypted in AES-256 in CBC mode, with a random
+key, and the adversary knows the plaintext is english, but doesn't know
+anything about the key, then the security factor is 2^256 i.e. the adversary
+has to do on average 2^255 operations to successfully decrypt the
+ciphertext.&lt;/p&gt;
+&lt;p&gt;Note that this means that even if the key is just one bit, it is still
+&amp;quot;real&amp;quot; security, as long as the adversary knows that the key is either &amp;quot;1&amp;quot;
+or &amp;quot;0&amp;quot;. It is very weak security, but the difficulty of cracking it is still
+well-defined and computable.&lt;/p&gt;
+&lt;p&gt;Security though obscurity is anything that doesn't have a well-defined and
+computable &amp;quot;security factor&amp;quot; in at least one scenario.&lt;/p&gt;
+&lt;p&gt;For example, if you are trying to smuggle pirated software across the U.S.
+border, you may choose to encode the data into the least significant bits of
+the RGB values in an image file. There is software for doing (and un-doing)
+this, so it would not be hard for the border patrol officer to extract the
+data, if he knew it was there. Your security rests on whether or not the
+officer will know to look in the least significant bits for hidden data.
+This is not well-defined and cannot be computed into a &amp;quot;security factor&amp;quot;
+like above.&lt;/p&gt;
+&lt;p&gt;A real-world example is if you just won the lottery and you are looking for
+a place to hide your money (supposing banks don't exist):&lt;/p&gt;
+&lt;p&gt;You could choose to buy a safe, rated to withstand 60 minutes of attack with
+blow torches. This is &amp;quot;real&amp;quot; security, the amount of work an adversary has
+to do to break into the safe is well-defined and computable.&lt;/p&gt;
+&lt;p&gt;You could also choose to hide your money inside the door of your car
+(between the interior panel and the exterior metal). It would not be at all
+difficult for an adversary to steal your money, if they knew it was there.
+The security provided by &amp;quot;Will the adversary ever think that I am hiding the
+money in the door of my car?&amp;quot; is not well-defined nor computable, so this is
+security through obscurity.&lt;/p&gt;
+&lt;p&gt;This is just my opinion on the matter. Cryptography texts and/or experienced
+cryptographers may disagree.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This definition can be applied to the idea of trying to keep an encryption
+algorithm secret. If the security of the algorithm depends on it's secrecy, then
+it is security through obscurity, because the amount of work an adversary (who
+can run chosen plaintext and chosen ciphertext attacks) has to do to reverse
+engineer the algorithm is not well-defined and cannot be computed.&lt;/p&gt;
+</summary><category term="obscurity"></category></entry><entry><title>The Economics of Password Cracking</title><link href="/blog2/the-economics-of-password-cracking.html" rel="alternate"></link><updated>2012-05-05T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog2,2012-05-05:the-economics-of-password-cracking.html</id><summary type="html">&lt;p&gt;We know that it's possible to come up with a password that no computer on earth
+can crack. Use true random data to generate a sequence of 20 characters from the
+full ASCII printable set, spend an hour memorizing, and you're good. We also
+know that most people don't do that. What we don't know (or at least often
+forget) is that people don't need to do that.&lt;/p&gt;
+&lt;p&gt;We estimate our password strength by the amount of time it would take the
+fastest imaginable supercomputer to search through the set of all passwords of
+equal or less length and find ours. What we often forget is that the bad guys
+don't have those kinds of resources, and they rarely ever crack passwords via
+brute-force search.&lt;/p&gt;
+&lt;p&gt;Why not? Because most bad guys won't build a billion-dollar supercomputer to
+crack one password, and most people with billion-dollar supercomputers aren't
+willing to rent out their processing power for password cracking. It isn't
+profitable, and those supercomputers can be used for better things like
+scientific research.&lt;/p&gt;
+&lt;p&gt;The Bitcoin network is currently computing 11.74 trillion sha256 hashes per
+second (&lt;a class="reference external" href="http://bitcoinwatch.com/"&gt;see here for current stats&lt;/a&gt;). The network will compute &lt;tt class="docutils literal"&gt;3.702x10^20&lt;/tt&gt;
+hashes in one year if it continues at it the same rate (my guess is that it will
+grow, but it's already over 10 times as powerful as &lt;cite&gt;the fastest known
+supercomputer&lt;/cite&gt;).  That may seem like a lot of hashes, but if you do the math,
+you'll see that its not even enough to do a brute-force search through the set
+of all 11-character ASCII passwords. &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;log(3.702x1020)/log(95)&lt;/span&gt; = 10.40&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;Read it again: &lt;strong&gt;The Bitcoin network is made up of millions of dollars worth of
+hardware and is 10x faster than the fastest known supercomputer, but it can not
+brute-force guess an 11-character password in a year.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There is no business model that makes brute-force password cracking profitable.
+To see why, consider the following argument:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;If the password can't be cracked with good quality dictionaries or rainbow
+tables, it is long and complex.&lt;/li&gt;
+&lt;li&gt;Since the fastest distributed computing network on earth can barely search
+through the set of all 10-character ASCII passwords in a year, the
+probability of cracking a long and complex password via brute-force search in
+a reasonable amount of time is low.&lt;/li&gt;
+&lt;li&gt;Since the probability of successfully cracking a password via brute-force is
+low, to make any money, you must charge the customer even if you cannot crack
+it.&lt;/li&gt;
+&lt;li&gt;Since the probability of successfully cracking a password via brute-force is
+low, and the customer must pay even if you cannot crack it, the customer will
+not be willing to pay very much.&lt;/li&gt;
+&lt;li&gt;A decent brute-force attack requires a lot of time on an expensive
+supercomputer, so you must charge a lot.&lt;/li&gt;
+&lt;li&gt;(4) and (5) are incompatible with each other, so it is impossible to run
+a profitable brute-force cracking business.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Of course (4) may not hold true when the customer is a government and the
+password is the key to winning a war, but most passwords don't have that much
+value.&lt;/p&gt;
+&lt;p&gt;What this tells us is that we don't need to worry about brute-force attacks.
+They always succeed (by definition), but rarely in a reasonable amount of time
+and there is rarely ever a password valuable enough to justify one.&lt;/p&gt;
+&lt;p&gt;So ironically, the most profitable kind of password cracking requires very
+little computational resources (a single 6-core system satisfies
+&lt;a class="reference external" href="https://crackstation.net/"&gt;crackstation.net&lt;/a&gt;'s needs). The key to being profitable in the password
+cracking industry is to be clever and do as much as you can without
+a supercomputer. That means implementing extremely fast look-up tables and
+constructing extremely effective dictionaries -- going after the low-hanging
+fruit.&lt;/p&gt;
+&lt;p&gt;That's exactly what the bad guys do, and that's exactly what my hash cracking
+service does. If you want your password to be secure, don't worry about
+comparing its strength to a hypothetical supercomputer, just make sure it's not
+a low-hanging fruit, and make brute-force search the only option for your
+adversary. Then they probably won't even bother trying.&lt;/p&gt;
+&lt;p&gt;The easiest way to get out of the low-hanging fruit zone is to make your
+password long. Take a look at &lt;a class="reference external" href="https://www.grc.com/haystack.htm"&gt;GRC's Password Haystacks&lt;/a&gt; page for some good
+advice.&lt;/p&gt;
+&lt;p&gt;Here's a tip: My hash cracking service is backed by the largest known password
+cracking dictionary, which has just over 15 billion entries. There are over
+7 billion possible 5-character ASCII strings. So if you include 5 random ASCII
+characters in your password and pad it out to at least 12 characters with
+something memorable (not a word!), you can be pretty sure that your password
+isn't a low-hanging fruit.&lt;/p&gt;
+</summary><category term="passwords"></category><category term="hashing"></category><category term="cracking"></category></entry></feed>
