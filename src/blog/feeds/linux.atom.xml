@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/linux.atom.xml" rel="self"></link><id>/blog/</id><updated>2013-04-29T00:00:00-06:00</updated><entry><title>Switching Desktops/Workspaces with Mouse Buttons</title><link href="/blog/linux-switch-virtual-desktop-workspace-mouse-button.html" rel="alternate"></link><updated>2013-04-29T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2013-04-29:linux-switch-virtual-desktop-workspace-mouse-button.html</id><summary type="html">&lt;p&gt;I had to uninstall compiz today, and I absolutely can't live without being able
+to switch virtual desktops (also known as workspaces) with the buttons on the
+side of my mouse. Here's how you do it:&lt;/p&gt;
+&lt;p&gt;First, install &lt;strong&gt;xbindkeys&lt;/strong&gt; and &lt;strong&gt;xdotool&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install xbindkeys xdotool
+&lt;/pre&gt;
+&lt;p&gt;Then create a &lt;strong&gt;.xbindkeysrc&lt;/strong&gt; file in your home folder:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+vim ~/.xbindkeysrc
+&lt;/pre&gt;
+&lt;p&gt;Into this file, put the following:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+# -- Move Right --
+# This is the general command that works with any number of workspaces:
+# &amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % $(xdotool get_num_desktops))&amp;quot;
+# This is the optimized command for 5 workspaces:
+&amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 1) % 5)&amp;quot;
+    b:8
+
+# -- Move Left --
+# This is the general command that works with any number of workspaces:
+# &amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + $(expr $(xdotool get_num_desktops) - 1)) % $(xdotool get_num_desktops))&amp;quot;
+# This is the optimized command for 5 workspaces:
+&amp;quot;xdotool set_desktop $(expr $(expr $(xdotool get_desktop) + 4) % 5)&amp;quot;
+    b:9
+&lt;/pre&gt;
+&lt;p&gt;In the above config, replace &amp;quot;8&amp;quot; with the number of the button you want to use
+to move right, and &amp;quot;9&amp;quot; with the number of the button you want to use to move
+left. If you don't know what the button numbers are, run &amp;lt;b&amp;gt;xev&amp;lt;/b&amp;gt;, press the
+one you want while hovering your mouse over the window, and you'll see it in the
+output.&lt;/p&gt;
+&lt;p&gt;The command that's uncommented works with a 5-workspace setup. If you want it to
+work with X desktops either comment that one out and uncomment the general
+command, or replace &amp;quot;5&amp;quot; with X and &amp;quot;4&amp;quot; with X - 1.&lt;/p&gt;
+&lt;p&gt;Then add &lt;strong&gt;xbindkeys&lt;/strong&gt; (no arguments) to your startup applications. If you want windows to &amp;quot;edge switch&amp;quot; (switch workspaces when you drag them across the side of your screen), look at &lt;a class="reference external" href="http://lifehacker.com/263508/add-screen-actions-with-brightside"&gt;brightside&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note: &lt;a class="reference external" href="http://forum.pinguyos.com/Thread-HOWTO-Mouse-buttons-to-change-workspaces-in-gnome-shell"&gt;HOWTO: Mouse buttons to change workspaces in gnome-shell&lt;/a&gt; helped me figure out how to do this.&lt;/p&gt;
+</summary><category term="xbindkeys"></category></entry><entry><title>Raspberry PI: Enable MPlayer and VLC audio on Raspbian</title><link href="/blog/raspberry-pi-enable-mplayer-and-vlc-audio-on-rasbian.html" rel="alternate"></link><updated>2012-08-02T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-08-02:raspberry-pi-enable-mplayer-and-vlc-audio-on-rasbian.html</id><summary type="html">&lt;!-- NOTE: The slug misspells raspbian intentionally so it matches the old URL. --&gt;
+&lt;p&gt;If mplayer is giving you an error like the following...&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+AO: [pulse] Init failed: Connection refused
+Failed to initialize audio driver 'pulse'
+[AO_ALSA] Unable to set hw-parameters: Invalid argument
+Failed to initialize audio driver 'alsa'
+[AO SDL] Samplerate: 44100Hz Channels: Stereo Format floatle
+[AO SDL] using aalib audio driver.
+[AO SDL] Unsupported audio format: 0x1d.
+[AO SDL] Unable to open audio: No available audio device
+Failed to initialize audio driver 'sdl:aalib'
+Could not open/initialize audio device -&amp;gt; no sound.
+Audio: no sound
+Video: no video
+&lt;/pre&gt;
+&lt;p&gt;... add the following to /etc/asound.conf (create it if it does not exist):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+pcm.!default {
+    type hw
+    card 0
+}
+
+ctl.!default {
+    type hw
+    card 0
+}
+&lt;/pre&gt;
+&lt;p&gt;Then, run:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+modprobe snd_bcm2835
+&lt;/pre&gt;
+&lt;p&gt;Then add the following &lt;tt class="docutils literal"&gt;/etc/modules&lt;/tt&gt; (unless it's already there):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+snd-bcm2835
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=66&amp;amp;t=7107"&gt;Source - &amp;quot;ALSA on Raspbian&amp;quot;&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="raspberry pi"></category><category term="raspbian"></category></entry><entry><title>Linux: Fix pipe character on ASUS laptops</title><link href="/blog/linux-fix-pipe-character-on-asus-laptops.html" rel="alternate"></link><updated>2012-07-27T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-07-27:linux-fix-pipe-character-on-asus-laptops.html</id><summary type="html">&lt;p&gt;Is your pipe/backslash key not typing pipes and backslashes? Is it typing
+less-than and greater-than symbols? If so, add...&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+key &amp;lt;LSGT&amp;gt; { [ backslash, bar, backslash, bar] };
+&lt;/pre&gt;
+&lt;p&gt;..to &lt;cite&gt;/usr/share/X11/xkb/symbols/us&lt;/cite&gt; in the &lt;cite&gt;kxb_symbols&lt;/cite&gt; &lt;cite&gt;&amp;quot;basic&amp;quot;&lt;/cite&gt; section.&lt;/p&gt;
+&lt;p&gt;This seems to be a problem with ASUS laptops, I've seen two of them doing this.&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="reference external" href="http://forums.fedoraforum.org/showthread.php?t=240415"&gt;http://forums.fedoraforum.org/showthread.php?t=240415&lt;/a&gt;&lt;/p&gt;
+</summary><category term="keyboard"></category></entry><entry><title>How to install mod_ruby on Debian Squeeze</title><link href="/blog/how-to-install-mod_ruby-on-debian-squeeze.html" rel="alternate"></link><updated>2012-07-22T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-07-22:how-to-install-mod_ruby-on-debian-squeeze.html</id><summary type="html">&lt;p&gt;If you're a PHP developer that's starting to fall in love with ruby (like me),
+you'll want to know how to write &amp;quot;PHP-style&amp;quot; web applications in ruby, for small
+web apps that don't need the complexity of Ruby on Rails. You want:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;No per-app configuration necessary. Installing the app is as simple as
+uploading the script files.&lt;/li&gt;
+&lt;li&gt;Each ruby file you upload is an independent web page, e.g.
+&lt;a class="reference external" href="http://example.com/foo.rhtml"&gt;http://example.com/foo.rhtml&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Scripts are HTML with ruby code inside delimiters (like php's &amp;lt;?php and ?&amp;gt;).&lt;/li&gt;
+&lt;li&gt;Scripts have easy access to GET and POST data, as well as HTTP headers and
+cookies.&lt;/li&gt;
+&lt;li&gt;Scripts can easily send headers, set cookies, etc.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Unfortunately, to get this working on Debian Squeeze, some initial configuration
+required, but it's a one time thing and quick in comparison to the per-app
+configuration required by RoR.&lt;/p&gt;
+&lt;p&gt;First, install mod_ruby:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install libapache2-mod-ruby
+&lt;/pre&gt;
+&lt;p&gt;Second, add the following to your site's configuration and read the embedded
+comments. Note that in order to lower the ruby safe level with the RubySafeLevel
+directive (default is 1), it must appear &lt;strong&gt;outside any &amp;quot;files&amp;quot;, &amp;quot;directory&amp;quot;, and
+&amp;quot;virtualhost&amp;quot; blocks.&lt;/strong&gt; If not, you will get an error like: &lt;tt class="docutils literal"&gt;mod_ruby: can't
+decrease RubySafeLevel&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;lt;IfModule mod_ruby.c&amp;gt;
+    RubyRequire apache/ruby-run
+    RubyRequire apache/eruby-run
+
+    # Safe level 1 does taint checking, but also won't let you run .rb scripts
+    # from a world-writable folder. I highly recommend keeping this at 1, but
+    # in a development environment, you can change it to 0 to make scripts
+    # run from world-writable folders (OTOH, you really DO want to develop with
+    # taint checking turned on).
+    RubySafeLevel 1
+
+    # Override the mime types in /etc/mime.types so the output of the script
+    # is displayed in the browser, not sent as a download. Some guides will
+    # tell you to comment out the corresponding entries in /etc/mime.types, but
+    # don't do that as it will affect the entire system, not just apache.
+    AddType text/html .rb
+    AddType text/html .rbx
+    AddType text/html .rhtml
+
+    # NOTE: To make .rb files execute, you will need to add:
+    #  Options +ExecCGI
+    # to the &amp;lt;Directory&amp;gt; they are in. You DON'T need to do this for .rhtml.
+    &amp;lt;Files *.rb&amp;gt;
+        SetHandler ruby-object
+        RubyHandler Apache::RubyRun.instance
+    &amp;lt;/Files&amp;gt;
+    &amp;lt;Files *.rbx&amp;gt;
+        SetHandler ruby-object
+        RubyHandler Apache::RubyRun.instance
+    &amp;lt;/Files&amp;gt;
+    &amp;lt;Files *.rhtml&amp;gt;
+        SetHandler ruby-object
+        RubyHandler Apache::ERubyRun.instance
+    &amp;lt;/Files&amp;gt;
+&amp;lt;/IfModule&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Now, .rhtml files will work like PHP files:&lt;/p&gt;
+&lt;pre class="code erb literal-block"&gt;
+&lt;span class="x"&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, world!&amp;lt;/title&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    Even numbers less than 100:
+    &amp;lt;ul&amp;gt;
+    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+      &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+        &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;/li&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+    &amp;lt;/ul&amp;gt;
+    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+      &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+      This text repeats &amp;lt;b&amp;gt;50&amp;lt;/b&amp;gt; times! &amp;lt;br /&amp;gt;
+    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;And .rb files will work like CGIs:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;#!/usr/bin/ruby&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;ul&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;li&amp;gt;Some text!&amp;lt;/li&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;/ul&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;In both types of script, you can use &lt;a class="reference external" href="http://modruby.net/en/doc/?Apache%3A%3ARequest"&gt;Apache.request&lt;/a&gt; to read GET and POST
+data, set cookies, etc.&lt;/p&gt;
+&lt;pre class="code erb literal-block"&gt;
+&lt;span class="x"&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, world!&amp;lt;/title&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+   GET data in rhtml mod_ruby!
+   &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+   &lt;span class="no"&gt;Apache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;paramtable&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'count'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;to_i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+     &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+   &lt;span class="k"&gt;end&lt;/span&gt;
+   &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;div class="section" id="why"&gt;
+&lt;h2&gt;Why?&lt;/h2&gt;
+&lt;p&gt;Writing this post made me realize I'm trying to make ruby do something it
+doesn't (yet) do well. PHP has so many built-in features for doing web stuff
+like htmlentities, built-in mysql access, and easy access to GET and POST data
+through $_GET and $_POST (note that Apache.request.paramtable includes both GET
+and POST data, which is bad for security), so for now, I think I'll stick with
+PHP until there's a better zero-config lightweight ruby web framework. Sinatra
+is the best I have seen so far, but configuring it with Apache is still far too
+complicated, in my opinion.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="mod_ruby"></category></entry><entry><title>Using 'wmctrl' to Quickly Switch Between Open Applications</title><link href="/blog/wmctrl-switch-applications-keyboard-shortcut.html" rel="alternate"></link><updated>2012-06-23T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-06-23:wmctrl-switch-applications-keyboard-shortcut.html</id><summary type="html">&lt;p&gt;The &lt;tt class="docutils literal"&gt;wmctrl&lt;/tt&gt; program allows you to programatically bring a running application
+to the foreground on Linux. It works even with compiz enabled, and will switch
+to the virtual desktop that the application is running in before bringing it to
+the foreground. This makes it a perfect utility for mapping keyboard shortcuts
+to quickly switch between applications you leave running all the time.&lt;/p&gt;
+&lt;p&gt;To install wmctrl on Debian:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install wmctrl
+&lt;/pre&gt;
+&lt;p&gt;For example, to switch to Thunderbird:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+wmctrl -a &lt;span class="s2"&gt;&amp;quot;Mozilla Thunderbird&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-a&lt;/span&gt;&lt;/tt&gt; argument makes wmctrl switch to the first window it finds with the
+provided string in its title. See wmctrl's manpage for more information.&lt;/p&gt;
+&lt;p&gt;You can map a command like this to a keyboard shortcut using the (in Debian)
+&lt;tt class="docutils literal"&gt;System &lt;span class="pre"&gt;-&amp;gt;&lt;/span&gt; Preferences &lt;span class="pre"&gt;-&amp;gt;&lt;/span&gt; Keyboard Shortcuts&lt;/tt&gt; utility.&lt;/p&gt;
+</summary><category term="wmctrl"></category></entry><entry><title>Disable 'locate' Command Index Databases</title><link href="/blog/disable-locate-command-databases.html" rel="alternate"></link><updated>2012-06-20T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-06-20:disable-locate-command-databases.html</id><summary type="html">&lt;p&gt;If you use Truecrypt on GNU/Linux, you will want to stop mlocate (the locate
+command) from automatically indexing your files and compromising your privacy.&lt;/p&gt;
+&lt;p&gt;To do so on Debian Squeeze:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get remove mlocate rm /etc/cron.daily/mlocate
+&lt;/pre&gt;
+&lt;p&gt;The database files are stored in:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+/var/lib/mlocate/
+&lt;/pre&gt;
+&lt;p&gt;Delete them with your secure-delete utility of choice.&lt;/p&gt;
+</summary><category term="locate"></category></entry><entry><title>Awesome Desktop Calculator using Ruby's IRB</title><link href="/blog/awesome-desktop-calculator-using-rubys-irb.html" rel="alternate"></link><updated>2012-06-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-06-09:awesome-desktop-calculator-using-rubys-irb.html</id><summary type="html">&lt;p&gt;Ruby is an awesome programming language. Its metaprogramming capabilities make
+it easy to turn the interactive ruby interpreter (irb) into an awesome desktop
+calculator. To do so, we can make irb execute a ruby script, containing some
+calculator extensions before it starts, with the following command:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+irb -r /path/to/the/file.rb
+&lt;/pre&gt;
+&lt;p&gt;Of course, you will want to make an alias or keyboard shortcut for this. In
+bash, this can be done by adding something like the following to ~/.bashrc:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nb"&gt;alias &lt;/span&gt;&lt;span class="nv"&gt;rcalc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'irb -r /path/to/the/file.rb'&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Here's a link to my &lt;a class="reference external" href="https://defuse.ca/source/calc.rb"&gt;custom ruby calculator script&lt;/a&gt;. Here's what it does:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
++----------------------------- RUBY CALCULATOR -------------------------------+
+|  0b - Binary    .b - To Binary      Constants: E, PI                        |
+|  0x - Hex       .h - To Hex         _ gives last result                     |
+|  0  - Octal     .o - To Octal       q quits                                 |
++-----------------------------------------------------------------------------+
+|  Window closes after 10 minutes of inactivity. Type 'keepalive' to disable. |
++-----------------------------------------------------------------------------+
+irb(main):001:0&amp;gt; 0b11111111
+=&amp;gt; 255
+irb(main):002:0&amp;gt; _.h
+=&amp;gt; &amp;quot;ff&amp;quot;
+irb(main):003:0&amp;gt; PI
+=&amp;gt; 3.14159265358979
+irb(main):004:0&amp;gt; E
+=&amp;gt; 2.71828182845905
+irb(main):005:0&amp;gt; 2**256 / 3**5
+WARNING: Integer division with remainder.
+=&amp;gt; 476510655297597512031156316908180690754197467759837712096533267522276253662
+irb(main):006:0&amp;gt; 6/3
+=&amp;gt; 2
+irb(main):007:0&amp;gt; 5.0/2
+=&amp;gt; 2.5
+irb(main):012:0&amp;gt; sin(PI/2)
+=&amp;gt; 1.0
+irb(main):008:0&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;I will be adding functionality to this script as I need it. Some things I'm
+planning are:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Unit conversions&lt;/li&gt;
+&lt;li&gt;Easier way to convert strings in different bases to integers&lt;/li&gt;
+&lt;li&gt;Efficient factorial function&lt;/li&gt;
+&lt;li&gt;Common sequences such as Fibonacci&lt;/li&gt;
+&lt;li&gt;Common formulas&lt;/li&gt;
+&lt;li&gt;Common constants (c, G, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you have any ideas, please leave a comment and I'll add it to the list.&lt;/p&gt;
+</summary><category term="calculator"></category></entry><entry><title>Clipboard over SSH with Vim</title><link href="/blog/clipboard-over-ssh-with-vim.html" rel="alternate"></link><updated>2012-04-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-04-28:clipboard-over-ssh-with-vim.html</id><summary type="html">&lt;p&gt;The following is a simple and easy way to get clipboard sharing with Vim working
+between two Linux installations (specifically a desktop and remote server).&lt;/p&gt;
+&lt;p&gt;First install &lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt; on both your local machine and the server:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+apt-get install xclip
+&lt;/pre&gt;
+&lt;p&gt;Installing &lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt; will bring along some dependencies like &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;x11-common&lt;/span&gt;&lt;/tt&gt;, but
+don't worry, you don't need to run an X server on the server to get this
+working.&lt;/p&gt;
+&lt;p&gt;Next, enable X11 forwarding on the server. Add the following to
+&lt;tt class="docutils literal"&gt;/etc/ssh/sshd_config&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+X11Forwarding yes
+&lt;/pre&gt;
+&lt;p&gt;Then add the following to the server's &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vimrc&lt;/span&gt;&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+vmap &lt;span class="s2"&gt;&amp;quot;+y :!xclip -f -sel clip
+map &amp;quot;&lt;/span&gt;+p :r!xclip -o -sel clip
+&lt;/pre&gt;
+&lt;p&gt;This will remap the &lt;tt class="docutils literal"&gt;&amp;quot;+y&lt;/tt&gt; (copy) and &lt;tt class="docutils literal"&gt;&amp;quot;+p&lt;/tt&gt; (paste) commands to use
+&lt;tt class="docutils literal"&gt;xclip&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Now you're done. SSH into the server with &lt;tt class="docutils literal"&gt;ssh &lt;span class="pre"&gt;-X&lt;/span&gt;&lt;/tt&gt;, fire up vim, and see if it
+works. If you don't want to type &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-X&lt;/span&gt;&lt;/tt&gt; every time, you can add &lt;tt class="docutils literal"&gt;ForwardX11
+yes&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;/etc/ssh/ssh_config&lt;/tt&gt; on your local machine to make it always try to
+forward X.&lt;/p&gt;
+&lt;p&gt;Source: &lt;a class="reference external" href="http://vim.wikia.com/wiki/GNU/Linux_clipboard_copy/paste_with_xclip"&gt;http://vim.wikia.com/wiki/GNU/Linux_clipboard_copy/paste_with_xclip&lt;/a&gt;&lt;/p&gt;
+</summary><category term="clipboard"></category><category term="ssh"></category></entry></feed>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The Code Files - javascript</title>
+        <link rel="stylesheet" href="/blog/theme/css/main.css" />
+        <link href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog/category/life.html">life</a></li>
+                    <li><a href="/blog/category/linux.html">linux</a></li>
+                    <li><a href="/blog/category/math.html">math</a></li>
+                    <li><a href="/blog/category/programming.html">programming</a></li>
+                    <li><a href="/blog/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/blog/escaping-string-literals-for-javascript-in-php.html">Escaping String Literals (for JavaScript) in PHP</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-07-01T00:00:00">
+                Sun 01 July 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog/category/security.html">security</a>. </p>
+<p>tags: <a href="/blog/tag/javascript.html">javascript</a><a href="/blog/tag/escaping.html">escaping</a></p>
+</footer><!-- /.post-info --><p>Use the following code to escape user-supplied input before inserting it into
+a JavaScript string literal.</p>
+<pre class="code php literal-block">
+<span class="cp">&lt;?php</span>
+
+<span class="k">function</span> <span class="nf">js_string_escape</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$safe</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">ctype_alnum</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="nv">$i</span><span class="p">]))</span>
+            <span class="nv">$safe</span> <span class="o">.=</span> <span class="nv">$data</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+        <span class="k">else</span>
+            <span class="nv">$safe</span> <span class="o">.=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">x%02X&quot;</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="nv">$i</span><span class="p">]));</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$safe</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+<p>Example:</p>
+<pre class="code php literal-block">
+<span class="x">&lt;script&gt;
+var foo = &quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">js_string_escape</span><span class="p">(</span><span class="nv">$bar</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;;
+&lt;/script&gt;</span>
+</pre>
+<p>The standard htmlentities and htmlspecialchars functions don't work because
+JavaScript will interpret the HTML entities as a part of the literal string (not
+decode them). addslashes is insufficient because it does not escape other
+special characters that might convince some browsers that the string literal or
+script section has ended (for example, the string &quot;]]&gt;&quot; to end a <a class="reference external" href="http://www.w3schools.com/xml/xml_cdata.asp">CDATA</a>). To
+escape integers and floats, use these:</p>
+<pre class="code php literal-block">
+<span class="cp">&lt;?php</span>
+
+<span class="c1">// returns &quot;0&quot; when given something that isn't an integer.
+</span><span class="k">function</span> <span class="nf">js_integer_escape</span><span class="p">(</span><span class="nv">$number</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$cast</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$number</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$cast</span> <span class="o">!=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$number</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$cast</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+<pre class="code php literal-block">
+<span class="cp">&lt;?php</span>
+
+<span class="c1">// returns &quot;0&quot; when given something that isn't a float
+</span><span class="k">function</span> <span class="nf">js_float_escape</span><span class="p">(</span><span class="nv">$number</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">is_float</span><span class="p">(</span><span class="nv">$number</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$number</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">string</span><span class="p">)(</span><span class="nx">float</span><span class="p">)</span><span class="nv">$number</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

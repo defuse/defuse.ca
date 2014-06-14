@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The Code Files - threads</title>
+        <link rel="stylesheet" href="/blog/theme/css/main.css" />
+        <link href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog/category/life.html">life</a></li>
+                    <li><a href="/blog/category/linux.html">linux</a></li>
+                    <li><a href="/blog/category/math.html">math</a></li>
+                    <li><a href="/blog/category/programming.html">programming</a></li>
+                    <li><a href="/blog/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/blog/why-unsafe-state-deadlock.html">Why Unsafe State != Deadlock</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-12-10T00:00:00">
+                Mon 10 December 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog/category/programming.html">programming</a>. </p>
+<p>tags: <a href="/blog/tag/threads.html">threads</a></p>
+</footer><!-- /.post-info --><p>You have a list of processes and a list of resources, and for each process you
+have:</p>
+<ul class="simple">
+<li>The number of each resource they will <em>ever</em> need at once.</li>
+<li>The number of each resource they are currently allocated.</li>
+</ul>
+<p>When a process makes a request for a resource, you only allocate the resource if
+allocating the resource does not put the system into an <em>unsafe state</em>.</p>
+<p>What is an unsafe state?</p>
+<p>A system is in a safe state <em>only if</em> there exists an allocation sequence that
+allows the processes to finish executing. Equivalently, if the system is in
+a safe state, then there exists an allocation sequence that allows the processes
+to finish executing. By contrapositive, if there is no allocation sequence that
+allows the processes to finish executing, then the system is in an unsafe state.</p>
+<p>This is <em>not</em> equivalent to the converse: &quot;If the system is in an unsafe state,
+then there is no allocation sequence that allows the processes to finish
+executing.&quot;</p>
+<p>So how can a system be in an unsafe state but have an allocation sequence that
+allows all processes to finish executing? Remember the assumption that the
+banker's algorithm makes: It assumes all processes will request <em>all</em> resources
+they would <em>ever</em> need at once, then terminate, releasing all of the resources
+they just requested and the ones they held. The assumption that can be incorrect
+is that processes request <em>all</em> resources they will ever need. There might not
+be an allocation sequence that allows all the processes to finish executing if
+they do request <em>all</em> resources they will ever need, but if the processes
+<em>actually don't</em> request all resources they will ever need (maybe one less, for
+example), then it might be enough for the system to avoid getting caught in
+a deadlock.</p>
+<p>See the <a class="reference external" href="https://en.wikipedia.org/wiki/Banker%27s_algorithm">Wikipedia article on Banker's Algorithm</a> for a much better
+explanation.</p>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

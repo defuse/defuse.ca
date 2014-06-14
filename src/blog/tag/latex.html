@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The Code Files - latex</title>
+        <link rel="stylesheet" href="/blog/theme/css/main.css" />
+        <link href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog/category/life.html">life</a></li>
+                    <li><a href="/blog/category/linux.html">linux</a></li>
+                    <li><a href="/blog/category/math.html">math</a></li>
+                    <li><a href="/blog/category/programming.html">programming</a></li>
+                    <li><a href="/blog/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/blog/latex-premise-conclusion-form-arguments.html">[LaTeX] Typesetting Premise and Conclusion Form Arguments</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-02-23T00:00:00">
+                Sat 23 February 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog/category/programming.html">programming</a>. </p>
+<p>tags: <a href="/blog/tag/latex.html">latex</a></p>
+</footer><!-- /.post-info --><p>This is the easiest way I have found to typeset premise and conclusion style
+arguments in LaTeX. First, add this to your preamble:</p>
+<pre class="code latex literal-block">
+<span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
+</pre>
+<p>Then use something like this to typeset the argument:</p>
+<pre class="code latex literal-block">
+<span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+    <span class="k">\item</span><span class="na">[1.]</span> Premise One.
+    <span class="k">\item</span><span class="na">[2.]</span> Premise Two.
+    <span class="k">\item</span><span class="na">[3.]</span> Premise Three.
+    <span class="k">\item</span><span class="na">[$\therefore$]</span> Therefore, Your Conclusion.
+<span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+</pre>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

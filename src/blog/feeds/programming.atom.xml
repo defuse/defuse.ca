@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/programming.atom.xml" rel="self"></link><id>/blog/</id><updated>2014-06-10T09:56:00-06:00</updated><entry><title>Switching to Pelican</title><link href="/blog/switching-to-pelican.html" rel="alternate"></link><updated>2014-06-10T09:56:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-06-10:switching-to-pelican.html</id><summary type="html">&lt;p&gt;I'm switching this blog to Pelican. That is all.&lt;/p&gt;
+</summary><category term="blog"></category><category term="meta"></category></entry><entry><title>[LaTeX] Typesetting Premise and Conclusion Form Arguments</title><link href="/blog/latex-premise-conclusion-form-arguments.html" rel="alternate"></link><updated>2013-02-23T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2013-02-23:latex-premise-conclusion-form-arguments.html</id><summary type="html">&lt;p&gt;This is the easiest way I have found to typeset premise and conclusion style
+arguments in LaTeX. First, add this to your preamble:&lt;/p&gt;
+&lt;pre class="code latex literal-block"&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;amssymb&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Then use something like this to typeset the argument:&lt;/p&gt;
+&lt;pre class="code latex literal-block"&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[1.]&lt;/span&gt; Premise One.
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[2.]&lt;/span&gt; Premise Two.
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[3.]&lt;/span&gt; Premise Three.
+    &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[$\therefore$]&lt;/span&gt; Therefore, Your Conclusion.
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="latex"></category></entry><entry><title>[Ruby] Genetic String Evolver</title><link href="/blog/genetic-string-evolver-in-ruby.html" rel="alternate"></link><updated>2013-02-19T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2013-02-19:genetic-string-evolver-in-ruby.html</id><summary type="html">&lt;p&gt;Inspired by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Weasel_program"&gt;Richard Dawkins' weasel program&lt;/a&gt;, this is a genetic algorithm,
+written in Ruby, to evolve the same &amp;quot;METHINKS IT IS LIKE A WEASEL&amp;quot; string. It's
+really fun to experiment with changing the probability constants (mutation,
+reproduction) and the algorithm in &lt;tt class="docutils literal"&gt;Evolver#advance&lt;/tt&gt;, which advances the
+population of strings to the next generation. Have fun!&lt;/p&gt;
+&lt;p&gt;The default algorithm works as follows:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Initialize a population of random strings.&lt;/li&gt;
+&lt;li&gt;Mutate each string with probability 'mutation_probability'.&lt;/li&gt;
+&lt;li&gt;Breed each string with another random string from the population with
+probability 'breed_probability', keeping the newborn population separate.&lt;/li&gt;
+&lt;li&gt;Kill random newborns until the number of newborns is less than 1/4 of the
+size of the main population.&lt;/li&gt;
+&lt;li&gt;Select a random half of the main population and replace its weakest (furthest
+from the target) members with the remaining newborns.&lt;/li&gt;
+&lt;li&gt;Go back to Step 2.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In about 5000-10000 generations, the strongest member of the population
+stabilizes to the target string.&lt;/p&gt;
+&lt;p&gt;The same algorithm can be applied to other problems, like finding the maximum of
+a mathematical function, by just modifying &lt;tt class="docutils literal"&gt;Weasel.rb&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="section" id="sample-output"&gt;
+&lt;h2&gt;Sample Output&lt;/h2&gt;
+&lt;p&gt;The left column is the population's strongest member. The right column is the
+population's weakest member.&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+YAPXMLHQFORHPPNVWF DISTEBZEK -- vs. -- YZLHUURLMPKITAP ZYVTTSIZZCQV (Gen: 0)
+YAPXMLHQFORHPPNVWF DISTEBZEK -- vs. -- CXZWQCVCUAZFDOUSZNRCXDQPNENR (Gen: 1)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- CXZWQCVCUAZFDOUSZNRCXDQPNENR (Gen: 2)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- J ICBDLWUGASSNRS YENZDLVBJ V (Gen: 3)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- NJQPSUPJUBEUQGNEBPRCMHIVBJ V (Gen: 4)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. -- NJQPSUPJUBEUQGNEBPRCMHIVBJ V (Gen: 5)
+YAEBXJFACES FVUTYWTLATTIACDY -- vs. --  RQPSUPJUBEUQWSFJTJ OWHRTKIM (Gen: 6)
+MDLDIGLMBUJPTV LWEC W FMNINL -- vs. -- ZXZNNKDUGWIVLKARQLMDKCIZ FGW (Gen: 7)
+MDLDIGLMBUJPTV LWEC W FMNINL -- vs. -- ZXZNNKDUGWIVLKARQLMDKCIZ FGW (Gen: 8)
+...
+MDPXKNIS MVHXZ LHCC W ODACEL -- vs. -- MDLDMFQS MVHCZ LHCCGW IQACDY (Gen: 100)
+MDPXKNIS MVHXZ LHCC W ODACEL -- vs. -- MDJDIFVS M DAS HHXC W TSACEL (Gen: 101)
+MDPXKNIS MVHXZ LHCC W ODACEL -- vs. -- MDJDMNQS MVGXZ LHCC W FQACDL (Gen: 102)
+MADIMNQS MVDXZ LHCE W ODACEL -- vs. -- MDJDMNQS MVGXZ LHEC W FMACIL (Gen: 103)
+MDPXKNQS MVDAS HHCE W ODACEL -- vs. -- MDJDMNQS MVGXZ LHEC W FMACIL (Gen: 104)
+MDPXKNQS MVDAS HHCE W ODACEL -- vs. -- MAPXYNCM MVHXZ LHTC D DQACIL (Gen: 105)
+...
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHINIS IVHWS LHKEXA VMAQEL (Gen: 400)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHINIS RVHIS LHKEEA VMAQEL (Gen: 401)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHINIS RVHIS LHKEEA VMAQEL (Gen: 402)
+METHINIS ITHIS LHKE A VMACEL -- vs. -- METHINIS IVHWS LHKEXA VMAQEL (Gen: 403)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHFNIS RVHIS LHKE A VMAQEL (Gen: 404)
+METHINIS ITHIS LHKE A VMAQEL -- vs. -- METHFNIS RRHIS LHKE A VMAQEL (Gen: 405)
+...
+METHINIS IV IS LHKE A WMAQEL -- vs. -- MVTHINIS IV IS QHKE AMVMAQEL (Gen: 800)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METUINIS IV IS LHKE AMVMEQEL (Gen: 801)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METUINIS IV IS LHKE AMVMEQEL (Gen: 802)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METUINIS IV IS LHKE AMVMEQEL (Gen: 803)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METHINIS IVQISKLHKE A VMAQEL (Gen: 804)
+METHINIS IV IS LHKE A WMAQEL -- vs. -- METCINIS IV RS LHKK A WMAQEL (Gen: 805)
+...
+METHINKS IT IS LIKE A WEAWEL -- vs. -- ROTHINKS IT IS LIKE A WEAHEL (Gen: 5106)
+METHINKS IT IS LIKE A WEAWEL -- vs. -- MOTHINKS ITSIS VIKE A WEAWEL (Gen: 5107)
+METHINKS IT IS LIKE A WEAWEL -- vs. -- MOTHINKS ITSIS VIKE A WEAWEL (Gen: 5108)
+METHINKS IT IS LIKE A WEAWEL -- vs. -- METHINKSOIT IS LIKE A WEAWEL (Gen: 5109)
+METHINKS IT IS LIKE A WEASEL -- vs. -- METHINKSOIT IS LIKE A WEAWEL (Gen: 5110)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="main-rb"&gt;
+&lt;h2&gt;Main.rb&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'./Evolver.rb'&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'./Weasel.rb'&lt;/span&gt;
+
+&lt;span class="n"&gt;evolver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="no"&gt;Weasel&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setup&lt;/span&gt;
+
+&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;best&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; -- vs. -- &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;worst&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; (Gen: &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;) &lt;/span&gt;&lt;span class="se"&gt;\r&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="n"&gt;evolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;advance&lt;/span&gt;
+  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="evolver-rb"&gt;
+&lt;h2&gt;Evolver.rb&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;# WARNING: I have never even read `On the Origin of Species` so do not mistake&lt;/span&gt;
+&lt;span class="c1"&gt;# this horrible code to be anything like what happens in nature.&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Evolver&lt;/span&gt;
+
+  &lt;span class="kp"&gt;attr_reader&lt;/span&gt; &lt;span class="ss"&gt;:population&lt;/span&gt;
+  &lt;span class="kp"&gt;attr_accessor&lt;/span&gt; &lt;span class="ss"&gt;:population_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:mutation_probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:breed_probability&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;klass&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;entity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;klass&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;mutation_probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;07&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;breed_probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setup&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population_size&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;entity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;advance&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;mutation_probability&lt;/span&gt;
+        &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mutate&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="n"&gt;newborns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;breed_probability&lt;/span&gt;
+        &lt;span class="n"&gt;newborns&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Limit the number of newborns to at most 1/4 of the population size.&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;
+      &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shuffle!&lt;/span&gt;
+      &lt;span class="n"&gt;newborns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Select a random half of the population to be candidates for dying.&lt;/span&gt;
+    &lt;span class="n"&gt;killed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shuffle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# Sort them by goodness value in increasing order.&lt;/span&gt;
+    &lt;span class="n"&gt;killed&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort!&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+      &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt;
+        &lt;span class="mi"&gt;1&lt;/span&gt;
+      &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Replace the weakest death candidates with the newborns.&lt;/span&gt;
+    &lt;span class="n"&gt;newborns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;subj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;killed&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subj&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;best&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inject&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;worst&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;population&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inject&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;goodness&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="weasel-rb"&gt;
+&lt;h2&gt;Weasel.rb&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Weasel&lt;/span&gt;
+  &lt;span class="kp"&gt;attr_reader&lt;/span&gt; &lt;span class="ss"&gt;:str&lt;/span&gt;
+
+  &lt;span class="no"&gt;ALPHABET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ &amp;quot;&lt;/span&gt;
+  &lt;span class="no"&gt;TARGET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;METHINKS IT IS LIKE A WEASEL&amp;quot;&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;random&lt;/span&gt;
+    &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="no"&gt;TARGET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="no"&gt;Weasel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;mutate&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ALPHABET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;organism&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;split&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;front&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;back&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;organism&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;split&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;organism&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="no"&gt;Weasel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;front&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;back&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;goodness&lt;/span&gt;
+    &lt;span class="n"&gt;hamming&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;hamming&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;ord&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="no"&gt;TARGET&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;ord&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;hamming&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_s&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;str&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+</summary><category term="evolution"></category></entry><entry><title>Factorization Correlation Experimentation Tool</title><link href="/blog/factorization-genetic-algorithm-correlation.html" rel="alternate"></link><updated>2013-01-25T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2013-01-25:factorization-genetic-algorithm-correlation.html</id><summary type="html">&lt;p&gt;Here's a Ruby script to experiment with correlations that may be useful in
+developing a genetic (evolutionary) algorithm for factoring the product of two
+primes. The comments explain it:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;#!/usr/bin/env ruby&lt;/span&gt;
+&lt;span class="c1"&gt;# Let C = F1 * F2, where F1 and F2 are primes.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This script gives a visual aid to help determine if the value of some function&lt;/span&gt;
+&lt;span class="c1"&gt;# (specified by the user) on a test integer is correlated with the test&lt;/span&gt;
+&lt;span class="c1"&gt;# integer's hamming distance from min(F1, F2).&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# If such a correlation exists, it may be possible to use that function to&lt;/span&gt;
+&lt;span class="c1"&gt;# calculate the 'fitness' of test integers in a genetic (evolutionary) algorithm&lt;/span&gt;
+&lt;span class="c1"&gt;# for factoring C.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Of course the function must be efficiently computable without knowing the&lt;/span&gt;
+&lt;span class="c1"&gt;# factorization of C.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Set the function by modifying the 'function' method below. Set the F1 and F2&lt;/span&gt;
+&lt;span class="c1"&gt;# by modifying the 'F1' and 'F2' variables below. C is calculated from F1 and&lt;/span&gt;
+&lt;span class="c1"&gt;# F2.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Some interesting functions are:&lt;/span&gt;
+&lt;span class="c1"&gt;#   - The hamming distance between C and the test integer.&lt;/span&gt;
+
+&lt;span class="c1"&gt;# If you don't have the gnuplot gem, run `gem install gnuplot`&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'gnuplot'&lt;/span&gt;
+
+&lt;span class="no"&gt;F1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;8831&lt;/span&gt;
+&lt;span class="no"&gt;F2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;12479&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Set this to true to make the multiplicity of points visible by adding random&lt;/span&gt;
+&lt;span class="c1"&gt;# variations in their horizontal position.&lt;/span&gt;
+&lt;span class="no"&gt;JITTER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+
+&lt;span class="no"&gt;F_DESC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HammingDistance(test, C)&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;potentialFactor&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;hammingDistance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;potentialFactor&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ----------------------------------------------------------------------------&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hammingDistance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+
+&lt;span class="n"&gt;compareFactor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;F1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;F2&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;
+&lt;span class="n"&gt;composite&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;F1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="no"&gt;F2&lt;/span&gt;
+
+&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="no"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ceil&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;composite&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;hammingDistance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compareFactor&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;100_000&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="ss"&gt;Gnuplot&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:open&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;gp&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="ss"&gt;Gnuplot&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;gp&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;C = F1 * F2 where F1 and F2 are prime. &lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;n&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                &lt;span class="s2"&gt;&amp;quot;C = &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;F1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="no"&gt;F2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;; F1 = &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;F1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;; F2 = &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;F2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HammingDistance(test, min(F1, F2))&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt; &lt;span class="no"&gt;F_DESC&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xrange&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;[0:]&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yrange&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;[0:]&amp;quot;&lt;/span&gt;
+
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="no"&gt;JITTER&lt;/span&gt;
+      &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="ss"&gt;Gnuplot&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:DataSet&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;JITTER&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;dots&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;points&amp;quot;&lt;/span&gt;
+      &lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;notitle&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="factorization"></category></entry><entry><title>Vim: Make Rainbow Parentheses Work in PHP</title><link href="/blog/vim-rainbow-parentheses-work-in-php.html" rel="alternate"></link><updated>2012-12-22T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-12-22:vim-rainbow-parentheses-work-in-php.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; What I propose here doesn't actually fix it, it still fails when
+there's a greater-than sign inside an if statement. I have spent over 8 hours
+trying to get this to work and that is too much, so I am giving up. If you find
+a solution, please email it to me.&lt;/p&gt;
+&lt;p&gt;I use this script to get rainbow parentheses in Vim:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/kien/rainbow_parentheses.vim"&gt;https://github.com/kien/rainbow_parentheses.vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.vim.org/scripts/script.php?script_id=3772"&gt;http://www.vim.org/scripts/script.php?script_id=3772&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It colors nested parentheses like this:&lt;/p&gt;
+&lt;img alt="Vim Rainbow Parentheses" src="https://defuse.ca/images/rainbow.png" /&gt;
+&lt;p&gt;Unfortunately, it doesn't work with PHP, because the PHP syntax file only allows
+its own syntax regions to appear inside the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;&amp;lt;?php&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?&amp;gt;&lt;/span&gt;&lt;/tt&gt; tags. The fix
+is simple:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Copy the 'system' php syntax file (usually
+&lt;tt class="docutils literal"&gt;/usr/local/share/vim/vim73/syntax/php.vim&lt;/tt&gt;) to your personal
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vim/syntax&lt;/span&gt;&lt;/tt&gt; folder (create it if it does not exist).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Edit &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vim/syntax/php.vim&lt;/span&gt;&lt;/tt&gt;, find the line that starts with &lt;tt class="docutils literal"&gt;syn cluster
+phpClTop&lt;/tt&gt; and add &lt;tt class="docutils literal"&gt;level16&lt;/tt&gt; to the end of the 'contains' list on that
+line. If you have set &lt;tt class="docutils literal"&gt;g:rbpt_max&lt;/tt&gt; in your .vimrc, then you will need to
+change the &amp;quot;16&amp;quot; to that value.&lt;/li&gt;
+&lt;/ol&gt;
+</summary><category term="vim"></category></entry><entry><title>Why Unsafe State != Deadlock</title><link href="/blog/why-unsafe-state-deadlock.html" rel="alternate"></link><updated>2012-12-10T00:00:00-07:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-12-10:why-unsafe-state-deadlock.html</id><summary type="html">&lt;p&gt;You have a list of processes and a list of resources, and for each process you
+have:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The number of each resource they will &lt;em&gt;ever&lt;/em&gt; need at once.&lt;/li&gt;
+&lt;li&gt;The number of each resource they are currently allocated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When a process makes a request for a resource, you only allocate the resource if
+allocating the resource does not put the system into an &lt;em&gt;unsafe state&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;What is an unsafe state?&lt;/p&gt;
+&lt;p&gt;A system is in a safe state &lt;em&gt;only if&lt;/em&gt; there exists an allocation sequence that
+allows the processes to finish executing. Equivalently, if the system is in
+a safe state, then there exists an allocation sequence that allows the processes
+to finish executing. By contrapositive, if there is no allocation sequence that
+allows the processes to finish executing, then the system is in an unsafe state.&lt;/p&gt;
+&lt;p&gt;This is &lt;em&gt;not&lt;/em&gt; equivalent to the converse: &amp;quot;If the system is in an unsafe state,
+then there is no allocation sequence that allows the processes to finish
+executing.&amp;quot;&lt;/p&gt;
+&lt;p&gt;So how can a system be in an unsafe state but have an allocation sequence that
+allows all processes to finish executing? Remember the assumption that the
+banker's algorithm makes: It assumes all processes will request &lt;em&gt;all&lt;/em&gt; resources
+they would &lt;em&gt;ever&lt;/em&gt; need at once, then terminate, releasing all of the resources
+they just requested and the ones they held. The assumption that can be incorrect
+is that processes request &lt;em&gt;all&lt;/em&gt; resources they will ever need. There might not
+be an allocation sequence that allows all the processes to finish executing if
+they do request &lt;em&gt;all&lt;/em&gt; resources they will ever need, but if the processes
+&lt;em&gt;actually don't&lt;/em&gt; request all resources they will ever need (maybe one less, for
+example), then it might be enough for the system to avoid getting caught in
+a deadlock.&lt;/p&gt;
+&lt;p&gt;See the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Banker%27s_algorithm"&gt;Wikipedia article on Banker's Algorithm&lt;/a&gt; for a much better
+explanation.&lt;/p&gt;
+</summary><category term="threads"></category></entry><entry><title>x86 Stack Diagrams</title><link href="/blog/x86-stack-diagrams.html" rel="alternate"></link><updated>2012-08-14T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-08-14:x86-stack-diagrams.html</id><summary type="html">&lt;p&gt;All of the x86 stack diagrams I could find are either cluttered with too much
+information, can't be read from a distance, or put the high address on top (I'm
+sure there are people who prefer that but... I'm not one of them). So I made my
+own.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;With low address on top (stack growing up, strcpy going down):&lt;/strong&gt;&lt;/p&gt;
+&lt;img alt="x86 Stack with low addresses on top" src="https://defuse.ca/images/stack-low-high.gif" /&gt;
+&lt;p&gt;&lt;strong&gt;With high address on top (stack growing down, strcpy going up):&lt;/strong&gt;&lt;/p&gt;
+&lt;img alt="x86 Stack with high addresses on top" src="https://defuse.ca/images/stack-high-low.gif" /&gt;
+</summary><category term="x86"></category><category term="assembly"></category></entry><entry><title>Visual Basic's "With" in Ruby</title><link href="/blog/visual-basic-with-in-ruby.html" rel="alternate"></link><updated>2012-08-04T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-08-04:visual-basic-with-in-ruby.html</id><summary type="html">&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;with&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="no"&gt;Math&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Deeply nested modules&lt;/span&gt;
+&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Foo&lt;/span&gt;
+  &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Bar&lt;/span&gt;
+
+    &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Baz&lt;/span&gt;
+      &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+      &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;aMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="no"&gt;A_CONSTANT&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Biz&lt;/span&gt;
+      &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;anotherMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;hello &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="ss"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Bar&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="ss"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Baz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;aMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="ss"&gt;m&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;:Biz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;anotherMethod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bob&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="basic"></category></entry><entry><title>Ruby Obfuscation</title><link href="/blog/ruby-obfuscation.html" rel="alternate"></link><updated>2012-05-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-05-28:ruby-obfuscation.html</id><summary type="html">&lt;p&gt;Just having fun...&lt;/p&gt;
+&lt;div class="section" id="obfuscated-1"&gt;
+&lt;h2&gt;Obfuscated #1&lt;/h2&gt;
+&lt;p&gt;This evaluates to the string &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;&amp;quot;?&amp;quot;&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="sc"&gt;??????????????&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;????????&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;??&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="sc"&gt;?????:??&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; &amp;quot;?&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="obfuscated-2"&gt;
+&lt;h2&gt;Obfuscated #2&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="vg"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vg"&gt;$c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;[$s=['p '],[$s&amp;lt;&amp;lt;[*1?3??'+?&amp;lt;+?3:?y:?]],$s+=[?b],$s|=[*?y+?'],$s[2,0]=5??r+?u:?$],($i+=1)&amp;lt;30?eval($s.join&amp;lt;&amp;lt;?;&amp;lt;&amp;lt;$c):nil]&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;div class="section" id="output"&gt;
+&lt;h3&gt;Output&lt;/h3&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&amp;quot;&amp;lt;3ruby&amp;quot;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="obfuscation"></category></entry><entry><title>Ruby Maze Solver</title><link href="/blog/ruby-maze-solver.html" rel="alternate"></link><updated>2012-05-27T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-05-27:ruby-maze-solver.html</id><summary type="html">&lt;p&gt;Here's a recursive-backtracking ASCII maze solver I wrote to practice ruby. The
+&lt;tt class="docutils literal"&gt;o&lt;/tt&gt;'s are the solution.&lt;/p&gt;
+&lt;div class="section" id="output"&gt;
+&lt;h2&gt;Output&lt;/h2&gt;
+&lt;pre class="code text literal-block"&gt;
+$ ruby maze.rb maze.txt
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++oooooooo  ++++++++++++++++++++++ ++++++++++++++++++++++++        ++++ ++++++
++oooo++ +++o++++++++++++++++++++++++ ++++ +++++++++++++++++++ +++ +++++++ ++++++
+++++ ++   oo+++++++++++++++++++ ++++ ++++                 +++ +++ +++++++ ++++++
+++++ ++ ++o++++++++ooooooo+++++ ++++ ++++ +++++++++++++++++++ +++         ++++++
+++   +++++o++++++++o+++++o+++++           ++++ ++++++++++++++ ++++++++ +++++++++
+++++++++++o++++++++o+++++o+++++ +++++ ++++++++ +++oooooooooooooo++++++ +++++++++
+++++++++++o+oooooooo+++++ooooooo+++++ ++++++++ +++o++++++++ +++o++++++ +++++++++
+++++++++++ooo++++++++++++ +++++o+++++ +++++++++   o++++++++++++o++++++ +++++++++
++++++++++++++++++++++++++      o++++++++++++++++++o      ++++++o       +++++++++
++++++++ +++++++++++++++++++++++o++++++oooooo++++++o+++++ ++++++o++++++++++++++++
++++++++ +++++++++++++++++++++++o++++++o++++o++++++o+++++ ++++++o++++++++++++++++
+++      ++++++++++oooooooooooooo++++++o++++o++++++o+++++ ++++++oooooooo+++++++++
++++++++ ++++++++++o+++++++++++++++++++o++++oooooooo+++++++++++++ +++++o+++++++++
++++++++           o+++++ooooooooooooooo+++++++ +++++++           ++Xooo+++++++++
+++++++++++++++++++ooooooo+++++++++++++++++++++ ++++++++++++++++++++F++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="c1"&gt;#!/usr/bin/env ruby&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ------------------------------ Example Maze ------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++          ++++++++++++++++++++++ ++++++++++++++++++++++++        ++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +X   ++ +++ ++++++++++++++++++++++++ ++++ +++++++++++++++++++ +++ +++++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++ ++     +++++++++++++++++++ ++++ ++++                 +++ +++ +++++++ ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++ ++ ++ ++++++++       +++++ ++++ ++++ +++++++++++++++++++ +++         ++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++   +++++ ++++++++ +++++ +++++           ++++ ++++++++++++++ ++++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++ ++++++++ +++++ +++++ +++++ ++++++++ +++              ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++ +        +++++       +++++ ++++++++ +++ ++++++++ +++ ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++   ++++++++++++ +++++ +++++ +++++++++    ++++++++++++ ++++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++++++++++++++++++++       ++++++++++++++++++       ++++++        +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ +++++++++++++++++++++++ ++++++      ++++++ +++++ ++++++ ++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ +++++++++++++++++++++++ ++++++ ++++ ++++++ +++++ ++++++ ++++++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++      ++++++++++              ++++++ ++++ ++++++ +++++ ++++++        +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++ ++++++++++ +++++++++++++++++++ ++++        +++++++++++++ +++++ +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# +++++++            +++++               +++++++ +++++++           ++    +++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++       +++++++++++++++++++++ ++++++++++++++++++++F++++++++++++&lt;/span&gt;
+&lt;span class="c1"&gt;# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;
+  &lt;span class="n"&gt;printUsage&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;maze&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'r'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;rescue&lt;/span&gt;
+    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Cannot read file.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;printUsage&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;solver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;MazeSolver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;solver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;solve&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;solver&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Maze has no solution&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;printUsage&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;USAGE: ruby maze.rb &amp;lt;mazefile&amp;gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# A recursive backtracking maze solver.&lt;/span&gt;
+&lt;span class="c1"&gt;# The maze is specified as an ASCII grid (each line is one row), where:&lt;/span&gt;
+&lt;span class="c1"&gt;# - 'X' marks the starting position of the player.&lt;/span&gt;
+&lt;span class="c1"&gt;# - 'F' marks the goal.&lt;/span&gt;
+&lt;span class="c1"&gt;# - ' ' (space) marks the area where the player is allowed to move.&lt;/span&gt;
+&lt;span class="c1"&gt;# - Everything else marks area where the player is NOT allowed to move.&lt;/span&gt;
+&lt;span class="c1"&gt;# The maze string must not contain the character 'o' (lowercase oh) since it is&lt;/span&gt;
+&lt;span class="c1"&gt;# used to mark the solution path.&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MazeSolver&lt;/span&gt;
+
+  &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'X'&lt;/span&gt;
+  &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;
+  &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'F'&lt;/span&gt;
+  &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt;
+
+  &lt;span class="no"&gt;DELTA_ROW&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="no"&gt;DELTA_COL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Movement directions are specified internally by a 'delta', which is an&lt;/span&gt;
+  &lt;span class="c1"&gt;# array where [0] is the change in row and [1] is the change in column.&lt;/span&gt;
+  &lt;span class="c1"&gt;# The player is only allowed to move up, down, left, and right.&lt;/span&gt;
+  &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# Split the maze string into an array of arrays of characters.&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;findPlayer&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Find the player on the maze grid and check that the maze is valid.&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;findPlayer&lt;/span&gt;
+    &lt;span class="n"&gt;playerFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+    &lt;span class="n"&gt;finishFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rowIndex&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each_with_index&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;colIndex&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'More than one player'&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;playerFound&lt;/span&gt;
+            &lt;span class="n"&gt;playerFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+            &lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rowIndex&lt;/span&gt;
+            &lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;colIndex&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="n"&gt;finishFound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+          &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Track marker playerFound in maze'&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'No player'&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="n"&gt;playerFound&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Solve the maze. Returns true if it has been solved, false if it cannot be solved.&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solve&lt;/span&gt;
+    &lt;span class="n"&gt;possibleMovements&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;moveBy&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+      &lt;span class="k"&gt;break&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;solve&lt;/span&gt;
+      &lt;span class="n"&gt;undoMoveBy&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;adjacentToFinish?&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Return an array of valid movement deltas (to SPACE_CHARs) from the current position&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;possibleMovements&lt;/span&gt;
+    &lt;span class="n"&gt;deltas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[]&lt;/span&gt;
+    &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="n"&gt;deltas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;canMoveBy?&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="n"&gt;deltas&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;moveBy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Invalid movement&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="n"&gt;canMoveBy?&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;TRACK_MARKER&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;undoMoveBy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;reverse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PLAYER_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;adjacentToFinish?&lt;/span&gt;
+    &lt;span class="no"&gt;DIRECTIONS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="no"&gt;FINISH_CHAR&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;canMoveBy?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerRow&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_ROW&lt;/span&gt;&lt;span class="o"&gt;]][&lt;/span&gt;&lt;span class="vi"&gt;&amp;#64;playerCol&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="no"&gt;DELTA_COL&lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="no"&gt;SPACE_CHAR&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_s&lt;/span&gt;
+    &lt;span class="vi"&gt;&amp;#64;maze&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;main&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+</summary><category term="search"></category></entry><entry><title>My Favorite 'Rubyisms'</title><link href="/blog/my-favorite-rubyisms.html" rel="alternate"></link><updated>2012-05-16T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-05-16:my-favorite-rubyisms.html</id><summary type="html">&lt;p&gt;I've been using Ruby at work to write &lt;a class="reference external" href="http://watir.com/"&gt;watir&lt;/a&gt; tests, and I am constantly amazed
+at how elegant it is. Here are some of my favorite techniques:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pass a default value block to Hash.new to implement a memoized recursive
+function:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;fibonacci&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Hash&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Use an anonymous array to perform some operation on a constant set of things
+without repeating yourself:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Instead of:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stopPlaying&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Use an anonymous array to check of some variable is equal to any of a set of things:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Invalid sport'&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'golf'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;include?&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Instead of:&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="s1"&gt;'Invalid sport'&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'golf'&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'baseball'&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;sport&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'hockey'&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Initialize an array using a range and map, and use rand() with to_s to
+generate random strings:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code ruby literal-block"&gt;
+&lt;span class="n"&gt;randomStrings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Array&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;users&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;testUser%d&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+</summary><category term="ruby"></category></entry><entry><title>Random .vimrc Tips</title><link href="/blog/random-vimrc-tips.html" rel="alternate"></link><updated>2012-04-29T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2012-04-29:random-vimrc-tips.html</id><summary type="html">&lt;p&gt;Here are some of my favorite .vimrc lines.&lt;/p&gt;
+&lt;p&gt;Save quickly from any mode by pressing CTRL+:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+imap &amp;lt;C-\&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;Cr&amp;gt;
+map &amp;lt;C-\&amp;gt; &amp;lt;Esc&amp;gt;:w&amp;lt;Cr&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Make indenting and de-indenting in visual mode preserve the selection:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+vnoremap &amp;gt; &amp;gt;&amp;lt;CR&amp;gt;gv
+vnoremap &amp;lt; &amp;lt;&amp;lt;CR&amp;gt;gv
+&lt;/pre&gt;
+&lt;p&gt;Quick case insensitive search with double slash or double question mark:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map // /\c
+map ?? ?\c
+&lt;/pre&gt;
+&lt;p&gt;Make the j and k keys move up by a line on the screen rather than a line in the
+file (very useful when navigating a long line that has wrapped many times):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map j gj
+map k gk
+&lt;/pre&gt;
+&lt;p&gt;Highlight column 80 (Vim 7.3+ only):&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+if v:version &amp;gt;= 703
+    set cc=80
+    hi ColorColumn ctermbg=Gray ctermfg=Black guibg=#404040
+    command Skinny set cc=73
+    command Wide set cc=80
+endif
+&lt;/pre&gt;
+&lt;p&gt;Don’t show the splash screen:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+set shortmess+=I
+&lt;/pre&gt;
+&lt;p&gt;Keep the cursor 4 lines away from the top or bottom to automatically preserve
+context when editing near the top or bottom of the window:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+set scrolloff=4
+&lt;/pre&gt;
+&lt;p&gt;Make CTRL+u and CTRL+d less confusing:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map &amp;lt;C-u&amp;gt; 10&amp;lt;C-Y&amp;gt;10k
+map &amp;lt;C-d&amp;gt; 10&amp;lt;C-E&amp;gt;10j
+&lt;/pre&gt;
+&lt;p&gt;Scroll the screen with ALT+{j,k}:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+map &amp;lt;A-j&amp;gt; 2&amp;lt;C-E&amp;gt;
+map &amp;lt;A-k&amp;gt; 2&amp;lt;C-Y&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Easy paste toggle:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot; Allow middle-click pasting of large texts in terminal
+set pastetoggle=&amp;lt;F5&amp;gt;
+&amp;quot; Clear paste mode when going back to normal mode
+au InsertLeave * set nopaste
+&lt;/pre&gt;
+&lt;p&gt;Switch windows quickly with CTRL+{h,j,k,l}:&lt;/p&gt;
+&lt;pre class="code text literal-block"&gt;
+&amp;quot; This breaks backspace in a terminal, but I never use backspace in normal mode
+map &amp;lt;C-h&amp;gt; &amp;lt;C-W&amp;gt;h
+map &amp;lt;C-j&amp;gt; &amp;lt;C-W&amp;gt;j
+map &amp;lt;C-k&amp;gt; &amp;lt;C-W&amp;gt;k
+map &amp;lt;C-l&amp;gt; &amp;lt;C-W&amp;gt;l
+&amp;quot; This would break in a terminal where ^H is backspace.
+if has(&amp;quot;gui_running&amp;quot;)
+    imap &amp;lt;C-h&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;h
+endif
+imap &amp;lt;C-j&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;j
+imap &amp;lt;C-k&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;k
+imap &amp;lt;C-l&amp;gt; &amp;lt;Esc&amp;gt;&amp;lt;C-W&amp;gt;l
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://defuse.ca/vimrc.htm"&gt;Click here for my entire Vim configuration.&lt;/a&gt;&lt;/p&gt;
+</summary><category term="vim"></category></entry></feed>

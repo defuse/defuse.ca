@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The Code Files - raspbian</title>
+        <link rel="stylesheet" href="/blog/theme/css/main.css" />
+        <link href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Code Files Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/blog/">The Code Files </a></h1>
+                <nav><ul>
+                    <li><a href="/blog/category/life.html">life</a></li>
+                    <li><a href="/blog/category/linux.html">linux</a></li>
+                    <li><a href="/blog/category/math.html">math</a></li>
+                    <li><a href="/blog/category/programming.html">programming</a></li>
+                    <li><a href="/blog/category/security.html">security</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/blog/raspberry-pi-enable-mplayer-and-vlc-audio-on-rasbian.html">Raspberry PI: Enable MPlayer and VLC audio on Raspbian</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-08-02T00:00:00">
+                Thu 02 August 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/blog/author/taylor-hornby.html">Taylor Hornby</a>
+        </address>
+<p>In <a href="/blog/category/linux.html">linux</a>. </p>
+<p>tags: <a href="/blog/tag/raspberry-pi.html">raspberry pi</a><a href="/blog/tag/raspbian.html">raspbian</a></p>
+</footer><!-- /.post-info --><!-- NOTE: The slug misspells raspbian intentionally so it matches the old URL. -->
+<p>If mplayer is giving you an error like the following...</p>
+<pre class="code text literal-block">
+AO: [pulse] Init failed: Connection refused
+Failed to initialize audio driver 'pulse'
+[AO_ALSA] Unable to set hw-parameters: Invalid argument
+Failed to initialize audio driver 'alsa'
+[AO SDL] Samplerate: 44100Hz Channels: Stereo Format floatle
+[AO SDL] using aalib audio driver.
+[AO SDL] Unsupported audio format: 0x1d.
+[AO SDL] Unable to open audio: No available audio device
+Failed to initialize audio driver 'sdl:aalib'
+Could not open/initialize audio device -&gt; no sound.
+Audio: no sound
+Video: no video
+</pre>
+<p>... add the following to /etc/asound.conf (create it if it does not exist):</p>
+<pre class="code text literal-block">
+pcm.!default {
+    type hw
+    card 0
+}
+
+ctl.!default {
+    type hw
+    card 0
+}
+</pre>
+<p>Then, run:</p>
+<pre class="code text literal-block">
+modprobe snd_bcm2835
+</pre>
+<p>Then add the following <tt class="docutils literal">/etc/modules</tt> (unless it's already there):</p>
+<pre class="code text literal-block">
+snd-bcm2835
+</pre>
+<p><a class="reference external" href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=66&amp;t=7107">Source - &quot;ALSA on Raspbian&quot;</a>.</p>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/DefuseSec">twitter</a></li>
+                            <li><a href="https://github.com/defuse">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
