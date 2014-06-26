@@ -64,3 +64,7 @@ were run on an AMD Phenom 9600 2.3GHz CPU.
 <div style="text-align: center; padding-bottom: 10px;">
     <a href="https://github.com/defuse/password-hashing"><strong>Source Code on GitHub</strong></a>
 </div>
+
+<?php
+    printSourceFile("source/pbkdf2.php", false);
+?>
