@@ -20,8 +20,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>In Progress</h2>
 
 <ul>
-    <li><b>The Art of Software Security Assessment (Mark Dowd et al.)</b></li>
-    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
+    
 </ul>
 
 <h2>Stalled (Finished signifigant portions)</h2>
@@ -32,6 +31,8 @@ A web search of the title is usually enough to find the book or paper.
     <li><b>Computational Complexity (Sanjeev Arora and Boaz Barak)</b></li>
     <li><b>Gray's Anatomy (15th edition)</b></li>
     <li>The Art of Computer Programming Volume 1 (Knuth)</li>
+    <li><b>The Art of Software Security Assessment (Mark Dowd et al.)</b></li>
+    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
 </ul>
 
 <h2>Next</h2>
@@ -52,6 +53,7 @@ A web search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li><b>No Place to Hide (Glenn Greenwald)</b></li>
     <li><b>Feynman's Tips On Physics (Richard Feynman, Michael A. Gottleib, Ralph Leighton)</b></li>
     <li>The Art of War (Sun Tzu)</li>
     <li><b>Death By Black Hole (Neil DeGrasse Tyson)</b></li>
