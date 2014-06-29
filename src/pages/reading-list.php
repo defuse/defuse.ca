@@ -13,42 +13,10 @@
 This is an incomplete list of things that I have read. It includes only books
 and academic papers. Ordering within the year sections is not meaningful. My
 favourite books and papers are in bold.  I apologize for not listing all of the
-authors' names out of laziness; I'll get around to adding them sometime.
-A web search of the title is usually enough to find the book or paper.
+authors' names out of laziness; I'll get around to adding them sometime. A web
+search of the title is usually enough to find the book or paper.
 </p>
 
-<h2>In Progress</h2>
-
-<ul>
-    
-</ul>
-
-<h2>Stalled (Finished signifigant portions)</h2>
-
-<ul>
-    <li><b>The Art of Strategy (Avinash K. Dixit and Barry J Nalebuff)</b></li>
-    <li>The U.S. Army/Marine Corps Counterinsurgency Field Manual</li>
-    <li><b>Computational Complexity (Sanjeev Arora and Boaz Barak)</b></li>
-    <li><b>Gray's Anatomy (15th edition)</b></li>
-    <li>The Art of Computer Programming Volume 1 (Knuth)</li>
-    <li><b>The Art of Software Security Assessment (Mark Dowd et al.)</b></li>
-    <li><b>The Feynman Lectures on Physics, Volume I (Chapters 18+)</b></li>
-</ul>
-
-<h2>Next</h2>
-
-<ul>
-    <li>The Social Network Business Plan (David Silver)</li>
-    <li>Fallen Dragon (Peter F. Hamilton)</li>
-    <li>Intel 64 and IA-32 Architectures Software Developer Manual: Volume 3A</li>
-    <li>The Bible</li>
-    <li>The Qur'an</li>
-    <li>English Dictionary</li>
-    <li>The ARRL Handbook For Radio Communications</li>
-    <li>The Feynman Lectures on Physics, Volume II</li>
-    <li>The Feynman Lectures on Physics, Volume III</li>
-    <li>Cryptanalysis (Helen Fouc&eacute;)</li>
-</ul>
 
 <h2>2014</h2>
 
