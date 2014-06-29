@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/security.atom.xml" rel="self"></link><id>/blog/</id><updated>2013-08-09T00:00:00-06:00</updated><entry><title>Enabling TLS v1.1 on Firefox 23</title><link href="/blog/enabling-tls-11-on-firefox-version-23.html" rel="alternate"></link><updated>2013-08-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2013-08-09:enabling-tls-11-on-firefox-version-23.html</id><summary type="html">&lt;p&gt;Change the following settings in Firefox's &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; to enable TLS v1.1.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/security.atom.xml" rel="self"></link><id>/blog/</id><updated>2014-06-28T00:00:00-06:00</updated><entry><title>"I have nothing to hide."</title><link href="/blog/i-have-nothing-to-hide.html" rel="alternate"></link><updated>2014-06-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-06-28:i-have-nothing-to-hide.html</id><summary type="html">&lt;ul class="simple"&gt;
+&lt;li&gt;I have nothing to hide.&lt;/li&gt;
+&lt;li&gt;I have not, nor will I ever, do anything wrong.&lt;/li&gt;
+&lt;li&gt;I have not, nor will I ever, do anything wrong, as defined by the government.&lt;/li&gt;
+&lt;li&gt;I have only ever done, and only ever will do, things defined as right by the
+government.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By stating that you &amp;quot;have nothing to hide&amp;quot;, you are admitting your behaviour is
+constrained by the someone else's arbitrary definition of &amp;quot;wrong.&amp;quot; Maybe you're
+fine with that, but ask yourself two questions:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Do you really know what's defined as &amp;quot;wrong&amp;quot;?&lt;/li&gt;
+&lt;li&gt;Could the meaning of &amp;quot;wrong&amp;quot; ever change?&lt;/li&gt;
+&lt;/ol&gt;
+</summary><category term="surveillance"></category></entry><entry><title>Enabling TLS v1.1 on Firefox 23</title><link href="/blog/enabling-tls-11-on-firefox-version-23.html" rel="alternate"></link><updated>2013-08-09T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2013-08-09:enabling-tls-11-on-firefox-version-23.html</id><summary type="html">&lt;p&gt;Change the following settings in Firefox's &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; to enable TLS v1.1.&lt;/p&gt;
 &lt;img alt="Enabling TLS 1.1 in Firefox 23" src="https://defuse.ca/images/ff23-tls.png" /&gt;
 &lt;p&gt;&lt;strong&gt;Steps&lt;/strong&gt;&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;

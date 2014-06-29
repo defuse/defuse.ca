@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/all.atom.xml" rel="self"></link><id>/blog/</id><updated>2014-06-10T09:56:00-06:00</updated><entry><title>Switching to Pelican</title><link href="/blog/switching-to-pelican.html" rel="alternate"></link><updated>2014-06-10T09:56:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-06-10:switching-to-pelican.html</id><summary type="html">&lt;p&gt;This blog used to be a Ruby on Rails app that I wrote myself. It was way too
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/all.atom.xml" rel="self"></link><id>/blog/</id><updated>2014-06-28T00:00:00-06:00</updated><entry><title>"I have nothing to hide."</title><link href="/blog/i-have-nothing-to-hide.html" rel="alternate"></link><updated>2014-06-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-06-28:i-have-nothing-to-hide.html</id><summary type="html">&lt;ul class="simple"&gt;
+&lt;li&gt;I have nothing to hide.&lt;/li&gt;
+&lt;li&gt;I have not, nor will I ever, do anything wrong.&lt;/li&gt;
+&lt;li&gt;I have not, nor will I ever, do anything wrong, as defined by the government.&lt;/li&gt;
+&lt;li&gt;I have only ever done, and only ever will do, things defined as right by the
+government.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By stating that you &amp;quot;have nothing to hide&amp;quot;, you are admitting your behaviour is
+constrained by the someone else's arbitrary definition of &amp;quot;wrong.&amp;quot; Maybe you're
+fine with that, but ask yourself two questions:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Do you really know what's defined as &amp;quot;wrong&amp;quot;?&lt;/li&gt;
+&lt;li&gt;Could the meaning of &amp;quot;wrong&amp;quot; ever change?&lt;/li&gt;
+&lt;/ol&gt;
+</summary><category term="surveillance"></category></entry><entry><title>Switching to Pelican</title><link href="/blog/switching-to-pelican.html" rel="alternate"></link><updated>2014-06-10T09:56:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-06-10:switching-to-pelican.html</id><summary type="html">&lt;p&gt;This blog used to be a Ruby on Rails app that I wrote myself. It was way too
 time consuming to keep updating Ruby and Ruby on Rails (for security patches),
 so I gave up. This blog is now just static &lt;tt class="docutils literal"&gt;.html&lt;/tt&gt; files generated from
 &lt;tt class="docutils literal"&gt;.rst&lt;/tt&gt; files with &lt;a class="reference external" href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;
