@@ -116,9 +116,7 @@ Where &lt;optional arguments&gt; can be:
 
 <h3>How to Install on Linux</h3>
 <ol>
-	<li>Download passgen.cpp.</li>
-	<li>Make sure you have g++ installed (apt-get install g++).</li>
-	<li>Run: g++ passgen.cpp -o passgen</li>
-	<li>The previous step created an executable file named 'passgen', move it into /usr/bin/ (You will probably need to be root to do this.)</li>
-	<li>You should now be able to run the 'passgen' command to access the password generator.</li>
+    <li>Clone the Git repository.</li>
+    <li>Run `make`.</li>
+    <li>Run (as root): `install passgen /usr/bin/passgen`.</li>
 </ol>
