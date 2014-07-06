@@ -23,6 +23,7 @@ class Assembler
     {
         // Make sure the input is a reasonable size and safe to compile.
         if (strlen($code) < 10 * 1024 && $this->isSafeCode($code)) {
+            // FIXME: This usage of /tmp/ files is NOT secure.
             // Random (hopefully unique) temporary file names.
             $tempnam = "/tmp/" . rand();
             // WARNING: So that GCC doesn't pipe the file through CPP (processing 
@@ -128,7 +129,9 @@ class Assembler
             // from thinking segment:offset addresses are the separator between
             // the disassembly address and code (the ^s forces it not to match
             // cs:, ds:, etc. Example: JMP DWORD PTR ds:0x0
-            $res = preg_match('/([a-fA-F0-9]{2}(\s+|$))+(?!.*[^s]:)/', $line, $matches);
+            // The \d is in there too so that it doesn't match things like:
+            // jmp 0xf000:0xe05b
+            $res = preg_match('/([a-fA-F0-9]{2}(\s+|$))+(?!.*[^s\d]:)/', $line, $matches);
             // Ignore the line if it doesn't have the expected run of hex digits.
             if ($res == 0 || $res == false)
                 continue;
