@@ -26,8 +26,8 @@ own first. Here it is:
 input, computes HMAC-SHA256(K, B1) and HMAC-SHA256(K, B2), for some secret key
 K, and returns the length of the common prefix of the two HMACs (the number of
 bits that are the same up until the first difference). Can the attacker find
-a pair of inputs A and B that make the HMACs collide in significantly less than
-2<sup>256</sup> queries?
+a pair of distinct inputs A and B that make the HMACs collide in significantly
+less than 2<sup>256</sup> queries?
 </i>
 </p>
 
