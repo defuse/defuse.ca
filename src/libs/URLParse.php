@@ -402,6 +402,12 @@ class URLParse
                 P_METD => "PHP functions for defending secrets against the BREACH attack.",
                 P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
             ),
+            "blind-birthday-attack" => array(
+                P_FILE => "research/blind-birthday-attack.php",
+                P_TITL => "Blind Birthday Attack",
+                P_METD => "Birthday attack without seeing the values.",
+                P_METK => "birthday attack, blind, double hmac, cryptography",
+            ),
             "side-channels-in-encoding-functions" => array(
                 P_FILE => "research/side-channels-in-encoding-functions.php",
                 P_TITL => "Side Channel Attacks in Hex and Base64 Encoding",
