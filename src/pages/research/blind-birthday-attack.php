@@ -23,11 +23,12 @@ own first. Here it is:
 <p>
 <strong>Blind Birthday Attack Problem:</strong>
 <i>An attacker can query an oracle which takes two bit strings B1 and B2 as
-input, computes HMAC-SHA256(K, B1) and HMAC-SHA256(K, B2), for some secret key
-K, and returns the length of the common prefix of the two HMACs (the number of
-bits that are the same up until the first difference). Can the attacker find
-a pair of distinct bit strings B1 and B2 such that HMAC-SHA256(K, B1) is equal
-to HMAC-SHA256(K, B2) in significantly less than 2<sup>256</sup> queries?
+input, computes HMAC-SHA256(K, B1) and HMAC-SHA256(K, B2), for some secret
+256-bit key K, and returns the length of the common prefix of the two HMACs (the
+number of bits that are the same up until the first difference). Can the
+attacker find a pair of distinct bit strings B1 and B2 such that HMAC-SHA256(K,
+B1) is equal to HMAC-SHA256(K, B2) in significantly less than 2<sup>256</sup>
+queries?
 </i>
 </p>
 
