@@ -235,6 +235,7 @@ header('Content-Type: text/html; charset=utf-8');
             </li>
             <li><a href="#"><span class="drop"><span>Crypto</span>&raquo;</span><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                 <ul>
+                    <li><a href="/blind-birthday-attack.htm">&nbsp;Blind Birthday Attack</a></li>
                     <li><a href="/manual-random-number-generator.htm">&nbsp;Paper Coin TRNG</a></li>
                     <li><a href="/cbcmodeiv.htm">&nbsp;CBC Mode IV Security</a></li>
                     <li><a href="/eotp.htm">&nbsp;EOTP</a></li>
