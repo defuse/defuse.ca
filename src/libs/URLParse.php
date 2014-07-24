@@ -402,6 +402,12 @@ class URLParse
                 P_METD => "PHP functions for defending secrets against the BREACH attack.",
                 P_METK => "BREACH, BREACH attack, compression side-channel, php source code",
             ),
+            "triangle-of-secure-code-delivery" => array(
+                P_FILE => "research/triangle-of-secure-code-delivery.php",
+                P_TITL => "Triangle of Secure Code Delivery",
+                P_METD => "What's necessary and sufficient for delivering code securely?",
+                P_METK => "code delivery, triangle, reproducible build, signing",
+            ),
             "blind-birthday-attack" => array(
                 P_FILE => "research/blind-birthday-attack.php",
                 P_TITL => "Blind Birthday Attack",
