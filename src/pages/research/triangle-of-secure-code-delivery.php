@@ -69,8 +69,9 @@ if the software's developers turn malicious or are successfully attacked.
 <p>
 <i>
 Users of the software should be able to check that the package they received is
-identical to the one that all other user received. These packages should be
-available permanently in a public record.
+identical to the one that all other user received in a peer-to-peer (or
+otherwise decentralized) fashion. These packages should be available permanently
+in a public record.
 </i>
 </p>
 
