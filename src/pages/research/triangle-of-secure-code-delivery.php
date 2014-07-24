@@ -160,11 +160,12 @@ With these three properties in mind, can we build a secure code delivery system?
 <p>
 Cryptographic signatures are already available for most popular software.  The
 <a href="http://gitian.org/">Gitian</a> project is making progress on
-Reproducible Builds and supports a limited kind of Consistency Verification.
-The Bitcoin cryptocurrency, being a decentralized append-only record, is
-evidence that full-scale Consistency Verification is possible, but can we make
-something reliable and easy to use for software? Perhaps it could work the way
-<a href="http://perspectives-project.org/">Perspectives</a> or <a
+Reproducible Builds and supports a limited kind of Userbase Consistency
+Verification. The Bitcoin cryptocurrency, being a decentralized append-only
+record, is evidence that full-scale Userbase Consistency Verification is
+possible, but can we make something reliable and easy to use for software?
+Perhaps it could work the way <a
+href="http://perspectives-project.org/">Perspectives</a> or <a
 href="http://convergence.io/">Convergence</a> do for the SSL Certificate
 Authority system.
 </p>
