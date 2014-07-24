@@ -150,7 +150,7 @@ in order to know who is authorized to release the next version of the software.
     </li>
 </ul>
 
-<h2>Conclusion</h2>
+<h2>The Future</h2>
 
 <p>
 With these three properties in mind, can we build a secure code delivery system?
