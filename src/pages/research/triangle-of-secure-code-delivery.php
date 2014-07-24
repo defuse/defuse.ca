@@ -1,3 +1,15 @@
+<?php
+    Upvote::render_arrows(
+        "trianglesecurecodedelivery",
+        "defuse_pages",
+        "Triangle of Secure Code Delivery",
+        "Three properties necessary and sufficient for delivering code safely.",
+        "https://defuse.ca/triangle-of-secure-code-delivery.htm"
+    );
+?>
+<div class="pagedate">
+July 24, 2014
+</div>
 <h1>Triangle of Secure Code Delivery</h1>
 
 <p>
