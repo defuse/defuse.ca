@@ -65,7 +65,7 @@ if the software's developers turn malicious or are successfully attacked.
     </li>
 
     <li>
-        <strong>Consistency Verification:</strong>
+        <strong>Userbase Consistency Verification:</strong>
 <p>
 <i>
 Users of the software should be able to check that the package they received is
@@ -97,7 +97,7 @@ cryptographically signed by the upstream software source (i.e. the developers).
 This serves to establish an anchor of trust to a person or organization
 responsible for maintaining the software. Without this property, a window of
 vulnerability exists before the software gets distributed widely enough for the
-Consistency Verification to be effective.
+Userbase Consistency Verification to be effective.
 </p>
 
     </li>
@@ -130,12 +130,12 @@ to the previous version.
 </p>
     </li>
     <li>
-        <strong>Without Consistency Verification:</strong>
+        <strong>Without Userbase Consistency Verification:</strong>
 <p>
-Without Consistency Verification, localized targeted attacks are much easier.
-This is especially true when the software developers themselves are malicious
-(or controlled by the NSA), and they want to serve backdoored copies to some
-users, but clean copies to most users.
+Without Userbase Consistency Verification, localized targeted attacks are much
+easier. This is especially true when the software developers themselves are
+malicious (or controlled by the NSA), and they want to serve backdoored copies
+to some users, but clean copies to most users.
 </p>
     </li>
     <li>
@@ -143,9 +143,10 @@ users, but clean copies to most users.
 <p>
 Without this property, there's a window of opportunity for an attack to happen
 between the time when a new version of the software is released and when it
-becomes widely publicized and the Consistency Verification becomes effective.
-Any Consistency Verification system would probably depend on signatures simply
-in order to know who is authorized to release the next version of the software.
+becomes widely publicized and the Userbase Consistency Verification becomes
+effective. Any Userbase Consistency Verification system would probably depend
+on signatures simply in order to know who is authorized to release the next
+version of the software.
 </p>
     </li>
 </ul>
