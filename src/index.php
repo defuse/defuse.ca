@@ -158,6 +158,7 @@ header('Content-Type: text/html; charset=utf-8');
         <ul class="leftbutton">
             <li><a href="/resume.htm">&nbsp;My R&eacute;sum&eacute;</a></li>
             <li><a href="/contact.htm">&nbsp;Contact</a></li>
+            <li><a href="/security-contact-vulnerability-disclosure.htm">&nbsp;Vulnerability Disclosure</a></li>
             <li><a href="https://defuse.ca/blog/" >&nbsp;Blog</a></li>
             <li><a href="https://twitter.com/#!/defusesec" >&nbsp;Twitter</a></li>
             <li><a href="https://github.com/defuse" >&nbsp;GitHub</a></li>

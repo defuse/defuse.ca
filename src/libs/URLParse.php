@@ -165,6 +165,12 @@ class URLParse
                 P_METD => "Small jobs that you can do.",
                 P_METK => "small jobs"
             ),
+            "security-contact-vulnerability-disclosure" => array(
+                P_FILE => "security-contact-vulnerability-disclosure.php",
+                P_TITL => "Security Contact and Vulnerability Disclosure",
+                P_METD => "How to disclose vulnerabilities in Defuse Security services",
+                P_METK => "full disclosure, security contact, vulnerabilities"
+            ),
             "pocorgtfo" => array(
                 P_FILE => "misc/pocorgtfo.php",
                 P_TITL => "PoC || GTFO Mirror",
