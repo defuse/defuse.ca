@@ -21,6 +21,8 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li>Selected Chapters from Anton: Elementary Linear Algebra, 8th Edition (Custom print for University of Calgary)</li>
+    <li><b>Harry Potter and the Deathly Hallows (J. K. Rowling)</b></li>
     <li><b>No Place to Hide (Glenn Greenwald)</b></li>
     <li><b>Feynman's Tips On Physics (Richard Feynman, Michael A. Gottleib, Ralph Leighton)</b></li>
     <li>The Art of War (Sun Tzu)</li>
