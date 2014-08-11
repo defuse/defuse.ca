@@ -12,7 +12,7 @@
 <p>
 This is an incomplete list of things that I have read. It includes only books
 and academic papers. Ordering within the year sections is not meaningful. My
-favourite books and papers are in bold.  I apologize for not listing all of the
+favourite books and papers are in bold. I apologize for not listing all of the
 authors' names out of laziness; I'll get around to adding them sometime. A web
 search of the title is usually enough to find the book or paper.
 </p>
@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li>Distributed Systems for Fun and Profit (Mikito Takada)</li>
     <li>Selected Chapters from Anton: Elementary Linear Algebra, 8th Edition (Custom print for University of Calgary)</li>
     <li><b>Harry Potter and the Deathly Hallows (J. K. Rowling)</b></li>
     <li><b>No Place to Hide (Glenn Greenwald)</b></li>
