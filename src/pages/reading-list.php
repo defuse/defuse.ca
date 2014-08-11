@@ -122,6 +122,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Computational Solution to Quantum Foundational Problems (Arkady Bolotin)</li>
     <li>Random-Sample Elections (David Chaum)</li>
     <li><b>Tezos: A Self-Amending Crypto-Ledger Position Paper (L. M. Goodman)</b></li>
     <li>(DRAFT) Avoiding a War on Unauthorized Computation: Why Exploit Regulation is the Biggest Danger to Coder Freedom and Future Security (Sergey Bratus, Anna Shubina)</li>
