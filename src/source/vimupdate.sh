@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script for pulling Havoc's vim config from http://defuse.ca/vimrc.htm
+# Script for pulling Taylor's vim config from https://defuse.ca/vimrc.htm
 # This will destroy the current user's vim configuration (~/.vim, ~/.vimrc)
 # and replace it with Havoc's.
 
@@ -9,10 +9,10 @@
 TMPID="$RANDOM$(whoami)"
 
 # Grab the vimrc
-wget -O ~/.vimrc http://defuse.ca/source/vimrc
+wget -O ~/.vimrc https://defuse.ca/source/vimrc
 
 # Grab the .vim folder, extract it in /tmp, then move to ~
-wget -O /tmp/vimupdate_$TMPID.zip http://defuse.ca/source/vim.zip
+wget -O /tmp/vimupdate_$TMPID.zip https://defuse.ca/source/vim.zip
 unzip -o /tmp/vimupdate_$TMPID.zip -d /tmp/vimupdate_$TMPID
 rm -rf ~/.vim/*
 mv /tmp/vimupdate_$TMPID/* ~/.vim/
