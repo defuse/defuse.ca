@@ -93,7 +93,7 @@ search of the title is usually enough to find the book or paper.
    <li><b>Little Brother (Cory Doctorow)</b></li>
    <li>Nineteen Eighty Four (George Orwell)</li>
    <li>Quantum Computing (Reiffel, Polak) (no i don't understand this at all)</li>
-   <li>Clean Code: A Handbook of Agile Software Craftsmanship (Robert C.  Martin)</li>
+   <li>Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)</li>
    <li>Structured Computer Organization (Andrew S. Tanenbaum)</li>
    <li>Agile Web Development With Rails (Sam Ruby, Dave Thomas, David Hansson)</li>
    <li>Assembly Language for x86 Processors (Kip Irvine)</li>
@@ -122,6 +122,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Catching Bandits and Only Bandits: Privacy-Preserving Intersection Warrants for Lawful Surveillance (Aaron Segal et al.)</li>
     <li>Computational Solution to Quantum Foundational Problems (Arkady Bolotin)</li>
     <li>Random-Sample Elections (David Chaum)</li>
     <li><b>Tezos: A Self-Amending Crypto-Ledger Position Paper (L. M. Goodman)</b></li>
