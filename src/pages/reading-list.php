@@ -122,6 +122,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>What the Tortoise Said to Achilles (Lewis Carroll)</li>
     <li><a href="http://www.4p8.com/eric.brasseur/gamma.html">Gamma error in
 picture scaling (Eric Brasseur)</a></li>
     <li>Catching Bandits and Only Bandits: Privacy-Preserving Intersection Warrants for Lawful Surveillance (Aaron Segal et al.)</li>
