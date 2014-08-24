@@ -239,6 +239,7 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li><b>Mr. X by Carl Sagan</b></li>
     <li>2600 Winter 2013-2014</li>
     <li>National Geographic February 2014</li>
     <li>JSOU Report 12-3: Understanding the Form, Function, and Logic of Clandestine Insurgent and Terrorist Networks: The First Step in Effective Counternetwork Operations, Chapter 3</li>
