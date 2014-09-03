@@ -122,6 +122,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Allen Dulles's 73 Rules of Spycraft (James Srodes)</li>
     <li>What the Tortoise Said to Achilles (Lewis Carroll)</li>
     <li><a href="http://www.4p8.com/eric.brasseur/gamma.html">Gamma error in
 picture scaling (Eric Brasseur)</a></li>
