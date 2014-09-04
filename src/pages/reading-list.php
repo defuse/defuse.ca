@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li>The Man Who Knew Too Much: Alan Turing and The Invention of the Computer (David Leavitt)</li>
     <li>Distributed Systems for Fun and Profit (Mikito Takada)</li>
     <li>Selected Chapters from Anton: Elementary Linear Algebra, 8th Edition (Custom print for University of Calgary)</li>
     <li><b>Harry Potter and the Deathly Hallows (J. K. Rowling)</b></li>
