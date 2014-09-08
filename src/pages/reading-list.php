@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li><b>The Dragons of Eden: Speculations on the Evolution of Human Intelligence (Carl Sagan)</b></li>
     <li>The Man Who Knew Too Much: Alan Turing and The Invention of the Computer (David Leavitt)</li>
     <li>Distributed Systems for Fun and Profit (Mikito Takada)</li>
     <li>Selected Chapters from Anton: Elementary Linear Algebra, 8th Edition (Custom print for University of Calgary)</li>
