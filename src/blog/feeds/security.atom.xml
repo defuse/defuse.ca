@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/security.atom.xml" rel="self"></link><id>/blog/</id><updated>2014-06-28T00:00:00-06:00</updated><entry><title>"I have nothing to hide."</title><link href="/blog/i-have-nothing-to-hide.html" rel="alternate"></link><updated>2014-06-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-06-28:i-have-nothing-to-hide.html</id><summary type="html">&lt;ul class="simple"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Code Files</title><link href="/blog/" rel="alternate"></link><link href="/blog/feeds/security.atom.xml" rel="self"></link><id>/blog/</id><updated>2014-09-12T00:00:00-06:00</updated><entry><title>Full Disclosure vs. Coordinated Disclosure</title><link href="/blog/full-disclosure-vs-coordinated-disclosure.html" rel="alternate"></link><updated>2014-09-12T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-09-12:full-disclosure-vs-coordinated-disclosure.html</id><summary type="html">&lt;p&gt;With the exception of the AntiSec movement, most researchers agree that
+vulnerabilities and exploits should be published &lt;em&gt;eventually&lt;/em&gt; so that we can
+learn from them. But &lt;em&gt;when&lt;/em&gt; should we publish them?&lt;/p&gt;
+&lt;p&gt;Those who practice &amp;quot;Coordinated Disclosure&amp;quot; notify vendors of vulnerabilities
+privately, giving them time to patch their software and send out an update. They
+argue that keeping the vulnerability secret from the public makes it less likely
+that the users running the vulnerable software will be exploited before a patch
+is released.&lt;/p&gt;
+&lt;p&gt;Proponents of &amp;quot;Full Disclosure&amp;quot; argue that vulnerabilities (and even exploits)
+should be published as widely as possible as soon as they are found. One reason
+is that giving advance notice to any set of people is a risk. People who know
+about the vulnerability can exploit it while users are still in the dark. When
+vulnerabilities are disclosed immediately, users can at least make the concious
+decision to stop using the software until a patch is released. In economic
+terms, users who don't know about a vulnerability can't user their wallets
+pressure the vendor into developing a patch, and as a result vendors might leave
+users vulnerable while they procrastinate the development of a patch.&lt;/p&gt;
+&lt;p&gt;There are many more arguments and counter-arguments on both sides. It's not
+always clear which practice is best. It usually depends on the specific case.
+But in all cases, the right option is the one that &lt;em&gt;reduces the actual count of
+malicious exploitation&lt;/em&gt;. This is something that could be tested empirically for
+different classes of vulnerability.&lt;/p&gt;
+</summary><category term="disclosure"></category></entry><entry><title>"I have nothing to hide."</title><link href="/blog/i-have-nothing-to-hide.html" rel="alternate"></link><updated>2014-06-28T00:00:00-06:00</updated><author><name>Taylor Hornby</name></author><id>tag:/blog,2014-06-28:i-have-nothing-to-hide.html</id><summary type="html">&lt;ul class="simple"&gt;
 &lt;li&gt;I have nothing to hide.&lt;/li&gt;
 &lt;li&gt;I have not, nor will I ever, do anything wrong.&lt;/li&gt;
 &lt;li&gt;I have not, nor will I ever, do anything wrong, as defined by the government.&lt;/li&gt;
