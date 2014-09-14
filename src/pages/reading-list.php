@@ -124,6 +124,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>A Geometric Review of Linear Algebra (Eero Simoncelli)</li>
     <li>Beyond Heuristics: Learning to Classify Vulnerabilities and Predict Exploits (Mehran Bozorgi et al.)</li>
     <li><b>We Need Assurance! (Brian Snow)</b></li>
     <li>Allen Dulles's 73 Rules of Spycraft (James Srodes)</li>
