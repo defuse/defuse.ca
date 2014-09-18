@@ -124,6 +124,8 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Protection (Lampson et al.)</li>
+    <li>Pretending that Systems Are Secure (S. W. Smith)</li>
     <li>A Geometric Review of Linear Algebra (Eero Simoncelli)</li>
     <li>Beyond Heuristics: Learning to Classify Vulnerabilities and Predict Exploits (Mehran Bozorgi et al.)</li>
     <li><b>We Need Assurance! (Brian Snow)</b></li>
