@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li>Conciousness Explained (Daniel C. Dennett)</li>
     <li><b>The Pleasure of Finding Things Out: The Best Short Works of Richard P. Feynman (Richard Feynman)</b></li>
     <li><b>The Dragons of Eden: Speculations on the Evolution of Human Intelligence (Carl Sagan)</b></li>
     <li>The Man Who Knew Too Much: Alan Turing and The Invention of the Computer (David Leavitt)</li>
