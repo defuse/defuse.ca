@@ -126,6 +126,8 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Protection in an Information Processing Utility (Robert M. Graham)</li>
+    <li>Protection in Operating Systems (Harrison et al.)</li>
     <li>Protection (Lampson et al.)</li>
     <li>Pretending that Systems Are Secure (S. W. Smith)</li>
     <li>A Geometric Review of Linear Algebra (Eero Simoncelli)</li>
