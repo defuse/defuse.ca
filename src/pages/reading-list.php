@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li><b>The History of Science (Audiobook) (Peter Whitfield)</b></li>
     <li><b>You've Got Some Explaining To Do (Jane Nevins)</b></li>
     <li>Conciousness Explained (Daniel C. Dennett)</li>
     <li><b>The Pleasure of Finding Things Out: The Best Short Works of Richard P. Feynman (Richard Feynman)</b></li>
