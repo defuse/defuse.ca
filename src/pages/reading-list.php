@@ -128,6 +128,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>A Quick Guide to Organizing Computational Biology Projects (William Stafford Noble)</li>
     <li>The Search for MH370 (Chris Ashton et al.)</li>
     <li><b>Exploit Programming: From Buffer Overflows to &quot;Weird Machines&quot; and Theory of Computation (Sergey Bratus et al.)</b></li>
     <li><b>Some thoughts on security after ten years of qmail 1.0 (Daniel J. Bernstein)</b></li>
