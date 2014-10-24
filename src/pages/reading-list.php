@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li><b>Waking Up (Sam Harris)</b></li>
     <li><b>The History of Science (Audiobook) (Peter Whitfield)</b></li>
     <li><b>You've Got Some Explaining To Do (Jane Nevins)</b></li>
     <li>Conciousness Explained (Daniel C. Dennett)</li>
@@ -128,6 +129,8 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>The Web Never Forgets: Persistent Tracking Mechanisms in the Wild (Gunes Acar et al.)</li>
+    <li>Defeat Spyware with Anti-Screen Capture Technology Using Visual Persistence (Johnny Lim)</li>
     <li>A Quick Guide to Organizing Computational Biology Projects (William Stafford Noble)</li>
     <li>The Search for MH370 (Chris Ashton et al.)</li>
     <li><b>Exploit Programming: From Buffer Overflows to &quot;Weird Machines&quot; and Theory of Computation (Sergey Bratus et al.)</b></li>
