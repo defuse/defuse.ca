@@ -129,6 +129,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>The Misfortunes of a Trio of Mathematicians Using Computer Algebra Systems. Can We Trust in Them? (Antonio J. Dur&aacute;n et al.)</li>
     <li>The Web Never Forgets: Persistent Tracking Mechanisms in the Wild (Gunes Acar et al.)</li>
     <li>Defeat Spyware with Anti-Screen Capture Technology Using Visual Persistence (Johnny Lim)</li>
     <li>A Quick Guide to Organizing Computational Biology Projects (William Stafford Noble)</li>
