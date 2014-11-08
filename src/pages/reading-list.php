@@ -129,6 +129,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Why does cryptographic software fail? A case study and open problems (David Lazar et al.)</li>
     <li>Control Flow Integrity for COTS Binaries (Mingwei Zhang and R. Sekar)</li>
     <li>The Misfortunes of a Trio of Mathematicians Using Computer Algebra Systems. Can We Trust in Them? (Antonio J. Dur&aacute;n et al.)</li>
     <li>The Web Never Forgets: Persistent Tracking Mechanisms in the Wild (Gunes Acar et al.)</li>
