@@ -21,7 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
-    <li>Out Of Their Minds: The Lives and Discoveries of 15 Great Computer Scientists (Dennis Shasha, Cathy Lazere)</li>
+    <li>Out Of Their Minds (Dennis Shasha, Cathy Lazere)</li>
     <li><b>Waking Up (Sam Harris)</b></li>
     <li><b>The History of Science (Audiobook) (Peter Whitfield)</b></li>
     <li><b>You've Got Some Explaining To Do (Jane Nevins)</b></li>
@@ -130,6 +130,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>A Pixel Is Not A Little Square (Alvy Ray Smith)</li>
     <li>Security Applications of Formal Language Theory (Len Sassaman et al.)</li>
     <li>The Halting Problem of Network Stack Insecurity (Len Sassaman et al.)</li>
     <li>Why does cryptographic software fail? A case study and open problems (David Lazar et al.)</li>
