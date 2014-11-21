@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li>Music Theory for Dummies (Michael Pilhofer, Holly Day)</li>
     <li>Out Of Their Minds (Dennis Shasha, Cathy Lazere)</li>
     <li><b>Waking Up (Sam Harris)</b></li>
     <li><b>The History of Science (Audiobook) (Peter Whitfield)</b></li>
