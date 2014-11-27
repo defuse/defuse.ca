@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li><b>Alice's Adventures in Wonderland (Lewis Carrol)</b></li>
     <li>Music Theory for Dummies (Michael Pilhofer, Holly Day)</li>
     <li>Out Of Their Minds (Dennis Shasha, Cathy Lazere)</li>
     <li><b>Waking Up (Sam Harris)</b></li>
