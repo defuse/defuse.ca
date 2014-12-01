@@ -269,6 +269,13 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li>
+        <b>
+            <a href="http://www.orwell.ru/library/essays/politics/english/e_polit">
+                Politics and the English Language (George Orwell)
+            </a>
+        </b>
+    </li>
     <li><b>Don't Call Yourself A Programmer, And Other Career Advice</b></li>
     <li><b>Mr. X by Carl Sagan</b></li>
     <li>2600 Winter 2013-2014</li>
