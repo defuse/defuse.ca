@@ -21,6 +21,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2014</h2>
 
 <ul>
+    <li>Linear Algebra With Applications (Nicholson)</li>
     <li><b>Calculus (Spivak)</b></li>
     <li>Natural Disasters, 2nd Canadian Edition (Abbott, Samson)</li>
     <li><b>Alice's Adventures in Wonderland (Lewis Carrol)</b></li>
