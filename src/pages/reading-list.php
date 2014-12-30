@@ -138,6 +138,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2014</h3>
 
 <ul>
+    <li>Side-channel Vulnerability FActor: A Metric for Measuring Information Leakage (John Demme et al.)</li>
     <li>Acoustic Side-Channel Attacks on Printers (Michael Backes et al.)</li>
     <li><b>What is Teaching? (Paul R. Halmos)</b></li>
     <li>Beware of BGP Attacks (Ola Nordstr&ouml;m and Constantinos Dovrolis)</li>
