@@ -153,6 +153,18 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "advice-to-aspiring-computer-engineers" => array(
+                P_FILE => "misc/advice-to-aspiring-computer-engineers.php",
+                P_TITL => "Advice to Aspiring Computer Engineers",
+                P_METD => "Advice for new computer science students.",
+                P_METK => "advice, computer science"
+            ),
+            "new-york-times-algebra" => array(
+                P_FILE => "misc/new-york-times-algebra.php",
+                P_TITL => "Does the New York Times Fail at Algebra? (No.)",
+                P_METD => "The New York Times does not (necessarily) fail at algebra.",
+                P_METK => "new york times, the interview, algebra, sales"
+            ),
             "centripetal-acceleration" => array(
                 P_FILE => "misc/centripetal-acceleration.php",
                 P_TITL => "Centripetal Acceleration",
