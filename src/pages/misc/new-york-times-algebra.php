@@ -1,10 +1,22 @@
+<?php
+    Upvote::render_arrows(
+        "newyorktimesalgebra",
+        "defuse_pages",
+        "The New York Times and Algebra",
+        "The New York Times does not (necessarily) fail at algebra.",
+        "https://defuse.ca/new-york-times-algebra.htm"
+    );
+?>
+<div class="pagedate">
+January 4, 2015
+</div>
 <h1>The New York Times and Algebra</h1>
 
 <p>
-The New York Times recently put out a story about The Interview generating $15
-million in online sales. In the story, they mention the movie generated "$15
-million in online sales" from "about two million transactions" composing "$6
-digital rentals" and "$15 sales."
+The New York Times recently put out a article titled "The Interview Brings In
+$15 Million on Web". In the story, they mention the movie generated "$15 million
+in online sales" from "about two million transactions" composing "$6 digital
+rentals" and "$15 sales."
 </p>
 
 <p>
