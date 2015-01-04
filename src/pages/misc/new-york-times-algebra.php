@@ -13,9 +13,9 @@ January 4, 2015
 <h1>The New York Times and Algebra</h1>
 
 <p>
-The New York Times recently put out a article titled "The Interview Brings In
+The New York Times recently put out an article titled "The Interview Brings In
 $15 Million on Web". In the story, they mention the movie generated "$15 million
-in online sales" from "about two million transactions" composing "$6 digital
+in online sales" from "about two million transactions" composed of "$6 digital
 rentals" and "$15 sales."
 </p>
 
