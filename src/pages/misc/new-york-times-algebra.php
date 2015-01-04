@@ -101,7 +101,7 @@ of magnitude of uncertainty.
 <p>
 Of course, Universe 1 and Universe 2 aren't the only possible universes, but
 that doesn't matter to the point we're making, since having more universes only
-makes the New York Times' job harder.
+adds to the uncertainty and makes the New York Times' job harder.
 </p>
 
 <p>
