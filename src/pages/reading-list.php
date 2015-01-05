@@ -17,6 +17,11 @@ authors' names out of laziness; I'll get around to adding them sometime. A web
 search of the title is usually enough to find the book or paper.
 </p>
 
+<h2>2015</h2>
+
+<ul>
+    <li>Nothing yet.</li>
+</ul>
 
 <h2>2014</h2>
 
@@ -135,10 +140,16 @@ search of the title is usually enough to find the book or paper.
 <a name="papers"></a>
 <h2>Papers</h2>
 
+<h3>2015</h3>
+
+<ul>
+    <li>Cache Games &ndash; Brining Access-Based Cache Attacks on AES to Practice (Endre Bangerter, David Gullasch, Stephan Krenn)</li>
+</ul>
+
 <h3>2014</h3>
 
 <ul>
-    <li>Side-channel Vulnerability FActor: A Metric for Measuring Information Leakage (John Demme et al.)</li>
+    <li>Side-channel Vulnerability Factor: A Metric for Measuring Information Leakage (John Demme et al.)</li>
     <li>Acoustic Side-Channel Attacks on Printers (Michael Backes et al.)</li>
     <li><b>What is Teaching? (Paul R. Halmos)</b></li>
     <li>Beware of BGP Attacks (Ola Nordstr&ouml;m and Constantinos Dovrolis)</li>
@@ -279,6 +290,7 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li>How To Benchmark Code Execution Times on Intel IA-32 and IA-64 Instruction Set Architectures (Gabriele Paoloni)</li>
     <li>
         <b>
             <a href="http://www.orwell.ru/library/essays/politics/english/e_polit">
