@@ -143,6 +143,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>Information Security: Science, Pseudoscience, and Flying Pigs (Roger Schell)</li>
     <li>Heads-up limit hold'em poker is solved (Michael Bowling et al.)</li>
     <li>Cache Games &ndash; Brining Access-Based Cache Attacks on AES to Practice (Endre Bangerter, David Gullasch, Stephan Krenn)</li>
 </ul>
