@@ -155,7 +155,7 @@ class URLParse
             ),
             "advice-to-aspiring-computer-engineers" => array(
                 P_FILE => "misc/advice-to-aspiring-computer-engineers.php",
-                P_TITL => "Advice to Aspiring Computer Engineers",
+                P_TITL => "Advice to Aspiring Computer Engineers and Scientists",
                 P_METD => "Advice for new computer science students.",
                 P_METK => "advice, computer science"
             ),
