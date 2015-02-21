@@ -66,6 +66,15 @@ cosmos is there. <em>When you are in that boring business meeting or stressing
 over some homework, all of that is still there waiting, begging, demanding to be
 explored.</em>
 </p>
+
+<p>
+Don't let that discourage you from studying computer science. All branches of
+science now make use of computers and rely on the Internet to share research.
+Science communicators and popularizers depend on the Internet to reach their
+audience. If you have great computer skills, then odds are you will be able to
+make a contribution to any field you like.
+</p>
+
 </li>
 
 <li>
