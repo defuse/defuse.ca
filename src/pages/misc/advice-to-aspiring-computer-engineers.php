@@ -304,12 +304,12 @@ how your tools work.
 <h3>Use Linux or Unix as your main operating system</h3>
 <p>
 Windows and Mac are <em>consumer</em> operating systems, meaning they hide as
-many details of what's going on as possible. If you want to learn about
-computers, using a consumer operating system is not a good idea. Make the switch
-to Linux or Unix, or at the very least get comfortable with one of them in
-a virtual machine. It's not easy to switch, but you can do it. Honestly, a lot
-of the things computer experts do on a daily basis are actually <em>way</em>
-easier on Linux. Don't give up!
+many details of what's going on as possible. Consumer operating systems are not
+bad things, but if you to learn about computers and the Internet, they are the
+wrong tool for the job. Make the switch to Linux or Unix, or at the very least
+get comfortable with one of them in a virtual machine. It's not easy to switch,
+but you can do it. Honestly, a lot of the things computer experts do on a daily
+basis are actually <em>way</em> easier on Linux. Don't give up!
 </p>
 </li>
 
