@@ -144,6 +144,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>An Experience Report on Extracting and Viewing Memory Events via Wireshark (Sarah Laing et al.)</li>
     <li>Legal Issues Surrounding Monitoring During Network Research (Paul Ohm, Douglas Sicker, and Dirk Gurnwald)</li>
     <li>Man vs. Machine: Practical Adversarial Detection of Malicious Crowdsourcing Workers (Gang Wang et al.)</li>
     <li>Why Is There No Science in Cyber Science? (Roy Maxion et al.)</li>
