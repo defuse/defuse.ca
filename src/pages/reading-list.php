@@ -21,7 +21,7 @@ search of the title is usually enough to find the book or paper.
 
 <ul>
     <li><b>The Climate Crisis: An Introductory Guide to Climate Change (David Archer, Stefan Rahmstorf)</b></li>
-    <li><b>The Martian (Andy Weird)</b></li>
+    <li><b>The Martian (Andy Weir)</b></li>
 </ul>
 
 <h2>2014</h2>
