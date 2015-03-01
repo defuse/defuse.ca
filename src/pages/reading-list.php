@@ -144,6 +144,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>Everything You've Always Wanted To Know About Certificate Validation With OpenSSL (But Were Afraid To Ask) (Alban Diquet)</li>
     <li><b>Surreptitiously Weakening Cryptographic Systems (Bruce Schneier et al.)</b></li>
     <li><b>Memory Deduplication as a Threat to the Guest OS (Kuniyasu Suzaki et al.)</b></li>
     <li>An Experience Report on Extracting and Viewing Memory Events via Wireshark (Sarah Laing et al.)</li>
