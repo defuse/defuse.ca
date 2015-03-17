@@ -2,7 +2,8 @@
 
 <p>
 <b>NOTE: I am taking a heavy university course load until next May, so I won't
-be able to take on any new consulting jobs. Thanks for understanding.</b>
+be able to take on any new consulting jobs for the next few months. Thanks for
+understanding.</b>
 </p>
 
 <p>
