@@ -7,11 +7,10 @@ understanding.</b>
 </p>
 
 <p>
-I want to work with you to make sure your code is secure. I'm available 10 hours
-per week, for $50 CAD per hour, to look over your designs and code to make sure
-they are secure. To give back to the community, I'll reduce my rate to <b>$30
-per hour</b> for published free or open source software (GPL-like or BSD-like
-license).
+I want to work with you to make sure your code is secure. I'm available for $50
+CAD per hour to look over your designs and code to make sure they are secure. To
+give back to the community, I reduce my rate to <b>$30 per hour</b> for
+published free or open source software (GPL-like or BSD-like license).
 </p>
 
 <p>
@@ -36,7 +35,9 @@ Here are some examples of my work:
     <li><a href="/audits/ecryptfs.htm">eCryptfs</a></li>
     <li><a href="/audits/pefs.htm">PEFS</a></li>
     <li><a href="/audits/zerobin.htm">ZeroBin</a></li>
+    <li><a href="https://blog.crypto.cat/2014/02/contest-find-bugs-win-a-sphero-2-0/">Cryptocat Bug Hunt</a></li>
     <li><a href="http://www.cryptofails.com/">Crypto Fails</a></li>
+    <li><a href="https://github.com/keboola/php-encryption/issues/3">Padding Oracle PoC</a></li>
 </ul>
 
 <p>
