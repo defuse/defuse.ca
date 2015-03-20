@@ -12,4 +12,5 @@ This mirror is only a proof of concept. It may not be up to date.
     <li><a href="/files2/poc/pocorgtfo04.pdf">Issue 0x04</a></li>
     <li><a href="/files2/poc/pocorgtfo05.pdf">Issue 0x05</a></li>
     <li><a href="/files2/poc/pocorgtfo06.pdf">Issue 0x06</a></li>
+    <li><a href="/files2/poc/pocorgtfo07.pdf">Issue 0x07</a></li>
 </ul>
