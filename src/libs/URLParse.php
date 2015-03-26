@@ -414,6 +414,12 @@ class URLParse
                 P_TITL => "Defuse Security's Contact Information",
                 P_METD => "Defuse Security's contact informaion.",
             ),
+            "how-do-we-model-this-robot" => array(
+                P_FILE => "research/how-do-we-model-this-robot.php",
+                P_TITL => "How do we model this robot?",
+                P_METD => "Modeling Computational Ability and Informational Ability.",
+                P_METK => "langsec, robot, modeling, computational, informational",
+            ),
             "mitigating-breach-tls-attack-in-php" => array(
                 P_FILE => "research/mitigating-breach-tls-attack-in-php.php",
                 P_TITL => "PHP Code for Mitigating the BREACH attack on SSL/TLS.",
