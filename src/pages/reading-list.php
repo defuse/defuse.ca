@@ -144,6 +144,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>Towards a Theory of Application Compartmentalization (Robert N.M. Watson et al.)</li>
     <li><b>Green Lights Forever: Analyzing the Security of Traffic Infrastructure (Branden Ghena et al.)</b></li>
     <li>Attacking The Linux PRNG on Android (David Kaplan et al.)</li>
     <li><b>Security Implications of Memory Deduplication in a Virtualized Environment (Jidong Xiao et al.)</b></li>
