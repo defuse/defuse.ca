@@ -420,6 +420,12 @@ class URLParse
                 P_METD => "Modeling Computational Ability and Informational Ability.",
                 P_METK => "langsec, robot, modeling, computational, informational",
             ),
+            "compromising-privacy-flush-reload" => array(
+                P_FILE => "research/compromising-privacy-flush-reload.php",
+                P_TITL => "Compromising privacy with the FLUSH+RELOAD attack",
+                P_METD => "Data and code for my paper applying FLUSH+RELOAD to break privacy.",
+                P_METK => "cache side channel, experiment data, flush, reload, privacy",
+            ),
             "mitigating-breach-tls-attack-in-php" => array(
                 P_FILE => "research/mitigating-breach-tls-attack-in-php.php",
                 P_TITL => "PHP Code for Mitigating the BREACH attack on SSL/TLS.",
