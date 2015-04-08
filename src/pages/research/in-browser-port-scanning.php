@@ -294,7 +294,7 @@ your connection, you might get blamed.
 Bundle. However it <em>does</em> work in Tails 1.3.2, and could potentially be used to
 deanonymize you. For example, if you have a printer with a web administration
 page on your local network, a website you visit could scan your network for
-printers, then profile them (e.g. by requesting known image URLs for common
+printers, then fingerprint them (e.g. by requesting known image URLs for common
 brands of printers), potentially learning the make, model, and firmware version
 of your printer.
     </li>
