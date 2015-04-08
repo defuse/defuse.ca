@@ -70,8 +70,8 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
 
     function custom_scan(form)
     {
-        var ip = form.custom_ipaddr.value();
-        var port = form.custom_port.value();
+        var ip = form.custom_ipaddr.value;
+        var port = form.custom_port.value;
         var ip_addr_re = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
 
         var match = ip_addr_re.exec(ip);
