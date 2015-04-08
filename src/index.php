@@ -449,10 +449,5 @@ header('Content-Type: text/html; charset=utf-8');
 <noscript><p><img src="http://defuse.ca/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
-<!--[if !(lt IE 8)]><!-->
-   <script type="text/javascript">
-     (function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src=document.location.protocol+"//d1agz031tafz8n.cloudfront.net/thedaywefightback.js/widget.min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})()
-   </script>
-<!--<![endif]-->
 </body>
 </html>
