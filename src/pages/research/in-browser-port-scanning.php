@@ -28,7 +28,7 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
     <p>
 
     <p>
-        <b>Note:</b> This won't work if you have the NoScript firefox extension
+        Note: This won't work if you have the NoScript firefox extension
         (see below).
     </p>
 
@@ -238,6 +238,8 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
         if (stop || current_octet >= 255) {
             res_div.innerHTML += "Done. <br />";
+            document.getElementById("lan_button").disabled = false;
+            document.getElementById("lan_button_stop").disabled = true;
             return;
         }
 
@@ -257,6 +259,8 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
         if (stop || current_octet >= 255) {
             res_div.innerHTML += "Done. <br />";
+            document.getElementById("lan_button").disabled = false;
+            document.getElementById("lan_button_stop").disabled = true;
             return;
         }
 
