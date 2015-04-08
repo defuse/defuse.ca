@@ -62,7 +62,7 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
     <div id="custom_result"></div>
 </div>
 
-<div id="testdiv"></div>
+<div id="testdiv" style="visibility: hidden"></div>
 
 <script>
     var start_time;
@@ -70,8 +70,8 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
 
     function custom_scan(form)
     {
-        var ip = form.custom_ipaddr.value.trim();
-        var port = form.custom_port.value.trim();
+        var ip = form.custom_ipaddr.value();
+        var port = form.custom_port.value();
         var ip_addr_re = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
 
         var match = ip_addr_re.exec(ip);
@@ -139,4 +139,70 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
 
 <h2>Why is this a problem?</h2>
 
+<p>
+I don't think this is a very big deal, but there are a few reasons you might not
+want it to be possible:
+</p>
+
+<ol>
+    <li>
+        If you visit an attacker's website, they can use your connection to port
+        scan another on the Internet as part of an attack. Since the scan came
+        from your connection, you might get blamed.
+    </li>
+    <li>
+        Websites you visit can get a little bit of information about what you
+        have running on your local network, which might help if they want to
+        attack you later.
+    </li>
+    <li>
+        If the layout of your local network is unique, then it can be used as
+        a kind of &quot;supercookie&quot; to help track you online. This is
+        probably impractical because scanning takes a long time.
+    </li>
+    <li>
+        This scanner works in Tails 1.3.2, and could potentially be used to
+        deanonymize you. For example, if you have a printer with a web
+        administration page on your local network, a website you visit could
+        your network for printers, then profile them (e.g. by requesting known
+        image URLs for common brands of printers), potentially learning the
+        make, model, and firmware version of your printer.
+    </li>
+</ol>
+
+<h2>Which browsers and operating systems are vulnerable?</h2>
+
+<p>
+I've tested this and found it to work on the following systems:
+</p>
+
+<ul>
+    <li>Firefox 37.0 on Arch Linux</li>
+    <li>Chromium 41.0.2272.118 on Arch Linux</li>
+</ul>
+
+<p>
+I've found that it does not work on:
+</p>
+
+<ul>
+    <li>Firefox 37.0 with NoScript on Arch Linux</li>
+</ul>
+
+<h2>How do I protect myself?</h2>
+
+<p>
+Unfortunately, I don't know of an easy way to stop a website from using your
+browser to scan the <em>Internet</em>.
+</p>
+
+<p>
+However, there is a simple way to stop a website from scanning your <em>local
+network</em>. All your browser has to do is deny requests from Internet pages to
+your local network. If you use Firefox, the NoScript extension will do this for
+you (its main feature is to disable JavaScript, but it has a lot of extra
+security features).
+</p>
+
+</ul>
 
