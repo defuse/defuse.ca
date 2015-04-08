@@ -314,6 +314,7 @@ I've tested this and found it to work on the following systems:
     <li>Google Chrome 41.0.2272.118 on Windows XP</li>
     <li>Internet Explorer 8.0.6001.18702 on Windows XP</li>
     <li>Opera 27.0.1689.66 on Windows XP</li>
+    <li>Internet Explorer 11.0.9600.17501 on Windows 7</li>
 </ul>
 
 <h2>How do I protect myself?</h2>
