@@ -242,6 +242,7 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
     function lan_on_open_or_closed()
     {
+        var res_div = document.getElementById("lan_results");
         res_div.innerHTML += "192.168.1." + current_octet + ": ";
         res_div.innerHTML += "Case 1 (" + this.total_time + " ms). <br />";
 
