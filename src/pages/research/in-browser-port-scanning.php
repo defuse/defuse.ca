@@ -1,36 +1,34 @@
-<h1>Port Scanning in the Browser</h1>
+<h1>
+Timing Side Channel &quot;Port Scanner&quot; in the Browser
+</h1>
 
-<div style="border: solid black 1px; padding: 20px;">
-    <p style="text-align: center; font-size: 16pt; margin: 0;">
-    <strong>Timing Side Channel Port Scanner in the Browser</strong>
-    </p>
+<p>
+Here is a TCP &quot;port scanner&quot; that works from inside your browser. It
+can scan your local network! It's not <em>really</em> a port scanner, because it
+can only distinguish between the following two cases:
+</p>
 
-    <p>
-        This is a TCP port scanner inside your browser! It can scan your local
-        network! Since this web page can do it, any web page you visit can do
-        it, possibly behind the scenes without you knowing about it.
-    </p>
 
-    <p>
-        Actually, there is an important limitation. It can only distinguish between
-        two cases:
-    </p>
+<ol>
+    <li>The port is open <em>or</em> the port is closed and responds right away with a TCP RST or ICMP Destination Unreachable packet.</li>
+    <li>The port is &quot;stealthed&quot; <em>or</em> the port is open and hangs when it receives an HTTP request <em>or</em> there isn't a host at that IP address at all.</li>
+</ol>
 
-    <ol>
-        <li>The port is open <em>or</em> the port is closed and responds right away with a TCP RST or ICMP packet.</li>
-        <li>The port is &quot;stealthed&quot; or there isn't a host at that IP address at all.</li>
-    </ol>
+<p>
+The scanner works by timing how long it takes your browser to give up trying to
+load a nonexistent image file. If it fails fast, it's Case 1.
+If it fails slowly, it's Case 2. The cutoff time is 1500 milliseconds, which
+seems to work well.
+<p>
 
-    <p>
-        The scanner works by timing how long it takes your browser to give up
-trying to load a nonexistent image file. If it fails fast (less than 1.5s), it's
-Case 1. If it fails slowly (more than 1.5s), it's Case 2.
-    <p>
+<p>
+    Note: This won't work if you have the NoScript Firefox extension
+    (see below). It also doesn't seem to work with every port. For example,
+Firefox seems to know not to send requests to port 22 (SSH) or 110 (POP).
+</p>
+<div style="border: solid black 5px; border-radius: 10px; background-color: #AADDFF; padding-left: 20px; padding-right: 20px;
+padding-bottom: 20px;">
 
-    <p>
-        Note: This won't work if you have the NoScript firefox extension
-        (see below).
-    </p>
 
     <p>
         <strong>Local Network Scan (Proof of Concept)</strong>
@@ -68,10 +66,6 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
 
     <div id="custom_result"></div>
 
-    <p>
-            Note: This doesn't always work with all ports. <br /> For example, Firefox
-seems to know not to send a request to port 22 (SSH) or 110 (POP).
-    </p>
 </div>
 
 <div id="testdiv" style="visibility: hidden"></div>
@@ -291,17 +285,18 @@ your connection, you might get blamed.
         attack you later.
     </li>
     <li>
-        If the layout of your local network is unique, then it can be used as
+        If you have a highly unique local network, then it can be used as
         a kind of &quot;supercookie&quot; to help track you online. This is
         probably impractical because scanning takes a long time.
     </li>
     <li>
-        This scanner works in Tails 1.3.2, and could potentially be used to
-        deanonymize you. For example, if you have a printer with a web
-        administration page on your local network, a website you visit could
-        scan your network for printers, then profile them (e.g. by requesting
-        known image URLs for common brands of printers), potentially learning
-        the make, model, and firmware version of your printer.
+        <b>Tor Users:</b> This scanner does <em>not</em> work in the Tor Browser
+Bundle. However it <em>does</em> work in Tails 1.3.2, and could potentially be used to
+deanonymize you. For example, if you have a printer with a web administration
+page on your local network, a website you visit could scan your network for
+printers, then profile them (e.g. by requesting known image URLs for common
+brands of printers), potentially learning the make, model, and firmware version
+of your printer.
     </li>
 </ol>
 
@@ -325,15 +320,15 @@ I've tested this and found it to work on the following systems:
 
 <p>
 Unfortunately, I don't know of an easy way to stop websites from using your
-browser to scan the <em>public Internet</em>, besides turning off JavaScript.
+browser to scan the <em>public Internet</em>, except for turning off JavaScript.
 </p>
 
 <p>
-However, to stop websites from scanning your <em>local network</em>, all your
-browser needs to do is deny any request from an Internet web page to a local IP
-address. If you use Firefox, the NoScript extension will do this for you.
-NoScript's main purpose is to disable JavaScript, but it has a lot of extra
-security features, and that is one of them.
+To stop websites from scanning your <em>local network</em>, all your browser
+needs to do is deny any request from an Internet web page to a local IP address.
+If you use Firefox, the NoScript extension will do this for you. NoScript's main
+purpose is to disable JavaScript, but it has a lot of extra security features,
+and that is one of them.
 </p>
 
 <p>
