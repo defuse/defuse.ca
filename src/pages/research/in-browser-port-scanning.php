@@ -28,6 +28,11 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
     <p>
 
     <p>
+        <b>Note:</b> This won't work if you have the NoScript firefox extension
+        (see below).
+    </p>
+
+    <p>
         <strong>Local Network Scan (Proof of Concept)</strong>
     </p>
 
@@ -194,6 +199,7 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
     /* This variable keeps track of which 192.168.1 IP to scan next. */
     var current_octet;
+    var stop;
     function lan_scan(form)
     {
         document.getElementById("lan_button").disabled = true;
@@ -201,6 +207,7 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
         /* Skip .1 since it might visibly prompt for a password. */
         current_octet = 2;
+        stop = false;
 
         var scanner = new PortScanner("192.168.1." + current_octet, 80);
         scanner.on_stealthed = lan_on_stealthed;
@@ -212,8 +219,7 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
     function lan_stop(form)
     {
-        /* Set it past 255 so the scan will stop after the next one. */
-        current_octet = 1000;
+        stop = true;
         document.getElementById("lan_button").disabled = false;
         document.getElementById("lan_button_stop").disabled = true;
     }
@@ -230,7 +236,8 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
         current_octet += 1;
 
-        if (current_octet >= 255) {
+        if (stop || current_octet >= 255) {
+            res_div.innerHTML += "Done. <br />";
             return;
         }
 
@@ -248,7 +255,8 @@ seems to know not to send a request to port 22 (SSH) or 110 (POP).
 
         current_octet += 1;
 
-        if (current_octet >= 255) {
+        if (stop || current_octet >= 255) {
+            res_div.innerHTML += "Done. <br />";
             return;
         }
 
