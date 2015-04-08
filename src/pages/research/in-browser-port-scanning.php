@@ -32,7 +32,8 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
     </p>
 
     <form>
-        <input type="button" value="Scan 192.168.1.* port 80" onclick="lan_scan(this.form);" />
+        <input type="button" id="lan_button" value="Scan 192.168.1.* port 80" onclick="lan_scan(this.form);" />
+        <input type="button" id="lan_button_stop" value="Stop Scan" onclick="lan_stop(this.form);" disabled="disabled"/>
     </form>
 
     <div id="lan_results" style="padding-top: 10px;"></div>
@@ -54,19 +55,99 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
             <tr>
                 <td></td>
                 <td style="text-align: right;">
-                    <input type="button" value="Scan" onclick="custom_scan(this.form);" />
+                    <input type="button" value="Scan" id="custom_button" onclick="custom_scan(this.form);" />
                 </td>
             </tr>
         </table>
     </form>
+
     <div id="custom_result"></div>
+
+    <p>
+            Note: This doesn't always work with all ports. <br /> For example, Firefox
+seems to know not to send a request to port 22 (SSH) or 110 (POP).
+    </p>
 </div>
 
 <div id="testdiv" style="visibility: hidden"></div>
 
 <script>
-    var start_time;
-    var next_octet;
+
+    /* The scanner needs these global variables for an ugly hack. */
+    var last_scanobj_index = 0;
+    var scanobjs = {};
+    function PortScanner(ip, port)
+    {
+        
+        this.ip = ip;
+        this.port = port;
+        this.on_open_or_closed = null;
+        this.on_stealthed = null;
+        this.start_time = null;
+        this.timed_out = null;
+        this.total_time = null;
+
+        this.run = function () {
+            /* Check that the client gave us all the callbacks we need. */
+            if (this.on_open_or_closed == null) {
+                alert("Please set the on_open_or_closed callback!");
+            }
+            if (this.on_stealthed == null) {
+                alert("Please set the on_stealthed callback!");
+            }
+
+            /* Save this object in the global directory (UGLY HACK). */
+            var our_scanobj_index = last_scanobj_index;
+            last_scanobj_index++;
+            scanobjs[our_scanobj_index] = this;
+
+            /* Record the starting time. */
+            this.start_time = (new Date()).getTime();
+
+            /* Create the div to load the image, passing our object's index into
+                the global directory so that it can be retrieved. */
+            document.getElementById("testdiv").innerHTML = '<img src="http://' + ip + ':' + port + 
+                '" alt="" onerror="error_handler(' + our_scanobj_index + ');" />';
+
+            // XXX: What's the right way to do this in JS?
+            var thiss = this;
+            setTimeout(
+                function () {
+                    /* This will be non-null if the event hasn't fired yet. */
+                    if (scanobjs[our_scanobj_index]) {
+                        scanobjs[our_scanobj_index] = null;
+                        thiss.timed_out = true;
+                        thiss.on_stealthed();
+                    }
+                },
+                10000
+            );
+        }
+    }
+
+    function error_handler(index)
+    {
+        /* Get the PortScanner object back. */
+        var thiss = scanobjs[index];
+
+        /* If it's null, the scan timed out. */
+        if (thiss == null) {
+            return;
+        }
+        /* Set it to null so the timeout knows we handled it. */
+        scanobjs[index] = null;
+        thiss.timed_out = false;
+
+        /* Measure the amount of time it took for the load to fail. */
+        thiss.total_time = (new Date()).getTime() - thiss.start_time;
+
+        /* Call the appropriate callback. */
+        if (thiss.total_time < 1500) {
+            thiss.on_open_or_closed();
+        } else {
+            thiss.on_stealthed();
+        }
+    }
 
     function custom_scan(form)
     {
@@ -89,52 +170,93 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
             alert("Bad port number");
         }
 
-        document.getElementById("custom_result").innerHTML = "Scanning...";
+        document.getElementById("custom_button").disabled = true;
+        document.getElementById("custom_result").innerHTML = "Scanning... This will take up to 10 seconds.";
 
-        start_time = (new Date()).getTime();
-        document.getElementById("testdiv").innerHTML = '<img src="http://' + ip + ':' + port + '" alt="" onerror="custom_cont();" />';
-    }
+        var scanner = new PortScanner(ip, port);
 
-    function custom_cont()
-    {
-        var end_time = (new Date()).getTime();
-        var time = end_time - start_time;
-
-        if (time < 1500) {
-            document.getElementById("custom_result").innerHTML = "Case 1 (" + time + " ms)."
-        } else {
-            document.getElementById("custom_result").innerHTML = "Case 2 (" + time + " ms).";
+        scanner.on_stealthed = function () {
+            if (scanner.timed_out) {
+                document.getElementById("custom_result").innerHTML = "Case 2 (no response after 10s).";
+            } else {
+                document.getElementById("custom_result").innerHTML = "Case 2 (" + this.total_time + " ms).";
+            }
+            document.getElementById("custom_button").disabled = false;
         }
+
+        scanner.on_open_or_closed = function () {
+            document.getElementById("custom_result").innerHTML = "Case 1 (" + this.total_time + " ms)."
+            document.getElementById("custom_button").disabled = false;
+        }
+
+        scanner.run();
     }
 
+    /* This variable keeps track of which 192.168.1 IP to scan next. */
+    var current_octet;
     function lan_scan(form)
     {
-        next_octet = 2;
-        var ip = "192.168.1." + next_octet;
-        start_time = (new Date()).getTime();
+        document.getElementById("lan_button").disabled = true;
+        document.getElementById("lan_button_stop").disabled = false;
+
+        /* Skip .1 since it might visibly prompt for a password. */
+        current_octet = 2;
+
+        var scanner = new PortScanner("192.168.1." + current_octet, 80);
+        scanner.on_stealthed = lan_on_stealthed;
+        scanner.on_open_or_closed = lan_on_open_or_closed;
+        scanner.run();
+
         document.getElementById("lan_results").innerHTML = "Scanning... <br />";
-        document.getElementById("testdiv").innerHTML = '<img src="http://' + ip + '" alt="" onerror="lan_cont();" />';
     }
 
-    function lan_cont()
+    function lan_stop(form)
     {
-        var time = (new Date()).getTime() - start_time;
-        var res_div = document.getElementById("lan_results");
-        res_div.innerHTML += "192.168.1." + next_octet + ": ";
-        if (time < 1500) {
-            res_div.innerHTML += "Case 1";
-        } else {
-            res_div.innerHTML += "Case 2";
-        }
-        res_div.innerHTML += " (" + time + " ms) <br />";
-
-        next_octet += 1;
-        if (next_octet < 255) {
-            start_time = (new Date()).getTime();
-            var ip = "192.168.1." + next_octet;
-            document.getElementById("testdiv").innerHTML = '<img src="http://' + ip + '" alt="" onerror="lan_cont();" />';
-        }
+        /* Set it past 255 so the scan will stop after the next one. */
+        current_octet = 1000;
+        document.getElementById("lan_button").disabled = false;
+        document.getElementById("lan_button_stop").disabled = true;
     }
+
+    function lan_on_stealthed()
+    {
+        var res_div = document.getElementById("lan_results");
+        res_div.innerHTML += "192.168.1." + current_octet + ": ";
+        if (this.timed_out) {
+            res_div.innerHTML += "Case 2 (no response after 10 seconds). <br />";
+        } else {
+            res_div.innerHTML += "Case 2 (" + this.total_time + " ms). <br />";
+        }
+
+        current_octet += 1;
+
+        if (current_octet >= 255) {
+            return;
+        }
+
+        var scanner = new PortScanner("192.168.1." + current_octet, 80);
+        scanner.on_stealthed = lan_on_stealthed;
+        scanner.on_open_or_closed = lan_on_open_or_closed;
+        scanner.run();
+    }
+
+    function lan_on_open_or_closed()
+    {
+        res_div.innerHTML += "192.168.1." + current_octet + ": ";
+        res_div.innerHTML += "Case 1 (" + this.total_time + " ms). <br />";
+
+        current_octet += 1;
+
+        if (current_octet >= 255) {
+            return;
+        }
+
+        var scanner = new PortScanner("192.168.1." + current_octet, 80);
+        scanner.on_stealthed = lan_on_stealthed;
+        scanner.on_open_or_closed = lan_on_open_or_closed;
+        scanner.run();
+    }
+
 </script>
 
 <h2>Why is this a problem?</h2>
@@ -147,8 +269,8 @@ want it to be possible:
 <ol>
     <li>
         If you visit an attacker's website, they can use your connection to port
-        scan another on the Internet as part of an attack. Since the scan came
-        from your connection, you might get blamed.
+scan another host on the Internet as part of an attack. Since the scan came from
+your connection, you might get blamed.
     </li>
     <li>
         Websites you visit can get a little bit of information about what you
@@ -164,13 +286,13 @@ want it to be possible:
         This scanner works in Tails 1.3.2, and could potentially be used to
         deanonymize you. For example, if you have a printer with a web
         administration page on your local network, a website you visit could
-        your network for printers, then profile them (e.g. by requesting known
-        image URLs for common brands of printers), potentially learning the
-        make, model, and firmware version of your printer.
+        scan your network for printers, then profile them (e.g. by requesting
+        known image URLs for common brands of printers), potentially learning
+        the make, model, and firmware version of your printer.
     </li>
 </ol>
 
-<h2>Which browsers and operating systems are vulnerable?</h2>
+<h2>Which browsers and operating systems are affected?</h2>
 
 <p>
 I've tested this and found it to work on the following systems:
@@ -179,30 +301,30 @@ I've tested this and found it to work on the following systems:
 <ul>
     <li>Firefox 37.0 on Arch Linux</li>
     <li>Chromium 41.0.2272.118 on Arch Linux</li>
-</ul>
-
-<p>
-I've found that it does not work on:
-</p>
-
-<ul>
-    <li>Firefox 37.0 with NoScript on Arch Linux</li>
+    <li>Opera 28.0 on Arch Linux</li>
+    <li>Firefox 37.0 on Windows XP</li>
+    <li>Google Chrome 41.0.2272.118 on Windows XP</li>
+    <li>Internet Explorer 8.0.6001.18702 on Windows XP</li>
+    <li>Opera 27.0.1689.66 on Windows XP</li>
 </ul>
 
 <h2>How do I protect myself?</h2>
 
 <p>
-Unfortunately, I don't know of an easy way to stop a website from using your
-browser to scan the <em>Internet</em>.
+Unfortunately, I don't know of an easy way to stop websites from using your
+browser to scan the <em>public Internet</em>, besides turning off JavaScript.
 </p>
 
 <p>
-However, there is a simple way to stop a website from scanning your <em>local
-network</em>. All your browser has to do is deny requests from Internet pages to
-your local network. If you use Firefox, the NoScript extension will do this for
-you (its main feature is to disable JavaScript, but it has a lot of extra
-security features).
+However, to stop websites from scanning your <em>local network</em>, all your
+browser needs to do is deny any request from an Internet web page to a local IP
+address. If you use Firefox, the NoScript extension will do this for you.
+NoScript's main purpose is to disable JavaScript, but it has a lot of extra
+security features, and that is one of them.
 </p>
 
-</ul>
+<p>
+I'm not aware of any Chrome or Internet Explorer extensions that block local
+requests. If you know of one, let me know and I will add it here.
+</p>
 
