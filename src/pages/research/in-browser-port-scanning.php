@@ -89,7 +89,7 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
             alert("Bad port number");
         }
 
-        document.getElementById("custom_result").innerHTML = "Scanning... <br />";
+        document.getElementById("custom_result").innerHTML = "Scanning...";
 
         start_time = (new Date()).getTime();
         document.getElementById("testdiv").innerHTML = '<img src="http://' + ip + ':' + port + '" alt="" onerror="custom_cont();" />';
@@ -112,7 +112,7 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
         next_octet = 2;
         var ip = "192.168.1." + next_octet;
         start_time = (new Date()).getTime();
-        document.getElementById("lan_results").innerHTML = "Scanning...";
+        document.getElementById("lan_results").innerHTML = "Scanning... <br />";
         document.getElementById("testdiv").innerHTML = '<img src="http://' + ip + '" alt="" onerror="lan_cont();" />';
     }
 
