@@ -28,11 +28,11 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
     <p>
 
     <p>
-        <strong>Scan your Local Network</strong>
+        <strong>Local Network Scan (Proof of Concept)</strong>
     </p>
 
     <form>
-        <input type="button" value="Scan 192.168.1.*" onclick="lan_scan(this.form);" />
+        <input type="button" value="Scan 192.168.1.* port 80" onclick="lan_scan(this.form);" />
     </form>
 
     <div id="lan_results" style="padding-top: 10px;"></div>
@@ -136,3 +136,7 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
         }
     }
 </script>
+
+<h2>Why is this a problem?</h2>
+
+
