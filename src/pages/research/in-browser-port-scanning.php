@@ -35,7 +35,7 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
         <input type="button" value="Scan 192.168.1.*" onclick="lan_scan(this.form);" />
     </form>
 
-    <div id="lan_results"></div>
+    <div id="lan_results" style="padding-top: 10px;"></div>
 
     <p>
         <strong>Custom Scan</strong>
@@ -89,7 +89,7 @@ Case 1. If it fails slowly (more than 1.5s), it's Case 2.
             alert("Bad port number");
         }
 
-        document.getElementById("custom_result").innerHTML = "Scanning...";
+        document.getElementById("custom_result").innerHTML = "Scanning... <br />";
 
         start_time = (new Date()).getTime();
         document.getElementById("testdiv").innerHTML = '<img src="http://' + ip + ':' + port + '" alt="" onerror="custom_cont();" />';
