@@ -414,6 +414,12 @@ class URLParse
                 P_TITL => "Defuse Security's Contact Information",
                 P_METD => "Defuse Security's contact informaion.",
             ),
+            "in-browser-port-scanning" => array(
+                P_FILE => "research/in-browser-port-scanning.php",
+                P_TITL => "Port Scanning Local Network From a Web Browser",
+                P_METD => "Malicious web pages can port scan your local network.",
+                P_METK => "browser, port scan, security",
+            ),
             "how-do-we-model-this-robot" => array(
                 P_FILE => "research/how-do-we-model-this-robot.php",
                 P_TITL => "How do we model this robot?",
