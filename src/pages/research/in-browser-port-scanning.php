@@ -16,15 +16,17 @@ can only distinguish between the following two cases:
 
 <p>
 The scanner works by timing how long it takes your browser to give up trying to
-load a nonexistent image file. If it fails fast, it's Case 1.
-If it fails slowly, it's Case 2. The cutoff time is 1500 milliseconds, which
-seems to work well.
+load a nonexistent image file. If it fails fast, it's Case 1. If it fails
+slowly, it's Case 2. This page uses 1500 milliseconds as the cutoff, which seems
+to work well.
 <p>
 
 <p>
-    Note: This won't work if you have the NoScript Firefox extension
-    (see below). It also doesn't seem to work with every port. For example,
-Firefox seems to know not to send requests to port 22 (SSH) or 110 (POP).
+Note: This won't work if you have the NoScript Firefox extension (see below). It
+also doesn't seem to work with every port. For example, Firefox seems to know
+not to send requests to ports for other well-known services, like port 22 (SSH)
+or 110 (POP). At the very least, it works reliably with port 80 (HTTP) and 443
+(HTTPS).
 </p>
 <div style="border: solid black 5px; border-radius: 10px; background-color: #AADDFF; padding-left: 20px; padding-right: 20px;
 padding-bottom: 20px;">
@@ -280,23 +282,39 @@ scan another host on the Internet as part of an attack. Since the scan came from
 your connection, you might get blamed.
     </li>
     <li>
+        <p>
         Websites you visit can get a little bit of information about what you
         have running on your local network, which might help if they want to
         attack you later.
+        </p>
     </li>
     <li>
+        <p>
         If you have a highly unique local network, then it can be used as
         a kind of &quot;supercookie&quot; to help track you online. This is
         probably impractical because scanning takes a long time.
+        </p>
     </li>
     <li>
-        <b>Tor Users:</b> This scanner does <em>not</em> work in the Tor Browser
-Bundle. However it <em>does</em> work in Tails 1.3.2, and could potentially be used to
-deanonymize you. For example, if you have a printer with a web administration
-page on your local network, a website you visit could scan your network for
-printers, then fingerprint them (e.g. by requesting known image URLs for common
-brands of printers), potentially learning the make, model, and firmware version
-of your printer.
+        <p>
+        <b>Tor users:</b> This scanner does not work in the Tor Browser Bundle.
+However it <em>does</em> work in Tails 1.3.2, and could potentially be used to
+deanonymize you.
+        </p>
+
+        <p>
+        For example, if you have a printer with a web administration page on
+your local network, a website you visit could scan your network for printers,
+then fingerprint them (e.g. by requesting known image URLs for common brands of
+printers), potentially learning the make, model, and firmware version of your
+printer.
+        </p>
+
+        <p>
+    To work around this, simply remember to enable NoScript's ABE
+feature every time you boot Tails. NoScript is installed by default, but ABE is
+disabled by default.
+        </p>
     </li>
 </ol>
 
@@ -315,6 +333,8 @@ I've tested this and found it to work on the following systems:
     <li>Internet Explorer 8.0.6001.18702 on Windows XP</li>
     <li>Opera 27.0.1689.66 on Windows XP</li>
     <li>Internet Explorer 11.0.9600.17501 on Windows 7</li>
+    <li>Firefox on Android 5.1</li>
+    <li>Chrome on Android 5.1</li>
 </ul>
 
 <h2>How do I protect myself?</h2>
@@ -322,6 +342,7 @@ I've tested this and found it to work on the following systems:
 <p>
 Unfortunately, I don't know of an easy way to stop websites from using your
 browser to scan the <em>public Internet</em>, except for turning off JavaScript.
+Browsers will have to add an artificial delay to make Case 1 look like Case 2.
 </p>
 
 <p>
@@ -329,7 +350,8 @@ To stop websites from scanning your <em>local network</em>, all your browser
 needs to do is deny any request from an Internet web page to a local IP address.
 If you use Firefox, the NoScript extension will do this for you. NoScript's main
 purpose is to disable JavaScript, but it has a lot of extra security features,
-and that is one of them.
+and that is one of them. Make sure you have the Application Boundaries Enforcer
+(ABE) feature turned on.
 </p>
 
 <p>
