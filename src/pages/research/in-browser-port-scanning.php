@@ -1,11 +1,23 @@
+<?php
+    Upvote::render_arrows(
+        "inbrowserportscanner",
+        "defuse_pages",
+        "Timing Side Channel Port Scanner in the Browser",
+        "How web pages can use a timing side channel to \"scan\" your local network.",
+        "https://defuse.ca/in-browser-port-scanning.htm"
+    );
+?>
+<div class="pagedate">
+April 12, 2015
+</div>
 <h1>
 Timing Side Channel &quot;Port Scanner&quot; in the Browser
 </h1>
 
 <p>
 Here is a TCP &quot;port scanner&quot; that works from inside your browser. It
-can scan your local network! It's not <em>really</em> a port scanner, because it
-can only distinguish between the following two cases:
+can scan your local network! Actually, it is not <em>really</em> a port scanner,
+because it can only distinguish between the following two cases:
 </p>
 
 
@@ -15,19 +27,27 @@ can only distinguish between the following two cases:
 </ol>
 
 <p>
+So it is more correct to say that it scans for the presence of a host at an IP
+address, but it can be used as a port scanner if all the ports of
+a known-to-exist host are &quot;stealthed&quot; except for the open ones.
+</p>
+
+<p>
 The scanner works by timing how long it takes your browser to give up trying to
 load a nonexistent image file. If it fails fast, it's Case 1. If it fails
-slowly, it's Case 2. This page uses 1500 milliseconds as the cutoff, which seems
-to work well.
+slowly, it's Case 2. This page uses 1500 milliseconds as the cutoff time, which
+works well in all the testing I've done. View this page's source code to see
+exactly how it works.
 <p>
 
 <p>
-Note: This won't work if you have the NoScript Firefox extension (see below). It
-also doesn't seem to work with every port. For example, Firefox seems to know
-not to send requests to ports for other well-known services, like port 22 (SSH)
-or 110 (POP). At the very least, it works reliably with port 80 (HTTP) and 443
-(HTTPS).
+Note: The scanner will not work if you have the NoScript Firefox extension and
+its ABE feature is enabled (see below). It also doesn't work with every port.
+For example, Firefox seems to know not to send requests to ports for other
+well-known services, like port 22 (SSH) or 110 (POP). At the very least, it
+works reliably with port 80 (HTTP) and 443 (HTTPS).
 </p>
+
 <div style="border: solid black 5px; border-radius: 10px; background-color: #AADDFF; padding-left: 20px; padding-right: 20px;
 padding-bottom: 20px;">
 
@@ -297,23 +317,32 @@ your connection, you might get blamed.
     </li>
     <li>
         <p>
-        <b>Tor users:</b> This scanner does not work in the Tor Browser Bundle.
-However it <em>does</em> work in Tails 1.3.2, and could potentially be used to
-deanonymize you.
+        <b>Tor and Tails users:</b> This scanner does not work in the Tor
+Browser Bundle. However it <em>does</em> work in Tails 1.3.2, and could
+potentially be used to deanonymize you.
         </p>
 
         <p>
-        For example, if you have a printer with a web administration page on
-your local network, a website you visit could scan your network for printers,
+        For example, if you have a printer with an open web administration page
+on your local network, a website you visit could scan your network for printers,
 then fingerprint them (e.g. by requesting known image URLs for common brands of
 printers), potentially learning the make, model, and firmware version of your
 printer.
         </p>
 
         <p>
-    To work around this, simply remember to enable NoScript's ABE
-feature every time you boot Tails. NoScript is installed by default, but ABE is
-disabled by default.
+        I emailed Tails about this on April 7, 2015 but have not recieved
+        a response. It's possible they didn't see my emails if I encrypted it to the
+        wrong key or something. I'm discolosing it publically now because there
+        is an easy way for Tails users to mitigate the issue without having to
+        wait for an update.
+        <p>
+
+        <p>
+    <b>Mitigation:</b> To prevent this scanner from working in the latest verssion of Tails
+(1.3.2), simply remember to enable NoScript's ABE feature every time you boot
+Tails. NoScript is installed by default in Tails, but ABE is disabled for some
+reason.
         </p>
     </li>
 </ol>
