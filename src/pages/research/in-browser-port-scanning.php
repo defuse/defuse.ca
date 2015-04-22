@@ -331,15 +331,15 @@ printer.
         </p>
 
         <p>
-        I emailed Tails about this on April 7, 2015 but have not recieved
+        I emailed Tails about this on April 7, 2015 but have not received
         a response. It's possible they didn't see my emails if I encrypted it to the
-        wrong key or something. I'm discolosing it publically now because there
+        wrong key or something. I'm disclosing it publicly now because there
         is an easy way for Tails users to mitigate the issue without having to
         wait for an update.
         <p>
 
         <p>
-    <b>Mitigation:</b> To prevent this scanner from working in the latest verssion of Tails
+    <b>Mitigation:</b> To prevent this scanner from working in the latest version of Tails
 (1.3.2), simply remember to enable NoScript's ABE feature every time you boot
 Tails. NoScript is installed by default in Tails, but ABE is disabled for some
 reason.
