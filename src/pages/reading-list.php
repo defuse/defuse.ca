@@ -305,6 +305,7 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li>The Judgement of the Birds (Loren Eiseley)</li>
     <li>How To Benchmark Code Execution Times on Intel IA-32 and IA-64 Instruction Set Architectures (Gabriele Paoloni)</li>
     <li>
         <b>
