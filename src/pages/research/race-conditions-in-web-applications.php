@@ -236,6 +236,21 @@ if ( !function_exists(&#039;sem_get&#039;) ) {<br />
 </table>
 </center>
 
+<h3>Atomic Database Operations</h3>
+
+<p>
+If you are using an ACID-compliant database, which guarantees atomicity, then
+the critical sections can be implemented as atomic database queries. Beware,
+however, of TOCTTOU bugs: any code not inside a database query will still be
+subject to race conditions. You really do need to be careful of what guarantees
+your database provides! If implemented correctly, it is almost certainly better
+than using a lock.
+</p>
+
+<p>
+Thanks to Tiemo Kieft for pointing me to this solution.
+</p>
+
 <h3>Multiple Servers</h3>
 
 <p>If queries are being processed by more than one server, the System V semaphore method won't prevent the attack. Different semaphores will exist on each server so they won't help if an attacker floods each server with queries. To implement a multi-server mutex you'll need to give each server a common file system and use the file lock method, or use the locking mechanism provided by your database software.</p>
