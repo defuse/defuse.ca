@@ -1,12 +1,6 @@
 <h1>Software Security Auditing</h1>
 
 <p>
-<b>NOTE: I am taking a heavy university course load until May, so I won't be
-able to take on any new consulting jobs for the next few months. Thanks for
-understanding.</b>
-</p>
-
-<p>
 I want to work with you to make sure your code is secure. I'm available for $50
 CAD per hour to look over your designs and code to make sure they are secure. To
 give back to the community, I reduce my rate to <b>$30 per hour</b> for
