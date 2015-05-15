@@ -1,8 +1,8 @@
 <h1>Software Security Auditing</h1>
 
 <p>
-I want to work with you to make sure your code is secure. I'm available for an
-daily rate to look over your designs and code to make sure they are secure. To
+I want to work with you to make sure your code is secure. I'm available for
+a daily rate to look over your designs and code to make sure they are secure. To
 give back to the community, I reduce my rate for published free or open source
 software (GPL, BSD, CC0, etc.)
 </p>
