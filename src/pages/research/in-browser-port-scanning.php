@@ -331,12 +331,17 @@ printer.
         </p>
 
         <p>
-        I emailed Tails about this on April 7, 2015 but have not received
-        a response. It's possible they didn't see my emails if I encrypted it to the
-        wrong key or something. I'm disclosing it publicly now because there
-        is an easy way for Tails users to mitigate the issue without having to
-        wait for an update.
+        I emailed Tails about this on April 7, 2015, their response, as of May
+        26, 2015, is:
         <p>
+
+        <blockquote>
+            <p>
+                    My understanding is that this will be fixed once <a
+        href="https://labs.riseup.net/code/issues/7976">https://labs.riseup.net/code/issues/7976</a>
+        is resolved. This is being worked on for Tails 1.4.1.
+            </p>
+        </blockquote>
 
         <p>
     <b>Mitigation:</b> To prevent this scanner from working in the latest version of Tails
