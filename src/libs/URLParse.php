@@ -420,6 +420,12 @@ class URLParse
                 P_METD => "Malicious web pages can port scan your local network.",
                 P_METK => "browser, port scan, security",
             ),
+            "is-security-local" => array(
+                P_FILE => "research/is-security-local.php",
+                P_TITL => "Is Security Local?",
+                P_METD => "Is security a locally-verifiable property of computation?",
+                P_METK => "langsec, security, locality, verification",
+            ),
             "how-do-we-model-this-robot" => array(
                 P_FILE => "research/how-do-we-model-this-robot.php",
                 P_TITL => "How do we model this robot?",
