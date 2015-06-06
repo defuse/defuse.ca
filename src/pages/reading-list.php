@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2015</h2>
 
 <ul>
+    <li><b>Metaphysics: A Very Short Introduction (Stephen Mumford)</b></li>
     <li>Flatland: A Romance of Many Dimensions (Edwin A. Abbott)</li>
     <li><b>Getting to Yes: Negotiating an agreement without giving in (Fisher and Ury)</b></li>
     <li><b>The Unpersuadables: Adventures with the Enemies of Science (Will Storr)</b></li>
