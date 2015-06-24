@@ -26,6 +26,7 @@ search of the title is usually enough to find the book or paper.
     <li><b>Getting to Yes: Negotiating an agreement without giving in (Fisher and Ury)</b></li>
     <li><b>The Unpersuadables: Adventures with the Enemies of Science (Will Storr)</b></li>
     <li><b>Gray Hat Python (Justin Seitz)</b></li>
+    <li>Hacker, Hoaxer, Whistleblower, Spy: The Many Faces of Anonymous (Gabriella Coleman)</li>
     <li><b>The Climate Crisis: An Introductory Guide to Climate Change (David Archer, Stefan Rahmstorf)</b></li>
     <li><b>The Martian (Andy Weir)</b></li>
 </ul>
