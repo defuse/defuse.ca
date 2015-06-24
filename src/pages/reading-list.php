@@ -150,6 +150,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li><b>Cross-Tenant Side-Channel Attacks in PaaS Clouds (Yinqian Zhang et al.)</b></li>
     <li>Fast Search in Hamming Space with Multi-Index Hashing (Mohammad Norouzi et al.)</li>
     <li>Towards a Theory of Application Compartmentalization (Robert N.M. Watson et al.)</li>
     <li><b>Green Lights Forever: Analyzing the Security of Traffic Infrastructure (Branden Ghena et al.)</b></li>
