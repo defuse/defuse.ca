@@ -151,6 +151,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>Size Does Matter: Why Using Gadget-Chain Length to Prevent Code-reuse Attacks is Hard (Enes G&ouml;kta&#351; et al.)</li>
     <li><b>Cross-Tenant Side-Channel Attacks in PaaS Clouds (Yinqian Zhang et al.)</b></li>
     <li>Fast Search in Hamming Space with Multi-Index Hashing (Mohammad Norouzi et al.)</li>
     <li>Towards a Theory of Application Compartmentalization (Robert N.M. Watson et al.)</li>
