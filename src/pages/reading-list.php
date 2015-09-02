@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2015</h2>
 
 <ul>
+    <li>A Tour of C++ (Bjarne Stroustrup)</li>
     <li><b>Intuition Pumps and Other Tools for Thinking (Daniel C. Dennett)</b></li>
     <li><b>Metaphysics: A Very Short Introduction (Stephen Mumford)</b></li>
     <li>Flatland: A Romance of Many Dimensions (Edwin A. Abbott)</li>
