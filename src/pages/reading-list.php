@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2015</h2>
 
 <ul>
+    <li><b>Mastering Bitcoin (Andreas M. Antonopoulos)</b></li>
     <li>A Tour of C++ (Bjarne Stroustrup)</li>
     <li><b>Intuition Pumps and Other Tools for Thinking (Daniel C. Dennett)</b></li>
     <li><b>Metaphysics: A Very Short Introduction (Stephen Mumford)</b></li>
