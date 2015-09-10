@@ -153,6 +153,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>Experiences Deploying a Large-Scale Emergent Network (Bryce Wilcox-O'Hearn)</li>
     <li><b>The Bugs We Have to Kill (Sergey Bratus et al.)</b></li>
     <li>Size Does Matter: Why Using Gadget-Chain Length to Prevent Code-reuse Attacks is Hard (Enes G&ouml;kta&#351; et al.)</li>
     <li><b>Cross-Tenant Side-Channel Attacks in PaaS Clouds (Yinqian Zhang et al.)</b></li>
