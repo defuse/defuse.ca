@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2015</h2>
 
 <ul>
+    <li><b>The Book of Satoshi: The Collected Writings of Bitcoin Creator Satoshi Nakamoto (Phil Champagne)</b></li>
     <li><b>Mastering Bitcoin (Andreas M. Antonopoulos)</b></li>
     <li>A Tour of C++ (Bjarne Stroustrup)</li>
     <li><b>Intuition Pumps and Other Tools for Thinking (Daniel C. Dennett)</b></li>
@@ -153,6 +154,8 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>On Stake and Consensus (Andrew Poelstra)</li>
+    <li><b>A history of the PCP theorem (Ryan O'Donnell)</b></li>
     <li>Experiences Deploying a Large-Scale Emergent Network (Bryce Wilcox-O'Hearn)</li>
     <li><b>The Bugs We Have to Kill (Sergey Bratus et al.)</b></li>
     <li>Size Does Matter: Why Using Gadget-Chain Length to Prevent Code-reuse Attacks is Hard (Enes G&ouml;kta&#351; et al.)</li>
