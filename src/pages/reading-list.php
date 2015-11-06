@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2015</h2>
 
 <ul>
+    <li>Canadian Red Cross First Aid &amp; CPR Manual</li>
     <li>Qube: Questions of Being (Unknown)</li>
     <li><b>The Book of Satoshi: The Collected Writings of Bitcoin Creator Satoshi Nakamoto (Phil Champagne)</b></li>
     <li><b>Mastering Bitcoin (Andreas M. Antonopoulos)</b></li>
