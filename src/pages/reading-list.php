@@ -156,6 +156,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li><b>A Riddle Wrapped in an Enigma (Neal Koblitz, Alfred J. Menezes)</b></li>
     <li><b>Asymmetric proof-of-work based on the Generalized Birthday problem (Alex Biryukov, Dmitry Khovratovich)</b></li>
     <li><b>Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice (David Adrian et al.)</b></li>
     <li><b>Is &quot;the theory of everything&quot; merely the ultimate ensemble theory? (Max Tegmark)</b></li>
