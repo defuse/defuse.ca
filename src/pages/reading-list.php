@@ -157,6 +157,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2015</h3>
 
 <ul>
+    <li>The Rise and Fall of the Operating System (Antti Kantee)</li>
     <li>The Brave New World of Bodacious Assumptions in Cryptography (Neal Koblitz, Alfred Menezes)</li>
     <li><b>A Riddle Wrapped in an Enigma (Neal Koblitz, Alfred J. Menezes)</b></li>
     <li><b>Asymmetric proof-of-work based on the Generalized Birthday problem (Alex Biryukov, Dmitry Khovratovich)</b></li>
@@ -331,6 +332,7 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li><b>Break a dozen secret keys, get a million more for free (Daniel J. Bernstein)</b></li>
     <li>True Names (Vernor Vinge)</li>
     <li>The Judgement of the Birds (Loren Eiseley)</li>
     <li>How To Benchmark Code Execution Times on Intel IA-32 and IA-64 Instruction Set Architectures (Gabriele Paoloni)</li>
