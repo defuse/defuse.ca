@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2015</h2>
 
 <ul>
+    <li>A PhD is Not Enough (Peter J. Feibelman)</li>
     <li><b>Our Mathematical Universe (Max Tegmark)</b></li>
     <li>Canadian Red Cross First Aid &amp; CPR Manual</li>
     <li>Qube: Questions of Being (Unknown)</li>
