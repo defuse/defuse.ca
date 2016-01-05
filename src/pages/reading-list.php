@@ -17,9 +17,12 @@ authors' names out of laziness; I'll get around to adding them sometime. A web
 search of the title is usually enough to find the book or paper.
 </p>
 
+<h2>2016</h2>
+
 <h2>2015</h2>
 
 <ul>
+    <li>The Art of Strategy (Avinash K. Dixit and Barry J. Nalebuff)</li>
     <li>Computing with Quantum Cats (John Gribbin)</li>
     <li><b>Quantum Computing Since Democritus (Scott Aaronson)</b></li>
     <li>A PhD is Not Enough (Peter J. Feibelman)</li>
@@ -156,6 +159,8 @@ search of the title is usually enough to find the book or paper.
 
 <a name="papers"></a>
 <h2>Papers</h2>
+
+<h3>2016</h3>
 
 <h3>2015</h3>
 
