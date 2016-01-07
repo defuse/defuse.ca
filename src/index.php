@@ -162,6 +162,7 @@ header('Content-Type: text/html; charset=utf-8');
             <li><a href="https://defuse.ca/blog/" >&nbsp;Blog</a></li>
             <li><a href="https://twitter.com/#!/defusesec" >&nbsp;Twitter</a></li>
             <li><a href="https://github.com/defuse" >&nbsp;GitHub</a></li>
+            <li><a href="https://z.cash/">&nbsp;Zcash (Zerocash)</a></li>
             <li><a href="/hypothetico/">&nbsp;Hypothetico</a></li>
             <li><a href="/about.htm">&nbsp;About Defuse</a></li>
         </ul>
