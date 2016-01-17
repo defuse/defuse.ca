@@ -162,6 +162,10 @@ search of the title is usually enough to find the book or paper.
 
 <h3>2016</h3>
 
+<ul>
+    <li>Causal Boxes: Quantum Information Processing Systems Closed under Composition (Christopher Portmann et al.)</li>
+</ul>
+
 <h3>2015</h3>
 
 <ul>
