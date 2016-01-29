@@ -202,7 +202,7 @@ class Disassembler
         if ($ret == 0)
         {
             $strout = implode("\n", $output);
-            //if (file_exists($binary_path)) { unlink($binary_path); }
+            if (file_exists($binary_path)) { unlink($binary_path); }
             return Assembler::BuildStructuredOutput($strout, true);
         }
         else
