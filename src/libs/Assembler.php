@@ -173,7 +173,7 @@ class Assembler
 
 class Disassembler
 {
-    private $arch = "-i386";
+    private $arch = "i386";
 
     public function setArch($arch)
     {
