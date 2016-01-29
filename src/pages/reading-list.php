@@ -167,6 +167,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li>Defining a Model for Defense-In-Depth (James Sullivan, Michael E. Locasto)</li>
     <li>Causal Boxes: Quantum Information Processing Systems Closed under Composition (Christopher Portmann et al.)</li>
 </ul>
 
