@@ -123,12 +123,6 @@ class URLParse
             "donated" => array(
                 P_FILE => "donated.html"
             ),
-            "resume" => array(
-                P_FILE => "resume.html",
-                P_TITL => "My Resume - Defuse Security",
-                P_METD => "Defuse Security Resume",
-                P_METK => "defuse cyber security, resume"
-            ),          
             "reading-list" => array(
                 P_FILE => "reading-list.php",
                 P_TITL => "Reading List - Defuse Security",
