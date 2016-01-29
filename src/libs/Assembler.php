@@ -51,7 +51,7 @@ class Assembler
                     $strout = implode("\n", $output);
                     if (file_exists($source_path)) { unlink($source_path); }
                     if (file_exists($obj_path)) { unlink($obj_path); }
-                    return $this->buildStructuredOutput($strout);
+                    return Assembler::BuildStructuredOutput($strout);
                 }
                 else
                 {
@@ -101,16 +101,19 @@ class Assembler
         return strpos($code, ".", 0) === false; 
     }
 
-    private function buildStructuredOutput($objdump_output)
+    public static function BuildStructuredOutput($objdump_output, $dis=false)
     {
         $output = array();
 
+
+        $start_text = $dis ? "<.data>:\n" : "<_main>:\n";
+
         // Find where the actual code starts
-        $code_start = strpos($objdump_output, "<_main>:\n");
+        $code_start = strpos($objdump_output, $start_text);
         if ($code_start < 0) { 
             throw new AssemblyFailureException("Something went wrong.");
         }
-        $code_start += strlen("<_main>:\n");
+        $code_start += strlen($start_text);
 
         // Extract just the code.
         $code = substr($objdump_output, $code_start);
@@ -165,6 +168,49 @@ class Assembler
         $output['array'] = $arrayDef;
 
         return $output;
+    }
+}
+
+class Disassembler
+{
+    private $arch = "-i386";
+
+    public function setArch($arch)
+    {
+        if ($arch == "x86") {
+            $this->arch = "i386";
+        } elseif ($arch == "x64") {
+            $this->arch = "i386:x86-64";
+        } else {
+            throw new InvalidModeException("$arch is not a valid mode.");
+        }
+    }
+
+    public function disassemble($binary)
+    {
+        // FIXME: This usage of /tmp/ files is NOT secure.
+        $tempnam = "/tmp/" . rand();
+        $binary_path = $tempnam . ".bin";
+        file_put_contents($binary_path, $binary);
+
+        $ret = 1;
+
+        // Use objdump to disassemble it.
+        // FIXME: Trailing null bytes are ignored?
+        exec("objdump -b binary -m $this->arch -M intel -D $binary_path", $output, $ret);
+
+        if ($ret == 0)
+        {
+            $strout = implode("\n", $output);
+            //if (file_exists($binary_path)) { unlink($binary_path); }
+            return Assembler::BuildStructuredOutput($strout, true);
+        }
+        else
+        {
+            if (file_exists($binary_path)) { unlink($binary_path); }
+            throw new AssemblyFailureException("Something went wrong!");
+        }
+
     }
 }
 

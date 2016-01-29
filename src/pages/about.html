@@ -1,25 +1,32 @@
 <h1>About Defuse Security</h1>
 
 <p>
-Defuse Security is a one-person security research and development group. We
-develop security-related open-source software. All Defuse Security pages and
-software are developed and maintained by Taylor Hornby, unless otherwise noted.
+Defuse Security is Taylor Hornby's security research and development group. We
+try to learn how to make systems more secure, and then write software that does
+that. For example, we maintain one of the symmetric cryptography libraries for
+PHP that isn't riddled with vulnerabilities, as well as a password generator
+that we've taken care to keep free of side-channel vulnerabilities.
 </p>
 
 <p>
-You can find Taylor on <a href="https://twitter.com/defusesec">Twitter</a> and
-<a href="https://github.com/defuse">GitHub</a>. His resume is
-<a href="/resume.htm">here</a>.
+<a href="https://twitter.com/defusesec">Follow Taylor Hornby on Twitter.</a>
+</p>
+
 <p>
+<a href="/contact.htm">Contact Taylor Hornby.</a>
+</p>
+
 
 <h2>Defuse.ca's Privacy and Usability Policy</h2>
 <ul>
-	<li>Assume every request made to this website is logged (including your User-Agent and IP address).</li>
+    <li>Assume every request made to this website is logged (including your User-Agent and IP address).</li>
     <li>I use <a href="http://piwik.org/">Piwik</a> for analytics. The data it collects is hosted locally and is not shared or sold. It will also be deleted regularly. Requests with the DNT header set will not be tracked.</li>
-	<li>You will never need cookies to use this website.</li>
-	<li>I will never put ads on this site no matter how popular it gets.</li>
-	<li>I will refrain from including external content (from other domains) as much as possible.</li>
-	<li>This site will always be functional with JavaScript disabled.</li>
+    <li>You will never need cookies to use this website.</li>
+    <li>There are no advertisements (or paid content) on this site.</li>
+    <li>I try not to include third-party content (e.g. scripts) on any of the
+        pages of this site.</li>
+    <li>This website works with JavaScript turned off, and will politely tell
+        you if it's ever needed to make one of the pages work.</li>
 </ul>
 
 <h2>Like the Script-Free Drop-Down Menu?</h2>
@@ -27,37 +34,13 @@ You can find Taylor on <a href="https://twitter.com/defusesec">Twitter</a> and
 <p>
 <a href="https://www.grc.com/intro.htm">Steve Gibson</a> created the CSS-only
 menu that this website uses. He put it in the public domain, so anyone can use
-it for free. It is, in my opinion, the most reliable CSS-only drop-down menu
-ever created.
+it for free. It is the most reliable CSS-only drop-down menu ever created.
 </p>
-<center><strong><a href="http://www.grc.com/menu2/invitro.htm">Click Here to get Steve Gibson's script-free CSS menu</a></strong></center>
 
-<a name="feedback"></a>
-<h2>Feedback</h2>
-<?php
-if(isset($_POST['submit']))
-{
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['messagebody'];
-    $headers = "From: $name <$email>\n";
-    $headers .= "Reply-To: $email\n";
-    mail("havoc@defuse.ca", "DEFUSE.CA FEEDBACK", $message, $headers);
-    ?>
-    <div style="background-color:#96ff96; padding:10px; border: solid black 1px;">
-        Your feedback has been received. Thank you VERY much.
-    </div>
-    <?
-}
-?>
-<p>I always appreciate feedback, whether it's good or bad. You can send me feedback by submitting the following form.</p>
-<form action="/about.htm#feedback" method="post">
-<table>
-<tr><td><b>Your Name:</b></td><td><input type="text" name="name" maxlength="50" /> (optional)</td></tr>
-<tr><td><b>Your Email:</b></td><td><input type="text" name="email" maxlength="100" /> (optional, unless you want me to reply)</td></tr>
-<tr><td><b>Your Message:</b></td><td><textarea name="messagebody" id="messagebody" rows="15" cols="80"></textarea></td></tr>
-<tr><td></td><td>If you want to submit this form anonymously, use <a href="https://www.torproject.org/">Tor</a>.</td></tr>
-<tr><td></td><td><input type="submit" name="submit" value="Submit Feedback" /></td></tr>
-</table>
-</form>
-
+<center>
+    <strong>
+        <a href="http://www.grc.com/menu2/invitro.htm">
+                Click Here to get Steve Gibson's script-free CSS menu
+        </a>
+    </strong>
+</center>

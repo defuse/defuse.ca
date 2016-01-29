@@ -156,14 +156,13 @@ header('Content-Type: text/html; charset=utf-8');
 <ul>
     <li class="headerlink" ><a href="/">Home<img class="downimg" src="/images/downarrow.gif" alt="&#9660;"/><!--[if gt IE 6]><!--></a><!--<![endif]--><!--[if lt IE 7]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
         <ul class="leftbutton">
+            <li><a href="/about.htm">&nbsp;About Defuse</a></li>
             <li><a href="/contact.htm">&nbsp;Contact</a></li>
             <li><a href="/security-contact-vulnerability-disclosure.htm">&nbsp;Vulnerability Disclosure</a></li>
-            <li><a href="https://defuse.ca/blog/" >&nbsp;Blog</a></li>
+            <li><a href="https://bqp.io/" >&nbsp;Blog</a></li>
             <li><a href="https://twitter.com/#!/defusesec" >&nbsp;Twitter</a></li>
             <li><a href="https://github.com/defuse" >&nbsp;GitHub</a></li>
             <li><a href="https://z.cash/">&nbsp;Zcash (Zerocash)</a></li>
-            <li><a href="/hypothetico/">&nbsp;Hypothetico</a></li>
-            <li><a href="/about.htm">&nbsp;About Defuse</a></li>
         </ul>
         <!--[if lte IE 6]></td></tr></table></a><![endif]-->
     </li>

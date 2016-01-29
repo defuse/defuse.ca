@@ -1,10 +1,12 @@
-<h1>Software Security Auditing</h1>
+<h1>Security Consulting</h1>
 
 <p>
-I want to work with you to make sure your code is secure. I'm available for
-a daily rate to look over your designs and code to make sure they are secure. To
-give back to the community, I reduce my rate for published free or open source
-software (GPL, BSD, CC0, etc.)
+I want to work with you to make sure your programs, your people, and your
+company are secure. I'm available for a daily rate to look over your protocol
+designs, software implementations, and for consulting to help you keep your
+business secure. To give back to the community, I substantially reduce my rate
+for published free or open source software (GPL, BSD, CC0, etc.) as well as
+open-access research.
 </p>
 
 <p>
@@ -12,16 +14,16 @@ What I can do:
 </p>
 
 <ul>
-    <li>Check web code for XSS, SQL injection, session, password hashing, etc. vulnerabilities.</li>
     <li>Evaluate the design and implementation of cryptography software.</li>
-    <li>Look for memory corruption bugs in C and C++ code.</li>
+    <li>Check web code for XSS, SQL injection, session, password hashing, etc. vulnerabilities.</li>
+    <li>Find memory corruption bugs in C and C++ code.</li>
     <li>Write proof-of-concept exploits for vulnerabilities.</li>
-    <li>Check the configuration of your Linux server.</li>
-    <li>Responsibly disclose vulnerabilities to vendors.</li>
+    <li>Verifying vulnerability fixes.</li>
+    <li>Train your developers and staff.</li>
 </ul>
 
 <p>
-Here are some examples of my work:
+Here are some examples of my security auditing work:
 </p>
 
 <ul>
@@ -35,12 +37,6 @@ Here are some examples of my work:
 </ul>
 
 <p>
-To make the most effective use of my time, I will work with you to prioritize
-which parts of your application should be audited first. When the audit is
-complete, I will work with you to ensure the problems are fixed correctly.
-</p>
-
-<p>
-Interested? Email me at <a href="mailto:havoc@defuse.ca">havoc@defuse.ca</a> or
-mention <a href="https://twitter.com/defusesec">@DefuseSec</a> on twitter.
+Interested? Email me at <a href="mailto:taylor@defuse.ca">taylor@defuse.ca</a> or
+mention <a href="https://twitter.com/defusesec">@DefuseSec</a> on Twitter.
 </p>
