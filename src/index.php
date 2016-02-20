@@ -314,8 +314,6 @@ header('Content-Type: text/html; charset=utf-8');
                 <ul>
                     <li><a href="/pocorgtfo.htm">&nbsp;PoC || GTFO Mirror</a></li>
                     <li><a href="/truecrypt-7.1a-hashes.htm">&nbsp;TrueCrypt Hashes</a></li>
-                    <li><a href="/tor-mirror/">&nbsp;Tor Mirror 1</a></li>
-                    <li><a href="https://crackstation.net/tor-mirror/">&nbsp;Tor Mirror 2</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
