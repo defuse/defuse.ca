@@ -100,7 +100,7 @@ class VimHighlight
         // FIXME: HACK: Emergency patch to make it cache *everything* in the
         // cache directory.
         if($this->caching && !is_null(self::STRING_CACHE_DIR))
-            $output_path = $self::STRING_CACHE_DIR . "/" . md5($input_path) . self::CACHE_SUFFIX;
+            $output_path = self::STRING_CACHE_DIR . "/" . md5($input_path) . self::CACHE_SUFFIX;
         else
             $output_path = tempnam(sys_get_temp_dir(), "hloutput");
 
