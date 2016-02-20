@@ -2,7 +2,6 @@ src/hypothetico
 src/files
 src/notes
 src/sitemap.xml
-src/source/calc.rb
 src/source/vim.zip
 src/source/vimrc
 src/subversion.txt
