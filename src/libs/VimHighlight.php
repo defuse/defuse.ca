@@ -24,7 +24,7 @@ class VimHighlight
     // Set this to an unused display number to use with Xvfb for gvim.
     const XVFB_DISPLAY = ":7";
     // Override the cache directories if necessary. MUST NOT end in a slash.
-    const STRING_CACHE_DIR = "/var/vimhl"; // default: system's temp folder
+    const CACHE_DIR = "/var/vimhl";
     const CACHE_SUFFIX = ".highlighted.html";
 
 
@@ -81,10 +81,10 @@ class VimHighlight
         chmod($input_path, 0600);
         file_put_contents($input_path, $str);
 
-        $tmp = self::STRING_CACHE_DIR;
+        $tmp = self::CACHE_DIR;
         if($tmp === null)
             $tmp = sys_get_temp_dir();
-        $output_path = $tmp . "/" . md5($str) . self::CACHE_SUFFIX;
+        $output_path = $tmp . "/string-" . md5($str) . self::CACHE_SUFFIX;
         // Since we just created the input file, it will be newer than the
         // cache file, so we must ignore the modified timestamp when checking
         // the cache (the md5 ensures it's the same text).
@@ -97,10 +97,8 @@ class VimHighlight
     }
 
     public function processFile($input_path, $body_only = true) {
-        // FIXME: HACK: Emergency patch to make it cache *everything* in the
-        // cache directory.
-        if($this->caching && !is_null(self::STRING_CACHE_DIR))
-            $output_path = self::STRING_CACHE_DIR . "/" . md5($input_path) . self::CACHE_SUFFIX;
+        if($this->caching && !is_null(self::CACHE_DIR))
+            $output_path = self::CACHE_DIR . "/path-" . md5(realpath($input_path)) . self::CACHE_SUFFIX;
         else
             $output_path = tempnam(sys_get_temp_dir(), "hloutput");
 
