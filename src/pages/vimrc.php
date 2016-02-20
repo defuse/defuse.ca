@@ -47,5 +47,5 @@
 <h2>~/.vimrc</h2>
 
 <?php
-    printSourceFile("source/vimrc");
+    printSourceFile("/var/www/defuse.ca-extras/upload/vim/vimrc");
 ?>
