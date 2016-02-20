@@ -9,10 +9,10 @@
 TMPID="$RANDOM$(whoami)"
 
 # Grab the vimrc
-wget -O ~/.vimrc https://defuse.ca/source/vimrc
+wget -O ~/.vimrc https://defuse.ca/upload/vim/vimrc
 
 # Grab the .vim folder, extract it in /tmp, then move to ~
-wget -O /tmp/vimupdate_$TMPID.zip https://defuse.ca/source/vim.zip
+wget -O /tmp/vimupdate_$TMPID.zip https://defuse.ca/upload/vim/vim.zip
 unzip -o /tmp/vimupdate_$TMPID.zip -d /tmp/vimupdate_$TMPID
 rm -rf ~/.vim/*
 mv /tmp/vimupdate_$TMPID/* ~/.vim/
