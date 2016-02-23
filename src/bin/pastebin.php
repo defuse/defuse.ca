@@ -84,6 +84,12 @@ function retrieve_post($urlKey)
         return false;
 }
 
+function delete_post($urlKey)
+{
+    $id = mysql_real_escape_string(get_database_id($urlKey));
+    $query = mysql_query("DELETE FROM `pastes` WHERE token='$id'");
+}
+
 function delete_expired_posts()
 {
     $now = time();
