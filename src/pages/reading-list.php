@@ -168,6 +168,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li><b>Protocol Interactions and the Chosen Protocol Attack (John Kelsey et al.)</b></li>
     <li>ECDH Key-Extraction via Low-Bandwidth Electromagnetic Attacks on PCs (Genken et al.)</li>
     <li>Defining a Model for Defense-In-Depth (James Sullivan, Michael E. Locasto)</li>
     <li>Causal Boxes: Quantum Information Processing Systems Closed under Composition (Christopher Portmann et al.)</li>
