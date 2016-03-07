@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2016</h2>
 
 <ul>
+    <li><b>Frankenstein (Mary Shelley)</b></li>
     <li><b>Free Will (Sam Harris)</b></li>
     <li>The Hidden Reality (Brian Greene)</li>
 </ul>
