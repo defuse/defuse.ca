@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2016</h2>
 
 <ul>
+    <li>Chemistry Essentials for Dummies (John T. Moore)</li>
     <li><b>In Defense of Evil: Why Good Is Bad and Bad Is Good (Terroja Kincaid)</b></li>
     <li><b>Frankenstein (Mary Shelley)</b></li>
     <li><b>Free Will (Sam Harris)</b></li>
