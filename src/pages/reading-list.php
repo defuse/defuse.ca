@@ -171,6 +171,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li><b>Hacking Blind (Andrea Bittau et al.)</b></li>
     <li><b>Closed timelike curves make quantum and classical computing equivalent (Scott Aaronson, John Watrous)</b></li>
     <li><b>Protocol Interactions and the Chosen Protocol Attack (John Kelsey et al.)</b></li>
     <li>ECDH Key-Extraction via Low-Bandwidth Electromagnetic Attacks on PCs (Genken et al.)</li>
