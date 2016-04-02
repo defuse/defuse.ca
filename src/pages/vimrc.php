@@ -11,14 +11,14 @@
 
 <p>
     This page is updated with the .vimrc on my PC at home every midnight.
-    The file can be downloaded without formatting <a href="/source/vimrc">here</a>.
+    The file can be downloaded without formatting <a href="/upload/vim/vimrc">here</a>.
     The color scheme I use for gVim is
     <a href="https://vimcolorschemetest.googlecode.com/svn/colors/dw_cyan.vim">dw_cyan</a>, and I
     use <a href="https://github.com/nanotech/jellybeans.vim">jellybeans</a> for command-line Vim.
 </p>
 
 <p>
-    Download my entire .vim directory <a href="/source/vim.zip">here</a>.
+    Download my entire .vim directory <a href="/upload/vim/vim.zip">here</a>.
 </p>
 
 <p>
