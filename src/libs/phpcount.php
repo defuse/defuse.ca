@@ -61,12 +61,6 @@ class PHPCount
 
     private static $DB = false;
 
-    public static function AddHomeIP()
-    {
-        $home_ip = Creds::getCredentials("home_ip_addr")[C_HOST];
-        self::$IP_IGNORE_LIST[] = $home_ip;
-    }
-
     private static function InitDB()
     {
         if(self::$DB)
@@ -333,5 +327,3 @@ class PHPCount
         $q->execute();
     }
 }
-
-PHPCount::AddHomeIP();
