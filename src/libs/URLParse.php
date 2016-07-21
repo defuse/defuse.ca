@@ -426,9 +426,9 @@ class URLParse
                 P_METD => "Modeling Computational Ability and Informational Ability.",
                 P_METK => "langsec, robot, modeling, computational, informational",
             ),
-            "compromising-privacy-flush-reload" => array(
-                P_FILE => "research/compromising-privacy-flush-reload.php",
-                P_TITL => "Compromising privacy with the FLUSH+RELOAD attack",
+            "side-channel-attacks-on-everyday-applications" => array(
+                P_FILE => "research/side-channel-attacks-on-everyday-applications.php",
+                P_TITL => "Side-Channel Attacks on Everyday Applications (Black Hat 2016)",
                 P_METD => "Data and code for my paper applying FLUSH+RELOAD to break privacy.",
                 P_METK => "cache side channel, experiment data, flush, reload, privacy",
             ),
@@ -687,6 +687,9 @@ class URLParse
                 P_TITL => "Password Policy Statistics - Defuse Security",
                 P_METD => "Password length and character restriction statistics. Top 100 sites.",
                 P_METK => "password, statistics, restrictions, maximum length, symbols, plain text, hashing, salt",
+            ),
+            "bh2016" => array(
+                P_RDIR => "side-channel-attacks-on-everyday-applications",
             ),
             "pphos" => array(
                 P_RDIR => "password-policy-hall-of-shame",
