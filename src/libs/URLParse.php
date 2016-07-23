@@ -691,6 +691,9 @@ class URLParse
             "bh2016" => array(
                 P_RDIR => "side-channel-attacks-on-everyday-applications",
             ),
+            "BH2016" => array(
+                P_RDIR => "side-channel-attacks-on-everyday-applications",
+            ),
             "pphos" => array(
                 P_RDIR => "password-policy-hall-of-shame",
             ),
