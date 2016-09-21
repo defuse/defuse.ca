@@ -442,7 +442,7 @@ header('Content-Type: text/html; charset=utf-8');
   })();
 
 </script>
-<noscript><p><img src="http://defuse.ca/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<noscript><p><img src="https://defuse.ca/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
 </body>
