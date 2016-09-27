@@ -172,6 +172,12 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li>IP=PSPACE: Simplified Proof (A. Shen)</li>
+    <li>IP=PSPACE (Adi Shamir)</li>
+    <li>Private Coins versus Public Coins in Interactive Proof Systems (Shafi Goldwasser and Michael Sipser)</li>
+    <li>Algebraic Methods for Interactive Proof Systems (Carsten Lund, et al.)</li>
+    <li>Turing machines that take advice (Karp and Lipton)</li>
+    <li>Alternation (A. Chandra et al.)</li>
     <li><b>The Spy in the Sandbox - Practical Cache Attacks in Javascript (Yossef Oren, et al.)</b></li>
     <li><b>Is the security of quantum cryptography guaranteed by the laws of physics? (Daniel J. Bernstein)</b></li>
     <li><b>Hacking Blind (Andrea Bittau et al.)</b></li>
