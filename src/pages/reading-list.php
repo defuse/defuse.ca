@@ -172,6 +172,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li>Nothingness (Stanford Encyclopedia of Philosophy)</li>
     <li>IP=PSPACE: Simplified Proof (A. Shen)</li>
     <li>IP=PSPACE (Adi Shamir)</li>
     <li>Private Coins versus Public Coins in Interactive Proof Systems (Shafi Goldwasser and Michael Sipser)</li>
