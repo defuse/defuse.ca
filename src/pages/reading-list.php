@@ -172,6 +172,7 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li>Quantum Physics and the Identity of Indiscernibles (Steven French and Micahel Redhead)</li>
     <li>Nothingness (Stanford Encyclopedia of Philosophy)</li>
     <li>The Physical Implementation of Quantum Computation (David P.
 DiVincenzo)</li>
