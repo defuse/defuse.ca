@@ -56,7 +56,7 @@ href="/contact.htm">send me a note</a> or <a href="https://twitter.com/#!/defuse
         </a>
     </li>
     <li>
-        <a href=https://www.youtube.com/course?list=ECEA18FAF1AD9047B0">
+        <a href="https://www.youtube.com/course?list=ECEA18FAF1AD9047B0">
             Death
         </a>
     </li>
