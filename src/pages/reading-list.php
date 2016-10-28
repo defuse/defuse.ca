@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2016</h2>
 
 <ul>
+    <li><b>Meditations on First Philosophy (Ren&eacute; Descartes)</b></li>
     <li>Sound: A Very Short Introduction (Mike Goldsmith)</li>
     <li>Chemistry Essentials for Dummies (John T. Moore)</li>
     <li><b>In Defense of Evil: Why Good Is Bad and Bad Is Good (Terroja Kincaid)</b></li>
@@ -172,6 +173,9 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li>Time-Space Lower Bounds for Satisfiability (Lance Fortnow, Richard Lipton, and Anastasios Viglas)</li>
+    <li>Strong ETH Breaks with Merlin and Arthur: Short Non-Interactive Proofs of Batch Evaluation (Ryan Williams)</li>
+    <li>Programming Satan's Computer (Ross Anderson and Roger Needham)</li>
     <li>Quantum Physics and the Identity of Indiscernibles (Steven French and Micahel Redhead)</li>
     <li>Nothingness (Stanford Encyclopedia of Philosophy)</li>
     <li>The Physical Implementation of Quantum Computation (David P.
