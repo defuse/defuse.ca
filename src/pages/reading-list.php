@@ -20,6 +20,7 @@ search of the title is usually enough to find the book or paper.
 <h2>2016</h2>
 
 <ul>
+    <li>The Architecture of Language (Noam Chomsky)</li>
     <li><b>Meditations on First Philosophy (Ren&eacute; Descartes)</b></li>
     <li>Sound: A Very Short Introduction (Mike Goldsmith)</li>
     <li>Chemistry Essentials for Dummies (John T. Moore)</li>
