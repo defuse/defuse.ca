@@ -81,9 +81,10 @@ class Assembler
         // http://sourceware.org/binutils/docs-2.23.1/as/Pseudo-Ops.html#Pseudo-Ops
         // Notes:
         //  - .fill et al. are deemed unsafe because of potential DoS (huge output).
+        //  - ". " allows for relative jumps, e.g. jmp . + 5
         $safe_directives = array(
             ".ascii", ".asciz", ".align", ".balign",
-            ".byte", ".int", ".double", ".quad", ".octa", ".word"
+            ".byte", ".int", ".double", ".quad", ".octa", ".word", ". "
         );
 
         foreach ($safe_directives as $directive)
