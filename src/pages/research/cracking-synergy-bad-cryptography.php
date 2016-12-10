@@ -163,9 +163,14 @@ protocol into something secure. It must be re-engineered.
 <h2>What the Synergy Developers Have Done</h2>
 
 <p>
-This bug is being tracked in
+<s>This bug is being tracked in
 <a href="http://synergy-foss.org/spit/issues/details/3760/">Bug #3760</a>. The
 status of the ticket is "Fixed", although all that was done is disable all modes
 except CFB mode. This breaks this specific attack, but is probably still
-vulnerable to other active attacks.
+vulnerable to other active attacks.</s>
+</p>
+
+<p>
+Update (2016-12-10): They implemented SRP, which is good. I haven't verified the
+actual implementation.
 </p>
