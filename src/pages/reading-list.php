@@ -175,7 +175,14 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
-    <li><b>Is P Versus NP Formally Independent?</b></li>
+    <li>The Status of the P versus NP Problem (Lance Fortnow)</li>
+    <li><b>One Complexity Theoreist's View of Quantum Computing (Lance Fortnow)</b></li>
+    <li><b>Cryptography During the French and American Wars in Vietname (Phan Dương Hiệu and Neal Koblitz)</b></li>
+    <li><b>Is P Versus NP Formally Independent? (Scott Aaronson)</b></li>
+    <li>On Limited Nondeterminism and ACC Circuit Lower Bounds (Holger Spakowski)</li>
+    <li>Uniform Recognition for Acyclic Context-Sensitive Grammars is NP-complete (Erik Aarts)</li>
+    <li>Feasible Proofs and Computations: Partnership and Fusion (Alexander A. Razborov)</li>
+    <li>Local Reductions (Hamid Jahanjou et al.)</li>
     <li>The Relative Efficiency of Propositional Proof Systems (Stephen Cook and Robert Reckhow)</li>
     <li>Feasible Proofs and Computations: Partnership and Fusion (Alexandar Razborov)</li>
     <li>Time-Space Lower Bounds for Satisfiability (Lance Fortnow, Richard Lipton, and Anastasios Viglas)</li>
