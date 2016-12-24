@@ -11,10 +11,9 @@
 
 <p>
 This is an incomplete list of things that I have read. It includes only books
-and academic papers. Ordering within the year sections is not meaningful. My
-favourite books and papers are in bold. I apologize for not listing all of the
-authors' names out of laziness; I'll get around to adding them sometime. A web
-search of the title is usually enough to find the book or paper.
+and academic papers. Ordering within the year sections is not meaningful,
+although it's roughly reverse-chronological accidentally by the fact that I add
+new entries on the top. My favorites are highlighted in <b>bold text</b>.
 </p>
 
 <h2>2016</h2>
@@ -175,6 +174,10 @@ search of the title is usually enough to find the book or paper.
 <h3>2016</h3>
 
 <ul>
+    <li>Quantum Advantage Without Entanglement (Dan Kenigsberg et al.)</li>
+    <li>How Quantum Computers Can Fail (Gil Kalai)</li>
+    <li>Are Quantum States Exponentially Long Vectors? (Scott Aaronson)</li>
+    <li>Multilinear Formulas and Skepticism of Quantum Computing (Scott Aaronson)</li>
     <li>The Status of the P versus NP Problem (Lance Fortnow)</li>
     <li><b>One Complexity Theoreist's View of Quantum Computing (Lance Fortnow)</b></li>
     <li><b>Cryptography During the French and American Wars in Vietname (Phan Dương Hiệu and Neal Koblitz)</b></li>
@@ -386,6 +389,8 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li>Polynomial Time and Extravagant Models (Leonid Levin)</li>
+    <li><b>PHYS771 Lecture 14: Skepticism of Quantum Computing (Scott Aaronson)</b></li>
     <li><b>Break a dozen secret keys, get a million more for free (Daniel J. Bernstein)</b></li>
     <li>True Names (Vernor Vinge)</li>
     <li>The Judgement of the Birds (Loren Eiseley)</li>
