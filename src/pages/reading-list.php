@@ -174,6 +174,7 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 <h3>2016</h3>
 
 <ul>
+    <li><b>Why Philosophers Should Care About Computational Complexity (Scott Aaronson)</b></li>
     <li>Quantum Advantage Without Entanglement (Dan Kenigsberg et al.)</li>
     <li>How Quantum Computers Can Fail (Gil Kalai)</li>
     <li>Are Quantum States Exponentially Long Vectors? (Scott Aaronson)</li>
