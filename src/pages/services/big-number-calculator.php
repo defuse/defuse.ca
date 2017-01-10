@@ -62,7 +62,7 @@
 
 <table style="margin: 0 auto; margin-bottom: 20px;">
     <tr><th>Base Prefixes:&nbsp;</th><td>0x - Hexadecimal, 0 - Octal</td></tr>
-    <tr><th>Math Operations:&nbsp;</th><td>+, -, *, /, ^, (, )</td></tr>
+    <tr><th>Math Operations:&nbsp;</th><td>+, -, *, /, %, ^, (, )</td></tr>
     <tr><th>Bitwise Operations:&nbsp;</th><td>OR, AND, XOR, SHL, SHR, &lt;&lt;, &gt;&gt;, |, &amp;</td></tr>
 </table>
 <?php
