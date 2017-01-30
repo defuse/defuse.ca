@@ -1,3 +1,12 @@
+<?php
+    Upvote::render_arrows(
+        "side-channel-attacks-on-everyday-applications",
+        "defuse_pages",
+        "Side-Channel Attacks on Everyday Applications",
+        "My Black Hat USA 2016 talk about the Flush+Reload side channel.",
+        "https://defuse.ca/side-channel-attacks-on-everyday-applications.htm"
+    );
+?>
 <h1>Side-Channel Attacks on Everyday Applications</h1>
 
 <p>At Black Hat USA 2016, I presented my research on using cache side-channel
