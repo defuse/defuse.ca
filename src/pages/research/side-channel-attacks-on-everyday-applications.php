@@ -7,6 +7,9 @@
         "https://defuse.ca/side-channel-attacks-on-everyday-applications.htm"
     );
 ?>
+<div class="pagedate">
+August 3, 2016
+</div>
 <h1>Side-Channel Attacks on Everyday Applications</h1>
 
 <p>At Black Hat USA 2016, I presented my research on using cache side-channel
