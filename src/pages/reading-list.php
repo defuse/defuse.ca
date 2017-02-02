@@ -16,6 +16,12 @@ although it's roughly reverse-chronological accidentally by the fact that I add
 new entries on the top. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2017</h2>
+
+<ul>
+    <li><b>I Am A Strange Loop (Douglas Hofstadter)</b></li>
+</ul>
+
 <h2>2016</h2>
 
 <ul>
@@ -170,6 +176,8 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 
 <a name="papers"></a>
 <h2>Papers</h2>
+
+<h3>2017</h3>
 
 <h3>2016</h3>
 
