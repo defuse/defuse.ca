@@ -19,6 +19,7 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 <h2>2017</h2>
 
 <ul>
+    <li><b>The Big Picture (Sean Carroll)</b></li>
     <li><b>I Am A Strange Loop (Douglas Hofstadter)</b></li>
 </ul>
 
