@@ -29,6 +29,12 @@ if ($keyEnd === false) {
 }
 $urlKey = substr($_SERVER['REQUEST_URI'], 3, $keyEnd - 3);
 
+if (
+    isset($_GET['delete']) &&
+    hash("sha256", $_GET['delete']) == "a7c61e0ed10927d12ed8fa6c080874b31d1b589e679f8abb33cde3cfa00ac954") {
+    delete_post($urlKey);
+}
+
 $postInfo = retrieve_post($urlKey);
 
 if (isset($_GET['raw']) && $_GET['raw'] == "true") {
