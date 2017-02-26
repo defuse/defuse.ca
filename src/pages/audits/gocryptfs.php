@@ -13,12 +13,12 @@ March 3, 2017
 
 <p>
 I've completed a two-day audit of <a
-href="https://nuetzlich.net/gocryptfs/">gocryptfs</a>'s cryptography design,
-graciously funded by 23andMe. You can download the audit report by clicking the
-link below.
+href="https://nuetzlich.net/gocryptfs/">gocryptfs</a>'s cryptography design. You
+can download the audit report by clicking the link below. Thanks to 23andMe for
+funding this audit.
 </p>
 
 <p style="text-align: center;">
-    <a href="/downloads/audits/gocryptfs-cryptography-design-audit.pdf"><strong>Security Audit of gocryptfs v1.2</strong></a>
+    <a href="/downloads/audits/gocryptfs-cryptography-design-audit.pdf">Security Audit of gocryptfs v1.2 (PDF)</a>
 </p>
 
