@@ -492,6 +492,12 @@ class URLParse
                 P_METD => "Security audit of the ZeroBin Zero-Knowledge Pastebin",
                 P_METK => "secure pastebin, security audit, zerobin",
             ),
+            "audits/gocryptfs" => array(
+                P_FILE => "audits/gocryptfs.php",
+                P_TITL => "Gocryptfs Security Audit",
+                P_METD => "Security audit of the gocryptfs encrypted filesystem",
+                P_METK => "gocryptfs, encrypted filesystem, security audit ",
+            ),
             "manual-random-number-generator" => array(
                 P_FILE => "research/manual-random-number-generator.php",
                 P_TITL => "Manually Generating Random Numbers",
