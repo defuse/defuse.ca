@@ -181,6 +181,7 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li><b>On Procrastination (John Perry)</b></li>
     <li><b>Toward a Broader View of Security Protocols (Matt Blaze)</b></li>
     <li>Engineering Silicon-Based Photonic Crystal Cavities for NV-Center Quantum Information Processing (C. A. Foell et al.)</li>
     <li>Quantum information processing through quantum dots in slow-light photonic crystal waveguides (C. W. Wong et al.)</li>
