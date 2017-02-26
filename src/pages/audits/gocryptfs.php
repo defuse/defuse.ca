@@ -11,6 +11,8 @@
 March 3, 2017
 </div>
 
+<h1>Gocryptfs Security Audit</h1>
+
 <p>
 I've completed a two-day audit of <a
 href="https://nuetzlich.net/gocryptfs/">gocryptfs</a>'s cryptography design. You
