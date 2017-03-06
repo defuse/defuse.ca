@@ -181,6 +181,7 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Quantum Information Processing Using Quantum Dot Spins and Cavity QED (A. Imamoglu et al.)</li>
     <li>Geiger-mode avalache photodiodes, history, properties and problems (D. Renker)</li>
     <li>The Case for Quantum Key Distribution (Douglas Stebila et al.)</li>
     <li><b>Attacks on practical quantum key distribution systems (and how to prevent them) (Nitin Jain et al.)</b></li>
