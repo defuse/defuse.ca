@@ -181,6 +181,16 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Geiger-mode avalache photodiodes, history, properties and problems (D. Renker)</li>
+    <li>The Case for Quantum Key Distribution (Douglas Stebila et al.)</li>
+    <li><b>Attacks on practical quantum key distribution systems (and how to prevent them) (Nitin Jain et al.)</b></li>
+    <li>Secure quantum key distribution (Hoi-Kwong Lo et al.)</li>
+    <li>The black paper of quantum cryptography: real implementation problems (Valerio Scarani, Christian Kurtseifer)</li>
+    <li><b>Large pulse attack as a method of conventional optical eavesdropping in quantum cryptography (Artem Vakhitov et al.)</b></li>
+    <li>Provably secure and practical quantum key distribution over 307km of optical fibre (Boris Korzh et al.)</li>
+    <li><b>Testing random-detector-efficiency countermeasure in a commercial system reveals a breakable unrealistic assumption (Anqi Huang et al.)</b></li>
+    <li>Random Variation of Detector Efficiency: A Countermeasure against Detector Blinding Attacks for Quantum Key Distribution (Charles Ci et al.)</li>
+    <li><b>Hacking Commercial Quantum Cryptography Systems by Tailored Bright Illumination (Lars Lydersen et al.)</b></li>
     <li><b>On Procrastination (John Perry)</b></li>
     <li><b>Toward a Broader View of Security Protocols (Matt Blaze)</b></li>
     <li>Engineering Silicon-Based Photonic Crystal Cavities for NV-Center Quantum Information Processing (C. A. Foell et al.)</li>
