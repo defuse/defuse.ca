@@ -181,6 +181,8 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Adverse Health Effects of Marijuana Use (Nora D. Volkow et al.)</li>
+    <li>Dose-related neurocognitive effects of marijuana use (K. I. Bolla et al.)</li>
     <li>Quantum Information Processing Using Quantum Dot Spins and Cavity QED (A. Imamoglu et al.)</li>
     <li>Geiger-mode avalache photodiodes, history, properties and problems (D. Renker)</li>
     <li>The Case for Quantum Key Distribution (Douglas Stebila et al.)</li>
