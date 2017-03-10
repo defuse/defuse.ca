@@ -154,7 +154,7 @@ textarea {
     padding-top:5px;
 
     /*overflow: auto;*/
-    padding-bottom: 140px; /* total #footer height + desired padding */
+    padding-bottom: 120px; /* total #footer height + desired padding */
 
     font-family: Helvetica, arial, freesans, clean, sans-serif;
     font-size: 16px;
@@ -267,7 +267,7 @@ ul {
 
 #footerwrapper {
     position: relative;
-    margin-top: -105px; /* #footer total height (padding too) + 10px footerborder */
+    margin-top: -85px; /* #footer total height (padding too) + 10px footerborder */
     clear: both;
     width: 100%;
     min-width: 900px;
@@ -290,7 +290,7 @@ ul {
     padding-right: 10px;
     margin: 0;
     color: white;
-    height: 80px;
+    height: 60px;
 }
 
 #footer a {
