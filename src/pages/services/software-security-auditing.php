@@ -27,11 +27,11 @@ Here are some examples of my security auditing work:
 </p>
 
 <ul>
+    <li><a href="/audits/gocryptfs.htm">gocryptfs</a></li>
     <li><a href="/audits/encfs.htm">EncFS</a></li>
     <li><a href="/audits/ecryptfs.htm">eCryptfs</a></li>
     <li><a href="/audits/pefs.htm">PEFS</a></li>
     <li><a href="/audits/zerobin.htm">ZeroBin</a></li>
-    <li><a href="https://blog.crypto.cat/2014/02/contest-find-bugs-win-a-sphero-2-0/">Cryptocat Bug Hunt</a></li>
     <li><a href="http://www.cryptofails.com/">Crypto Fails</a></li>
     <li><a href="https://github.com/keboola/php-encryption/issues/3">Padding Oracle PoC</a></li>
 </ul>
