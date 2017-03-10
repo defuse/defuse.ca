@@ -1,6 +1,6 @@
 <?php
     Upvote::render_arrows(
-        "auditgocryptfs",
+        "auditgocryptfs0",
         "defuse_pages",
         "Gocryptfs Security Audit",
         "A security audit of the gocryptfs encrypted filesystem.",
