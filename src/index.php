@@ -404,11 +404,6 @@ header('Content-Type: text/html; charset=utf-8');
         ?>
         <table>
             <tr>
-
-                <th>Last Modified: &nbsp;&nbsp;</th>
-                <td><?php echo $last_modified;?></td>
-            </tr>
-            <tr>
                 <th>Page Hits:</th>
                 <td><?php echo $hits; ?></td>
             </tr>
