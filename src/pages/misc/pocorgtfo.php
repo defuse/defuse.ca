@@ -18,4 +18,6 @@ This mirror is only a proof of concept. It may not be up to date.
     <li><a href="/files2/poc/pocorgtfo10.pdf">Issue 0x10</a></li>
     <li><a href="/files2/poc/pocorgtfo11.pdf">Issue 0x11</a></li>
     <li><a href="/files2/poc/pocorgtfo12.pdf">Issue 0x12</a></li>
+    <li><a href="/files2/poc/pocorgtfo13.pdf">Issue 0x13</a></li>
+    <li><a href="/files2/poc/pocorgtfo14.pdf">Issue 0x14</a></li>
 </ul>
