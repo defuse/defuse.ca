@@ -181,6 +181,7 @@ new entries on the top. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Method to Protect Passwords in Databases for Web Applications (Scott Contini)</li>
     <li>Music, Language, and Composition (Theodor W. Adorno)</li>
     <li>Adverse Health Effects of Marijuana Use (Nora D. Volkow et al.)</li>
     <li>Dose-related neurocognitive effects of marijuana use (K. I. Bolla et al.)</li>
