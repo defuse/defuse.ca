@@ -10,15 +10,20 @@
 <h1>Reading List</h1>
 
 <p>
-This is an incomplete list of things that I have read. It includes only books
-and academic papers. Ordering within the year sections is not meaningful,
-although it's roughly reverse-chronological accidentally by the fact that I add
-new entries on the top. My favorites are highlighted in <b>bold text</b>.
+This is an mostly-complete list of things that I have (partially) read. The goal
+is for this to act as a "bibliography" citing the sources of some of my
+knowledge. It might also be useful if you're looking for something interesting
+to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
 <h2>2017</h2>
 
 <ul>
+    <li>Quantum Information Theory &amp; the Foundations of Quantum Mechanics (Christopher G. Timpson)</li>
+    <li><b>Music Theory for Computer Musicians (Michael Hewitt)</b></li>
+    <li>Musimathics (Gareth Loy)</li>
+    <li>Dance Music Manual (Michael Hewitt)</li>
+    <li><b>Creating Mind (John E. Dowling)</b></li>
     <li>The Quantum Age (Brian Clegg)</li>
     <li><b>The Big Picture (Sean Carroll)</b></li>
     <li><b>I Am A Strange Loop (Douglas Hofstadter)</b></li>
