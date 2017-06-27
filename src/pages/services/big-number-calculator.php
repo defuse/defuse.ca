@@ -56,8 +56,7 @@
         <option value="oct" <?php if($base == 8) echo 'selected="selected"'; ?> >Octal</option>
     </select>
     <br />
-    Add Spaces:
-    <input type="checkbox" name="addspaces" value="yes" />
+    <input type="checkbox" name="addspaces" value="yes" checked="checked" /> Add spaces
     </p>
     </div>
     </div>
