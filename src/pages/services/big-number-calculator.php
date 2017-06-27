@@ -55,6 +55,9 @@
         <option value="hex" <?php if($base == 16) echo 'selected="selected"'; ?> >Hexadecimal</option>
         <option value="oct" <?php if($base == 8) echo 'selected="selected"'; ?> >Octal</option>
     </select>
+    <br />
+    Add Spaces:
+    <input type="checkbox" name="addspaces" value="yes" />
     </p>
     </div>
     </div>
@@ -113,7 +116,7 @@ if(isset($_POST['submit']))
 
         if(!$tooLong && !is_blank($res) && strpos($res, "warning") === false && strpos($res, "error") === false && strpos($res, "Infinity") === false)
         {
-            if($res == "true" || $res == "false")
+            if($res == "true" || $res == "false" || !isset($_POST['addspaces']))
             {
                 $res = breakLines($res, 60);
             }
