@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2017</h2>
 
 <ul>
+    <li><b>QED: The Strange Theory of Light and Matter (Richard Feynman)</b></li>
     <li>Quantum Information Theory &amp; the Foundations of Quantum Mechanics (Christopher G. Timpson)</li>
     <li><b>Music Theory for Computer Musicians (Michael Hewitt)</b></li>
     <li>Musimathics (Gareth Loy)</li>
