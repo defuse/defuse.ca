@@ -44,7 +44,7 @@ class Assembler
             if ($ret == 0)
             {
                 // Use objdump to disassemble it.
-                exec("objdump -M intel -d $obj_path", $output, $ret);
+                exec("objdump -z -M intel -d $obj_path", $output, $ret);
 
                 if ($ret == 0)
                 {
