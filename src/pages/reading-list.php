@@ -190,6 +190,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Using BGP to Acquire Bogus TLS Certificates (Henry Birge-Lee et al.)</li>
     <li>What is inferrentialism? (Jaroslav Peregrin)</li>
     <li>Method to Protect Passwords in Databases for Web Applications (Scott Contini)</li>
     <li>Music, Language, and Composition (Theodor W. Adorno)</li>
