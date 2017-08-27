@@ -190,6 +190,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Open Problems in the Philosophy of Information (Luciano Floridi)</li>
     <li><b>A Large-Scale Model of the Functioning Brain (Chris Eliasmith et al.)</b></li>
     <li>Using BGP to Acquire Bogus TLS Certificates (Henry Birge-Lee et al.)</li>
     <li>What is inferrentialism? (Jaroslav Peregrin)</li>
