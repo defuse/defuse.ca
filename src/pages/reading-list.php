@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2017</h2>
 
 <ul>
+    <li><b>The Man Who Mistook His Wife For a Hat (Oliver Sacks)</b></li>
     <li><b>Mixing Secrets For the Small Studio (Mike Senior)</b></li>
     <li><b>The Black Hole War (Stephen Hawking)</b></li>
     <li><b>QED: The Strange Theory of Light and Matter (Richard Feynman)</b></li>
