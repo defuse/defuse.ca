@@ -34,6 +34,9 @@ class TimeCapsule
             $q = self::$DB->prepare(
                 'INSERT INTO timecapsulez (timestamp, message) VALUES (:timestamp, :message)'
             );
+            if ($q === FALSE) {
+                return false;
+            }
             $q->bindParam(':timestamp', time());
             $q->bindParam(':message', $message);
             return $q->execute();
