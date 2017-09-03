@@ -61,25 +61,33 @@ class TimeCapsule
 
     public static function get_message_count()
     {
-        self::InitDB();
+        try {
+            self::InitDB();
 
-        $q = self::$DB->prepare(
-            'SELECT COUNT(*) AS count FROM timecapsule'
-        );
-        $q->execute();
-        $res = $q->fetch();
-        return (int)$res['count'];
+            $q = self::$DB->prepare(
+                'SELECT COUNT(*) AS count FROM timecapsule'
+            );
+            $q->execute();
+            $res = $q->fetch();
+            return (int)$res['count'];
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     public static function get_last_timestamp()
     {
-        self::InitDB();
+        try {
+            self::InitDB();
 
-        $q = self::$DB->prepare(
-            'SELECT * FROM timecapsule ORDER BY id DESC LIMIT 1'
-        );
-        $q->execute();
-        $res = $q->fetch();
-        return (int)$res['timestamp'];
+            $q = self::$DB->prepare(
+                'SELECT * FROM timecapsule ORDER BY id DESC LIMIT 1'
+            );
+            $q->execute();
+            $res = $q->fetch();
+            return (int)$res['timestamp'];
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }

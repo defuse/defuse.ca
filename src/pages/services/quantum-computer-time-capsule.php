@@ -105,13 +105,13 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
             ?>
             <p>
                 <span style="font-weight: bold; color: green;">Your message has been sent to
-            the future!</span> The text below is your message, encrypted so that it can't be
-            read until someone builds a large-scale quantum computer. You don't need to save
-            it yourself; it has already been added to the archive along with all of the
-            other messages to the future. To help the archive survive into the future, you
-            can <a href="/timecapsule/quantum-computer-time-capsule-download.php"
-            target="_blank">download a copy of the archive</a> and save it somewhere
-            a future historian might find it.
+                the future!</span> The text below is your message, encrypted so that it can't be
+                read until someone builds a large-scale quantum computer. You don't need to save
+                it yourself; it has already been added to the archive along with all of the
+                other messages to the future. To help the archive survive into the future, you
+                can <a href="/timecapsule/quantum-computer-time-capsule-download.php"
+                target="_blank">download a copy of the archive</a> and save it somewhere
+                a future historian might find it.
             </p>
 
             <div
@@ -196,8 +196,22 @@ that a future historian might one day find your copy of it.
 </form>
 
 <p>
-The archive currently contains <?php echo (int)TimeCapsule::get_message_count(); ?> messages.
-The last message was added <?php echo htmlentities(time_for_human(time() - TimeCapsule::get_last_timestamp()), ENT_QUOTES); ?> ago.
+The archive currently contains <?php
+    $count = TimeCapsule::get_message_count();
+    if ($count) {
+        echo (int)$count;
+    } else {
+        echo "ERROR";
+    }
+?> messages.
+The last message was added <?php
+    $last = TimeCapsule::get_last_timestamp();
+    if ($last) {
+        echo htmlentities(time_for_human(time() - $last), ENT_QUOTES);
+    } else {
+        echo "ERROR";
+    }
+?> ago.
 </p>
 
 <p>
