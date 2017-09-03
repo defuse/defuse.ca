@@ -104,6 +104,12 @@ a future historian might find it.
     }
 ?>
 
+<script>
+    function onRecaptchaChecked() {
+        document.getElementById("submitbutton").disabled = false;
+    }
+</script>
+
 <form id="messageform" action="/quantum-computer-time-capsule.htm" method="post">
     <center>
         <textarea
@@ -115,9 +121,9 @@ a future historian might find it.
             maxlength="100000"
         ><?php echo htmlentities($textarea_contents, ENT_QUOTES); ?></textarea>
         <br /> <br />
-        <div class="g-recaptcha" data-sitekey="6LcnNi8UAAAAALJikXrc6jwNWUm00Yjx_rHCJW7u"></div>
+        <div class="g-recaptcha" data-sitekey="6LcnNi8UAAAAALJikXrc6jwNWUm00Yjx_rHCJW7u" data-callback="onRecaptchaChecked"></div>
         <br />
-        <input type="button" name="send" value="Send Message to the Future" onclick="sendMessage();">
+        <input type="button" name="send" id="submitbutton" value="Send Message to the Future" onclick="sendMessage" disabled>
         <p style="color: grey;">(100,000 characters maximum.)</p>
         <input type="hidden" id="algorithm" name="algorithm" value="" />
         <input type="hidden" id="present_public_key" name="present_public_key" value="" />
