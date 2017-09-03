@@ -31,16 +31,15 @@ class TimeCapsule
     {
         try {
             self::InitDB();
+            $q = self::$DB->prepare(
+                'INSERT INTO timecapsulez (timestamp, message) VALUES (:timestamp, :message)'
+            );
+            $q->bindParam(':timestamp', time());
+            $q->bindParam(':message', $message);
+            return $q->execute();
         } catch (Exception $e) {
             return false;
         }
-
-        $q = self::$DB->prepare(
-            'INSERT INTO timecapsulez (timestamp, message) VALUES (:timestamp, :message)'
-        );
-        $q->bindParam(':timestamp', time());
-        $q->bindParam(':message', $message);
-        return $q->execute();
     }
 
     public static function print_all_entries_in_order()
