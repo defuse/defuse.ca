@@ -63,7 +63,7 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
 
 <?php
     $textarea_contents = '';
-    if (isset($_POST['message'])) {
+    if (isset($_POST['ciphertext'])) {
         $textarea_contents = $_POST['message'];
         // Add the date and time.
         $date_utc = new \DateTime(null, new \DateTimeZone("UTC"));
@@ -73,7 +73,7 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
             ' algorithm:' . $_POST['algorithm'] .
             ' presentpublickey:' . $_POST['present_public_key'] .
             ' futurepublickey:' . $_POST['future_public_key'] .
-            ' ciphertext:' . $_POST['message'];
+            ' ciphertext:' . $_POST['ciphertext'];
         if (strlen($encrypted_message) >= 200000 || strpos($encrypted_message, "\n") !== false || strpos($encrypted_message, "\r") !== false) {
             // This should never happen unless the user is intentionally
             // bypassing the soft-limit in the HTML form.
@@ -139,6 +139,7 @@ a future historian might find it.
         <input type="hidden" id="algorithm" name="algorithm" value="" />
         <input type="hidden" id="present_public_key" name="present_public_key" value="" />
         <input type="hidden" id="future_public_key" name="future_public_key" value="" />
+        <input type="hidden" id="ciphertext" name="ciphertext" value="" />
     </center>
 </form>
 

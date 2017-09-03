@@ -21,11 +21,11 @@ function sendMessage()
         document.getElementById("algorithm").value = "tweetnacl-js-x25519-xsalsa20-poly1305-zerononce";
         document.getElementById("present_public_key").value = nacl.util.encodeBase64(present.publicKey);
         document.getElementById("future_public_key").value = nacl.util.encodeBase64(future.publicKey);
-        document.getElementById("message").value = nacl.util.encodeBase64(encrypted_message);
+        document.getElementById("ciphertext").value = nacl.util.encodeBase64(encrypted_message);
 
         // Self-test decryption.
         var decrypted_message = nacl.util.encodeUTF8(nacl.box.open(
-            nacl.util.decodeBase64(document.getElementById("message").value),
+            nacl.util.decodeBase64(document.getElementById("ciphertext").value),
             nacl.util.decodeUTF8("000000000000000000000000"),
             nacl.util.decodeBase64(document.getElementById("present_public_key").value),
             future.secretKey
@@ -37,6 +37,12 @@ function sendMessage()
             alert("Sorry, something is broken. =(");
             return;
         }
+
+        // Note: The plaintext message is still sent to the server so that the
+        // server can echo it back if there's an error adding the ciphertext to
+        // the database. This way the user doesn't potentially lose all of the
+        // hard work they put in to writing the message.
+
     } catch (e) {
         alert("Sorry, something is broken. =(");
     }
