@@ -58,6 +58,10 @@ function checkReCAPTCHA()
 
 <h1>Time Capsule: Send a Message to the Future</h1>
 
+<strong>THIS SERVICE IS NOT LIVE YET, ALL MESSAGES CURRENTLY SENT WILL BE
+DELETED. AFTER I AM DONE TESTING AND AUDITING THE CODE, I WILL RESET THE
+DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
+
 <?php
     $textarea_contents = '';
     if (isset($_POST['message'])) {
