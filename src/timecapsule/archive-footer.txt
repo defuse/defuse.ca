@@ -1,0 +1,2 @@
+- The SHA256 hash of the first N lines of this file can be found in block NNNN
+  of the Zcash blockchain.

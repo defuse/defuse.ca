@@ -360,6 +360,12 @@ class URLParse
                 P_METD => "Easily find out which bytes your x86 ASM instructions assemble to.",
                 P_METK => "assembler, opcode finder, opcode lookup, online assembler, x86, intel",
             ),
+            "quantum-computer-time-capsule" => array(
+                P_FILE => "services/quantum-computer-time-capsule.php",
+                P_TITL => "Send a Message to the Future (Digital Time Capsule)",
+                P_METD => "Save a message that will become readable after quantum computers are built.",
+                P_METK => "digital time capsule, quantum computers",
+            ),
             "web-server-scan" => array(
                 P_FILE => "services/scan.php",
                 P_TITL => "Web Server Security Scan - Defuse Security",
