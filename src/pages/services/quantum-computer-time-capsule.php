@@ -160,15 +160,15 @@ unexpected breakthrough, someone discovers a way to recover the messages using
 a classical computer. It's not known how long it will be before we can build
 large-scale quantum comptuters. Some scientists guess that we'll see one within
 the next 10 years, others guess that it'll take 50 years or more, and some don't
-think we'll ever be able to build a quantum computer. So, it's impossible to say
-when your message will be read, if at all. But it's worth a try!
+think we'll ever be able to build one. So, it's impossible to say when your
+message will be read, if at all. But it's worth a try!
 </p>
 
 
 <h2>Message Archive</h2>
 
 <p>
-It might take centuries for humanity to invent the technology we need to read
+It might take a long time for humanity to invent the technology we need to read
 these messages, and this website will probably go down before then. So, after
 you've added your message, please consider downloading the entire archive so
 that a future historian might one day find your copy of it.
