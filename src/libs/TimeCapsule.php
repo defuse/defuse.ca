@@ -70,7 +70,7 @@ class TimeCapsule
         self::InitDB();
 
         $q = self::$DB->prepare(
-            'SELECT * FROM timecapsule ORDER BY id LIMIT 1'
+            'SELECT * FROM timecapsule ORDER BY id DESC LIMIT 1'
         );
         $q->execute();
         $res = $q->fetch();
