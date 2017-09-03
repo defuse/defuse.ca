@@ -22,7 +22,6 @@ function sendMessage()
         document.getElementById("present_public_key").value = nacl.util.encodeBase64(present.publicKey);
         document.getElementById("future_public_key").value = nacl.util.encodeBase64(future.publicKey);
         document.getElementById("message").value = nacl.util.encodeBase64(encrypted_message);
-        document.getElementById("message").disabled = true;
 
         // Self-test decryption.
         var decrypted_message = nacl.util.encodeUTF8(nacl.box.open(
