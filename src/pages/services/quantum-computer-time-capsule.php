@@ -84,8 +84,11 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
         ?>
             <p style="font-weight: bold; color: red;">Please click the "I am not a robot" button.</p>
         <?
+        } else if (TimeCapsule::add_entry($encrypted_message) !== true) {
+        ?>
+            <p style="font-weight: bold; color: red;">Sorry, there was an error adding the message to the database.</p>
+        <?
         } else {
-            TimeCapsule::add_entry($encrypted_message);
             $textarea_contents = '';
         ?>
 <p>

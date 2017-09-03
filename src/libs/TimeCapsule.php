@@ -36,7 +36,7 @@ class TimeCapsule
         );
         $q->bindParam(':timestamp', time());
         $q->bindParam(':message', $message);
-        $q->execute();
+        return $q->execute();
     }
 
     public static function print_all_entries_in_order()
