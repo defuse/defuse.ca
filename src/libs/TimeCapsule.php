@@ -32,7 +32,7 @@ class TimeCapsule
         try {
             self::InitDB();
             $q = self::$DB->prepare(
-                'INSERT INTO timecapsulez (timestamp, message) VALUES (:timestamp, :message)'
+                'INSERT INTO timecapsule (timestamp, message) VALUES (:timestamp, :message)'
             );
             if ($q === FALSE) {
                 return false;
