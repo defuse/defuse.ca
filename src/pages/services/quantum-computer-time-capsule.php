@@ -16,6 +16,8 @@ function time_for_human($seconds)
         return round($seconds/(24*3600)) . " days";
     } else if ($seconds > 3600) {
         return round($seconds/3600) . " hours";
+    } else if ($seconds > 60) {
+        return round($seconds/60) . " minutes";
     } else {
         return $seconds . " seconds";
     }
