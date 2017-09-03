@@ -1,7 +1,9 @@
 <?php
+
 require_once('/etc/creds.php');
-require_once( 'libs/HtmlEscape.php' );
-require_once( 'libs/TimeCapsule.php' );
+require_once('libs/HtmlEscape.php');
+require_once('libs/TimeCapsule.php');
+
 Upvote::render_arrows(
     "quantumcomputertimecapsule",
     "defuse_pages",
@@ -23,6 +25,7 @@ function time_for_human($seconds)
     }
 }
 
+// Copied from: https://stackoverflow.com/a/30749288
 function checkReCAPTCHA() 
 {
     try {
@@ -64,50 +67,59 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
 <?php
     $textarea_contents = '';
     if (isset($_POST['ciphertext'])) {
+        // The client sends us the plaintext message in case there's an error
+        // and we need to echo it back to them. Make sure not to save it
+        // anywhere!
         $textarea_contents = $_POST['message'];
-        // Add the date and time.
+
+        // Record the date and time.
         $date_utc = new \DateTime(null, new \DateTimeZone("UTC"));
         $formatted_date = $date_utc->format(\DateTime::ATOM);
 
+        // Put all of the information neccessary for a quantum computer to
+        // decrypt the message on a single line.
         $encrypted_message = 'time:' . $formatted_date .
             ' algorithm:' . $_POST['algorithm'] .
             ' presentpublickey:' . $_POST['present_public_key'] .
             ' futurepublickey:' . $_POST['future_public_key'] .
             ' ciphertext:' . $_POST['ciphertext'];
+
         if (strlen($encrypted_message) >= 200000 || strpos($encrypted_message, "\n") !== false || strpos($encrypted_message, "\r") !== false) {
             // This should never happen unless the user is intentionally
-            // bypassing the soft-limit in the HTML form.
-        ?>
+            // bypassing the soft-limit in the HTML form or modifying their
+            // local JavaScript code.
+            ?>
             <p style="font-weight: bold; color: red;">Something went wrong, your message was too big or the encrypted version contains newlines.</p>
-        <?
+            <?
         } else if (checkReCAPTCHA() !== true) {
-        ?>
-            <p style="font-weight: bold; color: red;">Please click the "I am not a robot" button.</p>
-        <?
+            ?>
+            <p style="font-weight: bold; color: red;">Please solve the CAPTCHA.</p>
+            <?
         } else if (TimeCapsule::add_entry($encrypted_message) !== true) {
-        ?>
+            ?>
             <p style="font-weight: bold; color: red;">Sorry, there was an error adding the message to the database.</p>
-        <?
+            <?
         } else {
+            // The message has been added, so it's safe to delete the plaintext.
             $textarea_contents = '';
-        ?>
-<p>
-    <span style="font-weight: bold; color: green;">Your message has been sent to
-the future!</span> The text below is your message, encrypted so that it can't be
-read until someone builds a large-scale quantum computer. You don't need to save
-it yourself; it has already been added to the archive along with all of the
-other messages to the future. To help the archive survive into the future, you
-can <a href="/timecapsule/quantum-computer-time-capsule-download.php"
-target="_blank">download a copy of the archive</a> and save it somewhere
-a future historian might find it.
-</p>
+            ?>
+            <p>
+                <span style="font-weight: bold; color: green;">Your message has been sent to
+            the future!</span> The text below is your message, encrypted so that it can't be
+            read until someone builds a large-scale quantum computer. You don't need to save
+            it yourself; it has already been added to the archive along with all of the
+            other messages to the future. To help the archive survive into the future, you
+            can <a href="/timecapsule/quantum-computer-time-capsule-download.php"
+            target="_blank">download a copy of the archive</a> and save it somewhere
+            a future historian might find it.
+            </p>
 
-<div
-    style="font: monospace; width: 80%; margin: 0 auto; word-break: break-all; word-wrap: break-word; color: grey; background-color: white; border: none;"
-><?php echo HtmlEscape::escapeText($encrypted_message, false, 4); ?></div>
+            <div
+                style="font: monospace; width: 80%; margin: 0 auto; word-break: break-all; word-wrap: break-word; color: grey; background-color: white; border: none;"
+            ><?php echo HtmlEscape::escapeText($encrypted_message, false, 4); ?></div>
 
-<h2>Send Another Message</h2>
-        <?
+            <h2>Send Another Message</h2>
+            <?
         }
     }
 ?>
