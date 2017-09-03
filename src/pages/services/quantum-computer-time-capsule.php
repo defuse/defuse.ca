@@ -1,4 +1,5 @@
 <?php
+require_once('/etc/creds.php');
 require_once( 'libs/HtmlEscape.php' );
 require_once( 'libs/TimeCapsule.php' );
 Upvote::render_arrows(
@@ -20,6 +21,32 @@ function time_for_human($seconds)
     }
 }
 
+function checkReCAPTCHA() 
+{
+    try {
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $creds = Creds::getCredentials("timecapsule_recaptcha");
+        $data = ['secret'   => $creds[C_PASS],
+                 'response' => $_POST['g-recaptcha-response'],
+                 'remoteip' => $_SERVER['REMOTE_ADDR']];
+
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data) 
+            ]
+        ];
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        return json_decode($result)->success;
+    }
+    catch (Exception $e) {
+        return null;
+    }
+}
+
 ?>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -30,7 +57,9 @@ function time_for_human($seconds)
 <h1>Time Capsule: Send a Message to the Future</h1>
 
 <?php
+    $textarea_contents = '';
     if (isset($_POST['message'])) {
+        $textarea_contents = $_POST['message'];
         // Add the date and time.
         $date_utc = new \DateTime(null, new \DateTimeZone("UTC"));
         $formatted_date = $date_utc->format(\DateTime::ATOM);
@@ -44,10 +73,15 @@ function time_for_human($seconds)
             // This should never happen unless the user is intentionally
             // bypassing the soft-limit in the HTML form.
         ?>
-<p style="font-weight: bold; color: red;">Something went wrong, your message was too big or the encrypted version contains newlines.</p>
+            <p style="font-weight: bold; color: red;">Something went wrong, your message was too big or the encrypted version contains newlines.</p>
+        <?
+        } else if (checkReCAPTCHA() !== true) {
+        ?>
+            <p style="font-weight: bold; color: red;">Please click the "I am not a robot" button.</p>
         <?
         } else {
             TimeCapsule::add_entry($encrypted_message);
+            $textarea_contents = '';
         ?>
 <p>
     <span style="font-weight: bold; color: green;">Your message has been sent to
@@ -79,7 +113,7 @@ a future historian might find it.
             cols="80"
             style="color: black; background-color: white; border: dashed 1px black;"
             maxlength="100000"
-        ></textarea>
+        ><?php echo htmlentities($textarea_contents, ENT_QUOTES); ?></textarea>
         <br /> <br />
         <div class="g-recaptcha" data-sitekey="6LcnNi8UAAAAALJikXrc6jwNWUm00Yjx_rHCJW7u"></div>
         <br />
