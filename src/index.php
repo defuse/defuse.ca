@@ -118,6 +118,13 @@ header('Content-Type: text/html; charset=utf-8');
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="/js/upvote.js"></script>
 <script type="text/javascript" src="/js/jquery.js"></script>
+<?php
+    if ($name === "quantum-computer-time-capsule") {
+    ?>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    <?
+    }
+?>
 <link rel="stylesheet" media="all" type="text/css" href="/main.css" />
 <link rel="stylesheet" media="all" type="text/css" href="/mainmenu.css" />
 <link rel="stylesheet" media="all" type="text/css" href="/vimhl.css" />

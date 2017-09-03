@@ -51,7 +51,6 @@ function checkReCAPTCHA()
 
 ?>
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript" src="/timecapsule/tweetnacl-time-capsule.js"></script>
 <script type="text/javascript" src="/timecapsule/tweetnacl-util-time-capsule.js"></script>
 <script type="text/javascript" src="/timecapsule/timecapsule-save.js"></script>
