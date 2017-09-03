@@ -154,7 +154,7 @@ somebody manages to build a quantum computer.
 </p>
 
 <p>
-So, use the form above to encrypt and save a message that should remain
+So, use the form above to encrypt and upload a message that will remain
 unreadable until either someone builds a large-scale quantum computer or, in an
 unexpected breakthrough, someone discovers a way to recover the messages using
 a classical computer. It's not known how long it will be before we can build
