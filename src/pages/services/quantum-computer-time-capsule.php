@@ -82,7 +82,7 @@ a future historian might find it.
         ></textarea>
         <br /> <br />
         <div class="g-recaptcha" data-sitekey="6LcnNi8UAAAAALJikXrc6jwNWUm00Yjx_rHCJW7u"></div>
-        <br /><br />
+        <br />
         <input type="button" name="send" value="Send Message to the Future" onclick="sendMessage();">
         <p style="color: grey;">(100,000 characters maximum.)</p>
         <input type="hidden" id="algorithm" name="algorithm" value="" />
