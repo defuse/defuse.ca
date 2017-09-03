@@ -23,13 +23,17 @@ class TimeCapsule
             self::$DB->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             unset($creds);
         } catch(Exception $e) {
-            die('Failed to connect to upvotes database');
+            throw new Exception('Failed to connect to the timecapsule database');
         }
     }
 
     public static function add_entry($message)
     {
-        self::InitDB();
+        try {
+            self::InitDB();
+        } catch (Exception $e) {
+            return false;
+        }
 
         $q = self::$DB->prepare(
             'INSERT INTO timecapsule (timestamp, message) VALUES (:timestamp, :message)'
