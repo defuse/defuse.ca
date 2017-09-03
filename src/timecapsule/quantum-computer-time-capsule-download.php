@@ -1,4 +1,7 @@
 <?php
+
+require_once('../libs/TimeCapsule.php');
+
 $date_utc = new \DateTime(null, new \DateTimeZone("UTC"));
 $filename = "MessagesToTheQuantumComputingFuture-" . $date_utc->format("Y-m-d\TH-i-sP") . ".txt";
 
@@ -14,7 +17,7 @@ echo file_get_contents("tweetnacl-time-capsule.js");
 echo "\n==== SOURCE CODE: tweetnacl-util-time-capsule.js ====\n";
 echo file_get_contents("tweetnacl-util-time-capsule.js");
 echo "\n==== MESSAGES FOR THE FUTURE ====\n\n";
-// TODO
+TimeCapsule::print_all_entries_in_order();
 echo "\n==== ADDITIONAL INFORMATION ====\n\n";
 echo file_get_contents("archive-footer.txt");
 ?>
