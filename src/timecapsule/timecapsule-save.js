@@ -21,6 +21,7 @@ function sendMessage()
         document.getElementById("algorithm").value = "tweetnacl-js-x25519-xsalsa20-poly1305-zerononce";
         document.getElementById("present_public_key").value = nacl.util.encodeBase64(present.publicKey);
         document.getElementById("future_public_key").value = nacl.util.encodeBase64(future.publicKey);
+        document.getElementById("message").disabled = true;
         document.getElementById("message").value = nacl.util.encodeBase64(encrypted_message);
 
         // Self-test decryption.
