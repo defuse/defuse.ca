@@ -22,6 +22,7 @@ function time_for_human($seconds)
 
 ?>
 
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript" src="/timecapsule/tweetnacl-time-capsule.js"></script>
 <script type="text/javascript" src="/timecapsule/tweetnacl-util-time-capsule.js"></script>
 <script type="text/javascript" src="/timecapsule/timecapsule-save.js"></script>
@@ -80,6 +81,7 @@ a future historian might find it.
             maxlength="100000"
         ></textarea>
         <br /> <br />
+        <div class="g-recaptcha" data-sitekey="6LcnNi8UAAAAALJikXrc6jwNWUm00Yjx_rHCJW7u"></div>
         <input type="button" name="send" value="Send Message to the Future" onclick="sendMessage();">
         <p style="color: grey;">(100,000 characters maximum.)</p>
         <input type="hidden" id="algorithm" name="algorithm" value="" />
