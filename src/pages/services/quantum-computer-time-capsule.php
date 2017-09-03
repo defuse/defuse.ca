@@ -123,7 +123,7 @@ a future historian might find it.
         <br /> <br />
         <div class="g-recaptcha" data-sitekey="6LcnNi8UAAAAALJikXrc6jwNWUm00Yjx_rHCJW7u" data-callback="onRecaptchaChecked"></div>
         <br />
-        <input type="button" name="send" id="submitbutton" value="Send Message to the Future" onclick="sendMessage" disabled>
+        <input type="button" name="send" id="submitbutton" value="Send Message to the Future" onclick="sendMessage();" disabled>
         <p style="color: grey;">(100,000 characters maximum.)</p>
         <input type="hidden" id="algorithm" name="algorithm" value="" />
         <input type="hidden" id="present_public_key" name="present_public_key" value="" />
