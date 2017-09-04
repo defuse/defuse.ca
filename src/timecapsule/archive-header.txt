@@ -11,7 +11,7 @@ who can access the above webpage and pass Google's "recaptcha" anti-spam check
 is allowed to contribute messages to the archive.
 
 This may not be the latest version of the archive. This document grows in
-a roughly append-only fashion, and contributors are encouraged to download
+a (roughly) append-only fashion, and contributors are encouraged to download
 a copy of it after they've added their message to help it live on into the
 future. To help future historians verify the authenticity of this document,
 I plan to periodically embed a cryptographic hash of its longest unchanging
@@ -19,13 +19,13 @@ prefix into a cryptocurrency's blockchain.
 
 This document begins with the source code (including Dmitry Chestnykh's port of
 TweetNaCl to JavaScript) that is used to encrypt the messages in
-a "quantum-vulnerable" way. Following the source code are the timestamped
-encrypted messages themselves, one per line. At the end of the file, you will
-find additional information including a list of everywhere I saved the
-cryptographic hashes of the prefixes.
+a "quantum-vulnerable" way. Next come the timestamped and encrypted messages
+themselves, one per line. At the end of the file, you will find additional
+information including a list of everywhere I've saved cryptographic hashes of
+prefixes of this file.
 
-Note that the encryption is performed in the message author's web browser, and
-hence could have been modified by the message's author. So, some authors may
-have chosen to add messages that are not in the correct format. The timestamps
-are reliable because they were recorded server-side, but because of possible
-clock skew, they should not be considered to be exact.
+Note that the encryption code is run in the message author's web browser, and
+hence can be modified by the message author. So, some authors may have chosen to
+add messages that are not in the correct format. The timestamps are reliable
+because they were recorded on the web server using the server's clock, but
+because of possible clock skew they should not be considered to be exact.
