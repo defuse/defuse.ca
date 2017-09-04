@@ -7,10 +7,10 @@ If you would like to contribute a message to this archive, you can do so here:
     https://defuse.ca/quantum-computer-time-capsule.htm
 
 This time capsule was initiated by Taylor S. Hornby in September of 2017. Anyone
-who can access the above webpage and pass Google's "recaptcha" anti-spam check
+who can access the above webpage and pass Google's "reCAPTCHA" anti-spam check
 is allowed to contribute messages to the archive.
 
-This may not be the latest version of the archive. This document grows in
+This file may not be the latest version of the archive. This document grows in
 a (roughly) append-only fashion, and contributors are encouraged to download
 a copy of it after they've added their message to help it live on into the
 future. To help future historians verify the authenticity of this document,

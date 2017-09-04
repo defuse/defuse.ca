@@ -1,5 +1,6 @@
 function sendMessage()
 {
+    // This code is embedded into the time capsule, do not modify it!
     try {
         var message = document.getElementById("message").value;
 

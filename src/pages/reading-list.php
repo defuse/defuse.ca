@@ -191,6 +191,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li><b>Motivated Numeracy and Enlightened Self-Government (Dan M Kahan et al.)</b></li>
     <li><b>When the Weakest Link is Strong: Secure Collaboration in the Case of the Panama Papers (Susan E. McGregor et al.)</b></li>
     <li>Open Problems in the Philosophy of Information (Luciano Floridi)</li>
     <li><b>A Large-Scale Model of the Functioning Brain (Chris Eliasmith et al.)</b></li>

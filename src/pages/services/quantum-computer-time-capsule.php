@@ -76,7 +76,7 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
         $date_utc = new \DateTime(null, new \DateTimeZone("UTC"));
         $formatted_date = $date_utc->format(\DateTime::ATOM);
 
-        // Put all of the information neccessary for a quantum computer to
+        // Put all of the information necessary for a quantum computer to
         // decrypt the message on a single line.
         $encrypted_message = 'time:' . $formatted_date .
             ' algorithm:' . $_POST['algorithm'] .
@@ -84,6 +84,7 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
             ' futurepublickey:' . $_POST['future_public_key'] .
             ' ciphertext:' . $_POST['ciphertext'];
 
+        // Make sure it's not too big and actually is a single line.
         if (strlen($encrypted_message) >= 200000 || strpos($encrypted_message, "\n") !== false || strpos($encrypted_message, "\r") !== false) {
             // This should never happen unless the user is intentionally
             // bypassing the soft-limit in the HTML form or modifying their
@@ -91,10 +92,12 @@ DATABASE AND START COLLECTING ACTUAL MESSAGES.</strong>
             ?>
             <p style="font-weight: bold; color: red;">Something went wrong, your message was too big or the encrypted version contains newlines.</p>
             <?
+        // Check the CAPTCHA.
         } else if (checkReCAPTCHA() !== true) {
             ?>
             <p style="font-weight: bold; color: red;">Please solve the CAPTCHA.</p>
             <?
+        // Save it to the database.
         } else if (TimeCapsule::add_entry($encrypted_message) !== true) {
             ?>
             <p style="font-weight: bold; color: red;">Sorry, there was an error adding the message to the database.</p>
@@ -173,7 +176,7 @@ So, use the form above to encrypt and upload a message that will remain
 unreadable until either someone builds a large-scale quantum computer or, in an
 unexpected breakthrough, someone discovers a way to recover the messages using
 a classical computer. It's not known how long it will be before we can build
-large-scale quantum comptuters. Some scientists guess that we'll see one within
+large-scale quantum computers. Some scientists guess that we'll see one within
 the next 10 years, others guess that it'll take 50 years or more, and some don't
 think we'll ever be able to build one. So, it's impossible to say when your
 message will be read, if at all. But it's worth a try!
