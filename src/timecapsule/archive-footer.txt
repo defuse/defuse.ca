@@ -1,2 +1,6 @@
-- The SHA256 hash of the first N lines of this file can be found in block NNNN
-  of the Zcash blockchain.
+Hash Locations:
+
+The SHA256 hash f4233140fde1f1efe75d867eeb17cc34ae91a0165f767d6908ed7e3e3bb33b09
+of the first 1338 lines of the archive can be found in transaction
+ff8221a3ee3322b36ef5817a0a591d7001c0fca2f549b5aa0c2a2b712fe6315a in block 178991
+of the Zcash blockchain.
