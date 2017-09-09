@@ -162,9 +162,9 @@ would take a normal (classical) computer millions of years to recover the
 original message. If we do the encryption using elliptic-curve cryptography,
 then a classical computer will still need millions of years to recover the
 message, but a large-scale <i>quantum computer</i>, if we had one, would be able
-to recover the message in a matter of seconds. This gives us a unique
-opportunity to save messages in a format that won't be possible to read until
-somebody manages to build a quantum computer.
+to recover the message in a matter of weeks. This gives us a unique opportunity
+to save messages in a format that won't be possible to read until somebody
+manages to build a quantum computer.
 </p>
 
 <p>
