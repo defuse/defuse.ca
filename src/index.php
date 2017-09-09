@@ -180,6 +180,7 @@ header('Content-Type: text/html; charset=utf-8');
         <ul>
             <li><a href="/software-security-auditing.htm">&nbsp;Security Auditing</a></li>
             <li><a href="/pastebin.htm">&nbsp;Encrypted Pastebin</a></li>
+            <li><a href="/quantum-computer-time-capsule.htm">&nbsp;Time Capsule</a></li>
             <li><a href="/trustedthirdparty.htm">&nbsp;TRENT - Trusted RNG</a></li>
             <li><a href="/big-number-calculator.htm">&nbsp;Big Number Calculator</a></li>
             <li><a href="/online-x86-assembler.htm">&nbsp;Online x86 Assembler</a></li>
