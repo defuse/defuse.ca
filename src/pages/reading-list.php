@@ -191,6 +191,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Creative Intuition: How Eureka Results from Three Neural Mechanisms</li>
+    <li>Artistic Genius and Creative Cognition (Paul Thagard)</li>
     <li><b>Why Do Developers Get Password Storage Wrong? A Qualitative Usability Study</b></li>
     <li><b>Motivated Numeracy and Enlightened Self-Government (Dan M Kahan et al.)</b></li>
     <li><b>When the Weakest Link is Strong: Secure Collaboration in the Case of the Panama Papers (Susan E. McGregor et al.)</b></li>
