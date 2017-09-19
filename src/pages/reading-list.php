@@ -191,6 +191,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Perceptual Distance in Timbre Space (Hiroko Terasawa et al.)</li>
     <li>The property 'instinct' (Jeffery Evans Stake)</li>
     <li>Young Children's Understanding of Ownership (Shaylene E. Naneekivell et al.)</li>
     <li>Creative Intuition: How Eureka Results from Three Neural Mechanisms</li>
