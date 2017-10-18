@@ -192,6 +192,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li><b>On the reception and detection of pseudo-profound bullshit (Gordon Pennycook et al.)</b></li>
+    <li>Dunning-Kruger effects in reasoning: Theoretical implications of the failure to recognize incompetence</li>
     <li>Synthbot: An Unsupervised Software Synthesizer Programmer (Matthew Yee-King and Martin Roth)</li>
     <li>Perceptual Distance in Timbre Space (Hiroko Terasawa et al.)</li>
     <li>The property 'instinct' (Jeffery Evans Stake)</li>
