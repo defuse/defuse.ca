@@ -192,6 +192,31 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Automatic Genre Classification of Music Content (Nicolas Scaringella et al.)</li>
+    <li>Factors Influencing Pop Music Preferences of Young People (David Boyle et al.)</li>
+    <li>'I love Rock 'n' Roll'--Music genre preference modulates brain responses to music (Eva Istok et al.)</li>
+    <li>fMRI investigation of cross-cultural music comprehension (Steven Morrison et al.)</li>
+    <li>Structural integration in language and music: Evidence for a shared system (Evelina Fedorenko et al.)</li>
+    <li>The Do Re Mi's of Everyday Life: The Structure and Personality Correlates of Music Preferences (Peter Rentfrow and Samuel Gosling)</li>
+    <li><b>Toward a better understanding of the relation between music preference, listening behavior, and personality (Peter Dunn et al.)</b></li>
+    <li>How Shared Preferences in Music Create Bonds Between People: Values as the Missing Link (Diana Boer et al.)</li>
+    <li><b>From the functions of music to music preference (Thomas Schafer and Peter Sedlmeier)</b></li>
+    <li>Mutual exposure or close peer relationships do not seem to foster increased similarity in food, music, or television program preferences (Paul Rozin et al.)</li>
+    <li>Music genre as cognitive schema: extramusical associations with country and hip-hop music (Mark Shevy)</li>
+    <li><b>Secure Hierarchy-Aware Cache Replacement Policy (SHARP): Defending Against Cache-Based Side Channel Attacks (Mengjia Yan et al.)</b></li>
+    <li>Modeling Dynamic Identities and Uncertainty in Social Interactions: Bayesian Affect Control Theory (Tobias Schr&ouml;der)</li>
+    <li>Epistemics in Conversation (John Heritage)</li>
+    <li><b>On the reception and detection of pseudo-profound bullshit (Gordon Pennycook et al.)</b></li>
+    <li>Dunning-Kruger effects in reasoning: Therotical implications of the failure to recognize incompetence (Gordon Pennycook et al.)</li>
+    <li>Introduction: Rhetorical Figures, Arguments, Computation (Randy Allen Harris et al.)</li>
+    <li>A Cognitive Ontology of Rhetorical Figures (Randy Allen Harris et al.)</li>
+    <li><b>A Large-Scale Model of the Functioning Brain (Chris Eliasmith et al.)</b></li>
+    <li>Wise deliberation sustains cooperation (Igor Grossman et al.)</li>
+    <li>Wisdom in Context (Igor Grossman)</li>
+    <li>Creative Intuition: How Eureka Results from Three Neural Mechanisms (Paul Thagard)</li>
+    <li>Artistic Genius and Creative Cognition (Paul Thagard)</li>
+    <li>A step at a time: Preliterate children's simulation of narrative movement during story comprehension (Agnieszka M. Fecica and Daniela K. O'Neill)</li>
+    <li>Getting Lost in a Book: The Science of Reading Comprehension (Anegla Nyhout et al.)</li>
     <li>Automatic Genre Classification of Music Content (Nicholas Scaringella et al.)</li>
     <li><b>On the reception and detection of pseudo-profound bullshit (Gordon Pennycook et al.)</b></li>
     <li>Dunning-Kruger effects in reasoning: Theoretical implications of the failure to recognize incompetence</li>
