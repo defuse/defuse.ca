@@ -192,6 +192,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2017</h3>
 
 <ul>
+    <li>Relationship between Music Preference and Personality Type (Vandana Sharma)</li>
+    <li>Short and long-term musical preferences: what makes a favorite peice of music? (Alexandra Lamont and Rebecca Webb)</li>
     <li>Automatic Genre Classification of Music Content (Nicolas Scaringella et al.)</li>
     <li>Factors Influencing Pop Music Preferences of Young People (David Boyle et al.)</li>
     <li>'I love Rock 'n' Roll'--Music genre preference modulates brain responses to music (Eva Istok et al.)</li>
