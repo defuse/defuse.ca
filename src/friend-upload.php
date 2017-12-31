@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 <body>
     <h1>Private File Uploader for Taylor's Trusted Friends</h1>
     <p>Use this page to upload a file to my web server. All uploads will be automatically removed after 1 week.</p>
-    <form action="/friend-upload.php?upload_auth=<?php echo htmlentities($_GET['upload_auth'], ENT_QUOTES);?>" method="POST">
+    <form enctype="multipart/form-data" action="/friend-upload.php?upload_auth=<?php echo htmlentities($_GET['upload_auth'], ENT_QUOTES);?>" method="POST">
         <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo (int)$MAX_BYTES; ?>" />
         <input type="file" name="uploadedfile" />
         <input type="submit" name="submit" value="Upload File (Max. 5GB)" />
