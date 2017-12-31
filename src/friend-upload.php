@@ -5,7 +5,7 @@ require_once('/etc/creds.php');
 // The webserver **MUST** be configured to never execute code within this
 // directory (otherwise remote-code execution is possible), **AND** serve all
 // files as *DOWNLOADS** (otherwise XSS is possible).
-$STORAGE_DIR = realpath(dirname(__FILE__)) . "/friend-uploads";
+$STORAGE_DIR = "/var/www/defuse.ca-extras/friend-uploads";
 $STORAGE_DIR_URL = "https://defuse.ca/friend-uploads";
 $MAX_BYTES = 5*1024*1024*1024;
 
