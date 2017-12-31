@@ -1,5 +1,7 @@
 <?php
 
+require_once('/etc/creds.php');
+
 // The webserver **MUST** be configured to never execute code within this
 // directory (otherwise remote-code execution is possible), **AND** serve all
 // files as *DOWNLOADS** (otherwise XSS is possible).
