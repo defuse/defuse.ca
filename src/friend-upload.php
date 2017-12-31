@@ -29,7 +29,8 @@ if ($_GET['upload_auth'] !== $creds[C_PASS]) {
 
 if (isset($_POST['submit'])) {
     if ($_FILES['uploadedfile']['size'] <= 0 || $_FILES['uploadedfile']['size'] > $MAX_BYTES) {
-        die("I'm sorry, that file is too big.");
+        var_dump($_FILES);
+        die("I'm sorry, that file is too big or empty.");
     }
 
     $safe_name = sanitize_name($_FILES['uploadedfile']['name']);
