@@ -29,7 +29,6 @@ if ($_GET['upload_auth'] !== $creds[C_PASS]) {
 
 if (isset($_POST['submit'])) {
     if ($_FILES['uploadedfile']['size'] <= 0 || $_FILES['uploadedfile']['size'] > $MAX_BYTES) {
-        var_dump($_FILES);
         die("I'm sorry, that file is too big or empty.");
     }
 
@@ -39,7 +38,9 @@ if (isset($_POST['submit'])) {
         die("I'm sorry, the file name cannot be empty.");
     }
 
-    rename($_FILES['uploadedfile']['tmp_name'], $STORAGE_DIR . "/" . $safe_name);
+    if (rename($_FILES['uploadedfile']['tmp_name'], $STORAGE_DIR . "/" . $safe_name) === FALSE) {
+        die("Sorry, something went wrong with the upload.");
+    }
     $xss_safe_url = htmlentities($STORAGE_DIR_URL . "/" . $safe_name);
 ?>
     <html>
