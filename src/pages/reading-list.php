@@ -16,6 +16,13 @@ knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2018</h2>
+
+<ul>
+    <li><b>Spectre Attacks: Exploiting Speculative Execution (Paul Kocher et al.)</b></li>
+    <li><b>Meltdown (Moritz Lipp et al.)</b></li>
+</ul>
+
 <h2>2017</h2>
 
 <ul>
