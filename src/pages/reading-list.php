@@ -19,8 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2018</h2>
 
 <ul>
-    <li><b>Spectre Attacks: Exploiting Speculative Execution (Paul Kocher et al.)</b></li>
-    <li><b>Meltdown (Moritz Lipp et al.)</b></li>
+    <li>Astrophysics for People in a Hurry (Neil deGrasse Tyson)</li>
 </ul>
 
 <h2>2017</h2>
@@ -195,6 +194,13 @@ to read. My favorites are highlighted in <b>bold text</b>.
 
 <a name="papers"></a>
 <h2>Papers</h2>
+
+<h3>2018</h3>
+
+<ul>
+    <li><b>Spectre Attacks: Exploiting Speculative Execution (Paul Kocher et al.)</b></li>
+    <li><b>Meltdown (Moritz Lipp et al.)</b></li>
+</ul>
 
 <h3>2017</h3>
 
