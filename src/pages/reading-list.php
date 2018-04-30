@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2018</h2>
 
 <ul>
+    <li><b>The Illustrated A Brief History of Time (Stephen Hawking)</b></li>
     <li><b>Reality Is Not What It Seems (Carlo Rovelli)</b></li>
     <li>The Fabric of Reality (David Deutsch)</li>
     <li>Astrophysics for People in a Hurry (Neil deGrasse Tyson)</li>
