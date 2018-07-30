@@ -111,8 +111,9 @@ but I don't have time to do that either. So for now this page will remain
 frozen, and will probably contain incorrect information.
 </p>
 <p>
-If you want to pick up the project, <a href="/contact.htm">email me</a> and I'll
-redirect this page to yours.
+You might want to go check out the similar project <a
+href="http://plaintextoffenders.com">Plain Text Offenders</a>. It looks like
+they're updated with new entries regularly.
 </p>
 </div>
 
