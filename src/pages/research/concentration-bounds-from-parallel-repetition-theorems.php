@@ -12,9 +12,11 @@ August 23, 2018
 </div>
 <h1>Concentration Bounds from Parallel Repetition Theorems (My Master's Thesis)</h1>
 
+<p>
 My master's thesis, titled "Concentration Bounds from Parallel Repetition
 Theorems" was just accepted. You can find a link to it below. Here's
 a point-form summary:
+</p>
 
 <ul>
     <li>(Background info) There are protocols called nonlocal games, where two players collaborate
@@ -63,14 +65,16 @@ repetitions).
 </ul>
 
 <center>
-    <b><a href="http://hdl.handle.net/10012/13638">Concentration Bounds From
-Parallel Repetition Theorems (on UWSpace)</a></b>
+    <p><b><a href="http://hdl.handle.net/10012/13638">Concentration Bounds From
+Parallel Repetition Theorems (on UWSpace)</a></b></p>
 </center>
 
+<p>
 Unfortunately, a chapter on a topic that I really wanted to discuss didn't make
 it into the accepted version of my thesis. Eventually, I hope to turn this
 chapter into a paper and publish it, but for now, you can find a link to the
 "bonus chapter" below. Here's the point-form summary:
+</p>
 
 <ul>
     <li>Your iPhone uses tamper-resistant hardware to make an
@@ -104,6 +108,6 @@ ranges.</li>
 </ul>
 
 <center>
-    <b><a href="https://defuse.ca/downloads/SymmetricKeyStrengthening.pdf">Bonus Chapter: Strengthening Symmetric Keys with Quantum Information</a></b>
+    <p><b><a href="https://defuse.ca/downloads/SymmetricKeyStrengthening.pdf">Bonus Chapter: Strengthening Symmetric Keys with Quantum Information</a></b></p>
 </center>
 
