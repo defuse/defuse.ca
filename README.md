@@ -1,4 +1,4 @@
 defuse.ca
 =========
 
-Copyright (C) Taylor Hornby 2011-2016.
+Copyright (C) Taylor Hornby 2011-2018.
