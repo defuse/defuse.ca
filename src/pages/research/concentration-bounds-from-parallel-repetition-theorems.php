@@ -25,12 +25,12 @@ communicate, yet they still want to work together to maximize their probability
 of winning. There are some games that can be won more easily when the players
 share quantum entanglement, so studying these games is important to
 understanding entanglement.</p></li>
-    <li><p>(Background info) There are also interactive proofs, where a powerful
+    <li><p>(Background info) There are also interactive proof protocols, where a powerful
 prover tries to convince a weak (e.g. polynomial-time) verifier that something
 is true (e.g. that a string is in a language).</p></li>
     <li><p>(Background info) It's important to be able to reduce the error in both types of protocol.
 For nonlocal games, that means repeating the game to get a more accurate
-upper-bound on the players' chance of winning. For interactive proofs, it means
+lower-bound on the players' chance of winning. For interactive proofs, it means
 repeating the protocol so that the verifier can be more sure that the prover
 isn't getting lucky and convincing the verifier of something false.</p></li>
     <li><p>(Background info) It's one thing to repeat the protocols sequentially in time. Doing that,
@@ -48,17 +48,17 @@ this protocol is less than...."</p></li>
     <li><p>(Background info) Compare that to "parallel repetition theorems" which
 have the form "The probability that the prover (or players) can win <em>all</em>
 of this many parallel repetitions of this protocol is less than..."</p></li>
-    <li><p>(Contribution) There are lots of special types of nonlocal games where
-a parallel repetition theorem is known, but not a concentration bound. My main
-result is to come up with a technique for converting parallel repetition
-theorems into concentration bounds. Then I use that technique to create
+    <li><p>(Contribution) There are some special types of nonlocal games where
+ parallel repetition theorems are known, but no concentration bound. My main
+result is a technique for converting those parallel repetition
+theorems into concentration bounds. Then, I use that technique to create
 concentration bounds out of a bunch of known parallel repetition theorems.
 You'll have to read Chapter 2 to find out how the technique works.</p></li>
     <li><p>(Contribution) The technique also works for interactive proofs, and
 I show that you can reduce error for <em>quantum</em> interactive proofs using
 the standard parallel repetition techniques that are already known to work for
-classical interactive proofs. This result was already almost established, the
-previous result only works if the soundness error and completeness error of the
+classical interactive proofs. This result was already almost established; the
+previously-known result only works if the soundness error and completeness error of the
 protocol being repeated are separated by a special function. My result just
 removes that requirement (at the cost of requiring a log-factor more
 repetitions).
@@ -78,33 +78,32 @@ chapter into a paper and publish it, but for now, you can find a link to the
 
 <ul>
     <li><p>Your iPhone uses tamper-resistant hardware to make an
-easily-brute-forceable short PIN code secure enough to protect your data.
+easy-to-brute-force short PIN code secure enough to protect your data.
 Basically, the tamper-resistant device holds a longer encryption key and refuses
-to give it up unless it sees the correct PIN code.</p></li>
+to give it up unless it sees the correct PIN.</p></li>
     <li><p>The question I'm interested in is: Can we build a quantum-crypto
 primitive that accomplishes the same task (protect a long secure encryption key
 with a short easily-brute-forced PIN/password) <em>without</em> relying on
 tamper-resistant hardware?</p></li>
     <li><p>The fact that quantum information can't always be cloned, and that
-measuring a quantum state can disturb it gives hope that it might be possible.
+measuring a quantum state can disturb it suggests that it might be possible.
 We might be able to encode a long key into a quantum state, such that you need
 to know the short key to figure out how it's encoded, and if you don't know the
 short key you're likely to make incorrect measurements and destroy information
 about the long key.</p></li>
     <li><p>I try to capture this idea by definining a new kind of primitive called
-an "offline key expander." Now, the question is: do these things exist or
-not?</p></li>
-    <li><p>After trying, I couldn't rule them out, nor prove any are secure. So,
+an "offline key expander" (OKE). Now, the question is: do OKEs exist or not?</p></li>
+    <li><p>After trying, I couldn't prove they don't exist, nor could I prove any are secure. So,
 I do the next best thing and put forward a design called Probabilistic Conjugate
-Coding (PCC) that seems like it could possibly work and then I try to break it.</p></li>
+Coding (PCC), which seems like it could possibly work, and then I try to break it.</p></li>
     <li><p>I show an attack on PCC that works whenever the long key is too much
-longer than the short key. The attack is basically to Grover search for the
+longer than the short key. The attack is basically a Grover search for the
 short key, except it's a little tricky to show that you can still do a Grover
 search when you have to implement the function you're searching with a quantum
 state, and you only have one copy of that state. I'm uncertain if the attack can
 be improved to break PCC in general, but I suggest an idea that might improve
-the proof to show that the same attack works against PCC for all parameter
-ranges.</p></li>
+the proof to show that the same attack works against PCC for a wider range of
+parameters.</p></li>
 </ul>
 
 <center>
