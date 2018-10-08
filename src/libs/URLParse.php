@@ -414,6 +414,13 @@ class URLParse
                 P_TITL => "Defuse Security's Contact Information",
                 P_METD => "Defuse Security's contact informaion.",
             ),
+            "concentration-bounds-from-parallel-repetition-theorems" => array(
+                P_FILE =>
+                "research/concentration-bounds-from-parallel-repetition-theorems.php",
+                P_TITL => "Concentration Bounds from Parallel Repetition Theorems",
+                P_METD => "My master's thesis, showing how concentration bounds can be derived from parallel repetition theorems for nonlocal games and interactive proofs.",
+                P_METK => "concentration bounds, parallel repetition theorems, quantum information, symmetric key strengthening",
+            ),
             "in-browser-port-scanning" => array(
                 P_FILE => "research/in-browser-port-scanning.php",
                 P_TITL => "Port Scanning Local Network From a Web Browser",
