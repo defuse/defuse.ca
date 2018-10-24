@@ -202,6 +202,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2018</h3>
 
 <ul>
+    <li>Elliptic Curve Cryptography In Practice (Joppe W. Bos et al.)</li>
     <li><b>The Night Watch (James Mickens)</b></li>
     <li><b>Spectre Attacks: Exploiting Speculative Execution (Paul Kocher et al.)</b></li>
     <li><b>Meltdown (Moritz Lipp et al.)</b></li>
