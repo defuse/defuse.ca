@@ -203,6 +203,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2018</h3>
 
 <ul>
+    <li>Auditable, Anonymous Electronic Cash (Tomas Sander and Amnon Ta-Shma)</li>
     <li>Elliptic Curve Cryptography In Practice (Joppe W. Bos et al.)</li>
     <li><b>The Night Watch (James Mickens)</b></li>
     <li><b>Spectre Attacks: Exploiting Speculative Execution (Paul Kocher et al.)</b></li>
