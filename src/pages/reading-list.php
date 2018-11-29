@@ -203,6 +203,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2018</h3>
 
 <ul>
+    <li>A Systematic Approach To Cryptocurrency Fees (Alexander Chepurnoy et al.)</li>
     <li><b>Self-encrypting deception: weaknesses in the encryption of solid state drives (SSDs) (Carlo Meijer and Bernard van Gastel)</b></li>
     <li>Auditable, Anonymous Electronic Cash (Tomas Sander and Amnon Ta-Shma)</li>
     <li>Elliptic Curve Cryptography In Practice (Joppe W. Bos et al.)</li>
