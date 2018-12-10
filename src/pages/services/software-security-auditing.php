@@ -10,7 +10,7 @@ open-access research.
 </p>
 
 <p>
-<strong>Please note:</strong>I am currently working full-time on <a
+<strong>Please note:</strong> I am currently working full-time on <a
 href="https://z.cash/">Zcash</a>, so I'm not available for consulting work at
 the moment. I can still help with general quick advice, or recommend someone who
 would be a good match for auditing your project.
