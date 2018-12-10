@@ -203,6 +203,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2018</h3>
 
 <ul>
+    <li><b>Lawful Device Access without Mass Surveillance Risk: A Technical
+    Design Discussion (Stefan Savage)</b></li>
     <li>Proof-of-Stake (Janno Siim)</li>
     <li>A Systematic Approach To Cryptocurrency Fees (Alexander Chepurnoy et al.)</li>
     <li><b>Self-encrypting deception: weaknesses in the encryption of solid state drives (SSDs) (Carlo Meijer and Bernard van Gastel)</b></li>
