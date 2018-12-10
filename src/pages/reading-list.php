@@ -500,6 +500,7 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li>Google Infrastructure Security Design Overview</li>
     <li>How to write proofs: a quick guide (Eugenia Cheng)</li>
     <li>Polynomial Time and Extravagant Models (Leonid Levin)</li>
     <li><b>PHYS771 Lecture 14: Skepticism of Quantum Computing (Scott Aaronson)</b></li>
