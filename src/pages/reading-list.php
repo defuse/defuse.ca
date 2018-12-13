@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2018</h2>
 
 <ul>
+    <li><b>The Psychology of Music (Elizabeth Hellmuth Margulis)</b></li>
     <li>Zero Trust Networks (Evan Gilman and Doug Barth)</li>
     <li><b>Brain on Fire (Susannah Cahalan)</b></li>
     <li><b>The Illustrated A Brief History of Time (Stephen Hawking)</b></li>
