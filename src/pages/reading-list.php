@@ -205,6 +205,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2018</h3>
 
 <ul>
+    <li><b>Conciousness Engineered (Michael S.A. Graziano)</b></li>
     <li><b>Lawful Device Access without Mass Surveillance Risk: A Technical
     Design Discussion (Stefan Savage)</b></li>
     <li>Proof-of-Stake (Janno Siim)</li>
