@@ -19,7 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2019</h2>
 
 <ul>
-    <li>Nothing yet</li>
+    <li><b>Harmony for Computer Musicians; Ch. 1-11 (Michael Hewitt)</b></li>
 </ul>
 
 <h2>2018</h2>
@@ -33,6 +33,9 @@ to read. My favorites are highlighted in <b>bold text</b>.
     <li><b>Reality Is Not What It Seems (Carlo Rovelli)</b></li>
     <li>The Fabric of Reality (David Deutsch)</li>
     <li>Astrophysics for People in a Hurry (Neil deGrasse Tyson)</li>
+    <li><b>Composition for Computer Musicians (Michael Hewitt)</b></li>
+    <li><b>Mixing Secrets for the Small Studio (Mike Senior)</b></li>
+    <li>Ableton Live 9 Reference Manual</li>
 </ul>
 
 <h2>2017</h2>
