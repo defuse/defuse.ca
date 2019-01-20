@@ -16,6 +16,12 @@ knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2019</h2>
+
+<ul>
+    <li>Nothing yet</li>
+</ul>
+
 <h2>2018</h2>
 
 <ul>
@@ -202,13 +208,19 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <a name="papers"></a>
 <h2>Papers</h2>
 
-<h3>2018</h3>
+<h3>2019</h3>
 
 <ul>
     <li>Symbolic Execution of Security Protocol Implementations: Handling Cryptographic Primitives (Mathy Vanhoef and Frank Piessens)</li>
     <li><b>An Empirical Analysis of Anonymity in Zcash (George Kappos et al.)</b></li>
     <li><b>Why Buy When You Can Rent? Bribery Attacks on Bitcoin-Style Consensus (Joseph Bonneau)</b></li>
     <li><b>Conciousness Engineered (Michael S.A. Graziano)</b></li>
+</ul>
+
+
+<h3>2018</h3>
+
+<ul>
     <li><b>Lawful Device Access without Mass Surveillance Risk: A Technical
     Design Discussion (Stefan Savage)</b></li>
     <li>Proof-of-Stake (Janno Siim)</li>
