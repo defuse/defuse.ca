@@ -214,6 +214,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li><b>A Systematic Evaluation of Transient Execution Attacks and Defenses (Claudio Canella et al.)</b></li>
     <li>Symbolic Execution of Security Protocol Implementations: Handling Cryptographic Primitives (Mathy Vanhoef and Frank Piessens)</li>
     <li><b>An Empirical Analysis of Anonymity in Zcash (George Kappos et al.)</b></li>
     <li><b>Why Buy When You Can Rent? Bribery Attacks on Bitcoin-Style Consensus (Joseph Bonneau)</b></li>
