@@ -214,6 +214,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li>Basic Attention Token (BAT) (Brave Software)</li>
     <li><b>Eclipse Attacks on Bitcoin's Peer-to-Peer Network (Ethan Heilman et al.)</b></li>
     <li><b>SoK: Make JIT-Spray Great Again (Robert Gawlik and Thorsten Holz)</b></li>
     <li><b>A Systematic Evaluation of Transient Execution Attacks and Defenses (Claudio Canella et al.)</b></li>
