@@ -4,19 +4,10 @@
 List of times I've removed things from the pastebin.
 </p>
 
-<h2>Incident One</h2>
-
-<p>
-TODO: Fill out the information about this (this was the time OVH shut my server
-down).
-</p>
-
-<h2>Incident Two</h2>
-
-<p>
-TODO: Fill out the information about this (Can't remember what this was - check
-email.)
-</p>
+<ul>
+    <li>2018-01-29: Removed a post supposedly containing stolen IP addresses of 2sucres.org users</li>
+    <li>A few things I lost track of between the last entry and the next one.</li>
+</ul>
 
 <h2>April 04, 2014: University of Michigan Ford School Database</h2>
 
