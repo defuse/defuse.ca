@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2019</h2>
 
 <ul>
+    <li>The Lost Art of High-Performance Driving (Ross Bentley)</li>
     <li><b>Harmony for Computer Musicians; Ch. 1-11 (Michael Hewitt)</b></li>
 </ul>
 
