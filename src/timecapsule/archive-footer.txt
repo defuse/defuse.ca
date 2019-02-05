@@ -4,3 +4,9 @@ The SHA256 hash f4233140fde1f1efe75d867eeb17cc34ae91a0165f767d6908ed7e3e3bb33b09
 of the first 1338 lines of the archive can be found in transaction
 ff8221a3ee3322b36ef5817a0a591d7001c0fca2f549b5aa0c2a2b712fe6315a in block 178991
 of the Zcash blockchain.
+
+
+The SHA256 hash 4c72f9ca9a5ea691ed694f6091263d229752f6424cd6048dfbfda3f2498ffa3a
+of the first 1825 lines of the archive can be found in transaction
+30ae065eb7d6860776abaa0b1fbb02144d8295a4c803ec44118204b61f8cfa29 in block
+476,431 of the Zcash blockchain.
