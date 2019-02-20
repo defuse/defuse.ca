@@ -216,6 +216,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li>Harmony Technical Whitepaper (Harmony Team)</li>
     <li>The 9 Lives of Bleichenbacher's CAT: New Cache ATtacks on TLS Implementations (Eyal Ronen et al.)</li>
     <li><b>NetSpectre: Read Arbitrary Memory over Network (Michael Schwarz)</b></li>
     <li>Basic Attention Token (BAT) (Brave Software)</li>
