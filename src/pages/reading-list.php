@@ -10,7 +10,7 @@
 <h1>Reading List</h1>
 
 <p>
-This is an mostly-complete list of things that I have (partially) read. The goal
+This is a mostly-complete list of things that I have (partially) read. The goal
 is for this to act as a "bibliography" citing the sources of some of my
 knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
