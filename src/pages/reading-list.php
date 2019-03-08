@@ -217,6 +217,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li>Blockchain challenges and opportunities: a survey (Zibin Zheng et al.)</li>
     <li>Coda: Decentralized cryptocurrency at scale (Izaak Meckler and Evan Shapiro)</li>
     <li>Harmony Technical Whitepaper (Harmony Team)</li>
     <li>The 9 Lives of Bleichenbacher's CAT: New Cache ATtacks on TLS Implementations (Eyal Ronen et al.)</li>
