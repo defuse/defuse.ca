@@ -217,6 +217,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li>A Survey on the Security of Blockchain Systems (Xiaoqi Li et al.)</li>
     <li>Blockchain challenges and opportunities: a survey (Zibin Zheng et al.)</li>
     <li>Coda: Decentralized cryptocurrency at scale (Izaak Meckler and Evan Shapiro)</li>
     <li>Harmony Technical Whitepaper (Harmony Team)</li>
