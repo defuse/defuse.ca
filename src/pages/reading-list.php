@@ -218,6 +218,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li>Survivable Key Compromise in Software Update Systems (Justin Samuel et al.)</li>
     <li>A Survey on the Security of Blockchain Systems (Xiaoqi Li et al.)</li>
     <li>Blockchain challenges and opportunities: a survey (Zibin Zheng et al.)</li>
     <li>Coda: Decentralized cryptocurrency at scale (Izaak Meckler and Evan Shapiro)</li>
