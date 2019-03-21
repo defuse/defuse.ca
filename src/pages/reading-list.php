@@ -218,6 +218,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li><b>Deanonymization of clients in Bitcoin P2P network (Alex Biryukov et al.)</b></li>
     <li>Survivable Key Compromise in Software Update Systems (Justin Samuel et al.)</li>
     <li>A Survey on the Security of Blockchain Systems (Xiaoqi Li et al.)</li>
     <li>Blockchain challenges and opportunities: a survey (Zibin Zheng et al.)</li>
