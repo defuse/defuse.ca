@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2019</h2>
 
 <ul>
+    <li>A Scientist's Guide to Talking With The Media (Richard Hayes and Daniel Grossman)</li>
     <li><b>To Engineer Is Human: The Role of Failure in Successful Design (Henry Petroski)</b></li>
     <li>How To Change Your Mind (Michael Pollan)</li>
     <li>Unauthorized Access: Physical Penetration Testing for IT Security Teams (Will Allsopp)</li>
