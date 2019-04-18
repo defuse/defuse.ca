@@ -219,6 +219,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li>A Few Billion Lines of Code Later: Using Static Analysis to Find Bugs in the Real World (Al Bessey et al.)</li>
     <li>Touching The Untouchables: Dynamic Security Analysis of the LTE Control Plane (Hongil Kim et al.)</li>
     <li><b>Deanonymization of clients in Bitcoin P2P network (Alex Biryukov et al.)</b></li>
     <li>Survivable Key Compromise in Software Update Systems (Justin Samuel et al.)</li>
