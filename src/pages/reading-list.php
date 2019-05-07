@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2019</h2>
 
 <ul>
+    <li>The Meaning of It All (Richard P. Feynman)</li>
     <li><b>Musicophilia: Tales of Music and the Brain (Oliver Sacks)</b></li>
     <li>A Scientist's Guide to Talking With The Media (Richard Hayes and Daniel Grossman)</li>
     <li><b>To Engineer Is Human: The Role of Failure in Successful Design (Henry Petroski)</b></li>
