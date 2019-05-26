@@ -15,7 +15,7 @@ if($_SERVER["HTTPS"] != "on") {
    die();
 }
 
-delete_expired_posts();
+Pastebin::delete_expired_posts();
 
 if (strpos($_SERVER['HTTP_HOST'], "bin.defuse.ca") !== false) {
     $urlKey = substr($_SERVER['REQUEST_URI'], 1);
@@ -32,10 +32,10 @@ $urlKey = substr($_SERVER['REQUEST_URI'], 3, $keyEnd - 3);
 if (
     isset($_GET['delete']) &&
     hash("sha256", $_GET['delete']) == "a7c61e0ed10927d12ed8fa6c080874b31d1b589e679f8abb33cde3cfa00ac954") {
-    delete_post($urlKey);
+    Pastebin::delete_post($urlKey);
 }
 
-$postInfo = retrieve_post($urlKey);
+$postInfo = Pastebin::retrieve_post($urlKey);
 
 if (isset($_GET['raw']) && $_GET['raw'] == "true") {
     header('Content-Type: text/plain');
@@ -289,7 +289,7 @@ function PrintDecryptor($data)
 <script type="text/javascript">
 function decryptPaste(){
     try {
-        var encrypted = "<? echo js_string_escape($data); ?>";
+        var encrypted = "<? echo Pastebin::js_string_escape($data); ?>";
         var password = document.getElementById("password").value;
         var plaintext = encrypt.decrypt(password, encrypted);
 		document.getElementById("passwordprompt").innerHTML = "";

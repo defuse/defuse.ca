@@ -37,7 +37,7 @@
  * NOTE: You must set the database credentials in the InitDB method.
  */
 
-require_once('/etc/creds.php');
+require_once('/storage/creds.php');
 
 class PHPCount
 {

@@ -8,18 +8,18 @@
 
 require_once('pastebin.php');
 
-delete_expired_posts();
+Pastebin::delete_expired_posts();
 
 if(isset($_POST['paste']))
 {
 	//get the text
-	$data = smartslashes($_POST['paste']);
+	$data = $_POST['paste'];
 
     //Normalize the line endings
     $data = str_replace("\r\n", "\n", $data);
     $data = str_replace("\r", "\n", $data);
 
-    $urlKey = commit_post(
+    $urlKey = Pastebin::commit_post(
         $data,
         isset($_POST['jscrypt']) && $_POST['jscrypt'] == "yes", 
         (isset($_POST['lifetime']) ? (int)$_POST['lifetime'] : 3600*24*10),

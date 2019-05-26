@@ -1,6 +1,6 @@
 <?php
 
-require_once('/etc/creds.php');
+require_once('/storage/creds.php');
 require_once('libs/HtmlEscape.php');
 require_once('libs/TimeCapsule.php');
 

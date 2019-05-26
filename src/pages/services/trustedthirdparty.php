@@ -1,20 +1,20 @@
 <?php
 /*
  * This file is Copyright (C) 2011 Defuse.ca
- * This code is provided for peer review purposes only.
- * It may not be distributed, copied, or altered in any way.
- *
- * Sorry, I just don't want backdoored RNG services that look like TRENT to be created.
- * Thanks for your understanding.
 */
 
 // Set the default date to UTC so TRENT is usable from different time zones.
 date_default_timezone_set("UTC"); 
 
-require_once('/etc/creds.php');
+require_once('/storage/creds.php');
 $creds = Creds::getCredentials("trent");
-$conn = mysql_connect($creds[C_HOST], $creds[C_USER], $creds[C_PASS]) or die ('Error connecting to mysql');
-mysql_select_db($creds[C_DATB]);
+$DB = new PDO(
+    "mysql:host={$creds[C_HOST]};dbname={$creds[C_DATB]}",
+    $creds[C_USER], // Username
+    $creds[C_PASS], // Password
+    array(PDO::ATTR_PERSISTENT => true)
+);
+$DB->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 unset($creds);
 
 ?>
@@ -48,10 +48,11 @@ unset($creds);
 if(isset($_GET['drawingnum']))
 {
 	$num = (int)$_GET['drawingnum'];
-	$q = mysql_query("SELECT * FROM drawings WHERE drawingnum='$num'");
-	if($q && mysql_num_rows($q))
+    $q = $DB->prepare("SELECT * FROM drawings WHERE drawingnum=:drawingnum");
+    $q->bindParam(':drawingnum', $num);
+    $q->execute();
+	if(($ary = $q->fetch()) !== FALSE)
 	{
-		$ary = mysql_fetch_array($q);
 		$complete = ($ary['complete'] == '1');
 		$starttime = (int)$ary['starttime'];
 		$reviewtime = (int)$ary['reviewtime'];
@@ -143,8 +144,13 @@ if(isset($_POST['makedrawingnumber']))
 	$drawingdate = date("D M j G:i:s T Y", $reviewtime + $starttime);
 	$password = bin2hex(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
 	$passwordhash = hash("SHA256", $password);
-	mysql_query("INSERT INTO drawings (complete, passwordhash, starttime, reviewtime) VALUES (0, '$passwordhash', '$starttime', '$reviewtime')");
-	$drawingnum = mysql_insert_id();
+    $q = $DB->prepare("INSERT INTO drawings (complete, passwordhash, starttime, reviewtime) VALUES (0, :passwordhash, :starttime, :reviewtime)");
+    $q->bindParam(':passwordhash', $passwordhash);
+    $q->bindParam(':starttime', $starttime);
+    $q->bindParam(':reviewtime', $reviewtime);
+    $q->execute();
+
+	$drawingnum = $DB->lastInsertId();
 	$url = "https://defuse.ca/trustedthirdparty.htm?drawingnum=" . $drawingnum;
 	?>
 		<div style="background-color: #C9FFD1; border: solid 2px black; margin:20px; padding-left:10px; padding-right: 10px;">
@@ -185,10 +191,12 @@ if(isset($_POST['create']))
 	$name = trim($_POST['name']);
 	$description = trim($_POST['description']);
 
-	$q = mysql_query("SELECT * FROM drawings WHERE drawingnum='$drawingnum'");
-	if(mysql_num_rows($q) > 0)
+    $q = $DB->prepare("SELECT * FROM drawings WHERE drawingnum=:drawingnum");
+    $q->bindParam(':drawingnum', $drawingnum);
+    $q->execute();
+
+	if(($info = $q->fetch()) !== FALSE)
 	{
-		$info = mysql_fetch_array($q);
 		$passwordHash = $info['passwordhash'];
 		$drawingtime = $info['starttime'] + $info['reviewtime'];
 
@@ -343,9 +351,11 @@ if(isset($_POST['create']))
 					$printout .= "RANDOM NUMBER NUMBER $i: $randnum\n";
 				}
 
-				$msafeprintout = mysql_real_escape_string($printout);
-				$msafeuserprintout = mysql_real_escape_string($userprintout);
-				mysql_query("UPDATE drawings SET complete='1', printout='$msafeprintout', userprintout='$msafeuserprintout' WHERE drawingnum='$drawingnum'");
+                $q = $DB->prepare("UPDATE drawings SET complete='1', printout=:printout, userprintout=:userprintout WHERE drawingnum=:drawingnum");
+                $q->bindParam(':printout', $printout);
+                $q->bindParam(':userprintout', $userprintout);
+                $q->bindParam(':drawingnum', $drawingnum);
+                $q->execute();
 
 				$url = "https://defuse.ca/trustedthirdparty.htm?drawingnum=$drawingnum";
 				?>
@@ -652,6 +662,6 @@ You may view TRENT's source code by clicking the following link. Consider it to
 be licensed under the Gnu GPL v3.
 </p>
 
-<p><a href="trent-source.htm"><strong>See TRENT's Source Code</strong></a></p>
+<p><a href="https://github.com/defuse/defuse.ca/blob/master/src/pages/services/trustedthirdparty.php"><strong>See TRENT's Source Code</strong></a></p>
 
 

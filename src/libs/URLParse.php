@@ -80,6 +80,7 @@ class URLParse
                                             "192.168.1.102",
                                             "defuse.h.defuse.ca",
                                             "defuse",
+                                            "defuse:10443",
                                             );
     private static $FORCE_HTTPS = true;
     private static $DEFAULT_TITLE = "Defuse Security Research and Development";
@@ -400,12 +401,6 @@ class URLParse
             "trustedthirdparty" => array(
                 P_FILE => "services/trustedthirdparty.php",
                 P_TITL => "TRENT - FREE Third party Drawing Service - Defuse Security",
-                P_METD => "TRENT, the trusted random number generator for contests and drawings.",
-                P_METK => "contest drawing, third party, trusted, lottory, trent, random number generator",
-            ),
-            "trent-source" => array(
-                P_FILE => "services/trent-source.php",
-                P_TITL => "TRENT Source Code - Defuse Security",
                 P_METD => "TRENT, the trusted random number generator for contests and drawings.",
                 P_METK => "contest drawing, third party, trusted, lottory, trent, random number generator",
             ),
