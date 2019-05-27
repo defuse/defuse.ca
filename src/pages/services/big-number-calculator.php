@@ -92,7 +92,7 @@ if(isset($_POST['submit']))
         $max_time = 8;
         $res = "";
         $safe_ruby_arg = escapeshellarg(
-            "\$SAFE = 3; " .
+            "\$SAFE = 1; " .
             "x = ($eqn); " .
             "puts x if x.is_a?(Float); " .
             "puts x.to_s($base) if x.is_a?(Fixnum) or x.is_a?(Bignum)"
