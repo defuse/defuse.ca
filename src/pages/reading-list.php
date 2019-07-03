@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2019</h2>
 
 <ul>
+    <li><b>The Internet of Money Volume One (Andreas M. Antonopoulos)</b></li>
     <li>The Meaning of It All (Richard P. Feynman)</li>
     <li><b>Musicophilia: Tales of Music and the Brain (Oliver Sacks)</b></li>
     <li>A Scientist's Guide to Talking With The Media (Richard Hayes and Daniel Grossman)</li>
