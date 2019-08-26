@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2019</h2>
 
 <ul>
+    <li><b>Why Evolution Is True (Jerry A. Coyne)</b></li>
     <li>The Theoretical Minimum (Leonard Susskind and George Hrabovsky)</li>
     <li><b>Every Tool's a Hammer (Adam Savage)</b></li>
     <li><b>The Internet of Money Volume One (Andreas M. Antonopoulos)</b></li>
