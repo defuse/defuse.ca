@@ -226,6 +226,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2019</h3>
 
 <ul>
+    <li><b>Quantum Supremacy Using a Programmable Superconducting Processor (Eleanor G. Rieffel)</b></li>
     <li>Exterminate All Operating System Abstractions (Dawson R. Engler and M. Frans Kaashoek)</li>
     <li>A Few Billion Lines of Code Later: Using Static Analysis to Find Bugs in the Real World (Al Bessey et al.)</li>
     <li>Touching The Untouchables: Dynamic Security Analysis of the LTE Control Plane (Hongil Kim et al.)</li>
