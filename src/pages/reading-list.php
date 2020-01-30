@@ -16,6 +16,14 @@ knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2020</h2>
+
+<ul>
+    <li><b>Billions & Billions (Carl Sagan)</b></li>
+    <li>The Internet of Money Vol. 2 (Andreas M. Antonopoulos)</li>
+    <li>Arcadia (Tom Stoppard)</li>
+</ul>
+
 <h2>2019</h2>
 
 <ul>
