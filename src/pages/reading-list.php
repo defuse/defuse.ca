@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2020</h2>
 
 <ul>
+    <li><b>The Tangled Web (Michal Zalewski)</b></li>
     <li><b>Billions & Billions (Carl Sagan)</b></li>
     <li>The Internet of Money Vol. 2 (Andreas M. Antonopoulos)</li>
     <li>Arcadia (Tom Stoppard)</li>
