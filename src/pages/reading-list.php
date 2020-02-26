@@ -232,6 +232,12 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <a name="papers"></a>
 <h2>Papers</h2>
 
+<h3>2020</h3>
+
+<ul>
+    <li>Struggling to be a person: Lived experience of avoidant personality disorder (Kristine D. Sorensen et al.)</li>
+</ul>
+
 <h3>2019</h3>
 
 <ul>
