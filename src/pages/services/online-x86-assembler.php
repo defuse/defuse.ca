@@ -77,10 +77,6 @@ shellcode development.
     </p>
 </form>
 
-<p>
-You can now assemble x86 code even easier <a href="https://twitter.com/plzasm">by tweeting</a>.
-</p>
-
 <?php
 
 if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['instructions']) != 0)
