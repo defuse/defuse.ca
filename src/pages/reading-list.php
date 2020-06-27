@@ -237,6 +237,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2020</h3>
 
 <ul>
+    <li><b>The Basics of Brain Development (Joan Stiles and Terry L. Jernigan)</b></li>
     <li>Struggling to be a person: Lived experience of avoidant personality disorder (Kristine D. Sorensen et al.)</li>
 </ul>
 
