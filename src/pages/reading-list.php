@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2020</h2>
 
 <ul>
+    <li><b>The Stranger (Albert Camus)</b></li>
     <li><b>Functional Thinking (Neal Ford)</b></li>
     <li><b>Think DSP: Digital Signal Processing in Python (Allen B Downey)</b></li>
     <li><b>The Tangled Web (Michal Zalewski)</b></li>
