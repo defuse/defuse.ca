@@ -65,7 +65,7 @@ repetitions).
 </ul>
 
 <center>
-    <p><b><a href="http://hdl.handle.net/10012/13638">Concentration Bounds From
+    <p><b><a href="/downloads/thesis.pdf">Concentration Bounds From
 Parallel Repetition Theorems (on UWSpace)</a></b></p>
 </center>
 
