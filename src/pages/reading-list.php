@@ -239,6 +239,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2020</h3>
 
 <ul>
+    <li>k-Anonymity: A Model for Protecting Privacy (Latanya Sweeney)</li>
+    <li>Anonymity, Unobservability, and Pseudonymity &ndash; A Proposal for Terminology (Andreas Pfitzmann and Marit K&ouml;hntopp)</li>
     <li><b>The Basics of Brain Development (Joan Stiles and Terry L. Jernigan)</b></li>
     <li>Struggling to be a person: Lived experience of avoidant personality disorder (Kristine D. Sorensen et al.)</li>
 </ul>
