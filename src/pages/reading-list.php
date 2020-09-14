@@ -239,6 +239,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2020</h3>
 
 <ul>
+    <li>ConsenSGX: Scaling Anonymous Communications Networks with Trusted Execution Environments (Sajin Sasy and Ian Goldberg)</li>
     <li>k-Anonymity: A Model for Protecting Privacy (Latanya Sweeney)</li>
     <li>Anonymity, Unobservability, and Pseudonymity &ndash; A Proposal for Terminology (Andreas Pfitzmann and Marit K&ouml;hntopp)</li>
     <li><b>The Basics of Brain Development (Joan Stiles and Terry L. Jernigan)</b></li>
