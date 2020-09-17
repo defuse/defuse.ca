@@ -239,6 +239,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2020</h3>
 
 <ul>
+    <li>XRD: Scalable Messaging System with Cryptographic Privacy (Albert Kwon et al.)</li>
     <li>On Privacy Notions in Anonymous Communication (Christine Kuhn et al.)</li>
     <li>ConsenSGX: Scaling Anonymous Communications Networks with Trusted Execution Environments (Sajin Sasy and Ian Goldberg)</li>
     <li>k-Anonymity: A Model for Protecting Privacy (Latanya Sweeney)</li>
