@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2020</h2>
 
 <ul>
+    <li><b>From Bacteria To Bach and Back (Daniel C. Dennett)</b></li>
     <li><b>Self-Compassion: The Proven Power of Being Kind to Yourself (Kristin Neff)</b></li>
     <li><b>The Stranger (Albert Camus)</b></li>
     <li><b>Functional Thinking (Neal Ford)</b></li>
