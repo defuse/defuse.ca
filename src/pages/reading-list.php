@@ -241,6 +241,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2020</h3>
 
 <ul>
+    <li>Survey on anonymous communications in computer networks (Jian Ren and Jie Wu)</li>
     <li>Responsible Vulnerability Disclosure in Cryptocurrencies (Rainer B&ouml;hme et al.)</li>
     <li>XRD: Scalable Messaging System with Cryptographic Privacy (Albert Kwon et al.)</li>
     <li>On Privacy Notions in Anonymous Communication (Christine Kuhn et al.)</li>
