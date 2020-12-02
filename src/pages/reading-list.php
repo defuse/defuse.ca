@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2020</h2>
 
 <ul>
+    <li><b>The Emperor's New Mind (Roger Penrose)</b></li>
     <li><b>Attached (Amir Levine and Rachel S. F. Heller)</b</li>
     <li><b>From Bacteria To Bach and Back (Daniel C. Dennett)</b></li>
     <li><b>Self-Compassion: The Proven Power of Being Kind to Yourself (Kristin Neff)</b></li>
