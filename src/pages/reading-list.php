@@ -242,6 +242,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2020</h3>
 
 <ul>
+    <li><b>PIR with compressed queries and amortized query processing (Sebastian Angel et al.)</b></li>
     <li>Many Worlds, the Born Rule, and Self-Locating Uncertainty (Sean M. Carroll et al.)</li>
     <li>Survey on anonymous communications in computer networks (Jian Ren and Jie Wu)</li>
     <li>Responsible Vulnerability Disclosure in Cryptocurrencies (Rainer B&ouml;hme et al.)</li>
