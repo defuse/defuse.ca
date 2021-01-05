@@ -16,10 +16,17 @@ knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2021</h2>
+
+<ul>
+    <li>Conscious (Annaka Harris)</li>
+</ul>
+
 <h2>2020</h2>
 
 <ul>
-    <li>Mind & Cosmos (Thomas Nagel)</li>
+    <li><b>Theory and Reality (Peter Godfrey-Smith)</b></li>
+    <li>Mind &amp; Cosmos (Thomas Nagel)</li>
     <li>Theory of Nothing (Russel K. Standish)</li>
     <li><b>The Emperor's New Mind (Roger Penrose)</b></li>
     <li><b>Attached (Amir Levine and Rachel S. F. Heller)</b</li>
