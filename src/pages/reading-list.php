@@ -248,6 +248,12 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <a name="papers"></a>
 <h2>Papers</h2>
 
+<h3>2021</h3>
+
+<ul>
+    <li>How to Find Hidden Users: A Survey of Attacks on Anonymity Networks (Esra Erdin et al.)</li>
+</ul>
+
 <h3>2020</h3>
 
 <ul>
