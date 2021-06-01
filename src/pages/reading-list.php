@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2021</h2>
 
 <ul>
+    <li><b>Darkness Visible (William Styron)</b></li>
     <li>Embedded Software Development for Safety-Critical Systems (Chris Hobbs)</li>
     <li>Conscious (Annaka Harris)</li>
 </ul>
