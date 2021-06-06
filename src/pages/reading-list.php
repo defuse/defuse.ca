@@ -32,7 +32,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
     <li>Mind &amp; Cosmos (Thomas Nagel)</li>
     <li>Theory of Nothing (Russel K. Standish)</li>
     <li><b>The Emperor's New Mind (Roger Penrose)</b></li>
-    <li><b>Attached (Amir Levine and Rachel S. F. Heller)</b</li>
+    <li><b>Attached (Amir Levine and Rachel S. F. Heller)</b></li>
     <li><b>From Bacteria To Bach and Back (Daniel C. Dennett)</b></li>
     <li><b>Self-Compassion: The Proven Power of Being Kind to Yourself (Kristin Neff)</b></li>
     <li><b>The Stranger (Albert Camus)</b></li>
