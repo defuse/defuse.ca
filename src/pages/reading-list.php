@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2021</h2>
 
 <ul>
+    <li><b>A Fortunate Universe (Geraint Lewis and Luke Barnes)</b></li>
     <li><b>The Scout Mindset (Julia Galef)</b></li>
     <li><b>Darkness Visible (William Styron)</b></li>
     <li>Embedded Software Development for Safety-Critical Systems (Chris Hobbs)</li>
