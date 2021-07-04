@@ -20,6 +20,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 
 <ul>
     <li><b>A Fortunate Universe (Geraint Lewis and Luke Barnes)</b></li>
+    <li><b>Man's Search for Meaning (Victor Frankl)</b></li>
     <li><b>The Scout Mindset (Julia Galef)</b></li>
     <li><b>Darkness Visible (William Styron)</b></li>
     <li>Embedded Software Development for Safety-Critical Systems (Chris Hobbs)</li>
