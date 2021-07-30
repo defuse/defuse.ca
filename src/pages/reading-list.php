@@ -256,6 +256,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2021</h3>
 
 <ul>
+    <li>On the Electrodynamics of Moving Bodies (Albert Einstein)</li>
     <li>How to Find Hidden Users: A Survey of Attacks on Anonymity Networks (Esra Erdin et al.)</li>
 </ul>
 
