@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2021</h2>
 
 <ul>
+    <li>The Science of Can and Can't (Chiara Marletto)</li>
     <li><b>Container Security (Liz Rice)</b></li>
     <li><b>A Fortunate Universe (Geraint Lewis and Luke Barnes)</b></li>
     <li><b>Man's Search for Meaning (Victor Frankl)</b></li>
