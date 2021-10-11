@@ -258,6 +258,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2021</h3>
 
 <ul>
+    <li><b>Partitioning Oracle Attacks (Julia Len et al.)</b></li>
     <li><b>"It's stressful having all these phones": Investigating Sex Workers'
 Safety Goals, Risks, and Practices Online (Allison McDonald et al.)</b></li>
     <li>Rotational cryptanalysis of reduced-round Keccak (Pawel Morawiecki et al.)</li>
