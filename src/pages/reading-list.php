@@ -259,6 +259,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2021</h3>
 
 <ul>
+    <li>Superdeterminism: A Guide for the Perplexed (Sabine Hossenfelder)</li>
     <li>Domain Shadowing: Leveraging Content Delivery Networks for Robust Blocking-Resistant Communications (Mingkui Wei)</li>
     <li><b>Partitioning Oracle Attacks (Julia Len et al.)</b></li>
     <li><b>"It's stressful having all these phones": Investigating Sex Workers'
