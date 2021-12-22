@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2021</h2>
 
 <ul>
+    <li>Harry Pottern and the Philosopher's Stone (J.K. Rowling)</li>
     <li>How To DeFi (CoinGecko)</li>
     <li>The Science of Can and Can't (Chiara Marletto)</li>
     <li><b>Container Security (Liz Rice)</b></li>
