@@ -1,0 +1,195 @@
+<?php
+    Upvote::render_arrows(
+        "plausiblepneqnpprove",
+        "defuse_pages",
+        "A Plausible Reason It's So Hard To Prove P!=NP",
+        "Attempting to show why P!=NP is hard to prove using hash functions.",
+        "https://defuse.ca/plausible-reason-p-noteq-np-is-hard-to-prove.htm"
+    );
+?>
+<div class="pagedate">
+January 5, 2022
+</div>
+<h1>A Plausible Reason It's So Hard To Prove P!=NP</h1>
+
+
+<p>
+Let’s do something that seems insane at first, let’s try to solve NP-complete
+decision problems using the “random” outputs of cryptographic hash functions.
+</p>
+
+<p>
+It doesn’t matter exactly which hash functions we use. In fact, in this
+argument, the hash functions are really a stand-in for any polynomial-time
+algorithm, but I want to take advantage of your intuitive sense of what
+a cryptographic hash function is, so I’m calling them hash functions. The
+intuitive properties I want you to have in mind are that they are
+random-behaving and computationally irreducible, i.e. there’s no way to learn or
+predict properties of their output without actually computing them.
+</p>
+
+<p>
+A bit of notation will help make things clear. Let H<sub>1</sub>, H<sub>2</sub>, … be any sequence
+of keyed polynomial-time hash functions where H<sub>n</sub> takes a key k of size |k|
+= n as well as an arbitrary-length input x. For every key k, we can define the
+language HL(k) = { x | H<sub>|k|</sub>(k, x)’s first bit is 1 }. In other words, for every
+key of unbounded size, there’s a language HL(k), and to find out whether
+a string is in HL(k) you simply hash the string with the key k and check if the
+first bit of the hash is 1.
+</p>
+
+<p>
+Now, here’s the question: If we keep passing bigger and bigger keys to bigger
+and bigger members of the hash function family, is it possible that we would
+stumble upon some enormous key k such that HL(k) is an NP-complete language? If
+that happens, then P would equal NP, because although k would be impractically
+large (probably so large that its bitlength would put Graham’s number to shame),
+we could decide an NP-complete language in polynomial time using one call to
+H<sub>n</sub> with the hard-coded key. So, could that happen?
+</p>
+
+<p>
+There are infinitely many NP-complete languages, so in one sense there are
+infinitely many collision targets. Yet, on the other hand, it seems like we need
+an infinite sequence of ‘accidental’ bit collisions, one for every string, to
+collide an entire language.
+</p>
+
+<p>
+If the hash functions were truly random, modeled as random oracles, the
+probability of a collision would work out to be exactly zero for each
+NP-complete language. But that’s a heuristic argument, there’s no real
+probabilities involved here! Although we are thinking about the hash functions
+as random-behaving, they’re not really random, they’re all deterministic
+computations. A language collision is therefore not ruled out by any statistical
+argument.
+</p>
+
+<p>
+An information-theoretic argument can’t rule out a language collision either,
+because NP-complete languages have concise descriptions in the form of their
+polynomial-time solution-checking machine, and k can be arbitrarily large,
+holding arbitrary amounts of information.
+</p>
+
+<p>
+If P is not equal to NP, then for any choice of hash function family, all
+infinitely-many, arbitrary-length keys k, HL(k) must definitely never collide
+with any NP-complete language. If P!=NP were true and unprovable, this wouldn’t
+be so weird, we’d just say that no language collision occurs, and that’s just
+a brute fact about math with no real reason behind it.
+</p>
+
+<p>
+However, if P!=NP is true and provable, then this starts to look really weird.
+If all HL(k)’s miss all of the NP-complete languages, then it looks like
+whatever logic leads to P!=NP is somehow “forcing” hash functions’ “random”
+outputs to always miss the NP-complete languages. If we had a proof of P!=NP,
+then we would know for sure that all hash functions’ outputs will always miss
+all of the NP-complete languages, without ever having to evaluate the hash
+functions! That seems really strange, maybe even as strange as an accidental
+collision occurring.
+</p>
+
+<p>
+So, if P!=NP is provable, then our intuitive notion of these cryptographic
+functions behaving randomly, as well as the concept of computational
+irreducibility, become suspect. The logic in the P!=NP proof explains how these
+apparently-random functions share a global property of never colliding with an
+NP-complete language.
+</p>
+
+<p>
+So, we might be tempted to conclude that one of the following conjectures is
+true:
+</p>
+
+<p>
+Conjecture 1: P=NP, but only by accident as described above, for a key so large
+that we’d never find out. (In this case, P=NP is probably unprovable, because
+even if we knew the key and it was small enough to write down, there should be
+no concise line of reasoning tying hash function outputs to the NP-complete
+language. It’s just an accident.)
+</p>
+
+<p>
+Conjecture 2: P!=NP, but it’s unprovable, because the existence of a proof would
+violate our informal notions of computational irreducibility and cryptographic
+security.
+</p>
+
+<p>
+But hold on, there are complexity classes known to be larger than P, like
+EXPTIME and classes containing undecidable languages. Why doesn’t this hash
+function collision trick apply there, too? Why don’t those proofs, the proof
+that P!=EXPTIME, and the proof that the halting problem is undecidable, also
+show that all hash functions have this mysterious global language-avoidance
+property that we’re worried violates our notion of computational irreducibility?
+</p>
+
+<p>
+The answer can be found in the proofs of those theorems. Both the proof of
+P!=EXPTIME through the time hierarchy theorem and the proof that the halting
+problem is undecidable use diagonalization arguments. They define a language by
+way of an algorithm which would simulate the hash functions (in fact all
+‘faster’ algorithms) on some inputs and disagree with them on purpose.
+Computational irreducibility is not violated by those results, because the
+proofs make reference to all of the hash functions, reference their evaluations,
+and then construct an algorithm to disagree with them. In those proofs, it’s not
+that the hash functions’ outputs miss the EXPTIME language or the undecidable
+language by accident, it’s exactly the other way around, the EXPTIME language or
+undecidable language make reference to, and were designed to miss, the hash
+functions.
+</p>
+
+<p>
+Are other classes like PSPACE and NP powerful enough to define languages that
+avoid collisions with all of the hash functions too, as would be shown in
+a proof of P!=PSPACE or P!=NP? Or, is the argument that proves the time
+hierarchy theorem the best that can be done, and there are simply no collisions
+by accident? Or, is there a collision, and it’s just far too complex for us to
+ever find?
+</p>
+
+<p>
+If there’s no collision but it can’t be ruled out by proof, or if there is
+a collision, this would explain why we can’t seem to improve our results any
+better than the time hierarchy theorem allows. It would also explain why we
+can’t even rule out linear-time algorithms for NP-complete problems like SAT:
+good symmetric cryptography only needs linear time, so for all we know the hash
+function that produces the freak collision runs in linear time, too.
+</p>
+
+<p>
+If instead of hash functions, we allowed arbitrary uniform families of
+polynomial-time functions, then HL(k) equalling an NP-complete language would
+exactly be the definition of P=NP. By restricting ourselves to hash functions,
+where computational irreducibility makes some kind of intuitive sense, it’s
+easier to grasp how a proof of P!=NP either needs to do
+time-hierarchy-theorem-style diagonalization or exploit a lack of computational
+irreducibility present in all hash functions.
+<p>
+
+<p>
+Of course this is just an intuitive argument. We haven’t proven anything here.
+Perhaps it’s possible to formalize some kind of “computational irreducibility
+hypothesis” and show that under that assumption, P!=NP is unprovable. That’s
+left as an exercise to the reader.
+</p>
+
+<p>
+Personally, I think P versus NP is the wrong question to care about. Studying
+concrete complexity, i.e. complexity theory without hiding constant factors in
+asymptotics and hiding exponents in the word “polynomial”, seems like it would
+be more useful. If we could get good at that, then we could lower-bound the
+security of the cryptographic algorithms we actually use, and maybe even
+lower-bound the size of a freak-collision-producing key.
+</p>
+
+<p>
+Concrete complexity is messy, though, because without big-O notation, the
+machine model matters, and we pretty much end up with a different “complexity
+theory” for every kind of machine. Unfortunately, I think computational
+irreducibility—at least if my intuitive formulation of it is correct—will
+prevent us from making much progress there, too.
+</p>

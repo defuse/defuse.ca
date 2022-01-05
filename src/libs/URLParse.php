@@ -458,6 +458,12 @@ class URLParse
                 P_METD => "Birthday attack without seeing the values.",
                 P_METK => "birthday attack, blind, double hmac, cryptography",
             ),
+            "plausible-reason-p-noteq-np-is-hard-to-prove" => array(
+                P_FILE => "research/plausible-reason-p-noteq-np-is-hard-to-prove.php",
+                P_TITL => "A Plausible It's So Hard To Prove P!=NP",
+                P_METD => "Attempting to show why P!=NP is hard to prove using hash functions.",
+                P_METK => "p versus np, hard to prove, hash functions, language collisions",
+            ),
             "side-channels-in-encoding-functions" => array(
                 P_FILE => "research/side-channels-in-encoding-functions.php",
                 P_TITL => "Side Channel Attacks in Hex and Base64 Encoding",
