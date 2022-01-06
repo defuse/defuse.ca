@@ -137,8 +137,8 @@ theorem</a> and the proof that the halting problem is undecidable use
 diagonalization arguments. They define a language by way of an algorithm which
 would simulate the hash functions (in fact all ‘faster’ algorithms) on some
 inputs and disagree with them on purpose. Computational irreducibility is not
-violated by those results, because the proofs <em>make reference to</em> all of
-the hash functions, <em>reference their evaluations</em>, and then construct an
+violated by those results, because the proofs <em>make reference to all of
+the hash functions</em>, <em>reference their evaluations</em>, and then construct an
 algorithm to disagree with them. In those proofs, it’s not that the hash
 functions’ outputs miss the EXPTIME language or the undecidable language by
 accident, it’s exactly the other way around: the EXPTIME language or undecidable
