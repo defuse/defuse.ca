@@ -86,24 +86,23 @@ a reason.
 However, if P!=NP is true <em>and provable</em>, then this starts to look really
 weird. If all HL(k)’s miss all of the NP-complete languages, then it looks like
 whatever logic leads to P!=NP is somehow “forcing” hash functions’ “random”
-outputs to always miss the NP-complete languages. If we had a proof of P!=NP,
-then we would <em>know for sure</em> that all hash functions’ outputs will
-always miss all of the NP-complete languages, <em>without ever having to
-evaluate the hash functions</em>! <em>That</em> seems really strange, maybe even
-as strange as an accidental collision occurring.
+outputs to always miss the NP-complete languages. The logic in the P!=NP proof
+would need to explain how these apparently-structureless functions have a
+"global" property of never colliding with an NP-complete language.
+</p>
+
+<p>
+If we had a proof of P!=NP, then we would <em>know for sure</em> that all hash
+functions’ outputs will always miss all of the NP-complete languages,
+<em>without ever having to evaluate the hash functions</em>! <em>That</em> seems
+really strange, maybe even as strange as a whole language collision occurring.
 </p>
 
 <p>
 So, if P!=NP is provable, then our intuitive notions of these cryptographic
 functions behaving randomly, as well as the concept of computational
-irreducibility, become suspect. The logic in the P!=NP proof would need to
-explain how these apparently-structureless functions share a global property of
-never colliding with an NP-complete language.
-</p>
-
-<p>
-So, we might be tempted to conclude that one of the following conjectures is
-true:
+irreducibility, become suspect. We might be tempted to conclude that one of the
+following conjectures is true:
 </p>
 
 <p>
@@ -159,12 +158,12 @@ possible hash functions.
 </p>
 
 <p>
-If there’s no collision but it can’t be ruled out by proof, or if there is
-a collision, then this would explain why we can’t seem to improve our results
-any better than the time hierarchy theorem allows. It would also explain why we
-can’t even rule out <em>linear</em>-time algorithms for NP-complete problems like SAT:
-good symmetric cryptography only needs linear time, so for all we know the hash
-function that produces the freak collision runs in linear time, too.
+If this reasoning is correct, then it would explain why we can’t seem to improve
+our results any better than the time hierarchy theorem allows: diagonalization
+is the only way to be sure there isn't a collision. It would also explain why we
+can’t even rule out <em>linear</em>-time algorithms for NP-complete problems
+like SAT: good symmetric cryptography only needs linear time, so for all we know
+the hash function that produces the freak collision runs in linear time, too.
 </p>
 
 <p>
