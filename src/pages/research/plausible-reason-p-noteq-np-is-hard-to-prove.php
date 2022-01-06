@@ -101,8 +101,10 @@ really strange, maybe even as strange as a language collision occurring.
 <p>
 So, if P!=NP is provable, then our intuitive notions of these cryptographic
 functions behaving randomly, as well as the concept of computational
-irreducibility, become suspect. We might be tempted to conclude that one of the
-following conjectures is true:
+irreducibility, become suspect. If we believe computational irreducibility is
+real, not just something we think is real because we are computationally bounded
+humans, we might be tempted to conclude that one of the following conjectures is
+true:
 </p>
 
 <p>
