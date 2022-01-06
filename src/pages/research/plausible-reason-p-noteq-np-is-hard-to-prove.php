@@ -43,7 +43,7 @@ Now, here’s the question: If we keep passing bigger and bigger keys to bigger
 and bigger members of the hash function family, is it possible that we would
 stumble upon some enormous key k such that HL(k) is an NP-complete language? If
 that happens, then P would equal NP, because although k would be impractically
-large (probably so large that its length would put <a
+large (probably so large that its length would put even <a
 href="https://en.wikipedia.org/wiki/Graham%27s_number">Graham’s number</a> to shame),
 we could decide an NP-complete language in polynomial time using one call to
 H<sub>n</sub> with the hard-coded key. So, could that happen?
