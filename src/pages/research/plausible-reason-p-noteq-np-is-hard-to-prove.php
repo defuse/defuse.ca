@@ -169,7 +169,7 @@ Linear-time (or better) lower bounds for SAT or TQBF would count as evidence
 against this idea, since any proof of those results would explain to us exactly
 how the languages in NP or PSPACE are conspiring to miss all of the linear-time
 hash functions, and linear-time hash functions should be just as computationally
-irriducible as hash functions with quadratic runtime or greater.
+irreducible as hash functions with quadratic runtime or greater.
 </p>
 
 <p>
