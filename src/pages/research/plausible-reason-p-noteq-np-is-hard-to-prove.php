@@ -190,7 +190,9 @@ irreducibility present in all hash functions.
 Of course this <em>is just</em> an intuitive argument. We haven’t proven
 anything here. Perhaps it’s possible to formalize some kind of “computational
 irreducibility hypothesis” and show that under that assumption, P!=NP is
-unprovable. That’s left as an exercise to the reader.
+unprovable. That’s left as an exercise to the reader. (It's not straightforward
+because a P!=NP proof doesn't need to give you any information about any
+particular hash function's output.)
 </p>
 
 <p>
