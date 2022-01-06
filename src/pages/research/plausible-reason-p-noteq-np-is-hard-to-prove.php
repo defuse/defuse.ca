@@ -84,11 +84,11 @@ a reason.
 
 <p>
 However, if P!=NP is true <em>and provable</em>, then this starts to look really
-weird. If all HL(k)’s miss all of the NP-complete languages, then it looks like
-whatever logic leads to P!=NP is somehow “forcing” hash functions’ “random”
-outputs to always miss the NP-complete languages. The logic in the P!=NP proof
-would need to explain how these apparently-structureless functions have a
-"global" property of never colliding with an NP-complete language.
+weird. In this case it looks like whatever logic leads to P!=NP is somehow
+“forcing” hash functions’ “random” outputs to always miss the NP-complete
+languages. The logic in the P!=NP proof would need to explain how these
+apparently-structureless functions have a "global" property of never colliding
+with an NP-complete language.
 </p>
 
 <p>
