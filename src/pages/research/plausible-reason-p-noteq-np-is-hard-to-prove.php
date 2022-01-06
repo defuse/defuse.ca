@@ -43,7 +43,7 @@ Now, here’s the question: If we keep passing bigger and bigger keys to bigger
 and bigger members of the hash function family, is it possible that we would
 stumble upon some enormous key k such that HL(k) is an NP-complete language? If
 that happens, then P would equal NP, because although k would be impractically
-large (probably so large that its bitlength would put <a
+large (probably so large that its length would put <a
 href="https://en.wikipedia.org/wiki/Graham%27s_number">Graham’s number</a> to shame),
 we could decide an NP-complete language in polynomial time using one call to
 H<sub>n</sub> with the hard-coded key. So, could that happen?
@@ -148,8 +148,8 @@ functions</em>.
 
 
 <p>
-Because of completness, i.e. the fact that there are polynomial-time reductions
-between all NP-complete lanugages, it's not enough to construct <em>one</em>
+Because of completeness, i.e. the fact that there are polynomial-time reductions
+between all NP-complete languages, it's not enough to construct <em>one</em>
 NP-complete language that misses the hash functions like in the proofs mentioned
 above. In fact, <em>ALL</em> NP-complete languages would have to miss
 <em>ALL</em> of the hash functions. It seems that it's either some cosmic
