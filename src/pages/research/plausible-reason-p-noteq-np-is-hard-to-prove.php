@@ -163,16 +163,17 @@ disagree with all possible hash functions.
 
 <p>
 If this reasoning is correct, then it would explain why we can’t seem to improve
-our results any better than the time hierarchy theorem allows: diagonalization
-is the only way to be sure there isn't a collision. It would also explain why we
-can’t even rule out <em>linear</em>-time algorithms for NP-complete problems
-like SAT: good symmetric cryptography only needs linear time, so for all we know
-the hash function that produces the freak collision runs in linear time, too.
-Linear-time (or better) lower bounds for SAT or TQBF would count as evidence
-against this idea, since any proof of those results would explain to us exactly
-how the NP-complete or PSPACE-complete languages are conspiring to miss all of
-the linear-time hash functions, and linear-time hash functions should be just as
-computationally irreducible as hash functions with quadratic runtime or greater.
+our results any better than the time hierarchy theorem allows: irreducibility
+ensures that diagonalization is the only way to guarantee there isn't a collision.
+It would also explain why we can’t even rule out <em>linear</em>-time algorithms
+for NP-complete problems like SAT: good symmetric cryptography only needs linear
+time, so for all we know the hash function that produces the freak collision
+runs in linear time, too.  Linear-time (or better) lower bounds for SAT or TQBF
+would count as evidence against this idea, since any proof of those results
+would explain to us exactly how the NP-complete or PSPACE-complete languages are
+conspiring to miss all of the linear-time hash functions, and linear-time hash
+functions should be just as computationally irreducible as hash functions with
+quadratic runtime or greater.
 </p>
 
 <p>
