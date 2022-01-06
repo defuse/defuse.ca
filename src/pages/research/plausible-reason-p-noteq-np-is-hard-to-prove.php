@@ -122,7 +122,7 @@ and cryptographic security.
 
 <p>
 But hold on, there <em>are</em> complexity classes known to be larger than P,
-like EXPTIME and classes containing undecidable languages. Why doesn’t this hash
+like <a href="https://en.wikipedia.org/wiki/EXPTIME">EXPTIME</a> and classes containing <a href="https://en.wikipedia.org/wiki/Halting_problem">undecidable languages</a>. Why doesn’t this hash
 function collision trick apply there, too? Why don’t those proofs, the proof
 that P!=EXPTIME, and the proof that the halting problem is undecidable, both
 also show that all hash functions have the mysterious language-avoidance
