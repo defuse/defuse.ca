@@ -209,6 +209,6 @@ key.
 Concrete complexity is messy, though, because without big-O notation, the
 machine model matters, and we pretty much end up with a different “complexity
 theory” for every kind of machine. Unfortunately, I think computational
-irreducibility—at least if my intuitive formulation of it is in the ballpark of
-what's true—will prevent us from making much progress there, too.
+irreducibility will—at least if my intuitive formulation of it is in the ballpark of
+what's true—prevent us from making much progress there, too.
 </p>
