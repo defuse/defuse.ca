@@ -131,16 +131,18 @@ property that we’re worried violates our notion of computational irreducibilit
 
 <p>
 The answer can be found in the proofs of those theorems. Both the proof of
-P!=EXPTIME through the time hierarchy theorem and the proof that the halting
-problem is undecidable use diagonalization arguments. They define a language by
-way of an algorithm which would simulate the hash functions (in fact all
-‘faster’ algorithms) on some inputs and disagree with them on purpose.
-Computational irreducibility is not violated by those results, because the
-proofs <em>make reference to</em> all of the hash functions, <em>reference their evaluations</em>,
-and then construct an algorithm to disagree with them. In those proofs, it’s not
-that the hash functions’ outputs miss the EXPTIME language or the undecidable
-language by accident, it’s exactly the other way around, the EXPTIME language or
-undecidable language <em>make reference to, and were designed to miss, the hash
+P!=EXPTIME through the <a
+href="https://en.wikipedia.org/wiki/Time_hierarchy_theorem">time hierarchy
+theorem</a> and the proof that the halting problem is undecidable use
+diagonalization arguments. They define a language by way of an algorithm which
+would simulate the hash functions (in fact all ‘faster’ algorithms) on some
+inputs and disagree with them on purpose. Computational irreducibility is not
+violated by those results, because the proofs <em>make reference to</em> all of
+the hash functions, <em>reference their evaluations</em>, and then construct an
+algorithm to disagree with them. In those proofs, it’s not that the hash
+functions’ outputs miss the EXPTIME language or the undecidable language by
+accident, it’s exactly the other way around, the EXPTIME language or undecidable
+language <em>make reference to, and were designed to miss, the hash
 functions</em>.
 </p>
 
