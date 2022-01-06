@@ -95,7 +95,7 @@ with an NP-complete language.
 If we had a proof of P!=NP, then we would <em>know for sure</em> that all hash
 functions’ outputs will always miss all of the NP-complete languages,
 <em>without ever having to evaluate the hash functions</em>! <em>That</em> seems
-really strange, maybe even as strange as a whole language collision occurring.
+really strange, maybe even as strange as a language collision occurring.
 </p>
 
 <p>
