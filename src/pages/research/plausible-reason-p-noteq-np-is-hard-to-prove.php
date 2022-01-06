@@ -14,8 +14,8 @@ January 5, 2022
 
 
 <p>
-Let’s do something that seems insane at first, let’s try to solve NP-complete
-decision problems using the “random” outputs of cryptographic hash functions.
+Let’s do something that seems insane at first: <strong>let’s try to solve NP-complete
+decision problems using the “random” outputs of cryptographic hash functions</strong>.
 </p>
 
 <p>
