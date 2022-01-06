@@ -126,7 +126,7 @@ like <a href="https://en.wikipedia.org/wiki/EXPTIME">EXPTIME</a> and classes con
 function collision trick apply there, too? Why don’t those proofs, the proof
 that P!=EXPTIME, and the proof that the halting problem is undecidable, both
 also show that all hash functions have the mysterious language-avoidance
-property that we’re worried violates our notion of computational irreducibility?
+property that we’re worried violates computational irreducibility?
 </p>
 
 <p>
