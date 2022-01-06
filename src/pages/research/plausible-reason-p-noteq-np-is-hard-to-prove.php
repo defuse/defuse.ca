@@ -146,13 +146,16 @@ language <em>make reference to, and were designed to miss, the hash
 functions</em>.
 </p>
 
+
 <p>
-Are other classes like PSPACE and NP powerful enough to define languages that
-avoid collisions with all of the hash functions too, as would be shown in
-a proof of P!=PSPACE or P!=NP? Or, is the argument that proves the time
-hierarchy theorem the best that can be done, and there are simply no collisions
-by accident? Or, is there a collision, and it’s just far too complex for us to
-ever find?
+Because of completness, i.e. the fact that there are polynomial-time reductions
+between all NP-complete lanugages as well as between all PSPACE-complete
+languages, it's not enough to construct <em>one</em> NP-complete or
+PSPACE-complete language that misses the hash functions, like in the proofs
+mentioned above. In fact, <em>ALL</em> NP-complete languages would have to miss
+<em>ALL</em> of the hash functions. It seems that it's either some cosmic
+accident that no collision occurs, or languages like SAT and TQBF are "secretly"
+diagonalizing, somehow, to disagree with all possible hash functions.
 </p>
 
 <p>
