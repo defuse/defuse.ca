@@ -149,10 +149,9 @@ functions</em>.
 
 <p>
 Because of completness, i.e. the fact that there are polynomial-time reductions
-between all NP-complete lanugages as well as between all PSPACE-complete
-languages, it's not enough to construct <em>one</em> NP-complete or
-PSPACE-complete language that misses the hash functions, like in the proofs
-mentioned above. In fact, <em>ALL</em> NP-complete languages would have to miss
+between all NP-complete lanugages, it's not enough to construct <em>one</em>
+NP-complete language that misses the hash functions like in the proofs mentioned
+above. In fact, <em>ALL</em> NP-complete languages would have to miss
 <em>ALL</em> of the hash functions. It seems that it's either some cosmic
 accident that no collision occurs, or languages like SAT and TQBF are "secretly"
 diagonalizing, somehow, to disagree with all possible hash functions.
