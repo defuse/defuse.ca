@@ -195,9 +195,9 @@ Personally, I think P versus NP is the wrong question to care about. If P=NP
 because of an impossible-to-discover collision then who cares? If P!=NP but we
 can find machine learning algorithms to solve small cases of "hard" problems
 then who cares? Studying concrete complexity, i.e. complexity theory without
-hiding constant factors in asymptotics and hiding exponents in the word
-“polynomial”, seems like it would be more useful. If we could get good at that,
-then we could lower-bound the security of the cryptographic algorithms we
+hiding constant factors in big-O notation and without hiding exponents in the
+word “polynomial”, seems like it would be more useful. If we could get good at
+that, then we could lower-bound the security of the cryptographic algorithms we
 actually use, and maybe even lower-bound the size of a freak-collision-producing
 key.
 </p>
