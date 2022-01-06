@@ -33,9 +33,9 @@ A bit of notation will help make things clear. Let H<sub>1</sub>, H<sub>2</sub>,
 of keyed polynomial-time hash functions where H<sub>n</sub> takes a key k of size |k|
 = n as well as an arbitrary-length input x. For every key k, we can define the
 language HL(k) = { x | H<sub>|k|</sub>(k, x)’s first bit is 1 }. In other words, for every
-key of unbounded size, there’s a language HL(k), and to find out whether
-a string is in HL(k) you simply hash the string with the key k and check if the
-first bit of the hash is 1.
+key of unbounded size, there’s a language HL(k), and to find out whether a
+string is in HL(k) you simply hash the string with the key k using the |k|-th
+algorithm and check if the first bit of the hash is 1.
 </p>
 
 <p>
