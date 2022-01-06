@@ -173,11 +173,12 @@ irriducible as hash functions with quadratic runtime or greater.
 </p>
 
 <p>
-If instead of hash functions, we allowed arbitrary uniform families of
-polynomial-time functions, then HL(k) equalling an NP-complete language would
-exactly be the definition of P=NP. By restricting ourselves to hash functions,
-where computational irreducibility makes some kind of intuitive sense, it’s
-easier to grasp how a proof of P!=NP either needs to do
+If instead of hash functions, we allowed arbitrary <a
+href="https://en.wikipedia.org/wiki/Circuit_complexity#Uniformity">uniform</a>
+families of polynomial-time functions, then HL(k) equalling an NP-complete
+language would exactly be the definition of P=NP. By restricting ourselves to
+hash functions, where computational irreducibility makes some kind of intuitive
+sense, it’s easier to grasp how a proof of P!=NP either needs to do
 time-hierarchy-theorem-style diagonalization or exploit a lack of computational
 irreducibility present in all hash functions.
 <p>
