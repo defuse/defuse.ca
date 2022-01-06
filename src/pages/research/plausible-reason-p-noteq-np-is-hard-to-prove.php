@@ -153,8 +153,9 @@ between all NP-complete lanugages, it's not enough to construct <em>one</em>
 NP-complete language that misses the hash functions like in the proofs mentioned
 above. In fact, <em>ALL</em> NP-complete languages would have to miss
 <em>ALL</em> of the hash functions. It seems that it's either some cosmic
-accident that no collision occurs, or languages like SAT and TQBF are "secretly"
-diagonalizing, somehow, to disagree with all possible hash functions.
+accident that no collision occurs, or languages like SAT and TQBF (in the case
+of P vs PSPACE) are "secretly" diagonalizing, somehow, to disagree with all
+possible hash functions.
 </p>
 
 <p>
