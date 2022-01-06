@@ -239,7 +239,6 @@ header('Content-Type: text/html; charset=utf-8');
                     <li><a href="/filesystem-events-ntfs-permissions.htm">&nbsp;File-System Events</a></li>
                     <li><a href="/onedetection.htm">&nbsp;PUP Confusion</a></li>
                     <li><a href="/side-channels-in-encoding-functions.htm">&nbsp;Encoding Side Channels</a></li>
-                    <li><a href="/plausible-reason-p-noteq-np-is-hard-to-prove.htm">&nbsp;Why It's Hard To Prove P!=NP</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -283,6 +282,7 @@ header('Content-Type: text/html; charset=utf-8');
                     <li><a href="/concentration-bounds-from-parallel-repetition-theorems.htm">&nbsp;My Master's Thesis</a></li>
                     <li><a href="/how-do-we-model-this-robot.htm">&nbsp;Robot Modelling</a></li>
                     <li><a href="/is-security-local.htm">&nbsp;Is Security Local?</a></li>
+                    <li><a href="/plausible-reason-p-noteq-np-is-hard-to-prove.htm">&nbsp;Why It's Hard To Prove P!=NP</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
