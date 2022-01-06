@@ -184,7 +184,7 @@ irreducibility present in all hash functions.
 <p>
 
 <p>
-Of course this <em>is</em> just an intuitive argument. We haven’t proven
+Of course this <em>is just</em> an intuitive argument. We haven’t proven
 anything here. Perhaps it’s possible to formalize some kind of “computational
 irreducibility hypothesis” and show that under that assumption, P!=NP is
 unprovable. That’s left as an exercise to the reader.
