@@ -86,9 +86,11 @@ a reason.
 However, if P!=NP is true <em>and provable</em>, then this starts to look really
 weird. In this case it looks like whatever logic leads to P!=NP is somehow
 “forcing” hash functions’ “random” outputs to always miss the NP-complete
-languages. The logic in the P!=NP proof would need to explain how these
+languages, or vice-versa "forcing" the NP-complete languages to always miss the
+hash functions. The logic in the P!=NP proof would need to explain how these
 apparently-structureless (and arbitrary-size!) algorithms all have a "global"
-property of never colliding with an NP-complete language.
+property of never colliding with an NP-complete language, or explain how the
+NP-complete languages 'conspire' to disagree with all of the hash functions.
 </p>
 
 <p>
