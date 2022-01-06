@@ -97,11 +97,12 @@ NP-complete languages 'conspire' to disagree with all of the hash functions.
 If we had a proof of P!=NP, then we would <em>know for sure</em> that all hash
 functions’ outputs will always miss all of the NP-complete languages,
 <em>without ever having to evaluate the hash functions</em>! <em>That</em> seems
-really strange, maybe even as strange as a language collision occurring.
+really strange, maybe even as strange as a language collision occurring,
+depending on how much we believe in computational irreducibility.
 </p>
 
 <p>
-So, if P!=NP is provable, then our intuitive notion of cryptographic functions
+If P!=NP is provable, then our intuitive notion of cryptographic functions
 behaving randomly, as well as the concept of computational irreducibility,
 become suspect. If we believe computational irreducibility is real, not just
 something we think is real because we are computationally bounded humans, we
