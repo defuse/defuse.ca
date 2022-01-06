@@ -109,13 +109,13 @@ following conjectures is true:
 <strong>Conjecture 1:</strong> P=NP, but only by accident as described above,
 for a key so large that we’d never find out. (In this case, P=NP is probably
 unprovable, because even if we knew the key and it was small enough to write
-down, there should be no concise line of reasoning tying hash function outputs
+down, there's no reason to expect there to be a line of reasoning tying hash function outputs
 to the NP-complete language. It’s just an accident.)
 </p>
 
 <p>
 <strong>Conjecture 2:</strong> P!=NP, but it’s unprovable, because the existence
-of a proof would violate our informal notions of computational irreducibility
+of a proof would violate our (admittedly informal) notions of computational irreducibility
 and cryptographic security.
 </p>
 
@@ -140,7 +140,7 @@ violated by those results, because the proofs <em>make reference to</em> all of
 the hash functions, <em>reference their evaluations</em>, and then construct an
 algorithm to disagree with them. In those proofs, it’s not that the hash
 functions’ outputs miss the EXPTIME language or the undecidable language by
-accident, it’s exactly the other way around, the EXPTIME language or undecidable
+accident, it’s exactly the other way around: the EXPTIME language or undecidable
 language <em>make reference to, and were designed to miss, the hash
 functions</em>.
 </p>
@@ -164,6 +164,11 @@ is the only way to be sure there isn't a collision. It would also explain why we
 can’t even rule out <em>linear</em>-time algorithms for NP-complete problems
 like SAT: good symmetric cryptography only needs linear time, so for all we know
 the hash function that produces the freak collision runs in linear time, too.
+Linear-time (or better) lower bounds for SAT or TQBF would count as evidence
+against this idea, since any proof of those results would explain to us exactly
+how the languages in NP or PSPACE are conspiring to miss all of the linear-time
+hash functions, which should be just as computationally irriducible as hash
+functions with quadratic runtime or greater.
 </p>
 
 <p>
