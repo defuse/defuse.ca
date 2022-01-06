@@ -76,7 +76,7 @@ holding arbitrary amounts of information.
 <p>
 If P is not equal to NP, then for <em>any</em> choice of hash function family,
 all <em>infinitely-many, arbitrary-length</em> keys k, HL(k) must definitely
-<em>never</em> collide with <em>any</em> NP-complete language. If P!=NP were
+never collide with <em>any</em> NP-complete language. If P!=NP were
 true and unprovable, this wouldn’t be so weird, we’d just say that no language
 collision occurs, and that’s just a brute fact about math with no real need for
 a reason.
