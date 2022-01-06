@@ -152,10 +152,10 @@ Because of completeness, i.e. the fact that there are polynomial-time reductions
 between all NP-complete languages, it's not enough to construct <em>one</em>
 NP-complete language that misses the hash functions like in the proofs mentioned
 above. In fact, <em>ALL</em> NP-complete languages would have to miss
-<em>ALL</em> of the hash functions. It seems that it's either some cosmic
-accident that no collision occurs, or languages like SAT and TQBF (in the case
-of P vs PSPACE) are "secretly" diagonalizing, somehow, to disagree with all
-possible hash functions.
+<em>ALL</em> of the hash functions in order for P to not equal NP. It seems that
+it's either some cosmic accident that no collision occurs, or languages like SAT
+and TQBF (in the case of P vs PSPACE) are "secretly" diagonalizing, somehow, to
+disagree with all possible hash functions.
 </p>
 
 <p>
