@@ -16,6 +16,12 @@ knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2022</h2>
+
+<ul>
+    <li><b>Lost in Math (Sabine Hossenfelder)</b></li>
+</ul>
+
 <h2>2021</h2>
 
 <ul>
