@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2022</h2>
 
 <ul>
+    <li>Pracitcal Doomsday (Michal Zalewski)</li>
     <li><b>Lost in Math (Sabine Hossenfelder)</b></li>
 </ul>
 
