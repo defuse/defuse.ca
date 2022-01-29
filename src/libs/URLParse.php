@@ -81,6 +81,7 @@ class URLParse
                                             "defuse.h.defuse.ca",
                                             "defuse",
                                             "defuse:10443",
+                                            "localhost:3443",
                                             );
     private static $FORCE_HTTPS = true;
     private static $DEFAULT_TITLE = "Defuse Security Research and Development";
