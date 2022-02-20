@@ -144,7 +144,7 @@ if(isset($_POST['makedrawingnumber']))
 	$drawingdate = date("D M j G:i:s T Y", $reviewtime + $starttime);
 	$password = bin2hex(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
 	$passwordhash = hash("SHA256", $password);
-    $q = $DB->prepare("INSERT INTO drawings (complete, passwordhash, starttime, reviewtime) VALUES (0, :passwordhash, :starttime, :reviewtime)");
+    $q = $DB->prepare("INSERT INTO drawings (complete, passwordhash, starttime, reviewtime, printout, userprintout) VALUES (0, :passwordhash, :starttime, :reviewtime, '', '')");
     $q->bindParam(':passwordhash', $passwordhash);
     $q->bindParam(':starttime', $starttime);
     $q->bindParam(':reviewtime', $reviewtime);
