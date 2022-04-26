@@ -264,6 +264,12 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <a name="papers"></a>
 <h2>Papers</h2>
 
+<h3>2022</h3>
+
+<ul>
+    <li>Computational Solution to Quantum Foundational Problems (Arkady Bolotin)</li>
+</ul>
+
 <h3>2021</h3>
 
 <ul>
