@@ -433,6 +433,7 @@ header('Content-Type: text/html; charset=utf-8');
     }
 ?>
 <!-- Piwik -->
+<!-- disabled piwik/matomo temporarily cuz it's broken
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(['trackPageView']);
@@ -447,6 +448,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 </script>
 <noscript><p><img src="https://defuse.ca/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+-->
 <!-- End Piwik Code -->
 
 </body>
