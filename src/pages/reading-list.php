@@ -268,6 +268,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2022</h3>
 
 <ul>
+    <li>SATAn: Air-Gap Exfiltration Attack Via Radio Signals From SATA Cables (Mordechai Guri)</li>
     <li>Computational Solution to Quantum Foundational Problems (Arkady Bolotin)</li>
 </ul>
 
