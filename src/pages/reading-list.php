@@ -20,6 +20,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 
 <ul>
     <li><b>Poems for the Lost&mdash;Because I'm lost too (exurb1a)</b></li>
+    <li>Thinking about mathematics (Stewart Shapiro)</li>
     <li><b>Existential Physics (Sabine Hossenfelder)</b></li>
     <li>Pracitcal Doomsday (Michal Zalewski)</li>
     <li><b>Lost in Math (Sabine Hossenfelder)</b></li>
