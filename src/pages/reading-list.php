@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2022</h2>
 
 <ul>
+    <li><b>The Wisdom of Insecurity (Alan Watts)</b></li>
     <li><b>Poems for the Lost&mdash;Because I'm lost too (exurb1a)</b></li>
     <li>Thinking about mathematics (Stewart Shapiro)</li>
     <li><b>Existential Physics (Sabine Hossenfelder)</b></li>
