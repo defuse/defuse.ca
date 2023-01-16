@@ -274,6 +274,12 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <a name="papers"></a>
 <h2>Papers</h2>
 
+<h3>2023</h3>
+
+<ul>
+    <li>Three Lessons From Threema: Analysis of a Secure Messenger (Kenneth G. Paterson et al.)</li>
+</ul>
+
 <h3>2022</h3>
 
 <ul>
