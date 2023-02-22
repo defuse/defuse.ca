@@ -277,6 +277,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2023</h3>
 
 <ul>
+    <li>Securing the Boot Process (Jessie Frazelle)</li>
     <li><b>SoK: Understanding the Prevailing Security Vulnerabilities in TrustZone-assisted TEE Systems (David Cerdeira et al.)</b></li>
     <li>Three Lessons From Threema: Analysis of a Secure Messenger (Kenneth G. Paterson et al.)</li>
 </ul>
