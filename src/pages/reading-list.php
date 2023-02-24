@@ -277,6 +277,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2023</h3>
 
 <ul>
+    <li><b>AEPIC Leak: Architecturally Leaking Uninitialized Data from the Microarchitecture (Pietro Borello et al.)</b></li>
+    <li><b>Plundervolt: Software-based Fault Injection Attacks against Intel SGX (Kit Murdock et al.)</b></li>
     <li><b>SGAxe: How SGX Fails in Practice (Stephan van Shaik et al.)</b></li>
     <li>Securing the Boot Process (Jessie Frazelle)</li>
     <li><b>SoK: Understanding the Prevailing Security Vulnerabilities in TrustZone-assisted TEE Systems (David Cerdeira et al.)</b></li>
