@@ -277,6 +277,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2023</h3>
 
 <ul>
+    <li><b>Foreshadow: Extracting the Keys to the Intel SGX Kingdom with Transient Out-of-Order Execution (Jo Van Bulck et al.)</b></li>
     <li><b>AEPIC Leak: Architecturally Leaking Uninitialized Data from the Microarchitecture (Pietro Borello et al.)</b></li>
     <li><b>Plundervolt: Software-based Fault Injection Attacks against Intel SGX (Kit Murdock et al.)</b></li>
     <li><b>SGAxe: How SGX Fails in Practice (Stephan van Shaik et al.)</b></li>
