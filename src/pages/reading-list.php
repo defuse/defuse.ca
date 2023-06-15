@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2023</h2>
 
 <ul>
+    <li><b>The Beginning of Infinity (David Deutsch)</b></li>
     <li><b>Vipassana Meditation and the Scientific Worldview</b></li>
 </ul>
 
@@ -277,6 +278,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2023</h3>
 
 <ul>
+    <li>The Loopix Anonymity System (Ania M. Piotrowska et al.)</li>
+    <li>The Nym Network (Claudia Diaz et al.)</li>
     <li><b>Foreshadow: Extracting the Keys to the Intel SGX Kingdom with Transient Out-of-Order Execution (Jo Van Bulck et al.)</b></li>
     <li><b>AEPIC Leak: Architecturally Leaking Uninitialized Data from the Microarchitecture (Pietro Borello et al.)</b></li>
     <li><b>Plundervolt: Software-based Fault Injection Attacks against Intel SGX (Kit Murdock et al.)</b></li>
