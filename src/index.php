@@ -117,7 +117,6 @@ header('Content-Type: text/html; charset=utf-8');
 <meta name="google-site-verification" content="LjgndE9fyTkxbPz8aMFyJQFSS3cQiXIrYchE_b2VXlg" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="/js/upvote.js"></script>
-<script type="text/javascript" src="/js/jquery.js"></script>
 <?php
     if ($name === "quantum-computer-time-capsule") {
     ?>
