@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2023</h2>
 
 <ul>
+    <li>Lost Connections (Johann Hari)</li>
     <li><b>The Beginning of Infinity (David Deutsch)</b></li>
     <li><b>Vipassana Meditation and the Scientific Worldview</b></li>
 </ul>
