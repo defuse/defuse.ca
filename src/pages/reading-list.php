@@ -280,6 +280,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2023</h3>
 
 <ul>
+    <li>Bitcoin, Currencies, and Fragility (Nassim Nicholas Taleb)</li>
     <li>The Loopix Anonymity System (Ania M. Piotrowska et al.)</li>
     <li>The Nym Network (Claudia Diaz et al.)</li>
     <li><b>Foreshadow: Extracting the Keys to the Intel SGX Kingdom with Transient Out-of-Order Execution (Jo Van Bulck et al.)</b></li>
