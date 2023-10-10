@@ -280,6 +280,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2023</h3>
 
 <ul>
+    <li><b>"Millions of people are watching you": Understanding the Digital-Safety Needs and Practices of Creators (Patrawat SAmermit et al.)</b></li>
     <li>"All of them claim to be the best": Multi-perspective study of VPN users and VPN providers (Reethika Ramesh et al.)</li>
     <li>Bitcoin, Currencies, and Fragility (Nassim Nicholas Taleb)</li>
     <li>The Loopix Anonymity System (Ania M. Piotrowska et al.)</li>
