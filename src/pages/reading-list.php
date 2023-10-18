@@ -280,6 +280,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2023</h3>
 
 <ul>
+    <li>Framing Frames: Bypassing Wi-Fi Encryption by Manipulating Transmit Queues (Domien Schepers et al.)</li>
     <li>DistDet: A Cost-Effective Distributed Cyber Threat Detection System (Feng Dong et al.)</li>
     <li><b>"Millions of people are watching you": Understanding the Digital-Safety Needs and Practices of Creators (Patrawat SAmermit et al.)</b></li>
     <li>"All of them claim to be the best": Multi-perspective study of VPN users and VPN providers (Reethika Ramesh et al.)</li>
