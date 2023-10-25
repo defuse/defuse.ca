@@ -108,10 +108,10 @@ if (isset($_POST['submit']) && isset($_POST['instructions']) && strlen($_POST['i
 <h2>Disassemble</h2>
 
 <p>
-Paste any hex string that encodes x86 instructions (e.g. a shellcode) below.
-Non-hex characters are skipped over, so you don't have to remove the double
-quotes or <code>&quot;\x&quot;</code> if you're disassembling a C-style string
-literal!
+Paste any hex string that encodes x86 instructions (e.g. a shellcode) below. Any
+"0x"'s are removed from the string and non-hex characters are skipped over, so you
+don't have to remove the double quotes or <code>&quot;\x&quot;</code> if you're
+disassembling a C-style string literal or array!
 </p>
 
 <form action="/online-x86-assembler.htm#disassembly2" method="post">
@@ -139,6 +139,7 @@ literal!
         echo '<a name="disassembly2"></a>';
 
         $hexstr = $_POST['hexstring'];
+        $hexstr = preg_replace('/0x/', '', $hexstr);
         $hexstr = preg_replace('/[^0-9a-fA-F]/', '', $hexstr);
         $binary = hex2bin($hexstr);
 
