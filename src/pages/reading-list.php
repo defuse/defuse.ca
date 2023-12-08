@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2023</h2>
 
 <ul>
+    <li>The One (Heinrich P&auml;s)</li>
     <li>What Is ChatGPT Doing and Why Does It Work? (Stephen Wolfram)</li>
     <li>Lost Connections (Johann Hari)</li>
     <li><b>The Beginning of Infinity (David Deutsch)</b></li>
