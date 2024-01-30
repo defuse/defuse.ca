@@ -16,6 +16,12 @@ knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2024</h2>
+
+<ul>
+    <li><b>The Pea and the Sun (Leonard M. Wapner)</b></li>
+</ul>
+
 <h2>2023</h2>
 
 <ul>
