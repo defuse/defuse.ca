@@ -16,7 +16,7 @@ February 9, 2024
 <p>
 Gödel's second incompleteness theorem, in a nutshell, says that if a certain
 kind of mathematical theory can prove its own consistency (i.e. that it does not
-prove any contradictions), then that mathematical theory must itself be
+prove any contradictions), then that mathematical theory must actually be
 inconsistent.
 </p>
 
