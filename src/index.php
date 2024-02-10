@@ -282,7 +282,7 @@ header('Content-Type: text/html; charset=utf-8');
                     <li><a href="/how-do-we-model-this-robot.htm">&nbsp;Robot Modelling</a></li>
                     <li><a href="/is-security-local.htm">&nbsp;Is Security Local?</a></li>
                     <li><a href="/plausible-reason-p-noteq-np-is-hard-to-prove.htm">&nbsp;Why It's Hard To Prove P!=NP</a></li>
-                    <li><a href="/godel-second-incompleteness-theorem-by-turing-machines.htm">&nbsp;Encoding Side Channels</a></li>
+                    <li><a href="/godel-second-incompleteness-theorem-by-turing-machines.htm">&nbsp;Gödel's Second Theorem</a></li>
                 </ul>
 
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
