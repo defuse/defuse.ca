@@ -423,6 +423,12 @@ class URLParse
                 P_METD => "Malicious web pages can port scan your local network.",
                 P_METK => "browser, port scan, security",
             ),
+            "godel-second-incompleteness-theorem-by-turing-machines" => array(
+                P_FILE => "research/godel-second-incompleteness-theorem-by-turing-machines",
+                P_TITL => "A Simple Proof of Gödel's Second Incompleteness Theorem Using Turing Machines",
+                P_METD => "Proving Gödel's second incompleteness theorem in a simpler way using Turing machines.",
+                P_METK => "godel, second incompleteness theorem, simple proof, turing machines, computability",
+            ),
             "is-security-local" => array(
                 P_FILE => "research/is-security-local.php",
                 P_TITL => "Is Security Local?",
