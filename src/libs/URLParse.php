@@ -424,7 +424,7 @@ class URLParse
                 P_METK => "browser, port scan, security",
             ),
             "godel-second-incompleteness-theorem-by-turing-machines" => array(
-                P_FILE => "research/godel-second-incompleteness-theorem-by-turing-machines",
+                P_FILE => "research/godel-second-incompleteness-theorem-by-turing-machines.php",
                 P_TITL => "A Simple Proof of Gödel's Second Incompleteness Theorem Using Turing Machines",
                 P_METD => "Proving Gödel's second incompleteness theorem in a simpler way using Turing machines.",
                 P_METK => "godel, second incompleteness theorem, simple proof, turing machines, computability",
