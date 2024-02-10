@@ -94,7 +94,7 @@ On input <em>X</em>:
 </ol>
 
 <p>
-If we run <em>M</em> on itself, <em>M(M)</em>, then what it will do is start
+If we run <em>M</em> on a description of itself, <em>M(M)</em>, then what it will do is start
 enumerating all possible strings, looking for a valid proof in <em>T</em> that
 <em>M</em> halts when it's run on a description of itself. Crucially,
 <em>Prf<sub>T</sub></em>, the proof-checking algorithm, always halts, so
