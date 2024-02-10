@@ -45,7 +45,11 @@ theorem for theories like ZF(C).
 </p>
 
 <p>
-Let's let <em>T</em> be the mathematical theory we're working in. For example,
+    Let's go!
+</p>
+
+<p>
+Let <em>T</em> be the mathematical theory we're working in. For example,
 <em>T</em> could be ZF(C) set theory. You should imagine that all of the
 arguments we're about to give are translated into the formal language of <em>T</em>.
 </p>
