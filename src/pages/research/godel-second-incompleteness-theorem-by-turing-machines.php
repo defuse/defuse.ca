@@ -171,3 +171,9 @@ arguments given above.
 There you go! A proof of Gödel's second incompleteness theorem that's no harder
 to understand than the proof that the halting problem is undecidable!
 </p>
+
+<p>
+If you're interested in Turing-machine-based proofs of Gödel's theorems, check
+out <a href="https://scottaaronson.blog/?p=710">Scott Aaronson's blog</a> and a
+<a href="https://www.ams.org/notices/201011/rtx101101454p.pdf">prior proof of the second theorem using Kolmogrov complexity</a>.
+</p>
