@@ -178,6 +178,6 @@ to understand than the proof that the halting problem is undecidable!
 
 <p>
 If you're interested in Turing-machine-based proofs of Gödel's theorems, check
-out <a href="https://scottaaronson.blog/?p=710">Scott Aaronson's blog</a> and a
+out <a href="https://scottaaronson.blog/?p=710">Scott Aaronson's blog post</a> and a
 <a href="https://www.ams.org/notices/201011/rtx101101454p.pdf">prior proof of the second theorem using Kolmogrov complexity</a>.
 </p>
