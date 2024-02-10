@@ -55,11 +55,13 @@ arguments we're about to give are translated into the formal language of <em>T</
 </p>
 
 <p>
-We need to make some assumptions about <em>T</em>, namely that there's an algorithm for
-checking proofs in <em>T</em> that always halts and tells us whether a proof is correct
-or not, which we'll call <em>Prf<sub>T</sub></em>. The string <em>p</em> is a
-valid proof of the statement <em>x</em> within the theory T if and only if
-<em>Prf<sub>T</sub>(p, x) = true</em>. 
+We need to make some assumptions about <em>T</em>, namely that there's an
+algorithm for checking proofs in <em>T</em> that always halts and tells us
+whether a proof is correct or not, which we'll call <em>Prf<sub>T</sub></em>.
+The string <em>p</em> is a valid proof of the statement <em>x</em> within the
+theory T if and only if <em>Prf<sub>T</sub>(p, x) = true</em>. We also need to
+assume that some familiar rules of inference, like modus tollens, and others
+from first-order logic, are valid within T.
 </p>
 
 <p>
