@@ -148,9 +148,9 @@ We can now complete the argument:
 </p>
 
 <ol>
-    <li><em>Con(T) is provable in T → M halts</em></li>
-    <li><em>M halts → ¬Con(T)</em></li>
-    <li>Therefore, <em>Con(T) is provable in T → ¬Cons(T)</em>.</li>
+    <li><em>Con(T) is provable in T → M(M) halts</em></li>
+    <li><em>M(M) halts → ¬Con(T)</em></li>
+    <li>Therefore, <em>Con(T) is provable in T → ¬Con(T)</em>.</li>
 </ol>
 
 <p>
@@ -163,6 +163,6 @@ incompleteness theorem for <em>T</em>.
 
 <p>
 The only requirement for this argument to work is that <em>T</em> is powerful
-enough to express Turing machines and to formalize all of the arguments given
-above.
+enough to express strings and Turing machines, and to formalize all of the
+arguments given above.
 </p>
