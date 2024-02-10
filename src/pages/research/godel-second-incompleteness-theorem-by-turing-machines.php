@@ -166,3 +166,8 @@ The only requirement for this argument to work is that <em>T</em> is powerful
 enough to express strings and Turing machines, and to formalize all of the
 arguments given above.
 </p>
+
+<p>
+There you go! A proof of Gödel's second incompleteness theorem that's no harder
+to understand than the proof that the halting problem is undecidable!
+</p>
