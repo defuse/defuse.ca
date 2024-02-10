@@ -33,7 +33,7 @@ It turns out that all of this complexity can be avoided if you're willing to
 consider a version of the theorem that applies to mathematical theories strong
 enough to easily express strings and Turing machines. All of the Gödel-numbering
 complexity is necessary to make the theorem work in weaker systems like Peano
-arithmetic, but if you just want to prove it for theories like ZF(C), where most
+arithmetic, but if you just want to prove it for theories like <a href="https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory">ZF(C)</a>, where most
 of modern mathematics operates, the proof is much easier, and we'll sketch that
 proof below.
 </p>
