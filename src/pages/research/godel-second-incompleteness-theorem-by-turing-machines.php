@@ -96,7 +96,7 @@ On input <em>X</em>:
 <p>
 If we run <em>M</em> on itself, <em>M(M)</em>, then what it will do is start
 enumerating all possible strings, looking for a valid proof in <em>T</em> that
-<em>M</em> halts when it's given a description of itself as input. Crucially,
+<em>M</em> halts when it's run on a description of itself. Crucially,
 <em>Prf<sub>T</sub></em>, the proof-checking algorithm, always halts, so
 <em>M(M)</em> halts if and only if there exists a proof within <em>T</em> that
 <em>M(M)</em> never halts.
