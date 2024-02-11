@@ -41,5 +41,5 @@ Here are some examples of my security auditing work:
 
 <p>
 Interested? Email me at <a href="mailto:taylor@defuse.ca">taylor@defuse.ca</a> or
-mention <a href="https://twitter.com/defusesec">@DefuseSec</a> on Twitter.
+mention <a href="https://twitter.com/defusesec">@DefuseSec</a> on Twitter/X.
 </p>
