@@ -19,6 +19,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2024</h2>
 
 <ul>
+    <li>A Brief History of Black Holes (Dr. Becky Smethurst)</li>
     <li><b>The Pea and the Sun (Leonard M. Wapner)</b></li>
 </ul>
 
@@ -283,6 +284,12 @@ to read. My favorites are highlighted in <b>bold text</b>.
 
 <a name="papers"></a>
 <h2>Papers</h2>
+
+<h3>2024</h3>
+
+<ul>
+    <li>The Surprise Examination Paradox and the Second Incompleteness Theorem (Shira Kirchman and Ran Raz)</li>
+</ul>
 
 <h3>2023</h3>
 
