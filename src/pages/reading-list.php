@@ -289,6 +289,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 
 <ul>
     <li>The Surprise Examination Paradox and the Second Incompleteness Theorem (Shira Kirchman and Ran Raz)</li>
+    <li>The Unreasonable Effectiveness of Mathematics in the Natural Sciences (Eugene Wigner)</li>
 </ul>
 
 <h3>2023</h3>
