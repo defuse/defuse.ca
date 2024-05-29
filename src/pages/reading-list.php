@@ -288,6 +288,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2024</h3>
 
 <ul>
+    <li><b>Anonymity Loves Company: Usability and the Network Effect (Roger Dingledine and Nick Mathewson)</b></li>
     <li>The Surprise Examination Paradox and the Second Incompleteness Theorem (Shira Kirchman and Ran Raz)</li>
     <li>The Unreasonable Effectiveness of Mathematics in the Natural Sciences (Eugene Wigner)</li>
 </ul>
