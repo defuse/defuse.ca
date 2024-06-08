@@ -289,6 +289,8 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2024</h3>
 
 <ul>
+    <li>The ghost <em>is</em> the machine: Weird machines in transient execution (Ping-Lun Wang et al.)</li>
+    <li>A Toy Model for Local Deterministic Wave-function Collapse (Sandro Donaldi, Sabine Hossenfelder)</li>
     <li>Natural Recovery By the Liver and Other Organs After Chronic Alcohol Use (Paul G. Thomes et al.)</li>
     <li><b>Anonymity Loves Company: Usability and the Network Effect (Roger Dingledine and Nick Mathewson)</b></li>
     <li>The Surprise Examination Paradox and the Second Incompleteness Theorem (Shira Kirchman and Ran Raz)</li>
