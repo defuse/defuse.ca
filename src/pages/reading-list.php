@@ -32,7 +32,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
     <li>What Is ChatGPT Doing and Why Does It Work? (Stephen Wolfram)</li>
     <li>Lost Connections (Johann Hari)</li>
     <li><b>The Beginning of Infinity (David Deutsch)</b></li>
-    <li><b>Vipassana Meditation and the Scientific Worldview</b></li>
+    <li><b>Vipassana Meditation and the Scientific Worldview (Paul Fleischman)</b></li>
 </ul>
 
 <h2>2022</h2>
@@ -49,7 +49,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h2>2021</h2>
 
 <ul>
-    <li>Harry Pottern and the Philosopher's Stone (J.K. Rowling)</li>
+    <li>Harry Potter and the Philosopher's Stone (J.K. Rowling)</li>
     <li>How To DeFi (CoinGecko)</li>
     <li>The Science of Can and Can't (Chiara Marletto)</li>
     <li><b>Container Security (Liz Rice)</b></li>
