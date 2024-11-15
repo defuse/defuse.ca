@@ -149,6 +149,12 @@ class URLParse
                 P_METD => "A logical proof that the universe consists entirely of cheese.",
                 P_METK => "cheese paradox, universe made of cheese, logical proof"
             ),
+            "fractal-zoom" => array(
+                P_FILE => "misc/fractal-zoom.php",
+                P_TITL => "Fractal Zoom",
+                P_METD => "A short story.",
+                P_METK => "fractal zoom, short story, sci-fi, psychedellic"
+            ),
             "advice-to-aspiring-computer-engineers" => array(
                 P_FILE => "misc/advice-to-aspiring-computer-engineers.php",
                 P_TITL => "Advice to Aspiring Computer Engineers and Scientists",

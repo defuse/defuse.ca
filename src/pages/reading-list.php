@@ -119,8 +119,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <ul>
     <li><b>Making Music: 74 Creative Strategies for Electronic Music Producers (Dennis DeSantis)</b></li>
     <li><b>The Man Who Mistook His Wife For a Hat (Oliver Sacks)</b></li>
-    <li><b>Mixing Secrets For the Small Studio (Mike Senior)</b></li>
-    <li><b>The Black Hole War (Stephen Hawking)</b></li>
+    <li><b>The Black Hole War (Leonard Susskind)</b></li>
     <li><b>QED: The Strange Theory of Light and Matter (Richard Feynman)</b></li>
     <li>Quantum Information Theory &amp; the Foundations of Quantum Mechanics (Christopher G. Timpson)</li>
     <li><b>Music Theory for Computer Musicians (Michael Hewitt)</b></li>
