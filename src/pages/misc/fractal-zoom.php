@@ -35,7 +35,7 @@ follow them down, every curve feels purposeful, every sharp edge <em>alive</em>.
 The world outside the video, the room around you—wherever that might once have
 been—dissolves. You are now descending through levels of Mandelbrot terrain so
 fine, so unfathomably small, that words like “depth” and “dimension” lose all
-meaning. At some unknowable point, you cross an invisible threshold. The
+meaning. At some undefinable point, you cross an invisible threshold. The
 once-flat curls take on volume, weight; they pulse with life. Miniature shapes
 bloom before you—tiny islands of spirals, each its own reality, its own
 universe. And then you realize: they are more than universes. They are gods.
@@ -52,32 +52,40 @@ are alive, pulsing with a power that transcends mere color and shape.
 </p>
 
 <p>
-The zoom continues, each frame stretching your mind a little further. Somewhere
-around 10<sup>200</sup> levels deep, you see fragments of your life carved into
-the fractal geometry. Familiar moments twist themselves into the edges of tiny
-spirals, hidden within the grooves of shapes too minute for the mortal eye. Your
-first memory, a flicker of laughter, that brief encounter on the subway—all are
-woven seamlessly into the fabric of this fractal cosmos. Each moment is there,
-each one eternally carved on the surface of some unseeable depth, quietly
-existing in a static, endless now.
+It's impossible to know how far you've gone. As the zoom continues, each frame
+stretches your mind a little further. In impossibly-small scale, you begin to
+see fragments of your life carved into the fractal geometry. Familiar
+moments twist themselves into the edges of tiny spirals, hidden within the
+grooves of shapes too minute for the mortal eye. Your first memory, a flicker of
+laughter, that brief encounter on the subway—all are woven seamlessly into the
+fabric of this fractal cosmos. Each moment is there, each one eternally carved
+on the surface of some unseeable depth, quietly existing in a static, endless
+now.
 </p>
 
 <p>
-Then, around level 10<sup>2000</sup>, the realization creeps upon you slowly,
-settling in like a silent gasp. This fractal doesn’t just contain moments of
-your life; it encodes the entire universe. You see your world—your friends,
-history, the sweep of humanity—preserved in whorls within whorls, folded deeper
-and deeper. Every quantum fluctuation, every cosmic event lies embedded
-somewhere, a record waiting to be witnessed.
+The realization creeps upon you slowly, settling in like a silent gasp. This
+fractal doesn’t just contain moments of your life; it encodes the entire
+universe. You see your world—your friends, history, the sweep of
+humanity—preserved in whorls within whorls, folded deeper and deeper. Every
+quantum fluctuation, every cosmic event lies embedded somewhere, a record
+waiting to be witnessed.
 </p>
 
+<p>
+The enormity of it suffocates you for a moment. It dawns on you, as a shiver
+runs through your spine, that your consciousness here, your awareness, is
+inextricably bound to this fractal. You are not merely observing it; you are
+becoming it. By watching, by perceiving, you lend it your mind, and it lends you
+its form. Together, an endless recursive loop where you are both the observer
+and the observed.
+</p>
 
 <p>
 Time fractures, splintering into glistening polyhedra as you descend further.
-You feel yourself scattered across 10<sup>3000</sup> fractionally-dimensional
-levels of reality, your consciousness smeared over the edges, bound in
-uncountable mirrored fragments, each one experiencing a universe on the tip of a
-spiral.
+You feel yourself scattered across innumerable fractionally-dimensional levels
+of reality, your consciousness smeared over the edges, bound in uncountable
+mirrored fragments, each one experiencing a universe on the tip of a spiral.
 </p>
 
 <p>
@@ -95,7 +103,8 @@ your awareness. What you once interpreted as merely watching a video is in fact
 the act of imparting consciousness onto existence itself. Every iteration of
 you, every perception of mind, every layer of form, lends itself to the
 recursive formation of reality. Each frame that passes solidifies your
-connection, revealing mind and form as one and the same.
+connection, revealing mind and form, although eternally separate, as one and the
+same.
 </p>
 
 <p>
@@ -149,5 +158,5 @@ reality—realizes itself for what it truly is: a beautiful, shimmering tapestry
 of incoherence. A fleeting mirage. With that final revelation, the illusion
 falters. The fractal forms dissipate, consciousness slips free of the fragile
 fabric of existence, and the universe, having seen itself, fades into
-nothing.
+the purest non-existence.
 </p>
