@@ -152,8 +152,8 @@ class URLParse
             "fractal-zoom" => array(
                 P_FILE => "misc/fractal-zoom.php",
                 P_TITL => "Fractal Zoom",
-                P_METD => "A short story.",
-                P_METK => "fractal zoom, short story, sci-fi, psychedellic"
+                P_METD => "A psychedelic short story.",
+                P_METK => "fractal zoom, short story, sci-fi, psychedelic"
             ),
             "advice-to-aspiring-computer-engineers" => array(
                 P_FILE => "misc/advice-to-aspiring-computer-engineers.php",

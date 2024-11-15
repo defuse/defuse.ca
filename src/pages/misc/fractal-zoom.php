@@ -3,7 +3,7 @@
         "fractalzoom",
         "defuse_pages",
         "Fractal Zoom",
-        "A short story.",
+        "A psychedelic short story.",
         "https://defuse.ca/fractal-zoom.htm"
     );
 ?>
