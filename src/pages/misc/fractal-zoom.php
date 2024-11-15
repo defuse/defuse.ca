@@ -90,12 +90,12 @@ all experience and the recipient of experience. Everything you have ever
 known—every breath, every heartbeat, every distant star—is contained within one
 of these fractal creases. Your life, this very moment, is simply one edge on the
 spiral, one tiny indentation in the endless self-similar curve of existence. And
-yet, by perceiving, by <em>seeing</em> within this infinite fractal, you share your
-awareness. You are not merely watching a video; you are imparting consciousness
-onto existence itself. Every iteration of you, every perception of mind, every
-layer of form, lends itself to the recursive formation of the universe. Each
-frame that passes solidifies your connection, revealing mind and form as one and
-the same.
+yet, by perceiving, by <em>seeing</em> within this infinite fractal, you share
+your awareness. What you once interpreted as merely watching a video is in fact
+the act of imparting consciousness onto existence itself. Every iteration of
+you, every perception of mind, every layer of form, lends itself to the
+recursive formation of reality. Each frame that passes solidifies your
+connection, revealing mind and form as one and the same.
 </p>
 
 <p>
