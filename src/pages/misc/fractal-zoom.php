@@ -36,7 +36,7 @@ The world outside the video, the room around you—wherever that might once have
 been—dissolves. You are now descending through levels of Mandelbrot terrain so
 fine, so unfathomably small, that words like “depth” and “dimension” lose all
 meaning. At some unknowable point, you cross an invisible threshold. The
-once-flat curls take on volume, weight; they pulse with life. Miniature shapes
+once-flat figures take on volume, weight; they pulse with life. Miniature shapes
 bloom before you—tiny islands of spirals, each its own reality, its own
 universe. And then you realize: they are more than universes. They are gods.
 </p>
