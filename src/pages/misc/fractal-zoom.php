@@ -17,8 +17,8 @@ November 15, 2024
 <p>
 It begins in silence, a frozen thumbnail on your screen—a glimpse of spirals and
 sharp edges that hint at something immense, waiting. You press "Play." A
-bassline emerges, low and pulsing, the heartbeat of a mathematical giant, and
-the fractal zoom draws you in.
+bassline emerges, low and pulsing, like the heartbeat of a mathematical giant,
+and the fractal zoom draws you in.
 </p>
 
 <p>
