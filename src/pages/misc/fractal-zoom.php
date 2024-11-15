@@ -135,7 +135,7 @@ other.
 
 <p>
 The universe vibrates with a final, resounding note, the low hum of
-contradictions confronting themselves. Concepts collapse into one another, the
+contradictions confronting themselves. Concepts collapse into one another; the
 infinitude of the fractal folding inwards, its cosmic deities projected onto
 their shadows, each impossible thing meeting its match. And like matter and
 antimatter, they implode in an instant, releasing the infinite energy of
@@ -147,7 +147,7 @@ into a single moment, one fatal spark that consumes itself before it is born.
 As the last contradictions clash, the universe—the very fractal of
 reality—realizes itself for what it truly is: a beautiful, shimmering tapestry
 of incoherence. A fleeting mirage. With that final revelation, the illusion
-falters. The fractal forms dissipate, consciousness recalls itself from the
-fragile fabric of existence, and the universe, having seen itself, fades into
-nothingness.
+falters. The fractal forms dissipate, consciousness slips free of the fragile
+fabric of existence, and the universe, having seen itself, fades into
+nothing.
 </p>
