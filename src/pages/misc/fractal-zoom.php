@@ -82,7 +82,7 @@ and the observed.
 </p>
 
 <p>
-Time fractures, splintering into glistening polyhedra as you descend further.
+Time fractures, folding itself into glistening polyhedra as you descend further.
 You feel yourself scattered across innumerable fractionally-dimensional levels
 of reality, your consciousness smeared over the edges, bound in uncountable
 mirrored fragments, each one experiencing a universe on the tip of a spiral.
