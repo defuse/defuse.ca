@@ -35,7 +35,7 @@ follow them down, every curve feels purposeful, every sharp edge <em>alive</em>.
 The world outside the video, the room around you—wherever that might once have
 been—dissolves. You are now descending through levels of Mandelbrot terrain so
 fine, so unfathomably small, that words like “depth” and “dimension” lose all
-meaning. At some undefinable point, you cross an invisible threshold. The
+meaning. At some unknowable point, you cross an invisible threshold. The
 once-flat curls take on volume, weight; they pulse with life. Miniature shapes
 bloom before you—tiny islands of spirals, each its own reality, its own
 universe. And then you realize: they are more than universes. They are gods.
@@ -73,12 +73,12 @@ waiting to be witnessed.
 </p>
 
 <p>
-The enormity of it suffocates you for a moment. It dawns on you, as a shiver
-runs through your spine, that your consciousness here, your awareness, is
-inextricably bound to this fractal. You are not merely observing it; you are
-becoming it. By watching, by perceiving, you lend it your mind, and it lends you
-its form. Together, an endless recursive loop where you are both the observer
-and the observed.
+The enormity of it suffocates you for a moment. It dawns on you, as neurons fire
+in unison, that your consciousness here, your awareness, is inextricably bound
+to this fractal. You are not merely observing it; you are becoming it. By
+watching, by perceiving, you lend it your mind, and it lends you its form.
+Together, an endless recursive loop where you are both the observer and the
+observed.
 </p>
 
 <p>
@@ -157,6 +157,6 @@ As the last contradictions clash, the universe—the very fractal of
 reality—realizes itself for what it truly is: a beautiful, shimmering tapestry
 of incoherence. A fleeting mirage. With that final revelation, the illusion
 falters. The fractal forms dissipate, consciousness slips free of the fragile
-fabric of existence, and the universe, having seen itself, fades into
-the purest non-existence.
+fabric of existence, and the universe, having seen itself, fades into pure
+non-existence.
 </p>
