@@ -12,7 +12,7 @@ November 15, 2024
 </div>
 <h1>Fractal Zoom</h1>
 
-<p style="color: #CCCCCC;"><center>(Written by ChatGPT 4o and edited by Taylor Hornby)</center></p>
+<p><center style="color: #CCCCCC;">(Written by ChatGPT 4o and edited by Taylor Hornby)</center></p>
 
 <p>
 It begins in silence, a frozen thumbnail on your screen—a glimpse of spirals and
