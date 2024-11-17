@@ -289,6 +289,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2024</h3>
 
 <ul>
+    <li>Reality as a Vector in Hilbert Space (Sean M. Carroll)</li>
     <li>ChatGPT is bullshit (Michael Townsen Hicks et al.)</li>
     <li>The ghost <em>is</em> the machine: Weird machines in transient execution (Ping-Lun Wang et al.)</li>
     <li>A Toy Model for Local Deterministic Wave-function Collapse (Sandro Donaldi, Sabine Hossenfelder)</li>
