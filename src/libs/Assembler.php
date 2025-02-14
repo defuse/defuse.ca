@@ -197,8 +197,7 @@ class Disassembler
         $ret = 1;
 
         // Use objdump to disassemble it.
-        // FIXME: Trailing null bytes are ignored?
-        exec("objdump -b binary -m $this->arch -M intel -D $binary_path", $output, $ret);
+        exec("objdump -z -b binary -m $this->arch -M intel -D $binary_path", $output, $ret);
 
         if ($ret == 0)
         {
