@@ -286,6 +286,12 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <a name="papers"></a>
 <h2>Papers</h2>
 
+<h3>2025</h3>
+
+<ul>
+    <li>SoK: The Long Journey of Exploiting and Defending the Legacy of King Harald Bluetooth (Jianliang Wu et al.)</li>
+</ul>
+
 <h3>2024</h3>
 
 <ul>
