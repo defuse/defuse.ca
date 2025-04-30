@@ -289,6 +289,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2025</h3>
 
 <ul>
+    <li><b>Safe curves for elliptic-curve cryptography (Daniel J. Bernstein and Tanja Lange)</b></li>
     <li>SoK: The Long Journey of Exploiting and Defending the Legacy of King Harald Bluetooth (Jianliang Wu et al.)</li>
 </ul>
 
