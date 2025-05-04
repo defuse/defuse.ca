@@ -382,6 +382,8 @@ Browsers will have to add an artificial delay to make Case 1 look like Case 2.
 <p>
 To stop websites from scanning your <em>local network</em>, all your browser
 needs to do is deny any request from an Internet web page to a local IP address.
+You can use the <a href="https://addons.mozilla.org/en-US/firefox/addon/port-authority/">Port Authority</a> 
+Firefox browser extension to block websites from using javascript to port scan your computer and local network.
 If you use Firefox, the NoScript extension will do this for you. NoScript's main
 purpose is to disable JavaScript, but it has a lot of extra security features,
 and that is one of them. Make sure you have the Application Boundaries Enforcer
