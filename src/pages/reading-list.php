@@ -289,6 +289,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2025</h3>
 
 <ul>
+    <li>False-positive results for pheochromocytoma associated with norepinepherine reuptake blockade (Robin Sch&uuml;rfeld et al.)</li>
     <li><b>FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism Standard</b></li>
     <li>The Double Ratchet Algorithm (Trevor Perrin and Moxie Marlinspike)</li>
     <li>The X3DH Key Agreement Protocol (Moxie Marlinspike and Trevor Perrin)</li>
