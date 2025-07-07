@@ -4,7 +4,7 @@
         "defuse_pages",
         "A Simple Proof of Gödel's Second Incompleteness Theorem Using Turing Machines",
         "Proving Gödel's second incompleteness theorem in a way that should be understandable to anyone who understands the proof that the halting problem is undecidable.",
-        "https://defuse.ca/godel-second-incompleteness-theorems-by-turing-machines.php"
+        "https://defuse.ca/godel-second-incompleteness-theorem-by-turing-machines.htm"
     );
 ?>
 <div class="pagedate">
