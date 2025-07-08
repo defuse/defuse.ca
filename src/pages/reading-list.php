@@ -289,6 +289,7 @@ to read. My favorites are highlighted in <b>bold text</b>.
 <h3>2025</h3>
 
 <ul>
+    <li>Against Self-Location (Emily Adlam)</li>
     <li>On P=NP either false or independent of ZFC (S. Gill Williamson)</li>
     <li>A Survey of Infinite Time Turing Machines (Joel David Hamkins)</li>
     <li>False-positive results for pheochromocytoma associated with norepinepherine reuptake blockade (Robin Sch&uuml;rfeld et al.)</li>
