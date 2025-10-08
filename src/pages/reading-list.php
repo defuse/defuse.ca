@@ -16,6 +16,12 @@ knowledge. It might also be useful if you're looking for something interesting
 to read. My favorites are highlighted in <b>bold text</b>.
 </p>
 
+<h2>2025</h2>
+
+<ul>
+    <li>The Thunder, Perfect Mind (Lee Lozowick rendering)</li>
+</ul>
+
 <h2>2024</h2>
 
 <ul>
