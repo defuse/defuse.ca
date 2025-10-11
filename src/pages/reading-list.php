@@ -708,6 +708,7 @@ picture scaling (Eric Brasseur)</a></li>
 <a name="zines"></a>
 <h2>Magazines, E-Zines &amp; Other</h2>
 <ul>
+    <li>Mental Causation on the Stanford Encyclopedia of Philosophy</li>
     <li>The Case For Panpsychism (Philip Goff)</li>
     <li>Google Infrastructure Security Design Overview</li>
     <li>How to write proofs: a quick guide (Eugenia Cheng)</li>
