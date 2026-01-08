@@ -214,7 +214,7 @@ if($postInfo !== false)
             $line = htmlentities($line, ENT_QUOTES);
 			$line = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $line);
 			$line = str_replace("  ", "&nbsp;&nbsp;", $line);
-			echo '<li><div class="div' . $i . '">&nbsp;' . $line . '</div></li>';
+			echo '<li><div class="div' . $i . '">' . $line . '</div></li>';
 			$i = ($i + 1) % 2;
 		}
 		echo '</ol></div>';
