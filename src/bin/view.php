@@ -305,7 +305,7 @@ function decryptPaste(){
 			var bgColor = i % 2;
 			var line = lines[i].replace("\n", "");
 			line = line.replace("\r", "");
-			fancyLines.push("<li><div class=\"div" + bgColor + "\">&nbsp;" + fxw.allhtmlsani(line) + "</div></li>");
+			fancyLines.push("<li><div class=\"div" + bgColor + "\">" + fxw.allhtmlsani(line) + "</div></li>");
 		}
 		fancyLines.push("</ol>");
 
