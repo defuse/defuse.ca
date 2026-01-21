@@ -84,7 +84,8 @@ class Assembler
         //  - ". " allows for relative jumps, e.g. jmp . + 5
         $safe_directives = array(
             ".ascii", ".asciz", ".align", ".balign",
-            ".byte", ".int", ".double", ".quad", ".octa", ".word", ". "
+            ".byte", ".int", ".double", ".quad", ".octa", ".word", ". ",
+            ".code16", ".code32", ".code64"
         );
 
         foreach ($safe_directives as $directive)
